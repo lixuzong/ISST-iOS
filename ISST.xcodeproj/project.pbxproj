@@ -22,15 +22,10 @@
 		AEE2846D18DADAA000BEF1A9 /* ISSTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2846C18DADAA000BEF1A9 /* ISSTTests.m */; };
 		AEE2847918DAE24A00BEF1A9 /* ISSTRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2847818DAE24A00BEF1A9 /* ISSTRevealViewController.m */; };
 		AEE2847C18DAE55500BEF1A9 /* ISSTMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2847B18DAE55500BEF1A9 /* ISSTMenuViewController.m */; };
-		AEE2847F18DAF3C600BEF1A9 /* ISSTRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2847E18DAF3C600BEF1A9 /* ISSTRootViewController.m */; };
 		AEE2848218DB013400BEF1A9 /* ISSTMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2848118DB013400BEF1A9 /* ISSTMenuTableViewCell.m */; };
 		AEE2848418DB04CC00BEF1A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2848318DB04CC00BEF1A9 /* QuartzCore.framework */; };
 		AEE2848718DB066700BEF1A9 /* ISSTPushedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2848618DB066700BEF1A9 /* ISSTPushedViewController.m */; };
 		AEE2848B18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2848A18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m */; };
-		AEE2848F18DB0D3A00BEF1A9 /* GoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2848D18DB0D3A00BEF1A9 /* GoViewController.m */; };
-		AEE2849018DB0D3A00BEF1A9 /* GoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEE2848E18DB0D3A00BEF1A9 /* GoViewController.xib */; };
-		AEE2849418DB0DA300BEF1A9 /* GogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2849218DB0DA300BEF1A9 /* GogoViewController.m */; };
-		AEE2849518DB0DA300BEF1A9 /* GogoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEE2849318DB0DA300BEF1A9 /* GogoViewController.xib */; };
 		AEE2849C18DB263100BEF1A9 /* searchBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE2849718DB263100BEF1A9 /* searchBarBG.png */; };
 		AEE2849D18DB263100BEF1A9 /* searchBarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE2849818DB263100BEF1A9 /* searchBarIcon.png */; };
 		AEE2849E18DB263100BEF1A9 /* searchBarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE2849918DB263100BEF1A9 /* searchBarIcon@2x.png */; };
@@ -42,6 +37,11 @@
 		AEFDC75918DDC90800D7FDAA /* ISSTLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEFDC75718DDC90800D7FDAA /* ISSTLoginViewController.xib */; };
 		AEFDC75C18DECEDD00D7FDAA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75B18DECEDD00D7FDAA /* NSString+URLEncoding.m */; };
 		AEFDC75F18DED14F00D7FDAA /* ISSTLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75E18DED14F00D7FDAA /* ISSTLoginApi.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AEFDC76718E023DD00D7FDAA /* GogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC76218E023DD00D7FDAA /* GogoViewController.m */; };
+		AEFDC76818E023DD00D7FDAA /* GogoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEFDC76318E023DD00D7FDAA /* GogoViewController.xib */; };
+		AEFDC76918E023DD00D7FDAA /* GoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC76518E023DD00D7FDAA /* GoViewController.m */; };
+		AEFDC76A18E023DD00D7FDAA /* GoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEFDC76618E023DD00D7FDAA /* GoViewController.xib */; };
+		AEFDC76D18E0245D00D7FDAA /* ISSTRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC76C18E0245D00D7FDAA /* ISSTRootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,8 +76,6 @@
 		AEE2847818DAE24A00BEF1A9 /* ISSTRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRevealViewController.m; path = ISSTSlidebarNav/ISSTRevealViewController.m; sourceTree = "<group>"; };
 		AEE2847A18DAE55500BEF1A9 /* ISSTMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTMenuViewController.h; path = ISSTSlidebarNav/ISSTMenuViewController.h; sourceTree = "<group>"; };
 		AEE2847B18DAE55500BEF1A9 /* ISSTMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTMenuViewController.m; path = ISSTSlidebarNav/ISSTMenuViewController.m; sourceTree = "<group>"; };
-		AEE2847D18DAF3C600BEF1A9 /* ISSTRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTRootViewController.h; path = ../ISSTSlidebarNav/ISSTRootViewController.h; sourceTree = "<group>"; };
-		AEE2847E18DAF3C600BEF1A9 /* ISSTRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRootViewController.m; path = ../ISSTSlidebarNav/ISSTRootViewController.m; sourceTree = "<group>"; };
 		AEE2848018DB013400BEF1A9 /* ISSTMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTMenuTableViewCell.h; path = ISSTSlidebarNav/ISSTMenuTableViewCell.h; sourceTree = "<group>"; };
 		AEE2848118DB013400BEF1A9 /* ISSTMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTMenuTableViewCell.m; path = ISSTSlidebarNav/ISSTMenuTableViewCell.m; sourceTree = "<group>"; };
 		AEE2848318DB04CC00BEF1A9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -86,12 +84,6 @@
 		AEE2848818DB0A0C00BEF1A9 /* ISSTSidebarSearchViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ISSTSidebarSearchViewControllerDelegate.h; path = ISSTSlidebarNav/ISSTSidebarSearchViewControllerDelegate.h; sourceTree = "<group>"; };
 		AEE2848918DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTSidebarSearchViewController.h; path = ISSTSlidebarNav/ISSTSidebarSearchViewController.h; sourceTree = "<group>"; };
 		AEE2848A18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTSidebarSearchViewController.m; path = ISSTSlidebarNav/ISSTSidebarSearchViewController.m; sourceTree = "<group>"; };
-		AEE2848C18DB0D3A00BEF1A9 /* GoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GoViewController.h; path = ../GoViewController.h; sourceTree = "<group>"; };
-		AEE2848D18DB0D3A00BEF1A9 /* GoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GoViewController.m; path = ../GoViewController.m; sourceTree = "<group>"; };
-		AEE2848E18DB0D3A00BEF1A9 /* GoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GoViewController.xib; path = ../GoViewController.xib; sourceTree = "<group>"; };
-		AEE2849118DB0DA300BEF1A9 /* GogoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GogoViewController.h; path = ../GogoViewController.h; sourceTree = "<group>"; };
-		AEE2849218DB0DA300BEF1A9 /* GogoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GogoViewController.m; path = ../GogoViewController.m; sourceTree = "<group>"; };
-		AEE2849318DB0DA300BEF1A9 /* GogoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GogoViewController.xib; path = ../GogoViewController.xib; sourceTree = "<group>"; };
 		AEE2849718DB263100BEF1A9 /* searchBarBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchBarBG.png; sourceTree = "<group>"; };
 		AEE2849818DB263100BEF1A9 /* searchBarIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchBarIcon.png; sourceTree = "<group>"; };
 		AEE2849918DB263100BEF1A9 /* searchBarIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "searchBarIcon@2x.png"; sourceTree = "<group>"; };
@@ -109,6 +101,14 @@
 		AEFDC75B18DECEDD00D7FDAA /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+URLEncoding.m"; path = "WebService/NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		AEFDC75D18DED14F00D7FDAA /* ISSTLoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTLoginApi.h; path = WebService/ISSTLoginApi.h; sourceTree = "<group>"; };
 		AEFDC75E18DED14F00D7FDAA /* ISSTLoginApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTLoginApi.m; path = WebService/ISSTLoginApi.m; sourceTree = "<group>"; };
+		AEFDC76118E023DD00D7FDAA /* GogoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GogoViewController.h; sourceTree = "<group>"; };
+		AEFDC76218E023DD00D7FDAA /* GogoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GogoViewController.m; sourceTree = "<group>"; };
+		AEFDC76318E023DD00D7FDAA /* GogoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GogoViewController.xib; sourceTree = "<group>"; };
+		AEFDC76418E023DD00D7FDAA /* GoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoViewController.h; sourceTree = "<group>"; };
+		AEFDC76518E023DD00D7FDAA /* GoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoViewController.m; sourceTree = "<group>"; };
+		AEFDC76618E023DD00D7FDAA /* GoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoViewController.xib; sourceTree = "<group>"; };
+		AEFDC76B18E0245D00D7FDAA /* ISSTRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTRootViewController.h; sourceTree = "<group>"; };
+		AEFDC76C18E0245D00D7FDAA /* ISSTRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTRootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,12 +298,12 @@
 		AEE284A618DB2C6000BEF1A9 /* Life */ = {
 			isa = PBXGroup;
 			children = (
-				AEE2849118DB0DA300BEF1A9 /* GogoViewController.h */,
-				AEE2849218DB0DA300BEF1A9 /* GogoViewController.m */,
-				AEE2849318DB0DA300BEF1A9 /* GogoViewController.xib */,
-				AEE2848C18DB0D3A00BEF1A9 /* GoViewController.h */,
-				AEE2848D18DB0D3A00BEF1A9 /* GoViewController.m */,
-				AEE2848E18DB0D3A00BEF1A9 /* GoViewController.xib */,
+				AEFDC76118E023DD00D7FDAA /* GogoViewController.h */,
+				AEFDC76218E023DD00D7FDAA /* GogoViewController.m */,
+				AEFDC76318E023DD00D7FDAA /* GogoViewController.xib */,
+				AEFDC76418E023DD00D7FDAA /* GoViewController.h */,
+				AEFDC76518E023DD00D7FDAA /* GoViewController.m */,
+				AEFDC76618E023DD00D7FDAA /* GoViewController.xib */,
 			);
 			path = Life;
 			sourceTree = "<group>";
@@ -335,8 +335,8 @@
 		AEE284AE18DB2F2B00BEF1A9 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				AEE2847D18DAF3C600BEF1A9 /* ISSTRootViewController.h */,
-				AEE2847E18DAF3C600BEF1A9 /* ISSTRootViewController.m */,
+				AEFDC76B18E0245D00D7FDAA /* ISSTRootViewController.h */,
+				AEFDC76C18E0245D00D7FDAA /* ISSTRootViewController.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -424,17 +424,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEFDC76A18E023DD00D7FDAA /* GoViewController.xib in Resources */,
 				AEE2845A18DADAA000BEF1A9 /* Images.xcassets in Resources */,
 				AEE2849D18DB263100BEF1A9 /* searchBarIcon.png in Resources */,
 				AEE2844C18DADAA000BEF1A9 /* InfoPlist.strings in Resources */,
 				AEE2849C18DB263100BEF1A9 /* searchBarBG.png in Resources */,
-				AEE2849018DB0D3A00BEF1A9 /* GoViewController.xib in Resources */,
+				AEFDC76818E023DD00D7FDAA /* GogoViewController.xib in Resources */,
 				AEE2849E18DB263100BEF1A9 /* searchBarIcon@2x.png in Resources */,
 				AEFDC75918DDC90800D7FDAA /* ISSTLoginViewController.xib in Resources */,
 				AEE284A018DB263100BEF1A9 /* user.png in Resources */,
 				AEE2845518DADAA000BEF1A9 /* Main.storyboard in Resources */,
 				AEE2849F18DB263100BEF1A9 /* searchTextBG.png in Resources */,
-				AEE2849518DB0DA300BEF1A9 /* GogoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,21 +453,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEFDC76718E023DD00D7FDAA /* GogoViewController.m in Sources */,
 				AEE2848718DB066700BEF1A9 /* ISSTPushedViewController.m in Sources */,
 				AEE284AC18DB2D1900BEF1A9 /* ISSTApi.m in Sources */,
 				AEE2847C18DAE55500BEF1A9 /* ISSTMenuViewController.m in Sources */,
 				AEFDC75F18DED14F00D7FDAA /* ISSTLoginApi.m in Sources */,
 				AEFDC75418DDC5E100D7FDAA /* ISSTSlidebarNavController.m in Sources */,
+				AEFDC76918E023DD00D7FDAA /* GoViewController.m in Sources */,
 				AEFDC75818DDC90800D7FDAA /* ISSTLoginViewController.m in Sources */,
 				AEE2848218DB013400BEF1A9 /* ISSTMenuTableViewCell.m in Sources */,
-				AEE2849418DB0DA300BEF1A9 /* GogoViewController.m in Sources */,
 				AEE2848B18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m in Sources */,
 				AEE2845218DADAA000BEF1A9 /* AppDelegate.m in Sources */,
-				AEE2848F18DB0D3A00BEF1A9 /* GoViewController.m in Sources */,
+				AEFDC76D18E0245D00D7FDAA /* ISSTRootViewController.m in Sources */,
 				AEE2847918DAE24A00BEF1A9 /* ISSTRevealViewController.m in Sources */,
 				AEE2844E18DADAA000BEF1A9 /* main.m in Sources */,
 				AEFDC75C18DECEDD00D7FDAA /* NSString+URLEncoding.m in Sources */,
-				AEE2847F18DAF3C600BEF1A9 /* ISSTRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
