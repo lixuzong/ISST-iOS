@@ -22,6 +22,7 @@
 {
     ISSTRevealViewController    *_sidebarVC;
     //UISearchBar                 *_searchBar;
+    UIImageView                     *_imageViewOfISST;
     UITableView                 *_menuTableView;
     NSArray                     *_headers;
 	NSArray                     *_controllers;
@@ -29,12 +30,13 @@
 }
 #pragma mark Memory Management
 - (id)initWithSidebarViewController:(ISSTRevealViewController *)sidebarVC
-					  withSearchBar:(UISearchBar *)searchBar
+					   withImageView:(UIImageView *)imageView
 						withHeaders:(NSArray *)headers
 					withControllers:(NSArray *)controllers
 					  withCellInfos:(NSArray *)cellInfos {
 	if (self = [super initWithNibName:nil bundle:nil]) {
 		_sidebarVC = sidebarVC;
+        _imageViewOfISST = imageView ;
 		//_searchBar = searchBar;
 		_headers = headers;
 		_controllers = controllers;
@@ -51,8 +53,7 @@
 	[super viewDidLoad];
 	self.view.frame = CGRectMake(0.0f, 0.0f, kISSTRevealSidebarWidth, CGRectGetHeight(self.view.bounds));
 	self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
-	
-	//[self.view addSubview:_searchBar];
+		[self.view addSubview:_imageViewOfISST];
 	
 	_menuTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, kISSTRevealSidebarWidth, CGRectGetHeight(self.view.bounds) - 44.0f)
 												  style:UITableViewStylePlain];
@@ -68,6 +69,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	self.view.frame = CGRectMake(0.0f, 0.0f,kISSTRevealSidebarWidth, CGRectGetHeight(self.view.bounds));
 	//[_searchBar sizeToFit];
+  
 }
 
 - (void)viewDidLayoutSubviews {

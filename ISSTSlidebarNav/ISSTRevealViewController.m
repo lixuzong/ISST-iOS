@@ -12,8 +12,8 @@
 #pragma mark -
 #pragma mark Constants
 const NSTimeInterval kISSTRevealSidebarDefaultAnimationDuration = 0.25;
-const CGFloat kISSTRevealSidebarWidth = 260.0f;
-const CGFloat kISSTRevealSidebarFlickVelocity = 1000.0f;
+const CGFloat kISSTRevealSidebarWidth = 250.0f;
+const CGFloat kISSTRevealSidebarFlickVelocity = 1020.0f;
 
 
 
@@ -46,14 +46,14 @@ const CGFloat kISSTRevealSidebarFlickVelocity = 1000.0f;
 		svc.view.frame = _sidebarView.bounds;
         svc.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 		_sidebarViewController = svc;
-		[self addChildViewController:_sidebarViewController];
+	//	[self addChildViewController:_sidebarViewController];
 		[_sidebarView addSubview:_sidebarViewController.view];
 		[_sidebarViewController didMoveToParentViewController:self];
 	} else if (_sidebarViewController != svc) {
 		svc.view.frame = _sidebarView.bounds;
         svc.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 		[_sidebarViewController willMoveToParentViewController:nil];
-		[self addChildViewController:svc];
+		//[self addChildViewController:svc];
 		self.view.userInteractionEnabled = NO;
 		[self transitionFromViewController:_sidebarViewController
 						  toViewController:svc

@@ -52,9 +52,9 @@
 
 - (IBAction)login:(id)sender {
     
-   // ISSTSlidebarNavController *slider =[[[ISSTSlidebarNavController alloc]init]autorelease];
-    // [self.navigationController pushViewController:[[ISSTSlidebarNavController alloc]init] animated:YES ];
- //   [self.navigationController pushViewController:slider animated: NO];
+  // ISSTSlidebarNavController *slider =[[[ISSTSlidebarNavController alloc]init]autorelease];
+
+   //[self.navigationController pushViewController:slider animated: NO];
    [self.userApi requestLoginName:self.nameField.text andPassword:self.passwordField.text];
     [self.navigationController setNavigationBarHidden:YES];//set system navigationbar hidden
 

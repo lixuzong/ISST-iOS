@@ -181,8 +181,10 @@
 										state:UIControlStateNormal];
     
     */
+    //UIImage *image =[UIImage imageNamed:@"user.png"];
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"user.png"]];
     self.menuController = [[ISSTMenuViewController alloc] initWithSidebarViewController:self.revealController
-                                                                          withSearchBar:nil
+                                                                          withImageView:imageView
                                                                             withHeaders:header
                                                                         withControllers:controllers
                                                                           withCellInfos:cellInfos];

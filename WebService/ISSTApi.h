@@ -10,6 +10,6 @@
 #import "ISSTWebApiDelegate.h"
 
 @interface ISSTApi : NSObject
-
+@property (nonatomic,weak)NSHTTPCookie *cookie;
 - (void)requestWithSuburl:(NSString *)subUrl Method:(NSString *)method Delegate:(id<NSURLConnectionDataDelegate>)delegate Info:(NSString*)info  MD5Dictionary:(NSDictionary *)dict;
 @end

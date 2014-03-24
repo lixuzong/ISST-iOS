@@ -13,6 +13,7 @@
 
 
 @implementation ISSTApi
+@synthesize cookie;
 
 - (id)init
 {
@@ -71,6 +72,30 @@
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate];
         if (connection) {
             NSLog(@"连接成功");
+          //  NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
+              NSURLResponse *response;
+            NSData *myReturn =[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
+            NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+            NSDictionary *fields = [HTTPResponse allHeaderFields];
+            NSLog(@"%@",[fields description]);
+            //取得我要的cookie
+            if (self.cookie == nil) {
+                self.cookie =[[NSString alloc] initWithString: [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0]];
+            }
+            else{
+                self.cookie = [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0];
+            }
+            
+            NSLog(@"cookie = %@",self.cookie);
+            NSString *strRet = [[NSString alloc] initWithData:myReturn encoding:NSASCIIStringEncoding];
+            NSLog(@"strRet%@",strRet);
+         //   [strRet release];
+           // if([self.cookie length]<25)
+               // return NO;
+            //else
+               // return YES;
+            
+            
         } else {
             NSLog(@"connect error");
         }
