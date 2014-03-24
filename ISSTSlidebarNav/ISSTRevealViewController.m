@@ -65,7 +65,7 @@ const CGFloat kISSTRevealSidebarFlickVelocity = 1000.0f;
 									[_sidebarViewController removeFromParentViewController];
 									[svc didMoveToParentViewController:self];
 									_sidebarViewController = svc;
-								}
+		          	}
 		 ];
 	}
 }

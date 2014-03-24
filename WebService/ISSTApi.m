@@ -44,7 +44,10 @@
     
     NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
    */
-    NSString *mainUrl = @"http://yplan.cloudapp.net:8080/party/api";
+    
+    //http://yplan.cloudapp.net:8080/isst//users/validation?name=21351110&password=111111    name=%@&password=%@
+    
+            NSString *mainUrl = @"http://yplan.cloudapp.net:8080/isst/";
       NSString *strUrl = [NSString stringWithFormat:@"%@%@",mainUrl,subUrl];
      NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
     if ([method isEqualToString:@"GET"]) {
@@ -57,7 +60,6 @@
     } else if([method isEqualToString:@"PUT"]) {
         
     } else if([method isEqualToString:@"POST"]) {
-        
         NSData *data = [info dataUsingEncoding:NSUTF8StringEncoding];
         //   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
         //                                                      cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData

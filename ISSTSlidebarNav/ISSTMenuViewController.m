@@ -21,7 +21,7 @@
 @implementation ISSTMenuViewController
 {
     ISSTRevealViewController    *_sidebarVC;
-    UISearchBar                 *_searchBar;
+    //UISearchBar                 *_searchBar;
     UITableView                 *_menuTableView;
     NSArray                     *_headers;
 	NSArray                     *_controllers;
@@ -35,7 +35,7 @@
 					  withCellInfos:(NSArray *)cellInfos {
 	if (self = [super initWithNibName:nil bundle:nil]) {
 		_sidebarVC = sidebarVC;
-		_searchBar = searchBar;
+		//_searchBar = searchBar;
 		_headers = headers;
 		_controllers = controllers;
 		_cellInfos = cellInfos;
@@ -52,7 +52,7 @@
 	self.view.frame = CGRectMake(0.0f, 0.0f, kISSTRevealSidebarWidth, CGRectGetHeight(self.view.bounds));
 	self.view.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 	
-	[self.view addSubview:_searchBar];
+	//[self.view addSubview:_searchBar];
 	
 	_menuTableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 44.0f, kISSTRevealSidebarWidth, CGRectGetHeight(self.view.bounds) - 44.0f)
 												  style:UITableViewStylePlain];
@@ -67,11 +67,11 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	self.view.frame = CGRectMake(0.0f, 0.0f,kISSTRevealSidebarWidth, CGRectGetHeight(self.view.bounds));
-	[_searchBar sizeToFit];
+	//[_searchBar sizeToFit];
 }
 
 - (void)viewDidLayoutSubviews {
-    if ([self respondsToSelector:@selector(topLayoutGuide)]) {
+   if ([self respondsToSelector:@selector(topLayoutGuide)]) {
         CGRect viewBounds = self.view.frame;
         CGFloat topBarOffset = self.topLayoutGuide.length;
         self.view.frame = CGRectMake(viewBounds.origin.x, topBarOffset,
@@ -95,7 +95,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"GHMenuCell";
+    static NSString *CellIdentifier = @"ISSTMenuCell";
     ISSTMenuTableViewCell *cell = (ISSTMenuTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[ISSTMenuTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];

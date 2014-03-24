@@ -12,15 +12,15 @@
 #import "ISSTRootViewController.h"
 #import "ISSTMenuTableViewCell.h"
 
-#import "ISSTSidebarSearchViewController.h"
-#import "ISSTSidebarSearchViewControllerDelegate.h"
+//#import "ISSTSidebarSearchViewController.h"
+//#import "ISSTSidebarSearchViewControllerDelegate.h"
 
 #import "GoViewController.h"
 
-@interface ISSTSlidebarNavController ()<ISSTSidebarSearchViewControllerDelegate>
+@interface ISSTSlidebarNavController ()//<ISSTSidebarSearchViewControllerDelegate>
 @property (nonatomic, strong) ISSTRevealViewController *revealController;
 //搜索栏控制器
-@property (nonatomic, strong) ISSTSidebarSearchViewController *searchController;
+//@property (nonatomic, strong) ISSTSidebarSearchViewController *searchController;
 
 @property (nonatomic, strong) ISSTMenuViewController       *menuController;
 @end
@@ -159,7 +159,7 @@
      }
      ];
     //搜索栏控制器
-    self.searchController = [[ISSTSidebarSearchViewController alloc] initWithSidebarViewController:self.revealController];
+  /*  self.searchController = [[ISSTSidebarSearchViewController alloc] initWithSidebarViewController:self.revealController];
 	self.searchController.view.backgroundColor = [UIColor clearColor];
     self.searchController.searchDelegate = self;
 	self.searchController.searchBar.autocapitalizationType = UITextAutocapitalizationTypeNone;
@@ -180,9 +180,9 @@
 							 forSearchBarIcon:UISearchBarIconSearch
 										state:UIControlStateNormal];
     
-    
+    */
     self.menuController = [[ISSTMenuViewController alloc] initWithSidebarViewController:self.revealController
-                                                                          withSearchBar:self.searchController.searchBar
+                                                                          withSearchBar:nil
                                                                             withHeaders:header
                                                                         withControllers:controllers
                                                                           withCellInfos:cellInfos];
@@ -193,11 +193,11 @@
 }
 
 
-
+/*
 //搜索栏代理方法
 #pragma mark GHSidebarSearchViewControllerDelegate
 - (void)searchResultsForText:(NSString *)text withScope:(NSString *)scope callback:(SearchResultsBlock)callback {
-	callback(@[@"Foo", @"Bar", @"Baz"]);
+	//callback(@[@"Foo", @"Bar", @"Baz"]);
 }
 
 - (void)searchResult:(id)result selectedAtIndexPath:(NSIndexPath *)indexPath {
@@ -215,7 +215,7 @@
 	return cell;
 }
 
-
+*/
 
 
 @end

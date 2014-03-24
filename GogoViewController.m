@@ -19,7 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-             self.navigationItem.title =@"Gogo";
+
     }
     return self;
 }
@@ -27,8 +27,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title=@"title";
-    self.navigationItem.title =@"Gogo";
+
 
     // Do any additional setup after loading the view from its nib.
 }

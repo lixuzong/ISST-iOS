@@ -41,7 +41,7 @@
 		AEFDC75818DDC90800D7FDAA /* ISSTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75618DDC90800D7FDAA /* ISSTLoginViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AEFDC75918DDC90800D7FDAA /* ISSTLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEFDC75718DDC90800D7FDAA /* ISSTLoginViewController.xib */; };
 		AEFDC75C18DECEDD00D7FDAA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75B18DECEDD00D7FDAA /* NSString+URLEncoding.m */; };
-		AEFDC75F18DED14F00D7FDAA /* ISSTLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75E18DED14F00D7FDAA /* ISSTLoginApi.m */; };
+		AEFDC75F18DED14F00D7FDAA /* ISSTLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75E18DED14F00D7FDAA /* ISSTLoginApi.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +139,7 @@
 		AEE2843518DADAA000BEF1A9 = {
 			isa = PBXGroup;
 			children = (
+				AEFDC76018DFFF2700D7FDAA /* Parses */,
 				AEE2849618DB263100BEF1A9 /* Images */,
 				AEE284A318DB2B8100BEF1A9 /* Models */,
 				AEE284A218DB2A5300BEF1A9 /* main */,
@@ -338,6 +339,13 @@
 				AEE2847E18DAF3C600BEF1A9 /* ISSTRootViewController.m */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		AEFDC76018DFFF2700D7FDAA /* Parses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Parses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

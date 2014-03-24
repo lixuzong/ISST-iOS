@@ -33,7 +33,6 @@
 
 {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:YES];//set system navigationbar hidden
 
     if ([[[UIDevice currentDevice]systemVersion] doubleValue] >= 7.0) {
         self.edgesForExtendedLayout =UIRectEdgeNone;
@@ -53,7 +52,11 @@
 
 - (IBAction)login:(id)sender {
     
-    [self.userApi requestLoginName:self.nameField andPassword:self.passwordField];
+   // ISSTSlidebarNavController *slider =[[[ISSTSlidebarNavController alloc]init]autorelease];
+    // [self.navigationController pushViewController:[[ISSTSlidebarNavController alloc]init] animated:YES ];
+ //   [self.navigationController pushViewController:slider animated: NO];
+   [self.userApi requestLoginName:self.nameField.text andPassword:self.passwordField.text];
+    [self.navigationController setNavigationBarHidden:YES];//set system navigationbar hidden
 
 
 }

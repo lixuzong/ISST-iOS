@@ -49,7 +49,11 @@
 - (IBAction)go:(id)sender {
     NSString *vcTitle = [self.title stringByAppendingString:@" - Pushed"];
     GogoViewController *vc = [[GogoViewController alloc] initWithTitle:vcTitle];
-	[self.navigationController pushViewController:vc animated:YES];
+   // [self.navigationController removeFromParentViewController];
+  //  [self.navigationController popToRootViewControllerAnimated:YES];
+  //  [self.navigationController popToViewController:self.navigationController.rotatingFooterView animated:YES];
+    [self.navigationController setNavigationBarHidden:NO];
+//	[self.navigationController pushViewController:vc animated:YES];
     
     
 }
