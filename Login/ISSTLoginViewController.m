@@ -24,7 +24,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-       
     }
     return self;
 }
@@ -56,14 +55,16 @@
 
    //[self.navigationController pushViewController:slider animated: NO];
    [self.userApi requestLoginName:self.nameField.text andPassword:self.passwordField.text];
-    [self.navigationController setNavigationBarHidden:YES];//set system navigationbar hidden
+   
 
 
 }
 
 - (void)dealloc
 {
+    [self.nameField release];
     self.nameField = nil;
+    [self.passwordField release];
     self.passwordField =nil;
     [super dealloc];
 }
@@ -75,6 +76,7 @@
       ISSTSlidebarNavController *slider =[[[ISSTSlidebarNavController alloc]init]autorelease];
    // [self.navigationController pushViewController:[[ISSTSlidebarNavController alloc]init] animated:YES ];
        [self.navigationController pushViewController:slider animated: NO];
+     [self.navigationController setNavigationBarHidden:YES];//set system navigationbar hidden
 }
 
 - (void)requestDataOnFail:(NSString *)error

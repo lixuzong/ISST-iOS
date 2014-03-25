@@ -7,9 +7,14 @@
 //
 
 #import "ISSTLoginApi.h"
-@interface  ISSTLoginApi(Network)
+#import "UserLoginParse.h"
+@class ISSTUserModel;
+@interface  ISSTLoginApi()
 //@property (strong, nonatomic)NSMutableData *datas;
 //@property (nonatomic, assign)id<ISSTWebApiDelegate> webApiDelegate;
+{
+    UserLoginParse *userLoginParse;
+}
 @end
 
 @implementation ISSTLoginApi
@@ -60,10 +65,12 @@
 //请求完成
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
- 
-    [self retrunCookies];
-    NSLog(@"data=%@",datas);
     
+    //[self retrunCookies];
+    NSLog(@"data=%@",datas);
+    userLoginParse =[[UserLoginParse alloc]init];
+    [userLoginParse loginSerialization:datas];
+    NSLog(@"%@",(ISSTUserModel *)[userLoginParse userInfoParse]);
     NSDictionary *dics= [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
     NSLog(@"dics= %@",dics);
     [self.webApiDelegate requestDataOnSuccess:dics];

@@ -24,7 +24,6 @@
 		AEE2847C18DAE55500BEF1A9 /* ISSTMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2847B18DAE55500BEF1A9 /* ISSTMenuViewController.m */; };
 		AEE2848218DB013400BEF1A9 /* ISSTMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2848118DB013400BEF1A9 /* ISSTMenuTableViewCell.m */; };
 		AEE2848418DB04CC00BEF1A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2848318DB04CC00BEF1A9 /* QuartzCore.framework */; };
-		AEE2848718DB066700BEF1A9 /* ISSTPushedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2848618DB066700BEF1A9 /* ISSTPushedViewController.m */; };
 		AEE2848B18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2848A18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m */; };
 		AEE2849C18DB263100BEF1A9 /* searchBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE2849718DB263100BEF1A9 /* searchBarBG.png */; };
 		AEE2849D18DB263100BEF1A9 /* searchBarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE2849818DB263100BEF1A9 /* searchBarIcon.png */; };
@@ -37,11 +36,14 @@
 		AEFDC75918DDC90800D7FDAA /* ISSTLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEFDC75718DDC90800D7FDAA /* ISSTLoginViewController.xib */; };
 		AEFDC75C18DECEDD00D7FDAA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75B18DECEDD00D7FDAA /* NSString+URLEncoding.m */; };
 		AEFDC75F18DED14F00D7FDAA /* ISSTLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75E18DED14F00D7FDAA /* ISSTLoginApi.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AEFDC76718E023DD00D7FDAA /* GogoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC76218E023DD00D7FDAA /* GogoViewController.m */; };
-		AEFDC76818E023DD00D7FDAA /* GogoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEFDC76318E023DD00D7FDAA /* GogoViewController.xib */; };
-		AEFDC76918E023DD00D7FDAA /* GoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC76518E023DD00D7FDAA /* GoViewController.m */; };
-		AEFDC76A18E023DD00D7FDAA /* GoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEFDC76618E023DD00D7FDAA /* GoViewController.xib */; };
+		AEFDC76718E023DD00D7FDAA /* ISSTNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC76218E023DD00D7FDAA /* ISSTNewsDetailViewController.m */; };
+		AEFDC76818E023DD00D7FDAA /* ISSTNewsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEFDC76318E023DD00D7FDAA /* ISSTNewsDetailViewController.xib */; };
+		AEFDC76918E023DD00D7FDAA /* ISSTNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC76518E023DD00D7FDAA /* ISSTNewsViewController.m */; };
+		AEFDC76A18E023DD00D7FDAA /* ISSTNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEFDC76618E023DD00D7FDAA /* ISSTNewsViewController.xib */; };
 		AEFDC76D18E0245D00D7FDAA /* ISSTRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC76C18E0245D00D7FDAA /* ISSTRootViewController.m */; };
+		AEFDC77018E1625900D7FDAA /* ISSTUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC76F18E1625900D7FDAA /* ISSTUserModel.m */; };
+		AEFDC77318E16A5C00D7FDAA /* ISSTPushedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC77218E16A5C00D7FDAA /* ISSTPushedViewController.m */; };
+		AEFDC77618E16D5C00D7FDAA /* UserLoginParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC77518E16D5C00D7FDAA /* UserLoginParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,8 +81,6 @@
 		AEE2848018DB013400BEF1A9 /* ISSTMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTMenuTableViewCell.h; path = ISSTSlidebarNav/ISSTMenuTableViewCell.h; sourceTree = "<group>"; };
 		AEE2848118DB013400BEF1A9 /* ISSTMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTMenuTableViewCell.m; path = ISSTSlidebarNav/ISSTMenuTableViewCell.m; sourceTree = "<group>"; };
 		AEE2848318DB04CC00BEF1A9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		AEE2848518DB066700BEF1A9 /* ISSTPushedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTPushedViewController.h; path = ISSTSlidebarNav/ISSTPushedViewController.h; sourceTree = "<group>"; };
-		AEE2848618DB066700BEF1A9 /* ISSTPushedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTPushedViewController.m; path = ISSTSlidebarNav/ISSTPushedViewController.m; sourceTree = "<group>"; };
 		AEE2848818DB0A0C00BEF1A9 /* ISSTSidebarSearchViewControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ISSTSidebarSearchViewControllerDelegate.h; path = ISSTSlidebarNav/ISSTSidebarSearchViewControllerDelegate.h; sourceTree = "<group>"; };
 		AEE2848918DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTSidebarSearchViewController.h; path = ISSTSlidebarNav/ISSTSidebarSearchViewController.h; sourceTree = "<group>"; };
 		AEE2848A18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTSidebarSearchViewController.m; path = ISSTSlidebarNav/ISSTSidebarSearchViewController.m; sourceTree = "<group>"; };
@@ -101,14 +101,20 @@
 		AEFDC75B18DECEDD00D7FDAA /* NSString+URLEncoding.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+URLEncoding.m"; path = "WebService/NSString+URLEncoding.m"; sourceTree = "<group>"; };
 		AEFDC75D18DED14F00D7FDAA /* ISSTLoginApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTLoginApi.h; path = WebService/ISSTLoginApi.h; sourceTree = "<group>"; };
 		AEFDC75E18DED14F00D7FDAA /* ISSTLoginApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTLoginApi.m; path = WebService/ISSTLoginApi.m; sourceTree = "<group>"; };
-		AEFDC76118E023DD00D7FDAA /* GogoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GogoViewController.h; sourceTree = "<group>"; };
-		AEFDC76218E023DD00D7FDAA /* GogoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GogoViewController.m; sourceTree = "<group>"; };
-		AEFDC76318E023DD00D7FDAA /* GogoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GogoViewController.xib; sourceTree = "<group>"; };
-		AEFDC76418E023DD00D7FDAA /* GoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoViewController.h; sourceTree = "<group>"; };
-		AEFDC76518E023DD00D7FDAA /* GoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoViewController.m; sourceTree = "<group>"; };
-		AEFDC76618E023DD00D7FDAA /* GoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoViewController.xib; sourceTree = "<group>"; };
+		AEFDC76118E023DD00D7FDAA /* ISSTNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTNewsDetailViewController.h; sourceTree = "<group>"; };
+		AEFDC76218E023DD00D7FDAA /* ISSTNewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTNewsDetailViewController.m; sourceTree = "<group>"; };
+		AEFDC76318E023DD00D7FDAA /* ISSTNewsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTNewsDetailViewController.xib; sourceTree = "<group>"; };
+		AEFDC76418E023DD00D7FDAA /* ISSTNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTNewsViewController.h; sourceTree = "<group>"; };
+		AEFDC76518E023DD00D7FDAA /* ISSTNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTNewsViewController.m; sourceTree = "<group>"; };
+		AEFDC76618E023DD00D7FDAA /* ISSTNewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTNewsViewController.xib; sourceTree = "<group>"; };
 		AEFDC76B18E0245D00D7FDAA /* ISSTRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTRootViewController.h; sourceTree = "<group>"; };
 		AEFDC76C18E0245D00D7FDAA /* ISSTRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTRootViewController.m; sourceTree = "<group>"; };
+		AEFDC76E18E1625900D7FDAA /* ISSTUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTUserModel.h; path = Models/ISSTUserModel.h; sourceTree = "<group>"; };
+		AEFDC76F18E1625900D7FDAA /* ISSTUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTUserModel.m; path = Models/ISSTUserModel.m; sourceTree = "<group>"; };
+		AEFDC77118E16A5C00D7FDAA /* ISSTPushedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTPushedViewController.h; sourceTree = "<group>"; };
+		AEFDC77218E16A5C00D7FDAA /* ISSTPushedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTPushedViewController.m; sourceTree = "<group>"; };
+		AEFDC77418E16D5C00D7FDAA /* UserLoginParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLoginParse.h; path = Parses/UserLoginParse.h; sourceTree = "<group>"; };
+		AEFDC77518E16D5C00D7FDAA /* UserLoginParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLoginParse.m; path = Parses/UserLoginParse.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,10 +146,10 @@
 			isa = PBXGroup;
 			children = (
 				AEFDC76018DFFF2700D7FDAA /* Parses */,
-				AEE2849618DB263100BEF1A9 /* Images */,
 				AEE284A318DB2B8100BEF1A9 /* Models */,
-				AEE284A218DB2A5300BEF1A9 /* main */,
+				AEE2849618DB263100BEF1A9 /* Images */,
 				AEE284A118DB2A4300BEF1A9 /* WebService */,
+				AEE284A218DB2A5300BEF1A9 /* main */,
 				AEE2847618DADAF600BEF1A9 /* ISSTSlidebarNav */,
 				AEE2844718DADAA000BEF1A9 /* ISST */,
 				AEE2846618DADAA000BEF1A9 /* ISSTTests */,
@@ -223,8 +229,6 @@
 				AEE2847B18DAE55500BEF1A9 /* ISSTMenuViewController.m */,
 				AEE2848018DB013400BEF1A9 /* ISSTMenuTableViewCell.h */,
 				AEE2848118DB013400BEF1A9 /* ISSTMenuTableViewCell.m */,
-				AEE2848518DB066700BEF1A9 /* ISSTPushedViewController.h */,
-				AEE2848618DB066700BEF1A9 /* ISSTPushedViewController.m */,
 				AEE2848918DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.h */,
 				AEE2848A18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m */,
 				AEE2848818DB0A0C00BEF1A9 /* ISSTSidebarSearchViewControllerDelegate.h */,
@@ -277,6 +281,8 @@
 		AEE284A318DB2B8100BEF1A9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				AEFDC76E18E1625900D7FDAA /* ISSTUserModel.h */,
+				AEFDC76F18E1625900D7FDAA /* ISSTUserModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -298,12 +304,12 @@
 		AEE284A618DB2C6000BEF1A9 /* Life */ = {
 			isa = PBXGroup;
 			children = (
-				AEFDC76118E023DD00D7FDAA /* GogoViewController.h */,
-				AEFDC76218E023DD00D7FDAA /* GogoViewController.m */,
-				AEFDC76318E023DD00D7FDAA /* GogoViewController.xib */,
-				AEFDC76418E023DD00D7FDAA /* GoViewController.h */,
-				AEFDC76518E023DD00D7FDAA /* GoViewController.m */,
-				AEFDC76618E023DD00D7FDAA /* GoViewController.xib */,
+				AEFDC76118E023DD00D7FDAA /* ISSTNewsDetailViewController.h */,
+				AEFDC76218E023DD00D7FDAA /* ISSTNewsDetailViewController.m */,
+				AEFDC76318E023DD00D7FDAA /* ISSTNewsDetailViewController.xib */,
+				AEFDC76418E023DD00D7FDAA /* ISSTNewsViewController.h */,
+				AEFDC76518E023DD00D7FDAA /* ISSTNewsViewController.m */,
+				AEFDC76618E023DD00D7FDAA /* ISSTNewsViewController.xib */,
 			);
 			path = Life;
 			sourceTree = "<group>";
@@ -335,6 +341,8 @@
 		AEE284AE18DB2F2B00BEF1A9 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				AEFDC77118E16A5C00D7FDAA /* ISSTPushedViewController.h */,
+				AEFDC77218E16A5C00D7FDAA /* ISSTPushedViewController.m */,
 				AEFDC76B18E0245D00D7FDAA /* ISSTRootViewController.h */,
 				AEFDC76C18E0245D00D7FDAA /* ISSTRootViewController.m */,
 			);
@@ -344,6 +352,8 @@
 		AEFDC76018DFFF2700D7FDAA /* Parses */ = {
 			isa = PBXGroup;
 			children = (
+				AEFDC77418E16D5C00D7FDAA /* UserLoginParse.h */,
+				AEFDC77518E16D5C00D7FDAA /* UserLoginParse.m */,
 			);
 			name = Parses;
 			sourceTree = "<group>";
@@ -424,12 +434,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEFDC76A18E023DD00D7FDAA /* GoViewController.xib in Resources */,
+				AEFDC76A18E023DD00D7FDAA /* ISSTNewsViewController.xib in Resources */,
 				AEE2845A18DADAA000BEF1A9 /* Images.xcassets in Resources */,
 				AEE2849D18DB263100BEF1A9 /* searchBarIcon.png in Resources */,
 				AEE2844C18DADAA000BEF1A9 /* InfoPlist.strings in Resources */,
 				AEE2849C18DB263100BEF1A9 /* searchBarBG.png in Resources */,
-				AEFDC76818E023DD00D7FDAA /* GogoViewController.xib in Resources */,
+				AEFDC76818E023DD00D7FDAA /* ISSTNewsDetailViewController.xib in Resources */,
 				AEE2849E18DB263100BEF1A9 /* searchBarIcon@2x.png in Resources */,
 				AEFDC75918DDC90800D7FDAA /* ISSTLoginViewController.xib in Resources */,
 				AEE284A018DB263100BEF1A9 /* user.png in Resources */,
@@ -453,19 +463,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEFDC76718E023DD00D7FDAA /* GogoViewController.m in Sources */,
-				AEE2848718DB066700BEF1A9 /* ISSTPushedViewController.m in Sources */,
+				AEFDC77318E16A5C00D7FDAA /* ISSTPushedViewController.m in Sources */,
+				AEFDC76718E023DD00D7FDAA /* ISSTNewsDetailViewController.m in Sources */,
 				AEE284AC18DB2D1900BEF1A9 /* ISSTApi.m in Sources */,
 				AEE2847C18DAE55500BEF1A9 /* ISSTMenuViewController.m in Sources */,
+				AEFDC77618E16D5C00D7FDAA /* UserLoginParse.m in Sources */,
 				AEFDC75F18DED14F00D7FDAA /* ISSTLoginApi.m in Sources */,
 				AEFDC75418DDC5E100D7FDAA /* ISSTSlidebarNavController.m in Sources */,
-				AEFDC76918E023DD00D7FDAA /* GoViewController.m in Sources */,
+				AEFDC76918E023DD00D7FDAA /* ISSTNewsViewController.m in Sources */,
 				AEFDC75818DDC90800D7FDAA /* ISSTLoginViewController.m in Sources */,
 				AEE2848218DB013400BEF1A9 /* ISSTMenuTableViewCell.m in Sources */,
 				AEE2848B18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m in Sources */,
 				AEE2845218DADAA000BEF1A9 /* AppDelegate.m in Sources */,
 				AEFDC76D18E0245D00D7FDAA /* ISSTRootViewController.m in Sources */,
 				AEE2847918DAE24A00BEF1A9 /* ISSTRevealViewController.m in Sources */,
+				AEFDC77018E1625900D7FDAA /* ISSTUserModel.m in Sources */,
 				AEE2844E18DADAA000BEF1A9 /* main.m in Sources */,
 				AEFDC75C18DECEDD00D7FDAA /* NSString+URLEncoding.m in Sources */,
 			);

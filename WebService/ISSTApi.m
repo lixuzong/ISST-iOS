@@ -74,11 +74,22 @@
             NSLog(@"连接成功");
           //  NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
               NSURLResponse *response;
+            
             NSData *myReturn =[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
             NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
             NSDictionary *fields = [HTTPResponse allHeaderFields];
             NSLog(@"%@",[fields description]);
             //取得我要的cookie
+            
+            /*{"Content-Type" = "application/json;charset=UTF-8";
+            Date = "Mon, 24 Mar 2014 11:49:41 GMT";
+            Server = "Apache-Coyote/1.1";
+            "Set-Cookie" = "JSESSIONID=590D22D9C3E3FFE775B3A23FA44D7673; Path=/isst/; HttpOnly";
+            "Transfer-Encoding" = Identity;
+        }
+             */
+            
+
             if (self.cookie == nil) {
                 self.cookie =[[NSString alloc] initWithString: [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0]];
             }

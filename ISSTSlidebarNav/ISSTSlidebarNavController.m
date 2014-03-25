@@ -15,7 +15,7 @@
 //#import "ISSTSidebarSearchViewController.h"
 //#import "ISSTSidebarSearchViewControllerDelegate.h"
 
-#import "GoViewController.h"
+#import "ISSTNewsViewController.h"
 
 @interface ISSTSlidebarNavController ()//<ISSTSidebarSearchViewControllerDelegate>
 @property (nonatomic, strong) ISSTRevealViewController *revealController;
@@ -83,7 +83,7 @@
     
     NSArray *controllers = @[
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[GoViewController alloc] initWithTitle:@"软院快讯" withRevealBlock:revealBlock]],
+                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTNewsViewController alloc] initWithTitle:@"软院快讯" withRevealBlock:revealBlock]],
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"软院百科" withRevealBlock:revealBlock]],
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"在校活动" withRevealBlock:revealBlock]],
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"便捷服务" withRevealBlock:revealBlock]],

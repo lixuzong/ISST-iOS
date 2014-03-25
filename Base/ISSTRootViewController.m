@@ -29,6 +29,7 @@
         [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                       target:self
                                                       action:@selector(revealSidebar)];
+    
 	}
 	return self;
 }
