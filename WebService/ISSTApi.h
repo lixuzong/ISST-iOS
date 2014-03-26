@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "ISSTWebApiDelegate.h"
-
+ static NSHTTPCookie *cookie;
 @interface ISSTApi : NSObject
-@property (nonatomic,weak)NSHTTPCookie *cookie;
+
+@property (strong, nonatomic)NSMutableData *datas;
+@property (nonatomic, assign)id<ISSTWebApiDelegate> webApiDelegate;
 - (void)requestWithSuburl:(NSString *)subUrl Method:(NSString *)method Delegate:(id<NSURLConnectionDataDelegate>)delegate Info:(NSString*)info  MD5Dictionary:(NSDictionary *)dict;
 @end

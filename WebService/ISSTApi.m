@@ -9,12 +9,13 @@
 #import "ISSTApi.h"
 
 #import "NSString+URLEncoding.h"
-
+#define USERAGENT @"Mozilla/5.0 (iPhone; CPU iPhone OS 5_1_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B206 Safari/7534.48.3"
 
 
 @implementation ISSTApi
-@synthesize cookie;
-
+//@synthesize cookie;
+@synthesize webApiDelegate;
+@synthesize datas;
 - (id)init
 {
     self = [super init];
@@ -53,22 +54,39 @@
      NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
     if ([method isEqualToString:@"GET"]) {
         
-        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+        //NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                               cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
+                                                           timeoutInterval:6];
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate];
         if (connection) {
             NSLog(@"连接成功");
         }
+        if (cookie!=nil) {
+            NSLog(@"1234");
+            [request setValue:USERAGENT forHTTPHeaderField:@"User-Agent"];
+            [request setValue:cookie  forHTTPHeaderField:@"Set-Cookie"];
+            // [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+        }
+
     } else if([method isEqualToString:@"PUT"]) {
         
     } else if([method isEqualToString:@"POST"]) {
         NSData *data = [info dataUsingEncoding:NSUTF8StringEncoding];
-        //   NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-        //                                                      cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
-        //                                                 timeoutInterval:6];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                               cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
+                                                        timeoutInterval:6];
         
-        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+       // NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+        //关于iOS上的http请求还在不断学习，从早先的时候发现原来iOS的http请求可以自动保存cookie到后来的，发现ASIHttpRequest会有User-Agent，到现在发现竟然NSURLRequest默认不带USer-Agent的。添加方法：
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:data];
+        if (cookie!=nil) {
+            NSLog(@"1234");
+            [request setValue:USERAGENT forHTTPHeaderField:@"User-Agent"];
+            [request setValue:cookie  forHTTPHeaderField:@"Set-Cookie"];
+       // [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+        }
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate];
         if (connection) {
             NSLog(@"连接成功");
@@ -79,8 +97,8 @@
             NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
             NSDictionary *fields = [HTTPResponse allHeaderFields];
             NSLog(@"%@",[fields description]);
+          
             //取得我要的cookie
-            
             /*{"Content-Type" = "application/json;charset=UTF-8";
             Date = "Mon, 24 Mar 2014 11:49:41 GMT";
             Server = "Apache-Coyote/1.1";
@@ -90,14 +108,16 @@
              */
             
 
-            if (self.cookie == nil) {
-                self.cookie =[[NSString alloc] initWithString: [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0]];
+            if (cookie == nil) {
+                cookie =[[NSString alloc] initWithString: [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0]];
             }
             else{
-                self.cookie = [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0];
+                cookie = [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0];
             }
             
-            NSLog(@"cookie = %@",self.cookie);
+            NSLog(@"cookie = %@",cookie);
+           //     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:self.cookie];
+        
             NSString *strRet = [[NSString alloc] initWithData:myReturn encoding:NSASCIIStringEncoding];
             NSLog(@"strRet%@",strRet);
          //   [strRet release];

@@ -18,6 +18,7 @@
 @implementation ISSTLoginViewController
 @synthesize nameField;
 @synthesize passwordField;
+@synthesize userApi;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -75,7 +76,9 @@
 {
       ISSTSlidebarNavController *slider =[[[ISSTSlidebarNavController alloc]init]autorelease];
    // [self.navigationController pushViewController:[[ISSTSlidebarNavController alloc]init] animated:YES ];
+    NSLog(@"navigationController=%@",self.navigationController.hash);
        [self.navigationController pushViewController:slider animated: NO];
+    
      [self.navigationController setNavigationBarHidden:YES];//set system navigationbar hidden
 }
 

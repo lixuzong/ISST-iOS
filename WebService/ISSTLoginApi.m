@@ -18,9 +18,9 @@
 @end
 
 @implementation ISSTLoginApi
- @synthesize webApiDelegate;
- @synthesize datas;
 
+@synthesize webApiDelegate;
+@synthesize datas;
 
 - (void)requestLoginName:(NSString *)name andPassword:(NSString *)password
 {
@@ -41,7 +41,7 @@
 {
     webApiDelegate=nil;
     datas=nil;
-    [super dealloc];
+   // [super dealloc];
 }
 
 #pragma mark -

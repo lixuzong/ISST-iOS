@@ -11,8 +11,7 @@
 @class ISSTApi;
 @interface ISSTLoginApi :ISSTApi<NSURLConnectionDataDelegate>
 
-@property (strong, nonatomic)NSMutableData *datas;
-@property (nonatomic, assign)id<ISSTWebApiDelegate> webApiDelegate;
+
 - (void)requestLoginName:(NSString *)name andPassword:(NSString *)password;
 //- (void)requestUserInfo:(NSString *)user_id;
 @end

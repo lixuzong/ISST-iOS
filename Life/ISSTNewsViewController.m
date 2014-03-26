@@ -7,9 +7,9 @@
 //
 #import "ISSTNewsDetailViewController.h"
 #import "ISSTNewsViewController.h"
-
+#import "ISSTNewsApi.h"
 @interface ISSTNewsViewController ()
-
+@property (nonatomic,strong)ISSTNewsApi  *newsApi;
 @end
 
 @implementation ISSTNewsViewController
@@ -28,10 +28,12 @@
 
 - (void)viewDidLoad
 {
+    self.newsApi = [[ISSTNewsApi alloc]init];
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"user.png"];
+    self.newsApi.webApiDelegate = self;
+ 
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    
+    [self.newsApi requestCampusNews:1 andPageSize:20 andKeywords:@"string"];
 	//self.view.backgroundColor = [UIColor lightGrayColor];
     /*	UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
      [pushButton setTitle:@"Push" forState:UIControlStateNormal];
@@ -53,14 +55,30 @@
 - (IBAction)go:(id)sender {
     NSString *vcTitle = [self.title stringByAppendingString:@" - Pushed"];
     ISSTNewsDetailViewController *vc = [[ISSTNewsDetailViewController alloc] initWithTitle:vcTitle];
-   // [self.navigationController removeFromParentViewController];
-  //  [self.navigationController popToRootViewControllerAnimated:YES];
-  //  [self.navigationController popToViewController:self.navigationController.rotatingFooterView animated:YES];
-  //  [self.navigationController setNavigationBarHidden:NO];
-	[self.navigationController pushViewController:vc animated:YES];
+  	[self.navigationController pushViewController:vc animated:YES];
     
     
 }
+
+
+#pragma mark -
+#pragma mark  ISSTWebApiDelegate Methods
+- (void)requestDataOnSuccess:(NSMutableArray *)array
+{
+    NSLog(@"123test");
+}
+
+- (void)requestDataOnFail:(NSString *)error
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+    
+    
+    
+}
+
+
+
 
 
 @end

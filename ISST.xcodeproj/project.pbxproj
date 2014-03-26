@@ -44,6 +44,7 @@
 		AEFDC77018E1625900D7FDAA /* ISSTUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC76F18E1625900D7FDAA /* ISSTUserModel.m */; };
 		AEFDC77318E16A5C00D7FDAA /* ISSTPushedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC77218E16A5C00D7FDAA /* ISSTPushedViewController.m */; };
 		AEFDC77618E16D5C00D7FDAA /* UserLoginParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC77518E16D5C00D7FDAA /* UserLoginParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AEFDC77918E1B76400D7FDAA /* ISSTNewsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC77818E1B76400D7FDAA /* ISSTNewsApi.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,8 @@
 		AEFDC77218E16A5C00D7FDAA /* ISSTPushedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTPushedViewController.m; sourceTree = "<group>"; };
 		AEFDC77418E16D5C00D7FDAA /* UserLoginParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLoginParse.h; path = Parses/UserLoginParse.h; sourceTree = "<group>"; };
 		AEFDC77518E16D5C00D7FDAA /* UserLoginParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLoginParse.m; path = Parses/UserLoginParse.m; sourceTree = "<group>"; };
+		AEFDC77718E1B76400D7FDAA /* ISSTNewsApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTNewsApi.h; path = WebService/ISSTNewsApi.h; sourceTree = "<group>"; };
+		AEFDC77818E1B76400D7FDAA /* ISSTNewsApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTNewsApi.m; path = WebService/ISSTNewsApi.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +263,8 @@
 				AEE284AB18DB2D1900BEF1A9 /* ISSTApi.m */,
 				AEFDC75D18DED14F00D7FDAA /* ISSTLoginApi.h */,
 				AEFDC75E18DED14F00D7FDAA /* ISSTLoginApi.m */,
+				AEFDC77718E1B76400D7FDAA /* ISSTNewsApi.h */,
+				AEFDC77818E1B76400D7FDAA /* ISSTNewsApi.m */,
 			);
 			name = WebService;
 			sourceTree = "<group>";
@@ -463,6 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEFDC77918E1B76400D7FDAA /* ISSTNewsApi.m in Sources */,
 				AEFDC77318E16A5C00D7FDAA /* ISSTPushedViewController.m in Sources */,
 				AEFDC76718E023DD00D7FDAA /* ISSTNewsDetailViewController.m in Sources */,
 				AEE284AC18DB2D1900BEF1A9 /* ISSTApi.m in Sources */,

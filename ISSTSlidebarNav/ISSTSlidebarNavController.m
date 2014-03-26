@@ -11,7 +11,7 @@
 #import "ISSTMenuViewController.h"
 #import "ISSTRootViewController.h"
 #import "ISSTMenuTableViewCell.h"
-
+#import "ISSTLoginViewController.h"
 //#import "ISSTSidebarSearchViewController.h"
 //#import "ISSTSidebarSearchViewControllerDelegate.h"
 
@@ -110,6 +110,7 @@
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"活动管理" withRevealBlock:revealBlock]],
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"在职事务" withRevealBlock:revealBlock]],
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"附近的人" withRevealBlock:revealBlock]]
+                                
                                  ]
                              
                              ];
@@ -143,6 +144,7 @@
                                @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"活动管理", @"")},
                                @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"在职事务", @"")},
                                @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"附近的人", @"")}
+                             
                                ]
                            ];
     
