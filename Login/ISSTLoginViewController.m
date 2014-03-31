@@ -65,7 +65,7 @@
 
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
-- (void)requestDataOnSuccess:(NSMutableArray *)array
+- (void)requestDataOnSuccess:(id)backToControllerData;
 {
       ISSTSlidebarNavController *slider =[[ISSTSlidebarNavController alloc]init]
     ;

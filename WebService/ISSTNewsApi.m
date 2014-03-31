@@ -7,6 +7,7 @@
 //
 
 #import "ISSTNewsApi.h"
+#import "ISSTCampusNewsParse.h"
 
 @implementation ISSTNewsApi
 
@@ -59,7 +60,11 @@
    //d NSLog(@"%@",(ISSTUserModel *)[userLoginParse userInfoParse]);
     NSDictionary *dics= [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
     NSLog(@"dics= %@",dics);
-    [self.webApiDelegate requestDataOnSuccess:dics];
+    ISSTCampusNewsParse *news = [[ISSTCampusNewsParse alloc]init];
+    [news campusNewsSerialization:datas];
+    NSArray *array = [news campusNewsInfoParse];
+    
+    [self.webApiDelegate requestDataOnSuccess:array];
 }
 
 

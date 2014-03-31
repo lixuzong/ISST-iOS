@@ -8,11 +8,45 @@
 #import "ISSTNewsDetailViewController.h"
 #import "ISSTNewsViewController.h"
 #import "ISSTNewsApi.h"
+#import "ISSTNewsTableViewCell.h"
+#import "ISSTCampusNewsModel.h"
+
 @interface ISSTNewsViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *newsArrayTableView;
 @property (nonatomic,strong)ISSTNewsApi  *newsApi;
+
+@property (nonatomic,strong) ISSTCampusNewsModel  *newsModel;
+
+@property (strong, nonatomic) NSMutableArray *newsArray;
+
+- (void)pushViewController;
+- (void)revealSidebar;
 @end
 
 @implementation ISSTNewsViewController
+{
+@private
+    RevealBlock _revealBlock;
+}
+@synthesize newsModel;
+@synthesize newsApi;
+@synthesize newsArray;
+
+static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
+
+#pragma mark Memory Management
+- (id)initWithTitle:(NSString *)title withRevealBlock:(RevealBlock)revealBlock {
+    if (self = [super initWithNibName:nil bundle:nil]) {
+		self.title = title;
+		_revealBlock = [revealBlock copy];
+		self.navigationItem.leftBarButtonItem =
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                      target:self
+                                                      action:@selector(revealSidebar)];
+        
+	}
+	return self;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -20,29 +54,37 @@
     if (self) {
         // Custom initialization
         //self.navigationItem.title =@"Gogo";
-         self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"user.png"];
+        
+        
+        
+        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"user.png"];
         
     }
     return self;
 }
 
+
 - (void)viewDidLoad
 {
+    self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+	self.view.backgroundColor = [UIColor lightGrayColor];
+    
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+    
     self.newsApi = [[ISSTNewsApi alloc]init];
     [super viewDidLoad];
     self.newsApi.webApiDelegate = self;
- 
+    
+    UITableView *tableView=(id)[self.view viewWithTag:1];
+    tableView.rowHeight=65;
+    UINib *nib=[UINib nibWithNibName:@"ISSTNewsTableViewCell" bundle:nil];
+    [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
+    
+    
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.newsApi requestCampusNews:1 andPageSize:20 andKeywords:@"string"];
-	//self.view.backgroundColor = [UIColor lightGrayColor];
-    /*	UIButton *pushButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-     [pushButton setTitle:@"Push" forState:UIControlStateNormal];
-     [pushButton addTarget:self action:@selector(pushViewController) forControlEvents:UIControlEventTouchUpInside];
-     [pushButton sizeToFit];
-     [self.view addSubview:pushButton];
-     */
-//    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
-//        self.edgesForExtendedLayout = UIRectEdgeNone;}
     
 }
 
@@ -52,20 +94,45 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)go:(id)sender {
-    NSString *vcTitle = [self.title stringByAppendingString:@" - Pushed"];
-    ISSTNewsDetailViewController *vc = [[ISSTNewsDetailViewController alloc] initWithTitle:vcTitle];
-  	[self.navigationController pushViewController:vc animated:YES];
+//- (IBAction)go:(id)sender {
+//    NSString *vcTitle = [self.title stringByAppendingString:@" - Pushed"];
+//    ISSTNewsDetailViewController *vc = [[ISSTNewsDetailViewController alloc] initWithTitle:vcTitle];
+//  	[self.navigationController pushViewController:vc animated:YES];
+//   }
+
+
+
+#pragma mark
+#pragma mark Table View Data Source Methods
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 1;
+}
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 20;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    newsModel =[[ISSTCampusNewsModel alloc]init ];
+    newsModel = [newsArray objectAtIndex:indexPath.row];
     
-    
+    ISSTNewsTableViewCell *cell=(ISSTNewsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    cell.Title.text=newsModel.title;
+    cell.Time.text=[NSString stringWithFormat:@"%llu",newsModel.updatedAt];
+    cell.Content.text=newsModel.description;
+    return cell;
 }
 
 
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
-- (void)requestDataOnSuccess:(NSMutableArray *)array
+- (void)requestDataOnSuccess:(id)backToControllerData
 {
-    NSLog(@"123test");
+    newsArray = backToControllerData;
+     [self.newsArrayTableView reloadData];
 }
 
 - (void)requestDataOnFail:(NSString *)error
@@ -77,6 +144,18 @@
     
 }
 
+
+#pragma mark Private Methods
+- (void)pushViewController {
+    NSString *vcTitle = [self.title stringByAppendingString:@" - Pushed"];
+    UIViewController *vc = [[ISSTPushedViewController alloc] initWithTitle:vcTitle];
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+- (void)revealSidebar {
+    _revealBlock();
+}
 
 
 

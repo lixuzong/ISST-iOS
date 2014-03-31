@@ -18,7 +18,7 @@ const static NSString *MD5_SECTET = @"vq8ukG8MKrNC7XqsbIbd7PxvX81ufNz9";
 + (NSString *)md5:(NSString *)inPutText {
     const char *cStr = [inPutText UTF8String];
     unsigned char result[32];
-    CC_MD5( cStr, strlen(cStr), result );
+    CC_MD5( cStr, strlen(cStr), result);
     
     return [NSString stringWithFormat:
             // @"xxxxxxxxxxxxxxxx",

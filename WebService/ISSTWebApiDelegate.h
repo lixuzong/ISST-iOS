@@ -11,7 +11,7 @@
 @protocol ISSTWebApiDelegate <NSObject>
 @optional
 
-- (void)requestDataOnSuccess:(NSMutableArray *)array;
+- (void)requestDataOnSuccess:(id)backToControllerData;
 
 - (void)requestDataOnFail:(NSString *)error;
 @end
