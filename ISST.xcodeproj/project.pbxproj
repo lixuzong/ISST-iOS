@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE9ECAD818E8F70700FEAEF4 /* ISSTMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECAD718E8F70700FEAEF4 /* ISSTMD5.m */; };
 		AEE2844218DADAA000BEF1A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2844118DADAA000BEF1A9 /* Foundation.framework */; };
 		AEE2844418DADAA000BEF1A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2844318DADAA000BEF1A9 /* CoreGraphics.framework */; };
 		AEE2844618DADAA000BEF1A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2844518DADAA000BEF1A9 /* UIKit.framework */; };
@@ -32,7 +33,7 @@
 		AEE284A018DB263100BEF1A9 /* user.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE2849B18DB263100BEF1A9 /* user.png */; };
 		AEE284AC18DB2D1900BEF1A9 /* ISSTApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE284AB18DB2D1900BEF1A9 /* ISSTApi.m */; };
 		AEFDC75418DDC5E100D7FDAA /* ISSTSlidebarNavController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75318DDC5E100D7FDAA /* ISSTSlidebarNavController.m */; };
-		AEFDC75818DDC90800D7FDAA /* ISSTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75618DDC90800D7FDAA /* ISSTLoginViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AEFDC75818DDC90800D7FDAA /* ISSTLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75618DDC90800D7FDAA /* ISSTLoginViewController.m */; };
 		AEFDC75918DDC90800D7FDAA /* ISSTLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AEFDC75718DDC90800D7FDAA /* ISSTLoginViewController.xib */; };
 		AEFDC75C18DECEDD00D7FDAA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75B18DECEDD00D7FDAA /* NSString+URLEncoding.m */; };
 		AEFDC75F18DED14F00D7FDAA /* ISSTLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75E18DED14F00D7FDAA /* ISSTLoginApi.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -58,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE9ECAD618E8F70700FEAEF4 /* ISSTMD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTMD5.h; path = WebService/ISSTMD5.h; sourceTree = "<group>"; };
+		AE9ECAD718E8F70700FEAEF4 /* ISSTMD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTMD5.m; path = WebService/ISSTMD5.m; sourceTree = "<group>"; };
 		AEE2843E18DADAA000BEF1A9 /* ISST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ISST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE2844118DADAA000BEF1A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AEE2844318DADAA000BEF1A9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -259,6 +262,8 @@
 				AEFDC75A18DECEDD00D7FDAA /* NSString+URLEncoding.h */,
 				AEFDC75B18DECEDD00D7FDAA /* NSString+URLEncoding.m */,
 				AEE284AD18DB2D7800BEF1A9 /* ISSTWebApiDelegate.h */,
+				AE9ECAD618E8F70700FEAEF4 /* ISSTMD5.h */,
+				AE9ECAD718E8F70700FEAEF4 /* ISSTMD5.m */,
 				AEE284AA18DB2D1900BEF1A9 /* ISSTApi.h */,
 				AEE284AB18DB2D1900BEF1A9 /* ISSTApi.m */,
 				AEFDC75D18DED14F00D7FDAA /* ISSTLoginApi.h */,
@@ -468,6 +473,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE9ECAD818E8F70700FEAEF4 /* ISSTMD5.m in Sources */,
 				AEFDC77918E1B76400D7FDAA /* ISSTNewsApi.m in Sources */,
 				AEFDC77318E16A5C00D7FDAA /* ISSTPushedViewController.m in Sources */,
 				AEFDC76718E023DD00D7FDAA /* ISSTNewsDetailViewController.m in Sources */,

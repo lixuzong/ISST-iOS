@@ -39,7 +39,7 @@
     }
     
     [self.passwordField setSecureTextEntry:YES];//set password ......
-    self.userApi =[[[ISSTLoginApi alloc]init]autorelease];
+    self.userApi =[[ISSTLoginApi alloc]init];
     self.userApi.webApiDelegate = self;
  
 }
@@ -61,20 +61,14 @@
 
 }
 
-- (void)dealloc
-{
-    [self.nameField release];
-    self.nameField = nil;
-    [self.passwordField release];
-    self.passwordField =nil;
-    [super dealloc];
-}
+
 
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(NSMutableArray *)array
 {
-      ISSTSlidebarNavController *slider =[[[ISSTSlidebarNavController alloc]init]autorelease];
+      ISSTSlidebarNavController *slider =[[ISSTSlidebarNavController alloc]init]
+    ;
    // [self.navigationController pushViewController:[[ISSTSlidebarNavController alloc]init] animated:YES ];
     NSLog(@"navigationController=%@",self.navigationController.hash);
        [self.navigationController pushViewController:slider animated: NO];

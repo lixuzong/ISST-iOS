@@ -6,9 +6,11 @@
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
+#import "ISSTMD5.h"
 #import "ISSTLoginApi.h"
 #import "UserLoginParse.h"
 @class ISSTUserModel;
+
 @interface  ISSTLoginApi()
 //@property (strong, nonatomic)NSMutableData *datas;
 //@property (nonatomic, assign)id<ISSTWebApiDelegate> webApiDelegate;
@@ -25,8 +27,16 @@
 - (void)requestLoginName:(NSString *)name andPassword:(NSString *)password
 {
     datas = [[NSMutableData alloc]init];
-    NSString *info = [[NSString stringWithFormat:@"username=%@&password=%@&longitude=121.00&latitude=30.01",name,password]autorelease];
+    
+    //MD5 secret
+    NSDictionary *md5Dic =  @{@"name": name,@"password":password};
+    long long timestamp = [ISSTMD5 getTimestamp];
+    NSString *token= [ISSTMD5 tokenWithDic:md5Dic andTimestamp:timestamp];
+    
+    
+    NSString *info = [[NSString stringWithFormat:@"username=%@&password=%@&token=%@&timestamp=%llu&longitude=121.00&latitude=30.01",name,password,token,timestamp]autorelease];
      NSString *subUrlString = [[NSString stringWithFormat:@"api/login"]autorelease];
+    
     [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:info MD5Dictionary:nil];
 }
 
