@@ -10,6 +10,8 @@
 
 @interface UserLoginParse : NSObject
 
+- (int)getStatus;
+
 //解析用户信息
 -(id)userInfoParse;
 //:(NSData *)datas;

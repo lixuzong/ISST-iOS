@@ -6,7 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ISSTNewsViewController">
             <connections>
-                <outlet property="newsArrayTableView" destination="DVR-RL-py1" id="di1-90-EW4"/>
+                <outlet property="newsArrayTableView" destination="DVR-RL-py1" id="FR8-Kn-8j1"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="FGX-fb-AMi"/>
             </connections>
         </placeholder>

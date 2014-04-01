@@ -71,9 +71,9 @@
     ;
    // [self.navigationController pushViewController:[[ISSTSlidebarNavController alloc]init] animated:YES ];
     NSLog(@"navigationController=%@",self.navigationController.hash);
-       [self.navigationController pushViewController:slider animated: NO];
+     [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
+    [self.navigationController pushViewController:slider animated: NO];
     
-     [self.navigationController setNavigationBarHidden:YES];//set system navigationbar hidden
 }
 
 - (void)requestDataOnFail:(NSString *)error

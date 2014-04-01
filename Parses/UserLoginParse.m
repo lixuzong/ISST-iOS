@@ -34,14 +34,19 @@
 
 - (NSDictionary*)loginSerialization:(NSData*)datas
 {
-  dict = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
+    dict = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
     return dict;
+}
+
+- (int)getStatus
+{
+    return [[dict objectForKey:@"status"]intValue];
 }
 
 - (id)userInfoParse//:(NSData *)datas
 {
     NSLog(@"userInfoParse.dict:%@",dict);
-    ISSTUserModel *user = [[ISSTUserModel alloc]init];
+    ISSTUserModel *user = [[[ISSTUserModel alloc]init] autorelease];
     //serId,userName,name,gender,grade,classId,majorId,cityId,email,qq,signature,company,cityPrincipal,privateCompany,privateEmail,privatePhone,privatePosition,privateQQ;
     NSLog(@"%@",dict);
      userInfo = [dict objectForKey:@"body"];//get the user info content
@@ -64,7 +69,7 @@
     user.privateCompany = [[userInfo objectForKey:@"privateCompany"]boolValue];
     user.gender     = ([[userInfo objectForKey:@"gender"]intValue] == 1)? MALE:FAMALE;//枚举
     NSLog(@"gender=%d",user.gender);
-    return [user autorelease];
+    return user ;
 }
 
 - (BOOL)loginSuccessOrNot:(NSData *)datas
@@ -104,7 +109,7 @@
 
 -(void)dealloc
 {
-    [self.dict release];
+   // [self.dict release];
     self.dict = nil;
     [self.userInfo release];
     self.dict = nil;

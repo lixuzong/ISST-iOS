@@ -17,8 +17,8 @@
 - (void)requestCampusNews:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
 {
     datas = [[NSMutableData alloc]init];
-    NSString *info = [[NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize]autorelease];
-    NSString *subUrlString = [[NSString stringWithFormat:@"api/archives/categories/campus"]autorelease];
+    NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
+    NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/campus"];
     [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
 
 }
@@ -63,8 +63,12 @@
     ISSTCampusNewsParse *news = [[ISSTCampusNewsParse alloc]init];
     [news campusNewsSerialization:datas];
     NSArray *array = [news campusNewsInfoParse];
+    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
+    {
+        [self.webApiDelegate requestDataOnSuccess:array];
+    }
     
-    [self.webApiDelegate requestDataOnSuccess:array];
+   
 }
 
 

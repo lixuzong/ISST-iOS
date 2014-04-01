@@ -12,7 +12,7 @@
 #import "ISSTCampusNewsModel.h"
 
 @interface ISSTNewsViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *newsArrayTableView;
+//@property (weak, nonatomic) IBOutlet UITableView *newsArrayTableView;
 @property (nonatomic,strong)ISSTNewsApi  *newsApi;
 
 @property (nonatomic,strong) ISSTCampusNewsModel  *newsModel;
@@ -31,7 +31,7 @@
 @synthesize newsModel;
 @synthesize newsApi;
 @synthesize newsArray;
-
+@synthesize newsArrayTableView;
 static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 
 #pragma mark Memory Management
@@ -72,11 +72,11 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    
+      [super viewDidLoad];
     self.newsApi = [[ISSTNewsApi alloc]init];
-    [super viewDidLoad];
+  
     self.newsApi.webApiDelegate = self;
-    
+   // self.newsArray =[[NSMutableArray alloc]init];
     UITableView *tableView=(id)[self.view viewWithTag:1];
     tableView.rowHeight=65;
     UINib *nib=[UINib nibWithNibName:@"ISSTNewsTableViewCell" bundle:nil];
@@ -85,7 +85,6 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
     
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.newsApi requestCampusNews:1 andPageSize:20 andKeywords:@"string"];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -116,13 +115,18 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    newsModel =[[ISSTCampusNewsModel alloc]init ];
-    newsModel = [newsArray objectAtIndex:indexPath.row];
+    
+     newsModel =[[ISSTCampusNewsModel alloc]init];
+      newsModel = [newsArray objectAtIndex:indexPath.row];
     
     ISSTNewsTableViewCell *cell=(ISSTNewsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
-    cell.Title.text=newsModel.title;
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
+    }
+
+    cell.Title.text=[NSString stringWithFormat:@"%@",newsModel.title];
     cell.Time.text=[NSString stringWithFormat:@"%llu",newsModel.updatedAt];
-    cell.Content.text=newsModel.description;
+    cell.Content.text= [NSString stringWithFormat:@"%@",newsModel.description];
     return cell;
 }
 
@@ -131,8 +135,12 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
-    newsArray = backToControllerData;
-     [self.newsArrayTableView reloadData];
+    if ([newsArray count]) {
+        newsArray = [[NSMutableArray alloc]init];
+    }
+    newsArray = (NSMutableArray *)backToControllerData;
+    NSLog(@"count =%d ,newsArray = %@",[newsArray count],newsArray);
+     [newsArrayTableView reloadData];
 }
 
 - (void)requestDataOnFail:(NSString *)error

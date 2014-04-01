@@ -10,6 +10,7 @@
 #import "ISSTRootViewController.h"
 @interface ISSTNewsViewController : ISSTRootViewController<UITableViewDataSource,UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UITableView *newsArrayTableView;
 - (id)initWithTitle:(NSString *)title withRevealBlock:(RevealBlock)revealBlock;
 @end
 
