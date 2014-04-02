@@ -7,7 +7,11 @@
 //
 
 #import "ISSTPushedViewController.h"
-
-@interface ISSTNewsDetailViewController : ISSTPushedViewController
+@interface ISSTNewsDetailViewController : ISSTPushedViewController<UIWebViewDelegate>
+{
+    IBOutlet UIWebView *webView;
+   
+}
+ @property(nonatomic,assign)int newsId;
 
 @end

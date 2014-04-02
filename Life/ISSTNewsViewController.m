@@ -10,12 +10,15 @@
 #import "ISSTNewsApi.h"
 #import "ISSTNewsTableViewCell.h"
 #import "ISSTCampusNewsModel.h"
+#import "ISSTNewsDetailViewController.h"
 
 @interface ISSTNewsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *newsArrayTableView;
 @property (nonatomic,strong)ISSTNewsApi  *newsApi;
 
 @property (nonatomic,strong) ISSTCampusNewsModel  *newsModel;
+
+@property(nonatomic,strong)ISSTNewsDetailViewController *newsDetailView;
 
 @property (strong, nonatomic) NSMutableArray *newsArray;
 
@@ -32,6 +35,7 @@
 @synthesize newsApi;
 @synthesize newsArray;
 @synthesize newsArrayTableView;
+@synthesize newsDetailView;
 static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 
 #pragma mark Memory Management
@@ -75,7 +79,7 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
     tableView.rowHeight=65;
     UINib *nib=[UINib nibWithNibName:@"ISSTNewsTableViewCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
-    
+
     
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     [self.newsApi requestCampusNews:1 andPageSize:20 andKeywords:@"string"];
@@ -118,7 +122,18 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
     cell.Content.text= [NSString stringWithFormat:@"%@",newsModel.description];
     return cell;
 }
-
+#pragma mark - Table view delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.newsDetailView=[[ISSTNewsDetailViewController alloc]initWithNibName:@"ISSTNewsDetailViewController" bundle:nil];
+    self.newsDetailView.title=@"详细信息";
+    ISSTCampusNewsModel *tempNewsModel=[[ISSTCampusNewsModel alloc]init];
+    tempNewsModel= [newsArray objectAtIndex:indexPath.row];
+    self.newsDetailView.newsId=tempNewsModel.newsId;
+   // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
+    [self.navigationController pushViewController:self.newsDetailView animated: NO];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods

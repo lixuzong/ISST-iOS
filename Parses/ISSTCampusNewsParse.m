@@ -83,17 +83,17 @@
     detailsInfo = [dict objectForKey:@"body"];
     ISSTNewsDetailsModel *newsDetailsModel = [[ISSTNewsDetailsModel alloc]init];
   //
-     NSData *htmlData=[ [detailsInfo objectForKey:@"content"]dataUsingEncoding:NSUTF8StringEncoding];
-    TFHpple *xpathParser = [[TFHpple alloc] initWithHTMLData:htmlData];
-    NSArray *elements  = [xpathParser searchWithXPathQuery:@"//a"];
- 
-    for (TFHppleElement *element in elements) {
-        
-        if ([element attributes]) {
-            newsDetailsModel.content =[[element attributes]objectForKey:@"href"];
-        }
-    }
-    
+//     NSData *htmlData=[ [detailsInfo objectForKey:@"content"]dataUsingEncoding:NSUTF8StringEncoding];
+//    TFHpple *xpathParser = [[TFHpple alloc] initWithHTMLData:htmlData];
+//    NSArray *elements  = [xpathParser searchWithXPathQuery:@"//a"];
+// 
+//    for (TFHppleElement *element in elements) {
+//        
+//        if ([element attributes]) {
+//            newsDetailsModel.content =[[element attributes]objectForKey:@"href"];
+//        }
+//    }
+    newsDetailsModel.content=[detailsInfo objectForKey:@"content"];
     newsDetailsModel.title = [detailsInfo objectForKey:@"title"];
     newsDetailsModel.description = [detailsInfo objectForKey:@"description"];
     return [newsDetailsModel retain];
