@@ -12,4 +12,29 @@
 
 @synthesize userId,userName,name,gender,grade,classId,majorId,cityId,email,qq,signature,position, company,cityPrincipal,privateCompany,privateEmail,privatePhone,privatePosition,privateQQ;
 
+- (id)init
+{
+    self = [super init];
+    if(self){
+        ;
+    }
+    
+    return self;
+}
+
+
+
+- (void)dealloc
+{
+    [userName release];
+    [name release];
+    [email release];
+    [qq release];
+    [signature release];
+    [position release];
+    [company release];
+    [super dealloc];
+}
+
+
 @end

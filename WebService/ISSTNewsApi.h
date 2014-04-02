@@ -10,5 +10,18 @@
 #import  "ISSTWebApiDelegate.h"
 
 @interface ISSTNewsApi : ISSTApi<ISSTWebApiDelegate>
+@property (nonatomic,assign)int methodId;
+
+/*****
+ 2014.04.01
+ 创建： zhao
+ 获取信息列表
+ *****/
 - (void)requestCampusNews:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords;
+/*****
+ 2014.04.01
+ 创建： zhao
+ 获取信息详情
+ *****/
+- (void)requestDetailInfoWithId:(int)detailId;
 @end

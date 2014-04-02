@@ -11,9 +11,9 @@
 @interface ISSTCampusNewsModel : NSObject
 @property (nonatomic, assign)int        categoryId;
 @property (nonatomic ,assign)int        newsId;
-@property (nonatomic,copy) NSString     *title;
-@property (nonatomic,copy) NSString     *description;
-@property (nonatomic,assign) int        updatedAt;
+@property (nonatomic,strong) NSString     *title;
+@property (nonatomic,strong) NSString     *description;
+@property (nonatomic,strong) NSString        *updatedAt;
 @property (nonatomic,assign) int        userId;// 0为管理员，整数为学生
 //@property (nonatomic, copy) ISSTUserModel *user;
 

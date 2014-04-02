@@ -17,10 +17,7 @@
 //:(NSData *)datas;
 //返回登陆成功或失败
 - (BOOL)loginSuccessOrNot:(NSData *)datas;
-//返回登陆失败信息
-- (NSString *)loginFailMessage:(NSData *)datas;
 
-- (NSString *)getloginSuccessUserId:(NSData *)datas;
 
 - (NSDictionary *)loginSerialization:(NSData*)datas;
 @end

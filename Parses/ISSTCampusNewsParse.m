@@ -8,7 +8,8 @@
 
 #import "ISSTCampusNewsParse.h"
 #import "ISSTCampusNewsModel.h"
-
+#import "ISSTNewsDetailsModel.h"
+#import "TFHpple.h"
 @interface ISSTCampusNewsParse()
 {
     NSDictionary      *_dict;
@@ -16,12 +17,13 @@
 }
 @property (nonatomic,strong)NSDictionary *dict;
 @property (nonatomic,strong)NSArray *campusNewsArray;
+@property (nonatomic,strong)NSDictionary *detailsInfo;
 @end
 
 @implementation ISSTCampusNewsParse
 @synthesize  dict;
 @synthesize  campusNewsArray;
-
+@synthesize detailsInfo;
 
 - (id)init
 {
@@ -37,7 +39,13 @@
     return dict;
 }
 
-- (id)campusNewsInfoParse//:(NSData *)datas
+- (int)getStatus
+{
+    return [[dict objectForKey:@"status"]intValue];
+}
+
+
+- (id)campusNewsInfoParse
 {
     NSMutableArray *newsArray =[[NSMutableArray alloc]init] ;
     
@@ -48,11 +56,21 @@
     for (int i=0; i<count; i++)
     {
         
-         ISSTCampusNewsModel *campusNews = [[ISSTCampusNewsModel alloc]init];
+         ISSTCampusNewsModel *campusNews = [[[ISSTCampusNewsModel alloc]init]autorelease];
         campusNews.newsId     = [[[campusNewsArray objectAtIndex:i ] objectForKey:@"id"] intValue];
         campusNews.title      = [[campusNewsArray objectAtIndex:i] objectForKey:@"title"];
         campusNews.description= [[campusNewsArray objectAtIndex:i] objectForKey:@"description"];
-        campusNews.updatedAt  = [[[campusNewsArray objectAtIndex:i ] objectForKey:@"updatedAt"]intValue];
+        
+        long long  updatedAt =  [[[campusNewsArray objectAtIndex:i] objectForKey:@"updatedAt"]longLongValue]/1000;
+        
+        NSDate  *datePT = [NSDate dateWithTimeIntervalSince1970:updatedAt];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+       // spittle.SCposttime = [dateFormatter stringFromDate:datePT];
+
+        
+        
+        campusNews.updatedAt  = [dateFormatter stringFromDate:datePT];//[[[campusNewsArray objectAtIndex:i ] objectForKey:@"updatedAt"]longLongValue];
         campusNews.userId     = [[[campusNewsArray objectAtIndex:i ] objectForKey:@"userId"]intValue];
         campusNews.categoryId     = [[[campusNewsArray objectAtIndex:i ] objectForKey:@"categoryId"]intValue];
         [newsArray addObject:campusNews];
@@ -60,7 +78,34 @@
     return [newsArray retain];
 }
 
+-(id)newsDetailsParse
+{
+    detailsInfo = [dict objectForKey:@"body"];
+    ISSTNewsDetailsModel *newsDetailsModel = [[ISSTNewsDetailsModel alloc]init];
+  //
+     NSData *htmlData=[ [detailsInfo objectForKey:@"content"]dataUsingEncoding:NSUTF8StringEncoding];
+    TFHpple *xpathParser = [[TFHpple alloc] initWithHTMLData:htmlData];
+    NSArray *elements  = [xpathParser searchWithXPathQuery:@"//a"];
+ 
+    for (TFHppleElement *element in elements) {
+        
+        if ([element attributes]) {
+            newsDetailsModel.content =[[element attributes]objectForKey:@"href"];
+        }
+    }
+    
+    newsDetailsModel.title = [detailsInfo objectForKey:@"title"];
+    newsDetailsModel.description = [detailsInfo objectForKey:@"description"];
+    return [newsDetailsModel retain];
+}
 
 
+- (void)dealloc
+{
+  //  [detailsInfo release];
+  //  [dict release];
+  //  [campusNewsArray release];
+    [super dealloc];
+}
 
 @end

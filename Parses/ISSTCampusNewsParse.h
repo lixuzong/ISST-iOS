@@ -16,10 +16,7 @@
 //:(NSData *)datas;
 //返回登陆成功或失败
 - (BOOL)getStatus:(NSData *)datas;
-//返回登陆失败信息
-- (NSString *)loginFailMessage:(NSData *)datas;
-
-- (NSString *)getloginSuccessUserId:(NSData *)datas;
+-(id)newsDetailsParse;
 
 - (id)campusNewsSerialization:(NSData*)datas;
 @end

@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AE9B146A18EAA36200034F65 /* LoginErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B146518EAA36200034F65 /* LoginErrors.m */; };
-		AE9B146B18EAA36200034F65 /* NetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B146718EAA36200034F65 /* NetworkReachability.m */; };
-		AE9B146C18EAA36200034F65 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B146918EAA36200034F65 /* Reachability.m */; };
+		AE9B147018EB9C4200034F65 /* ISSTStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B146E18EB9C4200034F65 /* ISSTStudyViewController.m */; };
+		AE9B147118EB9C4200034F65 /* ISSTStudyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9B146F18EB9C4200034F65 /* ISSTStudyViewController.xib */; };
+		AE9B147418EBA1F300034F65 /* ISSTNewsDetailsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B147318EBA1F300034F65 /* ISSTNewsDetailsModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AE9B148118EBB04400034F65 /* LoginErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B147618EBB04400034F65 /* LoginErrors.m */; };
+		AE9B148218EBB04400034F65 /* NetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B147818EBB04400034F65 /* NetworkReachability.m */; };
+		AE9B148318EBB04400034F65 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B147A18EBB04400034F65 /* Reachability.m */; };
+		AE9B148418EBB04400034F65 /* TFHpple.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B147C18EBB04400034F65 /* TFHpple.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AE9B148518EBB04400034F65 /* TFHppleElement.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B147E18EBB04400034F65 /* TFHppleElement.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AE9B148618EBB04400034F65 /* XPathQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B148018EBB04400034F65 /* XPathQuery.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AE9B148D18EBB72000034F65 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AE9B148C18EBB72000034F65 /* libxml2.dylib */; };
 		AE9ECAD818E8F70700FEAEF4 /* ISSTMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECAD718E8F70700FEAEF4 /* ISSTMD5.m */; };
 		AE9ECADB18E90BD800FEAEF4 /* ISSTCampusNewsParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECADA18E90BD800FEAEF4 /* ISSTCampusNewsParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AE9ECADE18E90BF700FEAEF4 /* ISSTCampusNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECADD18E90BF700FEAEF4 /* ISSTCampusNewsModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -70,12 +77,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		AE9B146418EAA36200034F65 /* LoginErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginErrors.h; path = ISST/Helps/LoginErrors.h; sourceTree = SOURCE_ROOT; };
-		AE9B146518EAA36200034F65 /* LoginErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginErrors.m; path = ISST/Helps/LoginErrors.m; sourceTree = SOURCE_ROOT; };
-		AE9B146618EAA36200034F65 /* NetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkReachability.h; path = ISST/Helps/NetworkReachability.h; sourceTree = SOURCE_ROOT; };
-		AE9B146718EAA36200034F65 /* NetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkReachability.m; path = ISST/Helps/NetworkReachability.m; sourceTree = SOURCE_ROOT; };
-		AE9B146818EAA36200034F65 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = ISST/Helps/Reachability.h; sourceTree = SOURCE_ROOT; };
-		AE9B146918EAA36200034F65 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = ISST/Helps/Reachability.m; sourceTree = SOURCE_ROOT; };
+		AE9B146D18EB9C4200034F65 /* ISSTStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTStudyViewController.h; sourceTree = "<group>"; };
+		AE9B146E18EB9C4200034F65 /* ISSTStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTStudyViewController.m; sourceTree = "<group>"; };
+		AE9B146F18EB9C4200034F65 /* ISSTStudyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTStudyViewController.xib; sourceTree = "<group>"; };
+		AE9B147218EBA1F300034F65 /* ISSTNewsDetailsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTNewsDetailsModel.h; path = Models/ISSTNewsDetailsModel.h; sourceTree = "<group>"; };
+		AE9B147318EBA1F300034F65 /* ISSTNewsDetailsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTNewsDetailsModel.m; path = Models/ISSTNewsDetailsModel.m; sourceTree = "<group>"; };
+		AE9B147518EBB04400034F65 /* LoginErrors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginErrors.h; path = Helps/LoginErrors.h; sourceTree = SOURCE_ROOT; };
+		AE9B147618EBB04400034F65 /* LoginErrors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginErrors.m; path = Helps/LoginErrors.m; sourceTree = SOURCE_ROOT; };
+		AE9B147718EBB04400034F65 /* NetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkReachability.h; path = Helps/NetworkReachability.h; sourceTree = SOURCE_ROOT; };
+		AE9B147818EBB04400034F65 /* NetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NetworkReachability.m; path = Helps/NetworkReachability.m; sourceTree = SOURCE_ROOT; };
+		AE9B147918EBB04400034F65 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Helps/Reachability.h; sourceTree = SOURCE_ROOT; };
+		AE9B147A18EBB04400034F65 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Helps/Reachability.m; sourceTree = SOURCE_ROOT; };
+		AE9B147B18EBB04400034F65 /* TFHpple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHpple.h; path = Helps/TFHpple.h; sourceTree = SOURCE_ROOT; };
+		AE9B147C18EBB04400034F65 /* TFHpple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHpple.m; path = Helps/TFHpple.m; sourceTree = SOURCE_ROOT; };
+		AE9B147D18EBB04400034F65 /* TFHppleElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TFHppleElement.h; path = Helps/TFHppleElement.h; sourceTree = SOURCE_ROOT; };
+		AE9B147E18EBB04400034F65 /* TFHppleElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TFHppleElement.m; path = Helps/TFHppleElement.m; sourceTree = SOURCE_ROOT; };
+		AE9B147F18EBB04400034F65 /* XPathQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XPathQuery.h; path = Helps/XPathQuery.h; sourceTree = SOURCE_ROOT; };
+		AE9B148018EBB04400034F65 /* XPathQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XPathQuery.m; path = Helps/XPathQuery.m; sourceTree = SOURCE_ROOT; };
+		AE9B148C18EBB72000034F65 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		AE9ECAD618E8F70700FEAEF4 /* ISSTMD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTMD5.h; path = WebService/ISSTMD5.h; sourceTree = "<group>"; };
 		AE9ECAD718E8F70700FEAEF4 /* ISSTMD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTMD5.m; path = WebService/ISSTMD5.m; sourceTree = "<group>"; };
 		AE9ECAD918E90BD800FEAEF4 /* ISSTCampusNewsParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTCampusNewsParse.h; path = Parses/ISSTCampusNewsParse.h; sourceTree = "<group>"; };
@@ -160,6 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE9B148D18EBB72000034F65 /* libxml2.dylib in Frameworks */,
 				AEE2848418DB04CC00BEF1A9 /* QuartzCore.framework in Frameworks */,
 				AEE2844418DADAA000BEF1A9 /* CoreGraphics.framework in Frameworks */,
 				AEE2844618DADAA000BEF1A9 /* UIKit.framework in Frameworks */,
@@ -183,12 +203,18 @@
 		AE9ECAE818E969AE00FEAEF4 /* Helps */ = {
 			isa = PBXGroup;
 			children = (
-				AE9B146418EAA36200034F65 /* LoginErrors.h */,
-				AE9B146518EAA36200034F65 /* LoginErrors.m */,
-				AE9B146618EAA36200034F65 /* NetworkReachability.h */,
-				AE9B146718EAA36200034F65 /* NetworkReachability.m */,
-				AE9B146818EAA36200034F65 /* Reachability.h */,
-				AE9B146918EAA36200034F65 /* Reachability.m */,
+				AE9B147518EBB04400034F65 /* LoginErrors.h */,
+				AE9B147618EBB04400034F65 /* LoginErrors.m */,
+				AE9B147718EBB04400034F65 /* NetworkReachability.h */,
+				AE9B147818EBB04400034F65 /* NetworkReachability.m */,
+				AE9B147918EBB04400034F65 /* Reachability.h */,
+				AE9B147A18EBB04400034F65 /* Reachability.m */,
+				AE9B147B18EBB04400034F65 /* TFHpple.h */,
+				AE9B147C18EBB04400034F65 /* TFHpple.m */,
+				AE9B147D18EBB04400034F65 /* TFHppleElement.h */,
+				AE9B147E18EBB04400034F65 /* TFHppleElement.m */,
+				AE9B147F18EBB04400034F65 /* XPathQuery.h */,
+				AE9B148018EBB04400034F65 /* XPathQuery.m */,
 			);
 			name = Helps;
 			path = ISST/Errors;
@@ -231,6 +257,7 @@
 		AEE2844018DADAA000BEF1A9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AE9B148C18EBB72000034F65 /* libxml2.dylib */,
 				AEE2848318DB04CC00BEF1A9 /* QuartzCore.framework */,
 				AEE2844118DADAA000BEF1A9 /* Foundation.framework */,
 				AEE2844318DADAA000BEF1A9 /* CoreGraphics.framework */,
@@ -350,6 +377,8 @@
 				AEFDC76F18E1625900D7FDAA /* ISSTUserModel.m */,
 				AE9ECADC18E90BF700FEAEF4 /* ISSTCampusNewsModel.h */,
 				AE9ECADD18E90BF700FEAEF4 /* ISSTCampusNewsModel.m */,
+				AE9B147218EBA1F300034F65 /* ISSTNewsDetailsModel.h */,
+				AE9B147318EBA1F300034F65 /* ISSTNewsDetailsModel.m */,
 				AE9ECADF18E968B200FEAEF4 /* ISSTStudyingModel.h */,
 				AE9ECAE018E968B200FEAEF4 /* ISSTStudyingModel.m */,
 				AE9ECAE218E968D100FEAEF4 /* ISSTExperenceModel.h */,
@@ -386,6 +415,9 @@
 				AEFDC76418E023DD00D7FDAA /* ISSTNewsViewController.h */,
 				AEFDC76518E023DD00D7FDAA /* ISSTNewsViewController.m */,
 				AEFDC76618E023DD00D7FDAA /* ISSTNewsViewController.xib */,
+				AE9B146D18EB9C4200034F65 /* ISSTStudyViewController.h */,
+				AE9B146E18EB9C4200034F65 /* ISSTStudyViewController.m */,
+				AE9B146F18EB9C4200034F65 /* ISSTStudyViewController.xib */,
 			);
 			path = Life;
 			sourceTree = "<group>";
@@ -445,8 +477,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AEE2847018DADAA100BEF1A9 /* Build configuration list for PBXNativeTarget "ISST" */;
 			buildPhases = (
-				AEE2843A18DADAA000BEF1A9 /* Sources */,
 				AEE2843B18DADAA000BEF1A9 /* Frameworks */,
+				AEE2843A18DADAA000BEF1A9 /* Sources */,
 				AEE2843C18DADAA000BEF1A9 /* Resources */,
 			);
 			buildRules = (
@@ -516,6 +548,7 @@
 			files = (
 				AEFDC76A18E023DD00D7FDAA /* ISSTNewsViewController.xib in Resources */,
 				AEE2845A18DADAA000BEF1A9 /* Images.xcassets in Resources */,
+				AE9B147118EB9C4200034F65 /* ISSTStudyViewController.xib in Resources */,
 				AEE2849D18DB263100BEF1A9 /* searchBarIcon.png in Resources */,
 				AEE2844C18DADAA000BEF1A9 /* InfoPlist.strings in Resources */,
 				AEE2849C18DB263100BEF1A9 /* searchBarBG.png in Resources */,
@@ -545,33 +578,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE9ECAD818E8F70700FEAEF4 /* ISSTMD5.m in Sources */,
+				AE9B148218EBB04400034F65 /* NetworkReachability.m in Sources */,
 				AEFDC77918E1B76400D7FDAA /* ISSTNewsApi.m in Sources */,
 				AEFDC77318E16A5C00D7FDAA /* ISSTPushedViewController.m in Sources */,
 				AEFDC76718E023DD00D7FDAA /* ISSTNewsDetailViewController.m in Sources */,
+				AE9B148118EBB04400034F65 /* LoginErrors.m in Sources */,
 				AEE284AC18DB2D1900BEF1A9 /* ISSTApi.m in Sources */,
 				AEE2847C18DAE55500BEF1A9 /* ISSTMenuViewController.m in Sources */,
 				AEFDC77618E16D5C00D7FDAA /* UserLoginParse.m in Sources */,
 				AEFDC75F18DED14F00D7FDAA /* ISSTLoginApi.m in Sources */,
 				AE9ECADB18E90BD800FEAEF4 /* ISSTCampusNewsParse.m in Sources */,
+				AE9B148318EBB04400034F65 /* Reachability.m in Sources */,
+				AE9B147018EB9C4200034F65 /* ISSTStudyViewController.m in Sources */,
 				AEFDC75418DDC5E100D7FDAA /* ISSTSlidebarNavController.m in Sources */,
 				AE9ECAE718E9690200FEAEF4 /* ISSTWikiModel.m in Sources */,
 				AEFDC76918E023DD00D7FDAA /* ISSTNewsViewController.m in Sources */,
+				AE9B148618EBB04400034F65 /* XPathQuery.m in Sources */,
 				AEFDC75818DDC90800D7FDAA /* ISSTLoginViewController.m in Sources */,
 				AE9ECAE418E968D100FEAEF4 /* ISSTExperenceModel.m in Sources */,
 				AE9ECADE18E90BF700FEAEF4 /* ISSTCampusNewsModel.m in Sources */,
 				AEE2848218DB013400BEF1A9 /* ISSTMenuTableViewCell.m in Sources */,
 				AEE2848B18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m in Sources */,
+				AE9B148518EBB04400034F65 /* TFHppleElement.m in Sources */,
 				AEE2845218DADAA000BEF1A9 /* AppDelegate.m in Sources */,
 				AE9ECAF518E978EE00FEAEF4 /* BaseParse.m in Sources */,
+				AE9B148418EBB04400034F65 /* TFHpple.m in Sources */,
 				AEFDC76D18E0245D00D7FDAA /* ISSTRootViewController.m in Sources */,
 				AE9ECAE118E968B200FEAEF4 /* ISSTStudyingModel.m in Sources */,
 				AE9ECB0A18E9AA2800FEAEF4 /* ISSTNewsTableViewCell.m in Sources */,
 				AEE2847918DAE24A00BEF1A9 /* ISSTRevealViewController.m in Sources */,
-				AE9B146B18EAA36200034F65 /* NetworkReachability.m in Sources */,
-				AE9B146C18EAA36200034F65 /* Reachability.m in Sources */,
-				AE9B146A18EAA36200034F65 /* LoginErrors.m in Sources */,
 				AEFDC77018E1625900D7FDAA /* ISSTUserModel.m in Sources */,
 				AEE2844E18DADAA000BEF1A9 /* main.m in Sources */,
+				AE9B147418EBA1F300034F65 /* ISSTNewsDetailsModel.m in Sources */,
 				AEFDC75C18DECEDD00D7FDAA /* NSString+URLEncoding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -699,7 +737,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ISST/ISST-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "ISST/ISST-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -712,7 +752,9 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ISST/ISST-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "ISST/ISST-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

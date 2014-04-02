@@ -12,7 +12,7 @@
 #import "ISSTCampusNewsModel.h"
 
 @interface ISSTNewsViewController ()
-//@property (weak, nonatomic) IBOutlet UITableView *newsArrayTableView;
+@property (weak, nonatomic) IBOutlet UITableView *newsArrayTableView;
 @property (nonatomic,strong)ISSTNewsApi  *newsApi;
 
 @property (nonatomic,strong) ISSTCampusNewsModel  *newsModel;
@@ -52,13 +52,7 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
-        //self.navigationItem.title =@"Gogo";
-        
-        
-        
         self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"user.png"];
-        
     }
     return self;
 }
@@ -93,11 +87,6 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
     // Dispose of any resources that can be recreated.
 }
 
-//- (IBAction)go:(id)sender {
-//    NSString *vcTitle = [self.title stringByAppendingString:@" - Pushed"];
-//    ISSTNewsDetailViewController *vc = [[ISSTNewsDetailViewController alloc] initWithTitle:vcTitle];
-//  	[self.navigationController pushViewController:vc animated:YES];
-//   }
 
 
 
@@ -110,7 +99,7 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 20;
+    return newsArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -125,7 +114,7 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
     }
 
     cell.Title.text=[NSString stringWithFormat:@"%@",newsModel.title];
-    cell.Time.text=[NSString stringWithFormat:@"%llu",newsModel.updatedAt];
+    cell.Time.text=newsModel.updatedAt;
     cell.Content.text= [NSString stringWithFormat:@"%@",newsModel.description];
     return cell;
 }
@@ -151,6 +140,14 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
     
     
 }
+
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+
 
 
 #pragma mark Private Methods

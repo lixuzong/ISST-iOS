@@ -1,15 +1,15 @@
 //
-//  ISSTCampusNews.m
+//  ISSTNewsDetailsModel.m
 //  ISST
 //
-//  Created by XSZHAO on 14-3-31.
+//  Created by XSZHAO on 14-4-2.
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
-#import "ISSTCampusNewsModel.h"
+#import "ISSTNewsDetailsModel.h"
 
-@implementation ISSTCampusNewsModel
-@synthesize title,description,updatedAt,userId,newsId,categoryId;
+@implementation ISSTNewsDetailsModel
+@synthesize content,description,title;
 
 - (id)init
 {
@@ -21,13 +21,11 @@
     return self;
 }
 
-
 - (void)dealloc
 {
-    [title release];
+    [content release];
     [description release];
-    [updatedAt release];
+    [title release];
     [super dealloc];
 }
-
 @end
