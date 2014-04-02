@@ -9,7 +9,13 @@
 #import "ISSTApi.h"
 #import  "ISSTWebApiDelegate.h"
 
-@interface ISSTNewsApi : ISSTApi<ISSTWebApiDelegate>
+@interface ISSTNewsApi : ISSTApi<ISSTWebApiDelegate,NSURLConnectionDataDelegate>
+
+/*****
+ 2014.04.02
+ 创建： zhao
+ 方法名，区分不同的请求数据的标记
+ *****/
 @property (nonatomic,assign)int methodId;
 
 /*****

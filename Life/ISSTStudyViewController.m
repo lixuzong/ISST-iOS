@@ -9,6 +9,7 @@
 #import "ISSTStudyViewController.h"
 #import "ISSTNewsApi.h"
 #import "ISSTNewsDetailsModel.h"
+#import "ISSTLoginViewController.h"
 
 @interface ISSTStudyViewController ()
 @property (nonatomic,strong)ISSTNewsApi  *newsApi;
@@ -50,7 +51,11 @@
 }
 
 - (IBAction)go:(id)sender {
-    [newsApi requestDetailInfoWithId:584];
+   
+    [self.newsApi requestDetailInfoWithId:582];
+//    ISSTLoginViewController *slider =[[ISSTLoginViewController alloc]init];
+//    [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
+//   [self.navigationController pushViewController:slider animated: NO];
 }
 
 #pragma mark -

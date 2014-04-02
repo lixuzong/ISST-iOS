@@ -92,7 +92,7 @@
     }
    
      NSDictionary *dics = [userLoginParse loginSerialization:datas];
-    if (dics&&[dics count]>0)
+    if (dics&&[dics count]>0)//正常反回
     {
         if (0 == [userLoginParse getStatus])//登录成功
         {
@@ -108,13 +108,12 @@
                 [self.webApiDelegate requestDataOnFail:[LoginErrors getStatusMessage:[userLoginParse getStatus]]];
             }
         }
-        
     }
-    else
+    else//可能服务器荡掉
     {
         if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
         {
-            [self.webApiDelegate requestDataOnFail: @"网络连接出现问题"];
+            [self.webApiDelegate requestDataOnFail:[LoginErrors getNetworkProblem]];
         }
    }
 }

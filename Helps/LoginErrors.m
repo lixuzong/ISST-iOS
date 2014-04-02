@@ -34,4 +34,16 @@
     }
     return errorMessage;
 }
+
+
++ (NSString *)getNetworkProblem
+{
+    return  @"网络连接出现问题";
+}
+
++ (NSString *)getUnLoginMessage
+{
+    return @"用户为登录";
+}
+
 @end

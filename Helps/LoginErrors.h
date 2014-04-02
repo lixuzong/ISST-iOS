@@ -10,4 +10,9 @@
 
 @interface LoginErrors : NSObject
 + (NSString *)getStatusMessage:(int )status;
+
++ (NSString *)getNetworkProblem;
+
++ (NSString *)getUnLoginMessage;
+
 @end

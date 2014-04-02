@@ -10,13 +10,31 @@
 
 @interface ISSTCampusNewsParse : NSObject
 
-
-//解析快讯信息
+/*****
+ 2014.04.02
+ 创建： zhao
+ 解析快讯信息列表
+ *****/
 -(id)campusNewsInfoParse;
-//:(NSData *)datas;
-//返回登陆成功或失败
-- (BOOL)getStatus:(NSData *)datas;
+
+/*****
+ 2014.04.02
+ 创建： zhao
+ 获取返回信息的status，0标记成功，其他不成功
+ *****/
+- (BOOL)getStatus;
+
+/*****
+ 2014.04.02
+ 创建： zhao
+ 解析信息详情
+ *****/
 -(id)newsDetailsParse;
 
+/*****
+ 2014.04.02
+ 创建： zhao
+ 对数据进行序列化
+ *****/
 - (id)campusNewsSerialization:(NSData*)datas;
 @end

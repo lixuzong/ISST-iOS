@@ -15,9 +15,10 @@
     NSDictionary      *_dict;
     NSArray      *_campusNewsArray;
 }
-@property (nonatomic,strong)NSDictionary *dict;
-@property (nonatomic,strong)NSArray *campusNewsArray;
-@property (nonatomic,strong)NSDictionary *detailsInfo;
+@property (nonatomic,strong)NSDictionary    *dict;
+@property (nonatomic,strong)NSArray         *campusNewsArray;
+@property (nonatomic,strong)NSDictionary    *detailsInfo;
+
 @end
 
 @implementation ISSTCampusNewsParse
@@ -82,18 +83,19 @@
 {
     detailsInfo = [dict objectForKey:@"body"];
     ISSTNewsDetailsModel *newsDetailsModel = [[ISSTNewsDetailsModel alloc]init];
-  //
-//     NSData *htmlData=[ [detailsInfo objectForKey:@"content"]dataUsingEncoding:NSUTF8StringEncoding];
-//    TFHpple *xpathParser = [[TFHpple alloc] initWithHTMLData:htmlData];
-//    NSArray *elements  = [xpathParser searchWithXPathQuery:@"//a"];
-// 
-//    for (TFHppleElement *element in elements) {
-//        
-//        if ([element attributes]) {
-//            newsDetailsModel.content =[[element attributes]objectForKey:@"href"];
-//        }
-//    }
-    newsDetailsModel.content=[detailsInfo objectForKey:@"content"];
+    NSLog(@"class=%@ \n content=%@",self,[detailsInfo objectForKey:@"content"]);
+     NSData *htmlData=[ [detailsInfo objectForKey:@"content"]dataUsingEncoding:NSUTF8StringEncoding];
+    TFHpple *xpathParser = [[TFHpple alloc] initWithHTMLData:htmlData];
+    NSArray *elements  = [xpathParser searchWithXPathQuery:@"//a"];
+ 
+    for (TFHppleElement *element in elements) {
+        
+        if ([element attributes]) {
+            newsDetailsModel.content =[[element attributes]objectForKey:@"href"];
+        }
+    }
+    
+    newsDetailsModel.content = [detailsInfo objectForKey:@"content"];
     newsDetailsModel.title = [detailsInfo objectForKey:@"title"];
     newsDetailsModel.description = [detailsInfo objectForKey:@"description"];
     return [newsDetailsModel retain];
@@ -102,8 +104,8 @@
 
 - (void)dealloc
 {
-  //  [detailsInfo release];
-  //  [dict release];
+    //[detailsInfo release];
+    //[dict release];
   //  [campusNewsArray release];
     [super dealloc];
 }

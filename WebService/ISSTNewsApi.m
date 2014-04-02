@@ -8,7 +8,7 @@
 
 #import "ISSTNewsApi.h"
 #import "ISSTCampusNewsParse.h"
-
+#import "LoginErrors.h"
 @implementation ISSTNewsApi
 
 @synthesize webApiDelegate;
@@ -36,6 +36,7 @@ const    static  int   DETAILS   = 2;
     NSString *subUrlString = [NSString stringWithFormat:@"api/archives/%d",detailId];
     [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
 }
+
 
 -(void)dealloc
 {
@@ -66,31 +67,71 @@ const    static  int   DETAILS   = 2;
 //请求完成
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-     NSDictionary *dics= [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
-    ISSTCampusNewsParse *news  = [[ISSTCampusNewsParse alloc]init];
+     ISSTCampusNewsParse *news  = [[ISSTCampusNewsParse alloc]init];
+    NSDictionary *dics =[news campusNewsSerialization:datas];
+   
     NSArray *array ;
     id backData;
     switch (methodId) {
         case CAMPUSNEWS:
-            NSLog(@"dics= %@",dics);
-            
-            [news campusNewsSerialization:datas];
-            array = [news campusNewsInfoParse];
-            if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
+           // dics=  [news campusNewsSerialization:datas];
+            if (dics&&[dics count]>0)
             {
-                [self.webApiDelegate requestDataOnSuccess:array];
-            }
+                if (0 == [news getStatus])//登录成功
+                {
+                    array = [news campusNewsInfoParse];
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
+                    {
+                        [self.webApiDelegate requestDataOnSuccess:array];
+                    }
+                }
+                
+                else if(1 == [news getStatus])
+                {
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    {
+                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                    }
 
+                }
+            }
+            else//可能服务器荡掉
+            {
+                if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                {
+                    [self.webApiDelegate requestDataOnFail:[LoginErrors getNetworkProblem]];
+                }
+            }
+            
             break;
         case DETAILS:
-            array = [news campusNewsSerialization:datas];
-            NSLog(@"class=%@  \n content=%@",self,array);
-            backData  = [news newsDetailsParse];
-            if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
+            if (dics&&[dics count]>0)
             {
-                [self.webApiDelegate requestDataOnSuccess:backData];
+                if (0 == [news getStatus])//登录成功
+                {
+                    backData = [news newsDetailsParse];
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
+                    {
+                        [self.webApiDelegate requestDataOnSuccess:backData];
+                    }
+                }
+                
+                else if(1 == [news getStatus])
+                {
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    {
+                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                    }
+                    
+                }
             }
-
+            else//可能服务器荡掉
+            {
+                if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                {
+                    [self.webApiDelegate requestDataOnFail:[LoginErrors getNetworkProblem]];
+                }
+            }
             break;
         default:
             break;

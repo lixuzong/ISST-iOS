@@ -37,7 +37,11 @@
     if ([[[UIDevice currentDevice]systemVersion] doubleValue] >= 7.0) {
         self.edgesForExtendedLayout =UIRectEdgeNone;
     }
+    self.title=@"iSST";
+    [self.navigationItem setHidesBackButton:YES];
+   [self.navigationController setNavigationBarHidden:NO];
     
+     self.navigationController.navigationItem.leftBarButtonItem.title = @"登录";
     [self.passwordField setSecureTextEntry:YES];//set password ......
     self.userApi =[[ISSTLoginApi alloc]init];
     self.userApi.webApiDelegate = self;
