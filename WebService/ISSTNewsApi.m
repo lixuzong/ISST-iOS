@@ -16,6 +16,8 @@
 @synthesize methodId;
 const    static  int  CAMPUSNEWS = 1;
 const    static  int   DETAILS   = 2;
+const    static  int   WIKIS=3;
+const    static  int   Experence=4;
 
 
 - (void)requestCampusNews:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
@@ -28,6 +30,27 @@ const    static  int   DETAILS   = 2;
 
 }
 
+- (void)requestWikis:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
+{
+    methodId = WIKIS;
+    datas = [[NSMutableData alloc]init];
+    NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
+    NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/encyclopedia"];
+    [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+
+
+}
+
+- (void)requestExperence:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
+{
+    methodId = Experence;
+    datas = [[NSMutableData alloc]init];
+    NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
+    NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/experience"];
+    [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+    
+
+}
 - (void)requestDetailInfoWithId:(int)detailId
 {
     methodId = DETAILS;
@@ -74,6 +97,8 @@ const    static  int   DETAILS   = 2;
     id backData;
     switch (methodId) {
         case CAMPUSNEWS:
+        case WIKIS:
+        case Experence:
            // dics=  [news campusNewsSerialization:datas];
             if (dics&&[dics count]>0)
             {
@@ -133,7 +158,7 @@ const    static  int   DETAILS   = 2;
                 }
             }
             break;
-        default:
+               default:
             break;
     }
     

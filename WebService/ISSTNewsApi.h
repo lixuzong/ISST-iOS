@@ -21,9 +21,21 @@
 /*****
  2014.04.01
  创建： zhao
- 获取信息列表
+ 获取news信息列表
  *****/
 - (void)requestCampusNews:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords;
+/*****
+ 2014.04.01
+ 创建： zhao
+ 获取wiki信息列表
+ *****/
+- (void)requestWikis:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords;
+/*****
+ 2014.04.01
+ 创建： zhao
+ 获取Experence信息列表
+ *****/
+- (void)requestExperence:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords;
 /*****
  2014.04.01
  创建： zhao

@@ -1,43 +1,35 @@
 //
-//  GoViewController.m
+//  ISSTExperenceViewController.m
 //  ISST
 //
-//  Created by XSZHAO on 14-3-20.
+//  Created by liuyang on 14-4-4.
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
-#import "ISSTNewsDetailViewController.h"
-#import "ISSTNewsViewController.h"
+
+#import "ISSTExperenceViewController.h"
 #import "ISSTNewsApi.h"
-#import "ISSTNewsTableViewCell.h"
 #import "ISSTCampusNewsModel.h"
-#import "ISSTNewsDetailViewController.h"
-
-@interface ISSTNewsViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *newsArrayTableView;
-@property (nonatomic,strong)ISSTNewsApi  *newsApi;
-
-@property (nonatomic,strong) ISSTCampusNewsModel  *newsModel;
-
-@property(nonatomic,strong)ISSTNewsDetailViewController *newsDetailView;
-
-@property (strong, nonatomic) NSMutableArray *newsArray;
-
+#import "ISSTPushedViewController.h"
+#import "ISSTExperenceTableViewCell.h"
+@interface ISSTExperenceViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *ExperenceArrayTableView;
+@property (nonatomic,strong)ISSTNewsApi  *ExperenceApi;
+@property (nonatomic,strong)ISSTCampusNewsModel  *ExperenceModel;
+@property (strong, nonatomic)NSMutableArray *ExperenceArray;
 - (void)pushViewController;
 - (void)revealSidebar;
 @end
 
-@implementation ISSTNewsViewController
+@implementation ISSTExperenceViewController
 {
 @private
     RevealBlock _revealBlock;
 }
-@synthesize newsModel;
-@synthesize newsApi;
-@synthesize newsArray;
-@synthesize newsArrayTableView;
-@synthesize newsDetailView;
-static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
-
+@synthesize ExperenceApi;
+@synthesize ExperenceArrayTableView;
+@synthesize ExperenceModel;
+@synthesize ExperenceArray;
+static NSString *CellTableIdentifier=@"ISSTExperenceTableViewCell";
 #pragma mark Memory Management
 - (id)initWithTitle:(NSString *)title withRevealBlock:(RevealBlock)revealBlock {
     if (self = [super initWithNibName:nil bundle:nil]) {
@@ -56,11 +48,10 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"user.png"];
+        // Custom initialization
     }
     return self;
 }
-
 
 - (void)viewDidLoad
 {
@@ -70,19 +61,19 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
-      [super viewDidLoad];
-    self.newsApi = [[ISSTNewsApi alloc]init];
-  
-    self.newsApi.webApiDelegate = self;
-   // self.newsArray =[[NSMutableArray alloc]init];
-    UITableView *tableView=(id)[self.view viewWithTag:1];
-    tableView.rowHeight=65;
-    UINib *nib=[UINib nibWithNibName:@"ISSTNewsTableViewCell" bundle:nil];
+    [super viewDidLoad];
+    self.ExperenceApi = [[ISSTNewsApi alloc]init];
+    
+    self.ExperenceApi.webApiDelegate=self;
+    // self.newsArray =[[NSMutableArray alloc]init];
+    UITableView *tableView=(id)[self.view viewWithTag:2];
+    tableView.rowHeight=90;
+    UINib *nib=[UINib nibWithNibName:@"ISSTExperenceTableViewCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
-
+    
     
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    [self.newsApi requestCampusNews:1 andPageSize:20 andKeywords:@"string"];
+    [self.ExperenceApi requestExperence:1 andPageSize:20 andKeywords:@"string"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -103,48 +94,48 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return newsArray.count;
+    return ExperenceArray.count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-     newsModel =[[ISSTCampusNewsModel alloc]init];
-      newsModel = [newsArray objectAtIndex:indexPath.row];
+    ExperenceModel =[[ISSTCampusNewsModel alloc]init];
+    ExperenceModel = [ExperenceArray objectAtIndex:indexPath.row];
     
-    ISSTNewsTableViewCell *cell=(ISSTNewsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    ISSTExperenceTableViewCell *cell=(ISSTExperenceTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
-
-    cell.Title.text=[NSString stringWithFormat:@"%@",newsModel.title];
-    cell.Time.text=newsModel.updatedAt;
-    cell.Content.text= [NSString stringWithFormat:@"%@",newsModel.description];
+    
+    cell.Title.text=[NSString stringWithFormat:@"%@",ExperenceModel.title];
+    cell.Time.text=ExperenceModel.updatedAt;
+    cell.Content.text= [NSString stringWithFormat:@"%@",ExperenceModel.description];
     return cell;
 }
-#pragma mark - Table view delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    self.newsDetailView=[[ISSTNewsDetailViewController alloc]initWithNibName:@"ISSTNewsDetailViewController" bundle:nil];
-    self.newsDetailView.title=@"详细信息";
-    ISSTCampusNewsModel *tempNewsModel=[[ISSTCampusNewsModel alloc]init];
-    tempNewsModel= [newsArray objectAtIndex:indexPath.row];
-    self.newsDetailView.newsId=tempNewsModel.newsId;
-   // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
-    [self.navigationController pushViewController:self.newsDetailView animated: NO];
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-}
+//#pragma mark - Table view delegate
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    self.DetailView=[[ISSTNewsDetailViewController alloc]initWithNibName:@"ISSTNewsDetailViewController" bundle:nil];
+//    self.newsDetailView.title=@"详细信息";
+//    ISSTCampusNewsModel *tempNewsModel=[[ISSTCampusNewsModel alloc]init];
+//    tempNewsModel= [newsArray objectAtIndex:indexPath.row];
+//    self.newsDetailView.newsId=tempNewsModel.newsId;
+//    // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
+//    [self.navigationController pushViewController:self.newsDetailView animated: NO];
+//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+//}
 
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
-    if ([newsArray count]) {
-        newsArray = [[NSMutableArray alloc]init];
+    if ([ExperenceArray count]) {
+        ExperenceArray = [[NSMutableArray alloc]init];
     }
-    newsArray = (NSMutableArray *)backToControllerData;
-    NSLog(@"count =%d ,newsArray = %@",[newsArray count],newsArray);
-     [newsArrayTableView reloadData];
+    ExperenceArray = (NSMutableArray *)backToControllerData;
+    NSLog(@"count =%d ,newsArray = %@",[ExperenceArray count],ExperenceArray);
+    [ExperenceArrayTableView reloadData];
 }
 
 - (void)requestDataOnFail:(NSString *)error
@@ -156,14 +147,10 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
     
 }
 
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
-
-
 
 #pragma mark Private Methods
 - (void)pushViewController {
@@ -176,8 +163,5 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 - (void)revealSidebar {
     _revealBlock();
 }
-
-
-
 
 @end
