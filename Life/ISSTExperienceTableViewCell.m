@@ -6,10 +6,10 @@
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
-#import "ISSTExperenceTableViewCell.h"
+#import "ISSTExperienceTableViewCell.h"
 
-@implementation ISSTExperenceTableViewCell
-@synthesize Title,Content,Time;
+@implementation ISSTExperienceTableViewCell
+@synthesize title,content,time;
 - (void)awakeFromNib
 {
     // Initialization code

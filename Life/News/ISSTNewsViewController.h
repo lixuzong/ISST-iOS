@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ISSTRootViewController.h"
-@interface ISSTNewsViewController : ISSTRootViewController<UITableViewDataSource,UITableViewDelegate>
+#import "ISSTWebApiDelegate.h"
 
+@interface ISSTNewsViewController : ISSTRootViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 
-- (id)initWithTitle:(NSString *)title withRevealBlock:(RevealBlock)revealBlock;
 @end
 

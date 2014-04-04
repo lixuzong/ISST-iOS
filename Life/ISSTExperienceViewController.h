@@ -7,9 +7,7 @@
 //
 #import <UIKit/UIKit.h>
 #import "ISSTRootViewController.h"
-
-@interface ISSTExperenceViewController : ISSTRootViewController<UITableViewDataSource,UITableViewDelegate>
-
-- (id)initWithTitle:(NSString *)title withRevealBlock:(RevealBlock)revealBlock;
+#import "ISSTWebApiDelegate.h"
+@interface ISSTExperienceViewController : ISSTRootViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 
 @end

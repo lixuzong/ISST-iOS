@@ -13,9 +13,9 @@
 #import "ISSTMenuTableViewCell.h"
 #import "ISSTLoginViewController.h"
 #import "ISSTStudyViewController.h"
-#import "ISSTWikisViewController.h"
-#import "ISSTExperenceViewController.h"
 
+#import "ISSTExperienceViewController.h"
+#import "ISSTWikisViewController.h"
 //#import "ISSTSidebarSearchViewController.h"
 //#import "ISSTSidebarSearchViewControllerDelegate.h"
 
@@ -96,7 +96,7 @@
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"实习" withRevealBlock:revealBlock]],
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"就业" withRevealBlock:revealBlock]],
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"内推" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTExperenceViewController alloc] initWithTitle:@"经验交流" withRevealBlock:revealBlock]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTExperienceViewController alloc] initWithTitle:@"经验交流" withRevealBlock:revealBlock]]
                                  ],
                              @[
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"通讯录" withRevealBlock:revealBlock]]

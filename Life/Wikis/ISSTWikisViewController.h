@@ -7,10 +7,10 @@
 //
 
 #import "ISSTRootViewController.h"
+#import "ISSTWebApiDelegate.h"
+@interface ISSTWikisViewController : ISSTRootViewController<UICollectionViewDataSource,UICollectionViewDelegate,ISSTWebApiDelegate>
 
-@interface ISSTWikisViewController : ISSTRootViewController<UICollectionViewDataSource,UICollectionViewDelegate>  
 
-- (id)initWithTitle:(NSString *)title withRevealBlock:(RevealBlock)revealBlock;
 @property (weak, nonatomic) IBOutlet UICollectionView *CollectionView;
 
 @end

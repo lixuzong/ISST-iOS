@@ -9,7 +9,7 @@
 #import "ISSTNewsTableViewCell.h"
 
 @implementation ISSTNewsTableViewCell
-@synthesize Time,Title,Content;
+@synthesize time,title,content;
 
 - (void)awakeFromNib
 {

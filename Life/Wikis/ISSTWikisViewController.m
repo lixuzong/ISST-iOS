@@ -28,19 +28,7 @@
 @synthesize newsArray;
 @synthesize CollectionView;
 
-#pragma mark Memory Management
-- (id)initWithTitle:(NSString *)title withRevealBlock:(RevealBlock)revealBlock {
-    if (self = [super initWithNibName:nil bundle:nil]) {
-		self.title = title;
-		_revealBlock = [revealBlock copy];
-		self.navigationItem.leftBarButtonItem =
-        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                      target:self
-                                                      action:@selector(revealSidebar)];
-        
-	}
-	return self;
-}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -102,13 +90,13 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     self.WikisDetailView=[[ISSTWikisDetailViewController alloc]initWithNibName:@"ISSTWikisDetailViewController" bundle:nil];
-    self.WikisDetailView.title=@"详细信息";
+     self.WikisDetailView.navigationItem.title =@"详细信息";
     ISSTCampusNewsModel *tempWikisModel=[[ISSTCampusNewsModel alloc]init];
     tempWikisModel=[newsArray objectAtIndex:(indexPath.section*2+indexPath.row)];//2为每行的个数
 
     self.WikisDetailView.WikisId=tempWikisModel.newsId;
     // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
-    [self.navigationController pushViewController:self.WikisDetailView animated: NO];
+    [self.navigationController pushViewController:self.WikisDetailView animated: YES];
 }
 
 #pragma mark -
@@ -146,9 +134,9 @@
 //    [self.navigationController pushViewController:vc animated:YES];
 //}
 
-- (void)revealSidebar {
-    _revealBlock();
-}
+//- (void)revealSidebar {
+//    _revealBlock();
+//}
 
 
 - (void)didReceiveMemoryWarning

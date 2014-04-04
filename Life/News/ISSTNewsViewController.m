@@ -21,15 +21,12 @@
 
 @property (strong, nonatomic) NSMutableArray *newsArray;
 
-- (void)pushViewController;
-- (void)revealSidebar;
+//- (void)pushViewController;
+//- (void)revealSidebar;
 @end
 
 @implementation ISSTNewsViewController
-{
-@private
-    RevealBlock _revealBlock;
-}
+
 @synthesize newsModel;
 @synthesize newsApi;
 @synthesize newsArray;
@@ -37,19 +34,8 @@
 @synthesize newsDetailView;
 static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 
-#pragma mark Memory Management
-- (id)initWithTitle:(NSString *)title withRevealBlock:(RevealBlock)revealBlock {
-    if (self = [super initWithNibName:nil bundle:nil]) {
-		self.title = title;
-		_revealBlock = [revealBlock copy];
-		self.navigationItem.leftBarButtonItem =
-        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                      target:self
-                                                      action:@selector(revealSidebar)];
-        
-	}
-	return self;
-}
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -63,31 +49,30 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 
 - (void)viewDidLoad
 {
+    self.newsApi = [[ISSTNewsApi alloc]init];
+    self.newsApi.webApiDelegate = self;
+    [self.newsApi requestCampusNews:1 andPageSize:20 andKeywords:@"string"];
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 	self.view.backgroundColor = [UIColor lightGrayColor];
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
-      [super viewDidLoad];
-    self.newsApi = [[ISSTNewsApi alloc]init];
+    [super viewDidLoad];
   
-    self.newsApi.webApiDelegate = self;
-   // self.newsArray =[[NSMutableArray alloc]init];
     UITableView *tableView=(id)[self.view viewWithTag:1];
-    tableView.rowHeight=90;
+    tableView.rowHeight=80;
     UINib *nib=[UINib nibWithNibName:@"ISSTNewsTableViewCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
 
     
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    [self.newsApi requestCampusNews:1 andPageSize:20 andKeywords:@"string"];
+  
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
@@ -108,24 +93,24 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-     newsModel =[[ISSTCampusNewsModel alloc]init];
-      newsModel = [newsArray objectAtIndex:indexPath.row];
+    newsModel =[[ISSTCampusNewsModel alloc]init];
+    newsModel = [newsArray objectAtIndex:indexPath.row];
     
     ISSTNewsTableViewCell *cell=(ISSTNewsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
+        cell = (ISSTNewsTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
 
-    cell.Title.text=[NSString stringWithFormat:@"%@",newsModel.title];
-    cell.Time.text=newsModel.updatedAt;
-    cell.Content.text= [NSString stringWithFormat:@"%@",newsModel.description];
+    cell.title.text     =   newsModel.title;
+    cell.time.text      =   newsModel.updatedAt;
+    cell.content.text   =   newsModel.description;
     return cell;
 }
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.newsDetailView=[[ISSTNewsDetailViewController alloc]initWithNibName:@"ISSTNewsDetailViewController" bundle:nil];
-    self.newsDetailView.title=@"详细信息";
+    self.newsDetailView.navigationItem.title =@"详细信息";
     ISSTCampusNewsModel *tempNewsModel=[[ISSTCampusNewsModel alloc]init];
     tempNewsModel= [newsArray objectAtIndex:indexPath.row];
     self.newsDetailView.newsId=tempNewsModel.newsId;
@@ -164,17 +149,14 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 
 
 
-#pragma mark Private Methods
-- (void)pushViewController {
-    NSString *vcTitle = [self.title stringByAppendingString:@" - Pushed"];
-    UIViewController *vc = [[ISSTPushedViewController alloc] initWithTitle:vcTitle];
-    
-    [self.navigationController pushViewController:vc animated:YES];
-}
+//#pragma mark Private Methods
+//- (void)pushViewController {
+//    NSString *vcTitle = [self.title stringByAppendingString:@""];
+//    UIViewController *vc = [[ISSTPushedViewController alloc] initWithTitle:vcTitle];
+//    
+//    [self.navigationController pushViewController:vc animated:YES];
+//}
 
-- (void)revealSidebar {
-    _revealBlock();
-}
 
 
 

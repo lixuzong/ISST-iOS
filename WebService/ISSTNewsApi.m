@@ -27,7 +27,7 @@ const    static  int   Experence=4;
     NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
     NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/campus"];
     [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
-
+    
 }
 
 - (void)requestWikis:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
@@ -37,8 +37,8 @@ const    static  int   Experence=4;
     NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
     NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/encyclopedia"];
     [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
-
-
+    
+    
 }
 
 - (void)requestExperence:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
@@ -49,13 +49,13 @@ const    static  int   Experence=4;
     NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/experience"];
     [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
     
-
+    
 }
 - (void)requestDetailInfoWithId:(int)detailId
 {
     methodId = DETAILS;
     datas = [[NSMutableData alloc]init];
-   // NSString *info = [NSString stringWithFormat:@"",page,pageSize];
+    // NSString *info = [NSString stringWithFormat:@"",page,pageSize];
     NSString *subUrlString = [NSString stringWithFormat:@"api/archives/%d",detailId];
     [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
 }
@@ -65,7 +65,7 @@ const    static  int   Experence=4;
 {
     webApiDelegate=nil;
     datas=nil;
-   // [super dealloc];
+    // [super dealloc];
 }
 
 
@@ -90,16 +90,16 @@ const    static  int   Experence=4;
 //请求完成
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-     ISSTCampusNewsParse *news  = [[ISSTCampusNewsParse alloc]init];
+    ISSTCampusNewsParse *news  = [[ISSTCampusNewsParse alloc]init];
     NSDictionary *dics =[news campusNewsSerialization:datas];
-   
+    
     NSArray *array ;
     id backData;
     switch (methodId) {
         case CAMPUSNEWS:
         case WIKIS:
         case Experence:
-           // dics=  [news campusNewsSerialization:datas];
+            // dics=  [news campusNewsSerialization:datas];
             if (dics&&[dics count]>0)
             {
                 if (0 == [news getStatus])//登录成功
@@ -117,7 +117,7 @@ const    static  int   Experence=4;
                     {
                         [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
                     }
-
+                    
                 }
             }
             else//可能服务器荡掉
@@ -158,13 +158,13 @@ const    static  int   Experence=4;
                 }
             }
             break;
-               default:
+        default:
             break;
     }
     
-   
     
-   
+    
+    
 }
 
 

@@ -1,52 +1,51 @@
 //
-//  GogoViewController.m
+//  ISSTExperenceDetailViewController.m
 //  ISST
 //
-//  Created by XSZHAO on 14-3-20.
+//  Created by liuyang on 14-4-4.
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
-#import "ISSTNewsDetailViewController.h"
+#import "ISSTExperienceDetailViewController.h"
 #import "ISSTNewsApi.h"
 #import "ISSTNewsDetailsModel.h"
-
-@interface ISSTNewsDetailViewController ()
+@interface ISSTExperienceDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
-@property (nonatomic,strong)ISSTNewsApi  *newsApi;
+@property (nonatomic,strong)ISSTNewsApi  *experienceApi;
 @property(nonatomic,strong)ISSTNewsDetailsModel *detailModel;
 @end
 
-@implementation ISSTNewsDetailViewController
-@synthesize newsApi;
+@implementation ISSTExperienceDetailViewController
+@synthesize experienceApi;
 @synthesize detailModel;
-@synthesize newsId;
+@synthesize experienceId;
 @synthesize title;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-
     }
     return self;
 }
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.newsApi = [[ISSTNewsApi alloc]init];
-    self.newsApi.webApiDelegate =self;
-    [newsApi requestDetailInfoWithId:newsId];
+    self.experienceApi = [[ISSTNewsApi alloc]init];
+    self.experienceApi.webApiDelegate =self;
+    [experienceApi requestDetailInfoWithId:experienceId];
     
     webView.scalesPageToFit = YES;
-    webView.delegate = self;
+    webView.delegate = self;}
 
-}
 
 - (void)loadWebPageWithString:(NSString*)urlString
 {
     NSURL *url =[NSURL URLWithString:urlString];
-   // NSLog(urlString);
+    // NSLog(urlString);
     NSURLRequest *request =[NSURLRequest requestWithURL:url];
     [webView loadRequest:request];
 }
@@ -61,7 +60,7 @@
 #pragma mark  WebViewDelegate Methods
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-   // [activityIndicatorView startAnimating] ;
+    // [activityIndicatorView startAnimating] ;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
@@ -81,13 +80,13 @@
 {
     if(detailModel==nil)
     {
-     detailModel=[[ISSTNewsDetailsModel alloc]init];
-     detailModel = (ISSTNewsDetailsModel*)backToControllerData;
+        detailModel=[[ISSTNewsDetailsModel alloc]init];
+        detailModel = (ISSTNewsDetailsModel*)backToControllerData;
     }
     self.title.text=detailModel.title;
     [webView loadHTMLString:detailModel.content baseURL:nil];//加载html源代码
-    NSLog(@"self=%@ \n htmls=%@",self,backToControllerData);
-    NSLog(@"self=%@\n content=%@\n title=%@ \ndescription=%@",self,detailModel.content,detailModel.title,detailModel.description);
+  //  NSLog(@"self=%@ \n htmls=%@",self,backToControllerData);
+  //  NSLog(@"self=%@\n content=%@\n title=%@ \ndescription=%@",self,detailModel.content,detailModel.title,detailModel.description);
 }
 
 - (void)requestDataOnFail:(NSString *)error
@@ -96,6 +95,5 @@
     [alert show];
     
 }
-
 
 @end
