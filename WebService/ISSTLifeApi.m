@@ -19,7 +19,8 @@
 const    static  int  CAMPUSNEWS = 1;
 const    static  int   DETAILS   = 2;
 const    static  int   WIKIS     = 3;
-const    static  int   EXPERIENCE  =4;
+const    static  int   STUDYING=4;
+const    static  int   EXPERIENCE  =5;
 
 - (void)requestCampusNewsLists:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
 {
@@ -59,6 +60,16 @@ const    static  int   EXPERIENCE  =4;
         }
     }
 }
+- (void)requestStudyingLists:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
+{
+    methodId = STUDYING;
+    datas = [[NSMutableData alloc]init];
+    NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
+    NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/studying"];
+    [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+    
+}
+
 
 - (void)requestExperienceLists:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
 {
@@ -145,6 +156,7 @@ const    static  int   EXPERIENCE  =4;
     switch (methodId) {
         case CAMPUSNEWS:
         case WIKIS:
+        case STUDYING:
         case EXPERIENCE:
             // dics=  [news campusNewsSerialization:datas];
             if (dics&&[dics count]>0)

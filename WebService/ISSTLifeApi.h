@@ -39,7 +39,15 @@
 /*****
  2014.04.01
  创建： zhao
+ 获取Study信息列表
+ *****/
+- (void)requestStudyingLists:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords;
+
+/*****
+ 2014.04.01
+ 创建： zhao
  获取信息详情
  *****/
+
 - (void)requestDetailInfoWithId:(int)detailId;
 @end
