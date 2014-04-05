@@ -27,12 +27,19 @@
 - (void)dealloc
 {
     [userName release];
+    userName = nil;
     [name release];
+    name = nil;
     [email release];
+    email = nil;
     [qq release];
+    qq = nil;
     [signature release];
+    signature = nil;
     [position release];
+    position = nil;
     [company release];
+    company = nil;
     [super dealloc];
 }
 

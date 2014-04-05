@@ -74,7 +74,7 @@
       ISSTSlidebarNavController *slider =[[ISSTSlidebarNavController alloc]init]
     ;
    // [self.navigationController pushViewController:[[ISSTSlidebarNavController alloc]init] animated:YES ];
-    NSLog(@"navigationController=%@",self.navigationController.hash);
+ 
      [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
     [self.navigationController pushViewController:slider animated: NO];
     

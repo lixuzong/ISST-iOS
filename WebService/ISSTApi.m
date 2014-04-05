@@ -61,7 +61,8 @@
         if (cookie!=nil) {
             NSLog(@"1234");
            // [request setValue:USERAGENT forHTTPHeaderField:@"User-Agent"];
-            [request setValue:cookie  forHTTPHeaderField:@"Set-Cookie"];
+        
+            [request setValue:(NSString*)cookie      forHTTPHeaderField:@"Set-Cookie"];
             // [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
         }
 
@@ -104,7 +105,7 @@
         if (cookie!=nil) {
              NSLog(@"1234");
             [request setValue:USERAGENT forHTTPHeaderField:@"User-Agent"];
-            [request setValue:cookie  forHTTPHeaderField:@"Set-Cookie"];
+            [request setValue:(NSString*)cookie   forHTTPHeaderField:@"Set-Cookie"];
        // [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
         }
    

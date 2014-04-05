@@ -7,11 +7,11 @@
 //
 
 #import "ISSTExperienceDetailViewController.h"
-#import "ISSTNewsApi.h"
+#import "ISSTLifeApi.h"
 #import "ISSTNewsDetailsModel.h"
 @interface ISSTExperienceDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
-@property (nonatomic,strong)ISSTNewsApi  *experienceApi;
+@property (nonatomic,strong)ISSTLifeApi  *experienceApi;
 @property(nonatomic,strong)ISSTNewsDetailsModel *detailModel;
 @end
 
@@ -34,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.experienceApi = [[ISSTNewsApi alloc]init];
+    self.experienceApi = [[ISSTLifeApi alloc]init];
     self.experienceApi.webApiDelegate =self;
     [experienceApi requestDetailInfoWithId:experienceId];
     

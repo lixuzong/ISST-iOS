@@ -66,7 +66,14 @@
 
 - (void)viewSlidebarLoad
 {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
+    if ([UIDevice currentDevice].systemVersion.doubleValue <= 7.0) {
+          [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleBlackOpaque animated:NO];
+    }
+    else
+    {
+      [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
+    }
+  
     UIColor *bgColor = [UIColor colorWithRed:(50.0f/255.0f) green:(57.0f/255.0f) blue:(74.0f/255.0f) alpha:1.0f];
     self.revealController = [[ISSTRevealViewController alloc]initWithNibName:nil bundle:nil];
     self.revealController.view.backgroundColor = bgColor;

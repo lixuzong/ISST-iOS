@@ -41,6 +41,10 @@
     return  @"网络连接出现问题";
 }
 
++ (NSString *)checkNetworkConnection
+{
+    return @"查看网络连接";
+}
 + (NSString *)getUnLoginMessage
 {
     return @"用户为登录";

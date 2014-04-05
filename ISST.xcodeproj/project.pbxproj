@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AE014AD218EFAA1D0009E008 /* ISSTRestaurantsParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE014AD118EFAA1D0009E008 /* ISSTRestaurantsParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AE014AD518EFAA570009E008 /* ISSTRestaurantsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE014AD418EFAA570009E008 /* ISSTRestaurantsModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AE014AD818EFC3D30009E008 /* ISSTRestaurantsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AE014AD718EFC3D30009E008 /* ISSTRestaurantsApi.m */; };
+		AE014ADB18EFD4690009E008 /* ISSTRestaurantsMenusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE014ADA18EFD4690009E008 /* ISSTRestaurantsMenusModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AE014ADE18EFD6680009E008 /* ISSTRestaurantsMenusParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE014ADD18EFD6680009E008 /* ISSTRestaurantsMenusParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AE90529618EEEE310088742D /* ISSTExperienceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE90528E18EEEE310088742D /* ISSTExperienceDetailViewController.m */; };
 		AE90529718EEEE310088742D /* ISSTExperienceDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE90528F18EEEE310088742D /* ISSTExperienceDetailViewController.xib */; };
 		AE90529818EEEE310088742D /* ISSTExperienceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE90529118EEEE310088742D /* ISSTExperienceTableViewCell.m */; };
@@ -71,7 +76,7 @@
 		AEFDC77018E1625900D7FDAA /* ISSTUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC76F18E1625900D7FDAA /* ISSTUserModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AEFDC77318E16A5C00D7FDAA /* ISSTPushedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC77218E16A5C00D7FDAA /* ISSTPushedViewController.m */; };
 		AEFDC77618E16D5C00D7FDAA /* UserLoginParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC77518E16D5C00D7FDAA /* UserLoginParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AEFDC77918E1B76400D7FDAA /* ISSTNewsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC77818E1B76400D7FDAA /* ISSTNewsApi.m */; };
+		AEFDC77918E1B76400D7FDAA /* ISSTLifeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC77818E1B76400D7FDAA /* ISSTLifeApi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +90,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AE014AD018EFAA1D0009E008 /* ISSTRestaurantsParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTRestaurantsParse.h; path = Parses/ISSTRestaurantsParse.h; sourceTree = "<group>"; };
+		AE014AD118EFAA1D0009E008 /* ISSTRestaurantsParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRestaurantsParse.m; path = Parses/ISSTRestaurantsParse.m; sourceTree = "<group>"; };
+		AE014AD318EFAA570009E008 /* ISSTRestaurantsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTRestaurantsModel.h; path = Models/ISSTRestaurantsModel.h; sourceTree = "<group>"; };
+		AE014AD418EFAA570009E008 /* ISSTRestaurantsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRestaurantsModel.m; path = Models/ISSTRestaurantsModel.m; sourceTree = "<group>"; };
+		AE014AD618EFC3D30009E008 /* ISSTRestaurantsApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTRestaurantsApi.h; path = WebService/ISSTRestaurantsApi.h; sourceTree = "<group>"; };
+		AE014AD718EFC3D30009E008 /* ISSTRestaurantsApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRestaurantsApi.m; path = WebService/ISSTRestaurantsApi.m; sourceTree = "<group>"; };
+		AE014AD918EFD4690009E008 /* ISSTRestaurantsMenusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTRestaurantsMenusModel.h; path = Models/ISSTRestaurantsMenusModel.h; sourceTree = "<group>"; };
+		AE014ADA18EFD4690009E008 /* ISSTRestaurantsMenusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRestaurantsMenusModel.m; path = Models/ISSTRestaurantsMenusModel.m; sourceTree = "<group>"; };
+		AE014ADC18EFD6680009E008 /* ISSTRestaurantsMenusParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTRestaurantsMenusParse.h; path = Parses/ISSTRestaurantsMenusParse.h; sourceTree = "<group>"; };
+		AE014ADD18EFD6680009E008 /* ISSTRestaurantsMenusParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRestaurantsMenusParse.m; path = Parses/ISSTRestaurantsMenusParse.m; sourceTree = "<group>"; };
 		AE90528D18EEEE310088742D /* ISSTExperienceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTExperienceDetailViewController.h; sourceTree = "<group>"; };
 		AE90528E18EEEE310088742D /* ISSTExperienceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTExperienceDetailViewController.m; sourceTree = "<group>"; };
 		AE90528F18EEEE310088742D /* ISSTExperienceDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTExperienceDetailViewController.xib; sourceTree = "<group>"; };
@@ -189,8 +204,8 @@
 		AEFDC77218E16A5C00D7FDAA /* ISSTPushedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTPushedViewController.m; sourceTree = "<group>"; };
 		AEFDC77418E16D5C00D7FDAA /* UserLoginParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UserLoginParse.h; path = Parses/UserLoginParse.h; sourceTree = "<group>"; };
 		AEFDC77518E16D5C00D7FDAA /* UserLoginParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UserLoginParse.m; path = Parses/UserLoginParse.m; sourceTree = "<group>"; };
-		AEFDC77718E1B76400D7FDAA /* ISSTNewsApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTNewsApi.h; path = WebService/ISSTNewsApi.h; sourceTree = "<group>"; };
-		AEFDC77818E1B76400D7FDAA /* ISSTNewsApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTNewsApi.m; path = WebService/ISSTNewsApi.m; sourceTree = "<group>"; };
+		AEFDC77718E1B76400D7FDAA /* ISSTLifeApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTLifeApi.h; path = WebService/ISSTLifeApi.h; sourceTree = "<group>"; };
+		AEFDC77818E1B76400D7FDAA /* ISSTLifeApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTLifeApi.m; path = WebService/ISSTLifeApi.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,8 +425,10 @@
 				AEE284AB18DB2D1900BEF1A9 /* ISSTApi.m */,
 				AEFDC75D18DED14F00D7FDAA /* ISSTLoginApi.h */,
 				AEFDC75E18DED14F00D7FDAA /* ISSTLoginApi.m */,
-				AEFDC77718E1B76400D7FDAA /* ISSTNewsApi.h */,
-				AEFDC77818E1B76400D7FDAA /* ISSTNewsApi.m */,
+				AEFDC77718E1B76400D7FDAA /* ISSTLifeApi.h */,
+				AEFDC77818E1B76400D7FDAA /* ISSTLifeApi.m */,
+				AE014AD618EFC3D30009E008 /* ISSTRestaurantsApi.h */,
+				AE014AD718EFC3D30009E008 /* ISSTRestaurantsApi.m */,
 			);
 			name = WebService;
 			sourceTree = "<group>";
@@ -445,6 +462,10 @@
 				AE9ECAE318E968D100FEAEF4 /* ISSTExperenceModel.m */,
 				AE9ECAE518E9690200FEAEF4 /* ISSTWikiModel.h */,
 				AE9ECAE618E9690200FEAEF4 /* ISSTWikiModel.m */,
+				AE014AD318EFAA570009E008 /* ISSTRestaurantsModel.h */,
+				AE014AD418EFAA570009E008 /* ISSTRestaurantsModel.m */,
+				AE014AD918EFD4690009E008 /* ISSTRestaurantsMenusModel.h */,
+				AE014ADA18EFD4690009E008 /* ISSTRestaurantsMenusModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -520,6 +541,10 @@
 				AE9ECADA18E90BD800FEAEF4 /* ISSTCampusNewsParse.m */,
 				AE9ECAF318E978EE00FEAEF4 /* BaseParse.h */,
 				AE9ECAF418E978EE00FEAEF4 /* BaseParse.m */,
+				AE014AD018EFAA1D0009E008 /* ISSTRestaurantsParse.h */,
+				AE014AD118EFAA1D0009E008 /* ISSTRestaurantsParse.m */,
+				AE014ADC18EFD6680009E008 /* ISSTRestaurantsMenusParse.h */,
+				AE014ADD18EFD6680009E008 /* ISSTRestaurantsMenusParse.m */,
 			);
 			name = Parses;
 			sourceTree = "<group>";
@@ -640,13 +665,16 @@
 				AE9ECAD818E8F70700FEAEF4 /* ISSTMD5.m in Sources */,
 				AE9052B818EEEE890088742D /* ISSTWikisDetailViewController.m in Sources */,
 				AE9B148218EBB04400034F65 /* NetworkReachability.m in Sources */,
+				AE014ADB18EFD4690009E008 /* ISSTRestaurantsMenusModel.m in Sources */,
 				AE90529618EEEE310088742D /* ISSTExperienceDetailViewController.m in Sources */,
-				AEFDC77918E1B76400D7FDAA /* ISSTNewsApi.m in Sources */,
+				AEFDC77918E1B76400D7FDAA /* ISSTLifeApi.m in Sources */,
 				AEFDC77318E16A5C00D7FDAA /* ISSTPushedViewController.m in Sources */,
 				AE9B148118EBB04400034F65 /* LoginErrors.m in Sources */,
+				AE014ADE18EFD6680009E008 /* ISSTRestaurantsMenusParse.m in Sources */,
 				AEE284AC18DB2D1900BEF1A9 /* ISSTApi.m in Sources */,
 				AEE2847C18DAE55500BEF1A9 /* ISSTMenuViewController.m in Sources */,
 				AEFDC77618E16D5C00D7FDAA /* UserLoginParse.m in Sources */,
+				AE014AD218EFAA1D0009E008 /* ISSTRestaurantsParse.m in Sources */,
 				AEFDC75F18DED14F00D7FDAA /* ISSTLoginApi.m in Sources */,
 				AE9ECADB18E90BD800FEAEF4 /* ISSTCampusNewsParse.m in Sources */,
 				AE9B148318EBB04400034F65 /* Reachability.m in Sources */,
@@ -665,8 +693,10 @@
 				AE9ECAF518E978EE00FEAEF4 /* BaseParse.m in Sources */,
 				AE9052BA18EEEE890088742D /* ISSTWikisViewController.m in Sources */,
 				AEFDC76D18E0245D00D7FDAA /* ISSTRootViewController.m in Sources */,
+				AE014AD518EFAA570009E008 /* ISSTRestaurantsModel.m in Sources */,
 				AE9ECAE118E968B200FEAEF4 /* ISSTStudyingModel.m in Sources */,
 				AEE2847918DAE24A00BEF1A9 /* ISSTRevealViewController.m in Sources */,
+				AE014AD818EFC3D30009E008 /* ISSTRestaurantsApi.m in Sources */,
 				AE9052B618EEEE890088742D /* ISSTWikisCollectionViewCell.m in Sources */,
 				AEFDC77018E1625900D7FDAA /* ISSTUserModel.m in Sources */,
 				AEE2844E18DADAA000BEF1A9 /* main.m in Sources */,
@@ -802,6 +832,7 @@
 				GCC_PREFIX_HEADER = "ISST/ISST-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "ISST/ISST-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -817,6 +848,7 @@
 				GCC_PREFIX_HEADER = "ISST/ISST-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "ISST/ISST-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

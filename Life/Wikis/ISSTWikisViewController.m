@@ -8,11 +8,11 @@
 
 #import "ISSTWikisViewController.h"
 #import "ISSTWikisCollectionViewCell.h"
-#import "ISSTNewsApi.h"
+#import "ISSTLifeApi.h"
 #import "ISSTCampusNewsModel.h"
 #import "ISSTWikisDetailViewController.h"
 @interface ISSTWikisViewController ()
-@property (nonatomic,strong)ISSTNewsApi  *newsApi;
+@property (nonatomic,strong)ISSTLifeApi  *newsApi;
 @property (nonatomic,strong) ISSTCampusNewsModel  *WikisModel;
 @property(nonatomic,strong)ISSTWikisDetailViewController *WikisDetailView;
 @property (strong, nonatomic) NSMutableArray *newsArray;
@@ -48,7 +48,7 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [super viewDidLoad];
-    self.newsApi = [[ISSTNewsApi alloc]init];
+    self.newsApi = [[ISSTLifeApi alloc]init];
     
     
     self.view.backgroundColor = [UIColor clearColor];
@@ -58,7 +58,7 @@
    [self.CollectionView registerClass:[ISSTWikisCollectionViewCell class] forCellWithReuseIdentifier:@"ISSTWikisCollectionCell"];
     
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-   [self.newsApi requestWikis:1 andPageSize:20 andKeywords:@"string"];
+   [self.newsApi requestWikisLists:1 andPageSize:20 andKeywords:@"string"];
 }
 #pragma mark
 #pragma ColectionView DataSource

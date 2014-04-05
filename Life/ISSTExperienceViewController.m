@@ -7,14 +7,14 @@
 //
 
 #import "ISSTExperienceViewController.h"
-#import "ISSTNewsApi.h"
+#import "ISSTLifeApi.h"
 #import "ISSTCampusNewsModel.h"
 #import "ISSTPushedViewController.h"
 #import "ISSTExperienceTableViewCell.h"
 #import "ISSTExperienceDetailViewController.h"
 @interface ISSTExperienceViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *experienceArrayTableView;
-@property (nonatomic,strong)ISSTNewsApi  *experenceApi;
+@property (nonatomic,strong)ISSTLifeApi  *experienceApi;
 @property (nonatomic,strong)ISSTCampusNewsModel  *experenceModel;
 @property (strong, nonatomic)NSMutableArray *experenceArray;
 @property (nonatomic,strong) ISSTExperienceDetailViewController *detailView;
@@ -24,7 +24,7 @@
 
 @implementation ISSTExperienceViewController
 
-@synthesize experenceApi;
+@synthesize experienceApi;
 @synthesize experienceArrayTableView;
 @synthesize experenceModel;
 @synthesize experenceArray;
@@ -50,9 +50,9 @@ static NSString *CellTableIdentifier=@"ISSTExperienceTableViewCell";
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [super viewDidLoad];
-    self.ExperenceApi = [[ISSTNewsApi alloc]init];
+    self.experienceApi = [[ISSTLifeApi alloc]init];
     
-    self.experenceApi.webApiDelegate=self;
+    self.experienceApi.webApiDelegate=self;
     // self.newsArray =[[NSMutableArray alloc]init];
     UITableView *tableView=(id)[self.view viewWithTag:2];
     tableView.rowHeight=90;
@@ -61,7 +61,7 @@ static NSString *CellTableIdentifier=@"ISSTExperienceTableViewCell";
     
     
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    [self.experenceApi requestExperence:1 andPageSize:20 andKeywords:@"string"];
+    [self.experienceApi requestExperienceLists:1 andPageSize:20 andKeywords:@"string"];
 }
 
 - (void)didReceiveMemoryWarning

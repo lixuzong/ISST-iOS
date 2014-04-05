@@ -72,40 +72,7 @@
     return user ;
 }
 
-- (BOOL)loginSuccessOrNot:(NSData *)datas
-{/*
-  {
-  code = 1;
-  message = "";
-  }
-  */
-    
-    dict = [UserLoginParse loginSerialization:datas];
-    NSLog(@"loginSuccessOrNot.dict:%@",dict);
-    NSString *codeString  = [dict objectForKey:@"code"];
-    NSLog(@"code=%d",[codeString intValue]);
-    return [codeString intValue]>0?YES:NO;
-    
-}
 
-- (NSString *)loginFailMessage:(NSData *)datas
-{
-    dict = (NSDictionary*)[self loginSerialization:datas];
-    NSLog(@"loginFailMessage.dict:%@",dict);
-    NSString *messageString  = [dict objectForKey:@"message"];
-    NSLog(@"code=%@",messageString);
-    return messageString;
-    
-}
-
-- (NSString *)getloginSuccessUserId:(NSData *)datas
-{
-    dict = (NSDictionary*)[self loginSerialization:datas];
-    // NSLog(@"getloginSuccessUserId:%@",dict);
-    NSString *codeString  = [dict objectForKey:@"code"];
-    NSLog(@"code=%d",[codeString intValue]);
-    return codeString;
-}
 
 -(void)dealloc
 {

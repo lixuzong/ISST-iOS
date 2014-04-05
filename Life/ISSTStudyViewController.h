@@ -7,7 +7,7 @@
 //
 
 #import "ISSTRootViewController.h"
-
-@interface ISSTStudyViewController : ISSTRootViewController
+#import "ISSTWebApiDelegate.H"
+@interface ISSTStudyViewController : ISSTRootViewController<ISSTWebApiDelegate>
 
 @end

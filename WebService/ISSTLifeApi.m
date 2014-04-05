@@ -6,58 +6,100 @@
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
-#import "ISSTNewsApi.h"
+#import "ISSTLifeApi.h"
 #import "ISSTCampusNewsParse.h"
 #import "LoginErrors.h"
-@implementation ISSTNewsApi
+#import "NetworkReachability.h"
+#import "ISSTRestaurantsParse.h"
+@implementation ISSTLifeApi
 
 @synthesize webApiDelegate;
 @synthesize datas;
 @synthesize methodId;
 const    static  int  CAMPUSNEWS = 1;
 const    static  int   DETAILS   = 2;
-const    static  int   WIKIS=3;
-const    static  int   Experence=4;
+const    static  int   WIKIS     = 3;
+const    static  int   EXPERIENCE  =4;
 
-
-- (void)requestCampusNews:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
+- (void)requestCampusNewsLists:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
 {
-    methodId = CAMPUSNEWS;
-    datas = [[NSMutableData alloc]init];
-    NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
-    NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/campus"];
-    [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
-    
+      if (NetworkReachability.isConnectionAvailable)
+      {
+        methodId = CAMPUSNEWS;
+        datas = [[NSMutableData alloc]init];
+        NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
+        NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/campus"];
+        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+      }
+      else
+      {
+        //数据库解析，
+        if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+        {
+            [self.webApiDelegate requestDataOnFail:[LoginErrors getNetworkProblem]];
+        }
+      }
 }
 
-- (void)requestWikis:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
+- (void)requestWikisLists:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
 {
-    methodId = WIKIS;
-    datas = [[NSMutableData alloc]init];
-    NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
-    NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/encyclopedia"];
-    [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
-    
-    
+    if (NetworkReachability.isConnectionAvailable) {
+        methodId = WIKIS;
+        datas = [[NSMutableData alloc]init];
+        NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
+        NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/encyclopedia"];
+        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+    }
+    else
+    {
+        //数据库解析，
+        if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+        {
+            [self.webApiDelegate requestDataOnFail: [LoginErrors getNetworkProblem]];
+        }
+    }
 }
 
-- (void)requestExperence:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
+- (void)requestExperienceLists:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
 {
-    methodId = Experence;
-    datas = [[NSMutableData alloc]init];
-    NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
-    NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/experience"];
-    [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
-    
-    
+    if (NetworkReachability.isConnectionAvailable)
+    {
+        methodId = EXPERIENCE;
+        datas = [[NSMutableData alloc]init];
+        NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
+        NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/experience"];
+        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+    }
+    else
+    {
+        //数据库解析，
+        if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+        {
+            [self.webApiDelegate requestDataOnFail: [LoginErrors getNetworkProblem]];
+        }
+    }
 }
+
+
+
 - (void)requestDetailInfoWithId:(int)detailId
 {
-    methodId = DETAILS;
-    datas = [[NSMutableData alloc]init];
-    // NSString *info = [NSString stringWithFormat:@"",page,pageSize];
-    NSString *subUrlString = [NSString stringWithFormat:@"api/archives/%d",detailId];
-    [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
+    if (NetworkReachability.isConnectionAvailable)
+    {
+        methodId = DETAILS;
+        datas = [[NSMutableData alloc]init];
+        // NSString *info = [NSString stringWithFormat:@"",page,pageSize];
+        NSString *subUrlString = [NSString stringWithFormat:@"api/archives/%d",detailId];
+        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
+    }
+    else
+    {
+        //数据库解析，
+        if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+        {
+            [self.webApiDelegate requestDataOnFail: [LoginErrors getNetworkProblem]];
+        }
+    }
 }
 
 
@@ -75,7 +117,7 @@ const    static  int   Experence=4;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     NSLog(@"%@",[error localizedDescription]);
-    [self.webApiDelegate requestDataOnFail:@"请查看网络连接"];
+    [self.webApiDelegate requestDataOnFail:[LoginErrors checkNetworkConnection]];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
@@ -87,18 +129,23 @@ const    static  int   Experence=4;
 {
     [datas appendData:data];
 }
+
+
+
+
 //请求完成
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     ISSTCampusNewsParse *news  = [[ISSTCampusNewsParse alloc]init];
+ 
     NSDictionary *dics =[news campusNewsSerialization:datas];
-    
     NSArray *array ;
     id backData;
+    
     switch (methodId) {
         case CAMPUSNEWS:
         case WIKIS:
-        case Experence:
+        case EXPERIENCE:
             // dics=  [news campusNewsSerialization:datas];
             if (dics&&[dics count]>0)
             {
@@ -129,7 +176,7 @@ const    static  int   Experence=4;
             }
             
             break;
-        case DETAILS:
+           case DETAILS:
             if (dics&&[dics count]>0)
             {
                 if (0 == [news getStatus])//登录成功

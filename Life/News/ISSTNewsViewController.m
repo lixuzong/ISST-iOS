@@ -7,13 +7,13 @@
 //
 #import "ISSTNewsDetailViewController.h"
 #import "ISSTNewsViewController.h"
-#import "ISSTNewsApi.h"
+#import "ISSTLifeApi.h"
 #import "ISSTNewsTableViewCell.h"
 #import "ISSTCampusNewsModel.h"
 
 @interface ISSTNewsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *newsArrayTableView;
-@property (nonatomic,strong)ISSTNewsApi  *newsApi;
+@property (nonatomic,strong)ISSTLifeApi  *newsApi;
 
 @property (nonatomic,strong) ISSTCampusNewsModel  *newsModel;
 
@@ -49,9 +49,9 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 
 - (void)viewDidLoad
 {
-    self.newsApi = [[ISSTNewsApi alloc]init];
+    self.newsApi = [[ISSTLifeApi alloc]init];
     self.newsApi.webApiDelegate = self;
-    [self.newsApi requestCampusNews:1 andPageSize:20 andKeywords:@"string"];
+    [self.newsApi requestCampusNewsLists:1 andPageSize:20 andKeywords:@"string"];
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 	self.view.backgroundColor = [UIColor lightGrayColor];
     

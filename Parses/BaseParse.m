@@ -9,5 +9,14 @@
 #import "BaseParse.h"
 
 @implementation BaseParse
+- (int)getStatus
+{
+    return 1;
+}
+
+- (id)infoSerialization:(NSData*)datas
+{
+    return nil;
+}
 
 @end

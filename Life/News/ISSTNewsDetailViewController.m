@@ -7,12 +7,12 @@
 //
 
 #import "ISSTNewsDetailViewController.h"
-#import "ISSTNewsApi.h"
+#import "ISSTLifeApi.h"
 #import "ISSTNewsDetailsModel.h"
 
 @interface ISSTNewsDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
-@property (nonatomic,strong)ISSTNewsApi  *newsApi;
+@property (nonatomic,strong)ISSTLifeApi  *newsApi;
 @property(nonatomic,strong)ISSTNewsDetailsModel *detailModel;
 @end
 
@@ -34,7 +34,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.newsApi = [[ISSTNewsApi alloc]init];
+    self.newsApi = [[ISSTLifeApi alloc]init];
     self.newsApi.webApiDelegate =self;
     [newsApi requestDetailInfoWithId:newsId];
     

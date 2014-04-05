@@ -9,7 +9,7 @@
 #import "ISSTApi.h"
 #import  "ISSTWebApiDelegate.h"
 
-@interface ISSTNewsApi : ISSTApi<ISSTWebApiDelegate,NSURLConnectionDataDelegate>
+@interface ISSTLifeApi : ISSTApi<ISSTWebApiDelegate,NSURLConnectionDataDelegate>
 
 /*****
  2014.04.02
@@ -23,19 +23,19 @@
  创建： zhao
  获取news信息列表
  *****/
-- (void)requestCampusNews:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords;
+- (void)requestCampusNewsLists:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords;
 /*****
  2014.04.01
  创建： zhao
  获取wiki信息列表
  *****/
-- (void)requestWikis:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords;
+- (void)requestWikisLists:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords;
 /*****
  2014.04.01
  创建： zhao
  获取Experence信息列表
  *****/
-- (void)requestExperence:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords;
+- (void)requestExperienceLists:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords;
 /*****
  2014.04.01
  创建： zhao

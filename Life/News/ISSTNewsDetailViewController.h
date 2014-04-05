@@ -7,7 +7,8 @@
 //
 
 #import "ISSTPushedViewController.h"
-@interface ISSTNewsDetailViewController : ISSTPushedViewController<UIWebViewDelegate>
+#import "ISSTWebApiDelegate.H"
+@interface ISSTNewsDetailViewController : ISSTPushedViewController<UIWebViewDelegate,ISSTWebApiDelegate>
 {
     IBOutlet UIWebView *webView;
    

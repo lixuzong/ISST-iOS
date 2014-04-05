@@ -15,4 +15,5 @@
 
 + (NSString *)getUnLoginMessage;
 
++(NSString *)checkNetworkConnection;
 @end

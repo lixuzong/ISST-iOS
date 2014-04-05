@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface UserLoginParse : NSObject
+#import "BaseParse.h"
+@interface UserLoginParse : BaseParse
 /*****
  2014.04.02
  创建： zhao
@@ -18,11 +18,11 @@
 
 //解析用户信息
 -(id)userInfoParse;
-//:(NSData *)datas;
-//返回登陆成功或失败
-- (BOOL)loginSuccessOrNot:(NSData *)datas;
-
-
+/*****
+ 2014.04.02
+ 创建： zhao
+ 序列化数据为dictionary
+ *****/
 - (NSDictionary *)loginSerialization:(NSData*)datas;
 @end
 

@@ -7,19 +7,19 @@
 //
 
 #import "ISSTStudyViewController.h"
-#import "ISSTNewsApi.h"
-#import "ISSTNewsDetailsModel.h"
-#import "ISSTLoginViewController.h"
-
+#import "ISSTLifeApi.h"
+#import "ISSTRestaurantsModel.h"
+#import "ISSTRestaurantsApi.h"
+#import "ISSTRestaurantsMenusModel.h"
 @interface ISSTStudyViewController ()
-@property (nonatomic,strong)ISSTNewsApi  *newsApi;
+@property (nonatomic,strong)ISSTRestaurantsApi      *restaurantsApi;
 - (IBAction)go:(id)sender;
 
 @end
 
 @implementation ISSTStudyViewController
 
-@synthesize newsApi;
+@synthesize restaurantsApi;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,9 +39,10 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [super viewDidLoad];
-    self.newsApi = [[ISSTNewsApi alloc]init];
     
-    self.newsApi.webApiDelegate =self;
+    self.restaurantsApi = [[ISSTRestaurantsApi alloc]init];
+    
+    self.restaurantsApi.webApiDelegate =self;
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,7 +53,9 @@
 
 - (IBAction)go:(id)sender {
    
-    [self.newsApi requestDetailInfoWithId:582];
+    [self.restaurantsApi requestMenusListsWithId:1];
+    //[self.restaurantsApi requestDetailInfoWithId:1];
+    //[self.restaurantsApi requestResturantsLists:1 andPageSize:20 andKeywords:@"string"];
 //    ISSTLoginViewController *slider =[[ISSTLoginViewController alloc]init];
 //    [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
 //   [self.navigationController pushViewController:slider animated: NO];
@@ -68,9 +71,13 @@
 //    newsArray = (NSMutableArray *)backToControllerData;
 //    NSLog(@"count =%d ,newsArray = %@",[newsArray count],newsArray);
 //    [newsArrayTableView reloadData];
-    ISSTNewsDetailsModel *detailModel = (ISSTNewsDetailsModel*)backToControllerData;
-    NSLog(@"self=%@ \n htmls=%@",self,backToControllerData);
-    NSLog(@"self=%@\n content=%@\n title=%@ \ndescription=%@",self,detailModel.content,detailModel.title,detailModel.description);
+   NSArray *rArray =(NSArray*)backToControllerData;
+    ISSTRestaurantsMenusModel *detailModel =[rArray objectAtIndex:0];
+    
+    NSLog(@"self=\n content =%@",rArray);
+  //  NSLog
+   // (@"count=%d",[rArray count]);
+    NSLog(@"self=%@\n name=%@\n picture=%@ \n description=%@ \n price =%f",self,detailModel.name,detailModel.picture,detailModel.description,detailModel.price);
 }
 
 - (void)requestDataOnFail:(NSString *)error
