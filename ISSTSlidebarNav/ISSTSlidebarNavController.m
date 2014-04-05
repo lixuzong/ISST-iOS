@@ -20,7 +20,7 @@
 //#import "ISSTSidebarSearchViewControllerDelegate.h"
 
 #import "ISSTNewsViewController.h"
-
+#import "ISSTUserCenterViewController.h"
 @interface ISSTSlidebarNavController ()//<ISSTSidebarSearchViewControllerDelegate>
 @property (nonatomic, strong) ISSTRevealViewController *revealController;
 //搜索栏控制器
@@ -114,13 +114,7 @@
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"同城校友" withRevealBlock:revealBlock]]
                                  ],
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"消息中心" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"任务中心" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"个人信息" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"活动管理" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"在职事务" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"附近的人" withRevealBlock:revealBlock]]
-                                
+                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTUserCenterViewController alloc] initWithTitle:@"个人中心" withRevealBlock:revealBlock]]
                                  ]
                              
                              ];
@@ -148,14 +142,8 @@
                                @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"同城校友", @"")}
                                ],
                            @[
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"消息中心", @"")},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"任务中心", @"")},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"个人信息", @"")},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"活动管理", @"")},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"在职事务", @"")},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"附近的人", @"")}
-                             
-                               ]
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"个人中心", @"")}
+                            ]
                            ];
     
     [controllers enumerateObjectsUsingBlock:

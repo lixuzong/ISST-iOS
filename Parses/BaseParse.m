@@ -9,14 +9,17 @@
 #import "BaseParse.h"
 
 @implementation BaseParse
+@synthesize detailsInfo,dict,infoArray;
 - (int)getStatus
 {
-    return 1;
+    return [[dict objectForKey:@"status"]intValue];
+
 }
 
 - (id)infoSerialization:(NSData*)datas
 {
-    return nil;
+    dict = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
+    return dict;
 }
 
 @end

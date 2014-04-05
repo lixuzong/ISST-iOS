@@ -138,7 +138,7 @@ const    static  int   EXPERIENCE  =4;
 {
     ISSTCampusNewsParse *news  = [[ISSTCampusNewsParse alloc]init];
  
-    NSDictionary *dics =[news campusNewsSerialization:datas];
+    NSDictionary *dics =[news infoSerialization:datas];
     NSArray *array ;
     id backData;
     

@@ -75,17 +75,17 @@
             NSData *myReturn =[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
             NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
             NSDictionary *fields = [HTTPResponse allHeaderFields];
-            NSLog(@"%@",[fields description]);
+         //   NSLog(@"%@",[fields description]);
             if ([[fields allKeys] containsObject:@"Set-Cookie"])
             {
                 //  cookie =[[NSString alloc] initWithString: [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0]];
                 cookie = [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0];
             }
-            NSLog(@"cookie = %@",cookie);
+         //   NSLog(@"cookie = %@",cookie);
             //     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:self.cookie];
             
-            NSString *strRet = [[NSString alloc] initWithData:myReturn encoding:NSASCIIStringEncoding];
-            NSLog(@"strRet%@",strRet);
+          //  NSString *strRet = [[NSString alloc] initWithData:myReturn encoding:NSASCIIStringEncoding];
+          //  NSLog(@"strRet%@",strRet);
 
             
         }
@@ -118,7 +118,7 @@
             NSData *myReturn =[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
             NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
             NSDictionary *fields = [HTTPResponse allHeaderFields];
-            NSLog(@"%@",[fields description]);
+          //  NSLog(@"%@",[fields description]);
             
             if ([[fields allKeys] containsObject:@"Set-Cookie"])
             {
@@ -133,11 +133,11 @@
 //                cookie = [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0];
 //            }
             
-            NSLog(@"cookie = %@",cookie);
+          //  NSLog(@"cookie = %@",cookie);
            //     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:self.cookie];
         
-            NSString *strRet = [[NSString alloc] initWithData:myReturn encoding:NSASCIIStringEncoding];
-            NSLog(@"strRet%@",strRet);
+        //    NSString *strRet = [[NSString alloc] initWithData:myReturn encoding:NSASCIIStringEncoding];
+         //   NSLog(@"strRet%@",strRet);
         } else {
             NSLog(@"connect error");
         }

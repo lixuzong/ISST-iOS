@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface BaseParse : NSObject
+@property (nonatomic,strong)NSDictionary            *dict;
+@property (nonatomic,strong)NSMutableArray          *infoArray;
+@property (nonatomic,strong)NSDictionary            *detailsInfo;
 /*****
  2014.04.02
  创建： zhao

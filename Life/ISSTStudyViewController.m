@@ -72,7 +72,7 @@
 //    NSLog(@"count =%d ,newsArray = %@",[newsArray count],newsArray);
 //    [newsArrayTableView reloadData];
    NSArray *rArray =(NSArray*)backToControllerData;
-    ISSTRestaurantsMenusModel *detailModel =[rArray objectAtIndex:0];
+   ISSTRestaurantsMenusModel *detailModel =[rArray objectAtIndex:0];
     
     NSLog(@"self=\n content =%@",rArray);
   //  NSLog

@@ -91,7 +91,7 @@
         userLoginParse =[[UserLoginParse alloc]init];
     }
    
-     NSDictionary *dics = [userLoginParse loginSerialization:datas];
+     NSDictionary *dics = [userLoginParse infoSerialization:datas];
     if (dics&&[dics count]>0)//正常反回
     {
         if (0 == [userLoginParse getStatus])//登录成功

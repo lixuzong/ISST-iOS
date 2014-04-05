@@ -10,10 +10,9 @@
 #import "ISSTRestaurantsMenusModel.h"
 @interface ISSTRestaurantsMenusParse()
 {
-    NSDictionary      *_dict;
     NSArray      *_restaurantsArray;
 }
-@property (nonatomic,strong)NSDictionary    *dict;
+
 @property (nonatomic,strong)NSMutableArray         *restaurantsMenusArray;
 @property (nonatomic,strong)NSDictionary    *detailsInfo;
 
@@ -52,13 +51,4 @@
     return [tmpArray retain];
 }
 
-- (int)getStatus
-{
-   return [[dict objectForKey:@"status"]intValue];}
-
-- (id)restaurantsMenusSerialization:(NSData*)datas
-{
-    dict = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
-    return dict;
-}
 @end

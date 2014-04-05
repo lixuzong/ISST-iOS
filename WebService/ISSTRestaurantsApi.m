@@ -123,7 +123,7 @@ const    static  int   MENUS   = 3;
     switch (methodId) {
         case RESTAURANTS:
            restaurantsParse = [[ISSTRestaurantsParse alloc]init];
-            dics            = [restaurantsParse restaurantsSerialization:datas];
+            dics            = [restaurantsParse infoSerialization:datas];
             if (dics&&[dics count]>0)
             {
                 if (0 == [restaurantsParse getStatus])//登录成功
@@ -152,7 +152,7 @@ const    static  int   MENUS   = 3;
             break;
         case DETAILS:
             restaurantsParse = [[ISSTRestaurantsParse alloc]init];
-            dics             = [restaurantsParse restaurantsSerialization:datas];
+            dics             = [restaurantsParse infoSerialization:datas];
             if (dics&&[dics count]>0)
             {
                 if (0 == [restaurantsParse getStatus])//登录成功
@@ -180,7 +180,7 @@ const    static  int   MENUS   = 3;
             break;
             case MENUS:
             restaurantsMenusParse =[[ISSTRestaurantsMenusParse alloc]init];
-            dics = [restaurantsMenusParse restaurantsMenusSerialization:datas];
+            dics = [restaurantsMenusParse infoSerialization:datas];
             if (dics&&[dics count]>0)
             {
                 if (0 == [restaurantsMenusParse getStatus])//登录成功

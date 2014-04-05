@@ -17,12 +17,7 @@
  *****/
 -(id)campusNewsInfoParse;
 
-/*****
- 2014.04.02
- 创建： zhao
- 获取返回信息的status，0标记成功，其他不成功
- *****/
-- (int)getStatus;
+
 
 /*****
  2014.04.02
@@ -31,10 +26,5 @@
  *****/
 -(id)newsDetailsParse;
 
-/*****
- 2014.04.02
- 创建： zhao
- 对数据进行序列化
- *****/
-- (id)campusNewsSerialization:(NSData*)datas;
+
 @end

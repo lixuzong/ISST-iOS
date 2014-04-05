@@ -12,10 +12,8 @@
 
 @interface UserLoginParse()
 {
-      NSDictionary      *_dict;
       NSDictionary      *_userInfo;
 }
-@property (nonatomic,strong)NSDictionary *dict;
 @property (nonatomic,strong)NSDictionary *userInfo;
 @end
 
@@ -32,22 +30,12 @@
    return  self;
 }
 
-- (NSDictionary*)loginSerialization:(NSData*)datas
-{
-    dict = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
-    return dict;
-}
 
-- (int)getStatus
-{
-    return [[dict objectForKey:@"status"]intValue];
-}
 
-- (id)userInfoParse//:(NSData *)datas
+- (id)userInfoParse
 {
     NSLog(@"userInfoParse.dict:%@",dict);
     ISSTUserModel *user = [[[ISSTUserModel alloc]init] autorelease];
-    //serId,userName,name,gender,grade,classId,majorId,cityId,email,qq,signature,company,cityPrincipal,privateCompany,privateEmail,privatePhone,privatePosition,privateQQ;
     NSLog(@"%@",dict);
      userInfo = [dict objectForKey:@"body"];//get the user info content
     user.userId     = [[userInfo objectForKey:@"id"] intValue];
@@ -71,8 +59,6 @@
     NSLog(@"gender=%d",user.gender);
     return user ;
 }
-
-
 
 -(void)dealloc
 {
