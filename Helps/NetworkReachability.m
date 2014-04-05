@@ -14,7 +14,7 @@
  +(BOOL) isConnectionAvailable{
         
         BOOL isExistenceNetwork = YES;
-        Reachability *reach = [Reachability reachabilityWithHostname:@"www.apple.com"];
+        Reachability *reach = [Reachability reachabilityWithHostname:@"www.baidu.com"];
         switch ([reach currentReachabilityStatus]) {
             case NotReachable:
                 isExistenceNetwork = NO;

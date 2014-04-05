@@ -28,7 +28,7 @@
 
 - (void)requestLoginName:(NSString *)name andPassword:(NSString *)password
 {
-    
+   // /usr/include/libxml2
     if (NetworkReachability.isConnectionAvailable)
     {
         datas = [[NSMutableData alloc]init];
@@ -47,7 +47,7 @@
         //数据库解析，
         if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
         {
-            [self.webApiDelegate requestDataOnFail: @"网络连接出现问题"];
+            [self.webApiDelegate requestDataOnFail: [LoginErrors getNetworkProblem]];
         }
 
 
