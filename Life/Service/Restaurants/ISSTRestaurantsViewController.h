@@ -8,6 +8,6 @@
 
 #import "ISSTPushedViewController.h"
 #import "ISSTWebApiDelegate.h"
-@interface ISSTRestaurantsViewController : ISSTPushedViewController<UITableViewDataSource,UITabBarDelegate,ISSTWebApiDelegate>
+@interface ISSTRestaurantsViewController : ISSTPushedViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 
 @end

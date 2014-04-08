@@ -22,7 +22,7 @@ NSArray *serviceArray;
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"user.png"];
     }
     return self;
 }

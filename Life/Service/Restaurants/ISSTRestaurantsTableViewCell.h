@@ -9,7 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface ISSTRestaurantsTableViewCell : UITableViewCell
-@property IBOutlet UILabel *restaurantName;
-@property IBOutlet UILabel *restaurantTel;
+@property (weak, nonatomic) IBOutlet UILabel *restaurantName;
+
+@property (weak, nonatomic) IBOutlet UILabel *restaurantTel;
+@property (weak, nonatomic) IBOutlet UIImageView *picture;
+
 @property (weak, nonatomic) IBOutlet UIButton *clickTel;
+
 @end

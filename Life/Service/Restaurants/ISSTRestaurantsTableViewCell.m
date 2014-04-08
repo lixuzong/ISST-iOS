@@ -7,9 +7,8 @@
 //
 
 #import "ISSTRestaurantsTableViewCell.h"
-
 @implementation ISSTRestaurantsTableViewCell
-@synthesize clickTel,restaurantName,restaurantTel;
+@synthesize restaurantName,restaurantTel,picture;
 
 - (void)awakeFromNib
 {
@@ -23,4 +22,9 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)clickTel:(id)sender {
+    NSString *telNumber=[NSString stringWithFormat:@"tel://%@",restaurantTel.text];
+    NSLog(@"telNumber=%@",telNumber);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telNumber]];
+}
 @end
