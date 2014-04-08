@@ -19,7 +19,7 @@
 
 @implementation UserLoginParse
 
-@synthesize  dict;
+
 @synthesize  userInfo;
 
 - (id)init
@@ -34,10 +34,9 @@
 
 - (id)userInfoParse
 {
-    NSLog(@"userInfoParse.dict:%@",dict);
-    ISSTUserModel *user = [[[ISSTUserModel alloc]init] autorelease];
-    NSLog(@"%@",dict);
-     userInfo = [dict objectForKey:@"body"];//get the user info content
+     ISSTUserModel *user = [[[ISSTUserModel alloc]init] autorelease];
+  
+     userInfo = [super.dict objectForKey:@"body"];//get the user info content
     user.userId     = [[userInfo objectForKey:@"id"] intValue];
     user.userName   = [userInfo objectForKey:@"username"];
     user.name       = [userInfo objectForKey:@"name"];
@@ -45,6 +44,7 @@
     user.classId    = [[userInfo objectForKey:@"classId"]intValue];
     user.majorId    = [[userInfo objectForKey:@"majorId"]intValue];
     user.cityId     = [[userInfo objectForKey:@"cityId"]intValue];
+    user.phone      = [userInfo objectForKey:@"phone"];
     user.email      = [userInfo objectForKey:@"email"];
     user.qq         = [userInfo objectForKey:@"qq"];
     user.position   = [userInfo objectForKey:@"position"];
@@ -62,8 +62,7 @@
 
 -(void)dealloc
 {
-   // [self.dict release];
-    self.dict = nil;
+
     [self.userInfo release];
     self.dict = nil;
     [super dealloc];

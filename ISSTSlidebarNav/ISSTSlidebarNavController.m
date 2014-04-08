@@ -17,6 +17,7 @@
 
 #import "ISSTExperienceViewController.h"
 #import "ISSTWikisViewController.h"
+#import "ISSTActivitiesViewController.h"
 //#import "ISSTSidebarSearchViewController.h"
 //#import "ISSTSidebarSearchViewControllerDelegate.h"
 
@@ -96,7 +97,7 @@
                                  
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTNewsViewController alloc] initWithTitle:@"软院快讯" withRevealBlock:revealBlock]],
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTWikisViewController alloc] initWithTitle:@"软院百科" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"在校活动" withRevealBlock:revealBlock]],
+                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTActivitiesViewController alloc] initWithTitle:@"在校活动" withRevealBlock:revealBlock]],
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTServiceViewController alloc] initWithTitle:@"便捷服务" withRevealBlock:revealBlock]],
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTStudyViewController alloc] initWithTitle:@"学习园地" withRevealBlock:revealBlock]]
                                  ],

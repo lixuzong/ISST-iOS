@@ -1,15 +1,15 @@
 //
-//  ISSTExperenceTableViewCell.m
+//  ISSTUserCenterUserInfoTableViewCell.m
 //  ISST
 //
-//  Created by liuyang on 14-4-4.
+//  Created by XSZHAO on 14-4-7.
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
-#import "ISSTExperenceTableViewCell.h"
+#import "ISSTUserCenterUserInfoTableViewCell.h"
 
-@implementation ISSTExperenceTableViewCell
-@synthesize Title,Content,Time;
+@implementation ISSTUserCenterUserInfoTableViewCell
+@synthesize userDescriptionLabel,userNameLabel,userPictureImageView;
 - (void)awakeFromNib
 {
     // Initialization code

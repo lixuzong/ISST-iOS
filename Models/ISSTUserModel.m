@@ -10,7 +10,7 @@
 
 @implementation ISSTUserModel
 
-@synthesize userId,userName,name,gender,grade,classId,majorId,cityId,email,qq,signature,position, company,cityPrincipal,privateCompany,privateEmail,privatePhone,privatePosition,privateQQ;
+@synthesize userId,userName,name,gender,grade,classId,majorId,cityId,phone,email,qq,signature,position, company,cityPrincipal,privateCompany,privateEmail,privatePhone,privatePosition,privateQQ;
 
 - (id)init
 {
@@ -30,6 +30,8 @@
     userName = nil;
     [name release];
     name = nil;
+    [phone release];
+    phone = nil;
     [email release];
     email = nil;
     [qq release];

@@ -45,15 +45,15 @@ const static NSString *MD5_SECTET = @"vq8ukG8MKrNC7XqsbIbd7PxvX81ufNz9";
 + (NSString *) tokenWithDic:(NSDictionary *)md5Dic andTimestamp:(long long)timestamp;
 {
     NSArray *temparray = [md5Dic allKeys];
-    NSArray *sortArray = [temparray sortedArrayUsingComparator:
-                          ^(id tem1,id tem2)
-                          {
-                              NSComparisonResult result =[tem1 compare:tem2];
-                              return result;
-                          }
-                          ];
+//    NSArray *sortArray = [temparray sortedArrayUsingComparator:
+//                          ^(id tem1,id tem2)
+//                          {
+//                              NSComparisonResult result =[tem1 compare:tem2];
+//                              return result;
+//                          }
+//                          ];
     NSMutableString *mutableString  = [[NSMutableString alloc]init];
-    for (NSString *sortKey in sortArray) {
+    for (NSString *sortKey in temparray) {
         [mutableString appendString:[NSString stringWithFormat:@"%@",[md5Dic objectForKey:sortKey]] ];
     }
     NSString *tokenString = [NSString stringWithFormat:@"%@%@%llu",MD5_SECTET,mutableString,timestamp];

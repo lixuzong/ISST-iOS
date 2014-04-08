@@ -10,16 +10,16 @@
 #import "ISSTRestaurantsModel.h"
 @interface ISSTRestaurantsParse()
 {
-  //  NSDictionary      *_dict;
+
     NSArray      *_restaurantsArray;
 }
-//@property (nonatomic,strong)NSDictionary    *dict;
+
 @property (nonatomic,strong)NSMutableArray         *restaurantsArray;
 @property (nonatomic,strong)NSDictionary    *detailsInfo;
 
 @end
 @implementation ISSTRestaurantsParse
-@synthesize  dict;
+
 @synthesize  restaurantsArray;
 @synthesize detailsInfo;
 
@@ -36,8 +36,8 @@
 {
     NSMutableArray *tmpArray =[[NSMutableArray alloc]init] ;
     
-    NSLog(@"%@",dict);
- restaurantsArray = [dict objectForKey:@"body"] ;//get the news info array
+   
+ restaurantsArray = [super.dict objectForKey:@"body"] ;//get the news info array
     int  count = [restaurantsArray count];
     NSLog(@"count=%d",count);
     for (int i=0; i<count; i++)
@@ -61,7 +61,7 @@
 
 -(id)restaurantsDetailsParse
 {
-    detailsInfo = [dict objectForKey:@"body"];
+    detailsInfo = [super.dict objectForKey:@"body"];
     ISSTRestaurantsModel *restaurantsDetailsModel = [[ISSTRestaurantsModel alloc]init];
    // ISSTRestaurantsModel *restaurant = [[[ISSTRestaurantsModel alloc]init]autorelease];
     restaurantsDetailsModel.restaurantsId     = [[detailsInfo objectForKey:@"id"] intValue];
@@ -75,12 +75,9 @@
     return [restaurantsDetailsModel retain];
 }
 
+- (void)dealloc
+{
+    [super dealloc];
+}
 
-//- (id)restaurantsSerialization:(NSData*)datas
-//{
-//    
-//    dict = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
-//    return dict;
-//
-//}
 @end

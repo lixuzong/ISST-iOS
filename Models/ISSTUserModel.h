@@ -18,11 +18,12 @@ typedef   enum Gender
 @property (nonatomic,assign) int         userId;
 @property (nonatomic,copy) NSString      *userName;
 @property (nonatomic,copy) NSString      *name;
-@property (nonatomic,assign) Gender        gender;
+@property (nonatomic,assign) Gender      gender;
 @property (nonatomic,assign) int         grade;
 @property (nonatomic,assign) int         classId;
 @property (nonatomic,assign) int         majorId;
 @property (nonatomic,assign) int         cityId;
+@property (nonatomic,strong) NSString    *phone;
 @property (nonatomic,strong) NSString    *email;
 @property (nonatomic,strong) NSString    *qq;
 @property (nonatomic,strong) NSString    *company;

@@ -56,7 +56,7 @@
         
         //NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                               cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
+                                                               cachePolicy:NSURLRequestReturnCacheDataElseLoad
                                                            timeoutInterval:6];
         if (cookie!=nil) {
             NSLog(@"1234");
@@ -118,7 +118,7 @@
             NSData *myReturn =[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
             NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
             NSDictionary *fields = [HTTPResponse allHeaderFields];
-          //  NSLog(@"%@",[fields description]);
+            NSLog(@"%@",[fields description]);
             
             if ([[fields allKeys] containsObject:@"Set-Cookie"])
             {
@@ -136,8 +136,8 @@
           //  NSLog(@"cookie = %@",cookie);
            //     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:self.cookie];
         
-        //    NSString *strRet = [[NSString alloc] initWithData:myReturn encoding:NSASCIIStringEncoding];
-         //   NSLog(@"strRet%@",strRet);
+            NSString *strRet = [[NSString alloc] initWithData:myReturn encoding:NSASCIIStringEncoding];
+            NSLog(@"strRet%@",strRet);
         } else {
             NSLog(@"connect error");
         }

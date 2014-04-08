@@ -35,7 +35,7 @@
     NSMutableArray *tmpArray =[[NSMutableArray alloc]init] ;
     
     NSLog(@"%@",dict);
-    restaurantsMenusArray = [dict objectForKey:@"body"] ;//get the news info array
+    restaurantsMenusArray = [super.dict objectForKey:@"body"] ;//get the news info array
     int  count = [restaurantsMenusArray count];
     NSLog(@"count=%d",count);
     for (int i=0; i<count; i++)
