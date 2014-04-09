@@ -16,7 +16,7 @@
 {
     self = [super init];
     if(self){
-        ;
+        
     }
     
     return self;
@@ -27,7 +27,7 @@
 - (void)dealloc
 {
     [userName release];
-    userName = nil;
+   // userName = nil;
     [name release];
     name = nil;
     [phone release];

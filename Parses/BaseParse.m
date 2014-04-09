@@ -18,8 +18,18 @@
 
 - (id)infoSerialization:(NSData*)datas
 {
+    dict = [[NSMutableDictionary alloc]init];
     dict = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
     return dict;
+}
+
+-(void)dealloc
+{
+   
+    infoArray = nil;
+    detailsInfo= nil;
+    dict= nil;
+    [super dealloc];
 }
 
 @end

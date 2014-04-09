@@ -63,8 +63,8 @@
 -(void)dealloc
 {
 
-    [self.userInfo release];
-    self.dict = nil;
+    _userInfo = nil ;
+
     [super dealloc];
 }
 

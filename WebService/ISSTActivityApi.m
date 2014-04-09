@@ -112,7 +112,7 @@ const    static  int   DETAILS   = 2;
                     
                 }
             }
-            else//可能服务器荡掉
+            else//可能服务器宕掉
             {
                 [self handleConnectionUnAvailable];
             }

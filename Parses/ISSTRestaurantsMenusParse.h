@@ -16,7 +16,4 @@
  *****/
 -(id)restaurantsMenusInfoParse;
 
-
-
-
 @end

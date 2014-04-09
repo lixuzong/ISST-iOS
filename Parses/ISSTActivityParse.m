@@ -10,7 +10,6 @@
 #import "ISSTActivityModel.h"
 @interface ISSTActivityParse()
 {
-    
     NSArray      *_activitiesArray;
 }
 
@@ -32,10 +31,10 @@
 
 -(id)activityInfoParse
 {
-    NSMutableArray *tmpArray =[[NSMutableArray alloc]init] ;
+    NSMutableArray *tmpArray =[[[NSMutableArray alloc]init] autorelease];
     
     
-    activitiesArray = [super.dict objectForKey:@"body"] ;//get the news info array
+    activitiesArray = [super.dict objectForKey:@"body"] ;
     int  count = [activitiesArray count];
     NSLog(@"count=%d",count);
     for (int i=0; i<count; i++)
@@ -48,7 +47,7 @@
         activity.content           = [[activitiesArray objectAtIndex:i] objectForKey:@"content"];
         [tmpArray addObject:activity];
     }
-    return [tmpArray retain];
+    return tmpArray ;
 
 }
 
@@ -56,19 +55,21 @@
 -(id)activityDetailsParse
 {
     detailsInfo = [super.dict objectForKey:@"body"];
-   ISSTActivityModel *activityDetailModel = [[ISSTActivityModel alloc]init];
+   ISSTActivityModel *activityDetailModel = [[[ISSTActivityModel alloc]init] autorelease];
     activityDetailModel.activityId     = [[detailsInfo objectForKey:@"id"] intValue];
     activityDetailModel.title              = [detailsInfo objectForKey:@"title"];
     activityDetailModel.description       = [detailsInfo objectForKey:@"description"];
     activityDetailModel.picture           = [detailsInfo objectForKey:@"picture"];
     activityDetailModel.content           = [detailsInfo objectForKey:@"content"];
-    return [activityDetailModel retain];
+    return activityDetailModel ;
 
 }
 
 
 - (void)dealloc
 {
+    _activitiesArray = nil;
+    detailsInfo = nil;
     [super dealloc];
 }
 @end

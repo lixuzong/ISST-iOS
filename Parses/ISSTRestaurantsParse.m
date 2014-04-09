@@ -34,10 +34,10 @@
 
 -(id)restaurantsInfoParse
 {
-    NSMutableArray *tmpArray =[[NSMutableArray alloc]init] ;
+    NSMutableArray *tmpArray =[[[NSMutableArray alloc]init]autorelease] ;
     
    
- restaurantsArray = [super.dict objectForKey:@"body"] ;//get the news info array
+ restaurantsArray = [super.dict objectForKey:@"body"] ;
     int  count = [restaurantsArray count];
     NSLog(@"count=%d",count);
     for (int i=0; i<count; i++)
@@ -52,7 +52,7 @@
         restaurant.businessHours     = [[restaurantsArray objectAtIndex:i]objectForKey:@"businessHours"];
         [tmpArray addObject:restaurant];
     }
-    return [tmpArray retain];
+    return tmpArray ;
 }
 
 
@@ -62,7 +62,7 @@
 -(id)restaurantsDetailsParse
 {
     detailsInfo = [super.dict objectForKey:@"body"];
-    ISSTRestaurantsModel *restaurantsDetailsModel = [[ISSTRestaurantsModel alloc]init];
+    ISSTRestaurantsModel *restaurantsDetailsModel = [[[ISSTRestaurantsModel alloc]init] autorelease];
    // ISSTRestaurantsModel *restaurant = [[[ISSTRestaurantsModel alloc]init]autorelease];
     restaurantsDetailsModel.restaurantsId     = [[detailsInfo objectForKey:@"id"] intValue];
     restaurantsDetailsModel.name              = [detailsInfo objectForKey:@"name"];
@@ -72,11 +72,13 @@
     restaurantsDetailsModel.hotline           = [detailsInfo objectForKey:@"hotline"];
     restaurantsDetailsModel.businessHours     = [detailsInfo objectForKey:@"businessHours"];
     restaurantsDetailsModel.content           = [detailsInfo objectForKey:@"content"];
-    return [restaurantsDetailsModel retain];
+    return restaurantsDetailsModel ;
 }
 
 - (void)dealloc
 {
+    _restaurantsArray = nil;
+    detailsInfo = nil;
     [super dealloc];
 }
 

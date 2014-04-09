@@ -22,13 +22,13 @@
 - (void)dealloc
 {
     [title release];
-    title=nil;
+   // title=nil;
     [picture release];
-    picture = nil;
+   // picture = nil;
     [description release];
-    description = nil;
+    //description = nil;
     [content release];
-    content = nil;
+   // content = nil;
     [super dealloc];
 }
 

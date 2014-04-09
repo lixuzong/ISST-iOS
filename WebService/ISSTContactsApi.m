@@ -9,6 +9,7 @@
 #import "ISSTContactsApi.h"
 #import "LoginErrors.h"
 #import "NetworkReachability.h"
+#import "ISSTContactsParse.h"
 @interface ISSTContactsApi()
 - (void)handleConnectionUnAvailable;
 @end
@@ -59,7 +60,34 @@ const static int        MAJORSLISTS         = 4;
     {
         methodId  = CONTACTSLISTS;
         datas = [[NSMutableData alloc]init];
-        NSString *info = [NSString stringWithFormat:@"id=%d&name=%@&gender=%d&grade=%d&classId=%d&majorId=%d&cityId=%d&company=%@",contactId,name,gender,gradeId,classId,majorId,cityId,company];
+        NSMutableString *info = [[NSMutableString alloc]init];
+        if (contactId>=0) {
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"id=%d",contactId]];
+        }
+        if (name) {
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&name=%@",name]];
+        }
+        if (gender >= 0) {
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&gender=%d",gender]];
+
+        }
+        if (gradeId >= 0) {
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&grade=%d",gradeId]];
+        }
+        if (classId >= 0) {
+             [info appendFormat:@"%@",[NSString stringWithFormat:@"&classId=%d",classId]];
+        }
+        if (majorId >= 0) {
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&majorId=%d",majorId]];
+        }
+        if (cityId >= 0) {
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&cityId=%d",cityId]];
+        }
+        if ( company) {
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&company=%@",company]];
+        }
+
+       // NSString *info = [NSString stringWithFormat:@"id=%d&name=%@&gender=%d&grade=%d&classId=%d&majorId=%d&cityId=%d&company=%@",contactId,name,gender,gradeId,classId,majorId,cityId,company];
         NSString *subUrlString = [NSString stringWithFormat:@"api/alumni"];
         [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
     }
@@ -74,7 +102,7 @@ const static int        MAJORSLISTS         = 4;
 {
     if (NetworkReachability.isConnectionAvailable)
     {
-        methodId  = CONTACTSLISTS;
+        methodId  = CONTACTDETAIL ;
         datas = [[NSMutableData alloc]init];
         NSString *subUrlString = [NSString stringWithFormat:@"api/alumni/%d",contactId];
         [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
@@ -151,8 +179,115 @@ const static int        MAJORSLISTS         = 4;
 //请求完成
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+    ISSTContactsParse *contactsParse=[[ISSTContactsParse alloc]init];
+    NSDictionary *dics   = [contactsParse infoSerialization:datas];;
+    NSArray *array ;
+    id backData;
     
-    
+    switch (methodId) {
+        case CONTACTSLISTS:
+            if (dics&&[dics count]>0)
+            {
+                if (0 == [contactsParse getStatus])//登录成功
+                {
+                    array = [contactsParse contactsInfoParse];
+                    NSLog(@"%d",[array count]);
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
+                    {
+                        [self.webApiDelegate requestDataOnSuccess:array];
+                    }
+                }
+                else if(1 == [contactsParse getStatus])
+                {
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    {
+                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                    }
+                }
+            }
+            else//可能服务器宕掉
+            {
+                [self handleConnectionUnAvailable];
+            }
+            break;
+        case CONTACTDETAIL:
+            if (dics&&[dics count]>0)
+            {
+                if (0 == [contactsParse getStatus])//登录成功
+                {
+                    backData = [contactsParse contactDetailsParse];
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
+                    {
+                        [self.webApiDelegate requestDataOnSuccess:backData];
+                    }
+                }
+                else if(1 == [contactsParse getStatus])
+                {
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    {
+                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                    }
+                }
+            }
+            else//可能服务器宕掉
+            {
+                [self handleConnectionUnAvailable];
+            }
+
+            break;
+        case CLASSESLISTS:
+            if (dics&&[dics count]>0)
+            {
+                if (0 == [contactsParse getStatus])//登录成功
+                {
+                    array = [contactsParse classesInfoParse];
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
+                    {
+                        [self.webApiDelegate requestDataOnSuccess:array];
+                    }
+                }
+                else if(1 == [contactsParse getStatus])
+                {
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    {
+                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                    }
+                }
+            }
+            else//可能服务器宕掉
+            {
+                [self handleConnectionUnAvailable];
+            }
+
+            break;
+        case MAJORSLISTS:
+            if (dics&&[dics count]>0)
+            {
+                if (0 == [contactsParse getStatus])//登录成功
+                {
+                    array = [contactsParse majorsInfoParse];
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
+                    {
+                        [self.webApiDelegate requestDataOnSuccess:array];
+                    }
+                }
+                else if(1 == [contactsParse getStatus])
+                {
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    {
+                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                    }
+                }
+            }
+            else//可能服务器宕掉
+            {
+                [self handleConnectionUnAvailable];
+            }
+            break;
+        default:
+            break;
+
+    }
     
 }
 

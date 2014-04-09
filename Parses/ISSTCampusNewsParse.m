@@ -13,17 +13,16 @@
 
 @interface ISSTCampusNewsParse()
 {
- //   NSDictionary      *_dict;
     NSArray      *_campusNewsArray;
 }
-//@property (nonatomic,strong)NSDictionary    *dict;
+
 @property (nonatomic,strong)NSArray         *campusNewsArray;
 @property (nonatomic,strong)NSDictionary    *detailsInfo;
 
 @end
 
 @implementation ISSTCampusNewsParse
-@synthesize  dict;
+//@synthesize  dict;
 @synthesize  campusNewsArray;
 @synthesize detailsInfo;
 
@@ -40,10 +39,10 @@
 
 - (id)campusNewsInfoParse
 {
-    NSMutableArray *newsArray =[[NSMutableArray alloc]init] ;
+    NSMutableArray *newsArray =[[[NSMutableArray alloc]init] autorelease];
     
-    NSLog(@"%@",dict);
-    campusNewsArray = [super.dict objectForKey:@"body"] ;//get the news info array
+   // NSLog(@"%@",dict);
+    campusNewsArray = [super.dict objectForKey:@"body"] ;
     int  count = [campusNewsArray count];
     NSLog(@"count=%d",count);
     for (int i=0; i<count; i++)
@@ -66,27 +65,27 @@
         campusNews.categoryId     = [[[campusNewsArray objectAtIndex:i ] objectForKey:@"categoryId"]intValue];
         [newsArray addObject:campusNews];
     }
-    return [newsArray retain];
+    return newsArray ;
 }
 
 -(id)newsDetailsParse
 {
     detailsInfo = [super.dict objectForKey:@"body"];
-    ISSTNewsDetailsModel *newsDetailsModel = [[ISSTNewsDetailsModel alloc]init];
+    ISSTNewsDetailsModel *newsDetailsModel = [[[ISSTNewsDetailsModel alloc]init] autorelease];
     NSLog(@"class=%@ \n content=%@",self,[detailsInfo objectForKey:@"content"]);
 
     newsDetailsModel.content = [detailsInfo objectForKey:@"content"];
     newsDetailsModel.title = [detailsInfo objectForKey:@"title"];
     newsDetailsModel.description = [detailsInfo objectForKey:@"description"];
-    return [newsDetailsModel retain];
+    return newsDetailsModel ;
 }
 
 
 - (void)dealloc
 {
-    //[detailsInfo release];
-    //[dict release];
-  //  [campusNewsArray release];
+    detailsInfo = nil ;
+    
+   _campusNewsArray = nil;
     [super dealloc];
 }
 

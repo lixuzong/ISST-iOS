@@ -9,9 +9,6 @@
 #import "ISSTRestaurantsMenusParse.h"
 #import "ISSTRestaurantsMenusModel.h"
 @interface ISSTRestaurantsMenusParse()
-{
-    NSArray      *_restaurantsArray;
-}
 
 @property (nonatomic,strong)NSMutableArray         *restaurantsMenusArray;
 @property (nonatomic,strong)NSDictionary    *detailsInfo;
@@ -20,7 +17,7 @@
 
 @implementation ISSTRestaurantsMenusParse
 
-@synthesize detailsInfo,restaurantsMenusArray,dict;
+@synthesize detailsInfo,restaurantsMenusArray;
 
 - (id)init
 {
@@ -32,10 +29,10 @@
 
 -(id)restaurantsMenusInfoParse
 {
-    NSMutableArray *tmpArray =[[NSMutableArray alloc]init] ;
+    NSMutableArray *tmpArray =[[[NSMutableArray alloc]init]autorelease];
     
-    NSLog(@"%@",dict);
-    restaurantsMenusArray = [super.dict objectForKey:@"body"] ;//get the news info array
+    //NSLog(@"%@",dict);
+    restaurantsMenusArray = [super.dict objectForKey:@"body"] ;
     int  count = [restaurantsMenusArray count];
     NSLog(@"count=%d",count);
     for (int i=0; i<count; i++)
@@ -48,7 +45,14 @@
         restaurant.price           = [[[restaurantsMenusArray objectAtIndex:i] objectForKey:@"price"]floatValue];
         [tmpArray addObject:restaurant];
     }
-    return [tmpArray retain];
+    return tmpArray ;
+}
+
+- (void)dealloc
+{
+    detailsInfo = nil;
+    restaurantsMenusArray = nil;
+    [super dealloc];
 }
 
 @end

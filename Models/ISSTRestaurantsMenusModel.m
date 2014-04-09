@@ -13,11 +13,11 @@
 - (void)dealloc
 {
     [picture release];
-    picture = nil;
+   // picture = nil;
     [name release];
-    name = nil;
+   // name = nil;
     [description release];
-    description = nil;
+   // description = nil;
       [super dealloc];
 }
 @end

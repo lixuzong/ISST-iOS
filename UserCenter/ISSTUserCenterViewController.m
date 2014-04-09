@@ -10,14 +10,23 @@
 #import "ISSTLoginViewController.h"
 #import "ISSTUserCenterUserInfoTableViewCell.h"
 #import "ISSTUserInfoViewController.h"
+
+//#import "ISSTContactsApi.h"
+
 @interface ISSTUserCenterViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *userCenterCatalogueTableView;
 @property (nonatomic,strong)ISSTUserInfoViewController*     userInfoViewController;
+
+//@property (nonatomic,strong)   ISSTContactsApi *contactsApi ;
+
 - (void)signOut;
 - (void)go2UserInfoViewController:(NSIndexPath *)indexPath tableView:(UITableView *)tableView;
 @end
 
 @implementation ISSTUserCenterViewController
+
+//@synthesize contactsApi;
+
 @synthesize userCenterCatalogueTableView;
 @synthesize userInfoViewController;
 static NSString *CellTableIdentifier=@"ISSTUserCenterViewCell";
@@ -44,6 +53,10 @@ NSArray *titleForRowArray= nil;
                        nil];
 
     [super viewDidLoad];
+    
+   // contactsApi= [[ISSTContactsApi alloc]init];
+   // contactsApi.webApiDelegate= self;
+   
 
  
 }
@@ -109,7 +122,11 @@ NSArray *titleForRowArray= nil;
     
     if (indexPath.section == [titleForRowArray count]-1&&indexPath.row == [[titleForRowArray objectAtIndex:([titleForRowArray count]-1) ] count]-1 )///logout
     {
-        [self signOut];
+       [self signOut];
+        // [contactsApi requestContactsLists:-1 name:nil gender:0 grade:2013 classId:13 majorId:0 cityId:0 company:nil];
+       // [contactsApi requestContactDetail:714];
+        //[contactsApi requestMajorsLists];
+      //  [contactsApi requestClassesLists];
     }
 }
 

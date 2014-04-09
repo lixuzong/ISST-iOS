@@ -70,7 +70,11 @@
 		AE9ECAE118E968B200FEAEF4 /* ISSTStudyingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECAE018E968B200FEAEF4 /* ISSTStudyingModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AE9ECAE418E968D100FEAEF4 /* ISSTExperenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECAE318E968D100FEAEF4 /* ISSTExperenceModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AE9ECAE718E9690200FEAEF4 /* ISSTWikiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECAE618E9690200FEAEF4 /* ISSTWikiModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AE9ECAF518E978EE00FEAEF4 /* BaseParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECAF418E978EE00FEAEF4 /* BaseParse.m */; };
+		AE9ECAF518E978EE00FEAEF4 /* BaseParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECAF418E978EE00FEAEF4 /* BaseParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AEA238C718F527D00030F196 /* ISSTContactsParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA238C618F527D00030F196 /* ISSTContactsParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AEA238CA18F52B280030F196 /* ISSTContactModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA238C918F52B280030F196 /* ISSTContactModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AEA238CD18F530960030F196 /* ISSTClassModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA238CC18F530960030F196 /* ISSTClassModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AEA238D018F530BD0030F196 /* ISSTMajorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA238CF18F530BD0030F196 /* ISSTMajorModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AEE2844218DADAA000BEF1A9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2844118DADAA000BEF1A9 /* Foundation.framework */; };
 		AEE2844418DADAA000BEF1A9 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2844318DADAA000BEF1A9 /* CoreGraphics.framework */; };
 		AEE2844618DADAA000BEF1A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2844518DADAA000BEF1A9 /* UIKit.framework */; };
@@ -224,6 +228,14 @@
 		AE9ECAE618E9690200FEAEF4 /* ISSTWikiModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTWikiModel.m; path = Models/ISSTWikiModel.m; sourceTree = "<group>"; };
 		AE9ECAF318E978EE00FEAEF4 /* BaseParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseParse.h; path = Parses/BaseParse.h; sourceTree = "<group>"; };
 		AE9ECAF418E978EE00FEAEF4 /* BaseParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseParse.m; path = Parses/BaseParse.m; sourceTree = "<group>"; };
+		AEA238C518F527D00030F196 /* ISSTContactsParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTContactsParse.h; path = Parses/ISSTContactsParse.h; sourceTree = "<group>"; };
+		AEA238C618F527D00030F196 /* ISSTContactsParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTContactsParse.m; path = Parses/ISSTContactsParse.m; sourceTree = "<group>"; };
+		AEA238C818F52B280030F196 /* ISSTContactModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTContactModel.h; path = Models/ISSTContactModel.h; sourceTree = "<group>"; };
+		AEA238C918F52B280030F196 /* ISSTContactModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTContactModel.m; path = Models/ISSTContactModel.m; sourceTree = "<group>"; };
+		AEA238CB18F530960030F196 /* ISSTClassModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTClassModel.h; path = Models/ISSTClassModel.h; sourceTree = "<group>"; };
+		AEA238CC18F530960030F196 /* ISSTClassModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTClassModel.m; path = Models/ISSTClassModel.m; sourceTree = "<group>"; };
+		AEA238CE18F530BD0030F196 /* ISSTMajorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTMajorModel.h; sourceTree = "<group>"; };
+		AEA238CF18F530BD0030F196 /* ISSTMajorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTMajorModel.m; sourceTree = "<group>"; };
 		AEE2843E18DADAA000BEF1A9 /* ISST.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ISST.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEE2844118DADAA000BEF1A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		AEE2844318DADAA000BEF1A9 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -602,6 +614,12 @@
 				AE014ADA18EFD4690009E008 /* ISSTRestaurantsMenusModel.m */,
 				AE0B8C2818F2BAE000844F55 /* ISSTActivityModel.h */,
 				AE0B8C2918F2BAE000844F55 /* ISSTActivityModel.m */,
+				AEA238C818F52B280030F196 /* ISSTContactModel.h */,
+				AEA238C918F52B280030F196 /* ISSTContactModel.m */,
+				AEA238CB18F530960030F196 /* ISSTClassModel.h */,
+				AEA238CC18F530960030F196 /* ISSTClassModel.m */,
+				AEA238CE18F530BD0030F196 /* ISSTMajorModel.h */,
+				AEA238CF18F530BD0030F196 /* ISSTMajorModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -693,6 +711,8 @@
 				AE014ADD18EFD6680009E008 /* ISSTRestaurantsMenusParse.m */,
 				AE0B8C2B18F2BF0A00844F55 /* ISSTActivityParse.h */,
 				AE0B8C2C18F2BF0A00844F55 /* ISSTActivityParse.m */,
+				AEA238C518F527D00030F196 /* ISSTContactsParse.h */,
+				AEA238C618F527D00030F196 /* ISSTContactsParse.m */,
 			);
 			name = Parses;
 			sourceTree = "<group>";
@@ -828,11 +848,13 @@
 				AE9B148218EBB04400034F65 /* NetworkReachability.m in Sources */,
 				AE014ADB18EFD4690009E008 /* ISSTRestaurantsMenusModel.m in Sources */,
 				AE0B8C8618F2D1F100844F55 /* ISSTActivityTableViewCell.m in Sources */,
+				AEA238C718F527D00030F196 /* ISSTContactsParse.m in Sources */,
 				AEFDC77918E1B76400D7FDAA /* ISSTLifeApi.m in Sources */,
 				AEFDC77318E16A5C00D7FDAA /* ISSTPushedViewController.m in Sources */,
 				AE9B148118EBB04400034F65 /* LoginErrors.m in Sources */,
 				AE014ADE18EFD6680009E008 /* ISSTRestaurantsMenusParse.m in Sources */,
 				AE0B8C2D18F2BF0A00844F55 /* ISSTActivityParse.m in Sources */,
+				AEA238D018F530BD0030F196 /* ISSTMajorModel.m in Sources */,
 				AEE284AC18DB2D1900BEF1A9 /* ISSTApi.m in Sources */,
 				AE0B8C9518F2ED7E00844F55 /* ISSTUserInfoViewController.m in Sources */,
 				AEE2847C18DAE55500BEF1A9 /* ISSTMenuViewController.m in Sources */,
@@ -850,6 +872,7 @@
 				581C8D6818F03B050006740B /* ISSTStudyViewController.m in Sources */,
 				AE9052A818EEEE6D0088742D /* ISSTNewsTableViewCell.m in Sources */,
 				AE9052A618EEEE6D0088742D /* ISSTNewsDetailViewController.m in Sources */,
+				AEA238CA18F52B280030F196 /* ISSTContactModel.m in Sources */,
 				AEFDC75418DDC5E100D7FDAA /* ISSTSlidebarNavController.m in Sources */,
 				AE9ECAE718E9690200FEAEF4 /* ISSTWikiModel.m in Sources */,
 				AE0B8C8B18F2D82B00844F55 /* ISSTActivityDetailViewController.m in Sources */,
@@ -873,6 +896,7 @@
 				AEE2847918DAE24A00BEF1A9 /* ISSTRevealViewController.m in Sources */,
 				AE014AD818EFC3D30009E008 /* ISSTRestaurantsApi.m in Sources */,
 				AE0B8C9018F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.m in Sources */,
+				AEA238CD18F530960030F196 /* ISSTClassModel.m in Sources */,
 				AE9052B618EEEE890088742D /* ISSTWikisCollectionViewCell.m in Sources */,
 				AEFDC77018E1625900D7FDAA /* ISSTUserModel.m in Sources */,
 				AE0B8C8118F2CDDF00844F55 /* ISSTExperienceViewController.m in Sources */,

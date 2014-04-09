@@ -14,19 +14,19 @@
 - (void)dealloc
 {
     [picture release];
-    picture = nil;
+  //  picture = nil;
     [name release];
-    name = nil;
+  //  name = nil;
     [address release];
-    address = nil;
+  //  address = nil;
     [hotline release];
-    hotline = nil;
+   // hotline = nil;
     [businessHours release];
-    businessHours = nil;
+   // businessHours = nil;
     [description release];
-    description = nil;
+   // description = nil;
     [content release];
-    content = nil;
+   // content = nil;
     [super dealloc];
 }
 @end
