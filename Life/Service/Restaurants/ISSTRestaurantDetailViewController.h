@@ -2,7 +2,7 @@
 //  ISSTRestaurantDetailViewController.h
 //  ISST
 //
-//  Created by liuyang on 14-4-6.
+//  Created by zhukang on 14-4-6.
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 

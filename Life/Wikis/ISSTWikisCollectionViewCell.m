@@ -2,7 +2,7 @@
 //  ISSTWikisCollectionViewCell.m
 //  ISST
 //
-//  Created by liuyang on 14-4-2.
+//  Created by zhukang on 14-4-2.
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 

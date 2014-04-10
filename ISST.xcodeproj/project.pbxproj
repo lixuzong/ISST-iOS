@@ -13,6 +13,14 @@
 		581C8D6718F03B050006740B /* ISSTStudyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 581C8D6018F03B050006740B /* ISSTStudyTableViewCell.xib */; };
 		581C8D6818F03B050006740B /* ISSTStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581C8D6218F03B050006740B /* ISSTStudyViewController.m */; };
 		581C8D6918F03B050006740B /* ISSTStudyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 581C8D6318F03B050006740B /* ISSTStudyViewController.xib */; };
+		58898D5518F58FAD00016339 /* ISSTSelectFactorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58898D5318F58FAD00016339 /* ISSTSelectFactorsViewController.m */; };
+		58898D5618F58FAD00016339 /* ISSTSelectFactorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58898D5418F58FAD00016339 /* ISSTSelectFactorsViewController.xib */; };
+		58898D6418F5925A00016339 /* AJComboBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 58898D6318F5925A00016339 /* AJComboBox.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		58898D6518F5925A00016339 /* AJComboBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 58898D6318F5925A00016339 /* AJComboBox.m */; };
+		58898D6718F5926200016339 /* combo_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 58898D6618F5926200016339 /* combo_bg.png */; };
+		58898D6818F5926200016339 /* combo_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 58898D6618F5926200016339 /* combo_bg.png */; };
+		58B6A78918F56910005C748E /* ISSTAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58B6A78718F56910005C748E /* ISSTAddressBookViewController.m */; };
+		58B6A78A18F56910005C748E /* ISSTAddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58B6A78818F56910005C748E /* ISSTAddressBookViewController.xib */; };
 		AE014AD218EFAA1D0009E008 /* ISSTRestaurantsParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE014AD118EFAA1D0009E008 /* ISSTRestaurantsParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AE014AD518EFAA570009E008 /* ISSTRestaurantsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE014AD418EFAA570009E008 /* ISSTRestaurantsModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AE014AD818EFC3D30009E008 /* ISSTRestaurantsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AE014AD718EFC3D30009E008 /* ISSTRestaurantsApi.m */; };
@@ -131,6 +139,15 @@
 		581C8D6118F03B050006740B /* ISSTStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTStudyViewController.h; sourceTree = "<group>"; };
 		581C8D6218F03B050006740B /* ISSTStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTStudyViewController.m; sourceTree = "<group>"; };
 		581C8D6318F03B050006740B /* ISSTStudyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTStudyViewController.xib; sourceTree = "<group>"; };
+		58898D5218F58FAD00016339 /* ISSTSelectFactorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSelectFactorsViewController.h; sourceTree = SOURCE_ROOT; };
+		58898D5318F58FAD00016339 /* ISSTSelectFactorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSelectFactorsViewController.m; sourceTree = SOURCE_ROOT; };
+		58898D5418F58FAD00016339 /* ISSTSelectFactorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTSelectFactorsViewController.xib; sourceTree = SOURCE_ROOT; };
+		58898D6218F5925400016339 /* AJComboBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AJComboBox.h; sourceTree = SOURCE_ROOT; };
+		58898D6318F5925A00016339 /* AJComboBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AJComboBox.m; sourceTree = SOURCE_ROOT; };
+		58898D6618F5926200016339 /* combo_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = combo_bg.png; sourceTree = SOURCE_ROOT; };
+		58B6A78618F56910005C748E /* ISSTAddressBookViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTAddressBookViewController.h; sourceTree = SOURCE_ROOT; };
+		58B6A78718F56910005C748E /* ISSTAddressBookViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTAddressBookViewController.m; sourceTree = SOURCE_ROOT; };
+		58B6A78818F56910005C748E /* ISSTAddressBookViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTAddressBookViewController.xib; sourceTree = SOURCE_ROOT; };
 		AE014AD018EFAA1D0009E008 /* ISSTRestaurantsParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTRestaurantsParse.h; path = Parses/ISSTRestaurantsParse.h; sourceTree = "<group>"; };
 		AE014AD118EFAA1D0009E008 /* ISSTRestaurantsParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRestaurantsParse.m; path = Parses/ISSTRestaurantsParse.m; sourceTree = "<group>"; };
 		AE014AD318EFAA570009E008 /* ISSTRestaurantsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTRestaurantsModel.h; path = Models/ISSTRestaurantsModel.h; sourceTree = "<group>"; };
@@ -360,6 +377,17 @@
 			path = Study;
 			sourceTree = "<group>";
 		};
+		58898D5718F5914100016339 /* AjComboBox */ = {
+			isa = PBXGroup;
+			children = (
+				58898D6618F5926200016339 /* combo_bg.png */,
+				58898D6318F5925A00016339 /* AJComboBox.m */,
+				58898D6218F5925400016339 /* AJComboBox.h */,
+			);
+			name = AjComboBox;
+			path = Status;
+			sourceTree = "<group>";
+		};
 		AE0B8C3118F2C76F00844F55 /* Activities */ = {
 			isa = PBXGroup;
 			children = (
@@ -449,6 +477,7 @@
 			isa = PBXGroup;
 			children = (
 				AE9ECAE918E969C400FEAEF4 /* Status */,
+				58898D5718F5914100016339 /* AjComboBox */,
 				AE9ECAE818E969AE00FEAEF4 /* Helps */,
 				AEFDC76018DFFF2700D7FDAA /* Parses */,
 				AEE284A318DB2B8100BEF1A9 /* Models */,
@@ -583,7 +612,7 @@
 			isa = PBXGroup;
 			children = (
 				AEE284AE18DB2F2B00BEF1A9 /* Base */,
-				AEE284A418DB2C6000BEF1A9 /* Contact */,
+				AEE284A418DB2C6000BEF1A9 /* AddressBook */,
 				AEE284A518DB2C6000BEF1A9 /* Job */,
 				AEE284A618DB2C6000BEF1A9 /* Life */,
 				AEE284A718DB2C6000BEF1A9 /* Login */,
@@ -624,10 +653,17 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		AEE284A418DB2C6000BEF1A9 /* Contact */ = {
+		AEE284A418DB2C6000BEF1A9 /* AddressBook */ = {
 			isa = PBXGroup;
 			children = (
+				58B6A78618F56910005C748E /* ISSTAddressBookViewController.h */,
+				58B6A78718F56910005C748E /* ISSTAddressBookViewController.m */,
+				58B6A78818F56910005C748E /* ISSTAddressBookViewController.xib */,
+				58898D5218F58FAD00016339 /* ISSTSelectFactorsViewController.h */,
+				58898D5318F58FAD00016339 /* ISSTSelectFactorsViewController.m */,
+				58898D5418F58FAD00016339 /* ISSTSelectFactorsViewController.xib */,
 			);
+			name = AddressBook;
 			path = Contact;
 			sourceTree = "<group>";
 		};
@@ -802,15 +838,18 @@
 				AE9E018A18F3F0CB008EAFA1 /* ISSTRestaurantsViewController.xib in Resources */,
 				AEE2849C18DB263100BEF1A9 /* searchBarBG.png in Resources */,
 				AE9052A718EEEE6D0088742D /* ISSTNewsDetailViewController.xib in Resources */,
+				58898D6718F5926200016339 /* combo_bg.png in Resources */,
 				581C8D6518F03B050006740B /* ISSTStudyDetailViewController.xib in Resources */,
 				AEE2849E18DB263100BEF1A9 /* searchBarIcon@2x.png in Resources */,
 				AE0B8C8718F2D1F100844F55 /* ISSTActivityTableViewCell.xib in Resources */,
 				AEFDC75918DDC90800D7FDAA /* ISSTLoginViewController.xib in Resources */,
 				581C8D6918F03B050006740B /* ISSTStudyViewController.xib in Resources */,
 				AE9052B918EEEE890088742D /* ISSTWikisDetailViewController.xib in Resources */,
+				58B6A78A18F56910005C748E /* ISSTAddressBookViewController.xib in Resources */,
 				AE9052B718EEEE890088742D /* ISSTWikisCollectionViewCell.xib in Resources */,
 				AE0B8C3618F2C8B300844F55 /* ISSTActivitiesViewController.xib in Resources */,
 				AE0B8C8C18F2D82B00844F55 /* ISSTActivityDetailViewController.xib in Resources */,
+				58898D5618F58FAD00016339 /* ISSTSelectFactorsViewController.xib in Resources */,
 				AE9E018618F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.xib in Resources */,
 				AE9E018F18F3F0D4008EAFA1 /* ISSTServiceViewController.xib in Resources */,
 				AE9052BB18EEEE890088742D /* ISSTWikisViewController.xib in Resources */,
@@ -832,6 +871,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEE2846B18DADAA000BEF1A9 /* InfoPlist.strings in Resources */,
+				58898D6818F5926200016339 /* combo_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -858,6 +898,8 @@
 				AEE284AC18DB2D1900BEF1A9 /* ISSTApi.m in Sources */,
 				AE0B8C9518F2ED7E00844F55 /* ISSTUserInfoViewController.m in Sources */,
 				AEE2847C18DAE55500BEF1A9 /* ISSTMenuViewController.m in Sources */,
+				58898D5518F58FAD00016339 /* ISSTSelectFactorsViewController.m in Sources */,
+				58898D6418F5925A00016339 /* AJComboBox.m in Sources */,
 				AEFDC77618E16D5C00D7FDAA /* UserLoginParse.m in Sources */,
 				AE014AD218EFAA1D0009E008 /* ISSTRestaurantsParse.m in Sources */,
 				AEFDC75F18DED14F00D7FDAA /* ISSTLoginApi.m in Sources */,
@@ -870,6 +912,7 @@
 				AE9E017618F3BC1F008EAFA1 /* ISSTContactsApi.m in Sources */,
 				AE0B8C2A18F2BAE000844F55 /* ISSTActivityModel.m in Sources */,
 				581C8D6818F03B050006740B /* ISSTStudyViewController.m in Sources */,
+				58B6A78918F56910005C748E /* ISSTAddressBookViewController.m in Sources */,
 				AE9052A818EEEE6D0088742D /* ISSTNewsTableViewCell.m in Sources */,
 				AE9052A618EEEE6D0088742D /* ISSTNewsDetailViewController.m in Sources */,
 				AEA238CA18F52B280030F196 /* ISSTContactModel.m in Sources */,
@@ -912,6 +955,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEE2846D18DADAA000BEF1A9 /* ISSTTests.m in Sources */,
+				58898D6518F5925A00016339 /* AJComboBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

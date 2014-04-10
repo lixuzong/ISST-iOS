@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 
 typedef void (^RevealBlock)();
-
-
-
 @interface ISSTRootViewController : UIViewController
 - (id)initWithTitle:(NSString *)title withRevealBlock:(RevealBlock)revealBlock;
 

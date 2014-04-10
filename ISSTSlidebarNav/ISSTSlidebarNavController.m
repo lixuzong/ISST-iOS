@@ -14,6 +14,7 @@
 #import "ISSTLoginViewController.h"
 #import "ISSTStudyViewController.h"
 #import "ISSTServiceViewController.h"
+#import "ISSTAddressBookViewController.h"
 
 #import "ISSTExperienceViewController.h"
 #import "ISSTWikisViewController.h"
@@ -108,7 +109,7 @@
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTExperienceViewController alloc] initWithTitle:@"经验交流" withRevealBlock:revealBlock]]
                                  ],
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"通讯录" withRevealBlock:revealBlock]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTAddressBookViewController alloc] initWithTitle:@"通讯录" withRevealBlock:revealBlock]]
                                  ],
                              @[
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"城主" withRevealBlock:revealBlock]],

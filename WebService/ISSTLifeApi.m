@@ -133,7 +133,18 @@ const    static  int   EXPERIENCE  =5;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
+    NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+    NSDictionary *fields = [HTTPResponse allHeaderFields];
+    NSLog(@"self=%@ fields=%@",self,[fields description]);
+    if ([[fields allKeys] containsObject:@"Set-Cookie"])
+    {
+        //  cookie =[[NSString alloc] initWithString: [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0]];
+        cookie = [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0];
+        //
+        //  [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+    }
     [self.datas setLength:0];
+
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data

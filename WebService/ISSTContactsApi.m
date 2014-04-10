@@ -88,8 +88,8 @@ const static int        MAJORSLISTS         = 4;
         }
 
        // NSString *info = [NSString stringWithFormat:@"id=%d&name=%@&gender=%d&grade=%d&classId=%d&majorId=%d&cityId=%d&company=%@",contactId,name,gender,gradeId,classId,majorId,cityId,company];
-        NSString *subUrlString = [NSString stringWithFormat:@"api/alumni"];
-        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+        NSString *subUrlString = [NSString stringWithFormat:@"api/alumni?%@",info];
+        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
     }
     else
     {
@@ -167,7 +167,18 @@ const static int        MAJORSLISTS         = 4;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
+    NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+    NSDictionary *fields = [HTTPResponse allHeaderFields];
+    NSLog(@"self=%@ fields=%@",self,[fields description]);
+    if ([[fields allKeys] containsObject:@"Set-Cookie"])
+    {
+        //  cookie =[[NSString alloc] initWithString: [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0]];
+        cookie = [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0];
+        //
+        //  [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+    }
     [self.datas setLength:0];
+
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
