@@ -60,35 +60,34 @@ const static int        MAJORSLISTS         = 4;
     {
         methodId  = CONTACTSLISTS;
         datas = [[NSMutableData alloc]init];
-        NSMutableString *info = [[NSMutableString alloc]init];
-        if (contactId>=0) {
-            [info appendFormat:@"%@",[NSString stringWithFormat:@"id=%d",contactId]];
-        }
+        NSMutableString *info = [[NSMutableString alloc]initWithString:[NSString stringWithFormat:@"id=%d&gender=%d&grade=%d&classId=%d&majorId=%d&cityId=%d",contactId,gender,gradeId,classId,majorId,cityId]];
+//        if (contactId>=0) {
+//            [info appendFormat:@"%@",[NSString stringWithFormat:@"id=%d",contactId]];
+//        }
         if (name) {
             [info appendFormat:@"%@",[NSString stringWithFormat:@"&name=%@",name]];
         }
-        if (gender >= 0) {
-            [info appendFormat:@"%@",[NSString stringWithFormat:@"&gender=%d",gender]];
-
-        }
-        if (gradeId >= 0) {
-            [info appendFormat:@"%@",[NSString stringWithFormat:@"&grade=%d",gradeId]];
-        }
-        if (classId >= 0) {
-             [info appendFormat:@"%@",[NSString stringWithFormat:@"&classId=%d",classId]];
-        }
-        if (majorId >= 0) {
-            [info appendFormat:@"%@",[NSString stringWithFormat:@"&majorId=%d",majorId]];
-        }
-        if (cityId >= 0) {
-            [info appendFormat:@"%@",[NSString stringWithFormat:@"&cityId=%d",cityId]];
-        }
+//        if (gender >= 0) {
+//            [info appendFormat:@"%@",[NSString stringWithFormat:@"&gender=%d",gender]];
+//
+//        }
+//        if (gradeId >= 0) {
+//            [info appendFormat:@"%@",[NSString stringWithFormat:@"&grade=%d",gradeId]];
+//        }
+//        if (classId >= 0) {
+//             [info appendFormat:@"%@",[NSString stringWithFormat:@"&classId=%d",classId]];
+//        }
+//        if (majorId >= 0) {
+//            [info appendFormat:@"%@",[NSString stringWithFormat:@"&majorId=%d",majorId]];
+//        }
+//        if (cityId >= 0) {
+//            [info appendFormat:@"%@",[NSString stringWithFormat:@"&cityId=%d",cityId]];
+//        }
         if ( company) {
             [info appendFormat:@"%@",[NSString stringWithFormat:@"&company=%@",company]];
         }
-
-       // NSString *info = [NSString stringWithFormat:@"id=%d&name=%@&gender=%d&grade=%d&classId=%d&majorId=%d&cityId=%d&company=%@",contactId,name,gender,gradeId,classId,majorId,cityId,company];
         NSString *subUrlString = [NSString stringWithFormat:@"api/alumni?%@",info];
+        NSLog(@"subUrlString=%@",subUrlString);
         [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
     }
     else

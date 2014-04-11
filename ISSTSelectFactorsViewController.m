@@ -7,23 +7,23 @@
 //
 
 #import "ISSTSelectFactorsViewController.h"
-#import "ISSTClassModel.h"
-#import "ISSTMajorModel.h"
 @interface ISSTSelectFactorsViewController ()
 @property(nonatomic,retain)AJComboBox *gender;
 @property(nonatomic,retain)AJComboBox *grade;
 @property(nonatomic,retain)AJComboBox *major;
-@property(strong,nonatomic)ISSTClassModel* classModel;
-@property(strong,nonatomic)ISSTMajorModel* majorModel;
-@property(strong,nonatomic)NSArray *genderArray;
-@property(strong,nonatomic)NSMutableArray *gradeArray;
-@property(strong,nonatomic)NSMutableArray *majorsArray;
 - (IBAction)backgroundTap:(id)sender;
 @end
 
 @implementation ISSTSelectFactorsViewController
 @synthesize name,gender,grade,major,majorsModelArray,gradeModelArray,classModel,majorModel,gradeArray,majorsArray,genderArray;
-
+@synthesize selectedDelegate;
+@synthesize GRADEID;
+@synthesize GENDERID;
+@synthesize MAJORID;
+int static METHOD;
+int static gradeid;
+int static majorid;
+int static genderid;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,6 +37,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    GRADEID=GENDERID=MAJORID=-1;
     gradeArray=[[NSMutableArray alloc]init];
     for(int i=0;i<[gradeModelArray count];i++)
     {
@@ -72,7 +73,13 @@
     [self.view addSubview:major];
 
 }
-
+-(void)viewDidDisappear:(BOOL)animated
+{
+        GRADEID=GENDERID=MAJORID=-1;
+    [gender setLabelText:@"-SELECT-"];
+    [grade setLabelText:@"-SELECT-"];
+    [major setLabelText:@"-SELECT-"];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -86,28 +93,67 @@
     switch (comboBox.tag) {
         case 1:
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Selected Value: %@", [genderArray  objectAtIndex:selectedIndex]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            METHOD=1;
+            GENDERID=selectedIndex;
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"性别: %@", [genderArray  objectAtIndex:selectedIndex]] delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
         }
             break;
         case 2:
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Selected Value: %@", [gradeArray  objectAtIndex:selectedIndex]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            METHOD=2;
+            GRADEID=selectedIndex;
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"年级: %@", [gradeArray  objectAtIndex:selectedIndex]] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
         }
             break;
         case 3:
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"Selected Value: %@", [majorsArray  objectAtIndex:selectedIndex]] delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles: nil];
+            METHOD=3;
+            MAJORID=selectedIndex;
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"专业方向: %@", [majorsArray  objectAtIndex:selectedIndex]] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
             [alert show];
         }
             break;
         default:
+            METHOD=0;
             break;
     }
 }
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+ {
+     switch (METHOD) {
+         case 1:
+             NSLog(@"%d",GENDERID);
+             break;
+         case 2:
+             NSLog(@"%d",GRADEID);
+             break;
+         case 3:
+             NSLog(@"%d",MAJORID);
+             break;
+             
+         default:
+             break;
+     }
+ }
 
 - (IBAction)submit:(id)sender {
+    
+    GENDERID++;
+    if(GRADEID>=0)
+        classModel=[gradeModelArray objectAtIndex:GRADEID];
+    else classModel.classId=GRADEID+1;
+    if (MAJORID>=0)
+        majorModel=[majorsModelArray objectAtIndex:MAJORID];
+    else majorModel.majorId=MAJORID+1;
+    [selectedDelegate selectedReloadData];
+    GRADEID=GENDERID=MAJORID=-1;
+    [gender setLabelText:@"-SELECT-"];
+    [grade setLabelText:@"-SELECT-"];
+    [major setLabelText:@"-SELECT-"];
+    [self.navigationController popViewControllerAnimated:self];
+    
 }
 - (IBAction)backgroundTap:(id)sender {
     [self.name resignFirstResponder];

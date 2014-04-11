@@ -139,6 +139,7 @@
 		581C8D6118F03B050006740B /* ISSTStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTStudyViewController.h; sourceTree = "<group>"; };
 		581C8D6218F03B050006740B /* ISSTStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTStudyViewController.m; sourceTree = "<group>"; };
 		581C8D6318F03B050006740B /* ISSTStudyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTStudyViewController.xib; sourceTree = "<group>"; };
+		584D718A18F6DE2000302AC1 /* ISSTAddressBookDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTAddressBookDelegate.h; sourceTree = SOURCE_ROOT; };
 		58898D5218F58FAD00016339 /* ISSTSelectFactorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSelectFactorsViewController.h; sourceTree = SOURCE_ROOT; };
 		58898D5318F58FAD00016339 /* ISSTSelectFactorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSelectFactorsViewController.m; sourceTree = SOURCE_ROOT; };
 		58898D5418F58FAD00016339 /* ISSTSelectFactorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTSelectFactorsViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -662,6 +663,7 @@
 				58898D5218F58FAD00016339 /* ISSTSelectFactorsViewController.h */,
 				58898D5318F58FAD00016339 /* ISSTSelectFactorsViewController.m */,
 				58898D5418F58FAD00016339 /* ISSTSelectFactorsViewController.xib */,
+				584D718A18F6DE2000302AC1 /* ISSTAddressBookDelegate.h */,
 			);
 			name = AddressBook;
 			path = Contact;

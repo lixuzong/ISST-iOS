@@ -7,15 +7,12 @@
 //
 
 #import "ISSTAddressBookViewController.h"
-#import "ISSTUserModel.h"
-#import "ISSTContactsApi.h"
 #import "ISSTSelectFactorsViewController.h"
 @interface ISSTAddressBookViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *addressBookTableView;
-@property(strong,nonatomic)ISSTUserModel *addressBookModel;
-@property(strong,nonatomic)ISSTContactsApi *addressBookApi;
 @property(strong,nonatomic)NSMutableArray *addressBookArray;
 @property(strong,nonatomic)ISSTSelectFactorsViewController *selectFactors;
+@property(strong,nonatomic)NSDictionary *sortedNamesDictionary;
 -(void)clickSelect;
 @end
 
@@ -25,6 +22,7 @@
 @synthesize addressBookTableView;
 @synthesize addressBookArray;
 @synthesize selectFactors;
+@synthesize sortedNamesDictionary;
 static NSString *CellIdentifier=@"ContactCell";
 const static int        CONTACTSLISTS       = 1;
 const static  int       CONTACTDETAIL       = 2;
@@ -45,7 +43,7 @@ int method;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.selectFactors=[[ISSTSelectFactorsViewController alloc]initWithNibName:@"ISSTSelectFactorsViewController" bundle:nil];
+    self.selectFactors=[[ISSTSelectFactorsViewController alloc]init];
     self.selectFactors.navigationItem.title=@"筛选条件";
     method=CONTACTSLISTS;
     self.navigationItem.rightBarButtonItem =
@@ -54,7 +52,8 @@ int method;
                                                   action:@selector(clickSelect)];
     self.addressBookApi = [[ISSTContactsApi alloc]init];
     self.addressBookApi.webApiDelegate =self;
-    [self.addressBookApi requestContactsLists:-1 name:nil gender:1 grade:2013 classId:15 majorId:10 cityId:-1 company:nil];
+    addressBookModel=[[ISSTUserModel alloc]init];
+    [self.addressBookApi requestContactsLists:0 name:nil gender:addressBookModel.gender grade:addressBookModel.grade classId:15 majorId:addressBookModel.majorId cityId:0 company:nil];
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 	self.view.backgroundColor = [UIColor lightGrayColor];
     
@@ -156,7 +155,15 @@ int method;
 }
 -(void)clickSelect
 {
+    self.selectFactors.selectedDelegate=self;
     [self.navigationController pushViewController:selectFactors animated:NO];
+}
+-(void)selectedReloadData
+{
+    NSLog(@"selectFactors.GENDERID=%d,selectFactors.classModel.classId=%d,selectFactors.majorModel.majorId=%d",selectFactors.GENDERID,selectFactors.classModel.classId,selectFactors.majorModel.majorId);
+    [addressBookApi requestContactsLists:0 name:selectFactors.name.text gender:selectFactors.GENDERID grade:0 classId:selectFactors.classModel.classId majorId:selectFactors.majorModel.majorId cityId:0 company:nil];
+    [addressBookTableView reloadData];
+    
 }
 
 - (void)didReceiveMemoryWarning
