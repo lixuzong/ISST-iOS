@@ -13,7 +13,7 @@ typedef   enum Gender
     FAMALE = 2
 }Gender;
 
-@interface ISSTUserModel : NSObject
+@interface ISSTUserModel : NSObject<NSCoding>
 
 @property (nonatomic,assign) int         userId;
 @property (nonatomic,copy) NSString      *userName;

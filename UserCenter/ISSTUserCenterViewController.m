@@ -11,12 +11,15 @@
 #import "ISSTUserCenterUserInfoTableViewCell.h"
 #import "ISSTUserInfoViewController.h"
 
+
+#import "AppCache.h"
+#import "ISSTUserModel.h"
 //#import "ISSTContactsApi.h"
 
 @interface ISSTUserCenterViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *userCenterCatalogueTableView;
 @property (nonatomic,strong)ISSTUserInfoViewController*     userInfoViewController;
-
+@property (nonatomic,strong)ISSTUserModel  *userModel;
 //@property (nonatomic,strong)   ISSTContactsApi *contactsApi ;
 
 - (void)signOut;
@@ -29,6 +32,7 @@
 
 @synthesize userCenterCatalogueTableView;
 @synthesize userInfoViewController;
+@synthesize userModel;
 static NSString *CellTableIdentifier=@"ISSTUserCenterViewCell";
 
 NSArray *titleForRowArray= nil;
@@ -56,10 +60,40 @@ NSArray *titleForRowArray= nil;
     
    // contactsApi= [[ISSTContactsApi alloc]init];
    // contactsApi.webApiDelegate= self;
-   
-
- 
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    //检查缓存中是否有用户数据
+    self.userModel = [AppCache getCache];
+    if (userModel) {
+        NSLog(@"%@" ,[userModel description]);
+    }
+    // if([AppCache isMenuItemsStale] || !self.menuItems) {
+    
+    //   [AppDelegate.engine fetchMenuItemsOnSucceeded:^(NSMutableArray
+    
+    //                                                *listOfModelBaseObjects) {
+    
+    //     self.userModel = listOfModelBaseObjects;
+    
+    //    [self.tableView reloadData];
+    
+    //  } onError:^(NSError *engineError) {
+    
+    //    [UIAlertView showWithError:engineError];
+    
+    // }];    //没有的话，从服务器获取 ,更新UI,
+    // }
+    // [super viewWillAppear:animated];
+    
+    //有缓存数据的话
+    //判断数据是否过时
+    //过时，从服务器获取数据  更新UI,
+    //未过时，更新UI,
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -171,8 +205,11 @@ NSArray *titleForRowArray= nil;
 //              cell =(ISSTUserCenterUserInfoTableViewCell *) [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:nil];
         //不可重用
         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTUserCenterUserInfoTableViewCell" owner:self options:nil];
-        cell = [nib objectAtIndex:0];
         
+       ISSTUserCenterUserInfoTableViewCell   *userCell = (ISSTUserCenterUserInfoTableViewCell*)[nib objectAtIndex:0];
+        userCell.userNameLabel.text = userModel.name;
+       // userCell.userDescriptionLabel.text = userModel.description;
+        cell= userCell;
     }
     return cell;
 

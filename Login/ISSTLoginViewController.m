@@ -9,9 +9,11 @@
 #import "ISSTLoginViewController.h"
 #import "ISSTSlidebarNavController.h"
 #import "ISSTLoginApi.h"
+#import "AppCache.h"
+#import "ISSTUserModel.h"
 
 @interface ISSTLoginViewController ()
-
+@property (nonatomic,strong)ISSTUserModel  *userModel;
 @property (nonatomic,strong)ISSTLoginApi  *userApi;
 @end
 
@@ -19,6 +21,7 @@
 @synthesize nameField;
 @synthesize passwordField;
 @synthesize userApi;
+@synthesize userModel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,8 +48,33 @@
     [self.passwordField setSecureTextEntry:YES];//set password ......
     self.userApi =[[ISSTLoginApi alloc]init];
     self.userApi.webApiDelegate = self;
- 
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    //检查缓存中是否有用户数据
+    self.userModel = [AppCache getCache];
+    if (userModel) {
+        NSLog(@"%@" ,[userModel description]);
+    }
+    
+    //有缓存数据的话
+    //判断数据是否过时
+    //过时，从服务器获取数据  更新UI,
+    //未过时，更新UI,
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSLog(@"%@" ,[userModel description]);
+    NSLog(@"%@",userModel.name);
+    //缓存数据模型
+    
+    [AppCache saveCache:self.userModel];
+    [super viewWillDisappear:animated];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -71,6 +99,8 @@
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(id)backToControllerData;
 {
+    
+    userModel = backToControllerData;
       ISSTSlidebarNavController *slider =[[ISSTSlidebarNavController alloc]init]
     ;
    // [self.navigationController pushViewController:[[ISSTSlidebarNavController alloc]init] animated:YES ];

@@ -10,6 +10,7 @@
 #import "ISSTUserModel.h"
 #import "ISSTClassModel.h"
 #import "ISSTMajorModel.h"
+
 @interface ISSTContactsParse()
 {
     NSArray      *_contactsArray;
