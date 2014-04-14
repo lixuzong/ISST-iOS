@@ -16,6 +16,8 @@
 @implementation ISSTAddressBookDetailViewController
 @synthesize addressBookDetailTableView;
 @synthesize userDetailInfo;
+@synthesize classInfo;
+@synthesize majorInfo;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -118,7 +120,7 @@
                         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
                         cell = [nib objectAtIndex:0];
                     }
-                    cell.contentLabel.text=[NSString stringWithFormat:@"%d",userDetailInfo.classId];
+                    cell.contentLabel.text=classInfo.name;
                     cell.titleLabel.text=@"班级";
                     break;
                 }
@@ -128,7 +130,7 @@
                         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
                         cell = [nib objectAtIndex:0];
                     }
-                    cell.contentLabel.text=[NSString stringWithFormat:@"%d",userDetailInfo.majorId];
+                    cell.contentLabel.text=majorInfo.name;
                     cell.titleLabel.text=@"专业方向";
                     break;
                 }
@@ -167,7 +169,7 @@
                         NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
                         cell = [nib objectAtIndex:0];
                     }
-                    cell.contentLabel.text=[NSString stringWithFormat:@"%d",userDetailInfo.classId];
+                    cell.contentLabel.text=userDetailInfo.email;
                     cell.titleLabel.text=@"E-mail";
                     break;
                 }

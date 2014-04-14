@@ -13,5 +13,6 @@
 #import "ISSTAddressBookDelegate.h"
 @interface ISSTAddressBookViewController : ISSTRootViewController<UITableViewDelegate,UITableViewDataSource,ISSTWebApiDelegate,ISSTAddressBookDelegate,UISearchBarDelegate,UISearchDisplayDelegate>
 @property(strong,nonatomic)ISSTUserModel *addressBookModel;
+@property(strong,nonatomic)ISSTUserModel *userInfo;
 @property(strong,nonatomic)ISSTContactsApi *addressBookApi;
 @end
