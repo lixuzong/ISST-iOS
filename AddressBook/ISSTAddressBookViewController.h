@@ -11,7 +11,7 @@
 #import "ISSTUserModel.h"
 #import "ISSTContactsApi.h"
 #import "ISSTAddressBookDelegate.h"
-@interface ISSTAddressBookViewController : ISSTRootViewController<UITableViewDelegate,UITableViewDataSource,ISSTWebApiDelegate,ISSTAddressBookDelegate>
+@interface ISSTAddressBookViewController : ISSTRootViewController<UITableViewDelegate,UITableViewDataSource,ISSTWebApiDelegate,ISSTAddressBookDelegate,UISearchBarDelegate,UISearchDisplayDelegate>
 @property(strong,nonatomic)ISSTUserModel *addressBookModel;
 @property(strong,nonatomic)ISSTContactsApi *addressBookApi;
 @end

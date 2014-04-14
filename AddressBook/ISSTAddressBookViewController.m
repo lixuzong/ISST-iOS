@@ -8,11 +8,19 @@
 
 #import "ISSTAddressBookViewController.h"
 #import "ISSTSelectFactorsViewController.h"
+#import "ISSTAddressBookDetailViewController.h"
 @interface ISSTAddressBookViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *addressBookTableView;
 @property(strong,nonatomic)NSMutableArray *addressBookArray;
 @property(strong,nonatomic)ISSTSelectFactorsViewController *selectFactors;
 @property(strong,nonatomic)NSDictionary *sortedNamesDictionary;
+@property(strong,nonatomic) UISearchDisplayController *searchController;
+@property(strong,nonatomic)NSMutableArray *namesArray;
+@property(strong,nonatomic)NSMutableArray *searchArray;
+@property (weak, nonatomic) IBOutlet UILabel *selectedFactorsLabel;
+@property(strong,nonatomic)ISSTAddressBookDetailViewController* addressBookDetailView;
+
+- (IBAction)clearSelectedFactors:(id)sender;
 -(void)clickSelect;
 @end
 
@@ -23,12 +31,18 @@
 @synthesize addressBookArray;
 @synthesize selectFactors;
 @synthesize sortedNamesDictionary;
+@synthesize searchController;
+@synthesize searchArray;
+@synthesize namesArray;
+@synthesize selectedFactorsLabel;
+@synthesize addressBookDetailView;
 static NSString *CellIdentifier=@"ContactCell";
 const static int        CONTACTSLISTS       = 1;
 const static  int       CONTACTDETAIL       = 2;
 const static int        CLASSESLISTS        = 3;
 const static int        MAJORSLISTS         = 4;
 int method;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,31 +52,64 @@ int method;
     }
     return self;
 }
-
+-(void)labelShow
+{
+    NSMutableString *tempString=[[NSMutableString alloc]init];
+    if(selectFactors.name.text.length!=0)
+        [tempString appendString:[NSString stringWithFormat:@"姓名：%@",addressBookModel.name]];
+    if(addressBookModel.gender)
+    {
+        switch (addressBookModel.gender) {
+            case 1:
+                [tempString appendString:[NSString stringWithFormat:@" 性别：男"]];
+                break;
+            case 2:
+                [tempString appendString:[NSString stringWithFormat:@" 性别：女"]];
+            default:
+                break;
+        }
+        
+    }
+    if(addressBookModel.classId)
+        [tempString appendString:[NSString stringWithFormat:@" 班级：%@",selectFactors.classModel.name]];
+    if(addressBookModel.grade)
+        [tempString appendString:[NSString stringWithFormat:@" 年级：%d",addressBookModel.grade]];
+    if(addressBookModel.majorId)
+        [tempString appendString:[NSString stringWithFormat:@" 专业：%@",selectFactors.majorModel.name]];
+    selectedFactorsLabel.text=tempString;
+    
+}
+-(void)requestForData
+{
+     [self.addressBookApi requestContactsLists:0 name:addressBookModel.name gender:addressBookModel.gender grade:addressBookModel.grade classId:addressBookModel.classId majorId:addressBookModel.majorId cityId:0 company:nil];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    UISearchBar *searchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0, 50, 320, 44)];
+    addressBookTableView.tableHeaderView=searchBar;
+    searchController=[[UISearchDisplayController alloc]initWithSearchBar:searchBar contentsController:self];
+    searchController.delegate=self;
+    searchController.searchResultsTableView.delegate=self;
+    searchController.searchResultsDataSource=self;
+    
     self.selectFactors=[[ISSTSelectFactorsViewController alloc]init];
     self.selectFactors.navigationItem.title=@"筛选条件";
     method=CONTACTSLISTS;
     self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
-                                                  target:self
-                                                  action:@selector(clickSelect)];
+    [[UIBarButtonItem alloc] initWithTitle:@"条件筛选" style:UIBarButtonSystemItemEdit target:self action:@selector(clickSelect)];
     self.addressBookApi = [[ISSTContactsApi alloc]init];
     self.addressBookApi.webApiDelegate =self;
     addressBookModel=[[ISSTUserModel alloc]init];
-    [self.addressBookApi requestContactsLists:0 name:nil gender:addressBookModel.gender grade:addressBookModel.grade classId:15 majorId:addressBookModel.majorId cityId:0 company:nil];
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 	self.view.backgroundColor = [UIColor lightGrayColor];
     
+    [self labelShow];
+    [self requestForData];
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    [super viewDidLoad];
-    
-    
+
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 
 }
@@ -76,7 +123,9 @@ int method;
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [addressBookArray count];
+    if(tableView==self.searchController.searchResultsTableView)
+        return [searchArray count];
+    else return [namesArray count];
     //   return studyArray.count;
 }
 
@@ -86,18 +135,20 @@ int method;
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    addressBookModel=[addressBookArray objectAtIndex:indexPath.row];
-    cell.textLabel.text=addressBookModel.name;
+   if(tableView==self.searchController.searchResultsTableView)
+       cell.textLabel.text=[searchArray objectAtIndex:indexPath.row];
+   else
+        cell.textLabel.text=[namesArray objectAtIndex:indexPath.row];
     cell.accessoryType=UITableViewCellAccessoryDetailDisclosureButton;
     return cell;
 }
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    self.restaurantsView=[[ISSTRestaurantsViewController alloc]initWithNibName:@"ISSTRestaurantsViewController" bundle:nil];
-//    self.restaurantsView.navigationItem.title=@"美食外卖";
-//    [self.navigationController pushViewController:self.restaurantsView animated: NO];
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    self.addressBookDetailView=[[ISSTAddressBookDetailViewController alloc]initWithNibName:@"ISSTAddressBookDetailViewController" bundle:nil];
+    self.addressBookDetailView.navigationItem.title=@"联系人详情";
+    [self.navigationController pushViewController:self.addressBookDetailView animated: NO];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark -
@@ -110,7 +161,13 @@ int method;
             if ([addressBookArray count]) {
                 addressBookArray = [[NSMutableArray alloc]init];
             }
+            namesArray=[[NSMutableArray alloc]init];
             addressBookArray = (NSMutableArray *)backToControllerData;
+            for(int i=0;i<addressBookArray.count;i++)
+            {
+                addressBookModel=[addressBookArray objectAtIndex:i];
+                [namesArray addObject:addressBookModel.name];
+            }
             NSLog(@"count =%d ,addressBookArray = %@",[addressBookArray count],addressBookArray);
             method=CLASSESLISTS;
             [self.addressBookApi requestClassesLists];
@@ -153,6 +210,17 @@ int method;
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+- (IBAction)clearSelectedFactors:(id)sender {
+    addressBookModel.name=nil;
+    addressBookModel.gender=0;
+    addressBookModel.classId=0;
+    addressBookModel.majorId=0;
+    [self requestForData];
+    [self labelShow];
+    [addressBookTableView reloadData];
+
+}
+
 -(void)clickSelect
 {
     self.selectFactors.selectedDelegate=self;
@@ -161,11 +229,35 @@ int method;
 -(void)selectedReloadData
 {
     NSLog(@"selectFactors.GENDERID=%d,selectFactors.classModel.classId=%d,selectFactors.majorModel.majorId=%d",selectFactors.GENDERID,selectFactors.classModel.classId,selectFactors.majorModel.majorId);
-    [addressBookApi requestContactsLists:0 name:selectFactors.name.text gender:selectFactors.GENDERID grade:0 classId:selectFactors.classModel.classId majorId:selectFactors.majorModel.majorId cityId:0 company:nil];
+    addressBookModel.name=selectFactors.name.text;
+    addressBookModel.gender=selectFactors.GENDERID;
+    addressBookModel.classId=selectFactors.classModel.classId;
+    addressBookModel.majorId=selectFactors.majorModel.majorId;
+    [self requestForData];
+    [self labelShow];
     [addressBookTableView reloadData];
     
 }
-
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate
+                                    predicateWithFormat:@"SELF contains[cd] %@",
+                                    searchText];
+    
+    searchArray = [namesArray filteredArrayUsingPredicate:resultPredicate];
+}
+#pragma mark -
+#pragma mark Search Display Delegate Methods
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller
+shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
