@@ -9,7 +9,7 @@
 #import "ISSTNewsDetailsModel.h"
 
 @implementation ISSTNewsDetailsModel
-@synthesize content,description,title;
+@synthesize content,description,title,userModel,updatedAt,userId;
 
 - (id)init
 {
@@ -24,6 +24,8 @@
 - (void)dealloc
 {
     [content release];
+    [userModel release];
+    [updatedAt release];
     [description release];
     [title release];
     [super dealloc];

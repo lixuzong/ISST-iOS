@@ -18,13 +18,14 @@
 
 @property (nonatomic,strong)NSArray         *campusNewsArray;
 @property (nonatomic,strong)NSDictionary    *detailsInfo;
-
+@property(nonatomic,strong)NSDictionary *userInfo;
 @end
 
 @implementation ISSTCampusNewsParse
 //@synthesize  dict;
 @synthesize  campusNewsArray;
 @synthesize detailsInfo;
+@synthesize userInfo;
 
 - (id)init
 {
@@ -63,9 +64,14 @@
         campusNews.updatedAt  = [dateFormatter stringFromDate:datePT];
         campusNews.userId     = [[[campusNewsArray objectAtIndex:i ] objectForKey:@"userId"]intValue];
         campusNews.categoryId     = [[[campusNewsArray objectAtIndex:i ] objectForKey:@"categoryId"]intValue];
+        NSLog(@"%@",userInfo);
+        if(campusNews.userId>0)
+        {
+        campusNews.userModel=(NSDictionary *)[[campusNewsArray objectAtIndex:i]objectForKey:@"user"];
+        }
         [newsArray addObject:campusNews];
     }
-    return newsArray ;
+    return newsArray;
 }
 
 -(id)newsDetailsParse
@@ -77,6 +83,18 @@
     newsDetailsModel.content = [detailsInfo objectForKey:@"content"];
     newsDetailsModel.title = [detailsInfo objectForKey:@"title"];
     newsDetailsModel.description = [detailsInfo objectForKey:@"description"];
+    newsDetailsModel.userId=[[detailsInfo objectForKey:@"userId"]intValue];
+    long long  updatedAt =  [[detailsInfo objectForKey:@"updatedAt"]longLongValue]/1000;
+    NSDate  *datePT = [NSDate dateWithTimeIntervalSince1970:updatedAt];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    newsDetailsModel.updatedAt  = [dateFormatter stringFromDate:datePT];
+    
+    if(newsDetailsModel.userId>0)
+    {
+    newsDetailsModel.userModel=(NSDictionary *)[detailsInfo objectForKey:@"user"];
+    }
+
     return newsDetailsModel ;
 }
 
@@ -84,7 +102,7 @@
 - (void)dealloc
 {
     detailsInfo = nil ;
-    
+    userInfo=nil;
    _campusNewsArray = nil;
     [super dealloc];
 }

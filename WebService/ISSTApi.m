@@ -53,7 +53,8 @@
     NSString *strUrl= [NSString stringWithFormat:@"%@%@",mainUrl,subUrl];
  
         
-     NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
+    NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
+   // NSURL *url=[NSURL URLWithString:[strUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     if ([method isEqualToString:@"GET"]) {
         
         //NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];

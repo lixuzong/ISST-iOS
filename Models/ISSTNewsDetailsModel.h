@@ -7,9 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "ISSTUserModel.h"
 @interface ISSTNewsDetailsModel : NSObject
 @property (nonatomic,copy)NSString *title;
 @property (nonatomic,copy)NSString *description;
 @property (nonatomic,copy)NSString *content;
+@property(nonatomic,copy)NSDictionary *userModel;
+@property(nonatomic,strong)NSString *updatedAt;
+@property (nonatomic,assign) int        userId;
 @end

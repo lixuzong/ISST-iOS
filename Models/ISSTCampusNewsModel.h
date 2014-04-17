@@ -14,7 +14,9 @@
 @property (nonatomic,strong) NSString     *title;
 @property (nonatomic,strong) NSString     *description;
 @property (nonatomic,strong) NSString        *updatedAt;
+@property (nonatomic,strong) NSDictionary *userModel;
 @property (nonatomic,assign) int        userId;// 0为管理员，整数为学生
+
 //@property (nonatomic, copy) ISSTUserModel *user;
 
 

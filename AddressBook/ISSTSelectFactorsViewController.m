@@ -76,6 +76,7 @@ int static genderid;
 -(void)viewDidDisappear:(BOOL)animated
 {
         GRADEID=GENDERID=MAJORID=-1;
+    name.text=nil;
     [gender setLabelText:@"-SELECT-"];
     [grade setLabelText:@"-SELECT-"];
     [major setLabelText:@"-SELECT-"];
@@ -95,24 +96,24 @@ int static genderid;
         {
             METHOD=1;
             GENDERID=selectedIndex;
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"性别: %@", [genderArray  objectAtIndex:selectedIndex]] delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-            [alert show];
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"性别: %@", [genderArray  objectAtIndex:selectedIndex]] delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//            [alert show];
         }
             break;
         case 2:
         {
             METHOD=2;
             GRADEID=selectedIndex;
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"年级: %@", [gradeArray  objectAtIndex:selectedIndex]] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-            [alert show];
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"年级: %@", [gradeArray  objectAtIndex:selectedIndex]] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//            [alert show];
         }
             break;
         case 3:
         {
             METHOD=3;
             MAJORID=selectedIndex;
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"专业方向: %@", [majorsArray  objectAtIndex:selectedIndex]] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-            [alert show];
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:[NSString stringWithFormat:@"专业方向: %@", [majorsArray  objectAtIndex:selectedIndex]] delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//            [alert show];
         }
             break;
         default:
@@ -148,6 +149,7 @@ int static genderid;
         majorModel=[majorsModelArray objectAtIndex:MAJORID];
     else majorModel.majorId=MAJORID+1;
     [selectedDelegate selectedReloadData];
+    name.text=nil;
     GRADEID=GENDERID=MAJORID=-1;
     [gender setLabelText:@"-SELECT-"];
     [grade setLabelText:@"-SELECT-"];

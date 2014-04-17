@@ -9,7 +9,7 @@
 #import "ISSTCampusNewsModel.h"
 
 @implementation ISSTCampusNewsModel
-@synthesize title,description,updatedAt,userId,newsId,categoryId;
+@synthesize title,description,updatedAt,userId,newsId,categoryId,userModel;
 
 - (id)init
 {
@@ -27,6 +27,7 @@
     [title release];
     [description release];
     [updatedAt release];
+    [userModel release];
     [super dealloc];
 }
 

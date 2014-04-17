@@ -7,6 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		580503F818FD53EC00F881D9 /* ISSTEmploymentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 580503F318FD53EC00F881D9 /* ISSTEmploymentTableViewCell.m */; };
+		580503F918FD53EC00F881D9 /* ISSTEmploymentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580503F418FD53EC00F881D9 /* ISSTEmploymentTableViewCell.xib */; };
+		580503FA18FD53EC00F881D9 /* ISSTEmploymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580503F618FD53EC00F881D9 /* ISSTEmploymentViewController.m */; };
+		580503FB18FD53EC00F881D9 /* ISSTEmploymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580503F718FD53EC00F881D9 /* ISSTEmploymentViewController.xib */; };
+		5805040318FD540900F881D9 /* ISSTInternshipTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580503FE18FD540900F881D9 /* ISSTInternshipTableViewCell.xib */; };
+		5805040518FD540900F881D9 /* ISSTInternshipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5805040118FD540900F881D9 /* ISSTInternshipViewController.xib */; };
+		5805041018FD5A0A00F881D9 /* ISSTExperenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECAE318E968D100FEAEF4 /* ISSTExperenceModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5805041118FD5A1000F881D9 /* ISSTCampusNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECADD18E90BF700FEAEF4 /* ISSTCampusNewsModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5805041218FD5A1600F881D9 /* ISSTWikiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECAE618E9690200FEAEF4 /* ISSTWikiModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5805041518FD5A2F00F881D9 /* ISSTExperienceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0B8C7818F2CDDF00844F55 /* ISSTExperienceTableViewCell.m */; };
+		5805041618FD5A4000F881D9 /* ISSTMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2848118DB013400BEF1A9 /* ISSTMenuTableViewCell.m */; };
+		5805041718FD5A4D00F881D9 /* ISSTSidebarSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2848A18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m */; };
+		5805041818FD5A8C00F881D9 /* ISSTActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0B8C8918F2D82B00844F55 /* ISSTActivityDetailViewController.m */; };
+		5805041918FD5AB800F881D9 /* ISSTInternshipTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 580503FD18FD540900F881D9 /* ISSTInternshipTableViewCell.m */; };
+		5805041A18FD5ACD00F881D9 /* ISSTInternshipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5805040018FD540900F881D9 /* ISSTInternshipViewController.m */; };
+		5805042118FD5D8E00F881D9 /* ISSTRecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5805041C18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.m */; };
+		5805042218FD5D8E00F881D9 /* ISSTRecommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5805041D18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.xib */; };
+		5805042318FD5D8E00F881D9 /* ISSTRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5805041F18FD5D8E00F881D9 /* ISSTRecommendViewController.m */; };
+		5805042418FD5D8E00F881D9 /* ISSTRecommendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5805042018FD5D8E00F881D9 /* ISSTRecommendViewController.xib */; };
+		5805042818FD749300F881D9 /* ISSTEmploymentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5805042618FD749300F881D9 /* ISSTEmploymentDetailViewController.m */; };
+		5805042918FD749300F881D9 /* ISSTEmploymentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5805042718FD749300F881D9 /* ISSTEmploymentDetailViewController.xib */; };
+		5805042C18FD7B3300F881D9 /* ISSTJobsParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 5805042B18FD7B3300F881D9 /* ISSTJobsParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5805043118FD7B4C00F881D9 /* ISSTJobsDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5805042E18FD7B4C00F881D9 /* ISSTJobsDetailModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5805043218FD7B4C00F881D9 /* ISSTJobsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5805043018FD7B4C00F881D9 /* ISSTJobsModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		5805043518FD7B6400F881D9 /* ISSTJobsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 5805043418FD7B6400F881D9 /* ISSTJobsApi.m */; };
 		581C8D6418F03B050006740B /* ISSTStudyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 581C8D5C18F03B050006740B /* ISSTStudyDetailViewController.m */; };
 		581C8D6518F03B050006740B /* ISSTStudyDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 581C8D5D18F03B050006740B /* ISSTStudyDetailViewController.xib */; };
 		581C8D6618F03B050006740B /* ISSTStudyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 581C8D5F18F03B050006740B /* ISSTStudyTableViewCell.m */; };
@@ -39,13 +64,11 @@
 		AE0B8C3618F2C8B300844F55 /* ISSTActivitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0B8C3418F2C8B300844F55 /* ISSTActivitiesViewController.xib */; };
 		AE0B8C7D18F2CDDF00844F55 /* ISSTExperienceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0B8C7518F2CDDF00844F55 /* ISSTExperienceDetailViewController.m */; };
 		AE0B8C7E18F2CDDF00844F55 /* ISSTExperienceDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0B8C7618F2CDDF00844F55 /* ISSTExperienceDetailViewController.xib */; };
-		AE0B8C7F18F2CDDF00844F55 /* ISSTExperienceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0B8C7818F2CDDF00844F55 /* ISSTExperienceTableViewCell.m */; };
 		AE0B8C8018F2CDDF00844F55 /* ISSTExperienceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0B8C7918F2CDDF00844F55 /* ISSTExperienceTableViewCell.xib */; };
 		AE0B8C8118F2CDDF00844F55 /* ISSTExperienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0B8C7B18F2CDDF00844F55 /* ISSTExperienceViewController.m */; };
 		AE0B8C8218F2CDDF00844F55 /* ISSTExperienceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0B8C7C18F2CDDF00844F55 /* ISSTExperienceViewController.xib */; };
 		AE0B8C8618F2D1F100844F55 /* ISSTActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0B8C8418F2D1F100844F55 /* ISSTActivityTableViewCell.m */; };
 		AE0B8C8718F2D1F100844F55 /* ISSTActivityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0B8C8518F2D1F100844F55 /* ISSTActivityTableViewCell.xib */; };
-		AE0B8C8B18F2D82B00844F55 /* ISSTActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0B8C8918F2D82B00844F55 /* ISSTActivityDetailViewController.m */; };
 		AE0B8C8C18F2D82B00844F55 /* ISSTActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0B8C8A18F2D82B00844F55 /* ISSTActivityDetailViewController.xib */; };
 		AE0B8C9018F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0B8C8E18F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.m */; };
 		AE0B8C9118F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0B8C8F18F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.xib */; };
@@ -78,10 +101,7 @@
 		AE9E018F18F3F0D4008EAFA1 /* ISSTServiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9E018D18F3F0D4008EAFA1 /* ISSTServiceViewController.xib */; };
 		AE9ECAD818E8F70700FEAEF4 /* ISSTMD5.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECAD718E8F70700FEAEF4 /* ISSTMD5.m */; };
 		AE9ECADB18E90BD800FEAEF4 /* ISSTCampusNewsParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECADA18E90BD800FEAEF4 /* ISSTCampusNewsParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AE9ECADE18E90BF700FEAEF4 /* ISSTCampusNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECADD18E90BF700FEAEF4 /* ISSTCampusNewsModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AE9ECAE118E968B200FEAEF4 /* ISSTStudyingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECAE018E968B200FEAEF4 /* ISSTStudyingModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AE9ECAE418E968D100FEAEF4 /* ISSTExperenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECAE318E968D100FEAEF4 /* ISSTExperenceModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AE9ECAE718E9690200FEAEF4 /* ISSTWikiModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECAE618E9690200FEAEF4 /* ISSTWikiModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AE9ECAF518E978EE00FEAEF4 /* BaseParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECAF418E978EE00FEAEF4 /* BaseParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AEA238C718F527D00030F196 /* ISSTContactsParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA238C618F527D00030F196 /* ISSTContactsParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AEA238CA18F52B280030F196 /* ISSTContactModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEA238C918F52B280030F196 /* ISSTContactModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -101,9 +121,7 @@
 		AEE2846D18DADAA000BEF1A9 /* ISSTTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2846C18DADAA000BEF1A9 /* ISSTTests.m */; };
 		AEE2847918DAE24A00BEF1A9 /* ISSTRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2847818DAE24A00BEF1A9 /* ISSTRevealViewController.m */; };
 		AEE2847C18DAE55500BEF1A9 /* ISSTMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2847B18DAE55500BEF1A9 /* ISSTMenuViewController.m */; };
-		AEE2848218DB013400BEF1A9 /* ISSTMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2848118DB013400BEF1A9 /* ISSTMenuTableViewCell.m */; };
 		AEE2848418DB04CC00BEF1A9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2848318DB04CC00BEF1A9 /* QuartzCore.framework */; };
-		AEE2848B18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2848A18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m */; };
 		AEE2849C18DB263100BEF1A9 /* searchBarBG.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE2849718DB263100BEF1A9 /* searchBarBG.png */; };
 		AEE2849D18DB263100BEF1A9 /* searchBarIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE2849818DB263100BEF1A9 /* searchBarIcon.png */; };
 		AEE2849E18DB263100BEF1A9 /* searchBarIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AEE2849918DB263100BEF1A9 /* searchBarIcon@2x.png */; };
@@ -133,6 +151,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		580503F218FD53DE00F881D9 /* ISSTEmploymentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTEmploymentTableViewCell.h; path = Employment/ISSTEmploymentTableViewCell.h; sourceTree = "<group>"; };
+		580503F318FD53EC00F881D9 /* ISSTEmploymentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTEmploymentTableViewCell.m; path = Employment/ISSTEmploymentTableViewCell.m; sourceTree = "<group>"; };
+		580503F418FD53EC00F881D9 /* ISSTEmploymentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTEmploymentTableViewCell.xib; path = Employment/ISSTEmploymentTableViewCell.xib; sourceTree = "<group>"; };
+		580503F518FD53EC00F881D9 /* ISSTEmploymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTEmploymentViewController.h; path = Employment/ISSTEmploymentViewController.h; sourceTree = "<group>"; };
+		580503F618FD53EC00F881D9 /* ISSTEmploymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTEmploymentViewController.m; path = Employment/ISSTEmploymentViewController.m; sourceTree = "<group>"; };
+		580503F718FD53EC00F881D9 /* ISSTEmploymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTEmploymentViewController.xib; path = Employment/ISSTEmploymentViewController.xib; sourceTree = "<group>"; };
+		580503FC18FD540900F881D9 /* ISSTInternshipTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTInternshipTableViewCell.h; path = Internship/ISSTInternshipTableViewCell.h; sourceTree = "<group>"; };
+		580503FD18FD540900F881D9 /* ISSTInternshipTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTInternshipTableViewCell.m; path = Internship/ISSTInternshipTableViewCell.m; sourceTree = "<group>"; };
+		580503FE18FD540900F881D9 /* ISSTInternshipTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTInternshipTableViewCell.xib; path = Internship/ISSTInternshipTableViewCell.xib; sourceTree = "<group>"; };
+		580503FF18FD540900F881D9 /* ISSTInternshipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTInternshipViewController.h; path = Internship/ISSTInternshipViewController.h; sourceTree = "<group>"; };
+		5805040018FD540900F881D9 /* ISSTInternshipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTInternshipViewController.m; path = Internship/ISSTInternshipViewController.m; sourceTree = "<group>"; };
+		5805040118FD540900F881D9 /* ISSTInternshipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTInternshipViewController.xib; path = Internship/ISSTInternshipViewController.xib; sourceTree = "<group>"; };
+		5805041B18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTRecommendTableViewCell.h; path = Recommend/ISSTRecommendTableViewCell.h; sourceTree = "<group>"; };
+		5805041C18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRecommendTableViewCell.m; path = Recommend/ISSTRecommendTableViewCell.m; sourceTree = "<group>"; };
+		5805041D18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTRecommendTableViewCell.xib; path = Recommend/ISSTRecommendTableViewCell.xib; sourceTree = "<group>"; };
+		5805041E18FD5D8E00F881D9 /* ISSTRecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTRecommendViewController.h; path = Recommend/ISSTRecommendViewController.h; sourceTree = "<group>"; };
+		5805041F18FD5D8E00F881D9 /* ISSTRecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRecommendViewController.m; path = Recommend/ISSTRecommendViewController.m; sourceTree = "<group>"; };
+		5805042018FD5D8E00F881D9 /* ISSTRecommendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTRecommendViewController.xib; path = Recommend/ISSTRecommendViewController.xib; sourceTree = "<group>"; };
+		5805042518FD749300F881D9 /* ISSTEmploymentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTEmploymentDetailViewController.h; path = Employment/ISSTEmploymentDetailViewController.h; sourceTree = "<group>"; };
+		5805042618FD749300F881D9 /* ISSTEmploymentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTEmploymentDetailViewController.m; path = Employment/ISSTEmploymentDetailViewController.m; sourceTree = "<group>"; };
+		5805042718FD749300F881D9 /* ISSTEmploymentDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTEmploymentDetailViewController.xib; path = Employment/ISSTEmploymentDetailViewController.xib; sourceTree = "<group>"; };
+		5805042A18FD7B3300F881D9 /* ISSTJobsParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTJobsParse.h; path = Parses/ISSTJobsParse.h; sourceTree = "<group>"; };
+		5805042B18FD7B3300F881D9 /* ISSTJobsParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTJobsParse.m; path = Parses/ISSTJobsParse.m; sourceTree = "<group>"; };
+		5805042D18FD7B4C00F881D9 /* ISSTJobsDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTJobsDetailModel.h; path = Models/ISSTJobsDetailModel.h; sourceTree = "<group>"; };
+		5805042E18FD7B4C00F881D9 /* ISSTJobsDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTJobsDetailModel.m; path = Models/ISSTJobsDetailModel.m; sourceTree = "<group>"; };
+		5805042F18FD7B4C00F881D9 /* ISSTJobsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTJobsModel.h; path = Models/ISSTJobsModel.h; sourceTree = "<group>"; };
+		5805043018FD7B4C00F881D9 /* ISSTJobsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTJobsModel.m; path = Models/ISSTJobsModel.m; sourceTree = "<group>"; };
+		5805043318FD7B6400F881D9 /* ISSTJobsApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTJobsApi.h; path = WebService/ISSTJobsApi.h; sourceTree = "<group>"; };
+		5805043418FD7B6400F881D9 /* ISSTJobsApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTJobsApi.m; path = WebService/ISSTJobsApi.m; sourceTree = "<group>"; };
 		581C8D5B18F03B050006740B /* ISSTStudyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTStudyDetailViewController.h; sourceTree = "<group>"; };
 		581C8D5C18F03B050006740B /* ISSTStudyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTStudyDetailViewController.m; sourceTree = "<group>"; };
 		581C8D5D18F03B050006740B /* ISSTStudyDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTStudyDetailViewController.xib; sourceTree = "<group>"; };
@@ -346,6 +393,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		580503E518FD03F400F881D9 /* Employment */ = {
+			isa = PBXGroup;
+			children = (
+				5805042518FD749300F881D9 /* ISSTEmploymentDetailViewController.h */,
+				5805042618FD749300F881D9 /* ISSTEmploymentDetailViewController.m */,
+				5805042718FD749300F881D9 /* ISSTEmploymentDetailViewController.xib */,
+				580503F318FD53EC00F881D9 /* ISSTEmploymentTableViewCell.m */,
+				580503F418FD53EC00F881D9 /* ISSTEmploymentTableViewCell.xib */,
+				580503F518FD53EC00F881D9 /* ISSTEmploymentViewController.h */,
+				580503F618FD53EC00F881D9 /* ISSTEmploymentViewController.m */,
+				580503F718FD53EC00F881D9 /* ISSTEmploymentViewController.xib */,
+				580503F218FD53DE00F881D9 /* ISSTEmploymentTableViewCell.h */,
+			);
+			name = Employment;
+			sourceTree = "<group>";
+		};
+		580503F018FD4A0B00F881D9 /* Internship */ = {
+			isa = PBXGroup;
+			children = (
+				580503FC18FD540900F881D9 /* ISSTInternshipTableViewCell.h */,
+				580503FD18FD540900F881D9 /* ISSTInternshipTableViewCell.m */,
+				580503FE18FD540900F881D9 /* ISSTInternshipTableViewCell.xib */,
+				580503FF18FD540900F881D9 /* ISSTInternshipViewController.h */,
+				5805040018FD540900F881D9 /* ISSTInternshipViewController.m */,
+				5805040118FD540900F881D9 /* ISSTInternshipViewController.xib */,
+			);
+			name = Internship;
+			sourceTree = "<group>";
+		};
+		580503F118FD4A6700F881D9 /* Recommend */ = {
+			isa = PBXGroup;
+			children = (
+				5805041B18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.h */,
+				5805041C18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.m */,
+				5805041D18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.xib */,
+				5805041E18FD5D8E00F881D9 /* ISSTRecommendViewController.h */,
+				5805041F18FD5D8E00F881D9 /* ISSTRecommendViewController.m */,
+				5805042018FD5D8E00F881D9 /* ISSTRecommendViewController.xib */,
+			);
+			name = Recommend;
+			sourceTree = "<group>";
+		};
 		581C8D4918F03AF30006740B /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -418,15 +507,15 @@
 		AE0B8C7318F2CDD100844F55 /* Experience */ = {
 			isa = PBXGroup;
 			children = (
+				AE0B8C7A18F2CDDF00844F55 /* ISSTExperienceViewController.h */,
+				AE0B8C7B18F2CDDF00844F55 /* ISSTExperienceViewController.m */,
+				AE0B8C7C18F2CDDF00844F55 /* ISSTExperienceViewController.xib */,
 				AE0B8C7418F2CDDF00844F55 /* ISSTExperienceDetailViewController.h */,
 				AE0B8C7518F2CDDF00844F55 /* ISSTExperienceDetailViewController.m */,
 				AE0B8C7618F2CDDF00844F55 /* ISSTExperienceDetailViewController.xib */,
 				AE0B8C7718F2CDDF00844F55 /* ISSTExperienceTableViewCell.h */,
 				AE0B8C7818F2CDDF00844F55 /* ISSTExperienceTableViewCell.m */,
 				AE0B8C7918F2CDDF00844F55 /* ISSTExperienceTableViewCell.xib */,
-				AE0B8C7A18F2CDDF00844F55 /* ISSTExperienceViewController.h */,
-				AE0B8C7B18F2CDDF00844F55 /* ISSTExperienceViewController.m */,
-				AE0B8C7C18F2CDDF00844F55 /* ISSTExperienceViewController.xib */,
 			);
 			name = Experience;
 			sourceTree = "<group>";
@@ -601,6 +690,8 @@
 		AEE284A118DB2A4300BEF1A9 /* WebService */ = {
 			isa = PBXGroup;
 			children = (
+				5805043318FD7B6400F881D9 /* ISSTJobsApi.h */,
+				5805043418FD7B6400F881D9 /* ISSTJobsApi.m */,
 				AEFDC75A18DECEDD00D7FDAA /* NSString+URLEncoding.h */,
 				AEFDC75B18DECEDD00D7FDAA /* NSString+URLEncoding.m */,
 				AEE284AD18DB2D7800BEF1A9 /* ISSTWebApiDelegate.h */,
@@ -639,6 +730,10 @@
 		AEE284A318DB2B8100BEF1A9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5805042D18FD7B4C00F881D9 /* ISSTJobsDetailModel.h */,
+				5805042E18FD7B4C00F881D9 /* ISSTJobsDetailModel.m */,
+				5805042F18FD7B4C00F881D9 /* ISSTJobsModel.h */,
+				5805043018FD7B4C00F881D9 /* ISSTJobsModel.m */,
 				AE04DD4118F82689002A2A64 /* ISSTMajorModel.h */,
 				AE04DD4218F82689002A2A64 /* ISSTMajorModel.m */,
 				AEFDC76E18E1625900D7FDAA /* ISSTUserModel.h */,
@@ -691,6 +786,9 @@
 		AEE284A518DB2C6000BEF1A9 /* Job */ = {
 			isa = PBXGroup;
 			children = (
+				580503F118FD4A6700F881D9 /* Recommend */,
+				580503F018FD4A0B00F881D9 /* Internship */,
+				580503E518FD03F400F881D9 /* Employment */,
 				AE0B8C7318F2CDD100844F55 /* Experience */,
 			);
 			path = Job;
@@ -756,6 +854,8 @@
 		AEFDC76018DFFF2700D7FDAA /* Parses */ = {
 			isa = PBXGroup;
 			children = (
+				5805042A18FD7B3300F881D9 /* ISSTJobsParse.h */,
+				5805042B18FD7B3300F881D9 /* ISSTJobsParse.m */,
 				AEFDC77418E16D5C00D7FDAA /* UserLoginParse.h */,
 				AEFDC77518E16D5C00D7FDAA /* UserLoginParse.m */,
 				AE9ECAD918E90BD800FEAEF4 /* ISSTCampusNewsParse.h */,
@@ -853,7 +953,9 @@
 				AEE2845A18DADAA000BEF1A9 /* Images.xcassets in Resources */,
 				AE0B8C8218F2CDDF00844F55 /* ISSTExperienceViewController.xib in Resources */,
 				AE9052AB18EEEE6D0088742D /* ISSTNewsViewController.xib in Resources */,
+				5805042918FD749300F881D9 /* ISSTEmploymentDetailViewController.xib in Resources */,
 				AEE2849D18DB263100BEF1A9 /* searchBarIcon.png in Resources */,
+				5805042418FD5D8E00F881D9 /* ISSTRecommendViewController.xib in Resources */,
 				58653D2018FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib in Resources */,
 				AE0B8C8018F2CDDF00844F55 /* ISSTExperienceTableViewCell.xib in Resources */,
 				58653D1A18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.xib in Resources */,
@@ -866,13 +968,17 @@
 				AEE2849E18DB263100BEF1A9 /* searchBarIcon@2x.png in Resources */,
 				AE0B8C8718F2D1F100844F55 /* ISSTActivityTableViewCell.xib in Resources */,
 				AEFDC75918DDC90800D7FDAA /* ISSTLoginViewController.xib in Resources */,
+				580503FB18FD53EC00F881D9 /* ISSTEmploymentViewController.xib in Resources */,
 				581C8D6918F03B050006740B /* ISSTStudyViewController.xib in Resources */,
+				5805040518FD540900F881D9 /* ISSTInternshipViewController.xib in Resources */,
 				AE9052B918EEEE890088742D /* ISSTWikisDetailViewController.xib in Resources */,
 				AE9052B718EEEE890088742D /* ISSTWikisCollectionViewCell.xib in Resources */,
 				58653D1C18FB86DF005C6F74 /* ISSTAddressBookDetailViewController.xib in Resources */,
 				AE0B8C3618F2C8B300844F55 /* ISSTActivitiesViewController.xib in Resources */,
 				AE0B8C8C18F2D82B00844F55 /* ISSTActivityDetailViewController.xib in Resources */,
 				AE9E018618F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.xib in Resources */,
+				580503F918FD53EC00F881D9 /* ISSTEmploymentTableViewCell.xib in Resources */,
+				5805040318FD540900F881D9 /* ISSTInternshipTableViewCell.xib in Resources */,
 				AE9E018F18F3F0D4008EAFA1 /* ISSTServiceViewController.xib in Resources */,
 				AE9052BB18EEEE890088742D /* ISSTWikisViewController.xib in Resources */,
 				AE0B8C9118F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.xib in Resources */,
@@ -883,6 +989,7 @@
 				AE0B8C7E18F2CDDF00844F55 /* ISSTExperienceDetailViewController.xib in Resources */,
 				AE0B8C9618F2ED7E00844F55 /* ISSTUserInfoViewController.xib in Resources */,
 				AEE2845518DADAA000BEF1A9 /* Main.storyboard in Resources */,
+				5805042218FD5D8E00F881D9 /* ISSTRecommendTableViewCell.xib in Resources */,
 				AE014AE318EFE0BA0009E008 /* ISSTUserCenterViewController.xib in Resources */,
 				AE9E018818F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.xib in Resources */,
 				AEE2849F18DB263100BEF1A9 /* searchTextBG.png in Resources */,
@@ -904,6 +1011,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5805041A18FD5ACD00F881D9 /* ISSTInternshipViewController.m in Sources */,
+				5805041918FD5AB800F881D9 /* ISSTInternshipTableViewCell.m in Sources */,
+				5805041818FD5A8C00F881D9 /* ISSTActivityDetailViewController.m in Sources */,
+				5805041718FD5A4D00F881D9 /* ISSTSidebarSearchViewController.m in Sources */,
+				5805041618FD5A4000F881D9 /* ISSTMenuTableViewCell.m in Sources */,
+				5805041518FD5A2F00F881D9 /* ISSTExperienceTableViewCell.m in Sources */,
+				5805041218FD5A1600F881D9 /* ISSTWikiModel.m in Sources */,
+				5805041118FD5A1000F881D9 /* ISSTCampusNewsModel.m in Sources */,
+				5805041018FD5A0A00F881D9 /* ISSTExperenceModel.m in Sources */,
+				5805043218FD7B4C00F881D9 /* ISSTJobsModel.m in Sources */,
 				AE0B8C3518F2C8B300844F55 /* ISSTActivitiesViewController.m in Sources */,
 				AE9ECAD818E8F70700FEAEF4 /* ISSTMD5.m in Sources */,
 				AE9052B818EEEE890088742D /* ISSTWikisDetailViewController.m in Sources */,
@@ -912,10 +1029,12 @@
 				AE014ADB18EFD4690009E008 /* ISSTRestaurantsMenusModel.m in Sources */,
 				AE04DD4318F82689002A2A64 /* ISSTMajorModel.m in Sources */,
 				58653D1B18FB86DF005C6F74 /* ISSTAddressBookDetailViewController.m in Sources */,
+				5805043518FD7B6400F881D9 /* ISSTJobsApi.m in Sources */,
 				AE0B8C8618F2D1F100844F55 /* ISSTActivityTableViewCell.m in Sources */,
 				AEA238C718F527D00030F196 /* ISSTContactsParse.m in Sources */,
 				AEFDC77918E1B76400D7FDAA /* ISSTLifeApi.m in Sources */,
 				AEFDC77318E16A5C00D7FDAA /* ISSTPushedViewController.m in Sources */,
+				5805042C18FD7B3300F881D9 /* ISSTJobsParse.m in Sources */,
 				AE9B148118EBB04400034F65 /* LoginErrors.m in Sources */,
 				AE014ADE18EFD6680009E008 /* ISSTRestaurantsMenusParse.m in Sources */,
 				AE0B8C2D18F2BF0A00844F55 /* ISSTActivityParse.m in Sources */,
@@ -935,20 +1054,16 @@
 				AE0B8C7D18F2CDDF00844F55 /* ISSTExperienceDetailViewController.m in Sources */,
 				AE9E017618F3BC1F008EAFA1 /* ISSTContactsApi.m in Sources */,
 				AE0B8C2A18F2BAE000844F55 /* ISSTActivityModel.m in Sources */,
+				5805042818FD749300F881D9 /* ISSTEmploymentDetailViewController.m in Sources */,
 				581C8D6818F03B050006740B /* ISSTStudyViewController.m in Sources */,
 				AE9052A818EEEE6D0088742D /* ISSTNewsTableViewCell.m in Sources */,
 				AE9052A618EEEE6D0088742D /* ISSTNewsDetailViewController.m in Sources */,
 				AEA238CA18F52B280030F196 /* ISSTContactModel.m in Sources */,
 				AE04DD4618F82A2C002A2A64 /* AppCache.m in Sources */,
+				580503FA18FD53EC00F881D9 /* ISSTEmploymentViewController.m in Sources */,
 				AEFDC75418DDC5E100D7FDAA /* ISSTSlidebarNavController.m in Sources */,
-				AE9ECAE718E9690200FEAEF4 /* ISSTWikiModel.m in Sources */,
-				AE0B8C8B18F2D82B00844F55 /* ISSTActivityDetailViewController.m in Sources */,
 				AEFDC75818DDC90800D7FDAA /* ISSTLoginViewController.m in Sources */,
-				AE0B8C7F18F2CDDF00844F55 /* ISSTExperienceTableViewCell.m in Sources */,
-				AE9ECAE418E968D100FEAEF4 /* ISSTExperenceModel.m in Sources */,
-				AE9ECADE18E90BF700FEAEF4 /* ISSTCampusNewsModel.m in Sources */,
-				AEE2848218DB013400BEF1A9 /* ISSTMenuTableViewCell.m in Sources */,
-				AEE2848B18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m in Sources */,
+				580503F818FD53EC00F881D9 /* ISSTEmploymentTableViewCell.m in Sources */,
 				AEE2845218DADAA000BEF1A9 /* AppDelegate.m in Sources */,
 				AE9ECAF518E978EE00FEAEF4 /* BaseParse.m in Sources */,
 				AE9E018E18F3F0D4008EAFA1 /* ISSTServiceViewController.m in Sources */,
@@ -956,12 +1071,15 @@
 				AE9E018518F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.m in Sources */,
 				AE9052BA18EEEE890088742D /* ISSTWikisViewController.m in Sources */,
 				581C8D6618F03B050006740B /* ISSTStudyTableViewCell.m in Sources */,
+				5805042118FD5D8E00F881D9 /* ISSTRecommendTableViewCell.m in Sources */,
+				5805042318FD5D8E00F881D9 /* ISSTRecommendViewController.m in Sources */,
 				AEFDC76D18E0245D00D7FDAA /* ISSTRootViewController.m in Sources */,
 				AE0B8C3018F2C36000844F55 /* ISSTActivityApi.m in Sources */,
 				AE014AD518EFAA570009E008 /* ISSTRestaurantsModel.m in Sources */,
 				AE9ECAE118E968B200FEAEF4 /* ISSTStudyingModel.m in Sources */,
 				58653D1918FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.m in Sources */,
 				AEE2847918DAE24A00BEF1A9 /* ISSTRevealViewController.m in Sources */,
+				5805043118FD7B4C00F881D9 /* ISSTJobsDetailModel.m in Sources */,
 				AE014AD818EFC3D30009E008 /* ISSTRestaurantsApi.m in Sources */,
 				AE0B8C9018F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.m in Sources */,
 				AEA238CD18F530960030F196 /* ISSTClassModel.m in Sources */,
