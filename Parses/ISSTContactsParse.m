@@ -41,7 +41,7 @@
     NSLog(@"count=%d",count);
     for (int i=0; i<count; i++)
     {
-        ISSTUserModel *contactsModel = [[ISSTUserModel alloc]init];
+        ISSTUserModel *contactsModel = [[[ISSTUserModel alloc]init]autorelease];
         contactsModel.userId     = [[[contactsArray objectAtIndex:i ] objectForKey:@"id"] intValue];
         contactsModel.name              = [[contactsArray objectAtIndex:i] objectForKey:@"name"];
         [tmpArray addObject:contactsModel];

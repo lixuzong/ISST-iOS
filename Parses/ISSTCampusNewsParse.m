@@ -57,11 +57,12 @@
         long long  updatedAt =  [[[campusNewsArray objectAtIndex:i] objectForKey:@"updatedAt"]longLongValue]/1000;
         
         NSDate  *datePT = [NSDate dateWithTimeIntervalSince1970:updatedAt];
+       
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-
-        
         campusNews.updatedAt  = [dateFormatter stringFromDate:datePT];
+        [dateFormatter release];
+        
         campusNews.userId     = [[[campusNewsArray objectAtIndex:i ] objectForKey:@"userId"]intValue];
         campusNews.categoryId     = [[[campusNewsArray objectAtIndex:i ] objectForKey:@"categoryId"]intValue];
         NSLog(@"%@",userInfo);
@@ -89,7 +90,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     newsDetailsModel.updatedAt  = [dateFormatter stringFromDate:datePT];
-    
+     [dateFormatter release];
     if(newsDetailsModel.userId>0)
     {
     newsDetailsModel.userModel=(NSDictionary *)[detailsInfo objectForKey:@"user"];

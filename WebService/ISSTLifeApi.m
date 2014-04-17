@@ -209,6 +209,7 @@ const    static  int   EXPERIENCE  =5;
                     {
                         [self.webApiDelegate requestDataOnSuccess:backData];
                     }
+                    backData = nil;
                 }
                 
                 else if(1 == [news getStatus])

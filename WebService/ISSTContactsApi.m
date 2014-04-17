@@ -192,7 +192,7 @@ const static int        MAJORSLISTS         = 4;
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     ISSTContactsParse *contactsParse=[[ISSTContactsParse alloc]init];
-    NSDictionary *dics   = [contactsParse infoSerialization:datas];;
+    NSDictionary *dics   = [contactsParse infoSerialization:datas];
     NSArray *array ;
     id backData;
     
@@ -300,6 +300,7 @@ const static int        MAJORSLISTS         = 4;
             break;
 
     }
+   
     
 }
 

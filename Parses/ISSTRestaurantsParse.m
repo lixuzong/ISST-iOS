@@ -42,7 +42,7 @@
     NSLog(@"count=%d",count);
     for (int i=0; i<count; i++)
     {
-        ISSTRestaurantsModel *restaurant = [[ISSTRestaurantsModel alloc]init];
+        ISSTRestaurantsModel *restaurant = [[[ISSTRestaurantsModel alloc]init]autorelease];
         restaurant.restaurantsId     = [[[restaurantsArray objectAtIndex:i ] objectForKey:@"id"] intValue];
         restaurant.name              = [[restaurantsArray objectAtIndex:i] objectForKey:@"name"];
         restaurant.description       = [[restaurantsArray objectAtIndex:i] objectForKey:@"description"];

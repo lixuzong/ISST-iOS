@@ -15,6 +15,7 @@
 @interface ISSTLoginViewController ()
 @property (nonatomic,strong)ISSTUserModel  *userModel;
 @property (nonatomic,strong)ISSTLoginApi  *userApi;
+@property (weak, nonatomic) IBOutlet UISwitch *defaultLoginSwitch;
 @end
 
 @implementation ISSTLoginViewController
@@ -22,6 +23,7 @@
 @synthesize passwordField;
 @synthesize userApi;
 @synthesize userModel;
+@synthesize defaultLoginSwitch;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,15 +50,26 @@
     [self.passwordField setSecureTextEntry:YES];//set password ......
     self.userApi =[[ISSTLoginApi alloc]init];
     self.userApi.webApiDelegate = self;
+  
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     //检查缓存中是否有用户数据
-    self.userModel = [AppCache getCache];
-    if (userModel) {
-        NSLog(@"%@" ,[userModel description]);
+      if (defaultLoginSwitch.on) {
+          self.userModel = [AppCache getCache];
+          if (userModel) {
+              NSLog(@"%@" ,[userModel description]);
+          }
+          nameField.text = userModel.userName;
+          passwordField.text=@"111111";
     }
+    else
+    {
+        nameField.text = nil;
+        passwordField.text=nil;
+    }
+    
     
     //有缓存数据的话
     //判断数据是否过时

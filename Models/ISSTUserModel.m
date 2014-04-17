@@ -64,7 +64,7 @@
         privateEmail=((NSNumber*)[decoder decodeObjectForKey:@"privateEmail"]).boolValue;
         privatePhone=((NSNumber*)[decoder decodeObjectForKey:@"privatePhone"]).boolValue;
         privatePosition=((NSNumber*)[decoder decodeObjectForKey:@"privatePosition"]).boolValue;
-        privateQQ=[decoder decodeBoolForKey:@"privateQQ"];
+        privateQQ=((NSNumber*)[decoder decodeObjectForKey:@"privateQQ"]).boolValue;
         
     }
     return self;
@@ -92,7 +92,8 @@
     [encoder encodeObject:[NSNumber numberWithBool:self.privateEmail] forKey:@"privateEmail"];
     [encoder encodeObject:[NSNumber numberWithBool:self.privatePhone] forKey:@"privatePhone"];
     [encoder encodeObject:[NSNumber numberWithBool:self.privatePosition] forKey:@"privatePosition"];
-    [encoder encodeBool:self.privateQQ forKey:@"privateQQ"];
+    [encoder encodeObject:[NSNumber numberWithBool:self.privateQQ] forKey:@"privateQQ"];
+   
     
 }
 /////////////////http://blog.csdn.net/wbw1985/article/details/19989709

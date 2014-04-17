@@ -50,11 +50,12 @@
         long long  updatedAt =  [[[jobsArray objectAtIndex:i] objectForKey:@"updatedAt"]longLongValue]/1000;
         
         NSDate  *datePT = [NSDate dateWithTimeIntervalSince1970:updatedAt];
+      
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        
-        
         jobsModel .updatedAt  = [dateFormatter stringFromDate:datePT];
+        [dateFormatter release];
+        
         [tempJobsArray addObject:jobsModel];
     }
     return tempJobsArray;
@@ -75,9 +76,12 @@
     long long  updatedAt =  [[detailsInfo objectForKey:@"updatedAt"]longLongValue]/1000;
     
     NSDate  *datePT = [NSDate dateWithTimeIntervalSince1970:updatedAt];
+   
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     jobsDetailModel.updatedAt=[dateFormatter stringFromDate:datePT];
+    [dateFormatter release];
+    
     return jobsDetailModel ;
     
 }
