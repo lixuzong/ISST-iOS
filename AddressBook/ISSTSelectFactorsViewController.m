@@ -16,14 +16,19 @@
 
 @implementation ISSTSelectFactorsViewController
 @synthesize name,gender,grade,major,majorsModelArray,gradeModelArray,classModel,majorModel,gradeArray,majorsArray,genderArray;
+
 @synthesize selectedDelegate;
+
 @synthesize GRADEID;
 @synthesize GENDERID;
 @synthesize MAJORID;
+
 int static METHOD;
+
 int static gradeid;
 int static majorid;
 int static genderid;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,7 +42,7 @@ int static genderid;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    GRADEID=GENDERID=MAJORID=-1;
+    GRADEID = GENDERID = MAJORID =-1;
     gradeArray=[[NSMutableArray alloc]init];
     for(int i=0;i<[gradeModelArray count];i++)
     {
@@ -53,21 +58,27 @@ int static genderid;
         [majorsArray addObject:majorModel.name];
     }
     genderArray=@[@"男",@"女"];
+    
     gender=[[AJComboBox alloc]initWithFrame:CGRectMake(76 , 146, 224, 21)];
     grade=[[AJComboBox alloc]initWithFrame:CGRectMake(76, 216, 224, 21)];
     major=[[AJComboBox alloc]initWithFrame:CGRectMake(110, 291, 190, 21)];
+ 
     [gender setLabelText:@"-SELECT-"];
     [grade setLabelText:@"-SELECT-"];
     [major setLabelText:@"-SELECT-"];
+    
     [gender setDelegate:self];
     [grade setDelegate:self];
     [major setDelegate:self];
+    
     [gender setTag:1];
     [grade  setTag:2];
     [major  setTag:3];
+    
     [gender setArrayData:genderArray];
     [grade setArrayData:gradeArray];
     [major setArrayData:majorsArray];
+    
     [self.view addSubview:gender];
     [self.view addSubview:grade ];
     [self.view addSubview:major];
@@ -144,16 +155,22 @@ int static genderid;
     GENDERID++;
     if(GRADEID>=0)
         classModel=[gradeModelArray objectAtIndex:GRADEID];
-    else classModel.classId=GRADEID+1;
+    else
+        classModel.classId=GRADEID+1;
+    
     if (MAJORID>=0)
         majorModel=[majorsModelArray objectAtIndex:MAJORID];
-    else majorModel.majorId=MAJORID+1;
+    else
+        majorModel.majorId=MAJORID+1;
+    
     [selectedDelegate selectedReloadData];
     name.text=nil;
     GRADEID=GENDERID=MAJORID=-1;
+    
     [gender setLabelText:@"-SELECT-"];
     [grade setLabelText:@"-SELECT-"];
     [major setLabelText:@"-SELECT-"];
+    
     [self.navigationController popViewControllerAnimated:self];
     
 }

@@ -38,7 +38,9 @@
 @synthesize selectedFactorsLabel;
 @synthesize addressBookDetailView;
 @synthesize userInfo;
+
 static NSString *CellIdentifier=@"ContactCell";
+
 const static int        CONTACTSLISTS       = 1;
 const static  int       CONTACTDETAIL       = 2;
 const static int        CLASSESLISTS        = 3;
@@ -55,6 +57,52 @@ int STATUS=0;
     }
     return self;
 }
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    addressBookModel=[[ISSTUserModel alloc]init];
+    userInfo=[[ISSTUserModel alloc]init];
+    
+    userInfo=[AppCache getCache];
+    
+    self.selectFactors=[[ISSTSelectFactorsViewController alloc]init];
+    
+    self.selectFactors.navigationItem.title=@"筛选条件";
+    
+    method=CONTACTSLISTS;
+    
+    self.addressBookApi = [[ISSTContactsApi alloc]init];
+    self.addressBookApi.webApiDelegate =self;
+    
+    addressBookModel.classId=userInfo.classId;
+    addressBookModel.majorId=userInfo.majorId;
+    
+    [self requestForData];
+    
+    UISearchBar *searchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0, 50, 320, 44)];
+    addressBookTableView.tableHeaderView=searchBar;
+    searchController=[[UISearchDisplayController alloc]initWithSearchBar:searchBar contentsController:self];
+    searchController.delegate=self;
+    searchController.searchResultsTableView.delegate=self;
+    searchController.searchResultsDataSource=self;
+    
+    
+    self.navigationItem.rightBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"条件筛选" style:UIBarButtonSystemItemEdit target:self action:@selector(clickSelect)];
+    self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    
+    
+	self.view.backgroundColor = [UIColor lightGrayColor];
+    
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
+
+    
+}
+
+
 -(void)labelShow
 {
     NSMutableString *tempString=[[NSMutableString alloc]init];
@@ -87,42 +135,7 @@ int STATUS=0;
 {
      [self.addressBookApi requestContactsLists:0 name:addressBookModel.name gender:addressBookModel.gender grade:0 classId:addressBookModel.classId majorId:addressBookModel.majorId cityId:0 company:nil];
 }
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    addressBookModel=[[ISSTUserModel alloc]init];
-    userInfo=[[ISSTUserModel alloc]init];
-    userInfo=[AppCache getCache];
-    self.selectFactors=[[ISSTSelectFactorsViewController alloc]init];
-    self.selectFactors.navigationItem.title=@"筛选条件";
-    method=CONTACTSLISTS;
-    self.addressBookApi = [[ISSTContactsApi alloc]init];
-    self.addressBookApi.webApiDelegate =self;
-    addressBookModel.classId=userInfo.classId;
-    addressBookModel.majorId=userInfo.majorId;
-    [self requestForData];
 
-        UISearchBar *searchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0, 50, 320, 44)];
-    addressBookTableView.tableHeaderView=searchBar;
-    searchController=[[UISearchDisplayController alloc]initWithSearchBar:searchBar contentsController:self];
-    searchController.delegate=self;
-    searchController.searchResultsTableView.delegate=self;
-    searchController.searchResultsDataSource=self;
-    
-    
-    self.navigationItem.rightBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@"条件筛选" style:UIBarButtonSystemItemEdit target:self action:@selector(clickSelect)];
-        self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    
-    
-	self.view.backgroundColor = [UIColor lightGrayColor];
-    
-        if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-
-	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-
-}
 
 #pragma mark
 #pragma mark Table View Data Source Methods
@@ -271,6 +284,7 @@ int STATUS=0;
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 - (IBAction)clearSelectedFactors:(id)sender {
+    
     addressBookModel.name=nil;
     addressBookModel.gender=0;
     addressBookModel.classId=0;

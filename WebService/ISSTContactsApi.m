@@ -300,6 +300,7 @@ const static int        MAJORSLISTS         = 4;
             break;
 
     }
+    dics= nil;
    
     
 }
