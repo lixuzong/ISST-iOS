@@ -29,13 +29,14 @@
 
 -(id)restaurantsMenusInfoParse
 {
-    NSMutableArray *tmpArray =[[[NSMutableArray alloc]init]autorelease];
+    NSMutableArray *tmpArray =[[NSMutableArray alloc]init];
     
     //NSLog(@"%@",dict);
     restaurantsMenusArray = [super.dict objectForKey:@"body"] ;
     int  count = [restaurantsMenusArray count];
     NSLog(@"count=%d",count);
-    for (int i=0; i<count; i++)
+    int i;
+    for ( i=0; i<count; i++)
     {
         ISSTRestaurantsMenusModel *restaurant = [[ISSTRestaurantsMenusModel alloc]init];
     
@@ -44,8 +45,9 @@
         restaurant.picture           = [[restaurantsMenusArray objectAtIndex:i]objectForKey:@"picture"];
         restaurant.price           = [[[restaurantsMenusArray objectAtIndex:i] objectForKey:@"price"]floatValue];
         [tmpArray addObject:restaurant];
+        [restaurant release];
     }
-    return tmpArray ;
+    return [tmpArray autorelease] ;
 }
 
 - (void)dealloc

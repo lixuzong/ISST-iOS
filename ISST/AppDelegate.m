@@ -17,22 +17,31 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
    // self.navigationController = [[[UINavigationController alloc] initWithRootViewController:homeViewController] autorelease];
 
     
      ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
     loginViewController.title = @"iSST";
-    self.navigationController = [[[UINavigationController alloc] initWithRootViewController:loginViewController] autorelease];
+    _navigationController = [[[UINavigationController alloc] initWithRootViewController:loginViewController] autorelease];
 
     
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    //_window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   
 //      self.window.rootViewController = self.revealController;
-    self.window.rootViewController = self.navigationController ;
-    [self.window makeKeyAndVisible];
-
+    _window.rootViewController = _navigationController ;
+    
+    [_window makeKeyAndVisible];
+  
     return YES;
+}
+
+
+- (void)dealloc
+{
+    _window = nil;
+    _navigationController = nil;
+    [super dealloc];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -65,7 +65,7 @@ const static int        MAJORSLISTS         = 4;
 //            [info appendFormat:@"%@",[NSString stringWithFormat:@"id=%d",contactId]];
 //        }
         if (name) {
-            NSString * encodingNameString = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+//            NSString * encodingNameString = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             [info appendFormat:@"%@",[NSString stringWithFormat:@"&name=%@",name]];
         }
         

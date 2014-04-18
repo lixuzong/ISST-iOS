@@ -111,8 +111,8 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
 {
     self.newsDetailView=[[ISSTNewsDetailViewController alloc]initWithNibName:@"ISSTNewsDetailViewController" bundle:nil];
     self.newsDetailView.navigationItem.title =@"详细信息";
-    ISSTCampusNewsModel *tempNewsModel=[[ISSTCampusNewsModel alloc]init];
-    tempNewsModel= [newsArray objectAtIndex:indexPath.row];
+  //  ISSTCampusNewsModel *tempNewsModel=[[ISSTCampusNewsModel alloc]init];
+     ISSTCampusNewsModel * tempNewsModel= [newsArray objectAtIndex:indexPath.row];
     self.newsDetailView.newsId=tempNewsModel.newsId;
    // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
     [self.navigationController pushViewController:self.newsDetailView animated: NO];

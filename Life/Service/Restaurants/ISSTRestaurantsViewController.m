@@ -109,7 +109,7 @@ static NSString *CellTableIdentifier=@"ISSTRestaurantTableViewCell";
 {
     self.restaurantsDetailView=[[ISSTRestaurantDetailViewController alloc]initWithNibName:@"ISSTRestaurantDetailViewController" bundle:nil];
     self.restaurantsDetailView.navigationItem.title =@"详细信息";
-    ISSTRestaurantsModel *tempRestaurantsModel=[[ISSTRestaurantsModel alloc]init];
+    ISSTRestaurantsModel *tempRestaurantsModel;   //=[[ISSTRestaurantsModel alloc]init];
     tempRestaurantsModel= [restaurantsArray objectAtIndex:indexPath.row];
     self.restaurantsDetailView.restaurantsId=tempRestaurantsModel.restaurantsId;
     // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden

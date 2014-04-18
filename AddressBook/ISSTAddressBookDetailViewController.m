@@ -107,10 +107,10 @@
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *detailInfoTableIdentifier=@"ISSTAddressBookDetailTableViewCell";
-    ISSTAddressBookDetailTableViewCell *cell= (ISSTAddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:detailInfoTableIdentifier];
+  //  ISSTAddressBookDetailTableViewCell *cell  = (ISSTAddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:detailInfoTableIdentifier];
    
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
-    cell = [nib objectAtIndex:0];
+    ISSTAddressBookDetailTableViewCell *cell  = [nib objectAtIndex:0];
     
     switch (indexPath.section) {
         case 0:

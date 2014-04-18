@@ -18,9 +18,9 @@
     NSString *cachesDirectory = [paths objectAtIndex:0];
     
     NSString *archivePath = [cachesDirectory stringByAppendingPathComponent:@"UserModel.archive"];
-    NSArray *tmpArray = [NSArray arrayWithObject:@"archive"];
-    
-    BOOL saveed = [NSKeyedArchiver archiveRootObject:model toFile:archivePath];
+   // NSArray *tmpArray = [NSArray arrayWithObject:@"archive"];
+    //BOOL saveed =
+     [NSKeyedArchiver archiveRootObject:model toFile:archivePath];
 }
 
 

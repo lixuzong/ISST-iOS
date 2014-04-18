@@ -102,8 +102,8 @@ static NSString *CellTableIdentifier=@"ISSTEmploymentTableViewCell";
 {
     self.detailView=[[ISSTEmploymentDetailViewController alloc]initWithNibName:@"ISSTEmploymentDetailViewController" bundle:nil];
     self.detailView.navigationItem.title =@"就业信息详情";
-   ISSTJobsModel *tempEmploymentModel=[[ISSTJobsModel alloc]init];
-    tempEmploymentModel= [employmentArray objectAtIndex:indexPath.row];
+ //  ISSTJobsModel *tempEmploymentModel=[[ISSTJobsModel alloc]init];
+   ISSTJobsModel *  tempEmploymentModel= [employmentArray objectAtIndex:indexPath.row];
     self.detailView.employmentId=tempEmploymentModel.messageId;
     // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
     [self.navigationController pushViewController:self.detailView animated: NO];

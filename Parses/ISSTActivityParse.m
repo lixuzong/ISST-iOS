@@ -46,6 +46,7 @@
         activity.picture           = [[activitiesArray objectAtIndex:i]objectForKey:@"picture"];
         activity.content           = [[activitiesArray objectAtIndex:i] objectForKey:@"content"];
         [tmpArray addObject:activity];
+        [activity release];
     }
     return tmpArray ;
 

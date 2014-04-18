@@ -106,8 +106,8 @@ static NSString *CellTableIdentifier=@"ISSTExperienceTableViewCell";
 {
     self.detailView=[[ISSTExperienceDetailViewController alloc]initWithNibName:@"ISSTExperienceDetailViewController" bundle:nil];
     self.detailView.navigationItem.title =@"详细信息";
-    ISSTCampusNewsModel *tempNewsModel=[[ISSTCampusNewsModel alloc]init];
-    tempNewsModel= [experenceArray objectAtIndex:indexPath.row];
+   // ISSTCampusNewsModel *tempNewsModel=[[ISSTCampusNewsModel alloc]init];
+  ISSTCampusNewsModel *   tempNewsModel= [experenceArray objectAtIndex:indexPath.row];
    self.detailView.experienceId=tempNewsModel.newsId;
     // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
     [self.navigationController pushViewController:self.detailView animated: NO];

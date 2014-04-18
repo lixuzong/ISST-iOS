@@ -91,8 +91,8 @@
 {
     self.WikisDetailView=[[ISSTWikisDetailViewController alloc]initWithNibName:@"ISSTWikisDetailViewController" bundle:nil];
      self.WikisDetailView.navigationItem.title =@"详细信息";
-    ISSTCampusNewsModel *tempWikisModel=[[ISSTCampusNewsModel alloc]init];
-    tempWikisModel=[newsArray objectAtIndex:(indexPath.section*2+indexPath.row)];//2为每行的个数
+  //  ISSTCampusNewsModel *tempWikisModel=[[ISSTCampusNewsModel alloc]init];
+   ISSTCampusNewsModel *   tempWikisModel=[newsArray objectAtIndex:(indexPath.section*2+indexPath.row)];//2为每行的个数
 
     self.WikisDetailView.WikisId=tempWikisModel.newsId;
     // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
