@@ -11,18 +11,23 @@
 #import "ISSTAddressBookDetailViewController.h"
 #import "AppCache.h"
 @interface ISSTAddressBookViewController ()
-@property (weak, nonatomic) IBOutlet UITableView *addressBookTableView;
-@property(strong,nonatomic)NSMutableArray *addressBookArray;
-@property(strong,nonatomic)ISSTSelectFactorsViewController *selectFactors;
-@property(strong,nonatomic)NSDictionary *sortedNamesDictionary;
-@property(strong,nonatomic) UISearchDisplayController *searchController;
+
 @property(strong,nonatomic)NSMutableArray *namesArray;
 @property(strong,nonatomic)NSMutableArray *searchArray;
+@property(strong,nonatomic)NSMutableArray *addressBookArray;
+@property(strong,nonatomic)NSDictionary *sortedNamesDictionary;
+
+@property (weak, nonatomic) IBOutlet UITableView *addressBookTableView;
 @property (weak, nonatomic) IBOutlet UILabel *selectedFactorsLabel;
+
+@property(strong,nonatomic)ISSTSelectFactorsViewController *selectFactorsViewController;
+
+@property(strong,nonatomic) UISearchDisplayController *searchController;
 @property(strong,nonatomic)ISSTAddressBookDetailViewController* addressBookDetailView;
 
 - (IBAction)clearSelectedFactors:(id)sender;
 -(void)clickSelect;
+
 @end
 
 @implementation ISSTAddressBookViewController
@@ -30,7 +35,7 @@
 @synthesize addressBookModel;
 @synthesize addressBookTableView;
 @synthesize addressBookArray;
-@synthesize selectFactors;
+@synthesize selectFactorsViewController;
 @synthesize sortedNamesDictionary;
 @synthesize searchController;
 @synthesize searchArray;
@@ -66,9 +71,9 @@ int STATUS=0;
     
     userInfo=[AppCache getCache];
     
-    self.selectFactors=[[ISSTSelectFactorsViewController alloc]init];
+    self.selectFactorsViewController=[[ISSTSelectFactorsViewController alloc]init];
     
-    self.selectFactors.navigationItem.title=@"筛选条件";
+    self.selectFactorsViewController.navigationItem.title=@"筛选条件";
     
     method=CONTACTSLISTS;
     
@@ -80,7 +85,7 @@ int STATUS=0;
     
     [self requestForData];
     
-    UISearchBar *searchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0, 50, 320, 44)];
+    UISearchBar *searchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0, 35, 320, 44)];
     addressBookTableView.tableHeaderView=searchBar;
     searchController=[[UISearchDisplayController alloc]initWithSearchBar:searchBar contentsController:self];
     searchController.delegate=self;
@@ -90,11 +95,9 @@ int STATUS=0;
     
     self.navigationItem.rightBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@"条件筛选" style:UIBarButtonSystemItemEdit target:self action:@selector(clickSelect)];
+    
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    
-    
 	self.view.backgroundColor = [UIColor lightGrayColor];
-    
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
@@ -102,11 +105,13 @@ int STATUS=0;
     
 }
 
-
+////////////////////////////////////////////////////////////////////
+//                   show the select factor  in list page
+////////////////////////////////////////////////////////////////////
 -(void)labelShow
 {
     NSMutableString *tempString=[[NSMutableString alloc]init];
-    if(selectFactors.name.text.length!=0)
+    if(selectFactorsViewController.name.text.length!=0)
         [tempString appendString:[NSString stringWithFormat:@"姓名：%@",addressBookModel.name]];
     if(addressBookModel.gender)
     {
@@ -122,11 +127,11 @@ int STATUS=0;
         
     }
     if(addressBookModel.classId)
-        [tempString appendString:[NSString stringWithFormat:@" 班级：%@",selectFactors.classModel.name]];
+        [tempString appendString:[NSString stringWithFormat:@" 班级：%@",selectFactorsViewController.classModel.name]];
     if(addressBookModel.grade)
         [tempString appendString:[NSString stringWithFormat:@" 年级：%d",addressBookModel.grade]];
     if(addressBookModel.majorId)
-        [tempString appendString:[NSString stringWithFormat:@" 专业：%@",selectFactors.majorModel.name]];
+        [tempString appendString:[NSString stringWithFormat:@" 专业：%@",selectFactorsViewController.majorModel.name]];
     selectedFactorsLabel.text=tempString;
 
     
@@ -148,7 +153,8 @@ int STATUS=0;
 {
     if(tableView==self.searchController.searchResultsTableView)
         return [searchArray count];
-    else return [namesArray count];
+    else
+        return [namesArray count];
     //   return studyArray.count;
 }
 
@@ -161,7 +167,7 @@ int STATUS=0;
    if(tableView==self.searchController.searchResultsTableView)
        cell.textLabel.text=[searchArray objectAtIndex:indexPath.row];
    else
-        cell.textLabel.text=[namesArray objectAtIndex:indexPath.row];
+       cell.textLabel.text=  ((ISSTUserModel*)addressBookArray[indexPath.row]).name; //[namesArray objectAtIndex:indexPath.row];
     cell.accessoryType=UITableViewCellAccessoryDetailDisclosureButton;
     return cell;
 }
@@ -172,7 +178,7 @@ int STATUS=0;
     self.addressBookDetailView.navigationItem.title=@"联系人详情";
     addressBookModel=[addressBookArray objectAtIndex:indexPath.row];
     method= CONTACTDETAIL;
-        [self.addressBookApi requestContactDetail:addressBookModel.userId];
+    [self.addressBookApi requestContactDetail:addressBookModel.userId];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -199,18 +205,18 @@ int STATUS=0;
                 [self.addressBookApi requestClassesLists];
             break;
         case CLASSESLISTS:
-            if ([selectFactors.gradeModelArray count]) {
-                selectFactors.gradeModelArray = [[NSMutableArray alloc]init];
+            if ([selectFactorsViewController.gradeModelArray count]) {
+                selectFactorsViewController.gradeModelArray = [[NSMutableArray alloc]init];
             }
-            selectFactors.gradeModelArray = (NSMutableArray *)backToControllerData;
-            NSLog(@"count =%d ,selectFactors.gradeModelArray = %@",[selectFactors.gradeModelArray count],selectFactors.gradeModelArray);
+            selectFactorsViewController.gradeModelArray = (NSMutableArray *)backToControllerData;
+            NSLog(@"count =%d ,selectFactors.gradeModelArray = %@",[selectFactorsViewController.gradeModelArray count],selectFactorsViewController.gradeModelArray);
             if(STATUS==0)
             {
-                for(int i=0;i<[selectFactors.gradeModelArray count];i++)
+                for(int i=0;i<[selectFactorsViewController.gradeModelArray count];i++)
                 {
-                    selectFactors.classModel=[[ISSTClassModel alloc]init];
-                    selectFactors.classModel=[selectFactors.gradeModelArray objectAtIndex:i];
-                    if(selectFactors.classModel.classId==userInfo.classId)
+                    selectFactorsViewController.classModel=[[ISSTClassModel alloc]init];
+                    selectFactorsViewController.classModel=[selectFactorsViewController.gradeModelArray objectAtIndex:i];
+                    if(selectFactorsViewController.classModel.classId==userInfo.classId)
                     break;
                 }
             }
@@ -218,18 +224,18 @@ int STATUS=0;
             [self.addressBookApi requestMajorsLists];
             break;
         case MAJORSLISTS:
-            if ([selectFactors.majorsModelArray count]) {
-                selectFactors.majorsModelArray = [[NSMutableArray alloc]init];
+            if ([selectFactorsViewController.majorsModelArray count]) {
+                selectFactorsViewController.majorsModelArray = [[NSMutableArray alloc]init];
             }
-            selectFactors.majorsModelArray = (NSMutableArray *)backToControllerData;
-            NSLog(@"count =%d ,selectFactors.majorsModelArray = %@",[selectFactors.majorsModelArray count],selectFactors.majorsModelArray);
+            selectFactorsViewController.majorsModelArray = (NSMutableArray *)backToControllerData;
+            NSLog(@"count =%d ,selectFactors.majorsModelArray = %@",[selectFactorsViewController.majorsModelArray count],selectFactorsViewController.majorsModelArray);
             if(STATUS==0)
             {
-                for(int i=0;i<[selectFactors.majorsModelArray count];i++)
+                for(int i=0;i<[selectFactorsViewController.majorsModelArray count];i++)
                 {
-                    selectFactors.majorModel=[[ISSTMajorModel alloc]init];
-                    selectFactors.majorModel=[selectFactors.majorsModelArray objectAtIndex:i];
-                    if(selectFactors.majorModel.majorId==userInfo.majorId)
+                    selectFactorsViewController.majorModel=[[ISSTMajorModel alloc]init];
+                    selectFactorsViewController.majorModel=[selectFactorsViewController.majorsModelArray objectAtIndex:i];
+                    if(selectFactorsViewController.majorModel.majorId==userInfo.majorId)
                         break;
                 }
                 addressBookModel.classId=userInfo.classId;
@@ -245,17 +251,17 @@ int STATUS=0;
                 addressBookDetailView.userDetailInfo=[[ISSTUserModel alloc]init];
             }
             addressBookDetailView.userDetailInfo=(ISSTUserModel *)backToControllerData;
-            for(int i=0;i<[selectFactors.gradeModelArray count];i++)
+            for(int i=0;i<[selectFactorsViewController.gradeModelArray count];i++)
             {
                 addressBookDetailView.classInfo=[[ISSTClassModel alloc]init];
-                addressBookDetailView.classInfo=[selectFactors.gradeModelArray objectAtIndex:i];
+                addressBookDetailView.classInfo=[selectFactorsViewController.gradeModelArray objectAtIndex:i];
                 if(addressBookDetailView.classInfo.classId==addressBookDetailView.userDetailInfo.classId)
                     break;
             }
-            for(int i=0;i<[selectFactors.majorsModelArray count];i++)
+            for(int i=0;i<[selectFactorsViewController.majorsModelArray count];i++)
             {
                 addressBookDetailView.majorInfo=[[ISSTMajorModel alloc]init];
-                addressBookDetailView.majorInfo=[selectFactors.majorsModelArray objectAtIndex:i];
+                addressBookDetailView.majorInfo=[selectFactorsViewController.majorsModelArray objectAtIndex:i];
                 if(addressBookDetailView.majorInfo.majorId==addressBookDetailView.userDetailInfo.majorId)
                     break;
             }
@@ -297,16 +303,17 @@ int STATUS=0;
 
 -(void)clickSelect
 {
-    self.selectFactors.selectedDelegate=self;
-    [self.navigationController pushViewController:selectFactors animated:NO];
+    self.selectFactorsViewController.selectedDelegate=self;
+    [self.navigationController pushViewController:selectFactorsViewController animated:NO];
 }
 -(void)selectedReloadData
 {
-    NSLog(@"selectFactors.GENDERID=%d,selectFactors.classModel.classId=%d,selectFactors.majorModel.majorId=%d",selectFactors.GENDERID,selectFactors.classModel.classId,selectFactors.majorModel.majorId);
-    addressBookModel.name=selectFactors.name.text;
-    addressBookModel.gender=selectFactors.GENDERID;
-    addressBookModel.classId=selectFactors.classModel.classId;
-    addressBookModel.majorId=selectFactors.majorModel.majorId;
+    NSLog(@"selectFactors.GENDERID=%d,selectFactors.classModel.classId=%d,selectFactors.majorModel.majorId=%d",selectFactorsViewController.GENDERID,selectFactorsViewController.classModel.classId,selectFactorsViewController.majorModel.majorId);
+    
+    addressBookModel.name=selectFactorsViewController.name.text;
+    addressBookModel.gender=selectFactorsViewController.GENDERID;
+    addressBookModel.classId=selectFactorsViewController.classModel.classId;
+    addressBookModel.majorId=selectFactorsViewController.majorModel.majorId;
     [self requestForData];
     [self labelShow];
     [addressBookTableView reloadData];

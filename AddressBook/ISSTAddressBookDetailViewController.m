@@ -40,6 +40,26 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+#pragma mark -
+#pragma mark Table View  Delegate Methods
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section) {
+        return 15;
+    }
+    else
+        return 25;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 10;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 40;
+}
+
 
 #pragma mark -
 #pragma mark Table View Data Source Methods
@@ -71,13 +91,13 @@
     NSString *sectionTitle;
     switch (section) {
         case 0:
-            sectionTitle=[[NSString alloc]initWithFormat:@"基本信息"];
+            sectionTitle=@"基本信息";
             break;
         case 1:
-            sectionTitle=[[NSString alloc]initWithFormat:@"联系方式"];
+            sectionTitle=@"联系方式";
             break;
         case 2:
-            sectionTitle=[[NSString alloc]initWithFormat:@"职场信息"];
+            sectionTitle=@"职场信息";
             break;
         default:
             break;
@@ -88,26 +108,23 @@
 {
     static NSString *detailInfoTableIdentifier=@"ISSTAddressBookDetailTableViewCell";
     ISSTAddressBookDetailTableViewCell *cell= (ISSTAddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:detailInfoTableIdentifier];
+   
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
+    cell = [nib objectAtIndex:0];
+    
     switch (indexPath.section) {
         case 0:
         {
+            
             switch (indexPath.row) {
                 case 0:
                 {
-                    if(cell==nil){
-                        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
-                        cell = [nib objectAtIndex:0];
-                    }
                     cell.contentLabel.text=userDetailInfo.name;
                     cell.titleLabel.text=@"姓名";
                     break;
                 }
                 case 1:
                 {
-                    if(cell==nil){
-                        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
-                        cell = [nib objectAtIndex:0];
-                    }
                     if(userDetailInfo.gender==1)
                         cell.contentLabel.text=@"男";
                     else cell.contentLabel.text=@"女";
@@ -116,20 +133,12 @@
                 }
                 case 2:
                 {
-                    if(cell==nil){
-                        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
-                        cell = [nib objectAtIndex:0];
-                    }
                     cell.contentLabel.text=classInfo.name;
                     cell.titleLabel.text=@"班级";
                     break;
                 }
                 case 3:
                 {
-                    if(cell==nil){
-                        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
-                        cell = [nib objectAtIndex:0];
-                    }
                     cell.contentLabel.text=majorInfo.name;
                     cell.titleLabel.text=@"专业方向";
                     break;
@@ -145,30 +154,18 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                     if(cell==nil){
-                        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
-                        cell = [nib objectAtIndex:0];
-                    }
                     cell.contentLabel.text=userDetailInfo.phone;
                     cell.titleLabel.text=@"手机";
                     break;
                 }
                 case 1:
                 {
-                     if(cell==nil){
-                        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
-                        cell = [nib objectAtIndex:0];
-                    }
                     cell.contentLabel.text=userDetailInfo.qq;
                     cell.titleLabel.text=@"QQ";
                     break;
                 }
                 case 2:
                 {
-                        if(cell==nil){
-                        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
-                        cell = [nib objectAtIndex:0];
-                    }
                     cell.contentLabel.text=userDetailInfo.email;
                     cell.titleLabel.text=@"E-mail";
                     break;
@@ -186,30 +183,18 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                      if(cell==nil){
-                        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
-                        cell = [nib objectAtIndex:0];
-                    }
                     cell.contentLabel.text=[NSString stringWithFormat:@"%d",userDetailInfo.cityId];
                     cell.titleLabel.text=@"所在城市";
                     break;
                 }
                 case 1:
                 {
-                       if(cell==nil){
-                        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
-                        cell = [nib objectAtIndex:0];
-                    }
                     cell.contentLabel.text=userDetailInfo.company;
                     cell.titleLabel.text=@"工作单位";
                     break;
                 }
                 case 2:
                 {
-                        if(cell==nil){
-                        NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
-                        cell = [nib objectAtIndex:0];
-                    }
                     cell.contentLabel.text=userDetailInfo.position;
                     cell.titleLabel.text=@"职位";
                     break;
