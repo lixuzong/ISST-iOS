@@ -18,10 +18,8 @@
 
 - (id)infoSerialization:(NSData*)datas
 {
-    if (dict) {
-        dict= nil;
-    }
-     dict = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
+    dict = nil;
+    dict = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
     return dict;
 }
 
