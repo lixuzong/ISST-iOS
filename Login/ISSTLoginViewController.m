@@ -19,6 +19,7 @@
 @end
 
 @implementation ISSTLoginViewController
+
 @synthesize nameField;
 @synthesize passwordField;
 @synthesize userApi;
@@ -60,9 +61,10 @@
           self.userModel = [AppCache getCache];
           if (userModel) {
               NSLog(@"%@" ,[userModel description]);
+              nameField.text = userModel.userName;
+              passwordField.text=@"111111";
           }
-          nameField.text = userModel.userName;
-          passwordField.text=@"111111";
+     
     }
     else
     {
@@ -97,13 +99,8 @@
 
 - (IBAction)login:(id)sender {
     
-  // ISSTSlidebarNavController *slider =[[[ISSTSlidebarNavController alloc]init]autorelease];
-
-   //[self.navigationController pushViewController:slider animated: NO];
    [self.userApi requestLoginName:self.nameField.text andPassword:self.passwordField.text];
-   
-
-
+    
 }
 
 

@@ -9,10 +9,12 @@
 #import "ISSTEmploymentDetailViewController.h"
 #import "ISSTJobsApi.h"
 #import "ISSTJobsDetailModel.h"
+#import "ISSTUserModel.h"
 
 @interface ISSTEmploymentDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *time;
+@property (weak, nonatomic) IBOutlet UILabel *userInfo;
 @property (nonatomic,strong)ISSTJobsApi  *employmentApi;
 @property(nonatomic,strong)ISSTJobsDetailModel *detailModel;
 @end
@@ -87,6 +89,14 @@
     }
     self.title.text=detailModel.title;
     self.time.text=detailModel.updatedAt;
+    int userId=detailModel.userModel.userId;
+    if(userId!=0)
+    {
+        NSString *userName=detailModel.userModel.userName;
+        self.userInfo.text=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
+    }
+    else self.userInfo.text=@"发布者：管理员";
+
     [webView loadHTMLString:detailModel.content baseURL:nil];//加载html源代码
     NSLog(@"self=%@\n content=%@\n messageName=%@ \ndescription=%@",self,detailModel.content,detailModel.title,detailModel.description);
 }

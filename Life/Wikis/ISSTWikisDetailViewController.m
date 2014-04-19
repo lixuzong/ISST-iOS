@@ -11,6 +11,8 @@
 #import "ISSTNewsDetailsModel.h"
 @interface ISSTWikisDetailViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *Title;
+@property (weak, nonatomic) IBOutlet UILabel *time;
+@property (weak, nonatomic) IBOutlet UILabel *userInfo;
 @property (nonatomic,strong)ISSTLifeApi  *newsApi;
 @property(nonatomic,strong)ISSTNewsDetailsModel *detailModel;
 @end
@@ -70,6 +72,14 @@
         detailModel = (ISSTNewsDetailsModel*)backToControllerData;
     }
     self.Title.text=detailModel.title;
+    self.time.text=[NSString stringWithFormat:@"发布时间：%@",detailModel.updatedAt];
+    int userId=[[detailModel.userModel objectForKey:@"id"]intValue];
+    if(userId!=0)
+    {
+        NSString *userName=[detailModel.userModel objectForKey:@"name"];
+        self.userInfo.text=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
+    }
+    else self.userInfo.text=@"发布者：管理员";
     [webView loadHTMLString:detailModel.content baseURL:nil];//加载html源代码
     NSLog(@"self=%@ \n htmls=%@",self,backToControllerData);
     NSLog(@"self=%@\n content=%@\n title=%@ \ndescription=%@",self,detailModel.content,detailModel.title,detailModel.description);

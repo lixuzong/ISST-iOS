@@ -11,12 +11,14 @@
 #import "ISSTPushedViewController.h"
 #import "ISSTJobsApi.h"
 #import "ISSTJobsModel.h"
+#import "ISSTInternshipDetailViewController.h"
+
 @interface ISSTInternshipViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *internshipTableView;
 @property (nonatomic,strong)ISSTJobsApi  *internshipApi;
 @property (nonatomic,strong)ISSTJobsModel  *internshipModel;
 @property (strong, nonatomic)NSMutableArray *internshipArray;
-//@property (nonatomic,strong) ISSTExperienceDetailViewController *detailView;
+@property (nonatomic,strong) ISSTInternshipDetailViewController *detailView;
 @end
 
 @implementation ISSTInternshipViewController
@@ -24,6 +26,7 @@
 @synthesize internshipApi;
 @synthesize internshipModel;
 @synthesize internshipArray;
+@synthesize detailView;
 static NSString *CellTableIdentifier=@"ISSTInternshipTableViewCell";
 
 
@@ -97,17 +100,16 @@ static NSString *CellTableIdentifier=@"ISSTInternshipTableViewCell";
     return cell;
 }
 #pragma mark - Table view delegate
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    self.detailView=[[ISSTExperienceDetailViewController alloc]initWithNibName:@"ISSTExperienceDetailViewController" bundle:nil];
-//    self.detailView.navigationItem.title =@"详细信息";
-//    ISSTCampusNewsModel *tempNewsModel=[[ISSTCampusNewsModel alloc]init];
-//    tempNewsModel= [experenceArray objectAtIndex:indexPath.row];
-//    self.detailView.experienceId=tempNewsModel.newsId;
-//    // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
-//    [self.navigationController pushViewController:self.detailView animated: NO];
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.detailView=[[ISSTInternshipDetailViewController alloc]initWithNibName:@"ISSTInternshipDetailViewController" bundle:nil];
+    self.detailView.navigationItem.title =@"详细信息";
+    ISSTJobsModel *  tempModel= [internshipArray objectAtIndex:indexPath.row];
+    self.detailView.internshipId=tempModel.messageId;
+    // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
+    [self.navigationController pushViewController:detailView animated: NO];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods

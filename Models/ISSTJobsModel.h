@@ -7,11 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
-
+@class ISSTUserModel;
 @interface ISSTJobsModel : NSObject
 @property (nonatomic,assign) int         messageId;
 @property (nonatomic,copy) NSString      *title;
-@property(nonatomic,copy)NSString        *company;
-@property(nonatomic,copy)NSString        *updatedAt;
-@property(nonatomic,assign)int           userId;
+@property (nonatomic,copy) NSString        *company;
+@property (nonatomic,copy) NSString        *updatedAt;
+@property (nonatomic,assign) int           userId;
+//@property(nonatomic,copy)NSDictionary *userModel;
+@property (nonatomic,strong) ISSTUserModel  *userModel;
+@property (nonatomic,copy) NSString *description;
+@property (nonatomic,assign) int            cityId;
 @end

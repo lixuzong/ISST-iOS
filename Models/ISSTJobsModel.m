@@ -9,7 +9,7 @@
 #import "ISSTJobsModel.h"
 
 @implementation ISSTJobsModel
-@synthesize messageId,title,userId,updatedAt;
+@synthesize messageId,title,userId,updatedAt,userModel,description,cityId;
 
 
 - (id)init
@@ -24,6 +24,8 @@
 {
     [title release];
     [updatedAt release];
+    [userModel release];
+    [description release];
     [super dealloc];
 }
 @end

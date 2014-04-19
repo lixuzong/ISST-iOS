@@ -9,6 +9,7 @@
 #import "ISSTJobsParse.h"
 #import "ISSTJobsModel.h"
 #import "ISSTJobsDetailModel.h"
+#import "ISSTUserModel.h"
 @interface ISSTJobsParse()
 {
     NSArray      *_jobsArray;
@@ -36,30 +37,45 @@
     // NSLog(@"%@",dict);
     jobsArray = [super.dict objectForKey:@"body"] ;
     int  count = [jobsArray count];
-    NSLog(@"count=%d",count);
+    NSLog(@"count=%d,content=%@",count,jobsArray);
+
     for (int i=0; i<count; i++)
     {
         
         ISSTJobsModel *jobsModel = [[[ISSTJobsModel alloc]init]autorelease];
-        jobsModel .messageId = [[[jobsArray objectAtIndex:i ] objectForKey:@"id"] intValue];
-        jobsModel .title= [[jobsArray objectAtIndex:i] objectForKey:@"title"];
-        jobsModel .company= [[jobsArray objectAtIndex:i] objectForKey:@"company"];
-        jobsModel .userId=[[[jobsArray objectAtIndex:i ] objectForKey:@"userId"] intValue];
-        
-        
-        long long  updatedAt =  [[[jobsArray objectAtIndex:i] objectForKey:@"updatedAt"]longLongValue]/1000;
-        
+        jobsModel .messageId    = [[[jobsArray objectAtIndex:i ] objectForKey:@"id"] intValue];
+        jobsModel .title        = [[jobsArray objectAtIndex:i] objectForKey:@"title"];
+        jobsModel .company      = [[jobsArray objectAtIndex:i] objectForKey:@"company"];
+        jobsModel .userId       = [[[jobsArray objectAtIndex:i ] objectForKey:@"userId"] intValue];
+        jobsModel.description   = [[jobsArray objectAtIndex:i] objectForKey:@"description"];
+          jobsModel.cityId      = [[[jobsArray objectAtIndex:i] objectForKey:@"cityId"]intValue];
+       
+        long long  updatedAt    = [[[jobsArray objectAtIndex:i] objectForKey:@"updatedAt"]longLongValue]/1000;
         NSDate  *datePT = [NSDate dateWithTimeIntervalSince1970:updatedAt];
-      
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
-        jobsModel .updatedAt  = [dateFormatter stringFromDate:datePT];
-        [dateFormatter release];
-        
+          jobsModel .updatedAt  = [dateFormatter stringFromDate:datePT];
+           [dateFormatter release];
+
+      
+        NSDictionary *tmpDic = [[jobsArray objectAtIndex:i] objectForKey:@"user"];
+        NSLog(@"%@",[tmpDic description]);
+        if (![[tmpDic description]isEqualToString:@"<null>"]) {
+            jobsModel.userModel.userId = [[tmpDic objectForKey:@"id"]intValue];
+            jobsModel.userModel.name   = [tmpDic objectForKey:@"name"];
+            jobsModel.userModel.phone  = [tmpDic objectForKey:@"phone"];
+            jobsModel.userModel.qq     = [tmpDic objectForKey:@"qq"];
+            jobsModel.userModel.email  = [tmpDic objectForKey:@"email"];
+             [tmpDic release];
+        }
+ 
+   
+       
+     
         [tempJobsArray addObject:jobsModel];
     }
     return tempJobsArray;
-
+    
 }
 -(id)jobsDetailInfoParse
 {
@@ -73,16 +89,27 @@
     jobsDetailModel.messageId=[[detailsInfo objectForKey:@"id"]intValue];
     jobsDetailModel.company=[detailsInfo objectForKey:@"company"];
     jobsDetailModel.position=[detailsInfo objectForKey:@"position"];
+     jobsDetailModel.cityId=[[detailsInfo objectForKey:@"cityId"]intValue];
     long long  updatedAt =  [[detailsInfo objectForKey:@"updatedAt"]longLongValue]/1000;
-    
     NSDate  *datePT = [NSDate dateWithTimeIntervalSince1970:updatedAt];
-   
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     jobsDetailModel.updatedAt=[dateFormatter stringFromDate:datePT];
     [dateFormatter release];
+
+    NSDictionary *tmpDic = [detailsInfo objectForKey:@"user"];
+    NSLog(@"%@",[tmpDic description]);
+    if (![[tmpDic description]isEqualToString:@"<null>"]) {
+        jobsDetailModel.userModel.userId = [[tmpDic objectForKey:@"id"]intValue];
+        jobsDetailModel.userModel.name   = [tmpDic objectForKey:@"name"];
+        jobsDetailModel.userModel.phone  = [tmpDic objectForKey:@"phone"];
+        jobsDetailModel.userModel.qq     = [tmpDic objectForKey:@"qq"];
+        jobsDetailModel.userModel.email  = [tmpDic objectForKey:@"email"];
+        [tmpDic release];
+    }
     
-    return jobsDetailModel ;
+    
+      return jobsDetailModel ;
     
 }
 

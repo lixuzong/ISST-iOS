@@ -29,6 +29,8 @@
 @synthesize experenceModel;
 @synthesize experenceArray;
 
+@synthesize detailView;
+
 static NSString *CellTableIdentifier=@"ISSTExperienceTableViewCell";
 
 
