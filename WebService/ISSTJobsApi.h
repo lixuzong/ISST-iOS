@@ -43,4 +43,18 @@
  参数： 第几页、每页大小、关键字
  *****/
 - (void)requestDetailInfoWithId:(int)detailId;
+/*****
+ 2014.04.19
+ 创建： zhao
+ 获取内推评论信息列表
+ 参数： 第几页、每页大小、内推信息编号
+ *****/
+- (void)requestRCLists:(int)page andPageSize:(int)pageSize andJobId:(int)jobId;
+/*****
+ 2014.04.19
+ 创建： zhao
+ 发表评论信息
+ 参数：内推编号、内容
+ *****/
+- (void)requestPostComments:(int)jobId content:(NSString*)content;
 @end

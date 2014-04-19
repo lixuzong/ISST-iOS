@@ -18,17 +18,19 @@
 @synthesize webApiDelegate;
 @synthesize datas;
 @synthesize methodId;
-const static int EMPLOYMENT=1;
-const static int INTERNSHIP=2;
-const static int RECOMMEND=3;
-const static int DETAILS=4;
-
+const static int EMPLOYMENT     =1;
+const static int INTERNSHIP     =2;
+const static int RECOMMEND      =3;
+const static int DETAILS        =4;
+const static int COMMENTS       =5;
+const static int POSTCOMMENTS   =6;
 -(void)dealloc
 {
     webApiDelegate=nil;
     datas=nil;
     // [super dealloc];
 }
+
 -(void)requestEmploymentLists:(int)page andPageSize:(int)pageSize andKeywords:(NSString *)keywords
 {
     if (NetworkReachability.isConnectionAvailable)
@@ -107,6 +109,48 @@ const static int DETAILS=4;
             [self.webApiDelegate requestDataOnFail: [LoginErrors getNetworkProblem]];
         }
     }
+}
+
+- (void)requestRCLists:(int)page andPageSize:(int)pageSize andJobId:(int)jobId
+{
+    if (NetworkReachability.isConnectionAvailable)
+    {
+        methodId = COMMENTS;
+        datas = [[NSMutableData alloc]init];
+        NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
+        NSString *subUrlString = [NSString stringWithFormat:@"api/jobs/%d/comments?%@",jobId,info];
+        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
+    }
+    else
+    {
+        //数据库解析，
+        if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+        {
+            [self.webApiDelegate requestDataOnFail:[LoginErrors getNetworkProblem]];
+        }
+    }
+
+}
+
+- (void)requestPostComments:(int)jobId content:(NSString*)content
+{
+    if (NetworkReachability.isConnectionAvailable)
+    {
+        methodId = POSTCOMMENTS;
+        datas = [[NSMutableData alloc]init];
+        NSString *info = [NSString stringWithFormat:@"content=%@",content];
+        NSString *subUrlString = [NSString stringWithFormat:@"api/jobs/%d/comments",jobId];
+        [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:info MD5Dictionary:nil];
+    }
+    else
+    {
+        //数据库解析，
+        if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+        {
+            [self.webApiDelegate requestDataOnFail:[LoginErrors getNetworkProblem]];
+        }
+    }
+
 }
 
 
@@ -214,6 +258,72 @@ const static int DETAILS=4;
                     [self.webApiDelegate requestDataOnFail:[LoginErrors getNetworkProblem]];
                 }
             }
+            break;
+        case COMMENTS:
+            if (dics&&[dics count]>0)
+            {
+                if (0 == [jobs getStatus])//登录成功
+                {
+                    backData = [jobs rcListsParse];
+                    NSLog(@"%@",backData);
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
+                    {
+                        [self.webApiDelegate requestDataOnSuccess:backData];
+                    }
+                }
+                else if(1 == [jobs getStatus])
+                {
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    {
+                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                    }
+                }
+            }
+            else//可能服务器宕掉
+            {
+                if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                {
+                    [self.webApiDelegate requestDataOnFail:[LoginErrors getNetworkProblem]];
+                }
+            }
+            break;
+        case POSTCOMMENTS:
+            if (dics&&[dics count]>0)
+            {
+                if (0 == [jobs getStatus])//登录成功
+                {
+                    backData = [jobs recommendCommentsParse];
+                    NSLog(@"%@",backData);
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
+                    {
+                        [self.webApiDelegate requestDataOnSuccess:backData];
+                    }
+                }
+                else if(1 == [jobs getStatus])
+                {
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    {
+                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                    }
+                }
+                else
+                {
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    {
+                        [self.webApiDelegate requestDataOnFail:[LoginErrors getStatusMessage:[jobs getStatus]]];
+                    }
+                }
+
+            }
+            else//可能服务器宕掉
+            {
+                if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                {
+                    [self.webApiDelegate requestDataOnFail:[LoginErrors getNetworkProblem]];
+                }
+            }
+            break;
+
             break;
         default:
             break;

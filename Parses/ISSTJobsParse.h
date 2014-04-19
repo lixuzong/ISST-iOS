@@ -21,4 +21,18 @@
  解析信息详情
  *****/
 -(id)jobsDetailInfoParse;
+/*****
+ 2014.04.19
+ 创建： zhao
+ 解析内推评论列表，rc = recommend comments
+ *****/
+-(id)rcListsParse;
+/*****
+ 2014.04.19
+ 创建： zhao
+ 解析发布的内存信息
+ *****/
+-(id)recommendCommentsParse;
+
+
 @end

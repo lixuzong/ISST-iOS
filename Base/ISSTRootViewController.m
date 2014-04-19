@@ -26,7 +26,7 @@
 		self.title = title;
 		_revealBlock = [revealBlock copy];
 		self.navigationItem.leftBarButtonItem =
-        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+        [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize
                                                       target:self
                                                       action:@selector(revealSidebar)];
     

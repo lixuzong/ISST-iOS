@@ -11,12 +11,13 @@
 #import "ISSTPushedViewController.h"
 #import "ISSTJobsApi.h"
 #import "ISSTJobsModel.h"
+#import "ISSTRecommendDetailViewController.h"
 @interface ISSTRecommendViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *recommendTableView;
 @property (nonatomic,strong)ISSTJobsApi  *recommendApi;
 @property (nonatomic,strong)ISSTJobsModel  *recommendModel;
 @property (strong, nonatomic)NSMutableArray *recommendArray;
-//@property (nonatomic,strong) ISSTExperienceDetailViewController *detailView;
+@property (nonatomic,strong) ISSTRecommendDetailViewController *detailView;
 @end
 
 @implementation ISSTRecommendViewController
@@ -97,17 +98,17 @@ static NSString *CellTableIdentifier=@"ISSTRecommendTableViewCell";
     return cell;
 }
 #pragma mark - Table view delegate
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    self.detailView=[[ISSTExperienceDetailViewController alloc]initWithNibName:@"ISSTExperienceDetailViewController" bundle:nil];
-//    self.detailView.navigationItem.title =@"详细信息";
-//    ISSTCampusNewsModel *tempNewsModel=[[ISSTCampusNewsModel alloc]init];
-//    tempNewsModel= [experenceArray objectAtIndex:indexPath.row];
-//    self.detailView.experienceId=tempNewsModel.newsId;
-//    // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
-//    [self.navigationController pushViewController:self.detailView animated: NO];
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    self.detailView=[[ISSTRecommendDetailViewController alloc]initWithNibName:@"ISSTRecommendDetailViewController" bundle:nil];
+    self.detailView.navigationItem.title =@"详细信息";
+   
+   ISSTJobsModel *  tempNewsModel= [recommendArray objectAtIndex:indexPath.row];
+   self.detailView.jobId=tempNewsModel.messageId;
+
+    [self.navigationController pushViewController:self.detailView animated: YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
 
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
@@ -133,12 +134,6 @@ static NSString *CellTableIdentifier=@"ISSTRecommendTableViewCell";
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-#pragma mark Private Methods
-- (void)pushViewController {
-    NSString *vcTitle = [self.title stringByAppendingString:@" - Pushed"];
-    UIViewController *vc = [[ISSTPushedViewController alloc] initWithTitle:vcTitle];
-    
-    [self.navigationController pushViewController:vc animated:YES];
-}
+
 
 @end

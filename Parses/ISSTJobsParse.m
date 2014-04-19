@@ -10,6 +10,7 @@
 #import "ISSTJobsModel.h"
 #import "ISSTJobsDetailModel.h"
 #import "ISSTUserModel.h"
+#import "ISSTCommentsModel.h"
 @interface ISSTJobsParse()
 {
     NSArray      *_jobsArray;
@@ -61,12 +62,15 @@
         NSDictionary *tmpDic = [[jobsArray objectAtIndex:i] objectForKey:@"user"];
         NSLog(@"%@",[tmpDic description]);
         if (![[tmpDic description]isEqualToString:@"<null>"]) {
-            jobsModel.userModel.userId = [[tmpDic objectForKey:@"id"]intValue];
-            jobsModel.userModel.name   = [tmpDic objectForKey:@"name"];
-            jobsModel.userModel.phone  = [tmpDic objectForKey:@"phone"];
-            jobsModel.userModel.qq     = [tmpDic objectForKey:@"qq"];
-            jobsModel.userModel.email  = [tmpDic objectForKey:@"email"];
-             [tmpDic release];
+            ISSTUserModel *userModel = [[ISSTUserModel alloc]init];
+            userModel.userId = [[tmpDic objectForKey:@"id"]intValue];
+            userModel.name   = [tmpDic objectForKey:@"name"];
+            userModel.phone  = [tmpDic objectForKey:@"phone"];
+            userModel.qq     = [tmpDic objectForKey:@"qq"];
+            userModel.email  = [tmpDic objectForKey:@"email"];
+            jobsModel.userModel = userModel;
+            [userModel release];
+             tmpDic = nil ;
         }
  
    
@@ -100,17 +104,103 @@
     NSDictionary *tmpDic = [detailsInfo objectForKey:@"user"];
     NSLog(@"%@",[tmpDic description]);
     if (![[tmpDic description]isEqualToString:@"<null>"]) {
-        jobsDetailModel.userModel.userId = [[tmpDic objectForKey:@"id"]intValue];
-        jobsDetailModel.userModel.name   = [tmpDic objectForKey:@"name"];
-        jobsDetailModel.userModel.phone  = [tmpDic objectForKey:@"phone"];
-        jobsDetailModel.userModel.qq     = [tmpDic objectForKey:@"qq"];
-        jobsDetailModel.userModel.email  = [tmpDic objectForKey:@"email"];
-        [tmpDic release];
+         ISSTUserModel *userModel = [[ISSTUserModel alloc]init];
+        userModel.userId = [[tmpDic objectForKey:@"id"]intValue];
+        userModel.name   = [tmpDic objectForKey:@"name"];
+        userModel.phone  = [tmpDic objectForKey:@"phone"];
+        userModel.qq     = [tmpDic objectForKey:@"qq"];
+        userModel.company        = [tmpDic objectForKey:@"company"];
+        userModel.email           = [tmpDic objectForKey:@"email"];
+        userModel.position     = [tmpDic objectForKey:@"position"];
+        jobsDetailModel.userModel = userModel;
+        [userModel release];
+        tmpDic = nil ;
     }
-    
-    
       return jobsDetailModel ;
+}
+
+
+
+-(id)rcListsParse
+{
+    NSMutableArray *tempJobsArray =[[[NSMutableArray alloc]init] autorelease];
+    jobsArray = [super.dict objectForKey:@"body"] ;
+    int  count = [jobsArray count];
+    NSLog(@"count=%d,content=%@",count,jobsArray);
     
+    for (int i=0; i<count; i++)
+    {
+        
+        ISSTCommentsModel *commentsModel = [[[ISSTCommentsModel alloc]init]autorelease];
+        commentsModel.commentsId    = [[[jobsArray objectAtIndex:i ] objectForKey:@"id"] intValue];
+      //  commentsModel .title        = [[jobsArray objectAtIndex:i] objectForKey:@"title"];
+        
+        commentsModel.content      = [[jobsArray objectAtIndex:i] objectForKey:@"content"];
+        
+        long long  createdAt    = [[[jobsArray objectAtIndex:i] objectForKey:@"createdAt"]longLongValue]/1000;
+        NSDate  *datePT = [NSDate dateWithTimeIntervalSince1970:createdAt];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        commentsModel.createdAt  = [dateFormatter stringFromDate:datePT];
+        [dateFormatter release];
+        
+        
+        NSDictionary *tmpDic = [[jobsArray objectAtIndex:i] objectForKey:@"user"];
+        NSLog(@"%@",[tmpDic description]);
+        if (![[tmpDic description]isEqualToString:@"<null>"]) {
+            ISSTUserModel *userModel = [[ISSTUserModel alloc]init];
+            userModel.userId         = [[tmpDic objectForKey:@"id"]intValue];
+           userModel.name            = [tmpDic objectForKey:@"name"];
+           userModel.phone           = [tmpDic objectForKey:@"phone"];
+            userModel.qq             = [tmpDic objectForKey:@"qq"];
+            userModel.company        = [tmpDic objectForKey:@"company"];
+           userModel.email           = [tmpDic objectForKey:@"email"];
+              userModel.position     = [tmpDic objectForKey:@"position"];
+            commentsModel.userModel = userModel ;
+            [userModel release];
+            tmpDic = nil ;
+        }
+        [tempJobsArray addObject:commentsModel];
+    }
+    return tempJobsArray;
+}
+
+-(id)recommendCommentsParse
+{
+ 
+    NSDictionary *tempJobDic = [super.dict objectForKey:@"body"];
+        ISSTCommentsModel *commentsModel = [[[ISSTCommentsModel alloc]init]autorelease];
+        commentsModel.commentsId    = [[tempJobDic objectForKey:@"id"] intValue];
+        commentsModel.content      = [tempJobDic objectForKey:@"content"];
+        
+        long long  createdAt    = [[tempJobDic objectForKey:@"createdAt"]longLongValue]/1000;
+        NSDate  *datePT = [NSDate dateWithTimeIntervalSince1970:createdAt];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        commentsModel.createdAt  = [dateFormatter stringFromDate:datePT];
+        [dateFormatter release];
+        
+        
+        NSDictionary *tmpDic = [tempJobDic objectForKey:@"user"];
+    
+    
+        NSLog(@"%@",tmpDic );
+        if (![[tmpDic description]isEqualToString:@"<null>"]) {
+            ISSTUserModel *userModel = [[ISSTUserModel alloc]init];
+            userModel.userId         = [[tmpDic objectForKey:@"id"]intValue];
+            userModel.name            = [tmpDic objectForKey:@"name"];
+            userModel.phone           = [tmpDic objectForKey:@"phone"];
+            userModel.qq             = [tmpDic objectForKey:@"qq"];
+            userModel.company        = [tmpDic objectForKey:@"company"];
+            userModel.email           = [tmpDic objectForKey:@"email"];
+            userModel.position     = [tmpDic objectForKey:@"position"];
+            commentsModel.userModel = userModel ;
+            [userModel release];
+            tmpDic = nil ;
+        }
+    tempJobDic = nil;
+    return commentsModel;
+
 }
 
 - (void)dealloc

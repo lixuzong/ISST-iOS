@@ -27,7 +27,12 @@
         case 13:
               errorMessage = @"认证失败";
             break;
-
+        case 70:
+            errorMessage = @"评论内容不能为空";
+            break;
+        case 71:
+            errorMessage = @"评论内容的长度不能超过80个字符";
+            break;
         default:
             errorMessage = @"网络错误";
             break;
