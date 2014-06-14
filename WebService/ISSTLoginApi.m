@@ -14,8 +14,6 @@
 @class ISSTUserModel;
 
 @interface  ISSTLoginApi()
-//@property (strong, nonatomic)NSMutableData *datas;
-//@property (nonatomic, assign)id<ISSTWebApiDelegate> webApiDelegate;
 {
     UserLoginParse *userLoginParse;
 }

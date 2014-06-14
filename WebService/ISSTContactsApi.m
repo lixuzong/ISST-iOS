@@ -69,22 +69,6 @@ const static int        MAJORSLISTS         = 4;
             [info appendFormat:@"%@",[NSString stringWithFormat:@"&name=%@",name]];
         }
         
-//        if (gender >= 0) {
-//            [info appendFormat:@"%@",[NSString stringWithFormat:@"&gender=%d",gender]];
-//
-//        }
-//        if (gradeId >= 0) {
-//            [info appendFormat:@"%@",[NSString stringWithFormat:@"&grade=%d",gradeId]];
-//        }
-//        if (classId >= 0) {
-//             [info appendFormat:@"%@",[NSString stringWithFormat:@"&classId=%d",classId]];
-//        }
-//        if (majorId >= 0) {
-//            [info appendFormat:@"%@",[NSString stringWithFormat:@"&majorId=%d",majorId]];
-//        }
-//        if (cityId >= 0) {
-//            [info appendFormat:@"%@",[NSString stringWithFormat:@"&cityId=%d",cityId]];
-//        }
         if ( company) {
             [info appendFormat:@"%@",[NSString stringWithFormat:@"&company=%@",company]];
         }
