@@ -22,9 +22,11 @@
 @end
 
 @implementation ISSTLoginApi
+
 const    static  int   REQUESTLOGIN = 1;
 const    static  int   UPDATELOGIN   = 2;
 const    static  int   REQUESTUSERINFO= 3;
+
 @synthesize webApiDelegate;
 @synthesize datas;
 @synthesize methodId;

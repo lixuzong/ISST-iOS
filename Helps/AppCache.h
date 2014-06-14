@@ -11,4 +11,9 @@
 @interface AppCache : NSObject
 + (void)saveCache:(id)model;
 + ( id)getCache;
+
++(BOOL)saveClassListsCache:(NSArray *)array;
++(id)getClassListsCache;
++(BOOL)saveMajorListsCache:(NSArray *)array;
++(id)getMajorListsCache;
 @end

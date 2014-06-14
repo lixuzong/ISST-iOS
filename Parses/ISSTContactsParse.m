@@ -10,7 +10,7 @@
 #import "ISSTUserModel.h"
 #import "ISSTClassModel.h"
 #import "ISSTMajorModel.h"
-
+#import "AppCache.h"
 @interface ISSTContactsParse()
 {
     NSArray      *_contactsArray;
@@ -79,11 +79,12 @@
     NSLog(@"count=%d",count);
     for (int i=0; i<count; i++)
     {
-        ISSTClassModel *classModel = [[[ISSTClassModel  alloc]init]autorelease];
-        classModel.classId         = [[[classesOrMajoresArray objectAtIndex:i ] objectForKey:@"id"] intValue];
-        classModel.name            = [[classesOrMajoresArray objectAtIndex:i] objectForKey:@"name"];
-        [tmpArray addObject:classModel];
+//        ISSTClassModel *classModel = [[[ISSTClassModel  alloc]init]autorelease];
+//        classModel.classId         = [[[classesOrMajoresArray objectAtIndex:i ] objectForKey:@"id"] intValue];
+//        classModel.name            = [[classesOrMajoresArray objectAtIndex:i] objectForKey:@"name"];
+        [tmpArray addObject:[[classesOrMajoresArray objectAtIndex:i] objectForKey:@"name"]];
     }
+    [AppCache saveClassListsCache:tmpArray];
     return tmpArray ;
 }
 
@@ -93,15 +94,18 @@
     
     NSMutableArray *tmpArray =[[[NSMutableArray alloc]init] autorelease];
     classesOrMajoresArray = [super.dict objectForKey:@"body"];
-    int  count = [classesOrMajoresArray count];
+    int count = 0;
+    count = [classesOrMajoresArray count];
     NSLog(@"count=%d",count);
     for (int i=0; i<count; i++)
     {
-        ISSTMajorModel *majorModel = [[[ISSTMajorModel  alloc]init]autorelease];
-        majorModel.majorId         = [[[classesOrMajoresArray objectAtIndex:i ] objectForKey:@"id"] intValue];
-        majorModel.name            = [[classesOrMajoresArray objectAtIndex:i] objectForKey:@"name"];
-        [tmpArray addObject:majorModel];
+//        ISSTMajorModel *majorModel = [[[ISSTMajorModel  alloc]init]autorelease];
+//        majorModel.majorId         = [[[classesOrMajoresArray objectAtIndex:i ] objectForKey:@"id"] intValue];
+//        majorModel.name            = [[classesOrMajoresArray objectAtIndex:i] objectForKey:@"name"];
+//      //  [tmpArray addObject:majorModel];
+      [tmpArray addObject:[[classesOrMajoresArray objectAtIndex:i] objectForKey:@"name"]];
     }
+    [AppCache saveMajorListsCache:tmpArray];
     return tmpArray;
 }
 

@@ -6,20 +6,31 @@
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
+
+/**
+ *
+ *  @param  重构时改成文件名，只写一份代码就可以了。
+ *
+ */
 #import "AppCache.h"
 
 @implementation AppCache
-+ (void)saveCache:(id)model
+
++(NSString *)cacheDictionary
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory,
                                                          
                                                          NSUserDomainMask, YES);
     
     NSString *cachesDirectory = [paths objectAtIndex:0];
-    
-    NSString *archivePath = [cachesDirectory stringByAppendingPathComponent:@"UserModel.archive"];
+    return cachesDirectory;
+}
++ (void)saveCache:(id)model
+{
+
+    NSString *archivePath = [[AppCache cacheDictionary] stringByAppendingPathComponent:@"UserModel.archive"];
    // NSArray *tmpArray = [NSArray arrayWithObject:@"archive"];
-    //BOOL saveed =
+    BOOL saveed =
      [NSKeyedArchiver archiveRootObject:model toFile:archivePath];
 }
 
@@ -28,16 +39,11 @@
 {
     
     
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSCachesDirectory,  //NSCachesDirectory,
-                                                         
-                                                         NSUserDomainMask, YES);
-    
-    NSString *cachesDirectory = [paths objectAtIndex:0];
-    
+
     
     //NSString*filePath=[AppDocuments stringByAppendingPathComponent:@"customobject.txt"];
     //    AppCache/
-    NSString *archivePath = [cachesDirectory
+    NSString *archivePath = [[AppCache cacheDictionary]
                              
                              stringByAppendingPathComponent:@"UserModel.archive"];
     
@@ -84,6 +90,64 @@
         return nil;
     
     return cachedItems;
-    
 }
+
++(BOOL)saveClassListsCache:(NSArray *)array
+{
+    NSString *archivePath = [[AppCache cacheDictionary] stringByAppendingPathComponent:@"classLists.archive"];
+    // NSArray *tmpArray = [NSArray arrayWithObject:@"archive"];
+    BOOL saveed =
+    [NSKeyedArchiver archiveRootObject:array toFile:archivePath];
+    return saveed;
+}
++(id)getClassListsCache
+{
+    NSString *archivePath = [[AppCache cacheDictionary]
+                             stringByAppendingPathComponent:@"classLists.archive"];
+    
+    id  cachedItems = [NSKeyedUnarchiver
+                       unarchiveObjectWithFile:archivePath];
+    
+    NSLog(@"%@",cachedItems);
+    if(cachedItems == nil)
+        return  nil;
+    NSTimeInterval stalenessLevel = [[[[NSFileManager defaultManager]
+                                       attributesOfItemAtPath:archivePath error:nil]
+                                      fileModificationDate] timeIntervalSinceNow];
+    
+    if(stalenessLevel /3600 > 24)
+        return nil;
+    return cachedItems;
+}
+
++(BOOL)saveMajorListsCache:(NSArray *)array
+{
+    NSString *archivePath = [[AppCache cacheDictionary] stringByAppendingPathComponent:@"majorLists.archive"];
+    // NSArray *tmpArray = [NSArray arrayWithObject:@"archive"];
+    BOOL saveed =
+    [NSKeyedArchiver archiveRootObject:array toFile:archivePath];
+    return saveed;
+}
+
++(id)getMajorListsCache
+{
+    NSString *archivePath = [[AppCache cacheDictionary]
+                             stringByAppendingPathComponent:@"majorLists.archive"];
+    
+    id  cachedItems = [NSKeyedUnarchiver
+                       unarchiveObjectWithFile:archivePath];
+    
+    NSLog(@"%@",cachedItems);
+    if(cachedItems == nil)
+        return  nil;
+    NSTimeInterval stalenessLevel = [[[[NSFileManager defaultManager]
+                                       attributesOfItemAtPath:archivePath error:nil]
+                                      fileModificationDate] timeIntervalSinceNow];
+    
+    if(stalenessLevel /3600 > 24)
+        return nil;
+    return cachedItems;
+}
+
+
 @end

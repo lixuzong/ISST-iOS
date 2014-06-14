@@ -11,8 +11,17 @@
 #import "ISSTLoginApi.h"
 #import "AppCache.h"
 #import "ISSTUserModel.h"
+#import "ISSTContactsApi.h"
+const    static  int   REQUESTLOGIN         = 1;
+const static int        CLASSESLISTS        = 3;
+const static int        MAJORSLISTS         = 4;
+int method;
+
 
 @interface ISSTLoginViewController ()
+{
+    ISSTContactsApi *_contactsApi;
+}
 @property (nonatomic,strong)ISSTUserModel  *userModel;
 @property (nonatomic,strong)ISSTLoginApi  *userApi;
 @property (weak, nonatomic) IBOutlet UISwitch *defaultLoginSwitch;
@@ -39,7 +48,7 @@
 
 {
     [super viewDidLoad];
-
+    
     if ([[[UIDevice currentDevice]systemVersion] doubleValue] >= 7.0) {
         self.edgesForExtendedLayout =UIRectEdgeNone;
     }
@@ -49,8 +58,15 @@
     
      self.navigationController.navigationItem.leftBarButtonItem.title = @"登录";
     [self.passwordField setSecureTextEntry:YES];//set password ......
+    
+   
     self.userApi =[[ISSTLoginApi alloc]init];
     self.userApi.webApiDelegate = self;
+    
+    _contactsApi = [[ISSTContactsApi alloc] init];
+    _contactsApi.webApiDelegate  = self;
+    
+    
   
 }
 
@@ -98,7 +114,7 @@
 }
 
 - (IBAction)login:(id)sender {
-    
+     method  =   REQUESTLOGIN;
    [self.userApi requestLoginName:self.nameField.text andPassword:self.passwordField.text];
     
 }
@@ -108,15 +124,45 @@
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(id)backToControllerData;
-{
+{   ISSTSlidebarNavController *slider ;
+
+//    if(method ==REQUESTLOGIN ) {
+//     
+//        ISSTSlidebarNavController *slider =[[ISSTSlidebarNavController alloc]init];
+//        // [self.navigationController pushViewController:[[ISSTSlidebarNavController alloc]init] animated:YES ];
+//        [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
+//        [self.navigationController pushViewController:slider animated: NO];
+//    }
+//   
+    switch (method) {
+        case REQUESTLOGIN:
+            userModel = backToControllerData;
+             method = CLASSESLISTS;
+            [_contactsApi requestClassesLists];
+
+            break;
+        case CLASSESLISTS:
+            method = MAJORSLISTS;
+             [_contactsApi requestMajorsLists];
+         
+            
+            break;
+        case MAJORSLISTS:
+         //   method = REQUESTLOGIN;
+            slider =[[ISSTSlidebarNavController alloc] init];
+
+            [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
+            [self.navigationController pushViewController:slider animated: NO];
+        
+            break;
+            
+         default:
+            break;
+    }
     
-    userModel = backToControllerData;
-      ISSTSlidebarNavController *slider =[[ISSTSlidebarNavController alloc]init]
-    ;
-   // [self.navigationController pushViewController:[[ISSTSlidebarNavController alloc]init] animated:YES ];
- 
-     [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
-    [self.navigationController pushViewController:slider animated: NO];
+    
+
+  
     
 }
 

@@ -12,6 +12,8 @@
 
 @synthesize userId,userName,name,gender,grade,classId,majorId,cityId,phone,email,qq,signature,position, company,cityPrincipal,privateCompany,privateEmail,privatePhone,privatePosition,privateQQ;
 
+@synthesize  className,majorName,cityName;
+
 - (id)init
 {
     self = [super init];
@@ -36,6 +38,10 @@
         privatePhone=NO;
         privatePosition=NO;
         privateQQ=NO;
+        
+        cityName = nil;
+        className = nil;
+        majorName = nil;
         
     }
     
@@ -66,6 +72,10 @@
         privatePosition=((NSNumber*)[decoder decodeObjectForKey:@"privatePosition"]).boolValue;
         privateQQ=((NSNumber*)[decoder decodeObjectForKey:@"privateQQ"]).boolValue;
         
+        className        = [[decoder decodeObjectForKey:@"className"] retain];
+        majorName    = [[decoder decodeObjectForKey:@"majorName"] retain];
+        cityName    = [[decoder decodeObjectForKey:@"cityName"] retain];
+        
     }
     return self;
 }
@@ -94,6 +104,9 @@
     [encoder encodeObject:[NSNumber numberWithBool:self.privatePosition] forKey:@"privatePosition"];
     [encoder encodeObject:[NSNumber numberWithBool:self.privateQQ] forKey:@"privateQQ"];
    
+    [encoder encodeObject:self.cityName forKey:@"cityName"];
+    [encoder encodeObject:self.majorName forKey:@"majorName"];
+    [encoder encodeObject:self.className forKey:@"className"];
     
 }
 /////////////////http://blog.csdn.net/wbw1985/article/details/19989709
@@ -117,6 +130,16 @@
     position = nil;
     [company release];
     company = nil;
+    
+    [className release];
+    className= nil;
+    
+    [cityName release];
+    cityName = nil;
+    
+    [majorName release];
+    majorName = nil;
+    
     [super dealloc];
 }
 

@@ -56,6 +56,10 @@
     user.privatePosition= [[userInfo objectForKey:@"privatePosition"]boolValue];
     user.privateCompany = [[userInfo objectForKey:@"privateCompany"]boolValue];
     user.gender     = ([[userInfo objectForKey:@"gender"]intValue] == 1)? MALE:FAMALE;//枚举
+   
+     user.className       = [userInfo objectForKey:@"className"];
+ user.cityName       = [userInfo objectForKey:@"cityName"];
+ user.majorName       = [userInfo objectForKey:@"major"];
     NSLog(@"gender=%d",user.gender);
     return user ;
 }

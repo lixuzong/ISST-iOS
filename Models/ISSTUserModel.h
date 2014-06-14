@@ -36,4 +36,9 @@ typedef   enum Gender
 @property (nonatomic,assign) BOOL        privateCompany;
 @property (nonatomic,assign) BOOL        privatePosition;
 
+// add by zhaoxs 20140614
+@property (nonatomic,copy)  NSString    *cityName;
+@property (nonatomic,copy)  NSString    *className;
+@property (nonatomic,copy)  NSString    *majorName;
+
 @end

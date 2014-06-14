@@ -34,48 +34,142 @@
 @synthesize newsDetailView;
 static NSString *CellTableIdentifier=@"ISSTCommonCell";
 
+//页面标记
+static int  loadPage = 0;
 
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(BOOL)isList
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"user.png"];
-    }
-    return self;
+    return YES;
 }
 
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        self.newsArray = [[NSMutableArray alloc]init];
+//        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"user.png"];
+//
+//    }
+//    return self;
+//}
+//
+//-(id)init
+//{
+//    if (self = [super init]) {
+//        
+//    }
+//    return self;
+//}
 
 - (void)viewDidLoad
 {
     self.newsApi = [[ISSTLifeApi alloc]init];
     self.newsApi.webApiDelegate = self;
-    [self.newsApi requestCampusNewsLists:1 andPageSize:20 andKeywords:@"string"];
-    self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 	self.view.backgroundColor = [UIColor lightGrayColor];
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [super viewDidLoad];
-  
+    
+   
+    
     UITableView *tableView=(id)[self.view viewWithTag:1];
     tableView.rowHeight=80;
     UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
-
+    
+    
+    
+    if (_refreshHeaderView == nil ) {
+        Class refreshHeaderViewClazz = NSClassFromString(@"EGORefreshTableHeaderView");
+        _refreshHeaderView = [[refreshHeaderViewClazz alloc]initWithFrame:CGRectMake(0, -tableView.bounds.size.height, tableView.frame.size.width, tableView.bounds.size.height)];
+        
+    }
+    _refreshHeaderView.delegate= self;
+    [tableView addSubview:_refreshHeaderView];
     
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
   
+    [self    triggerRefresh];
 }
+
+-(void)triggerRefresh
+{
+    if (_refreshLoading) {
+        return;
+    }
+    
+    CGPoint contentOffset = CGPointMake(0, -55-10-_refreshHeaderView.scrollViewInset.top);
+    newsArrayTableView.contentOffset = contentOffset;
+    NSLog(@"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&=%f",newsArrayTableView.contentOffset.y);
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:newsArrayTableView];
+    //[self requestRefresh];
+    
+    //设置分割线
+    newsArrayTableView.separatorColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1];
+    if([newsArrayTableView respondsToSelector:@selector(separatorInset)])
+    {
+        newsArrayTableView.separatorInset = UIEdgeInsetsZero;
+    }
+    newsArrayTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+
+}
+
+
+-(void)requestRefresh
+{
+    if (NO)  //self.newsApi.isLoadingData;
+    {
+        
+    }
+    else
+    {
+        NSLog(@"111111111111111111111111111111111111111111111111111111111");
+        _refreshLoading = YES;
+        loadPage =0;
+        [self.newsApi requestCampusNewsLists:loadPage andPageSize:20 andKeywords:@"string"];
+    }
+    
+  
+}
+
+-(void)requestGetMore
+{
+    if (NO)
+    {
+        
+    }
+    else  if (!_refreshLoading)
+    {
+        ++loadPage;
+        _refreshLoading = YES;
+        NSLog(@"requestGetMore ===================================loadPage=%d  " ,loadPage);
+        [self.newsApi requestCampusNewsLists:loadPage andPageSize:20 andKeywords:@"string"];
+
+        [_getMoreCell setInfoText:@"正在加载更多..." forState:MoreCellState_Loading];
+    }
+}
+
+-(BOOL)canGetMoreData
+{
+    return YES;
+}
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
 }
 
-
+-(void)dealloc
+{
+    newsArrayTableView.dataSource = nil;
+    newsArrayTableView.delegate = nil;
+    newsArrayTableView = nil;
+}
 
 
 #pragma mark
@@ -87,11 +181,48 @@ static NSString *CellTableIdentifier=@"ISSTCommonCell";
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return newsArray.count;
+   // return newsArray.count;
+    
+    NSArray *listData = newsArray;
+    int count = [listData count];
+    if (count == 0)
+    {
+        if (_refreshLoading)
+        {
+            
+        }
+        else if (!_refreshLoading)
+        {
+            count ++;
+        }
+    }
+    else if([self canGetMoreData])
+    {
+        count ++;
+    }
+    NSLog(@"===========================================%d",count);
+    return count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    int count = [newsArray count];
+    NSLog(@"================%d",indexPath.row);
+    if (count ==0)
+    {
+        if (!_refreshLoading)
+        {
+            _emptyCell.state = EmptyCellState_Tips;
+            
+        }
+        return _emptyCell;
+    }
+    else if ([self canGetMoreData]&&indexPath.row == [newsArray count])
+    {
+        [_getMoreCell setInfoText:@"查看更多" forState:MoreCellState_Information];
+        return _getMoreCell;
+    }
+    
     
     newsModel =[[ISSTCampusNewsModel alloc]init];
     newsModel = [newsArray objectAtIndex:indexPath.row];
@@ -109,6 +240,16 @@ static NSString *CellTableIdentifier=@"ISSTCommonCell";
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+      UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell ==_getMoreCell) {
+        [self requestGetMore];
+        return;
+    }
+    else if  (cell == _emptyCell)
+    {
+        [self triggerRefresh];
+        return;
+    }
     self.newsDetailView=[[ISSTNewsDetailViewController alloc]initWithNibName:@"ISSTNewsDetailViewController" bundle:nil];
     self.newsDetailView.navigationItem.title =@"详细信息";
   //  ISSTCampusNewsModel *tempNewsModel=[[ISSTCampusNewsModel alloc]init];
@@ -119,23 +260,81 @@ static NSString *CellTableIdentifier=@"ISSTCommonCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *listDatas = newsArray;
+    int count = [listDatas count];
+    
+    if (count==0)
+    {
+        if (_refreshLoading)
+        {
+        }
+        else if (!_refreshLoading)
+        {
+            int height = tableView.bounds.size.height;
+            height -= tableView.tableHeaderView.bounds.size.height;
+            height -= [self.topLayoutGuide length];
+            return height;
+        }
+    }
+    if ([self canGetMoreData]&&indexPath.row ==[newsArray count]) {
+        return 45;
+    }
+    return 77;
+    
+}
+
+
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
-    if ([newsArray count]) {
-        newsArray = [[NSMutableArray alloc]init];
+    _refreshHeaderView.lastRefreshDate = [NSDate date];
+    
+    if (loadPage == 0) {
+        newsArray = [[NSMutableArray alloc]initWithArray:backToControllerData];
+        _refreshLoading = NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:newsArrayTableView];
     }
-    newsArray = (NSMutableArray *)backToControllerData;
-    NSLog(@"count =%d ,newsArray = %@",[newsArray count],newsArray);
-     [newsArrayTableView reloadData];
+    else
+    {
+        _refreshLoading = NO;
+        [newsArray addObjectsFromArray:backToControllerData];
+        [_getMoreCell setInfoText:@"查看更多" forState:MoreCellState_Information];
+    }
+    
+    [newsArrayTableView reloadData];
+    
+    
+    
+//    if ([newsArray count]) {
+//        newsArray = [[NSMutableArray alloc]init];
+//    }
+//    newsArray = (NSMutableArray *)backToControllerData;
+//    NSLog(@"count =%d ,newsArray = %@",[newsArray count],newsArray);
+//     [newsArrayTableView reloadData];
 }
 
 - (void)requestDataOnFail:(NSString *)error
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//    [alert show];
     
+    
+    _refreshHeaderView.lastRefreshDate = [NSDate date];
+    
+    if (loadPage == 0) {
+        _refreshLoading = NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:newsArrayTableView];
+    }
+    else
+    {
+        [_getMoreCell setInfoText:@"加载更多失败，点击查看更多" forState:MoreCellState_Information];
+    }
+    
+    UIAlertView  *alertView = [[UIAlertView alloc]initWithTitle:@"错误" message:@"查看网络连接" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
+    [alertView show];
     
     
 }

@@ -9,6 +9,8 @@
 #import "ISSTApi.h"
 #import "ISSTWebApiDelegate.h"
 @class ISSTApi;
+
+
 @interface ISSTLoginApi :ISSTApi<NSURLConnectionDataDelegate>
 
 /*****
@@ -37,5 +39,7 @@
  参数，无
  *****/
 - (void)updateLogin;
+
+
 
 @end
