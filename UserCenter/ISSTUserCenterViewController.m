@@ -8,31 +8,42 @@
 
 #import "ISSTUserCenterViewController.h"
 #import "ISSTLoginViewController.h"
-#import "ISSTUserCenterUserInfoTableViewCell.h"
 #import "ISSTUserInfoViewController.h"
+#import "ISSTUserCenterUserInfoTableViewCell.h"
+#import "ISSTContactsAPi.h"
 
 
 #import "AppCache.h"
 #import "ISSTUserModel.h"
-//#import "ISSTContactsApi.h"
 
 @interface ISSTUserCenterViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *userCenterCatalogueTableView;
 @property (nonatomic,strong)ISSTUserInfoViewController*     userInfoViewController;
 @property (nonatomic,strong)ISSTUserModel  *userModel;
-//@property (nonatomic,strong)   ISSTContactsApi *contactsApi ;
-
+@property (nonatomic,strong)ISSTContactsApi *contactsApi ;
+@property (nonatomic,strong)ISSTMajorModel *majorModel;
+@property (nonatomic,strong)ISSTClassModel *classModel;
+@property (nonatomic,strong)NSMutableArray *classArray;
+@property (nonatomic,strong)NSMutableArray *majorArray;
 - (void)signOut;
 - (void)go2UserInfoViewController:(NSIndexPath *)indexPath tableView:(UITableView *)tableView;
 @end
 
 @implementation ISSTUserCenterViewController
 
-//@synthesize contactsApi;
-
 @synthesize userCenterCatalogueTableView;
 @synthesize userInfoViewController;
 @synthesize userModel;
+@synthesize contactsApi;
+@synthesize classModel;
+@synthesize majorModel;
+@synthesize classArray;
+@synthesize majorArray;
+
+const static int        CLASSESLISTS        = 3;
+const static int        MAJORSLISTS         = 4;
+int method;
+
 static NSString *CellTableIdentifier=@"ISSTUserCenterViewCell";
 
 NSArray *titleForRowArray= nil;
@@ -48,6 +59,8 @@ NSArray *titleForRowArray= nil;
 
 - (void)viewDidLoad
 {
+    self.contactsApi = [[ISSTContactsApi alloc]init];;
+    self.contactsApi.webApiDelegate = self;
     titleForRowArray =[NSArray  arrayWithObjects:
                         [NSArray  arrayWithObjects:@"用户数据",nil],
                        [NSArray  arrayWithObjects:@"学生事务",nil],
@@ -58,8 +71,6 @@ NSArray *titleForRowArray= nil;
 
     [super viewDidLoad];
     
-   // contactsApi= [[ISSTContactsApi alloc]init];
-   // contactsApi.webApiDelegate= self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -103,9 +114,8 @@ NSArray *titleForRowArray= nil;
 //go2UserInfoViewController
 - (void)go2UserInfoViewController:(NSIndexPath *)indexPath tableView:(UITableView *)tableView
 {
-    self.userInfoViewController = [[ISSTUserInfoViewController alloc]initWithNibName:@"ISSTUserInfoViewController" bundle:nil];
-      self.userInfoViewController.navigationItem.title =@"详细信息";
-    [self.navigationController pushViewController:self.userInfoViewController   animated: NO];
+    method = CLASSESLISTS;
+    [self.contactsApi requestClassesLists];
    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 //signOut
@@ -142,13 +152,6 @@ NSArray *titleForRowArray= nil;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    self.newsDetailView=[[ISSTNewsDetailViewController alloc]initWithNibName:@"ISSTNewsDetailViewController" bundle:nil];
-//    self.newsDetailView.navigationItem.title =@"详细信息";
-//    ISSTCampusNewsModel *tempNewsModel=[[ISSTCampusNewsModel alloc]init];
-//    tempNewsModel= [newsArray objectAtIndex:indexPath.row];
-//    self.newsDetailView.newsId=tempNewsModel.newsId;
-//    [self.navigationController pushViewController:self.newsDetailView animated: NO];
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (0==indexPath.row&&0==indexPath.section) {
        
         [self go2UserInfoViewController:indexPath tableView:tableView];
@@ -157,10 +160,6 @@ NSArray *titleForRowArray= nil;
     if (indexPath.section == [titleForRowArray count]-1&&indexPath.row == [[titleForRowArray objectAtIndex:([titleForRowArray count]-1) ] count]-1 )///logout
     {
        [self signOut];
-        // [contactsApi requestContactsLists:-1 name:nil gender:0 grade:2013 classId:13 majorId:0 cityId:0 company:nil];
-       // [contactsApi requestContactDetail:714];
-        //[contactsApi requestMajorsLists];
-      //  [contactsApi requestClassesLists];
     }
 }
 
@@ -187,7 +186,7 @@ NSArray *titleForRowArray= nil;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell;
-    NSLog(@"section=%d row= %d",indexPath.section,indexPath.row);
+    NSLog(@"section=%d row= %ld",indexPath.section,(long)indexPath.row);
     if (indexPath.row||indexPath.section) {
         cell=[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
         if (cell == nil) {
@@ -220,6 +219,54 @@ NSArray *titleForRowArray= nil;
 {
     return  5;
 }
+
+- (void)requestDataOnSuccess:(id)backToControllerData
+{
+    switch (method) {
+        case CLASSESLISTS:
+            if ([self.classArray count]) {
+                self.classArray = [[NSMutableArray alloc]init];
+            }
+            self.classArray = (NSMutableArray *)backToControllerData;
+                for(ISSTClassModel *tempModel in self.classArray)
+                {
+                    if(tempModel.classId==self.userModel.classId)
+                    {
+                        self.classModel = [[ISSTClassModel alloc] init];
+                        self.classModel = tempModel;
+                        break;
+                    }
+                }
+            method = MAJORSLISTS;
+            [self.contactsApi requestMajorsLists];
+            break;
+        case MAJORSLISTS:
+            if ([self.majorArray count]) {
+                self.majorArray = [[NSMutableArray alloc]init];
+            }
+            self.majorArray = (NSMutableArray *)backToControllerData;
+                for(ISSTMajorModel *tempModel in self.majorArray)
+                {
+                    if(tempModel.majorId==self.userModel.majorId)
+                    {
+                        self.majorModel = [[ISSTMajorModel alloc] init];
+                        self.majorModel = tempModel;
+                        break;
+                    }
+                }
+            method = CLASSESLISTS;
+            self.userInfoViewController = [[ISSTUserInfoViewController alloc]initWithNibName:@"ISSTUserInfoViewController" bundle:nil];
+            self.userInfoViewController.classInfo = self.classModel;
+            self.userInfoViewController.majorInfo = self.majorModel;
+            self.userInfoViewController.userDetailInfo = self.userModel;
+            self.userInfoViewController.navigationItem.title =@"详细信息";
+            [self.navigationController pushViewController:self.userInfoViewController   animated: NO];
+            break;
+        default:
+            break;
+    }
+}
+
 
 
 //- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section

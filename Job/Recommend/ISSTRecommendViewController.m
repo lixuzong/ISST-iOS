@@ -7,7 +7,7 @@
 //
 
 #import "ISSTRecommendViewController.h"
-#import "ISSTRecommendTableViewCell.h"
+#import "ISSTCommonCell.h"
 #import "ISSTPushedViewController.h"
 #import "ISSTJobsApi.h"
 #import "ISSTJobsModel.h"
@@ -25,7 +25,7 @@
 @synthesize recommendArray;
 @synthesize recommendModel;
 @synthesize recommendTableView;
-static NSString *CellTableIdentifier=@"ISSTRecommendTableViewCell";
+static NSString *CellTableIdentifier=@"ISSTCommonCell";
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -52,7 +52,7 @@ static NSString *CellTableIdentifier=@"ISSTRecommendTableViewCell";
     // self.newsArray =[[NSMutableArray alloc]init];
     //UITableView *tableView=(id)[self.view viewWithTag:99];
     recommendTableView.rowHeight=90;
-    UINib *nib=[UINib nibWithNibName:@"ISSTRecommendTableViewCell" bundle:nil];
+    UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [recommendTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
     
@@ -87,9 +87,9 @@ static NSString *CellTableIdentifier=@"ISSTRecommendTableViewCell";
     recommendModel =[[ISSTJobsModel alloc]init];
     recommendModel = [recommendArray objectAtIndex:indexPath.row];
     
-    ISSTRecommendTableViewCell *cell=(ISSTRecommendTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    ISSTCommonCell *cell=(ISSTCommonCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     if (cell == nil) {
-        cell = (ISSTRecommendTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
+        cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
     
     cell.title.text=recommendModel.title;

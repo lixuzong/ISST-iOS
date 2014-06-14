@@ -7,7 +7,7 @@
 //
 
 #import "ISSTInternshipViewController.h"
-#import "ISSTInternshipTableViewCell.h"
+#import "ISSTCommonCell.h"
 #import "ISSTPushedViewController.h"
 #import "ISSTJobsApi.h"
 #import "ISSTJobsModel.h"
@@ -27,7 +27,7 @@
 @synthesize internshipModel;
 @synthesize internshipArray;
 @synthesize detailView;
-static NSString *CellTableIdentifier=@"ISSTInternshipTableViewCell";
+static NSString *CellTableIdentifier=@"ISSTCommonCell";
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -54,7 +54,7 @@ static NSString *CellTableIdentifier=@"ISSTInternshipTableViewCell";
     // self.newsArray =[[NSMutableArray alloc]init];
     //UITableView *tableView=(id)[self.view viewWithTag:99];
     internshipTableView.rowHeight=90;
-    UINib *nib=[UINib nibWithNibName:@"ISSTInternshipTableViewCell" bundle:nil];
+    UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [internshipTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
     
@@ -89,9 +89,9 @@ static NSString *CellTableIdentifier=@"ISSTInternshipTableViewCell";
     internshipModel =[[ISSTJobsModel alloc]init];
     internshipModel = [internshipArray objectAtIndex:indexPath.row];
     
-    ISSTInternshipTableViewCell *cell=(ISSTInternshipTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    ISSTCommonCell *cell=(ISSTCommonCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     if (cell == nil) {
-        cell = (ISSTInternshipTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
+        cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
     
     cell.title.text=internshipModel.title;

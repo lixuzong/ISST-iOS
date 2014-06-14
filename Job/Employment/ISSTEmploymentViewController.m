@@ -7,7 +7,7 @@
 //
 
 #import "ISSTEmploymentViewController.h"
-#import "ISSTEmploymentTableViewCell.h"
+#import "ISSTCommonCell.h"
 #import "ISSTEmploymentDetailViewController.h"
 #import "ISSTPushedViewController.h"
 #import "ISSTJobsApi.h"
@@ -25,7 +25,7 @@
 @synthesize employmentApi;
 @synthesize employmentArray;
 @synthesize employTableView;
-static NSString *CellTableIdentifier=@"ISSTEmploymentTableViewCell";
+static NSString *CellTableIdentifier=@"ISSTCommonCell";
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -52,7 +52,7 @@ static NSString *CellTableIdentifier=@"ISSTEmploymentTableViewCell";
     // self.newsArray =[[NSMutableArray alloc]init];
     //UITableView *tableView=(id)[self.view viewWithTag:99];
     employTableView.rowHeight=90;
-    UINib *nib=[UINib nibWithNibName:@"ISSTEmploymentTableViewCell" bundle:nil];
+    UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [employTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
     
@@ -87,9 +87,9 @@ static NSString *CellTableIdentifier=@"ISSTEmploymentTableViewCell";
     employmentModel =[[ISSTJobsModel alloc]init];
     employmentModel = [employmentArray objectAtIndex:indexPath.row];
     
-    ISSTEmploymentTableViewCell *cell=(ISSTEmploymentTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    ISSTCommonCell *cell=(ISSTCommonCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     if (cell == nil) {
-        cell = (ISSTEmploymentTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
+        cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
     
     cell.title.text=employmentModel.title;

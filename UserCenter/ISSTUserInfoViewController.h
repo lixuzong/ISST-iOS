@@ -7,7 +7,12 @@
 //
 
 #import "ISSTPushedViewController.h"
-#import "ISSTWebApiDelegate.h"
-@interface ISSTUserInfoViewController : ISSTPushedViewController<ISSTWebApiDelegate>
-
+#import "ISSTUserModel.h"
+#import "ISSTClassModel.h"
+#import "ISSTMajorModel.h"
+#import "ISSTAddressBookDetailTableViewCell.h"
+@interface ISSTUserInfoViewController : ISSTPushedViewController<UITableViewDataSource,UITableViewDelegate>
+@property(nonatomic,strong)ISSTUserModel *userDetailInfo;
+@property(nonatomic,strong)ISSTClassModel *classInfo;
+@property(nonatomic,strong)ISSTMajorModel *majorInfo;
 @end

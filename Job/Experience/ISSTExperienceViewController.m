@@ -10,7 +10,7 @@
 #import "ISSTLifeApi.h"
 #import "ISSTCampusNewsModel.h"
 #import "ISSTPushedViewController.h"
-#import "ISSTExperienceTableViewCell.h"
+#import "ISSTCommonCell.h"
 #import "ISSTExperienceDetailViewController.h"
 @interface ISSTExperienceViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *experienceArrayTableView;
@@ -31,7 +31,7 @@
 
 @synthesize detailView;
 
-static NSString *CellTableIdentifier=@"ISSTExperienceTableViewCell";
+static NSString *CellTableIdentifier=@"ISSTCommonCell";
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -58,7 +58,7 @@ static NSString *CellTableIdentifier=@"ISSTExperienceTableViewCell";
     // self.newsArray =[[NSMutableArray alloc]init];
     UITableView *tableView=(id)[self.view viewWithTag:2];
     tableView.rowHeight=90;
-    UINib *nib=[UINib nibWithNibName:@"ISSTExperienceTableViewCell" bundle:nil];
+    UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
     
@@ -93,9 +93,9 @@ static NSString *CellTableIdentifier=@"ISSTExperienceTableViewCell";
     experenceModel =[[ISSTCampusNewsModel alloc]init];
     experenceModel = [experenceArray objectAtIndex:indexPath.row];
     
-    ISSTExperienceTableViewCell *cell=(ISSTExperienceTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    ISSTCommonCell *cell=(ISSTCommonCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     if (cell == nil) {
-        cell = (ISSTExperienceTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
+        cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
     
     cell.title.text=experenceModel.title;

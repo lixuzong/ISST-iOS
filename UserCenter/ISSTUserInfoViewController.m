@@ -7,28 +7,16 @@
 //
 
 #import "ISSTUserInfoViewController.h"
-#import "ISSTLoginApi.h"
-#import "ISSTUserModel.h"
 @interface ISSTUserInfoViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *genderLabel;
-@property (weak, nonatomic) IBOutlet UILabel *gradeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *classNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *telLabel;
-@property (weak, nonatomic) IBOutlet UILabel *cityLabel;
-@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
-@property (weak, nonatomic) IBOutlet UILabel *qqLabel;
-@property (weak, nonatomic) IBOutlet UILabel *companyLabel;
-@property (weak, nonatomic) IBOutlet UILabel *positionLabel;
+@property (weak, nonatomic) IBOutlet UITableView *addressBookDetailTableView;
 
-@property (strong, nonatomic) ISSTLoginApi      *loginApi;
-@property (strong, nonatomic) ISSTUserModel     *userModel;
 @end
 
 @implementation ISSTUserInfoViewController
-@synthesize userNameLabel,genderLabel,gradeLabel,classNameLabel,telLabel,emailLabel,qqLabel,cityLabel,companyLabel,positionLabel;
-@synthesize loginApi;
-@synthesize userModel;
+@synthesize addressBookDetailTableView;
+@synthesize userDetailInfo;
+@synthesize classInfo;
+@synthesize majorInfo;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -41,49 +29,187 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    loginApi = [[ISSTLoginApi alloc]init];
-    self.loginApi.webApiDelegate = self;
-    [self.loginApi requestLoginName:@"21351110" andPassword:@"111111"];
-   // [self.loginApi updateLogin];
-  //  [self.loginApi requestUserInfo];
+    // Do any additional setup after loading the view from its nib.
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+#pragma mark -
+#pragma mark Table View  Delegate Methods
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+{
+    if (section) {
+        return 15;
+    }
+    else
+        return 25;
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
+    return 10;
 }
 
-- (void)reloadView
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    self.userNameLabel.text= userModel.userName;
-    self.genderLabel.text  = userModel.gender == MALE?@"男":@"女";
-    self.gradeLabel.text   = [NSString stringWithFormat:@"%d级",userModel.grade];// @"级";
-    self.classNameLabel.text = [NSString stringWithFormat:@"%d",userModel.classId];
-    self.telLabel.text       = userModel.phone;
-    self.cityLabel.text      = [NSString stringWithFormat:@"%d",userModel.cityId];
-    self.qqLabel.text        = userModel.qq;
-    self.positionLabel.text  = userModel.position;
-    self.companyLabel.text   = userModel.company;
-    self.emailLabel.text     = userModel.email;
-    
-    
+    return 40;
 }
+
 
 #pragma mark -
-#pragma mark - ISSTWebApiDelegate Methods
-- (void)requestDataOnSuccess:(id)backToControllerData
+#pragma mark Table View Data Source Methods
+//定义分组数
+-(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
 {
-    userModel = (ISSTUserModel*)backToControllerData;
-    [self reloadView];
-   
-    
-   // NSLog(@"self=%@\n name=%@\n email=%@",self,userModel.name,userModel.email);
+    return 3;
 }
-
-- (void)requestDataOnFail:(NSString *)error
+//定义分组行数
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alert show];
+    NSInteger returnRow = 0;
+    switch (section) {
+        case 0:
+            returnRow=4;
+            break;
+        case 1:
+            returnRow=3;
+            break;
+        case 2:
+            returnRow=3;
+            break;
+    }
+    return returnRow;
+}
+//设置分组行头
+-(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *sectionTitle;
+    switch (section) {
+        case 0:
+            sectionTitle=@"基本信息";
+            break;
+        case 1:
+            sectionTitle=@"联系方式";
+            break;
+        case 2:
+            sectionTitle=@"职场信息";
+            break;
+        default:
+            break;
+    }
+    return sectionTitle;
+}
+-(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *detailInfoTableIdentifier=@"ISSTAddressBookDetailTableViewCell";
+    //  ISSTAddressBookDetailTableViewCell *cell  = (ISSTAddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:detailInfoTableIdentifier];
+    
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
+    ISSTAddressBookDetailTableViewCell *cell  = [nib objectAtIndex:0];
+    
+    switch (indexPath.section) {
+        case 0:
+        {
+            
+            switch (indexPath.row) {
+                case 0:
+                {
+                    cell.contentLabel.text=userDetailInfo.name;
+                    cell.titleLabel.text=@"姓名";
+                    break;
+                }
+                case 1:
+                {
+                    if(userDetailInfo.gender==1)
+                        cell.contentLabel.text=@"男";
+                    else cell.contentLabel.text=@"女";
+                    cell.titleLabel.text=@"性别";
+                    break;
+                }
+                case 2:
+                {
+                    cell.contentLabel.text=classInfo.name;
+                    cell.titleLabel.text=@"班级";
+                    break;
+                }
+                case 3:
+                {
+                    cell.contentLabel.text=majorInfo.name;
+                    cell.titleLabel.text=@"专业方向";
+                    break;
+                }
+                default:
+                    break;
+            }
+            
+        }
+            break;
+        case 1:
+        {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    cell.contentLabel.text=userDetailInfo.phone;
+                    cell.titleLabel.text=@"手机";
+                    break;
+                }
+                case 1:
+                {
+                    cell.contentLabel.text=userDetailInfo.qq;
+                    cell.titleLabel.text=@"QQ";
+                    break;
+                }
+                case 2:
+                {
+                    cell.contentLabel.text=userDetailInfo.email;
+                    cell.titleLabel.text=@"E-mail";
+                    break;
+                }
+                default:
+                    break;
+            }
+            
+        }
+            
+            break;
+            
+        case 2:
+        {
+            switch (indexPath.row) {
+                case 0:
+                {
+                    cell.contentLabel.text=[NSString stringWithFormat:@"%d",userDetailInfo.cityId];
+                    cell.titleLabel.text=@"所在城市";
+                    break;
+                }
+                case 1:
+                {
+                    cell.contentLabel.text=userDetailInfo.company;
+                    cell.titleLabel.text=@"工作单位";
+                    break;
+                }
+                case 2:
+                {
+                    cell.contentLabel.text=userDetailInfo.position;
+                    cell.titleLabel.text=@"职位";
+                    break;
+                }
+                default:
+                    break;
+            }
+            
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    return cell;
     
 }
 

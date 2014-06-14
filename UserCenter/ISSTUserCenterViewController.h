@@ -7,7 +7,7 @@
 //
 
 #import "ISSTRootViewController.h"
-
-@interface ISSTUserCenterViewController : ISSTRootViewController<UITableViewDataSource,UITableViewDelegate>
+#import "ISSTWebApiDelegate.h"
+@interface ISSTUserCenterViewController : ISSTRootViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 
 @end

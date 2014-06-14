@@ -8,7 +8,7 @@
 #import "ISSTNewsDetailViewController.h"
 #import "ISSTNewsViewController.h"
 #import "ISSTLifeApi.h"
-#import "ISSTNewsTableViewCell.h"
+#import "ISSTCommonCell.h"
 #import "ISSTCampusNewsModel.h"
 
 @interface ISSTNewsViewController ()
@@ -32,7 +32,7 @@
 @synthesize newsArray;
 @synthesize newsArrayTableView;
 @synthesize newsDetailView;
-static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
+static NSString *CellTableIdentifier=@"ISSTCommonCell";
 
 
 
@@ -62,7 +62,7 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
   
     UITableView *tableView=(id)[self.view viewWithTag:1];
     tableView.rowHeight=80;
-    UINib *nib=[UINib nibWithNibName:@"ISSTNewsTableViewCell" bundle:nil];
+    UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
 
     
@@ -96,9 +96,9 @@ static NSString *CellTableIdentifier=@"ISSTNewsTableViewCell";
     newsModel =[[ISSTCampusNewsModel alloc]init];
     newsModel = [newsArray objectAtIndex:indexPath.row];
     
-    ISSTNewsTableViewCell *cell=(ISSTNewsTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    ISSTCommonCell *cell=(ISSTCommonCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     if (cell == nil) {
-        cell = (ISSTNewsTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
+        cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
 
     cell.title.text     =   newsModel.title;

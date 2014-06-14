@@ -7,17 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		580503F818FD53EC00F881D9 /* ISSTEmploymentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 580503F318FD53EC00F881D9 /* ISSTEmploymentTableViewCell.m */; };
-		580503F918FD53EC00F881D9 /* ISSTEmploymentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580503F418FD53EC00F881D9 /* ISSTEmploymentTableViewCell.xib */; };
+		182B520719445AAE006F213C /* ISSTRestaurantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E017D18F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.m */; };
+		182B520819445AB9006F213C /* ISSTUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE014AE018EFE0BA0009E008 /* ISSTUserCenterViewController.m */; };
+		182B520919445AFD006F213C /* ISSTAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58653D1418FB86DF005C6F74 /* ISSTAddressBookViewController.m */; };
+		187153E3190D40C50044DDAE /* ISSTSameCitiesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187153E2190D40C50044DDAE /* ISSTSameCitiesModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		187153E6190D453B0044DDAE /* ISSTSameCitiesParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 187153E5190D453B0044DDAE /* ISSTSameCitiesParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		187153E9190D4E140044DDAE /* ISSTSameCitiesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 187153E8190D4E140044DDAE /* ISSTSameCitiesApi.m */; };
+		187153EF190D5ED60044DDAE /* CityManagersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187153ED190D5ED60044DDAE /* CityManagersViewController.m */; };
+		187153F0190D5ED60044DDAE /* CityManagersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187153EE190D5ED60044DDAE /* CityManagersViewController.xib */; };
 		580503FA18FD53EC00F881D9 /* ISSTEmploymentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 580503F618FD53EC00F881D9 /* ISSTEmploymentViewController.m */; };
 		580503FB18FD53EC00F881D9 /* ISSTEmploymentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580503F718FD53EC00F881D9 /* ISSTEmploymentViewController.xib */; };
 		5805041118FD5A1000F881D9 /* ISSTCampusNewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9ECADD18E90BF700FEAEF4 /* ISSTCampusNewsModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		5805041518FD5A2F00F881D9 /* ISSTExperienceTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0B8C7818F2CDDF00844F55 /* ISSTExperienceTableViewCell.m */; };
 		5805041618FD5A4000F881D9 /* ISSTMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2848118DB013400BEF1A9 /* ISSTMenuTableViewCell.m */; };
 		5805041718FD5A4D00F881D9 /* ISSTSidebarSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2848A18DB0AA200BEF1A9 /* ISSTSidebarSearchViewController.m */; };
 		5805041818FD5A8C00F881D9 /* ISSTActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0B8C8918F2D82B00844F55 /* ISSTActivityDetailViewController.m */; };
-		5805042118FD5D8E00F881D9 /* ISSTRecommendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5805041C18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.m */; };
-		5805042218FD5D8E00F881D9 /* ISSTRecommendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5805041D18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.xib */; };
 		5805042318FD5D8E00F881D9 /* ISSTRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5805041F18FD5D8E00F881D9 /* ISSTRecommendViewController.m */; };
 		5805042418FD5D8E00F881D9 /* ISSTRecommendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5805042018FD5D8E00F881D9 /* ISSTRecommendViewController.xib */; };
 		5805042818FD749300F881D9 /* ISSTEmploymentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5805042618FD749300F881D9 /* ISSTEmploymentDetailViewController.m */; };
@@ -36,7 +39,6 @@
 		58653D1A18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58653D0F18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.xib */; };
 		58653D1B18FB86DF005C6F74 /* ISSTAddressBookDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58653D1118FB86DF005C6F74 /* ISSTAddressBookDetailViewController.m */; };
 		58653D1C18FB86DF005C6F74 /* ISSTAddressBookDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58653D1218FB86DF005C6F74 /* ISSTAddressBookDetailViewController.xib */; };
-		58653D1D18FB86DF005C6F74 /* ISSTAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58653D1418FB86DF005C6F74 /* ISSTAddressBookViewController.m */; };
 		58653D1E18FB86DF005C6F74 /* ISSTAddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58653D1518FB86DF005C6F74 /* ISSTAddressBookViewController.xib */; };
 		58653D1F18FB86DF005C6F74 /* ISSTSelectFactorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58653D1718FB86DF005C6F74 /* ISSTSelectFactorsViewController.m */; };
 		58653D2018FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58653D1818FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib */; };
@@ -45,7 +47,6 @@
 		AE014AD818EFC3D30009E008 /* ISSTRestaurantsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AE014AD718EFC3D30009E008 /* ISSTRestaurantsApi.m */; };
 		AE014ADB18EFD4690009E008 /* ISSTRestaurantsMenusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AE014ADA18EFD4690009E008 /* ISSTRestaurantsMenusModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AE014ADE18EFD6680009E008 /* ISSTRestaurantsMenusParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AE014ADD18EFD6680009E008 /* ISSTRestaurantsMenusParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		AE014AE218EFE0BA0009E008 /* ISSTUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE014AE018EFE0BA0009E008 /* ISSTUserCenterViewController.m */; };
 		AE014AE318EFE0BA0009E008 /* ISSTUserCenterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE014AE118EFE0BA0009E008 /* ISSTUserCenterViewController.xib */; };
 		AE04DD2F18F8255F002A2A64 /* combo_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = AE04DD2E18F8255F002A2A64 /* combo_bg.png */; };
 		AE04DD3218F8257A002A2A64 /* AJComboBox.m in Sources */ = {isa = PBXBuildFile; fileRef = AE04DD3118F8257A002A2A64 /* AJComboBox.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -58,7 +59,6 @@
 		AE0B8C3618F2C8B300844F55 /* ISSTActivitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0B8C3418F2C8B300844F55 /* ISSTActivitiesViewController.xib */; };
 		AE0B8C7D18F2CDDF00844F55 /* ISSTExperienceDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0B8C7518F2CDDF00844F55 /* ISSTExperienceDetailViewController.m */; };
 		AE0B8C7E18F2CDDF00844F55 /* ISSTExperienceDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0B8C7618F2CDDF00844F55 /* ISSTExperienceDetailViewController.xib */; };
-		AE0B8C8018F2CDDF00844F55 /* ISSTExperienceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0B8C7918F2CDDF00844F55 /* ISSTExperienceTableViewCell.xib */; };
 		AE0B8C8118F2CDDF00844F55 /* ISSTExperienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0B8C7B18F2CDDF00844F55 /* ISSTExperienceViewController.m */; };
 		AE0B8C8218F2CDDF00844F55 /* ISSTExperienceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0B8C7C18F2CDDF00844F55 /* ISSTExperienceViewController.xib */; };
 		AE0B8C8618F2D1F100844F55 /* ISSTActivityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE0B8C8418F2D1F100844F55 /* ISSTActivityTableViewCell.m */; };
@@ -70,8 +70,8 @@
 		AE0B8C9618F2ED7E00844F55 /* ISSTUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE0B8C9418F2ED7E00844F55 /* ISSTUserInfoViewController.xib */; };
 		AE85F9BA1901635100FCD67D /* ISSTInternshipDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE85F9B21901635100FCD67D /* ISSTInternshipDetailViewController.m */; };
 		AE85F9BB1901635100FCD67D /* ISSTInternshipDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE85F9B31901635100FCD67D /* ISSTInternshipDetailViewController.xib */; };
-		AE85F9BC1901635100FCD67D /* ISSTInternshipTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE85F9B51901635100FCD67D /* ISSTInternshipTableViewCell.m */; };
-		AE85F9BD1901635100FCD67D /* ISSTInternshipTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE85F9B61901635100FCD67D /* ISSTInternshipTableViewCell.xib */; };
+		AE85F9BC1901635100FCD67D /* ISSTICommonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE85F9B51901635100FCD67D /* ISSTICommonCell.m */; };
+		AE85F9BD1901635100FCD67D /* ISSTCommonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE85F9B61901635100FCD67D /* ISSTCommonCell.xib */; };
 		AE85F9BE1901635100FCD67D /* ISSTInternshipViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE85F9B81901635100FCD67D /* ISSTInternshipViewController.m */; };
 		AE85F9BF1901635100FCD67D /* ISSTInternshipViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE85F9B91901635100FCD67D /* ISSTInternshipViewController.xib */; };
 		AE85F9C3190243D700FCD67D /* ISSTRecommendDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE85F9C1190243D700FCD67D /* ISSTRecommendDetailViewController.m */; };
@@ -87,8 +87,6 @@
 		AE85F9E119028C3400FCD67D /* ISSTPostCommentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE85F9DF19028C3400FCD67D /* ISSTPostCommentsViewController.xib */; };
 		AE9052A618EEEE6D0088742D /* ISSTNewsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE90529E18EEEE6D0088742D /* ISSTNewsDetailViewController.m */; };
 		AE9052A718EEEE6D0088742D /* ISSTNewsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE90529F18EEEE6D0088742D /* ISSTNewsDetailViewController.xib */; };
-		AE9052A818EEEE6D0088742D /* ISSTNewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9052A118EEEE6D0088742D /* ISSTNewsTableViewCell.m */; };
-		AE9052A918EEEE6D0088742D /* ISSTNewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9052A218EEEE6D0088742D /* ISSTNewsTableViewCell.xib */; };
 		AE9052AA18EEEE6D0088742D /* ISSTNewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9052A418EEEE6D0088742D /* ISSTNewsViewController.m */; };
 		AE9052AB18EEEE6D0088742D /* ISSTNewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9052A518EEEE6D0088742D /* ISSTNewsViewController.xib */; };
 		AE9052B618EEEE890088742D /* ISSTWikisCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9052AE18EEEE890088742D /* ISSTWikisCollectionViewCell.m */; };
@@ -102,7 +100,6 @@
 		AE9B148218EBB04400034F65 /* NetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B147818EBB04400034F65 /* NetworkReachability.m */; };
 		AE9B148318EBB04400034F65 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9B147A18EBB04400034F65 /* Reachability.m */; };
 		AE9E017618F3BC1F008EAFA1 /* ISSTContactsApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E017518F3BC1F008EAFA1 /* ISSTContactsApi.m */; };
-		AE9E018518F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E017D18F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.m */; };
 		AE9E018618F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9E017E18F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.xib */; };
 		AE9E018718F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E018018F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.m */; };
 		AE9E018818F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AE9E018118F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.xib */; };
@@ -162,15 +159,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		580503F218FD53DE00F881D9 /* ISSTEmploymentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTEmploymentTableViewCell.h; path = Employment/ISSTEmploymentTableViewCell.h; sourceTree = "<group>"; };
-		580503F318FD53EC00F881D9 /* ISSTEmploymentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTEmploymentTableViewCell.m; path = Employment/ISSTEmploymentTableViewCell.m; sourceTree = "<group>"; };
-		580503F418FD53EC00F881D9 /* ISSTEmploymentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTEmploymentTableViewCell.xib; path = Employment/ISSTEmploymentTableViewCell.xib; sourceTree = "<group>"; };
+		187153E1190D40C50044DDAE /* ISSTSameCitiesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSameCitiesModel.h; sourceTree = "<group>"; };
+		187153E2190D40C50044DDAE /* ISSTSameCitiesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSameCitiesModel.m; sourceTree = "<group>"; };
+		187153E4190D453B0044DDAE /* ISSTSameCitiesParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSameCitiesParse.h; sourceTree = "<group>"; };
+		187153E5190D453B0044DDAE /* ISSTSameCitiesParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSameCitiesParse.m; sourceTree = "<group>"; };
+		187153E7190D4E140044DDAE /* ISSTSameCitiesApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSameCitiesApi.h; sourceTree = "<group>"; };
+		187153E8190D4E140044DDAE /* ISSTSameCitiesApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSameCitiesApi.m; sourceTree = "<group>"; };
+		187153EC190D5ED60044DDAE /* CityManagersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityManagersViewController.h; sourceTree = SOURCE_ROOT; };
+		187153ED190D5ED60044DDAE /* CityManagersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityManagersViewController.m; sourceTree = SOURCE_ROOT; };
+		187153EE190D5ED60044DDAE /* CityManagersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityManagersViewController.xib; sourceTree = SOURCE_ROOT; };
 		580503F518FD53EC00F881D9 /* ISSTEmploymentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTEmploymentViewController.h; path = Employment/ISSTEmploymentViewController.h; sourceTree = "<group>"; };
 		580503F618FD53EC00F881D9 /* ISSTEmploymentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTEmploymentViewController.m; path = Employment/ISSTEmploymentViewController.m; sourceTree = "<group>"; };
 		580503F718FD53EC00F881D9 /* ISSTEmploymentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTEmploymentViewController.xib; path = Employment/ISSTEmploymentViewController.xib; sourceTree = "<group>"; };
-		5805041B18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTRecommendTableViewCell.h; path = Recommend/ISSTRecommendTableViewCell.h; sourceTree = "<group>"; };
-		5805041C18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRecommendTableViewCell.m; path = Recommend/ISSTRecommendTableViewCell.m; sourceTree = "<group>"; };
-		5805041D18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTRecommendTableViewCell.xib; path = Recommend/ISSTRecommendTableViewCell.xib; sourceTree = "<group>"; };
 		5805041E18FD5D8E00F881D9 /* ISSTRecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTRecommendViewController.h; path = Recommend/ISSTRecommendViewController.h; sourceTree = "<group>"; };
 		5805041F18FD5D8E00F881D9 /* ISSTRecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRecommendViewController.m; path = Recommend/ISSTRecommendViewController.m; sourceTree = "<group>"; };
 		5805042018FD5D8E00F881D9 /* ISSTRecommendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTRecommendViewController.xib; path = Recommend/ISSTRecommendViewController.xib; sourceTree = "<group>"; };
@@ -188,9 +188,9 @@
 		581C8D5B18F03B050006740B /* ISSTStudyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTStudyDetailViewController.h; sourceTree = "<group>"; };
 		581C8D5C18F03B050006740B /* ISSTStudyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTStudyDetailViewController.m; sourceTree = "<group>"; };
 		581C8D5D18F03B050006740B /* ISSTStudyDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTStudyDetailViewController.xib; sourceTree = "<group>"; };
-		581C8D5E18F03B050006740B /* ISSTStudyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTStudyTableViewCell.h; sourceTree = "<group>"; };
-		581C8D5F18F03B050006740B /* ISSTStudyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTStudyTableViewCell.m; sourceTree = "<group>"; };
-		581C8D6018F03B050006740B /* ISSTStudyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTStudyTableViewCell.xib; sourceTree = "<group>"; };
+		581C8D5E18F03B050006740B /* ISSTStudyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTStudyTableViewCell.h; path = Life/Study/ISSTStudyTableViewCell.h; sourceTree = "<group>"; };
+		581C8D5F18F03B050006740B /* ISSTStudyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTStudyTableViewCell.m; path = Life/Study/ISSTStudyTableViewCell.m; sourceTree = "<group>"; };
+		581C8D6018F03B050006740B /* ISSTStudyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTStudyTableViewCell.xib; path = Life/Study/ISSTStudyTableViewCell.xib; sourceTree = "<group>"; };
 		581C8D6118F03B050006740B /* ISSTStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTStudyViewController.h; sourceTree = "<group>"; };
 		581C8D6218F03B050006740B /* ISSTStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTStudyViewController.m; sourceTree = "<group>"; };
 		581C8D6318F03B050006740B /* ISSTStudyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTStudyViewController.xib; sourceTree = "<group>"; };
@@ -239,15 +239,12 @@
 		AE0B8C7418F2CDDF00844F55 /* ISSTExperienceDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTExperienceDetailViewController.h; path = Experience/ISSTExperienceDetailViewController.h; sourceTree = "<group>"; };
 		AE0B8C7518F2CDDF00844F55 /* ISSTExperienceDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTExperienceDetailViewController.m; path = Experience/ISSTExperienceDetailViewController.m; sourceTree = "<group>"; };
 		AE0B8C7618F2CDDF00844F55 /* ISSTExperienceDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTExperienceDetailViewController.xib; path = Experience/ISSTExperienceDetailViewController.xib; sourceTree = "<group>"; };
-		AE0B8C7718F2CDDF00844F55 /* ISSTExperienceTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTExperienceTableViewCell.h; path = Experience/ISSTExperienceTableViewCell.h; sourceTree = "<group>"; };
-		AE0B8C7818F2CDDF00844F55 /* ISSTExperienceTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTExperienceTableViewCell.m; path = Experience/ISSTExperienceTableViewCell.m; sourceTree = "<group>"; };
-		AE0B8C7918F2CDDF00844F55 /* ISSTExperienceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTExperienceTableViewCell.xib; path = Experience/ISSTExperienceTableViewCell.xib; sourceTree = "<group>"; };
 		AE0B8C7A18F2CDDF00844F55 /* ISSTExperienceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTExperienceViewController.h; path = Experience/ISSTExperienceViewController.h; sourceTree = "<group>"; };
 		AE0B8C7B18F2CDDF00844F55 /* ISSTExperienceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTExperienceViewController.m; path = Experience/ISSTExperienceViewController.m; sourceTree = "<group>"; };
 		AE0B8C7C18F2CDDF00844F55 /* ISSTExperienceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTExperienceViewController.xib; path = Experience/ISSTExperienceViewController.xib; sourceTree = "<group>"; };
-		AE0B8C8318F2D1F100844F55 /* ISSTActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTActivityTableViewCell.h; path = Activities/ISSTActivityTableViewCell.h; sourceTree = "<group>"; };
-		AE0B8C8418F2D1F100844F55 /* ISSTActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTActivityTableViewCell.m; path = Activities/ISSTActivityTableViewCell.m; sourceTree = "<group>"; };
-		AE0B8C8518F2D1F100844F55 /* ISSTActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTActivityTableViewCell.xib; path = Activities/ISSTActivityTableViewCell.xib; sourceTree = "<group>"; };
+		AE0B8C8318F2D1F100844F55 /* ISSTActivityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTActivityTableViewCell.h; path = Life/Activities/ISSTActivityTableViewCell.h; sourceTree = "<group>"; };
+		AE0B8C8418F2D1F100844F55 /* ISSTActivityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTActivityTableViewCell.m; path = Life/Activities/ISSTActivityTableViewCell.m; sourceTree = "<group>"; };
+		AE0B8C8518F2D1F100844F55 /* ISSTActivityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTActivityTableViewCell.xib; path = Life/Activities/ISSTActivityTableViewCell.xib; sourceTree = "<group>"; };
 		AE0B8C8818F2D82B00844F55 /* ISSTActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTActivityDetailViewController.h; path = Activities/ISSTActivityDetailViewController.h; sourceTree = "<group>"; };
 		AE0B8C8918F2D82B00844F55 /* ISSTActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTActivityDetailViewController.m; path = Activities/ISSTActivityDetailViewController.m; sourceTree = "<group>"; };
 		AE0B8C8A18F2D82B00844F55 /* ISSTActivityDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTActivityDetailViewController.xib; path = Activities/ISSTActivityDetailViewController.xib; sourceTree = "<group>"; };
@@ -260,9 +257,9 @@
 		AE85F9B11901635100FCD67D /* ISSTInternshipDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTInternshipDetailViewController.h; sourceTree = "<group>"; };
 		AE85F9B21901635100FCD67D /* ISSTInternshipDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTInternshipDetailViewController.m; sourceTree = "<group>"; };
 		AE85F9B31901635100FCD67D /* ISSTInternshipDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTInternshipDetailViewController.xib; sourceTree = "<group>"; };
-		AE85F9B41901635100FCD67D /* ISSTInternshipTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTInternshipTableViewCell.h; sourceTree = "<group>"; };
-		AE85F9B51901635100FCD67D /* ISSTInternshipTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTInternshipTableViewCell.m; sourceTree = "<group>"; };
-		AE85F9B61901635100FCD67D /* ISSTInternshipTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTInternshipTableViewCell.xib; sourceTree = "<group>"; };
+		AE85F9B41901635100FCD67D /* ISSTCommonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTCommonCell.h; path = Job/Internship/ISSTCommonCell.h; sourceTree = "<group>"; };
+		AE85F9B51901635100FCD67D /* ISSTICommonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTICommonCell.m; path = Job/Internship/ISSTICommonCell.m; sourceTree = "<group>"; };
+		AE85F9B61901635100FCD67D /* ISSTCommonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTCommonCell.xib; path = Job/Internship/ISSTCommonCell.xib; sourceTree = "<group>"; };
 		AE85F9B71901635100FCD67D /* ISSTInternshipViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTInternshipViewController.h; sourceTree = "<group>"; };
 		AE85F9B81901635100FCD67D /* ISSTInternshipViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTInternshipViewController.m; sourceTree = "<group>"; };
 		AE85F9B91901635100FCD67D /* ISSTInternshipViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTInternshipViewController.xib; sourceTree = "<group>"; };
@@ -271,12 +268,12 @@
 		AE85F9C2190243D700FCD67D /* ISSTRecommendDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTRecommendDetailViewController.xib; path = Recommend/ISSTRecommendDetailViewController.xib; sourceTree = "<group>"; };
 		AE85F9C5190251E200FCD67D /* ISSTCommentsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTCommentsModel.h; path = Models/ISSTCommentsModel.h; sourceTree = "<group>"; };
 		AE85F9C6190251E200FCD67D /* ISSTCommentsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTCommentsModel.m; path = Models/ISSTCommentsModel.m; sourceTree = "<group>"; };
-		AE85F9C81902605600FCD67D /* ISSTCLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTCLTableViewCell.h; path = Recommend/ISSTCLTableViewCell.h; sourceTree = "<group>"; };
-		AE85F9C91902605600FCD67D /* ISSTCLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTCLTableViewCell.m; path = Recommend/ISSTCLTableViewCell.m; sourceTree = "<group>"; };
-		AE85F9CA1902605600FCD67D /* ISSTCLTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTCLTableViewCell.xib; path = Recommend/ISSTCLTableViewCell.xib; sourceTree = "<group>"; };
-		AE85F9D21902646200FCD67D /* ISSTCLMoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTCLMoreTableViewCell.h; path = Recommend/ISSTCLMoreTableViewCell.h; sourceTree = "<group>"; };
-		AE85F9D31902646200FCD67D /* ISSTCLMoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTCLMoreTableViewCell.m; path = Recommend/ISSTCLMoreTableViewCell.m; sourceTree = "<group>"; };
-		AE85F9D41902646200FCD67D /* ISSTCLMoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTCLMoreTableViewCell.xib; path = Recommend/ISSTCLMoreTableViewCell.xib; sourceTree = "<group>"; };
+		AE85F9C81902605600FCD67D /* ISSTCLTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTCLTableViewCell.h; path = Job/Recommend/ISSTCLTableViewCell.h; sourceTree = "<group>"; };
+		AE85F9C91902605600FCD67D /* ISSTCLTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTCLTableViewCell.m; path = Job/Recommend/ISSTCLTableViewCell.m; sourceTree = "<group>"; };
+		AE85F9CA1902605600FCD67D /* ISSTCLTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTCLTableViewCell.xib; path = Job/Recommend/ISSTCLTableViewCell.xib; sourceTree = "<group>"; };
+		AE85F9D21902646200FCD67D /* ISSTCLMoreTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTCLMoreTableViewCell.h; path = Job/Recommend/ISSTCLMoreTableViewCell.h; sourceTree = "<group>"; };
+		AE85F9D31902646200FCD67D /* ISSTCLMoreTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTCLMoreTableViewCell.m; path = Job/Recommend/ISSTCLMoreTableViewCell.m; sourceTree = "<group>"; };
+		AE85F9D41902646200FCD67D /* ISSTCLMoreTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTCLMoreTableViewCell.xib; path = Job/Recommend/ISSTCLMoreTableViewCell.xib; sourceTree = "<group>"; };
 		AE85F9D719026C9200FCD67D /* ISSTCommentsMoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTCommentsMoreViewController.h; path = Recommend/ISSTCommentsMoreViewController.h; sourceTree = "<group>"; };
 		AE85F9D819026C9200FCD67D /* ISSTCommentsMoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTCommentsMoreViewController.m; path = Recommend/ISSTCommentsMoreViewController.m; sourceTree = "<group>"; };
 		AE85F9D919026C9200FCD67D /* ISSTCommentsMoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTCommentsMoreViewController.xib; path = Recommend/ISSTCommentsMoreViewController.xib; sourceTree = "<group>"; };
@@ -287,15 +284,12 @@
 		AE90529D18EEEE6D0088742D /* ISSTNewsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTNewsDetailViewController.h; path = News/ISSTNewsDetailViewController.h; sourceTree = "<group>"; };
 		AE90529E18EEEE6D0088742D /* ISSTNewsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTNewsDetailViewController.m; path = News/ISSTNewsDetailViewController.m; sourceTree = "<group>"; };
 		AE90529F18EEEE6D0088742D /* ISSTNewsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTNewsDetailViewController.xib; path = News/ISSTNewsDetailViewController.xib; sourceTree = "<group>"; };
-		AE9052A018EEEE6D0088742D /* ISSTNewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTNewsTableViewCell.h; path = News/ISSTNewsTableViewCell.h; sourceTree = "<group>"; };
-		AE9052A118EEEE6D0088742D /* ISSTNewsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTNewsTableViewCell.m; path = News/ISSTNewsTableViewCell.m; sourceTree = "<group>"; };
-		AE9052A218EEEE6D0088742D /* ISSTNewsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTNewsTableViewCell.xib; path = News/ISSTNewsTableViewCell.xib; sourceTree = "<group>"; };
 		AE9052A318EEEE6D0088742D /* ISSTNewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTNewsViewController.h; path = News/ISSTNewsViewController.h; sourceTree = "<group>"; };
 		AE9052A418EEEE6D0088742D /* ISSTNewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTNewsViewController.m; path = News/ISSTNewsViewController.m; sourceTree = "<group>"; };
 		AE9052A518EEEE6D0088742D /* ISSTNewsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTNewsViewController.xib; path = News/ISSTNewsViewController.xib; sourceTree = "<group>"; };
-		AE9052AD18EEEE890088742D /* ISSTWikisCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTWikisCollectionViewCell.h; path = Wikis/ISSTWikisCollectionViewCell.h; sourceTree = "<group>"; };
-		AE9052AE18EEEE890088742D /* ISSTWikisCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTWikisCollectionViewCell.m; path = Wikis/ISSTWikisCollectionViewCell.m; sourceTree = "<group>"; };
-		AE9052AF18EEEE890088742D /* ISSTWikisCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTWikisCollectionViewCell.xib; path = Wikis/ISSTWikisCollectionViewCell.xib; sourceTree = "<group>"; };
+		AE9052AD18EEEE890088742D /* ISSTWikisCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTWikisCollectionViewCell.h; path = Life/Wikis/ISSTWikisCollectionViewCell.h; sourceTree = "<group>"; };
+		AE9052AE18EEEE890088742D /* ISSTWikisCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTWikisCollectionViewCell.m; path = Life/Wikis/ISSTWikisCollectionViewCell.m; sourceTree = "<group>"; };
+		AE9052AF18EEEE890088742D /* ISSTWikisCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTWikisCollectionViewCell.xib; path = Life/Wikis/ISSTWikisCollectionViewCell.xib; sourceTree = "<group>"; };
 		AE9052B018EEEE890088742D /* ISSTWikisDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTWikisDetailViewController.h; path = Wikis/ISSTWikisDetailViewController.h; sourceTree = "<group>"; };
 		AE9052B118EEEE890088742D /* ISSTWikisDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTWikisDetailViewController.m; path = Wikis/ISSTWikisDetailViewController.m; sourceTree = "<group>"; };
 		AE9052B218EEEE890088742D /* ISSTWikisDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTWikisDetailViewController.xib; path = Wikis/ISSTWikisDetailViewController.xib; sourceTree = "<group>"; };
@@ -315,15 +309,15 @@
 		AE9E017C18F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTRestaurantDetailViewController.h; sourceTree = "<group>"; };
 		AE9E017D18F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTRestaurantDetailViewController.m; sourceTree = "<group>"; };
 		AE9E017E18F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTRestaurantDetailViewController.xib; sourceTree = "<group>"; };
-		AE9E018018F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTRestaurantsTableViewCell.m; sourceTree = "<group>"; };
-		AE9E018118F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTRestaurantsTableViewCell.xib; sourceTree = "<group>"; };
+		AE9E018018F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRestaurantsTableViewCell.m; path = Life/Service/Restaurants/ISSTRestaurantsTableViewCell.m; sourceTree = "<group>"; };
+		AE9E018118F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTRestaurantsTableViewCell.xib; path = Life/Service/Restaurants/ISSTRestaurantsTableViewCell.xib; sourceTree = "<group>"; };
 		AE9E018218F3F0CB008EAFA1 /* ISSTRestaurantsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTRestaurantsViewController.h; sourceTree = "<group>"; };
 		AE9E018318F3F0CB008EAFA1 /* ISSTRestaurantsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTRestaurantsViewController.m; sourceTree = "<group>"; };
 		AE9E018418F3F0CB008EAFA1 /* ISSTRestaurantsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTRestaurantsViewController.xib; sourceTree = "<group>"; };
 		AE9E018B18F3F0D4008EAFA1 /* ISSTServiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTServiceViewController.h; sourceTree = "<group>"; };
 		AE9E018C18F3F0D4008EAFA1 /* ISSTServiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTServiceViewController.m; sourceTree = "<group>"; };
 		AE9E018D18F3F0D4008EAFA1 /* ISSTServiceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTServiceViewController.xib; sourceTree = "<group>"; };
-		AE9E019018F403EF008EAFA1 /* ISSTRestaurantsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTRestaurantsTableViewCell.h; sourceTree = "<group>"; };
+		AE9E019018F403EF008EAFA1 /* ISSTRestaurantsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTRestaurantsTableViewCell.h; path = Life/Service/Restaurants/ISSTRestaurantsTableViewCell.h; sourceTree = "<group>"; };
 		AE9ECAD618E8F70700FEAEF4 /* ISSTMD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTMD5.h; path = WebService/ISSTMD5.h; sourceTree = "<group>"; };
 		AE9ECAD718E8F70700FEAEF4 /* ISSTMD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTMD5.m; path = WebService/ISSTMD5.m; sourceTree = "<group>"; };
 		AE9ECAD918E90BD800FEAEF4 /* ISSTCampusNewsParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTCampusNewsParse.h; path = Parses/ISSTCampusNewsParse.h; sourceTree = "<group>"; };
@@ -421,15 +415,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		182B520519441E28006F213C /* CommonView */ = {
+			isa = PBXGroup;
+			children = (
+				182B520619441E54006F213C /* TableViewCell */,
+			);
+			name = CommonView;
+			sourceTree = "<group>";
+		};
+		182B520619441E54006F213C /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				58653D0D18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.h */,
+				58653D0E18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.m */,
+				58653D0F18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.xib */,
+				AE85F9B41901635100FCD67D /* ISSTCommonCell.h */,
+				AE85F9B51901635100FCD67D /* ISSTICommonCell.m */,
+				AE85F9B61901635100FCD67D /* ISSTCommonCell.xib */,
+				AE85F9D21902646200FCD67D /* ISSTCLMoreTableViewCell.h */,
+				AE85F9D31902646200FCD67D /* ISSTCLMoreTableViewCell.m */,
+				AE85F9D41902646200FCD67D /* ISSTCLMoreTableViewCell.xib */,
+				AE85F9C81902605600FCD67D /* ISSTCLTableViewCell.h */,
+				AE85F9C91902605600FCD67D /* ISSTCLTableViewCell.m */,
+				AE85F9CA1902605600FCD67D /* ISSTCLTableViewCell.xib */,
+				AE0B8C8318F2D1F100844F55 /* ISSTActivityTableViewCell.h */,
+				AE0B8C8418F2D1F100844F55 /* ISSTActivityTableViewCell.m */,
+				AE0B8C8518F2D1F100844F55 /* ISSTActivityTableViewCell.xib */,
+				581C8D5E18F03B050006740B /* ISSTStudyTableViewCell.h */,
+				581C8D5F18F03B050006740B /* ISSTStudyTableViewCell.m */,
+				581C8D6018F03B050006740B /* ISSTStudyTableViewCell.xib */,
+				AE9E019018F403EF008EAFA1 /* ISSTRestaurantsTableViewCell.h */,
+				AE9E018018F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.m */,
+				AE9E018118F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.xib */,
+				AE9052AD18EEEE890088742D /* ISSTWikisCollectionViewCell.h */,
+				AE9052AE18EEEE890088742D /* ISSTWikisCollectionViewCell.m */,
+				AE9052AF18EEEE890088742D /* ISSTWikisCollectionViewCell.xib */,
+				AE0B8C8D18F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.h */,
+				AE0B8C8E18F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.m */,
+				AE0B8C8F18F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.xib */,
+			);
+			name = TableViewCell;
+			sourceTree = "<group>";
+		};
 		580503E518FD03F400F881D9 /* Employment */ = {
 			isa = PBXGroup;
 			children = (
 				5805042518FD749300F881D9 /* ISSTEmploymentDetailViewController.h */,
 				5805042618FD749300F881D9 /* ISSTEmploymentDetailViewController.m */,
 				5805042718FD749300F881D9 /* ISSTEmploymentDetailViewController.xib */,
-				580503F218FD53DE00F881D9 /* ISSTEmploymentTableViewCell.h */,
-				580503F318FD53EC00F881D9 /* ISSTEmploymentTableViewCell.m */,
-				580503F418FD53EC00F881D9 /* ISSTEmploymentTableViewCell.xib */,
 				580503F518FD53EC00F881D9 /* ISSTEmploymentViewController.h */,
 				580503F618FD53EC00F881D9 /* ISSTEmploymentViewController.m */,
 				580503F718FD53EC00F881D9 /* ISSTEmploymentViewController.xib */,
@@ -440,21 +473,12 @@
 		580503F118FD4A6700F881D9 /* Recommend */ = {
 			isa = PBXGroup;
 			children = (
-				5805041B18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.h */,
-				5805041C18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.m */,
-				5805041D18FD5D8E00F881D9 /* ISSTRecommendTableViewCell.xib */,
 				5805041E18FD5D8E00F881D9 /* ISSTRecommendViewController.h */,
 				5805041F18FD5D8E00F881D9 /* ISSTRecommendViewController.m */,
 				5805042018FD5D8E00F881D9 /* ISSTRecommendViewController.xib */,
 				AE85F9C0190243D700FCD67D /* ISSTRecommendDetailViewController.h */,
 				AE85F9C1190243D700FCD67D /* ISSTRecommendDetailViewController.m */,
 				AE85F9C2190243D700FCD67D /* ISSTRecommendDetailViewController.xib */,
-				AE85F9C81902605600FCD67D /* ISSTCLTableViewCell.h */,
-				AE85F9C91902605600FCD67D /* ISSTCLTableViewCell.m */,
-				AE85F9CA1902605600FCD67D /* ISSTCLTableViewCell.xib */,
-				AE85F9D21902646200FCD67D /* ISSTCLMoreTableViewCell.h */,
-				AE85F9D31902646200FCD67D /* ISSTCLMoreTableViewCell.m */,
-				AE85F9D41902646200FCD67D /* ISSTCLMoreTableViewCell.xib */,
 				AE85F9DC190282D100FCD67D /* ISSTMoreButtonDelegate.h */,
 				AE85F9D719026C9200FCD67D /* ISSTCommentsMoreViewController.h */,
 				AE85F9D819026C9200FCD67D /* ISSTCommentsMoreViewController.m */,
@@ -483,9 +507,6 @@
 				AE9E017C18F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.h */,
 				AE9E017D18F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.m */,
 				AE9E017E18F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.xib */,
-				AE9E019018F403EF008EAFA1 /* ISSTRestaurantsTableViewCell.h */,
-				AE9E018018F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.m */,
-				AE9E018118F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.xib */,
 				AE9E018218F3F0CB008EAFA1 /* ISSTRestaurantsViewController.h */,
 				AE9E018318F3F0CB008EAFA1 /* ISSTRestaurantsViewController.m */,
 				AE9E018418F3F0CB008EAFA1 /* ISSTRestaurantsViewController.xib */,
@@ -499,9 +520,6 @@
 				581C8D5B18F03B050006740B /* ISSTStudyDetailViewController.h */,
 				581C8D5C18F03B050006740B /* ISSTStudyDetailViewController.m */,
 				581C8D5D18F03B050006740B /* ISSTStudyDetailViewController.xib */,
-				581C8D5E18F03B050006740B /* ISSTStudyTableViewCell.h */,
-				581C8D5F18F03B050006740B /* ISSTStudyTableViewCell.m */,
-				581C8D6018F03B050006740B /* ISSTStudyTableViewCell.xib */,
 				581C8D6118F03B050006740B /* ISSTStudyViewController.h */,
 				581C8D6218F03B050006740B /* ISSTStudyViewController.m */,
 				581C8D6318F03B050006740B /* ISSTStudyViewController.xib */,
@@ -525,9 +543,6 @@
 				AE0B8C3218F2C8B300844F55 /* ISSTActivitiesViewController.h */,
 				AE0B8C3318F2C8B300844F55 /* ISSTActivitiesViewController.m */,
 				AE0B8C3418F2C8B300844F55 /* ISSTActivitiesViewController.xib */,
-				AE0B8C8318F2D1F100844F55 /* ISSTActivityTableViewCell.h */,
-				AE0B8C8418F2D1F100844F55 /* ISSTActivityTableViewCell.m */,
-				AE0B8C8518F2D1F100844F55 /* ISSTActivityTableViewCell.xib */,
 				AE0B8C8818F2D82B00844F55 /* ISSTActivityDetailViewController.h */,
 				AE0B8C8918F2D82B00844F55 /* ISSTActivityDetailViewController.m */,
 				AE0B8C8A18F2D82B00844F55 /* ISSTActivityDetailViewController.xib */,
@@ -544,9 +559,6 @@
 				AE0B8C7418F2CDDF00844F55 /* ISSTExperienceDetailViewController.h */,
 				AE0B8C7518F2CDDF00844F55 /* ISSTExperienceDetailViewController.m */,
 				AE0B8C7618F2CDDF00844F55 /* ISSTExperienceDetailViewController.xib */,
-				AE0B8C7718F2CDDF00844F55 /* ISSTExperienceTableViewCell.h */,
-				AE0B8C7818F2CDDF00844F55 /* ISSTExperienceTableViewCell.m */,
-				AE0B8C7918F2CDDF00844F55 /* ISSTExperienceTableViewCell.xib */,
 			);
 			name = Experience;
 			sourceTree = "<group>";
@@ -557,9 +569,6 @@
 				AE85F9B11901635100FCD67D /* ISSTInternshipDetailViewController.h */,
 				AE85F9B21901635100FCD67D /* ISSTInternshipDetailViewController.m */,
 				AE85F9B31901635100FCD67D /* ISSTInternshipDetailViewController.xib */,
-				AE85F9B41901635100FCD67D /* ISSTInternshipTableViewCell.h */,
-				AE85F9B51901635100FCD67D /* ISSTInternshipTableViewCell.m */,
-				AE85F9B61901635100FCD67D /* ISSTInternshipTableViewCell.xib */,
 				AE85F9B71901635100FCD67D /* ISSTInternshipViewController.h */,
 				AE85F9B81901635100FCD67D /* ISSTInternshipViewController.m */,
 				AE85F9B91901635100FCD67D /* ISSTInternshipViewController.xib */,
@@ -573,9 +582,6 @@
 				AE90529D18EEEE6D0088742D /* ISSTNewsDetailViewController.h */,
 				AE90529E18EEEE6D0088742D /* ISSTNewsDetailViewController.m */,
 				AE90529F18EEEE6D0088742D /* ISSTNewsDetailViewController.xib */,
-				AE9052A018EEEE6D0088742D /* ISSTNewsTableViewCell.h */,
-				AE9052A118EEEE6D0088742D /* ISSTNewsTableViewCell.m */,
-				AE9052A218EEEE6D0088742D /* ISSTNewsTableViewCell.xib */,
 				AE9052A318EEEE6D0088742D /* ISSTNewsViewController.h */,
 				AE9052A418EEEE6D0088742D /* ISSTNewsViewController.m */,
 				AE9052A518EEEE6D0088742D /* ISSTNewsViewController.xib */,
@@ -586,9 +592,6 @@
 		AE9052AC18EEEE7C0088742D /* Wikis */ = {
 			isa = PBXGroup;
 			children = (
-				AE9052AD18EEEE890088742D /* ISSTWikisCollectionViewCell.h */,
-				AE9052AE18EEEE890088742D /* ISSTWikisCollectionViewCell.m */,
-				AE9052AF18EEEE890088742D /* ISSTWikisCollectionViewCell.xib */,
 				AE9052B018EEEE890088742D /* ISSTWikisDetailViewController.h */,
 				AE9052B118EEEE890088742D /* ISSTWikisDetailViewController.m */,
 				AE9052B218EEEE890088742D /* ISSTWikisDetailViewController.xib */,
@@ -625,6 +628,7 @@
 		AEE2843518DADAA000BEF1A9 = {
 			isa = PBXGroup;
 			children = (
+				182B520519441E28006F213C /* CommonView */,
 				AE9ECAE918E969C400FEAEF4 /* Status */,
 				58898D5718F5914100016339 /* AjComboBox */,
 				AE9ECAE818E969AE00FEAEF4 /* Helps */,
@@ -756,6 +760,8 @@
 				AE0B8C2F18F2C36000844F55 /* ISSTActivityApi.m */,
 				AE9E017418F3BC1F008EAFA1 /* ISSTContactsApi.h */,
 				AE9E017518F3BC1F008EAFA1 /* ISSTContactsApi.m */,
+				187153E7190D4E140044DDAE /* ISSTSameCitiesApi.h */,
+				187153E8190D4E140044DDAE /* ISSTSameCitiesApi.m */,
 			);
 			name = WebService;
 			sourceTree = "<group>";
@@ -803,6 +809,8 @@
 				AEA238CC18F530960030F196 /* ISSTClassModel.m */,
 				AE85F9C5190251E200FCD67D /* ISSTCommentsModel.h */,
 				AE85F9C6190251E200FCD67D /* ISSTCommentsModel.m */,
+				187153E1190D40C50044DDAE /* ISSTSameCitiesModel.h */,
+				187153E2190D40C50044DDAE /* ISSTSameCitiesModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -811,9 +819,6 @@
 			isa = PBXGroup;
 			children = (
 				58653D0C18FB86DF005C6F74 /* ISSTAddressBookDelegate.h */,
-				58653D0D18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.h */,
-				58653D0E18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.m */,
-				58653D0F18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.xib */,
 				58653D1018FB86DF005C6F74 /* ISSTAddressBookDetailViewController.h */,
 				58653D1118FB86DF005C6F74 /* ISSTAddressBookDetailViewController.m */,
 				58653D1218FB86DF005C6F74 /* ISSTAddressBookDetailViewController.xib */,
@@ -867,9 +872,6 @@
 				AE014ADF18EFE0BA0009E008 /* ISSTUserCenterViewController.h */,
 				AE014AE018EFE0BA0009E008 /* ISSTUserCenterViewController.m */,
 				AE014AE118EFE0BA0009E008 /* ISSTUserCenterViewController.xib */,
-				AE0B8C8D18F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.h */,
-				AE0B8C8E18F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.m */,
-				AE0B8C8F18F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.xib */,
 				AE0B8C9218F2ED7E00844F55 /* ISSTUserInfoViewController.h */,
 				AE0B8C9318F2ED7E00844F55 /* ISSTUserInfoViewController.m */,
 				AE0B8C9418F2ED7E00844F55 /* ISSTUserInfoViewController.xib */,
@@ -881,6 +883,9 @@
 		AEE284A918DB2C6000BEF1A9 /* SameCity */ = {
 			isa = PBXGroup;
 			children = (
+				187153EC190D5ED60044DDAE /* CityManagersViewController.h */,
+				187153ED190D5ED60044DDAE /* CityManagersViewController.m */,
+				187153EE190D5ED60044DDAE /* CityManagersViewController.xib */,
 			);
 			path = SameCity;
 			sourceTree = "<group>";
@@ -915,6 +920,8 @@
 				AE0B8C2C18F2BF0A00844F55 /* ISSTActivityParse.m */,
 				AEA238C518F527D00030F196 /* ISSTContactsParse.h */,
 				AEA238C618F527D00030F196 /* ISSTContactsParse.m */,
+				187153E4190D453B0044DDAE /* ISSTSameCitiesParse.h */,
+				187153E5190D453B0044DDAE /* ISSTSameCitiesParse.m */,
 			);
 			name = Parses;
 			sourceTree = "<group>";
@@ -1000,10 +1007,9 @@
 				AE9052AB18EEEE6D0088742D /* ISSTNewsViewController.xib in Resources */,
 				5805042918FD749300F881D9 /* ISSTEmploymentDetailViewController.xib in Resources */,
 				AEE2849D18DB263100BEF1A9 /* searchBarIcon.png in Resources */,
-				AE85F9BD1901635100FCD67D /* ISSTInternshipTableViewCell.xib in Resources */,
+				AE85F9BD1901635100FCD67D /* ISSTCommonCell.xib in Resources */,
 				5805042418FD5D8E00F881D9 /* ISSTRecommendViewController.xib in Resources */,
 				58653D2018FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib in Resources */,
-				AE0B8C8018F2CDDF00844F55 /* ISSTExperienceTableViewCell.xib in Resources */,
 				58653D1A18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.xib in Resources */,
 				AEE2844C18DADAA000BEF1A9 /* InfoPlist.strings in Resources */,
 				AE9E018A18F3F0CB008EAFA1 /* ISSTRestaurantsViewController.xib in Resources */,
@@ -1027,20 +1033,18 @@
 				AE0B8C3618F2C8B300844F55 /* ISSTActivitiesViewController.xib in Resources */,
 				AE0B8C8C18F2D82B00844F55 /* ISSTActivityDetailViewController.xib in Resources */,
 				AE9E018618F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.xib in Resources */,
-				580503F918FD53EC00F881D9 /* ISSTEmploymentTableViewCell.xib in Resources */,
 				AE9E018F18F3F0D4008EAFA1 /* ISSTServiceViewController.xib in Resources */,
 				AE9052BB18EEEE890088742D /* ISSTWikisViewController.xib in Resources */,
 				AE0B8C9118F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.xib in Resources */,
 				58653D1E18FB86DF005C6F74 /* ISSTAddressBookViewController.xib in Resources */,
 				AEE284A018DB263100BEF1A9 /* user.png in Resources */,
-				AE9052A918EEEE6D0088742D /* ISSTNewsTableViewCell.xib in Resources */,
 				581C8D6718F03B050006740B /* ISSTStudyTableViewCell.xib in Resources */,
 				AE85F9CC1902605600FCD67D /* ISSTCLTableViewCell.xib in Resources */,
 				AE85F9BB1901635100FCD67D /* ISSTInternshipDetailViewController.xib in Resources */,
 				AE0B8C7E18F2CDDF00844F55 /* ISSTExperienceDetailViewController.xib in Resources */,
 				AE0B8C9618F2ED7E00844F55 /* ISSTUserInfoViewController.xib in Resources */,
 				AEE2845518DADAA000BEF1A9 /* Main.storyboard in Resources */,
-				5805042218FD5D8E00F881D9 /* ISSTRecommendTableViewCell.xib in Resources */,
+				187153F0190D5ED60044DDAE /* CityManagersViewController.xib in Resources */,
 				AE014AE318EFE0BA0009E008 /* ISSTUserCenterViewController.xib in Resources */,
 				AE9E018818F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.xib in Resources */,
 				AEE2849F18DB263100BEF1A9 /* searchTextBG.png in Resources */,
@@ -1062,18 +1066,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182B520919445AFD006F213C /* ISSTAddressBookViewController.m in Sources */,
+				182B520819445AB9006F213C /* ISSTUserCenterViewController.m in Sources */,
+				182B520719445AAE006F213C /* ISSTRestaurantDetailViewController.m in Sources */,
 				5805041818FD5A8C00F881D9 /* ISSTActivityDetailViewController.m in Sources */,
 				5805041718FD5A4D00F881D9 /* ISSTSidebarSearchViewController.m in Sources */,
 				5805041618FD5A4000F881D9 /* ISSTMenuTableViewCell.m in Sources */,
-				5805041518FD5A2F00F881D9 /* ISSTExperienceTableViewCell.m in Sources */,
 				5805041118FD5A1000F881D9 /* ISSTCampusNewsModel.m in Sources */,
+				187153EF190D5ED60044DDAE /* CityManagersViewController.m in Sources */,
 				5805043218FD7B4C00F881D9 /* ISSTJobsModel.m in Sources */,
 				AE0B8C3518F2C8B300844F55 /* ISSTActivitiesViewController.m in Sources */,
 				AE85F9C3190243D700FCD67D /* ISSTRecommendDetailViewController.m in Sources */,
 				AE9ECAD818E8F70700FEAEF4 /* ISSTMD5.m in Sources */,
 				AE9052B818EEEE890088742D /* ISSTWikisDetailViewController.m in Sources */,
 				AE9B148218EBB04400034F65 /* NetworkReachability.m in Sources */,
-				58653D1D18FB86DF005C6F74 /* ISSTAddressBookViewController.m in Sources */,
 				AE014ADB18EFD4690009E008 /* ISSTRestaurantsMenusModel.m in Sources */,
 				AE04DD4318F82689002A2A64 /* ISSTMajorModel.m in Sources */,
 				AE85F9DA19026C9200FCD67D /* ISSTCommentsMoreViewController.m in Sources */,
@@ -1081,6 +1087,7 @@
 				5805043518FD7B6400F881D9 /* ISSTJobsApi.m in Sources */,
 				AE0B8C8618F2D1F100844F55 /* ISSTActivityTableViewCell.m in Sources */,
 				AE85F9C7190251E200FCD67D /* ISSTCommentsModel.m in Sources */,
+				187153E6190D453B0044DDAE /* ISSTSameCitiesParse.m in Sources */,
 				AEA238C718F527D00030F196 /* ISSTContactsParse.m in Sources */,
 				AEFDC77918E1B76400D7FDAA /* ISSTLifeApi.m in Sources */,
 				AEFDC77318E16A5C00D7FDAA /* ISSTPushedViewController.m in Sources */,
@@ -1109,30 +1116,27 @@
 				AE0B8C2A18F2BAE000844F55 /* ISSTActivityModel.m in Sources */,
 				5805042818FD749300F881D9 /* ISSTEmploymentDetailViewController.m in Sources */,
 				581C8D6818F03B050006740B /* ISSTStudyViewController.m in Sources */,
-				AE9052A818EEEE6D0088742D /* ISSTNewsTableViewCell.m in Sources */,
 				AE9052A618EEEE6D0088742D /* ISSTNewsDetailViewController.m in Sources */,
 				AEA238CA18F52B280030F196 /* ISSTContactModel.m in Sources */,
 				AE04DD4618F82A2C002A2A64 /* AppCache.m in Sources */,
-				AE85F9BC1901635100FCD67D /* ISSTInternshipTableViewCell.m in Sources */,
+				AE85F9BC1901635100FCD67D /* ISSTICommonCell.m in Sources */,
 				580503FA18FD53EC00F881D9 /* ISSTEmploymentViewController.m in Sources */,
 				AEFDC75418DDC5E100D7FDAA /* ISSTSlidebarNavController.m in Sources */,
 				AEFDC75818DDC90800D7FDAA /* ISSTLoginViewController.m in Sources */,
-				580503F818FD53EC00F881D9 /* ISSTEmploymentTableViewCell.m in Sources */,
 				AE85F9D51902646200FCD67D /* ISSTCLMoreTableViewCell.m in Sources */,
 				AEE2845218DADAA000BEF1A9 /* AppDelegate.m in Sources */,
 				AE9ECAF518E978EE00FEAEF4 /* BaseParse.m in Sources */,
 				AE9E018E18F3F0D4008EAFA1 /* ISSTServiceViewController.m in Sources */,
-				AE014AE218EFE0BA0009E008 /* ISSTUserCenterViewController.m in Sources */,
-				AE9E018518F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.m in Sources */,
 				AE9052BA18EEEE890088742D /* ISSTWikisViewController.m in Sources */,
 				581C8D6618F03B050006740B /* ISSTStudyTableViewCell.m in Sources */,
-				5805042118FD5D8E00F881D9 /* ISSTRecommendTableViewCell.m in Sources */,
 				AE85F9CB1902605600FCD67D /* ISSTCLTableViewCell.m in Sources */,
 				5805042318FD5D8E00F881D9 /* ISSTRecommendViewController.m in Sources */,
 				AEFDC76D18E0245D00D7FDAA /* ISSTRootViewController.m in Sources */,
 				AE0B8C3018F2C36000844F55 /* ISSTActivityApi.m in Sources */,
 				AE014AD518EFAA570009E008 /* ISSTRestaurantsModel.m in Sources */,
+				187153E3190D40C50044DDAE /* ISSTSameCitiesModel.m in Sources */,
 				AE9ECAE118E968B200FEAEF4 /* ISSTStudyingModel.m in Sources */,
+				187153E9190D4E140044DDAE /* ISSTSameCitiesApi.m in Sources */,
 				58653D1918FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.m in Sources */,
 				AEE2847918DAE24A00BEF1A9 /* ISSTRevealViewController.m in Sources */,
 				5805043118FD7B4C00F881D9 /* ISSTJobsDetailModel.m in Sources */,
