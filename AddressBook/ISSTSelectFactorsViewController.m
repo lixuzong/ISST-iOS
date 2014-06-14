@@ -7,15 +7,16 @@
 //
 
 #import "ISSTSelectFactorsViewController.h"
+#import "AppCache.h"
 @interface ISSTSelectFactorsViewController ()
-@property(nonatomic,retain)AJComboBox *gender;
-@property(nonatomic,retain)AJComboBox *grade;
-@property(nonatomic,retain)AJComboBox *major;
+@property(nonatomic,retain)AJComboBox *genderBox;
+@property(nonatomic,retain)AJComboBox *classBox;
+@property(nonatomic,retain)AJComboBox *majorBox;
 - (IBAction)backgroundTap:(id)sender;
 @end
 
 @implementation ISSTSelectFactorsViewController
-@synthesize name,gender,grade,major,majorsModelArray,gradeModelArray,classModel,majorModel,gradeArray,majorsArray,genderArray;
+@synthesize name,classBox,genderBox,classNameArray,majorBox,majorNameArray,genderArray,className,majorName,genderName;
 
 @synthesize selectedDelegate;
 
@@ -24,10 +25,6 @@
 @synthesize MAJORID;
 
 int static METHOD;
-
-int static gradeid;
-int static majorid;
-int static genderid;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,54 +40,42 @@ int static genderid;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     GRADEID = GENDERID = MAJORID =-1;
-    gradeArray=[[NSMutableArray alloc]init];
-    for(int i=0;i<[gradeModelArray count];i++)
-    {
-        classModel=[[ISSTClassModel alloc]init];
-        classModel=[gradeModelArray objectAtIndex:i];
-        [gradeArray addObject:classModel.name];
-    }
-    majorsArray=[[NSMutableArray alloc]init];
-    for(int i=0;i<[majorsModelArray count];i++)
-    {
-        majorModel=[[ISSTMajorModel alloc]init];
-        majorModel=[majorsModelArray objectAtIndex:i];
-        [majorsArray addObject:majorModel.name];
-    }
+    classNameArray = [AppCache getClassListsCache];
+    majorNameArray = [AppCache getMajorListsCache];
     genderArray=@[@"男",@"女"];
     
-    gender=[[AJComboBox alloc]initWithFrame:CGRectMake(76 , 146, 224, 21)];
-    grade=[[AJComboBox alloc]initWithFrame:CGRectMake(76, 216, 224, 21)];
-    major=[[AJComboBox alloc]initWithFrame:CGRectMake(110, 291, 190, 21)];
+    genderBox=[[AJComboBox alloc]initWithFrame:CGRectMake(76 , 146, 224, 21)];
+    classBox=[[AJComboBox alloc]initWithFrame:CGRectMake(76, 216, 224, 21)];
+    majorBox=[[AJComboBox alloc]initWithFrame:CGRectMake(110, 291, 190, 21)];
  
-    [gender setLabelText:@"-SELECT-"];
-    [grade setLabelText:@"-SELECT-"];
-    [major setLabelText:@"-SELECT-"];
+    [genderBox setLabelText:@"-SELECT-"];
+    [classBox setLabelText:@"-SELECT-"];
+    [majorBox setLabelText:@"-SELECT-"];
     
-    [gender setDelegate:self];
-    [grade setDelegate:self];
-    [major setDelegate:self];
+    [genderBox setDelegate:self];
+    [classBox setDelegate:self];
+    [majorBox setDelegate:self];
     
-    [gender setTag:1];
-    [grade  setTag:2];
-    [major  setTag:3];
+    [genderBox setTag:1];
+    [classBox  setTag:2];
+    [majorBox  setTag:3];
     
-    [gender setArrayData:genderArray];
-    [grade setArrayData:gradeArray];
-    [major setArrayData:majorsArray];
+    [genderBox setArrayData:genderArray];
+    [classBox setArrayData:classNameArray];
+    [majorBox setArrayData:majorNameArray];
     
-    [self.view addSubview:gender];
-    [self.view addSubview:grade ];
-    [self.view addSubview:major];
+    [self.view addSubview:genderBox];
+    [self.view addSubview:classBox];
+    [self.view addSubview:majorBox];
 
 }
 -(void)viewDidDisappear:(BOOL)animated
 {
         GRADEID=GENDERID=MAJORID=-1;
     name.text=nil;
-    [gender setLabelText:@"-SELECT-"];
-    [grade setLabelText:@"-SELECT-"];
-    [major setLabelText:@"-SELECT-"];
+    [genderBox setLabelText:@"-SELECT-"];
+    [classBox setLabelText:@"-SELECT-"];
+    [majorBox setLabelText:@"-SELECT-"];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -154,22 +139,16 @@ int static genderid;
     
     GENDERID++;
     if(GRADEID>=0)
-        classModel=[gradeModelArray objectAtIndex:GRADEID];
-    else
-        classModel.classId=GRADEID+1;
-    
+        className = [classNameArray objectAtIndex:GRADEID];
     if (MAJORID>=0)
-        majorModel=[majorsModelArray objectAtIndex:MAJORID];
-    else
-        majorModel.majorId=MAJORID+1;
-    
+        majorName = [majorNameArray objectAtIndex:MAJORID];
     [selectedDelegate selectedReloadData];
     name.text=nil;
     GRADEID=GENDERID=MAJORID=-1;
     
-    [gender setLabelText:@"-SELECT-"];
-    [grade setLabelText:@"-SELECT-"];
-    [major setLabelText:@"-SELECT-"];
+    [genderBox setLabelText:@"-SELECT-"];
+    [classBox setLabelText:@"-SELECT-"];
+    [majorBox setLabelText:@"-SELECT-"];
     
     [self.navigationController popViewControllerAnimated:self];
     

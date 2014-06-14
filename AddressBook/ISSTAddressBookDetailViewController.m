@@ -16,8 +16,6 @@
 @implementation ISSTAddressBookDetailViewController
 @synthesize addressBookDetailTableView;
 @synthesize userDetailInfo;
-@synthesize classInfo;
-@synthesize majorInfo;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -133,13 +131,13 @@
                 }
                 case 2:
                 {
-                    cell.contentLabel.text=classInfo.name;
+                    cell.contentLabel.text=userDetailInfo.className;
                     cell.titleLabel.text=@"班级";
                     break;
                 }
                 case 3:
                 {
-                    cell.contentLabel.text=majorInfo.name;
+                    cell.contentLabel.text=userDetailInfo.majorName;
                     cell.titleLabel.text=@"专业方向";
                     break;
                 }
@@ -183,7 +181,7 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    cell.contentLabel.text=[NSString stringWithFormat:@"%d",userDetailInfo.cityId];
+                    cell.contentLabel.text=[NSString stringWithFormat:@"%d",userDetailInfo.cityName];
                     cell.titleLabel.text=@"所在城市";
                     break;
                 }

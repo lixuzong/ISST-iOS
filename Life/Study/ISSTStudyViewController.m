@@ -147,4 +147,13 @@ static NSString *CellTableIdentifier=@"ISSTStudyTableViewCell";
 
 
 
+//#pragma mark Private Methods
+//- (void)pushViewController {
+//    NSString *vcTitle = [self.title stringByAppendingString:@" - Pushed"];
+//    UIViewController *vc = [[ISSTPushedViewController alloc] initWithTitle:vcTitle];
+//    
+//    [self.navigationController pushViewController:vc animated:YES];
+//}
+
+
 @end

@@ -9,17 +9,14 @@
 #import "ISSTPushedViewController.h"
 #import "AJComboBox.h"
 #import "ISSTAddressBookDelegate.h"
-#import "ISSTClassModel.h"
-#import "ISSTMajorModel.h"
 @interface ISSTSelectFactorsViewController : ISSTPushedViewController<UIAlertViewDelegate,AJComboBoxDelegate,ISSTAddressBookDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *name;
-@property(strong,nonatomic)NSMutableArray *gradeModelArray;
-@property(strong,nonatomic)NSMutableArray *majorsModelArray;
-@property(strong,nonatomic)ISSTClassModel* classModel;
-@property(strong,nonatomic)ISSTMajorModel* majorModel;
+@property(strong,nonatomic)NSMutableArray* classNameArray;
+@property(strong,nonatomic)NSMutableArray* majorNameArray;
 @property(strong,nonatomic)NSArray *genderArray;
-@property(strong,nonatomic)NSMutableArray *gradeArray;
-@property(strong,nonatomic)NSMutableArray *majorsArray;
+@property(copy,nonatomic)NSString *className;
+@property(copy,nonatomic)NSString *majorName;
+@property(copy,nonatomic)NSString *genderName;
 @property (nonatomic, assign)id<ISSTAddressBookDelegate> selectedDelegate;
 - (IBAction)submit:(id)sender;
 @property(nonatomic,assign) int  GENDERID;

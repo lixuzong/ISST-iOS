@@ -54,7 +54,7 @@ const static int        MAJORSLISTS         = 4;
 
 }
 
-- (void)requestContactsLists:(int)contactId name:(NSString*)name gender:(int)gender grade:(int)gradeId  classId:(int)classId majorId:(int)majorId cityId:(int)cityId company:(NSString *) company ;
+- (void)requestContactsLists:(int)contactId name:(NSString*)name gender:(int)gender grade:(int)gradeId  classId:(int)classId className:(NSString*)className  majorId:(int)majorId majorName:(NSString *)majorName cityId:(int)cityId cityName:(NSString*)cityName company:(NSString *) company ;
 {
     if (NetworkReachability.isConnectionAvailable)
     {
@@ -68,7 +68,15 @@ const static int        MAJORSLISTS         = 4;
 //            NSString * encodingNameString = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             [info appendFormat:@"%@",[NSString stringWithFormat:@"&name=%@",name]];
         }
-        
+        if (className) {
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&className=%@",className]];
+        }
+        if (majorName) {
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&majorName=%@",className]];
+        }
+        if (cityName) {
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&cityName=%@",className]];
+        }
         if ( company) {
             [info appendFormat:@"%@",[NSString stringWithFormat:@"&company=%@",company]];
         }

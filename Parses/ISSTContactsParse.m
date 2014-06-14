@@ -66,6 +66,9 @@
     user.qq         = [userInfo objectForKey:@"qq"];
     user.position   = [userInfo objectForKey:@"position"];
     user.signature  = [userInfo objectForKey:@"signature"];
+    user.className  = [userInfo objectForKey:@"className"];
+    user.majorName  = [userInfo objectForKey:@"major"];
+    user.cityName   = [userInfo objectForKey:@"cityName"];
     user.gender     = ([[userInfo objectForKey:@"gender"]intValue] == 1)? MALE:FAMALE;//枚举
     NSLog(@"gender=%d",user.gender);
     return user;

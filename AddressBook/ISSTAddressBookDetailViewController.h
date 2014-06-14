@@ -13,6 +13,4 @@
 #import "ISSTAddressBookDetailTableViewCell.h"
 @interface ISSTAddressBookDetailViewController : ISSTPushedViewController<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic,strong)ISSTUserModel *userDetailInfo;
-@property(nonatomic,strong)ISSTClassModel *classInfo;
-@property(nonatomic,strong)ISSTMajorModel *majorInfo;
 @end
