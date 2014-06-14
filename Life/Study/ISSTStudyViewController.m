@@ -27,12 +27,15 @@
 
 @implementation ISSTStudyViewController
 
+
 @synthesize studyModel;
 @synthesize studyApi;
 @synthesize studyArray;
 @synthesize studyArrayTableView;
 @synthesize studyDetailView;
 static NSString *CellTableIdentifier=@"ISSTStudyTableViewCell";
+//页面标记
+static int  loadPage = 0;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -64,7 +67,22 @@ static NSString *CellTableIdentifier=@"ISSTStudyTableViewCell";
     
     
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    [self.studyApi requestStudyingLists:1 andPageSize:20 andKeywords:@"string"];
+    
+    if (_refreshHeaderView == nil ) {
+        Class refreshHeaderViewClazz = NSClassFromString(@"EGORefreshTableHeaderView");
+        _refreshHeaderView = [[refreshHeaderViewClazz alloc]initWithFrame:CGRectMake(0, -tableView.bounds.size.height, tableView.frame.size.width, tableView.bounds.size.height)];
+        
+    }
+    _refreshHeaderView.delegate= self;
+    [tableView addSubview:_refreshHeaderView];
+    
+	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    
+    [self    triggerRefresh];
+
+    
+    
+ //   [self.studyApi requestStudyingLists:1 andPageSize:20 andKeywords:@"string"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -73,7 +91,77 @@ static NSString *CellTableIdentifier=@"ISSTStudyTableViewCell";
     // Dispose of any resources that can be recreated.
 }
 
+-(BOOL)isList
+{
+    return YES;
+}
 
+-(void)triggerRefresh
+{
+    if (_refreshLoading) {
+        return;
+    }
+    
+    CGPoint contentOffset = CGPointMake(0, -55-10-_refreshHeaderView.scrollViewInset.top);
+    studyArrayTableView.contentOffset = contentOffset;
+    NSLog(@"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&=%f",studyArrayTableView.contentOffset.y);
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:studyArrayTableView];
+    //[self requestRefresh];
+    
+    //设置分割线
+    studyArrayTableView.separatorColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1];
+    if([studyArrayTableView respondsToSelector:@selector(separatorInset)])
+    {
+        studyArrayTableView.separatorInset = UIEdgeInsetsZero;
+    }
+    studyArrayTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+}
+
+
+-(void)requestRefresh
+{
+    if (NO)  //self.newsApi.isLoadingData;
+    {
+        
+    }
+    else
+    {
+        _refreshLoading = YES;
+        loadPage =0;
+  [self.studyApi requestStudyingLists:loadPage andPageSize:20 andKeywords:@"string"];
+    }
+    
+    
+}
+
+-(void)requestGetMore
+{
+    if (NO)
+    {
+        
+    }
+    else  if (!_refreshLoading)
+    {
+        ++loadPage;
+        _refreshLoading = YES;
+        NSLog(@"requestGetMore ===================================loadPage=%d  " ,loadPage);
+        [self.studyApi requestStudyingLists:loadPage andPageSize:20 andKeywords:@"string"];
+        [_getMoreCell setInfoText:@"正在加载更多..." forState:MoreCellState_Loading];
+    }
+}
+
+-(BOOL)canGetMoreData
+{
+    return YES;
+}
+
+-(void)dealloc
+{
+    studyArrayTableView.dataSource = nil;
+    studyArrayTableView.delegate = nil;
+    studyArrayTableView = nil;
+}
 
 
 #pragma mark
@@ -85,12 +173,47 @@ static NSString *CellTableIdentifier=@"ISSTStudyTableViewCell";
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return studyArray.count;
+    NSArray *listData = studyArray;
+    int count = [listData count];
+    if (count == 0)
+    {
+        if (_refreshLoading)
+        {
+            
+        }
+        else if (!_refreshLoading)
+        {
+            count ++;
+        }
+    }
+    else if([self canGetMoreData])
+    {
+        count ++;
+    }
+    NSLog(@"===========================================%d",count);
+    return count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    int count = [studyArray count];
+    NSLog(@"================%d",indexPath.row);
+    if (count ==0)
+    {
+        if (!_refreshLoading)
+        {
+            _emptyCell.state = EmptyCellState_Tips;
+            
+        }
+        return _emptyCell;
+    }
+    else if ([self canGetMoreData]&&indexPath.row == [studyArray count])
+    {
+        [_getMoreCell setInfoText:@"查看更多" forState:MoreCellState_Information];
+        return _getMoreCell;
+    }
     
+
     studyModel =[[ISSTCampusNewsModel alloc]init];
     studyModel = [studyArray objectAtIndex:indexPath.row];
     
@@ -107,6 +230,17 @@ static NSString *CellTableIdentifier=@"ISSTStudyTableViewCell";
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell ==_getMoreCell) {
+        [self requestGetMore];
+        return;
+    }
+    else if  (cell == _emptyCell)
+    {
+        [self triggerRefresh];
+        return;
+    }
+    
     self.studyDetailView=[[ISSTStudyDetailViewController alloc]initWithNibName:@"ISSTNewsDetailViewController" bundle:nil];
     self.studyDetailView.navigationItem.title=@"详细信息";
    // ISSTCampusNewsModel *tempstudyModel=[[ISSTCampusNewsModel alloc]init];
@@ -117,24 +251,80 @@ static NSString *CellTableIdentifier=@"ISSTStudyTableViewCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *listDatas = studyArray;
+    int count = [listDatas count];
+    
+    if (count==0)
+    {
+        if (_refreshLoading)
+        {
+        }
+        else if (!_refreshLoading)
+        {
+            int height = tableView.bounds.size.height;
+            height -= tableView.tableHeaderView.bounds.size.height;
+            height -= [self.topLayoutGuide length];
+            return height;
+        }
+    }
+    if ([self canGetMoreData]&&indexPath.row ==[studyArray count]) {
+        return 45;
+    }
+    return 100;
+    
+}
+
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
-    if ([studyArray count]) {
-        studyArray = [[NSMutableArray alloc]init];
+    
+    _refreshHeaderView.lastRefreshDate = [NSDate date];
+    
+    if (loadPage == 0) {
+        studyArray = [[NSMutableArray alloc]initWithArray:backToControllerData];
+        _refreshLoading = NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:studyArrayTableView];
     }
-    studyArray = (NSMutableArray *)backToControllerData;
-    NSLog(@"count =%d ,studyArray = %@",[studyArray count],studyArray);
+    else
+    {
+        _refreshLoading = NO;
+        [studyArray addObjectsFromArray:backToControllerData];
+        [_getMoreCell setInfoText:@"查看更多" forState:MoreCellState_Information];
+    }
+    
     [studyArrayTableView reloadData];
+
+    
+//    if ([studyArray count]) {
+//        studyArray = [[NSMutableArray alloc]init];
+//    }
+//    studyArray = (NSMutableArray *)backToControllerData;
+//    NSLog(@"count =%d ,studyArray = %@",[studyArray count],studyArray);
+//    [studyArrayTableView reloadData];
 }
 
 - (void)requestDataOnFail:(NSString *)error
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//    [alert show];
+//    
+
+    _refreshHeaderView.lastRefreshDate = [NSDate date];
     
+    if (loadPage == 0) {
+        _refreshLoading = NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:studyArrayTableView];
+    }
+    else
+    {
+        [_getMoreCell setInfoText:@"加载更多失败，点击查看更多" forState:MoreCellState_Information];
+    }
     
+    UIAlertView  *alertView = [[UIAlertView alloc]initWithTitle:@"错误" message:@"查看网络连接" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
+    [alertView show];
     
 }
 

@@ -7,16 +7,20 @@
 //
 
 #import "ISSTUserInfoViewController.h"
+#import "AppCache.h"
 @interface ISSTUserInfoViewController ()
+{
+    ISSTUserModel *_userModel;
+}
 @property (weak, nonatomic) IBOutlet UITableView *addressBookDetailTableView;
 
 @end
 
 @implementation ISSTUserInfoViewController
 @synthesize addressBookDetailTableView;
-@synthesize userDetailInfo;
-@synthesize classInfo;
-@synthesize majorInfo;
+
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -30,6 +34,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _userModel =[AppCache getCache];
+    
     
     
 }
@@ -118,13 +124,13 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    cell.contentLabel.text=userDetailInfo.name;
+                    cell.contentLabel.text=_userModel.name;
                     cell.titleLabel.text=@"姓名";
                     break;
                 }
                 case 1:
                 {
-                    if(userDetailInfo.gender==1)
+                    if(_userModel.gender==1)
                         cell.contentLabel.text=@"男";
                     else cell.contentLabel.text=@"女";
                     cell.titleLabel.text=@"性别";
@@ -132,13 +138,13 @@
                 }
                 case 2:
                 {
-                    cell.contentLabel.text=classInfo.name;
+                    cell.contentLabel.text=_userModel.className;
                     cell.titleLabel.text=@"班级";
                     break;
                 }
                 case 3:
                 {
-                    cell.contentLabel.text=majorInfo.name;
+                    cell.contentLabel.text=_userModel.majorName;
                     cell.titleLabel.text=@"专业方向";
                     break;
                 }
@@ -153,19 +159,19 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    cell.contentLabel.text=userDetailInfo.phone;
+                    cell.contentLabel.text=_userModel.phone;
                     cell.titleLabel.text=@"手机";
                     break;
                 }
                 case 1:
                 {
-                    cell.contentLabel.text=userDetailInfo.qq;
+                    cell.contentLabel.text=_userModel.qq;
                     cell.titleLabel.text=@"QQ";
                     break;
                 }
                 case 2:
                 {
-                    cell.contentLabel.text=userDetailInfo.email;
+                    cell.contentLabel.text=_userModel.email;
                     cell.titleLabel.text=@"E-mail";
                     break;
                 }
@@ -182,19 +188,19 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    cell.contentLabel.text=[NSString stringWithFormat:@"%d",userDetailInfo.cityId];
+                    cell.contentLabel.text=[NSString stringWithFormat:@"%d",_userModel.cityId];
                     cell.titleLabel.text=@"所在城市";
                     break;
                 }
                 case 1:
                 {
-                    cell.contentLabel.text=userDetailInfo.company;
+                    cell.contentLabel.text=_userModel.company;
                     cell.titleLabel.text=@"工作单位";
                     break;
                 }
                 case 2:
                 {
-                    cell.contentLabel.text=userDetailInfo.position;
+                    cell.contentLabel.text=_userModel.position;
                     cell.titleLabel.text=@"职位";
                     break;
                 }

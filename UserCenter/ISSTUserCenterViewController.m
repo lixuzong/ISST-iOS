@@ -114,9 +114,12 @@ NSArray *titleForRowArray= nil;
 //go2UserInfoViewController
 - (void)go2UserInfoViewController:(NSIndexPath *)indexPath tableView:(UITableView *)tableView
 {
-    method = CLASSESLISTS;
-    [self.contactsApi requestClassesLists];
-   [tableView deselectRowAtIndexPath:indexPath animated:YES];
+   // method = CLASSESLISTS;
+  //  [self.contactsApi requestClassesLists];
+  // [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    ISSTUserInfoViewController *infoVC = [[ISSTUserInfoViewController alloc] init];
+    [self.navigationController pushViewController:infoVC animated:NO];
+    
 }
 //signOut
 - (void)signOut
@@ -220,53 +223,53 @@ NSArray *titleForRowArray= nil;
     return  5;
 }
 
-- (void)requestDataOnSuccess:(id)backToControllerData
-{
-    switch (method) {
-        case CLASSESLISTS:
-            if ([self.classArray count]) {
-                self.classArray = [[NSMutableArray alloc]init];
-            }
-            self.classArray = (NSMutableArray *)backToControllerData;
-                for(ISSTClassModel *tempModel in self.classArray)
-                {
-                    if(tempModel.classId==self.userModel.classId)
-                    {
-                        self.classModel = [[ISSTClassModel alloc] init];
-                        self.classModel = tempModel;
-                        break;
-                    }
-                }
-            method = MAJORSLISTS;
-            [self.contactsApi requestMajorsLists];
-            break;
-        case MAJORSLISTS:
-            if ([self.majorArray count]) {
-                self.majorArray = [[NSMutableArray alloc]init];
-            }
-            self.majorArray = (NSMutableArray *)backToControllerData;
-                for(ISSTMajorModel *tempModel in self.majorArray)
-                {
-                    if(tempModel.majorId==self.userModel.majorId)
-                    {
-                        self.majorModel = [[ISSTMajorModel alloc] init];
-                        self.majorModel = tempModel;
-                        break;
-                    }
-                }
-            method = CLASSESLISTS;
-            self.userInfoViewController = [[ISSTUserInfoViewController alloc]initWithNibName:@"ISSTUserInfoViewController" bundle:nil];
-            self.userInfoViewController.classInfo = self.classModel;
-            self.userInfoViewController.majorInfo = self.majorModel;
-            self.userInfoViewController.userDetailInfo = self.userModel;
-            self.userInfoViewController.navigationItem.title =@"详细信息";
-            [self.navigationController pushViewController:self.userInfoViewController   animated: NO];
-            break;
-        default:
-            break;
-    }
-}
-
+//- (void)requestDataOnSuccess:(id)backToControllerData
+//{
+//    switch (method) {
+//        case CLASSESLISTS:
+//            if ([self.classArray count]) {
+//                self.classArray = [[NSMutableArray alloc]init];
+//            }
+//            self.classArray = (NSMutableArray *)backToControllerData;
+//                for(ISSTClassModel *tempModel in self.classArray)
+//                {
+//                    if(tempModel.classId==self.userModel.classId)
+//                    {
+//                        self.classModel = [[ISSTClassModel alloc] init];
+//                        self.classModel = tempModel;
+//                        break;
+//                    }
+//                }
+//            method = MAJORSLISTS;
+//            [self.contactsApi requestMajorsLists];
+//            break;
+//        case MAJORSLISTS:
+//            if ([self.majorArray count]) {
+//                self.majorArray = [[NSMutableArray alloc]init];
+//            }
+//            self.majorArray = (NSMutableArray *)backToControllerData;
+//                for(ISSTMajorModel *tempModel in self.majorArray)
+//                {
+//                    if(tempModel.majorId==self.userModel.majorId)
+//                    {
+//                        self.majorModel = [[ISSTMajorModel alloc] init];
+//                        self.majorModel = tempModel;
+//                        break;
+//                    }
+//                }
+//            method = CLASSESLISTS;
+//            self.userInfoViewController = [[ISSTUserInfoViewController alloc]initWithNibName:@"ISSTUserInfoViewController" bundle:nil];
+//            self.userInfoViewController.classInfo = self.classModel;
+//            self.userInfoViewController.majorInfo = self.majorModel;
+//            self.userInfoViewController.userDetailInfo = self.userModel;
+//            self.userInfoViewController.navigationItem.title =@"详细信息";
+//            [self.navigationController pushViewController:self.userInfoViewController   animated: NO];
+//            break;
+//        default:
+//            break;
+//    }
+//}
+//
 
 
 //- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
