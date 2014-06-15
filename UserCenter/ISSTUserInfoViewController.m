@@ -14,6 +14,7 @@
 }
 @property (weak, nonatomic) IBOutlet UITableView *addressBookDetailTableView;
 
+@property (weak, nonatomic) IBOutlet UIButton *changeBtn;
 @end
 
 @implementation ISSTUserInfoViewController
@@ -26,6 +27,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
     }
     return self;
 }
@@ -33,17 +35,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+   _changeBtn.center =CGPointMake(320/2, self.view.frame.size.height-160);
     _userModel =[AppCache getCache];
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 #pragma mark -
 #pragma mark Table View  Delegate Methods
@@ -207,8 +205,6 @@
                 default:
                     break;
             }
-            
-            
         }
             break;
             

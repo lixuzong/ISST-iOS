@@ -8,6 +8,6 @@
 
 #import "ISSTRootViewController.h"
 
-@interface CityManagersViewController : ISSTRootViewController
+@interface CityManagersViewController : ISSTRootViewController<UITableViewDataSource,UITableViewDelegate>
 
 @end

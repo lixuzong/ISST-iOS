@@ -35,27 +35,21 @@
     NSLog(@"count=%d",count);
     for (int i=0; i<count; i++)
     {
-        ISSTUserModel *user=[[ISSTUserModel alloc]init];
-        ISSTSameCitiesModel *citiesModel = [[[ISSTSameCitiesModel alloc]init]autorelease];
+        ISSTUserModel *user=[[ISSTUserModel alloc] init];
+        ISSTSameCitiesModel *citiesModel = [[[ISSTSameCitiesModel alloc]init] autorelease];
         citiesModel.cityId = [[[citiesArray objectAtIndex:i ] objectForKey:@"id"] intValue];
         citiesModel.cityName = [[citiesArray objectAtIndex:i] objectForKey:@"name"];
         citiesModel.userId=[[citiesArray objectAtIndex:i]objectForKey:@"userId"];
         userInfo=[[citiesArray objectAtIndex:i]objectForKey:@"user"];
         user.userId     = [[userInfo objectForKey:@"id"] intValue];
-        user.userName   = [userInfo objectForKey:@"username"];
         user.name       = [userInfo objectForKey:@"name"];
-        user.grade      = [[userInfo objectForKey:@"grade"]intValue];
-        user.classId    = [[userInfo objectForKey:@"classId"]intValue];
-        user.majorId    = [[userInfo objectForKey:@"majorId"]intValue];
-        user.cityId     = [[userInfo objectForKey:@"cityId"]intValue];
-        user.phone      = [userInfo objectForKey:@"phone"];
         user.email      = [userInfo objectForKey:@"email"];
         user.qq         = [userInfo objectForKey:@"qq"];
-        user.position   = [userInfo objectForKey:@"position"];
-        user.signature  = [userInfo objectForKey:@"signature"];
-        user.gender     = ([[userInfo objectForKey:@"gender"]intValue] == 1)? MALE:FAMALE;//枚举
+        user.company   = [userInfo objectForKey:@"company"];
+        user.position  = [userInfo objectForKey:@"position"];
         citiesModel.userModel=user;
         [tmpArray addObject:citiesModel];
+        [user release];
     }
     return tmpArray ;
 }

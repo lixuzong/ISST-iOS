@@ -22,6 +22,7 @@
 #import "ISSTEmploymentViewController.h"
 #import "ISSTInternshipViewController.h"
 #import "ISSTRecommendViewController.h"
+#import "CityManagersViewController.h"
 //#import "ISSTSidebarSearchViewController.h"
 //#import "ISSTSidebarSearchViewControllerDelegate.h"
 
@@ -115,7 +116,7 @@
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTAddressBookViewController alloc] initWithTitle:@"通讯录" withRevealBlock:revealBlock]]
                                  ],
                              @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"城主" withRevealBlock:revealBlock]],
+                                 [[UINavigationController alloc] initWithRootViewController:[[CityManagersViewController alloc] initWithTitle:@"城主" withRevealBlock:revealBlock]],
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"同城活动" withRevealBlock:revealBlock]],
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"同城校友" withRevealBlock:revealBlock]]
                                  ],
