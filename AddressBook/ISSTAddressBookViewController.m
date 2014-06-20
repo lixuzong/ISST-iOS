@@ -125,7 +125,7 @@ int STATUS=0;
     if(addressBookModel.className)
         [tempString appendString:[NSString stringWithFormat:@" 班级：%@",addressBookModel.className]];
     if(addressBookModel.grade)
-        [tempString appendString:[NSString stringWithFormat:@" 年级：%d",addressBookModel.grade]];
+        [tempString appendString:[NSString stringWithFormat:@" 年级：%@",addressBookModel.className]];
     if(addressBookModel.majorName)
         [tempString appendString:[NSString stringWithFormat:@" 专业：%@",addressBookModel.majorName]];
     selectedFactorsLabel.text=tempString;
@@ -318,6 +318,12 @@ int STATUS=0;
     addressBookModel.gender=0;
     addressBookModel.classId=0;
     addressBookModel.majorId=0;
+    addressBookModel.className = nil;
+    addressBookModel.majorName = nil;
+    addressBookModel.cityName = nil;
+    addressBookModel.cityId = 0;
+    addressBookModel.cityName = nil;
+    addressBookModel.cityId = 0;
     [self requestForData];
     [self labelShow];
     [addressBookTableView reloadData];

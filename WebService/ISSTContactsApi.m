@@ -72,10 +72,10 @@ const static int        MAJORSLISTS         = 4;
             [info appendFormat:@"%@",[NSString stringWithFormat:@"&className=%@",className]];
         }
         if (majorName) {
-            [info appendFormat:@"%@",[NSString stringWithFormat:@"&majorName=%@",className]];
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&major=%@",majorName]];
         }
         if (cityName) {
-            [info appendFormat:@"%@",[NSString stringWithFormat:@"&cityName=%@",className]];
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&cityName=%@",cityName]];
         }
         if ( company) {
             [info appendFormat:@"%@",[NSString stringWithFormat:@"&company=%@",company]];
