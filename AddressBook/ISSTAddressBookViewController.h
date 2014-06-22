@@ -16,5 +16,5 @@
 @property(strong,nonatomic)ISSTUserModel *addressBookModel;
 @property(strong,nonatomic)ISSTUserModel *userInfo;
 @property(strong,nonatomic)ISSTContactsApi *addressBookApi;
-
+@property(assign,nonatomic)BOOL sameCitySwitch;
 @end

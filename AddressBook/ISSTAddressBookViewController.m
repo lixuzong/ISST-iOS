@@ -17,8 +17,10 @@
 @property(strong,nonatomic)NSMutableArray *addressBookArray;
 @property(strong,nonatomic)NSDictionary *sortedNamesDictionary;
 
-@property (weak, nonatomic) IBOutlet UITableView *addressBookTableView;
+@property (copy, nonatomic) UITableView *addressBookTableView;
 @property (weak, nonatomic) IBOutlet UILabel *selectedFactorsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *factorTitleLabel;
+@property (weak, nonatomic) IBOutlet UIButton *clearButton;
 
 @property(strong,nonatomic)ISSTSelectFactorsViewController *selectFactorsViewController;
 
@@ -43,7 +45,7 @@
 @synthesize selectedFactorsLabel;
 @synthesize addressBookDetailView;
 @synthesize userInfo;
-
+@synthesize sameCitySwitch;
 static NSString *CellIdentifier=@"ContactCell";
 
 const static int        CONTACTSLISTS       = 1;
@@ -52,6 +54,7 @@ const static int        CLASSESLISTS        = 3;
 const static int        MAJORSLISTS         = 4;
 int method;
 int STATUS=0;
+sameCitySwitch = false;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -63,9 +66,12 @@ int STATUS=0;
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+
     addressBookModel=[[ISSTUserModel alloc]init];
     userInfo=[[ISSTUserModel alloc]init];
     
@@ -73,15 +79,28 @@ int STATUS=0;
     
     method=CONTACTSLISTS;
     
+    addressBookTableView = (UITableView *)([self.view viewWithTag:10]);
+    addressBookTableView.delegate = self;
+    addressBookTableView.dataSource = self;
+  
     self.addressBookApi = [[ISSTContactsApi alloc]init];
     self.addressBookApi.webApiDelegate =self;
     
-    
-    addressBookModel.className=userInfo.className;
+    if(!sameCitySwitch)
+    {
+        addressBookModel.className=userInfo.className;
+    }
+    else
+    {
+        addressBookModel.cityId = userInfo.cityId;
+        addressBookModel.cityName = userInfo.cityName;
+    }
     [self requestForData];
-    [self labelShow];
-    
-    UISearchBar *searchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0, 35, 320, 44)];
+    if (!sameCitySwitch) {
+         [self labelShow];
+    }
+
+   UISearchBar *searchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0, 35, 320, 44)];
     addressBookTableView.tableHeaderView=searchBar;
     searchController=[[UISearchDisplayController alloc]initWithSearchBar:searchBar contentsController:self];
     searchController.delegate=self;
@@ -129,7 +148,6 @@ int STATUS=0;
     if(addressBookModel.majorName)
         [tempString appendString:[NSString stringWithFormat:@" 专业：%@",addressBookModel.majorName]];
     selectedFactorsLabel.text=tempString;
-
     
 }
 -(void)requestForData
@@ -209,92 +227,6 @@ int STATUS=0;
             break;
     }
     
-//    switch (method) {
-//            
-//        case CONTACTSLISTS:
-//            if ([addressBookArray count]) {
-//                addressBookArray = [[NSMutableArray alloc]init];
-//            }
-//            namesArray=[[NSMutableArray alloc]init];
-//            addressBookArray = (NSMutableArray *)backToControllerData;
-//            for(int i=0;i<addressBookArray.count;i++)
-//            {
-//                addressBookModel=[addressBookArray objectAtIndex:i];
-//                [namesArray addObject:addressBookModel.name];
-//            }
-//            NSLog(@"count =%d ,addressBookArray = %@",[addressBookArray count],addressBookArray);
-//         
-//                method=CLASSESLISTS;
-//                [self.addressBookApi requestClassesLists];
-//            break;
-//        case CLASSESLISTS:
-//            if ([selectFactorsViewController.gradeModelArray count]) {
-//                selectFactorsViewController.gradeModelArray = [[NSMutableArray alloc]init];
-//            }
-//            selectFactorsViewController.gradeModelArray = (NSMutableArray *)backToControllerData;
-//            NSLog(@"count =%d ,selectFactors.gradeModelArray = %@",[selectFactorsViewController.gradeModelArray count],selectFactorsViewController.gradeModelArray);
-//            if(STATUS==0)
-//            {
-//                for(int i=0;i<[selectFactorsViewController.gradeModelArray count];i++)
-//                {
-//                    selectFactorsViewController.classModel=[[ISSTClassModel alloc]init];
-//                    selectFactorsViewController.classModel=[selectFactorsViewController.gradeModelArray objectAtIndex:i];
-//                    if(selectFactorsViewController.classModel.classId==userInfo.classId)
-//                    break;
-//                }
-//            }
-//            method=MAJORSLISTS;
-//            [self.addressBookApi requestMajorsLists];
-//            break;
-//        case MAJORSLISTS:
-//            if ([selectFactorsViewController.majorsModelArray count]) {
-//                selectFactorsViewController.majorsModelArray = [[NSMutableArray alloc]init];
-//            }
-//            selectFactorsViewController.majorsModelArray = (NSMutableArray *)backToControllerData;
-//            NSLog(@"count =%d ,selectFactors.majorsModelArray = %@",[selectFactorsViewController.majorsModelArray count],selectFactorsViewController.majorsModelArray);
-//            if(STATUS==0)
-//            {
-//                for(int i=0;i<[selectFactorsViewController.majorsModelArray count];i++)
-//                {
-//                    selectFactorsViewController.majorModel=[[ISSTMajorModel alloc]init];
-//                    selectFactorsViewController.majorModel=[selectFactorsViewController.majorsModelArray objectAtIndex:i];
-//                    if(selectFactorsViewController.majorModel.majorId==userInfo.majorId)
-//                        break;
-//                }
-//                addressBookModel.classId=userInfo.classId;
-//                addressBookModel.majorId=userInfo.majorId;
-//                [self labelShow];
-//                STATUS=1;
-//            }
-//            method=CONTACTSLISTS;
-//            break;
-//        case CONTACTDETAIL:
-//            if(addressBookDetailView.userDetailInfo!=nil)
-//            {
-//                addressBookDetailView.userDetailInfo=[[ISSTUserModel alloc]init];
-//            }
-//            addressBookDetailView.userDetailInfo=(ISSTUserModel *)backToControllerData;
-//            for(int i=0;i<[selectFactorsViewController.gradeModelArray count];i++)
-//            {
-//                addressBookDetailView.classInfo=[[ISSTClassModel alloc]init];
-//                addressBookDetailView.classInfo=[selectFactorsViewController.gradeModelArray objectAtIndex:i];
-//                if(addressBookDetailView.classInfo.classId==addressBookDetailView.userDetailInfo.classId)
-//                    break;
-//            }
-//            for(int i=0;i<[selectFactorsViewController.majorsModelArray count];i++)
-//            {
-//                addressBookDetailView.majorInfo=[[ISSTMajorModel alloc]init];
-//                addressBookDetailView.majorInfo=[selectFactorsViewController.majorsModelArray objectAtIndex:i];
-//                if(addressBookDetailView.majorInfo.majorId==addressBookDetailView.userDetailInfo.majorId)
-//                    break;
-//            }
-//
-//            method=CONTACTSLISTS;
-//            [self.navigationController pushViewController:self.addressBookDetailView animated: NO];
-//            break;
-//        default:
-//            break;
-//    }
      [addressBookTableView reloadData];
 }
 
@@ -302,8 +234,6 @@ int STATUS=0;
 {
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
-    
-    
     
 }
 
@@ -339,6 +269,8 @@ int STATUS=0;
 }
 -(void)selectedReloadData
 {
+    if (sameCitySwitch)
+        addressBookModel.cityId = userInfo.cityId;
     addressBookModel.name=selectFactorsViewController.name.text;
     addressBookModel.gender=selectFactorsViewController.GENDERID;
     addressBookModel.className=selectFactorsViewController.className;

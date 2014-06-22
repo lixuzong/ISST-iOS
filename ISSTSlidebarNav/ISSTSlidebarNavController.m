@@ -23,6 +23,7 @@
 #import "ISSTInternshipViewController.h"
 #import "ISSTRecommendViewController.h"
 #import "CityManagersViewController.h"
+#import "ISSTSameCityAcitvitiesViewController.h"
 //#import "ISSTSidebarSearchViewController.h"
 //#import "ISSTSidebarSearchViewControllerDelegate.h"
 
@@ -97,6 +98,9 @@
                        @"同城",
                        @"个人中心"
                        ];
+    ISSTAddressBookViewController *sameCityAddressBook = [[ISSTAddressBookViewController alloc] initWithTitle:@"同城校友" withRevealBlock:revealBlock];
+    sameCityAddressBook.sameCitySwitch =true;
+
     NSArray *controllers = @[
                              @[
                                  
@@ -117,8 +121,8 @@
                                  ],
                              @[
                                  [[UINavigationController alloc] initWithRootViewController:[[CityManagersViewController alloc] initWithTitle:@"城主" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"同城活动" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTRootViewController alloc] initWithTitle:@"同城校友" withRevealBlock:revealBlock]]
+                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTSameCityAcitvitiesViewController alloc] initWithTitle:@"同城活动" withRevealBlock:revealBlock]],
+                                 [[UINavigationController alloc] initWithRootViewController:sameCityAddressBook]
                                  ],
                              @[
                                  [[UINavigationController alloc] initWithRootViewController:[[ISSTUserCenterViewController alloc] initWithTitle:@"个人中心" withRevealBlock:revealBlock]]

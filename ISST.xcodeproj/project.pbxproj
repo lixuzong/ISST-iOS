@@ -9,11 +9,19 @@
 /* Begin PBXBuildFile section */
 		182B520719445AAE006F213C /* ISSTRestaurantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E017D18F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.m */; };
 		182B520919445AFD006F213C /* ISSTAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58653D1418FB86DF005C6F74 /* ISSTAddressBookViewController.m */; };
-		187153E3190D40C50044DDAE /* ISSTSameCitiesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 187153E2190D40C50044DDAE /* ISSTSameCitiesModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		187153E6190D453B0044DDAE /* ISSTSameCitiesParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 187153E5190D453B0044DDAE /* ISSTSameCitiesParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		187153E9190D4E140044DDAE /* ISSTSameCitiesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 187153E8190D4E140044DDAE /* ISSTSameCitiesApi.m */; };
-		187153EF190D5ED60044DDAE /* CityManagersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 187153ED190D5ED60044DDAE /* CityManagersViewController.m */; };
-		187153F0190D5ED60044DDAE /* CityManagersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 187153EE190D5ED60044DDAE /* CityManagersViewController.xib */; };
+		18B619811955B24A00F4ACC7 /* ISSTActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B6197F1955B24A00F4ACC7 /* ISSTActivityCell.xib */; };
+		18B619821955B24A00F4ACC7 /* ISSTActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B619801955B24A00F4ACC7 /* ISSTActivityCell.m */; };
+		18B6198A1955B8DC00F4ACC7 /* Cities.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B619831955B8DC00F4ACC7 /* Cities.xib */; };
+		18B6198B1955B8DC00F4ACC7 /* CityManagersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B619851955B8DC00F4ACC7 /* CityManagersViewController.m */; };
+		18B6198C1955B8DC00F4ACC7 /* CityManagersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B619861955B8DC00F4ACC7 /* CityManagersViewController.xib */; };
+		18B6198D1955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B619871955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.m */; };
+		18B6198E1955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B619881955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.xib */; };
+		18B619911955B90600F4ACC7 /* ISSTSameCitiesApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B619901955B90600F4ACC7 /* ISSTSameCitiesApi.m */; };
+		18B619941955B91C00F4ACC7 /* ISSTActivityStatusModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B619931955B91C00F4ACC7 /* ISSTActivityStatusModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18B619971955B92A00F4ACC7 /* ISSTSameCitiesModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B619961955B92A00F4ACC7 /* ISSTSameCitiesModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18B6199A1955B94500F4ACC7 /* ISSTSameCitiesParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B619991955B94500F4ACC7 /* ISSTSameCitiesParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18B8047119567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8046F19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m */; };
+		18B8047219567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B8047019567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib */; };
 		334D69DE194BF18B0018C521 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 334D69D0194BF18B0018C521 /* blackArrow.png */; };
 		334D69DF194BF18B0018C521 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334D69D1194BF18B0018C521 /* blackArrow@2x.png */; };
 		334D69E0194BF18B0018C521 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 334D69D2194BF18B0018C521 /* blueArrow.png */; };
@@ -177,15 +185,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		187153E1190D40C50044DDAE /* ISSTSameCitiesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSameCitiesModel.h; sourceTree = "<group>"; };
-		187153E2190D40C50044DDAE /* ISSTSameCitiesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSameCitiesModel.m; sourceTree = "<group>"; };
-		187153E4190D453B0044DDAE /* ISSTSameCitiesParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSameCitiesParse.h; sourceTree = "<group>"; };
-		187153E5190D453B0044DDAE /* ISSTSameCitiesParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSameCitiesParse.m; sourceTree = "<group>"; };
-		187153E7190D4E140044DDAE /* ISSTSameCitiesApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSameCitiesApi.h; sourceTree = "<group>"; };
-		187153E8190D4E140044DDAE /* ISSTSameCitiesApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSameCitiesApi.m; sourceTree = "<group>"; };
-		187153EC190D5ED60044DDAE /* CityManagersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityManagersViewController.h; sourceTree = SOURCE_ROOT; };
-		187153ED190D5ED60044DDAE /* CityManagersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityManagersViewController.m; sourceTree = SOURCE_ROOT; };
-		187153EE190D5ED60044DDAE /* CityManagersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityManagersViewController.xib; sourceTree = SOURCE_ROOT; };
+		18B6197E1955B24A00F4ACC7 /* ISSTActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTActivityCell.h; path = Job/Internship/ISSTActivityCell.h; sourceTree = "<group>"; };
+		18B6197F1955B24A00F4ACC7 /* ISSTActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTActivityCell.xib; path = Job/Internship/ISSTActivityCell.xib; sourceTree = "<group>"; };
+		18B619801955B24A00F4ACC7 /* ISSTActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTActivityCell.m; path = Job/Internship/ISSTActivityCell.m; sourceTree = "<group>"; };
+		18B619831955B8DC00F4ACC7 /* Cities.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Cities.xib; sourceTree = "<group>"; };
+		18B619841955B8DC00F4ACC7 /* CityManagersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CityManagersViewController.h; sourceTree = "<group>"; };
+		18B619851955B8DC00F4ACC7 /* CityManagersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CityManagersViewController.m; sourceTree = "<group>"; };
+		18B619861955B8DC00F4ACC7 /* CityManagersViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CityManagersViewController.xib; sourceTree = "<group>"; };
+		18B619871955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSameCityAcitvitiesViewController.m; sourceTree = "<group>"; };
+		18B619881955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTSameCityAcitvitiesViewController.xib; sourceTree = "<group>"; };
+		18B619891955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSameCityAcitvitiesViewController.h; sourceTree = "<group>"; };
+		18B6198F1955B90600F4ACC7 /* ISSTSameCitiesApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTSameCitiesApi.h; path = WebService/ISSTSameCitiesApi.h; sourceTree = "<group>"; };
+		18B619901955B90600F4ACC7 /* ISSTSameCitiesApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTSameCitiesApi.m; path = WebService/ISSTSameCitiesApi.m; sourceTree = "<group>"; };
+		18B619921955B91C00F4ACC7 /* ISSTActivityStatusModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTActivityStatusModel.h; path = Models/ISSTActivityStatusModel.h; sourceTree = "<group>"; };
+		18B619931955B91C00F4ACC7 /* ISSTActivityStatusModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTActivityStatusModel.m; path = Models/ISSTActivityStatusModel.m; sourceTree = "<group>"; };
+		18B619951955B92A00F4ACC7 /* ISSTSameCitiesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTSameCitiesModel.h; path = Models/ISSTSameCitiesModel.h; sourceTree = "<group>"; };
+		18B619961955B92A00F4ACC7 /* ISSTSameCitiesModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTSameCitiesModel.m; path = Models/ISSTSameCitiesModel.m; sourceTree = "<group>"; };
+		18B619981955B94500F4ACC7 /* ISSTSameCitiesParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTSameCitiesParse.h; path = Parses/ISSTSameCitiesParse.h; sourceTree = "<group>"; };
+		18B619991955B94500F4ACC7 /* ISSTSameCitiesParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTSameCitiesParse.m; path = Parses/ISSTSameCitiesParse.m; sourceTree = "<group>"; };
+		18B8046E19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSameCityActivityDetailViewController.h; sourceTree = "<group>"; };
+		18B8046F19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSameCityActivityDetailViewController.m; sourceTree = "<group>"; };
+		18B8047019567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTSameCityActivityDetailViewController.xib; sourceTree = "<group>"; };
 		334D69D0194BF18B0018C521 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		334D69D1194BF18B0018C521 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
 		334D69D2194BF18B0018C521 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
@@ -468,6 +488,9 @@
 		182B520619441E54006F213C /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				18B6197E1955B24A00F4ACC7 /* ISSTActivityCell.h */,
+				18B619801955B24A00F4ACC7 /* ISSTActivityCell.m */,
+				18B6197F1955B24A00F4ACC7 /* ISSTActivityCell.xib */,
 				58653D0D18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.h */,
 				58653D0E18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.m */,
 				58653D0F18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.xib */,
@@ -844,6 +867,8 @@
 		AEE284A118DB2A4300BEF1A9 /* WebService */ = {
 			isa = PBXGroup;
 			children = (
+				18B6198F1955B90600F4ACC7 /* ISSTSameCitiesApi.h */,
+				18B619901955B90600F4ACC7 /* ISSTSameCitiesApi.m */,
 				5805043318FD7B6400F881D9 /* ISSTJobsApi.h */,
 				5805043418FD7B6400F881D9 /* ISSTJobsApi.m */,
 				AEFDC75A18DECEDD00D7FDAA /* NSString+URLEncoding.h */,
@@ -863,8 +888,6 @@
 				AE0B8C2F18F2C36000844F55 /* ISSTActivityApi.m */,
 				AE9E017418F3BC1F008EAFA1 /* ISSTContactsApi.h */,
 				AE9E017518F3BC1F008EAFA1 /* ISSTContactsApi.m */,
-				187153E7190D4E140044DDAE /* ISSTSameCitiesApi.h */,
-				187153E8190D4E140044DDAE /* ISSTSameCitiesApi.m */,
 			);
 			name = WebService;
 			sourceTree = "<group>";
@@ -886,6 +909,10 @@
 		AEE284A318DB2B8100BEF1A9 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				18B619951955B92A00F4ACC7 /* ISSTSameCitiesModel.h */,
+				18B619961955B92A00F4ACC7 /* ISSTSameCitiesModel.m */,
+				18B619921955B91C00F4ACC7 /* ISSTActivityStatusModel.h */,
+				18B619931955B91C00F4ACC7 /* ISSTActivityStatusModel.m */,
 				5805042D18FD7B4C00F881D9 /* ISSTJobsDetailModel.h */,
 				5805042E18FD7B4C00F881D9 /* ISSTJobsDetailModel.m */,
 				5805042F18FD7B4C00F881D9 /* ISSTJobsModel.h */,
@@ -912,8 +939,6 @@
 				AEA238CC18F530960030F196 /* ISSTClassModel.m */,
 				AE85F9C5190251E200FCD67D /* ISSTCommentsModel.h */,
 				AE85F9C6190251E200FCD67D /* ISSTCommentsModel.m */,
-				187153E1190D40C50044DDAE /* ISSTSameCitiesModel.h */,
-				187153E2190D40C50044DDAE /* ISSTSameCitiesModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -989,9 +1014,16 @@
 		AEE284A918DB2C6000BEF1A9 /* SameCity */ = {
 			isa = PBXGroup;
 			children = (
-				187153EC190D5ED60044DDAE /* CityManagersViewController.h */,
-				187153ED190D5ED60044DDAE /* CityManagersViewController.m */,
-				187153EE190D5ED60044DDAE /* CityManagersViewController.xib */,
+				18B619831955B8DC00F4ACC7 /* Cities.xib */,
+				18B619841955B8DC00F4ACC7 /* CityManagersViewController.h */,
+				18B619851955B8DC00F4ACC7 /* CityManagersViewController.m */,
+				18B619861955B8DC00F4ACC7 /* CityManagersViewController.xib */,
+				18B619891955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.h */,
+				18B619871955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.m */,
+				18B619881955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.xib */,
+				18B8046E19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.h */,
+				18B8046F19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m */,
+				18B8047019567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib */,
 			);
 			path = SameCity;
 			sourceTree = "<group>";
@@ -1010,6 +1042,8 @@
 		AEFDC76018DFFF2700D7FDAA /* Parses */ = {
 			isa = PBXGroup;
 			children = (
+				18B619981955B94500F4ACC7 /* ISSTSameCitiesParse.h */,
+				18B619991955B94500F4ACC7 /* ISSTSameCitiesParse.m */,
 				5805042A18FD7B3300F881D9 /* ISSTJobsParse.h */,
 				5805042B18FD7B3300F881D9 /* ISSTJobsParse.m */,
 				AEFDC77418E16D5C00D7FDAA /* UserLoginParse.h */,
@@ -1026,8 +1060,6 @@
 				AE0B8C2C18F2BF0A00844F55 /* ISSTActivityParse.m */,
 				AEA238C518F527D00030F196 /* ISSTContactsParse.h */,
 				AEA238C618F527D00030F196 /* ISSTContactsParse.m */,
-				187153E4190D453B0044DDAE /* ISSTSameCitiesParse.h */,
-				187153E5190D453B0044DDAE /* ISSTSameCitiesParse.m */,
 			);
 			name = Parses;
 			sourceTree = "<group>";
@@ -1118,6 +1150,7 @@
 				AE85F9BD1901635100FCD67D /* ISSTCommonCell.xib in Resources */,
 				33B9F117194D4FF4004F6546 /* ISSTUserInfoViewController.xib in Resources */,
 				5805042418FD5D8E00F881D9 /* ISSTRecommendViewController.xib in Resources */,
+				18B6198C1955B8DC00F4ACC7 /* CityManagersViewController.xib in Resources */,
 				58653D2018FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib in Resources */,
 				58653D1A18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.xib in Resources */,
 				AEE2844C18DADAA000BEF1A9 /* InfoPlist.strings in Resources */,
@@ -1130,6 +1163,7 @@
 				AEE2849E18DB263100BEF1A9 /* searchBarIcon@2x.png in Resources */,
 				AE0B8C8718F2D1F100844F55 /* ISSTActivityTableViewCell.xib in Resources */,
 				AE85F9C4190243D700FCD67D /* ISSTRecommendDetailViewController.xib in Resources */,
+				18B6198E1955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.xib in Resources */,
 				AE85F9D61902646200FCD67D /* ISSTCLMoreTableViewCell.xib in Resources */,
 				AEFDC75918DDC90800D7FDAA /* ISSTLoginViewController.xib in Resources */,
 				33B9F113194D4FF4004F6546 /* ChangeUserInfoVC.xib in Resources */,
@@ -1143,6 +1177,7 @@
 				334D69DE194BF18B0018C521 /* blackArrow.png in Resources */,
 				58653D1C18FB86DF005C6F74 /* ISSTAddressBookDetailViewController.xib in Resources */,
 				AE0B8C3618F2C8B300844F55 /* ISSTActivitiesViewController.xib in Resources */,
+				18B619811955B24A00F4ACC7 /* ISSTActivityCell.xib in Resources */,
 				AE0B8C8C18F2D82B00844F55 /* ISSTActivityDetailViewController.xib in Resources */,
 				AE9E018618F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.xib in Resources */,
 				334D69E1194BF18B0018C521 /* blueArrow@2x.png in Resources */,
@@ -1158,11 +1193,12 @@
 				334D69E2194BF18B0018C521 /* grayArrow.png in Resources */,
 				334D69DF194BF18B0018C521 /* blackArrow@2x.png in Resources */,
 				334D69E0194BF18B0018C521 /* blueArrow.png in Resources */,
+				18B8047219567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib in Resources */,
 				AE85F9CC1902605600FCD67D /* ISSTCLTableViewCell.xib in Resources */,
 				AE85F9BB1901635100FCD67D /* ISSTInternshipDetailViewController.xib in Resources */,
 				AE0B8C7E18F2CDDF00844F55 /* ISSTExperienceDetailViewController.xib in Resources */,
 				AEE2845518DADAA000BEF1A9 /* Main.storyboard in Resources */,
-				187153F0190D5ED60044DDAE /* CityManagersViewController.xib in Resources */,
+				18B6198A1955B8DC00F4ACC7 /* Cities.xib in Resources */,
 				AE9E018818F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.xib in Resources */,
 				334D69E5194BF18B0018C521 /* whiteArrow@2x.png in Resources */,
 				AEE2849F18DB263100BEF1A9 /* searchTextBG.png in Resources */,
@@ -1192,13 +1228,14 @@
 				5805041618FD5A4000F881D9 /* ISSTMenuTableViewCell.m in Sources */,
 				5805041118FD5A1000F881D9 /* ISSTCampusNewsModel.m in Sources */,
 				334D69E6194BF18B0018C521 /* EGORefreshTableHeaderView.m in Sources */,
-				187153EF190D5ED60044DDAE /* CityManagersViewController.m in Sources */,
 				5805043218FD7B4C00F881D9 /* ISSTJobsModel.m in Sources */,
 				AE0B8C3518F2C8B300844F55 /* ISSTActivitiesViewController.m in Sources */,
+				18B6198D1955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.m in Sources */,
 				AE85F9C3190243D700FCD67D /* ISSTRecommendDetailViewController.m in Sources */,
 				AE9ECAD818E8F70700FEAEF4 /* ISSTMD5.m in Sources */,
 				AE9052B818EEEE890088742D /* ISSTWikisDetailViewController.m in Sources */,
 				AE9B148218EBB04400034F65 /* NetworkReachability.m in Sources */,
+				18B6198B1955B8DC00F4ACC7 /* CityManagersViewController.m in Sources */,
 				AE014ADB18EFD4690009E008 /* ISSTRestaurantsMenusModel.m in Sources */,
 				AE04DD4318F82689002A2A64 /* ISSTMajorModel.m in Sources */,
 				AE85F9DA19026C9200FCD67D /* ISSTCommentsMoreViewController.m in Sources */,
@@ -1206,8 +1243,8 @@
 				5805043518FD7B6400F881D9 /* ISSTJobsApi.m in Sources */,
 				AE0B8C8618F2D1F100844F55 /* ISSTActivityTableViewCell.m in Sources */,
 				AE85F9C7190251E200FCD67D /* ISSTCommentsModel.m in Sources */,
-				187153E6190D453B0044DDAE /* ISSTSameCitiesParse.m in Sources */,
 				AEA238C718F527D00030F196 /* ISSTContactsParse.m in Sources */,
+				18B6199A1955B94500F4ACC7 /* ISSTSameCitiesParse.m in Sources */,
 				33B9F112194D4FF4004F6546 /* ChangeUserInfoVC.m in Sources */,
 				334D69ED194BF76E0018C521 /* RefreshTableEmptyCell.m in Sources */,
 				AEFDC77918E1B76400D7FDAA /* ISSTLifeApi.m in Sources */,
@@ -1246,9 +1283,12 @@
 				580503FA18FD53EC00F881D9 /* ISSTEmploymentViewController.m in Sources */,
 				AEFDC75418DDC5E100D7FDAA /* ISSTSlidebarNavController.m in Sources */,
 				AEFDC75818DDC90800D7FDAA /* ISSTLoginViewController.m in Sources */,
+				18B8047119567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m in Sources */,
 				AE85F9D51902646200FCD67D /* ISSTCLMoreTableViewCell.m in Sources */,
+				18B619911955B90600F4ACC7 /* ISSTSameCitiesApi.m in Sources */,
 				AEE2845218DADAA000BEF1A9 /* AppDelegate.m in Sources */,
 				AE9ECAF518E978EE00FEAEF4 /* BaseParse.m in Sources */,
+				18B619821955B24A00F4ACC7 /* ISSTActivityCell.m in Sources */,
 				AE9E018E18F3F0D4008EAFA1 /* ISSTServiceViewController.m in Sources */,
 				AE9052BA18EEEE890088742D /* ISSTWikisViewController.m in Sources */,
 				581C8D6618F03B050006740B /* ISSTStudyTableViewCell.m in Sources */,
@@ -1258,9 +1298,9 @@
 				AE0B8C3018F2C36000844F55 /* ISSTActivityApi.m in Sources */,
 				33B9F116194D4FF4004F6546 /* ISSTUserInfoViewController.m in Sources */,
 				AE014AD518EFAA570009E008 /* ISSTRestaurantsModel.m in Sources */,
-				187153E3190D40C50044DDAE /* ISSTSameCitiesModel.m in Sources */,
+				18B619941955B91C00F4ACC7 /* ISSTActivityStatusModel.m in Sources */,
+				18B619971955B92A00F4ACC7 /* ISSTSameCitiesModel.m in Sources */,
 				AE9ECAE118E968B200FEAEF4 /* ISSTStudyingModel.m in Sources */,
-				187153E9190D4E140044DDAE /* ISSTSameCitiesApi.m in Sources */,
 				58653D1918FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.m in Sources */,
 				AEE2847918DAE24A00BEF1A9 /* ISSTRevealViewController.m in Sources */,
 				5805043118FD7B4C00F881D9 /* ISSTJobsDetailModel.m in Sources */,

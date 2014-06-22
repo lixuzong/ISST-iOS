@@ -181,7 +181,7 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    cell.contentLabel.text=[NSString stringWithFormat:@"%d",userDetailInfo.cityName];
+                    cell.contentLabel.text=[NSString stringWithFormat:@"%@",userDetailInfo.cityName];
                     cell.titleLabel.text=@"所在城市";
                     break;
                 }

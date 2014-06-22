@@ -17,5 +17,9 @@
 //@property(nonatomic,copy)NSDictionary *userModel;
 @property (nonatomic,strong) ISSTUserModel  *userModel;
 @property (nonatomic,copy) NSString *description;
+@property (nonatomic,copy)NSString *location;
+@property (nonatomic,copy)NSString *startTime;
+@property (nonatomic,copy)NSString *expireTime;
 @property (nonatomic,assign) int            cityId;
+@property (nonatomic,assign)BOOL participated;
 @end

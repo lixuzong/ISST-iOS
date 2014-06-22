@@ -42,7 +42,7 @@
         ISSTActivityModel *activity = [[ISSTActivityModel alloc]init];
         activity.activityId     = [[[activitiesArray objectAtIndex:i ] objectForKey:@"id"] intValue];
         activity.title              = [[activitiesArray objectAtIndex:i] objectForKey:@"title"];
-        activity.description       = [[activitiesArray objectAtIndex:i] objectForKey:@"description"];
+        activity.content       = [[activitiesArray objectAtIndex:i] objectForKey:@"description"];
         activity.picture           = [[activitiesArray objectAtIndex:i]objectForKey:@"picture"];
         activity.content           = [[activitiesArray objectAtIndex:i] objectForKey:@"content"];
         [tmpArray addObject:activity];
@@ -59,7 +59,7 @@
    ISSTActivityModel *activityDetailModel = [[[ISSTActivityModel alloc]init] autorelease];
     activityDetailModel.activityId     = [[detailsInfo objectForKey:@"id"] intValue];
     activityDetailModel.title              = [detailsInfo objectForKey:@"title"];
-    activityDetailModel.description       = [detailsInfo objectForKey:@"description"];
+    activityDetailModel.content       = [detailsInfo objectForKey:@"description"];
     activityDetailModel.picture           = [detailsInfo objectForKey:@"picture"];
     activityDetailModel.content           = [detailsInfo objectForKey:@"content"];
     return activityDetailModel ;

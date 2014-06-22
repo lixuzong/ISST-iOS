@@ -10,7 +10,7 @@
 
 @implementation ISSTActivityModel
 
-@synthesize title,picture,description,content;
+@synthesize cityId,title,picture,activityId,location,startTime,expireTime,updateAt,content,participated,releaseUserModel;
 - (id)init
 {
     if (self= [super init]) {
@@ -25,10 +25,14 @@
    // title=nil;
     [picture release];
    // picture = nil;
-    [description release];
+    [location release];
     //description = nil;
-    [content release];
    // content = nil;
+    [startTime release];
+    [expireTime release];
+    [updateAt release];
+    [content release];
+    [releaseUserModel release];
     [super dealloc];
 }
 
