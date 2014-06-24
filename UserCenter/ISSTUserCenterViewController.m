@@ -40,8 +40,6 @@
 @synthesize classArray;
 @synthesize majorArray;
 
-const static int        CLASSESLISTS        = 3;
-const static int        MAJORSLISTS         = 4;
 int method;
 
 static NSString *CellTableIdentifier=@"ISSTUserCenterViewCell";
@@ -114,11 +112,8 @@ NSArray *titleForRowArray= nil;
 //go2UserInfoViewController
 - (void)go2UserInfoViewController:(NSIndexPath *)indexPath tableView:(UITableView *)tableView
 {
-   // method = CLASSESLISTS;
-  //  [self.contactsApi requestClassesLists];
-  // [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ISSTUserInfoViewController *infoVC = [[ISSTUserInfoViewController alloc] init];
-    [self.navigationController pushViewController:infoVC animated:NO];
+    [self.navigationController pushViewController:infoVC animated:YES];
     
 }
 //signOut
