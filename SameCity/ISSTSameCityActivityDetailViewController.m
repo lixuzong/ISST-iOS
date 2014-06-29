@@ -133,8 +133,10 @@ int method;
 }
 -(void)layoutDetailView
 {
+    if (activityModel.picture != nil&&[activityModel.picture isKindOfClass:[NSString class]] ) {
     NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:activityModel.picture]];
     pictureView.image = [UIImage imageWithData:data];
+    }
     
     title.text = activityModel.title;
     content.text = activityModel.content;
