@@ -8,6 +8,7 @@
 
 #import "ISSTUserInfoViewController.h"
 #import "AppCache.h"
+#import "ISSTChangeUserInfoViewController.h"
 @interface ISSTUserInfoViewController ()
 {
     ISSTUserModel *_userModel;
@@ -15,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *addressBookDetailTableView;
 
 @property (weak, nonatomic) IBOutlet UIButton *changeBtn;
+- (IBAction)changeUserInfoBtnClick:(id)sender;
 @end
 
 @implementation ISSTUserInfoViewController
@@ -27,6 +29,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.navigationItem.title =@"个人信息";
         
     }
     return self;
@@ -35,7 +38,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   _changeBtn.center =CGPointMake(320/2, self.view.frame.size.height-160);
+    addressBookDetailTableView.frame = CGRectMake(0, 0, 320, self.view.bounds.size.height) ;
+   _changeBtn.center = CGPointMake(160, addressBookDetailTableView.bounds.size.height+20);
+
     _userModel =[AppCache getCache];
 }
 
@@ -109,16 +114,16 @@
 }
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+ 
+    
     static NSString *detailInfoTableIdentifier=@"ISSTAddressBookDetailTableViewCell";
-    //  ISSTAddressBookDetailTableViewCell *cell  = (ISSTAddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:detailInfoTableIdentifier];
+    // ISSTAddressBookDetailTableViewCell *cell  = (ISSTAddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:detailInfoTableIdentifier];
     
-    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
+    NSArray *nib = [[NSBundle mainBundle] loadNibNamed:detailInfoTableIdentifier owner:self options:nil];
     ISSTAddressBookDetailTableViewCell *cell  = [nib objectAtIndex:0];
-    
     switch (indexPath.section) {
         case 0:
         {
-            
             switch (indexPath.row) {
                 case 0:
                 {
@@ -163,7 +168,7 @@
                 }
                 case 1:
                 {
-                    cell.contentLabel.text=_userModel.qq;
+                  cell.contentLabel.text=_userModel.qq;
                     cell.titleLabel.text=@"QQ";
                     break;
                 }
@@ -186,7 +191,7 @@
             switch (indexPath.row) {
                 case 0:
                 {
-                    cell.contentLabel.text=[NSString stringWithFormat:@"%d",_userModel.cityId];
+                    cell.contentLabel.text =  _userModel.cityName; //[NSString stringWithFormat:@"%d",_userModel.cityId];
                     cell.titleLabel.text=@"所在城市";
                     break;
                 }
@@ -215,4 +220,8 @@
     
 }
 
+- (IBAction)changeUserInfoBtnClick:(id)sender {
+    ISSTChangeUserInfoViewController *changeuserInfoVC = [[ISSTChangeUserInfoViewController alloc] init];
+    [self.navigationController pushViewController:changeuserInfoVC animated:NO];
+}
 @end

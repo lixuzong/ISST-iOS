@@ -38,6 +38,11 @@
 		334D69F4194BFFE90018C521 /* icon_profile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334D69F1194BFFE90018C521 /* icon_profile@2x.png */; };
 		334D69F5194BFFE90018C521 /* none_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334D69F2194BFFE90018C521 /* none_list@2x.png */; };
 		334D69F6194BFFE90018C521 /* re_load@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334D69F3194BFFE90018C521 /* re_load@2x.png */; };
+		338BB5921959C3BD00449855 /* CheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 338BB5911959C3BD00449855 /* CheckBox.m */; };
+		338BB5991959C45800449855 /* ISSTUserCenterParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 338BB5981959C45800449855 /* ISSTUserCenterParse.m */; };
+		338BB59C1959C4CE00449855 /* ISSTUserCenterApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 338BB59B1959C4CE00449855 /* ISSTUserCenterApi.m */; };
+		338BB5A21959C54000449855 /* ISSTChangeUserInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 338BB59E1959C54000449855 /* ISSTChangeUserInfoViewController.m */; };
+		338BB5A31959C54000449855 /* ISSTChangeUserInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 338BB59F1959C54000449855 /* ISSTChangeUserInfoViewController.xib */; };
 		33B9F112194D4FF4004F6546 /* ChangeUserInfoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B9F10A194D4FF4004F6546 /* ChangeUserInfoVC.m */; };
 		33B9F113194D4FF4004F6546 /* ChangeUserInfoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 33B9F10B194D4FF4004F6546 /* ChangeUserInfoVC.xib */; };
 		33B9F114194D4FF4004F6546 /* ISSTUserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 33B9F10D194D4FF4004F6546 /* ISSTUserCenterViewController.m */; };
@@ -227,6 +232,15 @@
 		334D69F1194BFFE90018C521 /* icon_profile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_profile@2x.png"; sourceTree = "<group>"; };
 		334D69F2194BFFE90018C521 /* none_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "none_list@2x.png"; sourceTree = "<group>"; };
 		334D69F3194BFFE90018C521 /* re_load@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "re_load@2x.png"; sourceTree = "<group>"; };
+		338BB5901959C3BD00449855 /* CheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckBox.h; sourceTree = "<group>"; };
+		338BB5911959C3BD00449855 /* CheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckBox.m; sourceTree = "<group>"; };
+		338BB5971959C45800449855 /* ISSTUserCenterParse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTUserCenterParse.h; path = Parses/ISSTUserCenterParse.h; sourceTree = "<group>"; };
+		338BB5981959C45800449855 /* ISSTUserCenterParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTUserCenterParse.m; path = Parses/ISSTUserCenterParse.m; sourceTree = "<group>"; };
+		338BB59A1959C4CE00449855 /* ISSTUserCenterApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTUserCenterApi.h; path = WebService/ISSTUserCenterApi.h; sourceTree = "<group>"; };
+		338BB59B1959C4CE00449855 /* ISSTUserCenterApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTUserCenterApi.m; path = WebService/ISSTUserCenterApi.m; sourceTree = "<group>"; };
+		338BB59D1959C54000449855 /* ISSTChangeUserInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTChangeUserInfoViewController.h; path = UserCenter/ISSTChangeUserInfoViewController.h; sourceTree = SOURCE_ROOT; };
+		338BB59E1959C54000449855 /* ISSTChangeUserInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTChangeUserInfoViewController.m; path = UserCenter/ISSTChangeUserInfoViewController.m; sourceTree = SOURCE_ROOT; };
+		338BB59F1959C54000449855 /* ISSTChangeUserInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTChangeUserInfoViewController.xib; path = UserCenter/ISSTChangeUserInfoViewController.xib; sourceTree = SOURCE_ROOT; };
 		33B9F109194D4FF4004F6546 /* ChangeUserInfoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChangeUserInfoVC.h; path = UserCenter/ChangeUserInfoVC.h; sourceTree = SOURCE_ROOT; };
 		33B9F10A194D4FF4004F6546 /* ChangeUserInfoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChangeUserInfoVC.m; path = UserCenter/ChangeUserInfoVC.m; sourceTree = SOURCE_ROOT; };
 		33B9F10B194D4FF4004F6546 /* ChangeUserInfoVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChangeUserInfoVC.xib; path = UserCenter/ChangeUserInfoVC.xib; sourceTree = SOURCE_ROOT; };
@@ -531,6 +545,7 @@
 		334D69CD194BF18B0018C521 /* ThirdPartyLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				338BB5931959C3C400449855 /* CheckBox */,
 				334D69CE194BF18B0018C521 /* EGOTableViewPullRefresh */,
 				334D69DB194BF18B0018C521 /* LoadMoreTableFooterView */,
 			);
@@ -577,6 +592,15 @@
 				334D69DD194BF18B0018C521 /* LoadMoreTableFooterView.m */,
 			);
 			path = LoadMoreTableFooterView;
+			sourceTree = "<group>";
+		};
+		338BB5931959C3C400449855 /* CheckBox */ = {
+			isa = PBXGroup;
+			children = (
+				338BB5901959C3BD00449855 /* CheckBox.h */,
+				338BB5911959C3BD00449855 /* CheckBox.m */,
+			);
+			name = CheckBox;
 			sourceTree = "<group>";
 		};
 		580503E518FD03F400F881D9 /* Employment */ = {
@@ -867,6 +891,8 @@
 		AEE284A118DB2A4300BEF1A9 /* WebService */ = {
 			isa = PBXGroup;
 			children = (
+				338BB59A1959C4CE00449855 /* ISSTUserCenterApi.h */,
+				338BB59B1959C4CE00449855 /* ISSTUserCenterApi.m */,
 				18B6198F1955B90600F4ACC7 /* ISSTSameCitiesApi.h */,
 				18B619901955B90600F4ACC7 /* ISSTSameCitiesApi.m */,
 				5805043318FD7B6400F881D9 /* ISSTJobsApi.h */,
@@ -997,6 +1023,9 @@
 		AEE284A818DB2C6000BEF1A9 /* UserCenter */ = {
 			isa = PBXGroup;
 			children = (
+				338BB59D1959C54000449855 /* ISSTChangeUserInfoViewController.h */,
+				338BB59E1959C54000449855 /* ISSTChangeUserInfoViewController.m */,
+				338BB59F1959C54000449855 /* ISSTChangeUserInfoViewController.xib */,
 				33B9F109194D4FF4004F6546 /* ChangeUserInfoVC.h */,
 				33B9F10A194D4FF4004F6546 /* ChangeUserInfoVC.m */,
 				33B9F10B194D4FF4004F6546 /* ChangeUserInfoVC.xib */,
@@ -1042,6 +1071,8 @@
 		AEFDC76018DFFF2700D7FDAA /* Parses */ = {
 			isa = PBXGroup;
 			children = (
+				338BB5971959C45800449855 /* ISSTUserCenterParse.h */,
+				338BB5981959C45800449855 /* ISSTUserCenterParse.m */,
 				18B619981955B94500F4ACC7 /* ISSTSameCitiesParse.h */,
 				18B619991955B94500F4ACC7 /* ISSTSameCitiesParse.m */,
 				5805042A18FD7B3300F881D9 /* ISSTJobsParse.h */,
@@ -1154,6 +1185,7 @@
 				58653D2018FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib in Resources */,
 				58653D1A18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.xib in Resources */,
 				AEE2844C18DADAA000BEF1A9 /* InfoPlist.strings in Resources */,
+				338BB5A31959C54000449855 /* ISSTChangeUserInfoViewController.xib in Resources */,
 				AE9E018A18F3F0CB008EAFA1 /* ISSTRestaurantsViewController.xib in Resources */,
 				AEE2849C18DB263100BEF1A9 /* searchBarBG.png in Resources */,
 				AE9052A718EEEE6D0088742D /* ISSTNewsDetailViewController.xib in Resources */,
@@ -1231,6 +1263,7 @@
 				5805043218FD7B4C00F881D9 /* ISSTJobsModel.m in Sources */,
 				AE0B8C3518F2C8B300844F55 /* ISSTActivitiesViewController.m in Sources */,
 				18B6198D1955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.m in Sources */,
+				338BB59C1959C4CE00449855 /* ISSTUserCenterApi.m in Sources */,
 				AE85F9C3190243D700FCD67D /* ISSTRecommendDetailViewController.m in Sources */,
 				AE9ECAD818E8F70700FEAEF4 /* ISSTMD5.m in Sources */,
 				AE9052B818EEEE890088742D /* ISSTWikisDetailViewController.m in Sources */,
@@ -1243,6 +1276,7 @@
 				5805043518FD7B6400F881D9 /* ISSTJobsApi.m in Sources */,
 				AE0B8C8618F2D1F100844F55 /* ISSTActivityTableViewCell.m in Sources */,
 				AE85F9C7190251E200FCD67D /* ISSTCommentsModel.m in Sources */,
+				338BB5A21959C54000449855 /* ISSTChangeUserInfoViewController.m in Sources */,
 				AEA238C718F527D00030F196 /* ISSTContactsParse.m in Sources */,
 				18B6199A1955B94500F4ACC7 /* ISSTSameCitiesParse.m in Sources */,
 				33B9F112194D4FF4004F6546 /* ChangeUserInfoVC.m in Sources */,
@@ -1266,6 +1300,7 @@
 				AE9ECADB18E90BD800FEAEF4 /* ISSTCampusNewsParse.m in Sources */,
 				AE9B148318EBB04400034F65 /* Reachability.m in Sources */,
 				AE9E018718F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.m in Sources */,
+				338BB5991959C45800449855 /* ISSTUserCenterParse.m in Sources */,
 				581C8D6418F03B050006740B /* ISSTStudyDetailViewController.m in Sources */,
 				AE0B8C7D18F2CDDF00844F55 /* ISSTExperienceDetailViewController.m in Sources */,
 				AE9E017618F3BC1F008EAFA1 /* ISSTContactsApi.m in Sources */,
@@ -1313,6 +1348,7 @@
 				AEE2844E18DADAA000BEF1A9 /* main.m in Sources */,
 				AE9B147418EBA1F300034F65 /* ISSTNewsDetailsModel.m in Sources */,
 				AEFDC75C18DECEDD00D7FDAA /* NSString+URLEncoding.m in Sources */,
+				338BB5921959C3BD00449855 /* CheckBox.m in Sources */,
 				AE9052AA18EEEE6D0088742D /* ISSTNewsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

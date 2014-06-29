@@ -14,6 +14,106 @@
 
 @synthesize  className,majorName,cityName;
 
+-(void)setQq:(NSString *)q
+{
+    [q retain];
+    [qq release];
+    if (q && ![q isMemberOfClass:[NSNull class]])
+    {
+        qq = q;
+    }
+    else
+    {
+        qq = @"";
+    }
+}
+
+-(void)setCityName:(NSString *)c
+{
+    [c retain];
+    [cityName release];
+    if (c &&! [c isMemberOfClass:[NSNull class]] )
+    {
+        cityName = c;
+    }
+    else
+    {
+        cityName = @"";
+    }
+    
+}
+
+-(void)setmajorName:(NSString *)m
+{
+    [m retain];
+    [majorName release];
+    if (m && ![m isMemberOfClass:[NSNull class]])
+    {
+        majorName = m;
+    }
+    else
+    {
+        majorName = @"";
+    }
+}
+
+-(void)setClassName:(NSString *)c
+{
+    [c retain];
+    [className release];
+    if (c && ![c isMemberOfClass:[NSNull class]])
+    {
+        className = c;
+    }
+    else
+    {
+        className = @"";
+    }
+}
+
+-(void)setSignature:(NSString *)s
+{
+    [s retain];
+    [signature release];
+    if (s && ![s isMemberOfClass:[NSNull class]])
+    {
+        signature = s;
+    }
+    else
+    {
+        signature = @"";
+    }
+}
+
+-(void)setCompany:(NSString *)c
+{
+    [c retain];
+    [company release];
+    if (c && ![c isMemberOfClass:[NSNull class]])
+    {
+        company = c;
+    }
+    else
+    {
+        company = @"";
+    }
+}
+
+-(void)setPosition:(NSString *)p
+{
+    [p retain];
+    [position release];
+    if (p && ![p isMemberOfClass:[NSNull class]])
+    {
+        position = p;
+    }
+    else
+    {
+        position = @"";
+    }
+}
+
+
 - (id)init
 {
     self = [super init];
@@ -103,7 +203,7 @@
     [encoder encodeObject:[NSNumber numberWithBool:self.privatePhone] forKey:@"privatePhone"];
     [encoder encodeObject:[NSNumber numberWithBool:self.privatePosition] forKey:@"privatePosition"];
     [encoder encodeObject:[NSNumber numberWithBool:self.privateQQ] forKey:@"privateQQ"];
-   
+    
     [encoder encodeObject:self.cityName forKey:@"cityName"];
     [encoder encodeObject:self.majorName forKey:@"majorName"];
     [encoder encodeObject:self.className forKey:@"className"];

@@ -120,7 +120,7 @@ static int  loadPage = 1;
         NSLog(@"111111111111111111111111111111111111111111111111111111111");
         _refreshLoading = YES;
         loadPage = 1;
-        [self.activityApi requestSameCityActivitiesLists:3 andpage:loadPage andPageSize:20 andKeywords:@"string"];
+        [self.activityApi requestSameCityActivitiesLists:userInfo.cityId andpage:loadPage andPageSize:20 andKeywords:@"string"];
     }
     
   
@@ -137,7 +137,7 @@ static int  loadPage = 1;
         ++loadPage;
         _refreshLoading = YES;
         NSLog(@"requestGetMore ===================================loadPage=%d  " ,loadPage);
-        [self.activityApi requestSameCityActivitiesLists:3 andpage:loadPage andPageSize:20 andKeywords:@"string"];
+        [self.activityApi requestSameCityActivitiesLists:userInfo.cityId andpage:loadPage andPageSize:20 andKeywords:@"string"];
 
         [_getMoreCell setInfoText:@"正在加载更多..." forState:MoreCellState_Loading];
     }
