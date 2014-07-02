@@ -13,11 +13,24 @@
 #import "ISSTUserCenterApi.h"
 #import "AJComboBox.h"
 #import "CheckBox.h"
+#import "ISSTSameCitiesModel.h"
+#import "ISSTSameCitiesApi.h"
+typedef NS_ENUM(NSInteger, RequestType)
+{
+    SaveType,
+    CityListType
+};
+
 
 @interface ISSTChangeUserInfoViewController ()<UIScrollViewDelegate,UITextFieldDelegate,ISSTWebApiDelegate,AJComboBoxDelegate>
 {
     NSMutableDictionary *_listData;
+    NSMutableArray    *_cityListsArray;
+    ISSTUserModel *_userModel ;
+    
     ISSTUserCenterApi *_userCenterApi;
+    ISSTSameCitiesApi *_sameCitiesApi;
+    RequestType   requestType;
     
     UIScrollView    *_scrollView;
     
@@ -32,7 +45,7 @@
     
     //城市选择
     AJComboBox      *_citySelectBox;
-  //  CheckBox        *_privatePhoneBox;
+
     
     
     
@@ -58,6 +71,9 @@
         // Custom initialization
         _userCenterApi = [[ISSTUserCenterApi alloc] init];
         _userCenterApi.webApiDelegate = self;
+        _sameCitiesApi  = [[ISSTSameCitiesApi alloc] init];
+        _sameCitiesApi.webApiDelegate = self;
+        _cityListsArray = [[NSMutableArray alloc] initWithCapacity:6];
     }
     return self;
 }
@@ -69,6 +85,23 @@
     [_listData setValue:_positionTextField.text forKey:@"position"];
     [_listData setValue:_emailTextField.text forKey:@"email"];
     [_listData setValue:_qqTextField.text forKey:@"qq"];
+  
+    
+    
+//    ISSTSameCitiesModel *kModel = [[ISSTSameCitiesModel alloc] init];
+//    kModel = [_cityListsArray objectAtIndex:_citySelectBox.selectedIndex ];
+//    if (_citySelectBox.selectedIndex==0&&![kModel.cityName  isEqualToString:_userModel.cityName]) {
+//        //NSLog(@"12333");
+//    }
+//    
+//    
+//  else  if ([_userModel.cityName isEqualToString:@""]||![kModel.cityName  isEqualToString:_userModel.cityName]) {
+//        [_listData setValue:kModel.cityName forKey:@"cityName"];
+//        [_listData setValue:[NSNumber numberWithInt:  kModel.cityId]  forKey:@"cityId"];
+//    }
+//
+//    
+    
     [_listData setValue:_phoneTextField.text forKey:@"phone"];
      [_listData setValue:_companyTextField.text forKey:@"company"];
     [_listData setValue:[NSNumber numberWithBool:_privateCompanyBox.isHook] forKey:@"privateCompany"];
@@ -81,7 +114,7 @@
     }
     else
         NSLog(@"not hook");
-    
+    requestType = SaveType;
     [_userCenterApi requestChangeUserInfo:_listData];
 }
 
@@ -89,6 +122,15 @@
 -(void)viewWillAppear:(BOOL)animated
 {
  [self initialUIData];
+    
+    
+}
+
+-(void)requestCityList
+{
+    requestType = CityListType;
+    [_sameCitiesApi requestSameCitiesLists:0 andPageSize:20];
+    
 }
 
 
@@ -225,7 +267,7 @@
     _phoneTextField.delegate = self;
     [_scrollView addSubview:_phoneTextField];
     _privatePhoneBox  = [[CheckBox alloc]initWithFrame:CGRectMake(260, height+10, 20, 18)];
-    _privatePhoneBox.isHook = YES;
+    _privatePhoneBox.isHook = NO;
     [_scrollView addSubview:_privatePhoneBox];
     UILabel   *rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(280, height+8, 35, 20)];
     rightLabel.text = @"公开";
@@ -288,12 +330,14 @@
     [_scrollView addSubview:label];
     _citySelectBox = [[AJComboBox alloc]initWithFrame:CGRectMake(70, height+5, 190, 30)];
     _citySelectBox.delegate = self;
-    //_citySelectBox.labelText = @"杭州";
-    _citySelectBox.arrayData = [NSArray arrayWithObjects:@"北京",@"上海",@"杭州",@"宁波",@"广州",@"深圳",@"其他",nil];
+    _citySelectBox.labelText = [_listData objectForKey:@"cityName"];
+
+
     _citySelectBox.dropDownHeight = 180;
     [_scrollView addSubview:_citySelectBox];
     _privateCityBox = [[CheckBox alloc] initWithFrame:CGRectMake(260, height+10, 20, 18)];
     _privateCityBox.isHook = YES;
+    _privateCityBox.userInteractionEnabled = NO;
     [_scrollView addSubview:_privateCityBox];
     rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(280, height+8, 35, 20)];
     rightLabel.text = @"公开";
@@ -394,6 +438,8 @@
 {
     [super viewDidLoad];
     [self initialUserModel];
+    [self requestCityList];
+    
     [self initialUI];
    
     // Do any additional setup after loading the view from its nib.
@@ -401,26 +447,26 @@
 
 -(void)initialUserModel
 {
-    ISSTUserModel *userModel = [AppCache getCache];
-    if (userModel) {
+    _userModel = [AppCache getCache];
+    if (_userModel) {
         _listData = [[NSMutableDictionary alloc] init];
-        [_listData setValue:userModel.name forKey:@"name"];
-        [_listData setValue:[NSString stringWithFormat:@"%d",userModel.gender]  forKey:@"gender"];
+        [_listData setValue:_userModel.name forKey:@"name"];
+        [_listData setValue:[NSString stringWithFormat:@"%d",_userModel.gender]  forKey:@"gender"];
        // [_listData setValue:userModel.cityName forKey:@"cityName"];
-        [_listData setValue:userModel.className forKey:@"className"];
-        [_listData setValue:userModel.email forKey:@"email"];
-        [_listData setValue:userModel.majorName forKey:@"majorName"];
-        [_listData setValue:userModel.phone forKey:@"phone"];
-        [_listData setValue:userModel.company forKey:@"company"];
-        [_listData setValue:userModel.position forKey:@"position"];
-        [_listData setValue:userModel.signature forKey:@"signature"];
-        [_listData setValue:userModel.qq forKey:@"qq"];
-        [_listData setValue:[NSString stringWithFormat:@"%d",userModel.cityId ]  forKey:@"cityId"];
-        [_listData setValue:userModel.cityName forKey:@"cityName"];
-        [_listData setValue:[NSNumber numberWithBool:userModel.privateQQ]  forKey:@"privateQQ"];
-        [_listData setValue:[NSNumber numberWithBool:userModel.privatePhone] forKey:@"privatePhone"];
-        [_listData setValue:[NSNumber numberWithBool:userModel.privatePosition] forKey:@"privatePosition"];
-        [_listData setValue:[NSNumber numberWithBool:userModel.privateCompany] forKey:@"privateCompany"];
+        [_listData setValue:_userModel.className forKey:@"className"];
+        [_listData setValue:_userModel.email forKey:@"email"];
+        [_listData setValue:_userModel.majorName forKey:@"majorName"];
+        [_listData setValue:_userModel.phone forKey:@"phone"];
+        [_listData setValue:_userModel.company forKey:@"company"];
+        [_listData setValue:_userModel.position forKey:@"position"];
+        [_listData setValue:_userModel.signature forKey:@"signature"];
+        [_listData setValue:_userModel.qq forKey:@"qq"];
+        [_listData setValue:[NSNumber numberWithInt:_userModel.cityId ]  forKey:@"cityId"];
+        [_listData setValue:_userModel.cityName forKey:@"cityName"];
+        [_listData setValue:[NSNumber numberWithBool:_userModel.privateQQ]  forKey:@"privateQQ"];
+        [_listData setValue:[NSNumber numberWithBool:_userModel.privatePhone] forKey:@"privatePhone"];
+        [_listData setValue:[NSNumber numberWithBool:_userModel.privatePosition] forKey:@"privatePosition"];
+        [_listData setValue:[NSNumber numberWithBool:_userModel.privateCompany] forKey:@"privateCompany"];
     }
     
 }
@@ -575,9 +621,50 @@
 #pragma mark - ISSTWebApiDelegate
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
+    
+    if (requestType == CityListType)
+    {
+        _cityListsArray =backToControllerData;
+        
+        NSMutableArray *kArray = [[NSMutableArray alloc]initWithCapacity:7];
+        [_cityListsArray enumerateObjectsUsingBlock:^(ISSTSameCitiesModel *obj, NSUInteger idx, BOOL *stop) {
+            [kArray insertObject:obj.cityName atIndex:idx];
+        }];
+        
+        
+        
+        _citySelectBox.arrayData =kArray; //[NSArray arrayWithObjects:@"北京",@"上海",@"杭州",@"宁波",@"广州",@"深圳",@"其他",nil];
+    }
+    else
+    {
     NSLog(@"%@",backToControllerData);
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"更新成功" message:backToControllerData delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
     [alert show];
+   // ISSTUserModel *_userModel = [AppCache getCache];
+    if (_userModel) {
+        _userModel.name = [_listData valueForKey:@"name"];
+        _userModel.gender = [[_listData valueForKey:@"gender"] intValue];
+        _userModel.className = [_listData valueForKey:@"className"];
+        _userModel.email = [_listData valueForKey:@"email"];
+        _userModel.majorName = [_listData valueForKey:@"majorName"];
+        _userModel.phone = [_listData valueForKey:@"phone"];
+        _userModel.company = [_listData valueForKey:@"company"];
+        _userModel.signature = [_listData valueForKey:@"signature"];
+        //_userModel.qq = [_listData valueForKey:@"qq"];
+        _userModel.qq    = _qqTextField.text;
+        _userModel.privateCompany = [[_listData valueForKey:@"privateCompany"] boolValue];
+        _userModel.cityName = [_listData valueForKey:@"cityName"];
+       // _userModel.cityName = _citySelectBo;
+        _userModel.cityId = [[_listData valueForKey:@"cityId"] intValue];
+        _userModel.privateQQ = [[_listData valueForKey:@"privateQQ"] boolValue];
+        _userModel.privatePhone = [[_listData valueForKey:@"privatePhone"] boolValue];
+        _userModel.privatePosition = [[_listData valueForKey:@"privatePosition"] boolValue];
+        
+    }
+   BOOL isSuccess =   [AppCache saveCache:_userModel];
+    
+        NSLog(@"%d",isSuccess);
+    }
 }
 
 - (void)requestDataOnFail:(NSString *)error
@@ -591,7 +678,15 @@
 #pragma mark - AJComboxBox
 -(void)didChangeComboBoxValue:(AJComboBox *)comboBox selectedIndex:(NSInteger)selectedIndex
 {
-    [_listData setValue:[NSString stringWithFormat:@"%d",selectedIndex] forKey:@"cityId"];
+    ISSTSameCitiesModel *kModel = [[ISSTSameCitiesModel alloc] init];
+    kModel = [_cityListsArray objectAtIndex:selectedIndex ];
+
+    [_listData setValue:[NSNumber numberWithInt:selectedIndex+1] forKey:@"cityId"];
+    [_listData setValue:kModel.cityName forKey:@"cityName"];
+    
 }
+
+
+
 
 @end

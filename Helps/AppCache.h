@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface AppCache : NSObject
-+ (void)saveCache:(id)model;
++ (BOOL)saveCache:(id)model;
 + ( id)getCache;
 
 +(BOOL)saveClassListsCache:(NSArray *)array;

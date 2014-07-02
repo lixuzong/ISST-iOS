@@ -24,4 +24,12 @@ ISSTWebApiDelegate,NSURLConnectionDataDelegate>
  *****/
 - (void)requestChangeUserInfo:(NSMutableDictionary*)dict;
 
+/*****
+ 2014.07.02
+ 创建： zhao
+ 获取任务列表
+ 参数：page ：pageSize
+ *****/
+- (void)requestTasksLists:(int)page pageSize:(int)pageSize keywords:(NSString*) keywords;
+
 @end

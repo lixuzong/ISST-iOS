@@ -25,13 +25,14 @@
     NSString *cachesDirectory = [paths objectAtIndex:0];
     return cachesDirectory;
 }
-+ (void)saveCache:(id)model
++ (BOOL)saveCache:(id)model
 {
 
     NSString *archivePath = [[AppCache cacheDictionary] stringByAppendingPathComponent:@"UserModel.archive"];
    // NSArray *tmpArray = [NSArray arrayWithObject:@"archive"];
     BOOL saveed =
      [NSKeyedArchiver archiveRootObject:model toFile:archivePath];
+    return saveed;
 }
 
 

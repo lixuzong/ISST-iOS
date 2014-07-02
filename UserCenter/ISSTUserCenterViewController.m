@@ -11,7 +11,7 @@
 #import "ISSTUserInfoViewController.h"
 #import "ISSTUserCenterUserInfoTableViewCell.h"
 #import "ISSTContactsAPi.h"
-
+#import "ISSTTasksViewController.h"
 
 #import "AppCache.h"
 #import "ISSTUserModel.h"
@@ -159,6 +159,11 @@ NSArray *titleForRowArray= nil;
     {
        [self signOut];
     }
+    if (indexPath.row == 0 &&indexPath.section == 2) {
+        ISSTTasksViewController *controller = [[ISSTTasksViewController alloc] init];
+        [self.navigationController pushViewController:controller  animated:YES];
+    }
+    
 }
 
 /*- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section

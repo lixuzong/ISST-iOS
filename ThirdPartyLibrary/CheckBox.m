@@ -38,6 +38,13 @@
     
 }
 
+-(BOOL)isHook
+{
+    return isHook;
+    
+}
+
+
 - (void)didSelectOrDeselect
 {
     if (isHook == YES)
@@ -48,7 +55,7 @@
     else
     {
         isHook = YES;
-        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"duihao@2x.png"]];
+        self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"fs_main_login_selected@2x.png"]];
     }
 }
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event

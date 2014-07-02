@@ -193,7 +193,7 @@
     [encoder encodeObject:[NSNumber numberWithInt:self.cityId] forKey:@"cityId"];
     [encoder encodeObject:self.phone forKey:@"phone"];
     [encoder encodeObject:self.email forKey:@"email"];
-    [encoder encodeObject:self.qq forKey:@"qq"];
+    [encoder encodeObject:qq forKey:@"qq"];
     [encoder encodeObject:self.signature forKey:@"signature"];
     [encoder encodeObject:self.position forKey:@"position"];
     [encoder encodeObject:self.company forKey:@"company"];
@@ -202,9 +202,9 @@
     [encoder encodeObject:[NSNumber numberWithBool:self.privateEmail] forKey:@"privateEmail"];
     [encoder encodeObject:[NSNumber numberWithBool:self.privatePhone] forKey:@"privatePhone"];
     [encoder encodeObject:[NSNumber numberWithBool:self.privatePosition] forKey:@"privatePosition"];
-    [encoder encodeObject:[NSNumber numberWithBool:self.privateQQ] forKey:@"privateQQ"];
+    [encoder encodeObject:[NSNumber numberWithBool:privateQQ] forKey:@"privateQQ"];
     
-    [encoder encodeObject:self.cityName forKey:@"cityName"];
+    [encoder encodeObject:cityName forKey:@"cityName"];
     [encoder encodeObject:self.majorName forKey:@"majorName"];
     [encoder encodeObject:self.className forKey:@"className"];
     

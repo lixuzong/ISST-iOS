@@ -38,10 +38,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    addressBookDetailTableView.frame = CGRectMake(0, 0, 320, self.view.bounds.size.height) ;
-   _changeBtn.center = CGPointMake(160, addressBookDetailTableView.bounds.size.height+20);
+   
+    addressBookDetailTableView.frame = CGRectMake(0, 0, 320, self.view.bounds.size.height-40) ;
+    _changeBtn.center = CGPointMake(160, addressBookDetailTableView.bounds.size.height+20);
 
-    _userModel =[AppCache getCache];
+   
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+      _userModel =[AppCache getCache];
+    [addressBookDetailTableView reloadData];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+
+   
 }
 
 - (void)didReceiveMemoryWarning

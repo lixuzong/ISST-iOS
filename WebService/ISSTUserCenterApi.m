@@ -7,7 +7,8 @@
 //
 typedef NS_ENUM(NSInteger, MethodType)
 {
-    ChangeUserInfo= 1
+    ChangeUserInfo= 1,
+    TasksList= 2
 };
 
 #import "ISSTUserModel.h"
@@ -16,13 +17,28 @@ typedef NS_ENUM(NSInteger, MethodType)
 #import "LoginErrors.h"
 #import "NetworkReachability.h"
 #import "ISSTUserCenterParse.h"
+#import "ISSTTasksParse.h"
 
 @implementation ISSTUserCenterApi
 @synthesize webApiDelegate;
 @synthesize datas;
 @synthesize methodId;
 
-
+- (void)requestTasksLists:(int)page pageSize:(int)pageSize keywords:(NSString*) keywords
+{
+    if (NetworkReachability.isConnectionAvailable)
+    {
+        methodId  = TasksList;
+        datas = [[NSMutableData alloc]init];
+                 NSString *subUrlString = [NSString stringWithFormat:@"api/user?page=%d&pageSize=%d",page,pageSize];
+            [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:nil MD5Dictionary:nil];
+        
+    }
+    else
+    {
+        [self handleConnectionUnAvailable];
+    }
+}
 
 - (void)requestChangeUserInfo:(NSMutableDictionary*)dict
 {
@@ -66,14 +82,14 @@ typedef NS_ENUM(NSInteger, MethodType)
                             {
                                 [info appendString:[NSString stringWithFormat:@"company=%@&",obj]];
                             }
-                            else if ([key isEqualToString:@"cityId"]&&  userModel.cityId != [obj intValue]  )
-                            {
-                                [info appendString:[NSString stringWithFormat:@"cityId=%@&",obj]];
-                            }
-                            else if ([key isEqualToString:@"cityName"] && ! [userModel.cityName isEqualToString:obj])
-                            {
-                                [info appendString:[NSString stringWithFormat:@"cityName=%@&",obj]];
-                            }
+//                            else if ([key isEqualToString:@"cityId"]&&  userModel.cityId != [obj intValue]  )
+//                            {
+//                                [info appendString:[NSString stringWithFormat:@"cityId=%@&",obj]];
+//                            }
+//                            else if ([key isEqualToString:@"cityName"] && ! [userModel.cityName isEqualToString:obj])
+//                            {
+//                                [info appendString:[NSString stringWithFormat:@"cityName=%@&",obj]];
+//                            }
 
                         }
                   //  }
@@ -94,6 +110,11 @@ typedef NS_ENUM(NSInteger, MethodType)
                         {
                             [info appendString:[NSString stringWithFormat:@"privatePosition=%d&",[obj boolValue]?1:0]];
                         }
+                        else if ([key isEqualToString:@"cityId"]&&  userModel.cityId != [obj intValue]  )
+                        {
+                            [info appendString:[NSString stringWithFormat:@"cityId=%@&",obj]];
+                        }
+
 
                     }
                 }
@@ -155,13 +176,14 @@ typedef NS_ENUM(NSInteger, MethodType)
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     ISSTUserCenterParse *userCenterParse=[[ISSTUserCenterParse alloc]init];
-    NSDictionary *dics   = [userCenterParse infoSerialization:datas];
+    ISSTTasksParse *tasksParse = [[ISSTTasksParse alloc] init];
+    NSDictionary *dics;
     
     id message;
     
     switch (methodId) {
         case ChangeUserInfo:
-            
+            dics   = [userCenterParse infoSerialization:datas];
             if (dics&&[dics count]>0)
             {
                 int status =[userCenterParse getStatus];
@@ -197,6 +219,29 @@ typedef NS_ENUM(NSInteger, MethodType)
                 [self handleConnectionUnAvailable];
             }
             break;
+            case TasksList:
+            dics = [tasksParse infoSerialization:datas];
+            NSLog(@"%@",dics);
+            if (dics&&[dics count]>0) {
+                int status = [tasksParse getStatus];
+                if (0 == status) {
+                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
+                        [self.webApiDelegate requestDataOnSuccess:[tasksParse taskListsParse]];
+                    }
+                }
+                else
+                {
+                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail::)]) {
+                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
+                    }
+                }
+            }
+            else//可能服务器宕掉
+            {
+                [self handleConnectionUnAvailable];
+            }
+            break;
+        
     
     }
 }

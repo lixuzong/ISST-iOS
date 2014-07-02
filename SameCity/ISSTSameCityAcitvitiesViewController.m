@@ -145,7 +145,7 @@ static int  loadPage = 1;
 
 -(BOOL)canGetMoreData
 {
-    return YES;
+    return NO;
 }
 
 
