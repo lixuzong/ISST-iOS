@@ -8,7 +8,9 @@
 typedef NS_ENUM(NSInteger, MethodType)
 {
     ChangeUserInfo= 1,
-    TasksList= 2
+    TasksList= 2,
+    Survey= 3,
+    Experience= 4
 };
 
 #import "ISSTUserModel.h"
@@ -24,14 +26,70 @@ typedef NS_ENUM(NSInteger, MethodType)
 @synthesize datas;
 @synthesize methodId;
 
+-(void)requestSurveyLists
+{
+//    if (NetworkReachability.isConnectionAvailable)
+//    {
+//        methodId  = Survey;
+//        if (NetworkReachability.isConnectionAvailable)
+//        {
+////            datas = [[NSMutableData alloc]init];
+////            NSMutableString *info = [[NSMutableString alloc]initWithString:[NSString stringWithFormat:@"page＝",contactId,gender,gradeId,classId,majorId,cityId]];
+////            //        if (contactId>=0) {
+////            //            [info appendFormat:@"%@",[NSString stringWithFormat:@"id=%d",contactId]];
+////            //        }
+////            if (name) {
+////                //            NSString * encodingNameString = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+////                [info appendFormat:@"%@",[NSString stringWithFormat:@"&name=%@",name]];
+////            }
+////            if (className) {
+////                [info appendFormat:@"%@",[NSString stringWithFormat:@"&className=%@",className]];
+////            }
+////            if (majorName) {
+////                [info appendFormat:@"%@",[NSString stringWithFormat:@"&major=%@",majorName]];
+////            }
+////            //        if (cityName) {
+////            //            [info appendFormat:@"%@",[NSString stringWithFormat:@"&cityName=%@",cityName]];
+////            //        }
+////            if ( company) {
+////                [info appendFormat:@"%@",[NSString stringWithFormat:@"&company=%@",company]];
+////            }
+////            NSString *subUrlString = [NSString stringWithFormat:@"api/alumni?%@",info];
+////            NSLog(@"subUrlString=%@",subUrlString);
+//            
+//    }
+//    else
+//    {
+//        [self handleConnectionUnAvailable];
+//    }
+}
+
+- (void)requestExperienceLists:(int)page pageSize:(int)pageSize keywords:(NSString*) keywords
+{
+    if (NetworkReachability.isConnectionAvailable)
+    {
+        methodId  = Experience;
+        datas = [[NSMutableData alloc]init];
+        NSString *subUrlString = [NSString stringWithFormat:@"api/users/archives/experience"];
+        NSMutableString *info = [[NSMutableString alloc]initWithString:[NSString stringWithFormat:@"page＝%d&pageSize=%d",page,pageSize]];
+        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+        
+    }
+    else
+    {
+        [self handleConnectionUnAvailable];
+    }
+}
+
 - (void)requestTasksLists:(int)page pageSize:(int)pageSize keywords:(NSString*) keywords
 {
     if (NetworkReachability.isConnectionAvailable)
     {
         methodId  = TasksList;
         datas = [[NSMutableData alloc]init];
-                 NSString *subUrlString = [NSString stringWithFormat:@"api/user?page=%d&pageSize=%d",page,pageSize];
-            [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:nil MD5Dictionary:nil];
+        NSString *subUrlString = [NSString stringWithFormat:@"api/tasks"];
+         NSMutableString *info = [[NSMutableString alloc]initWithString:[NSString stringWithFormat:@"page＝%d&pageSize=%d",page,pageSize]];
+            [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
         
     }
     else
@@ -231,7 +289,29 @@ typedef NS_ENUM(NSInteger, MethodType)
                 }
                 else
                 {
-                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail::)]) {
+                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
+                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
+                    }
+                }
+            }
+            else//可能服务器宕掉
+            {
+                [self handleConnectionUnAvailable];
+            }
+            break;
+            case Experience://由于格式一样，直接解析放到task里了，
+            dics = [tasksParse infoSerialization:datas];
+            NSLog(@"%@",dics);
+            if (dics&&[dics count]>0) {
+                int status = [tasksParse getStatus];
+                if (0 == status) {
+                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
+                        [self.webApiDelegate requestDataOnSuccess:[tasksParse experienceListsParse]];
+                    }
+                }
+                else
+                {
+                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
                         [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
                     }
                 }

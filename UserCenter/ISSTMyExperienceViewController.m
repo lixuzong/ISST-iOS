@@ -1,16 +1,16 @@
 //
-//  ISSTTasksViewController.m
+//  ISSTMyExperienceViewController.m
 //  ISST
 //
-//  Created by zhangran on 14-7-2.
+//  Created by zhangran on 14-7-3.
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
-#import "ISSTTasksViewController.h"
-#import "ISSTTasksModel.h"
+#import "ISSTMyExperienceViewController.h"
 #import "ISSTUserCenterApi.h"
-
-@interface ISSTTasksViewController ()<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
+#import "ISSTExperienceModel.h"
+#import "ISSTCommonCell.h"
+@interface ISSTMyExperienceViewController ()<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 {
     NSMutableArray *_listData;
     
@@ -20,8 +20,7 @@
 }
 @end
 
-@implementation ISSTTasksViewController
-
+@implementation ISSTMyExperienceViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,7 +31,7 @@
         _userCenterApi = [[ISSTUserCenterApi alloc]init];
         _userCenterApi.webApiDelegate = self;
         _listData = [[NSMutableArray alloc] init];
-
+        
     }
     return self;
 }
@@ -52,7 +51,7 @@
 }
 -(void)viewWillAppear:(BOOL)animated
 {
-    [_userCenterApi requestTasksLists:0 pageSize:20 keywords:@""];
+    [_userCenterApi requestExperienceLists:0 pageSize:20 keywords:@""];
 }
 
 - (void)didReceiveMemoryWarning
@@ -69,15 +68,19 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellTableIdentifier=@"ISSTTasksCell";
-   // UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier forIndexPath:indexPath];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    static NSString *CellTableIdentifier=@"ISSTCommonCell";
     
-    if (cell ==nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellTableIdentifier];
+    ISSTCommonCell *cell=(ISSTCommonCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    if (cell == nil) {
+        cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
-    ISSTTasksModel *model = _listData[indexPath.row];
-    cell.textLabel.text = model.name;
+    ISSTExperienceModel *model = _listData[indexPath.row];
+    cell.textLabel.text = model.title;
+    cell.title.text=model.title;
+    cell.time.text=@"";
+    cell.content.text= model.content;
+    
+    
     
     return cell;
 }
@@ -93,7 +96,17 @@
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
     _listData = backToControllerData;
-    [_tableView reloadData];
+    if ([_listData count]>0) {
+             [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
+          [_tableView reloadData];
+    }
+    else
+    {
+        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"您未发送过经验" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
+        [alert show];
+    }
+  
 }
 
 - (void)requestDataOnFail:(NSString *)error
@@ -102,5 +115,6 @@
     [alert show];
 }
 
-
 @end
+
+

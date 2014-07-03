@@ -26,6 +26,9 @@
 		252D347A1963D8CF00B5EE5D /* ISSTTasksModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D34791963D8CF00B5EE5D /* ISSTTasksModel.m */; };
 		252D347D1963D9E900B5EE5D /* ISSTTasksParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D347C1963D9E900B5EE5D /* ISSTTasksParse.m */; };
 		252D34801963E11400B5EE5D /* ISSTTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D347F1963E11400B5EE5D /* ISSTTasksViewController.m */; };
+		252D348619656B8B00B5EE5D /* ISSTExperienceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D348519656B8B00B5EE5D /* ISSTExperienceModel.m */; };
+		252D348919656C3200B5EE5D /* ISSTRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D348819656C3200B5EE5D /* ISSTRecommendModel.m */; };
+		252D348F1965726A00B5EE5D /* ISSTMyExperienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D348E1965726A00B5EE5D /* ISSTMyExperienceViewController.m */; };
 		334D69DE194BF18B0018C521 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 334D69D0194BF18B0018C521 /* blackArrow.png */; };
 		334D69DF194BF18B0018C521 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334D69D1194BF18B0018C521 /* blackArrow@2x.png */; };
 		334D69E0194BF18B0018C521 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 334D69D2194BF18B0018C521 /* blueArrow.png */; };
@@ -222,6 +225,12 @@
 		252D347C1963D9E900B5EE5D /* ISSTTasksParse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTTasksParse.m; path = Parses/ISSTTasksParse.m; sourceTree = "<group>"; };
 		252D347E1963E11400B5EE5D /* ISSTTasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTTasksViewController.h; path = UserCenter/ISSTTasksViewController.h; sourceTree = SOURCE_ROOT; };
 		252D347F1963E11400B5EE5D /* ISSTTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTTasksViewController.m; path = UserCenter/ISSTTasksViewController.m; sourceTree = SOURCE_ROOT; };
+		252D348419656B8B00B5EE5D /* ISSTExperienceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTExperienceModel.h; path = Models/ISSTExperienceModel.h; sourceTree = "<group>"; };
+		252D348519656B8B00B5EE5D /* ISSTExperienceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTExperienceModel.m; path = Models/ISSTExperienceModel.m; sourceTree = "<group>"; };
+		252D348719656C3200B5EE5D /* ISSTRecommendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTRecommendModel.h; path = Models/ISSTRecommendModel.h; sourceTree = "<group>"; };
+		252D348819656C3200B5EE5D /* ISSTRecommendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRecommendModel.m; path = Models/ISSTRecommendModel.m; sourceTree = "<group>"; };
+		252D348D1965726A00B5EE5D /* ISSTMyExperienceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTMyExperienceViewController.h; path = UserCenter/ISSTMyExperienceViewController.h; sourceTree = SOURCE_ROOT; };
+		252D348E1965726A00B5EE5D /* ISSTMyExperienceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTMyExperienceViewController.m; path = UserCenter/ISSTMyExperienceViewController.m; sourceTree = SOURCE_ROOT; };
 		334D69D0194BF18B0018C521 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		334D69D1194BF18B0018C521 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
 		334D69D2194BF18B0018C521 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
@@ -979,6 +988,10 @@
 				AEA238CC18F530960030F196 /* ISSTClassModel.m */,
 				AE85F9C5190251E200FCD67D /* ISSTCommentsModel.h */,
 				AE85F9C6190251E200FCD67D /* ISSTCommentsModel.m */,
+				252D348419656B8B00B5EE5D /* ISSTExperienceModel.h */,
+				252D348519656B8B00B5EE5D /* ISSTExperienceModel.m */,
+				252D348719656C3200B5EE5D /* ISSTRecommendModel.h */,
+				252D348819656C3200B5EE5D /* ISSTRecommendModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1051,6 +1064,8 @@
 				33B9F111194D4FF4004F6546 /* ISSTUserInfoViewController.xib */,
 				252D347E1963E11400B5EE5D /* ISSTTasksViewController.h */,
 				252D347F1963E11400B5EE5D /* ISSTTasksViewController.m */,
+				252D348D1965726A00B5EE5D /* ISSTMyExperienceViewController.h */,
+				252D348E1965726A00B5EE5D /* ISSTMyExperienceViewController.m */,
 			);
 			name = UserCenter;
 			path = Person;
@@ -1272,6 +1287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				182B520919445AFD006F213C /* ISSTAddressBookViewController.m in Sources */,
+				252D348919656C3200B5EE5D /* ISSTRecommendModel.m in Sources */,
 				182B520719445AAE006F213C /* ISSTRestaurantDetailViewController.m in Sources */,
 				5805041818FD5A8C00F881D9 /* ISSTActivityDetailViewController.m in Sources */,
 				33B9F114194D4FF4004F6546 /* ISSTUserCenterViewController.m in Sources */,
@@ -1359,10 +1375,12 @@
 				18B619971955B92A00F4ACC7 /* ISSTSameCitiesModel.m in Sources */,
 				AE9ECAE118E968B200FEAEF4 /* ISSTStudyingModel.m in Sources */,
 				58653D1918FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.m in Sources */,
+				252D348619656B8B00B5EE5D /* ISSTExperienceModel.m in Sources */,
 				AEE2847918DAE24A00BEF1A9 /* ISSTRevealViewController.m in Sources */,
 				5805043118FD7B4C00F881D9 /* ISSTJobsDetailModel.m in Sources */,
 				AE014AD818EFC3D30009E008 /* ISSTRestaurantsApi.m in Sources */,
 				AE0B8C9018F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.m in Sources */,
+				252D348F1965726A00B5EE5D /* ISSTMyExperienceViewController.m in Sources */,
 				AEA238CD18F530960030F196 /* ISSTClassModel.m in Sources */,
 				AE9052B618EEEE890088742D /* ISSTWikisCollectionViewCell.m in Sources */,
 				AEFDC77018E1625900D7FDAA /* ISSTUserModel.m in Sources */,

@@ -8,6 +8,7 @@
 
 #import "ISSTTasksParse.h"
 #import "ISSTTasksModel.h"
+#import "ISSTExperienceModel.h"
 @interface ISSTTasksParse()
 {
     NSMutableArray      *_tasksArray;
@@ -32,7 +33,22 @@
     return [super.dict objectForKey:@"message"];
 }
 
+-(id)experienceListsParse
+{
+    _tasksArray = [super.dict objectForKey:@"body"] ;
+    
+    NSMutableArray *array =[[NSMutableArray alloc]init];
+    // int  count = [activitiesArray count];
+    [_tasksArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        ISSTExperienceModel *model = [[ISSTExperienceModel alloc] init];
+        model.eId =[[[_tasksArray objectAtIndex:idx ] objectForKey:@"id"]  intValue];
+        model.title = [[_tasksArray objectAtIndex:idx ] objectForKey:@"title"]  ;
+        model.content = [[_tasksArray objectAtIndex:idx ] objectForKey:@"content"] ;
+       [array addObject:model];
+    }];
+    return array;
 
+}
 
 -(id)taskListsParse
 {

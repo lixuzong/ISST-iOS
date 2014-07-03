@@ -32,4 +32,10 @@ ISSTWebApiDelegate,NSURLConnectionDataDelegate>
  *****/
 - (void)requestTasksLists:(int)page pageSize:(int)pageSize keywords:(NSString*) keywords;
 
+-(void)requestSurveyLists;
+
+- (void)requestExperienceLists:(int)page pageSize:(int)pageSize keywords:(NSString*) keywords;
+
+
+
 @end

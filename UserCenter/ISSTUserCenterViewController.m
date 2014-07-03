@@ -12,7 +12,7 @@
 #import "ISSTUserCenterUserInfoTableViewCell.h"
 #import "ISSTContactsAPi.h"
 #import "ISSTTasksViewController.h"
-
+#import "ISSTMyExperienceViewController.h"
 #import "AppCache.h"
 #import "ISSTUserModel.h"
 
@@ -155,14 +155,19 @@ NSArray *titleForRowArray= nil;
         [self go2UserInfoViewController:indexPath tableView:tableView];
     }
     
-    if (indexPath.section == [titleForRowArray count]-1&&indexPath.row == [[titleForRowArray objectAtIndex:([titleForRowArray count]-1) ] count]-1 )///logout
+   else if (indexPath.section == [titleForRowArray count]-1&&indexPath.row == [[titleForRowArray objectAtIndex:([titleForRowArray count]-1) ] count]-1 )///logout
     {
        [self signOut];
     }
-    if (indexPath.row == 0 &&indexPath.section == 2) {
+   else if (indexPath.row == 0 &&indexPath.section == 2) {
         ISSTTasksViewController *controller = [[ISSTTasksViewController alloc] init];
         [self.navigationController pushViewController:controller  animated:YES];
     }
+   else if (indexPath.row == 2 &&indexPath.section == 2) {
+       ISSTMyExperienceViewController *controller = [[ISSTMyExperienceViewController alloc] init];
+       [self.navigationController pushViewController:controller  animated:YES];
+   }
+    
     
 }
 
