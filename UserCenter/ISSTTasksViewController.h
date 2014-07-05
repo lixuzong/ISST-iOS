@@ -7,7 +7,7 @@
 //
 
 #import "ISSTPushedViewController.h"
-
+#import "ISSTExperienceModel.h"
 @interface ISSTTasksViewController : ISSTPushedViewController
 
 @end

@@ -18,7 +18,9 @@
 
 -(id)experienceListsParse;
 
+-(id)surveyListParse;
 -(NSString*)tasksMessageParse;
+
 
 
 @end

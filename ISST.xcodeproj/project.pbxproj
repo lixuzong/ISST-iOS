@@ -22,6 +22,8 @@
 		18B6199A1955B94500F4ACC7 /* ISSTSameCitiesParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B619991955B94500F4ACC7 /* ISSTSameCitiesParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18B8047119567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8046F19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m */; };
 		18B8047219567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B8047019567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib */; };
+		252ACB711967B00600D2E5A1 /* ISSTTasksSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 252ACB701967B00600D2E5A1 /* ISSTTasksSurveyViewController.m */; };
+		252ACB741967B44C00D2E5A1 /* ISSTSurveyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 252ACB731967B44C00D2E5A1 /* ISSTSurveyModel.m */; };
 		252D344819639B4300B5EE5D /* fs_main_login_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 252D344719639B4300B5EE5D /* fs_main_login_selected@2x.png */; };
 		252D347A1963D8CF00B5EE5D /* ISSTTasksModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D34791963D8CF00B5EE5D /* ISSTTasksModel.m */; };
 		252D347D1963D9E900B5EE5D /* ISSTTasksParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D347C1963D9E900B5EE5D /* ISSTTasksParse.m */; };
@@ -217,6 +219,10 @@
 		18B8046E19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSameCityActivityDetailViewController.h; sourceTree = "<group>"; };
 		18B8046F19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSameCityActivityDetailViewController.m; sourceTree = "<group>"; };
 		18B8047019567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTSameCityActivityDetailViewController.xib; sourceTree = "<group>"; };
+		252ACB6F1967B00600D2E5A1 /* ISSTTasksSurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTTasksSurveyViewController.h; path = UserCenter/ISSTTasksSurveyViewController.h; sourceTree = SOURCE_ROOT; };
+		252ACB701967B00600D2E5A1 /* ISSTTasksSurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTTasksSurveyViewController.m; path = UserCenter/ISSTTasksSurveyViewController.m; sourceTree = SOURCE_ROOT; };
+		252ACB721967B44C00D2E5A1 /* ISSTSurveyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTSurveyModel.h; path = Models/ISSTSurveyModel.h; sourceTree = "<group>"; };
+		252ACB731967B44C00D2E5A1 /* ISSTSurveyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTSurveyModel.m; path = Models/ISSTSurveyModel.m; sourceTree = "<group>"; };
 		252D344719639B4300B5EE5D /* fs_main_login_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fs_main_login_selected@2x.png"; sourceTree = "<group>"; };
 		252D34771963D8AF00B5EE5D /* ISSTSameCitiesModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTSameCitiesModel.h; path = Models/ISSTSameCitiesModel.h; sourceTree = "<group>"; };
 		252D34781963D8CF00B5EE5D /* ISSTTasksModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTTasksModel.h; path = Models/ISSTTasksModel.h; sourceTree = "<group>"; };
@@ -958,6 +964,8 @@
 			children = (
 				252D34781963D8CF00B5EE5D /* ISSTTasksModel.h */,
 				252D34791963D8CF00B5EE5D /* ISSTTasksModel.m */,
+				252ACB721967B44C00D2E5A1 /* ISSTSurveyModel.h */,
+				252ACB731967B44C00D2E5A1 /* ISSTSurveyModel.m */,
 				252D34771963D8AF00B5EE5D /* ISSTSameCitiesModel.h */,
 				18B619961955B92A00F4ACC7 /* ISSTSameCitiesModel.m */,
 				18B619921955B91C00F4ACC7 /* ISSTActivityStatusModel.h */,
@@ -1064,6 +1072,8 @@
 				33B9F111194D4FF4004F6546 /* ISSTUserInfoViewController.xib */,
 				252D347E1963E11400B5EE5D /* ISSTTasksViewController.h */,
 				252D347F1963E11400B5EE5D /* ISSTTasksViewController.m */,
+				252ACB6F1967B00600D2E5A1 /* ISSTTasksSurveyViewController.h */,
+				252ACB701967B00600D2E5A1 /* ISSTTasksSurveyViewController.m */,
 				252D348D1965726A00B5EE5D /* ISSTMyExperienceViewController.h */,
 				252D348E1965726A00B5EE5D /* ISSTMyExperienceViewController.m */,
 			);
@@ -1286,6 +1296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				252ACB741967B44C00D2E5A1 /* ISSTSurveyModel.m in Sources */,
 				182B520919445AFD006F213C /* ISSTAddressBookViewController.m in Sources */,
 				252D348919656C3200B5EE5D /* ISSTRecommendModel.m in Sources */,
 				182B520719445AAE006F213C /* ISSTRestaurantDetailViewController.m in Sources */,
@@ -1302,6 +1313,7 @@
 				338BB59C1959C4CE00449855 /* ISSTUserCenterApi.m in Sources */,
 				AE85F9C3190243D700FCD67D /* ISSTRecommendDetailViewController.m in Sources */,
 				AE9ECAD818E8F70700FEAEF4 /* ISSTMD5.m in Sources */,
+				252ACB711967B00600D2E5A1 /* ISSTTasksSurveyViewController.m in Sources */,
 				AE9052B818EEEE890088742D /* ISSTWikisDetailViewController.m in Sources */,
 				AE9B148218EBB04400034F65 /* NetworkReachability.m in Sources */,
 				18B6198B1955B8DC00F4ACC7 /* CityManagersViewController.m in Sources */,

@@ -5,13 +5,7 @@
 //  Created by zhaoxs on 6/21/14.
 //  Copyright (c) 2014 MSE.ZJU. All rights reserved.
 //
-typedef NS_ENUM(NSInteger, MethodType)
-{
-    ChangeUserInfo= 1,
-    TasksList= 2,
-    Survey= 3,
-    Experience= 4
-};
+
 
 #import "ISSTUserModel.h"
 #import "AppCache.h"
@@ -26,42 +20,51 @@ typedef NS_ENUM(NSInteger, MethodType)
 @synthesize datas;
 @synthesize methodId;
 
--(void)requestSurveyLists
+-(void)requestSurveyResult:(int)taskId optionId:(int)optionId optionOther:(NSString*)optionOther remarks:(NSString*)remarks
 {
-//    if (NetworkReachability.isConnectionAvailable)
-//    {
-//        methodId  = Survey;
-//        if (NetworkReachability.isConnectionAvailable)
-//        {
-////            datas = [[NSMutableData alloc]init];
-////            NSMutableString *info = [[NSMutableString alloc]initWithString:[NSString stringWithFormat:@"page＝",contactId,gender,gradeId,classId,majorId,cityId]];
-////            //        if (contactId>=0) {
-////            //            [info appendFormat:@"%@",[NSString stringWithFormat:@"id=%d",contactId]];
-////            //        }
-////            if (name) {
-////                //            NSString * encodingNameString = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-////                [info appendFormat:@"%@",[NSString stringWithFormat:@"&name=%@",name]];
-////            }
-////            if (className) {
-////                [info appendFormat:@"%@",[NSString stringWithFormat:@"&className=%@",className]];
-////            }
-////            if (majorName) {
-////                [info appendFormat:@"%@",[NSString stringWithFormat:@"&major=%@",majorName]];
-////            }
-////            //        if (cityName) {
-////            //            [info appendFormat:@"%@",[NSString stringWithFormat:@"&cityName=%@",cityName]];
-////            //        }
-////            if ( company) {
-////                [info appendFormat:@"%@",[NSString stringWithFormat:@"&company=%@",company]];
-////            }
-////            NSString *subUrlString = [NSString stringWithFormat:@"api/alumni?%@",info];
-////            NSLog(@"subUrlString=%@",subUrlString);
-//            
-//    }
-//    else
-//    {
-//        [self handleConnectionUnAvailable];
-//    }
+    if (NetworkReachability.isConnectionAvailable)
+    {
+        methodId  = SurveyResult;
+        datas = [[NSMutableData alloc]init];
+        NSString *subUrlString = [NSString stringWithFormat:@"api/tasks/%d/survey",taskId];
+        NSMutableString *info = [[NSMutableString alloc]init];
+        if (optionId>=0) {
+            [info appendFormat:[NSString stringWithFormat:@"optionId=%d&",optionId]];
+        }
+        if (optionOther) {
+            [info appendFormat:[NSString stringWithFormat:@"optionOther=%@&",optionOther]];
+        }
+        if (remarks) {
+            [info appendFormat:[NSString stringWithFormat:@"optionOther=%@&",remarks]];
+        }
+         if(info.length>0)
+         {
+             [info deleteCharactersInRange:NSMakeRange(info.length-1, 1)];
+         }
+        
+        [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:info MD5Dictionary:nil];
+        
+    }
+    else
+    {
+        [self handleConnectionUnAvailable];
+    }
+}
+
+-(void)requestSurveyLists:(int)taskId;
+{
+    if (NetworkReachability.isConnectionAvailable)
+    {
+        methodId  = Survey;
+        datas = [[NSMutableData alloc]init];
+        NSString *subUrlString = [NSString stringWithFormat:@"api/tasks/%d/survey/options",taskId];
+        [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:nil MD5Dictionary:nil];
+        
+    }
+    else
+    {
+        [self handleConnectionUnAvailable];
+    }
 }
 
 - (void)requestExperienceLists:(int)page pageSize:(int)pageSize keywords:(NSString*) keywords
@@ -277,9 +280,9 @@ typedef NS_ENUM(NSInteger, MethodType)
                 [self handleConnectionUnAvailable];
             }
             break;
-            case TasksList:
+        case TasksList:
             dics = [tasksParse infoSerialization:datas];
-            NSLog(@"%@",dics);
+         
             if (dics&&[dics count]>0) {
                 int status = [tasksParse getStatus];
                 if (0 == status) {
@@ -321,6 +324,51 @@ typedef NS_ENUM(NSInteger, MethodType)
                 [self handleConnectionUnAvailable];
             }
             break;
+        case Survey:
+            dics = [tasksParse infoSerialization:datas];
+        
+            if (dics&&[dics count]>0) {
+                int status = [tasksParse getStatus];
+                if (0 == status) {
+                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
+                        [self.webApiDelegate requestDataOnSuccess:[tasksParse surveyListParse]];
+                    }
+                }
+                else
+                {
+                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
+                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
+                    }
+                }
+            }
+            else//可能服务器宕掉
+            {
+                [self handleConnectionUnAvailable];
+            }
+            break;
+        case SurveyResult:
+            dics = [tasksParse infoSerialization:datas];
+            
+            if (dics&&[dics count]>0) {
+                int status = [tasksParse getStatus];
+                if (0 == status) {
+                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
+                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
+                    }
+                }
+                else
+                {
+                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
+                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
+                    }
+                }
+            }
+            else//可能服务器宕掉
+            {
+                [self handleConnectionUnAvailable];
+            }
+            break;
+            
         
     
     }

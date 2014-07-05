@@ -8,6 +8,15 @@
 
 #import "ISSTApi.h"
 #import "ISSTWebApiDelegate.h"
+
+typedef NS_ENUM(NSInteger, MethodType)
+{
+    ChangeUserInfo= 1,
+    TasksList= 2,
+    Survey= 3,
+    Experience= 4,
+    SurveyResult= 5
+};
 @interface ISSTUserCenterApi : ISSTApi <
 ISSTWebApiDelegate,NSURLConnectionDataDelegate>
 /*****
@@ -32,9 +41,12 @@ ISSTWebApiDelegate,NSURLConnectionDataDelegate>
  *****/
 - (void)requestTasksLists:(int)page pageSize:(int)pageSize keywords:(NSString*) keywords;
 
--(void)requestSurveyLists;
+-(void)requestSurveyLists:(int)taskId;
 
 - (void)requestExperienceLists:(int)page pageSize:(int)pageSize keywords:(NSString*) keywords;
+
+-(void)requestSurveyResult:(int)taskId optionId:(int)optionId optionOther:(NSString*)optionOther remarks:(NSString*)remarks;
+
 
 
 

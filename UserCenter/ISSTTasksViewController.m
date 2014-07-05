@@ -9,7 +9,7 @@
 #import "ISSTTasksViewController.h"
 #import "ISSTTasksModel.h"
 #import "ISSTUserCenterApi.h"
-
+#import "ISSTTasksSurveyViewController.h"
 @interface ISSTTasksViewController ()<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 {
     NSMutableArray *_listData;
@@ -28,7 +28,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initializatio
-        self.title =@"任务列表";
+        self.title =@"去向调查";
         _userCenterApi = [[ISSTUserCenterApi alloc]init];
         _userCenterApi.webApiDelegate = self;
         _listData = [[NSMutableArray alloc] init];
@@ -53,6 +53,7 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [_userCenterApi requestTasksLists:0 pageSize:20 keywords:@""];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -86,6 +87,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"123");
+    ISSTTasksSurveyViewController *controller = [[ISSTTasksSurveyViewController alloc] init];
+    controller.model= _listData[indexPath.row];
+    [self.navigationController pushViewController:controller  animated:NO];
+    
+    
 }
 
 #pragma mark - ISSTWebApiDelegate

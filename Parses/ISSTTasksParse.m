@@ -9,6 +9,7 @@
 #import "ISSTTasksParse.h"
 #import "ISSTTasksModel.h"
 #import "ISSTExperienceModel.h"
+#import "ISSTSurveyModel.h"
 @interface ISSTTasksParse()
 {
     NSMutableArray      *_tasksArray;
@@ -45,6 +46,23 @@
         model.title = [[_tasksArray objectAtIndex:idx ] objectForKey:@"title"]  ;
         model.content = [[_tasksArray objectAtIndex:idx ] objectForKey:@"content"] ;
        [array addObject:model];
+    }];
+    return array;
+
+}
+
+-(id)surveyListParse
+{
+    _tasksArray = [super.dict objectForKey:@"body"] ;
+    
+    NSMutableArray *array =[[NSMutableArray alloc]init];
+    // int  count = [activitiesArray count];
+    [_tasksArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        ISSTSurveyModel *model = [[ISSTSurveyModel alloc] init];
+        model.surveyId =[[[_tasksArray objectAtIndex:idx ] objectForKey:@"id"]  intValue];
+        model.label = [[_tasksArray objectAtIndex:idx ] objectForKey:@"label"]  ;
+      
+        [array addObject:model];
     }];
     return array;
 

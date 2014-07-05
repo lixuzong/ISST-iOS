@@ -10,6 +10,8 @@
 #import "ISSTUserCenterApi.h"
 #import "ISSTExperienceModel.h"
 #import "ISSTCommonCell.h"
+
+
 @interface ISSTMyExperienceViewController ()<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 {
     NSMutableArray *_listData;
@@ -27,7 +29,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initializatio
-        self.title =@"任务列表";
+        self.title =@"我的经验";
         _userCenterApi = [[ISSTUserCenterApi alloc]init];
         _userCenterApi.webApiDelegate = self;
         _listData = [[NSMutableArray alloc] init];
@@ -72,7 +74,7 @@
     
     ISSTCommonCell *cell=(ISSTCommonCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     if (cell == nil) {
-        cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
+        cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellTableIdentifier];
     }
     ISSTExperienceModel *model = _listData[indexPath.row];
     cell.textLabel.text = model.title;
@@ -89,6 +91,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"123");
+       
 }
 
 #pragma mark - ISSTWebApiDelegate
