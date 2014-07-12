@@ -10,7 +10,7 @@
 #import "ISSTUserCenterApi.h"
 #import "ISSTExperienceModel.h"
 #import "ISSTCommonCell.h"
-
+#import "ISSTPostExperienceViewController.h"
 
 @interface ISSTMyExperienceViewController ()<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 {
@@ -42,6 +42,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStyleBordered target:self action:@selector(sendExperience)];
     UITableView *tableView = [[UITableView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     tableView.dataSource = self ;
     tableView.delegate = self;
@@ -55,6 +56,13 @@
 {
     [_userCenterApi requestExperienceLists:0 pageSize:20 keywords:@""];
 }
+
+-(void)sendExperience
+{
+    ISSTPostExperienceViewController *controller = [[ISSTPostExperienceViewController alloc] init];
+    [self.navigationController pushViewController:controller animated:NO];
+}
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -20,6 +20,40 @@
 @synthesize datas;
 @synthesize methodId;
 
+-(void) requestPostExperience:(int)typeId title:(NSString*)title content:(NSString*)content
+{
+    if (NetworkReachability.isConnectionAvailable)
+    {
+        methodId  = PostExperience ;
+        datas = [[NSMutableData alloc]init];
+        NSString *subUrlString = @"api/users/archives/experience";
+          NSMutableString *info = [[NSMutableString alloc]initWithString:[NSString stringWithFormat:@"id=%d&title=%@&content=%@",typeId,title,content]];
+        [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:info MD5Dictionary:nil];
+        
+    }
+    else
+    {
+        [self handleConnectionUnAvailable];
+    }
+}
+
+-(void) requestPostedSurvey:(int)taskId optionId:(int)optionId
+{
+    if (NetworkReachability.isConnectionAvailable)
+    {
+        methodId  = PostedSurvey;
+        datas = [[NSMutableData alloc]init];
+        NSString *subUrlString = [NSString stringWithFormat:@"api/tasks/%d/survey/%d",taskId,optionId];
+        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
+        
+    }
+    else
+    {
+        [self handleConnectionUnAvailable];
+    }
+}
+
+
 -(void)requestSurveyResult:(int)taskId optionId:(int)optionId optionOther:(NSString*)optionOther remarks:(NSString*)remarks
 {
     if (NetworkReachability.isConnectionAvailable)
@@ -368,6 +402,50 @@
                 [self handleConnectionUnAvailable];
             }
             break;
+        case PostedSurvey:
+            dics = [tasksParse infoSerialization:datas];
+            
+//            if (dics&&[dics count]>0) {
+//                int status = [tasksParse getStatus];
+//                if (0 == status) {
+//                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
+//                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
+//                    }
+//                }
+//                else
+//                {
+//                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
+//                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
+//                    }
+//                }
+//            }
+//            else//可能服务器宕掉
+//            {
+//                [self handleConnectionUnAvailable];
+//            }
+            break;
+        case PostExperience:
+             dics = [tasksParse infoSerialization:datas];
+            if (dics&&[dics count]>0) {
+                int status = [tasksParse getStatus];
+                if (0 == status) {
+                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
+                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
+                    }
+                }
+                else
+                {
+                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
+                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
+                    }
+                }
+            }
+            else//可能服务器宕掉
+            {
+                [self handleConnectionUnAvailable];
+            }
+            break;
+
             
         
     

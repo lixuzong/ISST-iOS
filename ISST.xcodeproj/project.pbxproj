@@ -31,6 +31,7 @@
 		252D348619656B8B00B5EE5D /* ISSTExperienceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D348519656B8B00B5EE5D /* ISSTExperienceModel.m */; };
 		252D348919656C3200B5EE5D /* ISSTRecommendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D348819656C3200B5EE5D /* ISSTRecommendModel.m */; };
 		252D348F1965726A00B5EE5D /* ISSTMyExperienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 252D348E1965726A00B5EE5D /* ISSTMyExperienceViewController.m */; };
+		25A699351970C18B00AE1FD8 /* ISSTPostExperienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 25A699341970C18B00AE1FD8 /* ISSTPostExperienceViewController.m */; };
 		334D69DE194BF18B0018C521 /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 334D69D0194BF18B0018C521 /* blackArrow.png */; };
 		334D69DF194BF18B0018C521 /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 334D69D1194BF18B0018C521 /* blackArrow@2x.png */; };
 		334D69E0194BF18B0018C521 /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 334D69D2194BF18B0018C521 /* blueArrow.png */; };
@@ -237,6 +238,8 @@
 		252D348819656C3200B5EE5D /* ISSTRecommendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTRecommendModel.m; path = Models/ISSTRecommendModel.m; sourceTree = "<group>"; };
 		252D348D1965726A00B5EE5D /* ISSTMyExperienceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTMyExperienceViewController.h; path = UserCenter/ISSTMyExperienceViewController.h; sourceTree = SOURCE_ROOT; };
 		252D348E1965726A00B5EE5D /* ISSTMyExperienceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTMyExperienceViewController.m; path = UserCenter/ISSTMyExperienceViewController.m; sourceTree = SOURCE_ROOT; };
+		25A699331970C18B00AE1FD8 /* ISSTPostExperienceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTPostExperienceViewController.h; path = UserCenter/ISSTPostExperienceViewController.h; sourceTree = SOURCE_ROOT; };
+		25A699341970C18B00AE1FD8 /* ISSTPostExperienceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTPostExperienceViewController.m; path = UserCenter/ISSTPostExperienceViewController.m; sourceTree = SOURCE_ROOT; };
 		334D69D0194BF18B0018C521 /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
 		334D69D1194BF18B0018C521 /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
 		334D69D2194BF18B0018C521 /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
@@ -1076,6 +1079,8 @@
 				252ACB701967B00600D2E5A1 /* ISSTTasksSurveyViewController.m */,
 				252D348D1965726A00B5EE5D /* ISSTMyExperienceViewController.h */,
 				252D348E1965726A00B5EE5D /* ISSTMyExperienceViewController.m */,
+				25A699331970C18B00AE1FD8 /* ISSTPostExperienceViewController.h */,
+				25A699341970C18B00AE1FD8 /* ISSTPostExperienceViewController.m */,
 			);
 			name = UserCenter;
 			path = Person;
@@ -1305,6 +1310,7 @@
 				5805041718FD5A4D00F881D9 /* ISSTSidebarSearchViewController.m in Sources */,
 				5805041618FD5A4000F881D9 /* ISSTMenuTableViewCell.m in Sources */,
 				5805041118FD5A1000F881D9 /* ISSTCampusNewsModel.m in Sources */,
+				25A699351970C18B00AE1FD8 /* ISSTPostExperienceViewController.m in Sources */,
 				334D69E6194BF18B0018C521 /* EGORefreshTableHeaderView.m in Sources */,
 				5805043218FD7B4C00F881D9 /* ISSTJobsModel.m in Sources */,
 				AE0B8C3518F2C8B300844F55 /* ISSTActivitiesViewController.m in Sources */,

@@ -15,7 +15,9 @@ typedef NS_ENUM(NSInteger, MethodType)
     TasksList= 2,
     Survey= 3,
     Experience= 4,
-    SurveyResult= 5
+    SurveyResult= 5,
+    PostedSurvey= 6,
+    PostExperience= 7
 };
 @interface ISSTUserCenterApi : ISSTApi <
 ISSTWebApiDelegate,NSURLConnectionDataDelegate>
@@ -47,7 +49,8 @@ ISSTWebApiDelegate,NSURLConnectionDataDelegate>
 
 -(void)requestSurveyResult:(int)taskId optionId:(int)optionId optionOther:(NSString*)optionOther remarks:(NSString*)remarks;
 
+-(void) requestPostedSurvey:(int)taskId optionId:(int)optionId;
 
 
-
+-(void) requestPostExperience:(int)typeId title:(NSString*)title content:(NSString*)content;
 @end

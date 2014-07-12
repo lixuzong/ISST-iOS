@@ -107,23 +107,26 @@
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
     if (_userCenterApi.methodId==Survey) {
+      
         _listData = backToControllerData;
         selectIndex =-1;
         [_tableView reloadData];
     }
     else if (_userCenterApi.methodId == SurveyResult)
     {
-        
-        if ([backToControllerData isEqualToString:@"提交成功"]) {
-            [self.navigationController popViewControllerAnimated:NO];
-        }
-        else
-        {
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:backToControllerData delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
-            [alert show];
-        }
-    }
+//      if ([backToControllerData isEqualToString:@"提交成功"]) {
+//            [self.navigationController popViewControllerAnimated:NO];
+//        }
+//        else
+//        {
+//            
+//            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:backToControllerData delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
+//            [alert show];
+//        }
+
+        ISSTSurveyModel *surveyModel = _listData[selectIndex];
+        [_userCenterApi requestPostedSurvey:_model.taskId  optionId:surveyModel.surveyId ];
+           }
   
     
     
