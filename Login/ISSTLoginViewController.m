@@ -12,18 +12,26 @@
 #import "AppCache.h"
 #import "ISSTUserModel.h"
 #import "ISSTContactsApi.h"
+#import "ISSTUserCenterViewController.h"
+#import "passValue.h"
 const    static  int   REQUESTLOGIN         = 1;
 const static int        CLASSESLISTS        = 3;
 const static int        MAJORSLISTS         = 4;
 int method;
 
+#define DEVICE_IS_IPHONE5 ([[UIScreen mainScreen] bounds].size.height == 568)
 
 @interface ISSTLoginViewController ()
 {
     ISSTContactsApi *_contactsApi;
+    
+    BOOL response ;//判断是否选中了texdfield。
+    NSString *flag;//判断是否是注销 0表示未注销 1表示注销
+
 }
 @property (nonatomic,strong)ISSTUserModel  *userModel;
 @property (nonatomic,strong)ISSTLoginApi  *userApi;
+@property (weak, nonatomic) IBOutlet UIButton *btnlogin;
 @property (weak, nonatomic) IBOutlet UISwitch *defaultLoginSwitch;
 @end
 
@@ -34,6 +42,9 @@ int method;
 @synthesize userApi;
 @synthesize userModel;
 @synthesize defaultLoginSwitch;
+@synthesize btnlogin;
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,14 +59,43 @@ int method;
 
 {
     [super viewDidLoad];
-    
-    if ([[[UIDevice currentDevice]systemVersion] doubleValue] >= 7.0) {
-        self.edgesForExtendedLayout =UIRectEdgeNone;
+    response=NO;
+ 
+     if ([[[UIDevice currentDevice]systemVersion] doubleValue] >= 7.0) {
+         self.edgesForExtendedLayout =UIRectEdgeNone;
+
+         NSLog(@"aaa");
+         NSLog(@"%f",self.view.frame.size.height);
     }
-    self.title=@"iSST";
+
+   
+    self.title=@"ISST";
     [self.navigationItem setHidesBackButton:YES];
    [self.navigationController setNavigationBarHidden:NO];
+    nameField.delegate=self;
+    passwordField.delegate=self;
+    //添加巨型button透明
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button.frame = frame;
+    UIImageView *img=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ISSTlogin2.png"]];
+    [self.view addSubview:img];
+    [self.view sendSubviewToBack:img];
+    button.backgroundColor = [UIColor clearColor];
+   
+    [button addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    [self.view sendSubviewToBack:button];
+    //
     
+    if (DEVICE_IS_IPHONE5) {
+        NSLog(@"4 inch");
+        
+        
+    }else{
+        
+        NSLog(@"3.5");
+        }
      self.navigationController.navigationItem.leftBarButtonItem.title = @"登录";
     [self.passwordField setSecureTextEntry:YES];//set password ......
     
@@ -66,27 +106,46 @@ int method;
     _contactsApi = [[ISSTContactsApi alloc] init];
     _contactsApi.webApiDelegate  = self;
     
+        
     
   
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    //检查缓存中是否有用户数据
-      if (defaultLoginSwitch.on) {
-          self.userModel = [AppCache getCache];
-          if (userModel) {
-              NSLog(@"%@" ,[userModel description]);
-              nameField.text = userModel.userName;
-              passwordField.text=@"111111";
-          }
-     
-    }
-    else
-    {
-        nameField.text = nil;
-        passwordField.text=nil;
-    }
+    flag=self.passvalue.signOutFlag;
+   //[self passValue:flag];
+    NSLog(@"%@",flag);
+    
+    nameField.text=@"21351007";
+    passwordField.text=@"111111";
+    
+    //检查缓存中是否有用户数据，若果是的话，直接登入进去。
+//      if (defaultLoginSwitch.on) {
+//          self.userModel = [AppCache getCache];
+//          if (userModel) {
+//              NSLog(@"检测是否有用户名！");
+//              NSLog(@"%@",userModel.userName);
+//              NSLog(@"%@",userModel.password);
+//              NSLog(@"%@",userModel.phone);
+//              nameField.text = userModel.userName;
+              //passwordField.text = userModel.password;
+              //passwordField.text =userModel.
+              //passwordField.text=@"111111";
+              
+//              if(![flag isEqual:@"1"]){method  =   REQUESTLOGIN;
+//                  [self.userApi requestLoginName:self.nameField.text andPassword:self.passwordField.text];}
+//              
+//
+//              
+//          }
+//     
+//    }
+//    else
+//    {
+//        nameField.text = nil;
+//        passwordField.text=nil;
+//    }
     
     
     //有缓存数据的话
@@ -98,9 +157,10 @@ int method;
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    NSLog(@"%@" ,[userModel description]);
-    NSLog(@"%@",userModel.name);
+    //NSString *password =nameField.text;
+    //NSLog(@"%@" ,[userModel description]);
     //缓存数据模型
+   // NSLog(@"%@",password);
     
     [AppCache saveCache:self.userModel];
     [super viewWillDisappear:animated];
@@ -119,7 +179,24 @@ int method;
     
 }
 
-
+-(void)buttonClicked
+{
+   
+    [UIView beginAnimations:@"View Flip" context:nil];
+    //动画持续时间
+    [UIView setAnimationDuration:0.3];
+    [nameField resignFirstResponder];
+    [passwordField resignFirstResponder];
+    NSLog(@"button click");
+    if([[[UIDevice currentDevice]systemVersion] doubleValue] >= 7.0)
+    {
+    self.view.frame =CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height);
+    }
+    else{
+        self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    }
+    [UIView commitAnimations];
+}
 
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
@@ -168,15 +245,73 @@ int method;
 
 - (void)requestDataOnFail:(NSString *)error
 {
+//    if((self.nameField.text = @"") && (self.passwordField.text = @"")&& (error = @"网络错误")){
+//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:@"用户名不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//        [alert show];
+//    }else{
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alert show];
+        [alert show];
+//        self.nameField.text = @"";
+//        self.passwordField.text = @"";
+//   }
   
     self.nameField.text = @"";
     self.passwordField.text = @"";
 
 }
 
+-(BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    //if(!DEVICE_IS_IPHONE5)
+    {
+    NSLog(@"sdsd");
+    NSTimeInterval animationDuration=0.30f;
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    float width = self.view.frame.size.width;
+    float height = self.view.frame.size.height;
+    //上移30个单位，按实际情况设置
+        
+    CGRect rect=CGRectMake(0.0f,-80,width,height);
+        
+       // CGRect text=btnlogin.frame;
+    self.view.frame=rect;
+        //text=CGRectMake(30, 350, 238, 30);
+       // btnlogin.frame=text;
+   [UIView commitAnimations];
+    }
+    return YES;
+}
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+     response=NO;
+    [UIView beginAnimations:@"View Flip" context:nil];
+    //动画持续时间
+    [UIView setAnimationDuration:0.3f];
+   
+    [textField resignFirstResponder];
+    [UIView commitAnimations];
 
-
+    
+    return YES;
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (!response) {
+        
+    //[UIView beginAnimations:@"asjkasjdkadj" context:nil];
+        [UIView beginAnimations:@"View Flip" context:nil];
+        //动画持续时间
+        [UIView setAnimationDuration:0.3f];
+    
+self.view.frame =CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height);
+       // [UIView setAnimationDuration:2];
+        //动画会造成登录后动画错乱－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+         [UIView commitAnimations];
+    }}
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    response=YES;
+}
 
 @end

@@ -13,6 +13,9 @@
 {
     NSString *errorMessage ;
     switch (status) {
+        case 2:
+            errorMessage = @"用户名不能为空";
+            break;
         case 10:
             errorMessage = @"用户不存在";
           

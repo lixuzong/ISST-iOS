@@ -94,7 +94,8 @@
     if(userId!=0)
     {
         NSString *userName=[detailModel.userModel objectForKey:@"name"];
-        self.userInfo.text=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
+        //self.userInfo.text=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
+        userInfo.text =[NSString stringWithFormat:@"发布者:%@",userName];
     }
     else self.userInfo.text=@"发布者：管理员";
     [webView loadHTMLString:detailModel.content baseURL:nil];//加载html源代码

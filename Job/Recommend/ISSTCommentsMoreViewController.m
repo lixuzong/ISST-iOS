@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *commentsMoreTableView;
 @property (nonatomic,strong)NSMutableArray *commentsArray;
 @property (nonatomic,strong)ISSTJobsApi  *recommendApi;
+@property (nonatomic,strong)ISSTCommentsModel *commentsModel;
 
 - (void) postComments;
 
@@ -27,6 +28,10 @@ static NSString *CellTableIdentifier=@"ISSTCLTableViewCell";
 @synthesize recommendApi;
 @synthesize commentsMoreTableView;
 @synthesize commentsArray;
+@synthesize commentsModel;
+
+//页面标记
+static int  loadPage = 1;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,7 +53,7 @@ static NSString *CellTableIdentifier=@"ISSTCLTableViewCell";
     recommendApi.webApiDelegate = self;
     UINib *nib=[UINib nibWithNibName:CellTableIdentifier bundle:nil];
     [commentsMoreTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
-
+    
     [recommendApi requestRCLists:1 andPageSize:20 andJobId:self.jobId];
     
 }
@@ -82,10 +87,10 @@ static NSString *CellTableIdentifier=@"ISSTCLTableViewCell";
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-        ISSTCLTableViewCell *cell=(ISSTCLTableViewCell  *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
-        if (cell == nil) {
-            cell = (ISSTCLTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
-        }
+    ISSTCLTableViewCell *cell=(ISSTCLTableViewCell  *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    if (cell == nil) {
+        cell = (ISSTCLTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
+    }
     if (commentsArray) {
         ISSTCommentsModel*   cModel =  [commentsArray objectAtIndex:indexPath.row];
         cell.nameLabel.text = cModel.userModel.name;
@@ -110,7 +115,7 @@ static NSString *CellTableIdentifier=@"ISSTCLTableViewCell";
     commentsArray = (NSMutableArray*)backToControllerData;
     NSLog(@"%@",backToControllerData);
     [commentsMoreTableView  reloadData];
-   
+    
 }
 
 - (void)requestDataOnFail:(NSString *)error
@@ -118,6 +123,4 @@ static NSString *CellTableIdentifier=@"ISSTCLTableViewCell";
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
 }
-
-
 @end

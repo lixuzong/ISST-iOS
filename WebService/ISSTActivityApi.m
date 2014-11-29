@@ -29,7 +29,7 @@ const    static  int   DETAILS   = 2;
         datas = [[NSMutableData alloc]init];
         NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
         NSString *subUrlString = [NSString stringWithFormat:@"api/campus/activities"];
-        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+        [super requestWithSuburl:subUrlString Method:@"GET2" Delegate:self Info:info MD5Dictionary:nil];
     }
     else
     {

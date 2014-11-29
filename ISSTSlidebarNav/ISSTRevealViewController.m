@@ -11,7 +11,7 @@
 
 #pragma mark -
 #pragma mark Constants
-const NSTimeInterval kISSTRevealSidebarDefaultAnimationDuration = 0.25;
+const NSTimeInterval kISSTRevealSidebarDefaultAnimationDuration = 0.3;
 const CGFloat kISSTRevealSidebarWidth = 250.0f;
 const CGFloat kISSTRevealSidebarFlickVelocity = 1020.0f;
 

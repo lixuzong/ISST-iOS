@@ -12,7 +12,7 @@
 #import "ISSTJobsParse.h"
 
 @interface ISSTJobsApi()
-- (void)handleConnectionUnAvailable;
+//- (void)handleConnectionUnAvailable;
 @end
 @implementation ISSTJobsApi
 @synthesize webApiDelegate;
@@ -39,7 +39,7 @@ const static int POSTCOMMENTS   =6;
         datas = [[NSMutableData alloc]init];
         NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
         NSString *subUrlString = [NSString stringWithFormat:@"api/jobs/categories/employment"];
-        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+        [super requestWithSuburl:subUrlString Method:@"GET2" Delegate:self Info:info MD5Dictionary:nil];
     }
     else
     {
@@ -56,10 +56,15 @@ const static int POSTCOMMENTS   =6;
     if (NetworkReachability.isConnectionAvailable)
     {
         methodId = INTERNSHIP;
+        //datas = nil;
         datas = [[NSMutableData alloc]init];
+       // NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
+        //page=1;
         NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
+        NSLog(@"kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk");
+        NSLog(@"%@",info);
         NSString *subUrlString = [NSString stringWithFormat:@"api/jobs/categories/internship"];
-        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+        [super requestWithSuburl:subUrlString Method:@"GET2" Delegate:self Info:info MD5Dictionary:nil];
     }
     else
     {
@@ -79,7 +84,7 @@ const static int POSTCOMMENTS   =6;
         datas = [[NSMutableData alloc]init];
         NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
         NSString *subUrlString = [NSString stringWithFormat:@"api/jobs/categories/recommend"];
-        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+        [super requestWithSuburl:subUrlString Method:@"GET2" Delegate:self Info:info MD5Dictionary:nil];
     }
     else
     {
@@ -167,7 +172,10 @@ const static int POSTCOMMENTS   =6;
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
+    //NSDictionary *fields = nil;
     NSDictionary *fields = [HTTPResponse allHeaderFields];
+    //fields = [HTTPResponse allHeaderFields];
+    NSLog(@"******HEHE*********");
     NSLog(@"self=%@ fields=%@",self,[fields description]);
     if ([[fields allKeys] containsObject:@"Set-Cookie"])
     {
@@ -176,7 +184,7 @@ const static int POSTCOMMENTS   =6;
         //
         //  [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
     }
-    [self.datas setLength:0];
+   [self.datas setLength:0];
     
 }
 
@@ -193,7 +201,7 @@ const static int POSTCOMMENTS   =6;
 {
     ISSTJobsParse *jobs  = [[ISSTJobsParse alloc]init];
     NSDictionary *dics =[jobs infoSerialization:datas];
-    NSArray *array ;
+    NSArray *array =nil ;
     id backData;
     
     switch (methodId) {
@@ -209,6 +217,7 @@ const static int POSTCOMMENTS   =6;
                     if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
                     {
                         [self.webApiDelegate requestDataOnSuccess:array];
+                        
                     }
                 }
                 

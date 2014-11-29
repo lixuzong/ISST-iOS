@@ -20,4 +20,6 @@
 @property (nonatomic,strong) NSString*      content;
 @property (nonatomic,assign) BOOL           participated;
 @property (nonatomic,strong)ISSTUserModel*  releaseUserModel;
+@property(nonatomic,copy)NSDictionary *userModel;
+@property (nonatomic,strong) NSString*      description;
 @end

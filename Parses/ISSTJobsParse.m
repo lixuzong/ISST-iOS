@@ -35,9 +35,10 @@
 {
     NSMutableArray *tempJobsArray =[[[NSMutableArray alloc]init] autorelease];
     
-    // NSLog(@"%@",dict);
+    //NSLog(@"%@",dict);
     jobsArray = [super.dict objectForKey:@"body"] ;
     int  count = [jobsArray count];
+    NSLog(@"hahahahahhahahahahahahahaha");
     NSLog(@"count=%d,content=%@",count,jobsArray);
 
     for (int i=0; i<count; i++)
@@ -72,15 +73,12 @@
             [userModel release];
              tmpDic = nil ;
         }
- 
-   
-       
-     
         [tempJobsArray addObject:jobsModel];
     }
     return tempJobsArray;
     
 }
+
 -(id)jobsDetailInfoParse
 {
     detailsInfo = [super.dict objectForKey:@"body"];

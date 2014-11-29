@@ -12,4 +12,5 @@
 @property(nonatomic,weak)IBOutlet UILabel *title;
 @property(nonatomic,weak)IBOutlet UILabel *time;
 @property(nonatomic,weak)IBOutlet UILabel *content;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @end

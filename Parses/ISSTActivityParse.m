@@ -42,7 +42,7 @@
         ISSTActivityModel *activity = [[ISSTActivityModel alloc]init];
         activity.activityId     = [[[activitiesArray objectAtIndex:i ] objectForKey:@"id"] intValue];
         activity.title              = [[activitiesArray objectAtIndex:i] objectForKey:@"title"];
-        activity.content       = [[activitiesArray objectAtIndex:i] objectForKey:@"description"];
+        activity.description       = [[activitiesArray objectAtIndex:i] objectForKey:@"description"];
         activity.picture           = [[activitiesArray objectAtIndex:i]objectForKey:@"picture"];
         activity.content           = [[activitiesArray objectAtIndex:i] objectForKey:@"content"];
         [tmpArray addObject:activity];

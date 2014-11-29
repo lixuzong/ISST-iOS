@@ -9,7 +9,7 @@
 #import "ISSTCommonCell.h"
 
 @implementation ISSTCommonCell
-@synthesize time,title,content;
+@synthesize time,title,content,imageView;
 - (void)awakeFromNib
 {
     // Initialization code

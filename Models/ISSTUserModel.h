@@ -41,4 +41,6 @@ typedef   enum Gender
 @property (nonatomic,copy)  NSString    *className;
 @property (nonatomic,copy)  NSString    *majorName;
 
+@property (nonatomic,copy)NSString      *password;
+
 @end

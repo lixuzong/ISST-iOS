@@ -49,30 +49,31 @@
     
     //http://yplan.cloudapp.net:8080/isst//users/validation?name=21351110&password=111111    name=%@&password=%@
     NSString *mainUrl = @"http://www.cst.zju.edu.cn/isst/";
-//    NSString *mainUrl = @"http://yplan.cloudapp.net:8080/isst/";
     NSString *strUrl= [NSString stringWithFormat:@"%@%@",mainUrl,subUrl];
- 
-        
-    NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
-   // NSURL *url=[NSURL URLWithString:[strUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    if ([method isEqualToString:@"GET"]) {
+    
+    //NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
+    // NSURL *url=[NSURL URLWithString:[strUrl stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    if ([method isEqualToString:@"GET"]) {    //不带参数
+        NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
         
         //NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                               cachePolicy:NSURLRequestReturnCacheDataElseLoad
-                                                           timeoutInterval:6];
+                                                               cachePolicy:NSURLRequestReloadIgnoringLocalCacheData //不考虑缓存，直接下载
+                                                           timeoutInterval:20];
         if (cookie!=nil) {
+            NSLog(@"***********cookie****************");
             NSLog(@"1234");
            // [request setValue:USERAGENT forHTTPHeaderField:@"User-Agent"];
         
             [request setValue:(NSString*)cookie      forHTTPHeaderField:@"Set-Cookie"];
             // [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
         }
-
+       
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate];
         if (connection) {
             NSLog(@"连接成功");
-//            
+            
 //            NSURLResponse *response;
 //            
 //            NSData *myReturn =[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
@@ -84,19 +85,32 @@
 //                //  cookie =[[NSString alloc] initWithString: [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0]];
 //                cookie = [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0];
 //            }
-         //   NSLog(@"cookie = %@",cookie);
-            //     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:self.cookie];
-            
-          //  NSString *strRet = [[NSString alloc] initWithData:myReturn encoding:NSASCIIStringEncoding];
-          //  NSLog(@"strRet%@",strRet);
+//            NSLog(@"cookie = %@",cookie);
+//                 [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:self.cookie];
+//            
+//            NSString *strRet = [[NSString alloc] initWithData:myReturn encoding:NSASCIIStringEncoding];
+//            NSLog(@"strRet%@",strRet);
 
             
         }
         
         
-    } else if([method isEqualToString:@"PUT"]) {
+    } else if([method isEqualToString:@"GET2"]) {   //需要参数的函数就使用“GET2”（参数在info中）  (其实也可以在之前的api中将info和subUrl拼接在一起然后传过来)
+        strUrl= [NSString stringWithFormat:@"%@%@?%@",mainUrl,subUrl,info];
+        NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                               cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
+                                                           timeoutInterval:6];
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate];
+        if(connection){
+            NSLog(@"连接成功");
+
+        }
         
-    } else if([method isEqualToString:@"POST"]) {
+    }else if([method isEqualToString:@"PUT"]) {
+        
+    }  else if([method isEqualToString:@"POST"]) {
+        NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
         NSData *data = [info dataUsingEncoding:NSUTF8StringEncoding];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                                cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData

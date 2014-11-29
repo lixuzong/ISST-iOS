@@ -41,6 +41,15 @@ static NSString *CellTableIdentifier=@"ISSTActivityCell";
 static int  loadPage = 1;
 
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
 -(BOOL)isList
 {
     return YES;
@@ -49,6 +58,7 @@ static int  loadPage = 1;
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     userInfo = [AppCache getCache];
     activitiesArrayTableView = (UITableView *)([self.view viewWithTag:50]);
     activitiesArrayTableView.delegate = self;
@@ -62,7 +72,7 @@ static int  loadPage = 1;
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    [super viewDidLoad];
+    //[super viewDidLoad];
     
    
     
@@ -117,7 +127,7 @@ static int  loadPage = 1;
     }
     else
     {
-        NSLog(@"111111111111111111111111111111111111111111111111111111111");
+//        NSLog(@"111111111111111111111111111111111111111111111111111111111");
         _refreshLoading = YES;
         loadPage = 1;
         [self.activityApi requestSameCityActivitiesLists:userInfo.cityId andpage:loadPage andPageSize:20 andKeywords:@"string"];
@@ -145,7 +155,7 @@ static int  loadPage = 1;
 
 -(BOOL)canGetMoreData
 {
-    return NO;
+    return YES;
 }
 
 
@@ -236,6 +246,17 @@ static int  loadPage = 1;
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell ==_getMoreCell) {
+        [self requestGetMore];
+        return;
+    }
+    else if  (cell == _emptyCell)
+    {
+        [self triggerRefresh];
+        return;
+    }
 
     ISSTSameCityActivityDetailViewController *activityDitailView = [[ISSTSameCityActivityDetailViewController alloc]initWithNibName:@"ISSTSameCityActivityDetailViewController" bundle:nil];
     activityDitailView.navigationItem.title =@"活动详情";
@@ -313,18 +334,18 @@ static int  loadPage = 1;
 //    [alert show];
     
     
-    _refreshHeaderView.lastRefreshDate = [NSDate date];
+//    _refreshHeaderView.lastRefreshDate = [NSDate date];
+//    
+//    if (loadPage == 1) {
+//        _refreshLoading = NO;
+//        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:activitiesArrayTableView];
+//    }
+//    else
+//    {
+//        [_getMoreCell setInfoText:@"加载更多失败，点击查看更多" forState:MoreCellState_Information];
+//    }
     
-    if (loadPage == 1) {
-        _refreshLoading = NO;
-        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:activitiesArrayTableView];
-    }
-    else
-    {
-        [_getMoreCell setInfoText:@"加载更多失败，点击查看更多" forState:MoreCellState_Information];
-    }
-    
-    UIAlertView  *alertView = [[UIAlertView alloc]initWithTitle:@"错误" message:@"查看网络连接" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
+    UIAlertView  *alertView = [[UIAlertView alloc]initWithTitle:@"错误" message:@"网络错误" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
     [alertView show];
     
     

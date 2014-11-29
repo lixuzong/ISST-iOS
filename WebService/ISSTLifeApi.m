@@ -30,7 +30,7 @@ const    static  int   EXPERIENCE  =5;
         datas = [[NSMutableData alloc]init];
         NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
         NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/campus"];
-        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+        [super requestWithSuburl:subUrlString Method:@"GET2" Delegate:self Info:info MD5Dictionary:nil];
       }
       else
       {
@@ -66,7 +66,7 @@ const    static  int   EXPERIENCE  =5;
     datas = [[NSMutableData alloc]init];
     NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
     NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/studying"];
-    [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+    [super requestWithSuburl:subUrlString Method:@"GET2" Delegate:self Info:info MD5Dictionary:nil];
     
 }
 
@@ -79,7 +79,7 @@ const    static  int   EXPERIENCE  =5;
         datas = [[NSMutableData alloc]init];
         NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
         NSString *subUrlString = [NSString stringWithFormat:@"api/archives/categories/experience"];
-        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+        [super requestWithSuburl:subUrlString Method:@"GET2" Delegate:self Info:info MD5Dictionary:nil];
     }
     else
     {

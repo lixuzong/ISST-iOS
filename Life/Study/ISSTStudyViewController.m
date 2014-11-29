@@ -35,22 +35,22 @@
 @synthesize studyDetailView;
 static NSString *CellTableIdentifier=@"ISSTStudyTableViewCell";
 //页面标记
-static int  loadPage = 0;
+static int  loadPage = 1;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"user.png"];
-    }
-    return self;
-}
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"user.png"];
+//    }
+//    return self;
+//}
 
 
 - (void)viewDidLoad
 {
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-	self.view.backgroundColor = [UIColor lightGrayColor];
+	//self.view.backgroundColor = [UIColor lightGrayColor];
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -128,7 +128,7 @@ static int  loadPage = 0;
     else
     {
         _refreshLoading = YES;
-        loadPage =0;
+        loadPage =1;
   [self.studyApi requestStudyingLists:loadPage andPageSize:20 andKeywords:@"string"];
     }
     
@@ -283,7 +283,7 @@ static int  loadPage = 0;
     
     _refreshHeaderView.lastRefreshDate = [NSDate date];
     
-    if (loadPage == 0) {
+    if (loadPage == 1) {
         studyArray = [[NSMutableArray alloc]initWithArray:backToControllerData];
         _refreshLoading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:studyArrayTableView];
@@ -314,7 +314,7 @@ static int  loadPage = 0;
 
     _refreshHeaderView.lastRefreshDate = [NSDate date];
     
-    if (loadPage == 0) {
+    if (loadPage == 1) {
         _refreshLoading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:studyArrayTableView];
     }

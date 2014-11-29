@@ -51,7 +51,7 @@ const static int SANECITIES_ACTIVITY_CANCEL_REGISTRATION = 5;
         datas = [[NSMutableData alloc]init];
         NSString *info = [NSString stringWithFormat:@"page=%d&pageSize=%d",page,pageSize];
         NSString *subUrlString = [NSString stringWithFormat:@"api/cities/%d/activities",cityId];
-        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+        [super requestWithSuburl:subUrlString Method:@"GET2" Delegate:self Info:info MD5Dictionary:nil];
     }
     else
     {

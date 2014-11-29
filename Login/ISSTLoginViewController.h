@@ -7,11 +7,13 @@
 //
 
 #import "ISSTWebApiDelegate.h"
+#import "passValue.h"
 
-@interface ISSTLoginViewController : UIViewController<ISSTWebApiDelegate>
+@interface ISSTLoginViewController : UIViewController<ISSTWebApiDelegate,UITextFieldDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *nameField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
+@property (retain,nonatomic) passValue *passvalue;
 - (IBAction)login:(id)sender;
 
 @end

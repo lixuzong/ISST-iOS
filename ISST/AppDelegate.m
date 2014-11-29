@@ -14,6 +14,13 @@
 @implementation AppDelegate
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
+
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
@@ -22,7 +29,7 @@
 
     
      ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
-    loginViewController.title = @"iSST";
+    loginViewController.title = @"ISST";
     _navigationController = [[[UINavigationController alloc] initWithRootViewController:loginViewController] autorelease];
 
     
@@ -32,8 +39,12 @@
     _window.rootViewController = _navigationController ;
     
     [_window makeKeyAndVisible];
-  
+    
+    
+    
     return YES;
+    
+    
 }
 
 
@@ -70,5 +81,6 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 @end

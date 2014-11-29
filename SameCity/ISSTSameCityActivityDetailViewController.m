@@ -30,6 +30,7 @@
 
 @implementation ISSTSameCityActivityDetailViewController
 @synthesize cityId,activityId,pictureView,title,releaseUserLabel,startTime,endTime,location,content,participatedButton,userModel,requestApi,activityModel,activityStatus;
+@synthesize webView;
 const static int SAMECITY_ACTIVITY_DETAIL   = 1;
 const static int SAMECITY_PATICIPATE        = 2;
 const static int SAMECITY_CANCEL_PATICIPATE = 3;
@@ -56,8 +57,12 @@ int method;
     method = SAMECITY_ACTIVITY_DETAIL;
     [requestApi requestSameCityDetailInfo:cityId andActivityId:activityId];
     
+    webView.scalesPageToFit =YES;
+    webView.delegate=self;
+    
     // Do any additional setup after loading the view from its nib.
 }
+
 -(void)firstLoadParticipatedButton
 {
     if (activityModel.participated)
@@ -131,17 +136,22 @@ int method;
         }
     }
 }
+
+
 -(void)layoutDetailView
 {
-    if (activityModel.picture != nil&&[activityModel.picture isKindOfClass:[NSString class]] ) {
-    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:activityModel.picture]];
-    pictureView.image = [UIImage imageWithData:data];
-    }
+//    if (activityModel.picture != nil&&[activityModel.picture isKindOfClass:[NSString class]] ) {
+//    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:activityModel.picture]];
+//    pictureView.image = [UIImage imageWithData:data];
+//    }
     
     title.text = activityModel.title;
+    title.numberOfLines =0;
     content.text = activityModel.content;
-    releaseUserLabel.text = [NSString stringWithFormat:@"发布者：%@",activityModel.releaseUserModel.userName];
+    //releaseUserLabel.text = [NSString stringWithFormat:@"发布者：%@",activityModel.releaseUserModel.userName];
+    releaseUserLabel.text = [NSString stringWithFormat:@"发布者：管理员"]; //测试阶段先写死
     startTime.text = activityModel.startTime;
+    [webView loadHTMLString:activityModel.content baseURL:nil];//加载html源代码
     endTime.text = activityModel.expireTime;
     location.text = activityModel.location;
     [self firstLoadParticipatedButton];
@@ -149,6 +159,23 @@ int method;
     
 }
 
+#pragma mark -
+#pragma mark  WebViewDelegate Methods
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    // [activityIndicatorView startAnimating] ;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    //[activityIndicatorView stopAnimating];
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    UIAlertView *alterview = [[UIAlertView alloc] initWithTitle:@"" message:[error localizedDescription]  delegate:nil cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+    [alterview show];
+}
 
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods

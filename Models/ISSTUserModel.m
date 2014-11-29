@@ -14,6 +14,8 @@
 
 @synthesize  className,majorName,cityName;
 
+@synthesize  password; //test
+
 -(void)setQq:(NSString *)q
 {
     [q retain];
@@ -143,6 +145,9 @@
         className = nil;
         majorName = nil;
         
+        password = nil; //test
+        
+        
     }
     
     return self;
@@ -150,10 +155,12 @@
 
 - (id)initWithCoder:(NSCoder *)decoder {
     if (self = [super init]) {
-        
         userId      = ((NSNumber*)[decoder decodeObjectForKey:@"userId"]).intValue  ;
         name        = [[decoder decodeObjectForKey:@"name"] retain];
         userName    = [[decoder decodeObjectForKey:@"userName"] retain];
+        password    = [[decoder decodeObjectForKey:@"password"] retain];
+        NSLog(@"%@",userName);
+        NSLog(@"%@",password);
         gender      = ((NSNumber*)[decoder decodeObjectForKey:@"gender"]).intValue==1?MALE:FAMALE;
         grade       = ((NSNumber*)[decoder decodeObjectForKey:@"gradeId"]).intValue ;
         classId     = ((NSNumber*)[decoder decodeObjectForKey:@"classId"]).intValue ;
@@ -186,6 +193,7 @@
     [encoder encodeObject:[NSNumber numberWithInt:self.userId]  forKey:@"userId"];
     [encoder encodeObject:self.name forKey:@"name"];
     [encoder encodeObject:self.userName forKey:@"userName"];
+    [encoder encodeObject:self.password forKey:@"password"]; //test
     [encoder encodeObject:[NSNumber numberWithInt:(self.gender==MALE?1:2)] forKey:@"gender"];
     [encoder encodeObject:[NSNumber numberWithInt:self.grade] forKey:@"gradeId"];
     [encoder encodeObject:[NSNumber numberWithInt:self.classId] forKey:@"classId"];
@@ -239,6 +247,9 @@
     
     [majorName release];
     majorName = nil;
+    
+    [password release]; //test
+    password = nil;
     
     [super dealloc];
 }

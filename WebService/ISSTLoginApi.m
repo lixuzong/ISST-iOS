@@ -38,6 +38,7 @@ const    static  int   REQUESTUSERINFO= 3;
         methodId = REQUESTLOGIN;
         datas = [[NSMutableData alloc]init];
         //MD5 secret
+        NSLog(@"%@",password);
         NSDictionary *md5Dic =  @{@"username": name,@"password":password};
         long long timestamp = [ISSTMD5 getTimestamp];
         NSString *token= [ISSTMD5 tokenWithDic:md5Dic andTimestamp:timestamp];
@@ -45,6 +46,7 @@ const    static  int   REQUESTUSERINFO= 3;
         
         NSString *info = [NSString stringWithFormat:@"username=%@&password=%@&token=%@&timestamp=%llu&longitude=121.00&latitude=30.01",name,password,token,timestamp];
         NSString *subUrlString = [NSString stringWithFormat:@"api/login"];
+        NSLog(@"%@",subUrlString);
         [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:info MD5Dictionary:nil];
     }//network connect
     else
@@ -134,7 +136,7 @@ const    static  int   REQUESTUSERINFO= 3;
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    [datas appendData:data];
+    [datas appendData:data];//add data from server
 }
 //请求完成
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection

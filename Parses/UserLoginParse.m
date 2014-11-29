@@ -57,10 +57,13 @@
     user.privateCompany = [[userInfo objectForKey:@"privateCompany"]boolValue];
     user.gender     = ([[userInfo objectForKey:@"gender"]intValue] == 1)? MALE:FAMALE;//枚举
    
-     user.className       = [userInfo objectForKey:@"className"];
- user.cityName       = [userInfo objectForKey:@"cityName"];
- user.majorName       = [userInfo objectForKey:@"major"];
+    user.className       = [userInfo objectForKey:@"className"];
+    user.cityName       = [userInfo objectForKey:@"cityName"];
+    user.majorName       = [userInfo objectForKey:@"major"];
+    user.password  = [userInfo objectForKey:@"password"];
     NSLog(@"gender=%d",user.gender);
+    NSLog(@"%@",user.password);
+    NSLog(@"你是我最心爱的姑娘");
     return user ;
 }
 

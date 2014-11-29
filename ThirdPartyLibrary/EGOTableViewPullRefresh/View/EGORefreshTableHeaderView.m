@@ -129,8 +129,7 @@
 
 @implementation EGORefreshTableHeaderView
 
-@synthesize delegate=_delegate;
-
+ 
 
 - (id)initializeWithFrame:(CGRect)frame arrowImageName:(NSString *)arrow textColor:(UIColor *)textColor  {
     {
@@ -284,10 +283,12 @@
 }
 
 - (void)egoRefreshScrollViewDidScroll:(UIScrollView *)scrollView {
-    
-    CGFloat offsetY = scrollView.contentOffset.y + self.scrollViewInset.top;
+    // 下拉刷新在scroll的时候的显示
+    CGFloat offsetY = scrollView.contentOffset.y;
+    //+ self.scrollViewInset.top;//当前的offset
     
     CGFloat distance = -offsetY;
+    NSLog(@"%f",distance);
     
     self.hidden = ((int)distance) <= 0;
     
@@ -306,9 +307,10 @@
 			_loading = [_delegate egoRefreshTableHeaderDataSourceIsLoading:self];
 		}
         
-        
+        //SCOLL_SCALE_START_Y 38 //REFRESH_OFFSETY_THRESHOLD 55
         if (distance > SCOLL_SCALE_START_Y && distance < REFRESH_OFFSETY_THRESHOLD + DBL_EPSILON)
         {
+            NSLog(@"下拉控件蓝色方块的动画显示");
             CGFloat deltaDistance = (distance - SCOLL_SCALE_START_Y);
             [_scrollScaleView scaleRaletaiveDeltaDistance:deltaDistance];
         }
@@ -328,32 +330,35 @@
 }
 
 - (void)egoRefreshScrollViewDidEndDragging:(UIScrollView *)scrollView {
-	
+	//下拉刷新在松开手后的显示及操作
 	BOOL _loading = NO;
 	if ([_delegate respondsToSelector:@selector(egoRefreshTableHeaderDataSourceIsLoading:)]) {
+        NSLog(@"%@",self);
 		_loading = [_delegate egoRefreshTableHeaderDataSourceIsLoading:self];
 	}
-	
+	//REFRESH_OFFSETY_THRESHOLD 55 放开手后刷新下拉控件刷新数据
 	if (scrollView.contentOffset.y+self.scrollViewInset.top <= - REFRESH_OFFSETY_THRESHOLD && !_loading) {
-		
+        NSLog(@"结束滑动后，loading为%d",_loading);
+       
 		if ([_delegate respondsToSelector:@selector(egoRefreshTableHeaderDidTriggerRefresh:)]) {
 			[_delegate egoRefreshTableHeaderDidTriggerRefresh:self];
 		}
 		
-		[self setState:EGOOPullRefreshLoading];
+		[self setState:EGOOPullRefreshLoading]; //设置文字为“加载中”
         
         UIEdgeInsets insets = self.scrollViewInset;
         insets.top = insets.top + 60;
         
 		[UIView beginAnimations:nil context:NULL];
-		[UIView setAnimationDuration:0.2];
-		scrollView.contentInset = insets;
+		[UIView setAnimationDuration:0.1];
+		scrollView.contentInset = insets; //使内容和scrollview的顶边相距60
 		[UIView commitAnimations];
 	}
 }
 
 - (void)egoRefreshScrollViewDataSourceDidFinishedLoading:(UIScrollView *)scrollView {	
-	
+	//恢复原来的画面，隐藏下拉控件
+    NSLog(@"恢复原来的画面，隐藏下拉控件");
 	[UIView beginAnimations:nil context:NULL];
 	[UIView setAnimationDuration:0.3];
 	[scrollView setContentInset:self.scrollViewInset];

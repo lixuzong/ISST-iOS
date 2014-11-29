@@ -15,6 +15,7 @@
 #import "ISSTMyExperienceViewController.h"
 #import "AppCache.h"
 #import "ISSTUserModel.h"
+#import "passValue.h"
 
 @interface ISSTUserCenterViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *userCenterCatalogueTableView;
@@ -25,6 +26,7 @@
 @property (nonatomic,strong)ISSTClassModel *classModel;
 @property (nonatomic,strong)NSMutableArray *classArray;
 @property (nonatomic,strong)NSMutableArray *majorArray;
+
 - (void)signOut;
 - (void)go2UserInfoViewController:(NSIndexPath *)indexPath tableView:(UITableView *)tableView;
 @end
@@ -40,11 +42,13 @@
 @synthesize classArray;
 @synthesize majorArray;
 
+
 int method;
 
 static NSString *CellTableIdentifier=@"ISSTUserCenterViewCell";
 
 NSArray *titleForRowArray= nil;
+NSArray *imageForRowArray= nil;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -62,11 +66,19 @@ NSArray *titleForRowArray= nil;
     titleForRowArray =[NSArray  arrayWithObjects:
                         [NSArray  arrayWithObjects:@"用户数据",nil],
                        [NSArray  arrayWithObjects:@"学生事务",nil],
-                       [NSArray arrayWithObjects:@"任务中心",@"我的内推",@"我的经验",nil],
+                       [NSArray arrayWithObjects:@"任务中心",@"我的内推",@"我的经验",@"重要信息",nil],
+                       //[NSArray arrayWithObjects:@"任务中心",@"我的内推",@"我的经验",nil],
                        [NSArray  arrayWithObjects:@"活动管理",@"附近的人",nil],
                        [NSArray  arrayWithObjects:@"注销",nil],
                        nil];
 
+    imageForRowArray =[NSArray  arrayWithObjects:
+                       [NSArray  arrayWithObjects:@"个人中心icon.png",nil],
+                       [NSArray  arrayWithObjects:@"实习icon.png",nil],
+                       [NSArray arrayWithObjects:@"软院百科icon.png",@"内推icon.png",@"经验交流icon.png",@"经验交流icon.png",nil],
+                       [NSArray  arrayWithObjects:@"在校活动icon.png",@"通讯录icon.png",nil],
+                       [NSArray  arrayWithObjects:@"便捷服务icon.png",nil],
+                       nil];
     [super viewDidLoad];
     
 }
@@ -120,6 +132,10 @@ NSArray *titleForRowArray= nil;
 - (void)signOut
 {
     ISSTLoginViewController *slider =[[ISSTLoginViewController alloc]init];
+    //passValue *passValue = [[passalloc] init];
+    passValue *passvalue = [[passValue alloc] init];
+    passvalue.signOutFlag = @"1";
+    slider.passvalue=passvalue;
     [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
     [self.navigationController pushViewController:slider animated: NO];
 }
@@ -167,6 +183,32 @@ NSArray *titleForRowArray= nil;
        ISSTMyExperienceViewController *controller = [[ISSTMyExperienceViewController alloc] init];
        [self.navigationController pushViewController:controller  animated:YES];
    }
+   else if (indexPath.row == 0 &&indexPath.section ==1){ //学生事务板块,还没做 0.0
+       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
+       alert.delegate = self;
+       [alert show];
+   }
+   else if (indexPath.row ==1 && indexPath.section ==2){ //我的内推板块，还没做 0.0
+       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
+       alert.delegate = self;
+       [alert show];
+   }
+   else if (indexPath.row ==3 && indexPath.section ==2){ //重要信息板块，还没做 0.0
+       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
+       alert.delegate = self;
+       [alert show];
+   }
+   else if (indexPath.row == 0 && indexPath.section==3){ //活动管理板块，还没做 0.0
+       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
+       alert.delegate = self;
+       [alert show];
+   }
+   else if (indexPath.row == 1 && indexPath.section==3){ //附近的人板块，还没做 0.0
+       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
+       alert.delegate = self;
+       [alert show];
+   }
+
     
     
 }
@@ -200,8 +242,9 @@ NSArray *titleForRowArray= nil;
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
         }
-
-        cell.imageView.image =[UIImage imageNamed:@"user.png"];
+        //cell.imageView.image =[UIImage imageNamed:@"user.png"];
+        cell.imageView.image =[UIImage imageNamed:imageForRowArray[indexPath.section][indexPath.row]];// 个人中心icon的获取
+        //NSLog(@“%d”，titleForRowArray[indexPath.section][indexPath.row]);
         cell.textLabel.text    =  titleForRowArray[indexPath.section][indexPath.row];
     }
     else

@@ -82,7 +82,8 @@
       [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent animated:NO];
     }
   
-    UIColor *bgColor = [UIColor colorWithRed:(50.0f/255.0f) green:(57.0f/255.0f) blue:(74.0f/255.0f) alpha:1.0f];
+   UIColor *bgColor = [UIColor colorWithRed:(50.0f/255.0f) green:(57.0f/255.0f) blue:(74.0f/255.0f) alpha:1.0f];
+    //UIColor *bgColor = [UIColor colorWithRed:(255.0f/255.0f) green:(255.0f/255.0f) blue:(255.0f/255.0f) alpha:1.0f];//设置成白色
     self.revealController = [[ISSTRevealViewController alloc]initWithNibName:nil bundle:nil];
     self.revealController.view.backgroundColor = bgColor;
     
@@ -132,28 +133,28 @@
     
     NSArray *cellInfos = @[
                            @[
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"软院快讯", @"")},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey:NSLocalizedString(@"软院百科", @"")},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"在校活动", @"")},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"便捷服务", @"")},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"学习园地", @"")}
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"ruanyuankuaixun.png"], kSidebarCellTextKey: NSLocalizedString(@"软院快讯", @"")},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"ruanyuanbaike.png"], kSidebarCellTextKey:NSLocalizedString(@"软院百科", @"")},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"zaixiaohuodong.png"], kSidebarCellTextKey: NSLocalizedString(@"在校活动", @"")},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"bianjiefuwu.png"], kSidebarCellTextKey: NSLocalizedString(@"便捷服务", @"")},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"xuexiyuandi.png"], kSidebarCellTextKey: NSLocalizedString(@"学习园地", @"")}
                                ],
                            @[
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"实习", @"")},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"就业", @"")},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"内推", @"")},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"经验交流", @"")}
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"shixi.png"], kSidebarCellTextKey: NSLocalizedString(@"实习", @"")},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"jiuye.png"], kSidebarCellTextKey: NSLocalizedString(@"就业", @"")},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"neitui.png"], kSidebarCellTextKey: NSLocalizedString(@"内推", @"")},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"jingyanjiaoliu.png"], kSidebarCellTextKey: NSLocalizedString(@"经验交流", @"")}
                                ],
                            @[
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"通讯录", @"")}
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"tongxunlu.png"], kSidebarCellTextKey: NSLocalizedString(@"通讯录", @"")}
                                ],
                            @[
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"城主", @"")},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"同城活动", @"")},
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"同城校友", @"")}
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"chengzhu.png"], kSidebarCellTextKey: NSLocalizedString(@"城主", @"")},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"tongchenghuodong.png"], kSidebarCellTextKey: NSLocalizedString(@"同城活动", @"")},
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"tongchengxiaoyou.png"], kSidebarCellTextKey: NSLocalizedString(@"同城校友", @"")}
                                ],
                            @[
-                               @{kSidebarCellImageKey: [UIImage imageNamed:@"user.png"], kSidebarCellTextKey: NSLocalizedString(@"个人中心", @"")}
+                               @{kSidebarCellImageKey: [UIImage imageNamed:@"gerenzhongxin.png"], kSidebarCellTextKey: NSLocalizedString(@"个人中心", @"")}
                             ]
                            ];
     

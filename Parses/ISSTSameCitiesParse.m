@@ -98,9 +98,9 @@
         [dateFormatter3 release];
     
         
-        NSDictionary *tmpDic = [[activityArray objectAtIndex:i] objectForKey:@"user"];
+//        NSDictionary *tmpDic = [[activityArray objectAtIndex:i] objectForKey:@"user"];
         
-        activityModel.userModel.userName = [tmpDic objectForKey:@"name"];
+        //activityModel.userModel.userName = [tmpDic objectForKey:@"name"];
        
         [tempArray addObject:activityModel];
     }
@@ -122,7 +122,7 @@
     tempModel.location = [activityDetail objectForKey:@"location"];
     tempModel.content = [activityDetail objectForKey:@"content"];
     tempModel.participated = [[activityDetail objectForKey:@"participated"] boolValue];
-    userInfo = [activityDetail objectForKey:@"user"];
+    //userInfo = [activityDetail objectForKey:@"user"];
     ISSTUserModel *user = [[[ISSTUserModel alloc] init] autorelease];
     user.userId = [[userInfo objectForKey:@"id"] intValue];
     user.userName = [userInfo objectForKey:@"name"];

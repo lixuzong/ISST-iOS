@@ -39,9 +39,12 @@
     self.newsApi = [[ISSTLifeApi alloc]init];
     self.newsApi.webApiDelegate =self;
     [newsApi requestDetailInfoWithId:newsId];
-    
-    webView.scalesPageToFit = YES;
+    CGRect webframe =webView.frame;
+    webframe.size.height=700;
+    webView.frame=webframe;
+  webView.scalesPageToFit = YES;
     webView.delegate = self;
+    
 
 }
 
@@ -87,6 +90,8 @@
      detailModel = (ISSTNewsDetailsModel*)backToControllerData;
     }
     self.title.text=detailModel.title;
+//    self.title.lineBreakMode = UILineBreakModeCharacterWrap;
+//    self.title.numberOfLines= 0;
     self.time.text=[NSString stringWithFormat:@"发布时间：%@",detailModel.updatedAt];
     int userId=[[detailModel.userModel objectForKey:@"id"]intValue];
     if(userId!=0)
@@ -95,9 +100,27 @@
         self.userInfo.text=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
     }
     else self.userInfo.text=@"发布者：管理员";
-    [webView loadHTMLString:detailModel.content baseURL:nil];//加载html源代码
+    float fontSize=42;
+    float imgwidth=320;
+    //webView.scrollView.contentSize=CGSizeMake(320, 2000);
+    NSString *htmlText=detailModel.content;
+    
+    
+    NSString *jsString = [NSString stringWithFormat:@"<html> \n"
+                          "<head> \n"
+                          "<style type=\"text/css\"> \n"
+                          "body {font-size: %f}"
+                        // "img {width:960;}"
+                         
+                          "</style> \n"
+                          "</head> \n"
+                          "<body>%@</body> \n"
+                          "</html>", fontSize,htmlText];
+    
+    [webView loadHTMLString:jsString baseURL:nil];//加载html源代码
     NSLog(@"self=%@ \n htmls=%@",self,backToControllerData);
     NSLog(@"self=%@\n content=%@\n title=%@ \ndescription=%@",self,detailModel.content,detailModel.title,detailModel.description);
+    NSLog(@"%f",webView.frame.size.height);
 }
 
 - (void)requestDataOnFail:(NSString *)error

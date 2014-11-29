@@ -8,6 +8,7 @@
 
 #import "ISSTPushedViewController.h"
 #import "ISSTWebApiDelegate.h"
-@interface ISSTActivityDetailViewController : ISSTPushedViewController<ISSTWebApiDelegate>
+@interface ISSTActivityDetailViewController : ISSTPushedViewController<ISSTWebApiDelegate,UIWebViewDelegate>
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property(nonatomic,assign)int activityId;
 @end

@@ -12,6 +12,8 @@
 #import "ISSTPushedViewController.h"
 #import "ISSTJobsApi.h"
 #import "ISSTJobsModel.h"
+#import "MJRefresh.h"
+
 @interface ISSTEmploymentViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *employTableView;
 @property (nonatomic,strong)ISSTJobsApi  *employmentApi;
@@ -26,6 +28,9 @@
 @synthesize employmentArray;
 @synthesize employTableView;
 static NSString *CellTableIdentifier=@"ISSTCommonCell";
+
+//页面标记
+static int  loadPage = 1;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -50,20 +55,106 @@ static NSString *CellTableIdentifier=@"ISSTCommonCell";
     
     self.employmentApi.webApiDelegate=self;
     // self.newsArray =[[NSMutableArray alloc]init];
-    //UITableView *tableView=(id)[self.view viewWithTag:99];
+    UITableView *tableView=(id)[self.view viewWithTag:99];
     employTableView.rowHeight=90;
     UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [employTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
     
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    [self.employmentApi requestEmploymentLists:1 andPageSize:20 andKeywords:@"string"];
+    //[self.employmentApi requestEmploymentLists:1 andPageSize:20 andKeywords:@"string"];
+    
+    if (_refreshHeaderView == nil ) {
+        Class refreshHeaderViewClazz = NSClassFromString(@"EGORefreshTableHeaderView");
+        _refreshHeaderView = [[refreshHeaderViewClazz alloc]initWithFrame:CGRectMake(0, -tableView.bounds.size.height, tableView.frame.size.width, tableView.bounds.size.height)];
+        
+    }
+    _refreshHeaderView.delegate= self;
+    [tableView addSubview:_refreshHeaderView];
+    
+    self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    
+    [self    triggerRefresh];
+    
+
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(BOOL)isList
+{
+    return YES;
+}
+
+-(void)triggerRefresh
+{
+    if (_refreshLoading) {
+        return;
+    }
+    
+    CGPoint contentOffset = CGPointMake(0, -55-10-_refreshHeaderView.scrollViewInset.top);
+    employTableView.contentOffset = contentOffset;
+    NSLog(@"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&=%f",employTableView.contentOffset.y);
+    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:employTableView];
+    //[self requestRefresh];
+    
+    //设置分割线
+    employTableView.separatorColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1];
+    if([employTableView respondsToSelector:@selector(separatorInset)])
+    {
+        employTableView.separatorInset = UIEdgeInsetsZero;
+    }
+    employTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+}
+
+
+-(void)requestRefresh
+{
+    if (NO)  //self.newsApi.isLoadingData;
+    {
+        
+    }
+    else
+    {
+        _refreshLoading = YES;
+        loadPage =1;
+        [self.employmentApi requestEmploymentLists:loadPage andPageSize:20 andKeywords:@"string"];
+    }
+    
+    
+}
+
+-(void)requestGetMore
+{
+    if (NO)
+    {
+        
+    }
+    else  if (!_refreshLoading)
+    {
+        ++loadPage;
+        _refreshLoading = YES;
+        NSLog(@"requestGetMore ===================================loadPage=%d  " ,loadPage);
+        [self.employmentApi requestEmploymentLists:loadPage andPageSize:20 andKeywords:@"string"];
+        [_getMoreCell setInfoText:@"正在加载更多..." forState:MoreCellState_Loading];
+    }
+}
+
+-(BOOL)canGetMoreData
+{
+    return YES;
+}
+
+-(void)dealloc
+{
+    employTableView.dataSource = nil;
+    employTableView.delegate = nil;
+    employTableView = nil;
 }
 
 
@@ -78,11 +169,45 @@ static NSString *CellTableIdentifier=@"ISSTCommonCell";
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return employmentArray.count;
+    NSArray *listData = employmentArray;
+    int count = [listData count];
+    if (count == 0)
+    {
+        if (_refreshLoading)
+        {
+            
+        }
+        else if (!_refreshLoading)
+        {
+            count ++;
+        }
+    }
+    else if([self canGetMoreData])
+    {
+        count ++;
+    }
+    NSLog(@"===========================================%d",count);
+    return count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    int count = [employmentArray count];
+    NSLog(@"================%d",indexPath.row);
+    if (count ==0)
+    {
+        if (!_refreshLoading)
+        {
+            _emptyCell.state = EmptyCellState_Tips;
+            
+        }
+        return _emptyCell;
+    }
+    else if ([self canGetMoreData]&&indexPath.row == [employmentArray count])
+    {
+        [_getMoreCell setInfoText:@"查看更多" forState:MoreCellState_Information];
+        return _getMoreCell;
+    }
     
     employmentModel =[[ISSTJobsModel alloc]init];
     employmentModel = [employmentArray objectAtIndex:indexPath.row];
@@ -100,6 +225,17 @@ static NSString *CellTableIdentifier=@"ISSTCommonCell";
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    if (cell ==_getMoreCell) {
+        [self requestGetMore];
+        return;
+    }
+    else if  (cell == _emptyCell)
+    {
+        [self triggerRefresh];
+        return;
+    }
+    
     self.detailView=[[ISSTEmploymentDetailViewController alloc]initWithNibName:@"ISSTEmploymentDetailViewController" bundle:nil];
     self.detailView.navigationItem.title =@"就业信息详情";
  //  ISSTJobsModel *tempEmploymentModel=[[ISSTJobsModel alloc]init];
@@ -110,15 +246,49 @@ static NSString *CellTableIdentifier=@"ISSTCommonCell";
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSArray *listDatas = employmentArray;
+    int count = [listDatas count];
+    
+    if (count==0)
+    {
+        if (_refreshLoading)
+        {
+        }
+        else if (!_refreshLoading)
+        {
+            int height = tableView.bounds.size.height;
+            height -= tableView.tableHeaderView.bounds.size.height;
+            height -= [self.topLayoutGuide length];
+            return height;
+        }
+    }
+    if ([self canGetMoreData]&&indexPath.row ==[employmentArray count]) {
+        return 45;
+    }
+    return 100;
+    
+}
+
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
-    if ([employmentArray count]) {
-        employmentArray = [[NSMutableArray alloc]init];
+    _refreshHeaderView.lastRefreshDate = [NSDate date];
+    
+    if (loadPage == 1) {
+        employmentArray = [[NSMutableArray alloc]initWithArray:backToControllerData];
+        _refreshLoading = NO;
+        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:employTableView];
     }
-    employmentArray = (NSMutableArray *)backToControllerData;
-    //  NSLog(@"count =%d ,newsArray = %@",[ExperenceArray count],ExperenceArray);
+    else
+    {
+        _refreshLoading = NO;
+        [employmentArray addObjectsFromArray:backToControllerData];
+        [_getMoreCell setInfoText:@"查看更多" forState:MoreCellState_Information];
+    }
+    
     [employTableView reloadData];
 }
 

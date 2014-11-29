@@ -10,6 +10,7 @@
 #import "ISSTLifeApi.h"
 #import "ISSTCommonCell.h"
 #import "ISSTCampusNewsModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface ISSTNewsViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *newsArrayTableView;
@@ -35,7 +36,7 @@
 static NSString *CellTableIdentifier=@"ISSTCommonCell";
 
 //页面标记
-static int  loadPage = 0;
+static int  loadPage = 1;
 
 
 -(BOOL)isList
@@ -108,7 +109,7 @@ static int  loadPage = 0;
     [_refreshHeaderView egoRefreshScrollViewDidEndDragging:newsArrayTableView];
     //[self requestRefresh];
     
-    //设置分割线
+    //设置分割线,这段代码删了也行
     newsArrayTableView.separatorColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1];
     if([newsArrayTableView respondsToSelector:@selector(separatorInset)])
     {
@@ -129,7 +130,7 @@ static int  loadPage = 0;
     {
         NSLog(@"111111111111111111111111111111111111111111111111111111111");
         _refreshLoading = YES;
-        loadPage =0;
+        loadPage =1;
         [self.newsApi requestCampusNewsLists:loadPage andPageSize:20 andKeywords:@"string"];
     }
     
@@ -140,7 +141,7 @@ static int  loadPage = 0;
 {
     if (NO)
     {
-        
+         //[_getMoreCell setInfoText:@"111111..." forState:MoreCellState_Loading];
     }
     else  if (!_refreshLoading)
     {
@@ -213,6 +214,7 @@ static int  loadPage = 0;
         if (!_refreshLoading)
         {
             _emptyCell.state = EmptyCellState_Tips;
+            //[_getMoreCell setInfoText:@"已加载完毕" forState:MoreCellState_Information];
             
         }
         return _emptyCell;
@@ -220,6 +222,7 @@ static int  loadPage = 0;
     else if ([self canGetMoreData]&&indexPath.row == [newsArray count])
     {
         [_getMoreCell setInfoText:@"查看更多" forState:MoreCellState_Information];
+        //[_getMoreCell setInfoText:@"111111" forState:MoreCellState_Information];
         return _getMoreCell;
     }
     
@@ -231,7 +234,10 @@ static int  loadPage = 0;
     if (cell == nil) {
         cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
-
+    
+    //[cell.image sd_setImageWithURL:[listdata objectAtIndex:row]];
+    //cell.imageView
+    [cell.imageView sd_setImageWithURL:@"http://www.fzlol.com/upimg/allimg/120819/2021144O91.jpg"];
     cell.title.text     =   newsModel.title;
     cell.time.text      =   newsModel.updatedAt;
     cell.content.text   =   newsModel.description;
@@ -253,9 +259,11 @@ static int  loadPage = 0;
     self.newsDetailView=[[ISSTNewsDetailViewController alloc]initWithNibName:@"ISSTNewsDetailViewController" bundle:nil];
     self.newsDetailView.navigationItem.title =@"详细信息";
   //  ISSTCampusNewsModel *tempNewsModel=[[ISSTCampusNewsModel alloc]init];
-     ISSTCampusNewsModel * tempNewsModel= [newsArray objectAtIndex:indexPath.row];
+    
+    ISSTCampusNewsModel * tempNewsModel= [newsArray objectAtIndex:indexPath.row];
     self.newsDetailView.newsId=tempNewsModel.newsId;
-   // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
+   
+    // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
     [self.navigationController pushViewController:self.newsDetailView animated: NO];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -292,7 +300,7 @@ static int  loadPage = 0;
 {
     _refreshHeaderView.lastRefreshDate = [NSDate date];
     
-    if (loadPage == 0) {
+    if (loadPage == 1) {
         newsArray = [[NSMutableArray alloc]initWithArray:backToControllerData];
         _refreshLoading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:newsArrayTableView];
@@ -306,25 +314,13 @@ static int  loadPage = 0;
     
     [newsArrayTableView reloadData];
     
-    
-    
-//    if ([newsArray count]) {
-//        newsArray = [[NSMutableArray alloc]init];
-//    }
-//    newsArray = (NSMutableArray *)backToControllerData;
-//    NSLog(@"count =%d ,newsArray = %@",[newsArray count],newsArray);
-//     [newsArrayTableView reloadData];
 }
 
 - (void)requestDataOnFail:(NSString *)error
 {
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//    [alert show];
-    
-    
     _refreshHeaderView.lastRefreshDate = [NSDate date];
     
-    if (loadPage == 0) {
+    if (loadPage == 1) {
         _refreshLoading = NO;
         [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:newsArrayTableView];
     }
