@@ -68,7 +68,8 @@ static int  loadPage = 1;
     self.newsApi = [[ISSTLifeApi alloc]init];
     self.newsApi.webApiDelegate = self;
      self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-	self.view.backgroundColor = [UIColor lightGrayColor];
+	//self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = [UIColor redColor];
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -290,6 +291,7 @@ static int  loadPage = 1;
         return 45;
     }
     return 77;
+    //return 150;
     
 }
 

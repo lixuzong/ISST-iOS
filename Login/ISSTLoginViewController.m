@@ -14,6 +14,8 @@
 #import "ISSTContactsApi.h"
 #import "ISSTUserCenterViewController.h"
 #import "passValue.h"
+#import "MBProgressHUD.h"
+
 const    static  int   REQUESTLOGIN         = 1;
 const static int        CLASSESLISTS        = 3;
 const static int        MAJORSLISTS         = 4;
@@ -21,12 +23,14 @@ int method;
 
 #define DEVICE_IS_IPHONE5 ([[UIScreen mainScreen] bounds].size.height == 568)
 
-@interface ISSTLoginViewController ()
+@interface ISSTLoginViewController ()<MBProgressHUDDelegate>
 {
     ISSTContactsApi *_contactsApi;
     
     BOOL response ;//判断是否选中了texdfield。
     NSString *flag;//判断是否是注销 0表示未注销 1表示注销
+    
+    MBProgressHUD *HUD;
 
 }
 @property (nonatomic,strong)ISSTUserModel  *userModel;
@@ -43,6 +47,8 @@ int method;
 @synthesize userModel;
 @synthesize defaultLoginSwitch;
 @synthesize btnlogin;
+
+
 
 
 
@@ -106,6 +112,9 @@ int method;
     _contactsApi = [[ISSTContactsApi alloc] init];
     _contactsApi.webApiDelegate  = self;
     
+    //self.navigationController.navigationBar.barTintColor  [[UIColor blueColor];
+   // self.navigationController.navigationBar.barTintColor = [UIColor blueColor]; //设置导航栏颜色
+    //self.navigationController.navigationBarHidden = YES;     隐藏导航栏
         
     
   
@@ -117,8 +126,8 @@ int method;
    //[self passValue:flag];
     NSLog(@"%@",flag);
     
-    nameField.text=@"21351007";
-    passwordField.text=@"111111";
+//    nameField.text=@"21351007";
+//    passwordField.text=@"111111";
     
     //检查缓存中是否有用户数据，若果是的话，直接登入进去。
 //      if (defaultLoginSwitch.on) {
@@ -175,6 +184,15 @@ int method;
 
 - (IBAction)login:(id)sender {
      method  =   REQUESTLOGIN;
+    
+    //MBprogress
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:HUD];
+    HUD.delegate = self;
+    HUD.labelText = @"请稍后...";
+    [HUD show:YES];
+    [HUD showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+
    [self.userApi requestLoginName:self.nameField.text andPassword:self.passwordField.text];
     
 }
@@ -203,19 +221,14 @@ int method;
 - (void)requestDataOnSuccess:(id)backToControllerData;
 {   ISSTSlidebarNavController *slider ;
 
-//    if(method ==REQUESTLOGIN ) {
-//     
-//        ISSTSlidebarNavController *slider =[[ISSTSlidebarNavController alloc]init];
-//        // [self.navigationController pushViewController:[[ISSTSlidebarNavController alloc]init] animated:YES ];
-//        [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
-//        [self.navigationController pushViewController:slider animated: NO];
-//    }
-//   
     switch (method) {
         case REQUESTLOGIN:
             userModel = backToControllerData;
              method = CLASSESLISTS;
             [_contactsApi requestClassesLists];
+            
+            //[HUD hide:YES afterDelay:0.5];//3s延迟
+            [HUD hide:YES];  //隐藏MBprogressHUD
 
             break;
         case CLASSESLISTS:
@@ -245,10 +258,8 @@ int method;
 
 - (void)requestDataOnFail:(NSString *)error
 {
-//    if((self.nameField.text = @"") && (self.passwordField.text = @"")&& (error = @"网络错误")){
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:@"用户名不能为空" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//        [alert show];
-//    }else{
+
+    [HUD hide:YES]; //MBProgressHUD 隐藏
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
 //        self.nameField.text = @"";
@@ -314,4 +325,18 @@ self.view.frame =CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.s
     response=YES;
 }
 
+
+#pragma mark - Execution code（MBProgressHUD）
+- (void)myTask {
+    // Do something usefull in here instead of sleeping ...可以增加一些逻辑代码
+    sleep(3);
+}
+
+
+#pragma mark - MBProgressHUDDelegate
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    // Remove HUD from screen when the HUD was hidded
+    [HUD removeFromSuperview];
+    HUD = nil;
+}
 @end

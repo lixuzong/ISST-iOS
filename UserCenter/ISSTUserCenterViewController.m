@@ -16,6 +16,7 @@
 #import "AppCache.h"
 #import "ISSTUserModel.h"
 #import "passValue.h"
+#import "ISSTFeedbackViewController.h"
 
 @interface ISSTUserCenterViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *userCenterCatalogueTableView;
@@ -26,6 +27,7 @@
 @property (nonatomic,strong)ISSTClassModel *classModel;
 @property (nonatomic,strong)NSMutableArray *classArray;
 @property (nonatomic,strong)NSMutableArray *majorArray;
+@property (nonatomic,strong)ISSTFeedbackViewController  *feedbackViewController;
 
 - (void)signOut;
 - (void)go2UserInfoViewController:(NSIndexPath *)indexPath tableView:(UITableView *)tableView;
@@ -41,6 +43,7 @@
 @synthesize majorModel;
 @synthesize classArray;
 @synthesize majorArray;
+@synthesize feedbackViewController;
 
 
 int method;
@@ -61,12 +64,13 @@ NSArray *imageForRowArray= nil;
 
 - (void)viewDidLoad
 {
+    //userCenterCatalogueTableView.scrollEnabled = YES;
     self.contactsApi = [[ISSTContactsApi alloc]init];;
     self.contactsApi.webApiDelegate = self;
     titleForRowArray =[NSArray  arrayWithObjects:
                         [NSArray  arrayWithObjects:@"用户数据",nil],
                        [NSArray  arrayWithObjects:@"学生事务",nil],
-                       [NSArray arrayWithObjects:@"任务中心",@"我的内推",@"我的经验",@"重要信息",nil],
+                       [NSArray arrayWithObjects:@"任务中心",@"我的内推",@"我的经验",@"重要信息",@"意见反馈",nil],
                        //[NSArray arrayWithObjects:@"任务中心",@"我的内推",@"我的经验",nil],
                        [NSArray  arrayWithObjects:@"活动管理",@"附近的人",nil],
                        [NSArray  arrayWithObjects:@"注销",nil],
@@ -75,11 +79,12 @@ NSArray *imageForRowArray= nil;
     imageForRowArray =[NSArray  arrayWithObjects:
                        [NSArray  arrayWithObjects:@"个人中心icon.png",nil],
                        [NSArray  arrayWithObjects:@"实习icon.png",nil],
-                       [NSArray arrayWithObjects:@"软院百科icon.png",@"内推icon.png",@"经验交流icon.png",@"经验交流icon.png",nil],
+                       [NSArray arrayWithObjects:@"软院百科icon.png",@"内推icon.png",@"经验交流icon.png",@"经验交流icon.png",@"经验交流icon.png",nil],
                        [NSArray  arrayWithObjects:@"在校活动icon.png",@"通讯录icon.png",nil],
                        [NSArray  arrayWithObjects:@"便捷服务icon.png",nil],
                        nil];
     [super viewDidLoad];
+    //self.view.scrollEnabled =YES;
     
 }
 
@@ -197,6 +202,10 @@ NSArray *imageForRowArray= nil;
        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
        alert.delegate = self;
        [alert show];
+   }
+   else if (indexPath.row ==4 && indexPath.section ==2){ //意见反馈板块
+       feedbackViewController = [[ISSTFeedbackViewController alloc]init];
+       [self.navigationController pushViewController:feedbackViewController animated:YES];
    }
    else if (indexPath.row == 0 && indexPath.section==3){ //活动管理板块，还没做 0.0
        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
