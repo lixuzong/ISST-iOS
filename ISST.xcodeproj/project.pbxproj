@@ -814,6 +814,7 @@
 				6FA9BFB51A0A5EFF0074B02B /* EGOTableViewPullRefresh */,
 				338BB5931959C3C400449855 /* CheckBox */,
 				334D69DB194BF18B0018C521 /* LoadMoreTableFooterView */,
+				58898D5718F5914100016339 /* AjComboBox */,
 			);
 			path = ThirdPartyLibrary;
 			sourceTree = "<group>";
@@ -913,7 +914,7 @@
 				AE04DD3118F8257A002A2A64 /* AJComboBox.m */,
 			);
 			name = AjComboBox;
-			path = Status;
+			path = ../Status;
 			sourceTree = "<group>";
 		};
 		6F6FEB311A29BF6200005162 /* MBProgressHUD */ = {
@@ -1188,7 +1189,6 @@
 				334D69CD194BF18B0018C521 /* ThirdPartyLibrary */,
 				182B520519441E28006F213C /* CommonView */,
 				AE9ECAE918E969C400FEAEF4 /* Status */,
-				58898D5718F5914100016339 /* AjComboBox */,
 				AE9ECAE818E969AE00FEAEF4 /* Helps */,
 				AEFDC76018DFFF2700D7FDAA /* Parses */,
 				AEE284A318DB2B8100BEF1A9 /* Models */,
