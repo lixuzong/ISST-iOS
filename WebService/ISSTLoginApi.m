@@ -115,7 +115,8 @@ const    static  int   REQUESTUSERINFO= 3;
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     NSLog(@"%@",[error localizedDescription]);
-    [self.webApiDelegate requestDataOnFail:@"请查看网络连接"];
+    //[self.webApiDelegate requestDataOnFail:@"请查看网络连接"];
+    [self.webApiDelegate requestDataOnFail:@"请求超时"];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
