@@ -31,7 +31,7 @@
      view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
      view.backgroundColor = [UIColor redColor];
      [self.view addSubview:view];*/
-    
+    NSLog(@"11111");
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
         self.edgesForExtendedLayout = UIRectEdgeNone;
     }
