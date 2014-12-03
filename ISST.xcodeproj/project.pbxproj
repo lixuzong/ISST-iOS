@@ -1596,7 +1596,7 @@
 				ORGANIZATIONNAME = MSE.ZJU;
 				TargetAttributes = {
 					AEE2843D18DADAA000BEF1A9 = {
-						DevelopmentTeam = 6ADJ2TL5DB;
+						DevelopmentTeam = MLD828QZD4;
 					};
 					AEE2845E18DADAA000BEF1A9 = {
 						TestTargetID = AEE2843D18DADAA000BEF1A9;
