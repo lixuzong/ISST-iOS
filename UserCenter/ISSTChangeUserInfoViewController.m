@@ -112,6 +112,7 @@ typedef NS_ENUM(NSInteger, RequestType)
     if ([_privatePhoneBox isHook]) {
         NSLog(@"hook");
         NSLog(@"testbranch");
+        NSLog(@"testtest");
     }
     else
         NSLog(@"not hook");
