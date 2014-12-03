@@ -43,4 +43,6 @@ typedef   enum Gender
 
 @property (nonatomic,copy)NSString      *password;
 
+@property NSInteger section;
+
 @end

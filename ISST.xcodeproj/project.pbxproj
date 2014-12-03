@@ -1333,12 +1333,12 @@
 			isa = PBXGroup;
 			children = (
 				58653D0C18FB86DF005C6F74 /* ISSTAddressBookDelegate.h */,
-				58653D1018FB86DF005C6F74 /* ISSTAddressBookDetailViewController.h */,
-				58653D1118FB86DF005C6F74 /* ISSTAddressBookDetailViewController.m */,
-				58653D1218FB86DF005C6F74 /* ISSTAddressBookDetailViewController.xib */,
 				58653D1318FB86DF005C6F74 /* ISSTAddressBookViewController.h */,
 				58653D1418FB86DF005C6F74 /* ISSTAddressBookViewController.m */,
 				58653D1518FB86DF005C6F74 /* ISSTAddressBookViewController.xib */,
+				58653D1018FB86DF005C6F74 /* ISSTAddressBookDetailViewController.h */,
+				58653D1118FB86DF005C6F74 /* ISSTAddressBookDetailViewController.m */,
+				58653D1218FB86DF005C6F74 /* ISSTAddressBookDetailViewController.xib */,
 				58653D1618FB86DF005C6F74 /* ISSTSelectFactorsViewController.h */,
 				58653D1718FB86DF005C6F74 /* ISSTSelectFactorsViewController.m */,
 				58653D1818FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib */,
@@ -1516,7 +1516,7 @@
 				ORGANIZATIONNAME = MSE.ZJU;
 				TargetAttributes = {
 					AEE2843D18DADAA000BEF1A9 = {
-						DevelopmentTeam = MLD828QZD4;
+						DevelopmentTeam = 6ADJ2TL5DB;
 					};
 					AEE2845E18DADAA000BEF1A9 = {
 						TestTargetID = AEE2843D18DADAA000BEF1A9;

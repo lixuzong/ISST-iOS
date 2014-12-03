@@ -27,6 +27,7 @@
 @property(strong,nonatomic) UISearchDisplayController *searchController;
 @property(strong,nonatomic)ISSTAddressBookDetailViewController* addressBookDetailView;
 
+@property (strong,nonatomic) NSArray *filteredArray;
 - (IBAction)clearSelectedFactors:(id)sender;
 -(void)clickSelect;
 
@@ -46,6 +47,9 @@
 @synthesize addressBookDetailView;
 @synthesize userInfo;
 @synthesize sameCitySwitch;
+
+@synthesize searchBar;
+@synthesize filteredArray;
 static NSString *CellIdentifier=@"ContactCell";
 
 const static int        CONTACTSLISTS       = 1;
@@ -71,7 +75,7 @@ sameCitySwitch = false;
 {
     [super viewDidLoad];
     
-
+    
     addressBookModel=[[ISSTUserModel alloc]init];
     userInfo=[[ISSTUserModel alloc]init];
     
@@ -82,7 +86,7 @@ sameCitySwitch = false;
     addressBookTableView = (UITableView *)([self.view viewWithTag:10]);
     addressBookTableView.delegate = self;
     addressBookTableView.dataSource = self;
-  
+    
     self.addressBookApi = [[ISSTContactsApi alloc]init];
     self.addressBookApi.webApiDelegate =self;
     
@@ -97,14 +101,14 @@ sameCitySwitch = false;
     }
     [self requestForData];
     if (!sameCitySwitch) {
-         [self labelShow];
+        [self labelShow];
     }
-
-   UISearchBar *searchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0, 35, 320, 44)];
+    
+    searchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0.0f,0.0f, 320.0f, 44.0f)];
     addressBookTableView.tableHeaderView=searchBar;
     searchController=[[UISearchDisplayController alloc]initWithSearchBar:searchBar contentsController:self];
-    searchController.delegate=self;
-    searchController.searchResultsTableView.delegate=self;
+//    searchController.delegate=self;
+    searchController.searchResultsDelegate=self;
     searchController.searchResultsDataSource=self;
     
     
@@ -112,11 +116,11 @@ sameCitySwitch = false;
     [[UIBarButtonItem alloc] initWithTitle:@"条件筛选" style:UIBarButtonSystemItemEdit target:self action:@selector(clickSelect)];
     
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-	self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = [UIColor lightGrayColor];
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
-
+    
     
 }
 
@@ -152,7 +156,7 @@ sameCitySwitch = false;
 }
 -(void)requestForData
 {
-     [self.addressBookApi requestContactsLists:0 name:addressBookModel.name gender:addressBookModel.gender grade:0 classId:addressBookModel.classId className:addressBookModel.className majorId:addressBookModel.majorId majorName:addressBookModel.majorName cityId:0 cityName:addressBookModel.cityName company:nil];
+    [self.addressBookApi requestContactsLists:0 name:addressBookModel.name gender:addressBookModel.gender grade:0 classId:addressBookModel.classId className:addressBookModel.className majorId:addressBookModel.majorId majorName:addressBookModel.majorName cityId:0 cityName:addressBookModel.cityName company:nil];
 }
 
 
@@ -160,15 +164,30 @@ sameCitySwitch = false;
 #pragma mark Table View Data Source Methods
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
+    if (tableView==addressBookTableView) {
+        return [addressBookArray count];
+    }else{
     return 1;
+    }
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if(tableView==self.searchController.searchResultsTableView)
-        return [searchArray count];
-    else
-        return [namesArray count];
+    if(tableView==addressBookTableView)
+    {
+        return [[addressBookArray objectAtIndex:section] count];
+    }
+    else{
+        
+    NSMutableArray *flattenedArray=[[NSMutableArray alloc] initWithCapacity:1];
+    for(NSMutableArray *theArray in addressBookArray){
+        for (int i=0; i<[theArray count]; ++i) {
+            [flattenedArray addObject:[theArray objectAtIndex:i]];
+        }
+    }
+        NSPredicate *predicate=[NSPredicate predicateWithFormat:@"name beginswith[c] %@",searchBar.text];
+        filteredArray=[flattenedArray filteredArrayUsingPredicate:predicate];
+        return filteredArray.count;
+    }
     //   return studyArray.count;
 }
 
@@ -178,19 +197,50 @@ sameCitySwitch = false;
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-   if(tableView==self.searchController.searchResultsTableView)
-       cell.textLabel.text=[searchArray objectAtIndex:indexPath.row];
-   else
-       cell.textLabel.text=  ((ISSTUserModel*)addressBookArray[indexPath.row]).name; //[namesArray objectAtIndex:indexPath.row];
-    cell.accessoryType=UITableViewCellAccessoryDetailDisclosureButton;
+    if(tableView==addressBookTableView ){
+                ISSTUserModel *addressBook=[[addressBookArray objectAtIndex:[indexPath section]] objectAtIndex:[indexPath row]];
+        cell.textLabel.text=  addressBook.name;
+        cell.accessoryType=UITableViewCellAccessoryNone;
+        return cell;
+    }else{
+    
+    ISSTUserModel *addressBook=[filteredArray objectAtIndex:indexPath.row];
+    cell.textLabel.text=addressBook.name;
+    cell.accessoryType=UITableViewCellAccessoryNone;
     return cell;
+    }
+}
+
+-(NSString*) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    if ([[addressBookArray objectAtIndex:section] count] > 0) {
+        return [[[UILocalizedIndexedCollation currentCollation] sectionTitles] objectAtIndex:section];
+    }
+    return nil;
+}
+
+//返回索引
+-(NSArray *) sectionIndexTitlesForTableView:(UITableView *)tableView{
+    if (tableView==addressBookTableView) {
+        return  [[UILocalizedIndexedCollation currentCollation] sectionIndexTitles];
+    }else {
+        return nil;
+    }
+}
+
+
+-(NSInteger) tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index  {
+        return [[UILocalizedIndexedCollation currentCollation] sectionForSectionIndexTitleAtIndex:index];
 }
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.addressBookDetailView=[[ISSTAddressBookDetailViewController alloc]initWithNibName:@"ISSTAddressBookDetailViewController" bundle:nil];
     self.addressBookDetailView.navigationItem.title=@"联系人详情";
-    addressBookModel=[addressBookArray objectAtIndex:indexPath.row];
+    if (tableView==addressBookTableView){
+        addressBookModel=[[addressBookArray objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    }else{
+        addressBookModel=[filteredArray objectAtIndex:indexPath.row];
+    }
     method= CONTACTDETAIL;
     [self.addressBookApi requestContactDetail:addressBookModel.userId];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -202,17 +252,45 @@ sameCitySwitch = false;
 {
     switch (method) {
         case CONTACTSLISTS:
+        {
             if ([addressBookArray count])
             {
                 addressBookArray = [[NSMutableArray alloc]init];
             }
+            
             namesArray=[[NSMutableArray alloc] init];
-            addressBookArray = (NSMutableArray *)backToControllerData;
-            for(int i=0;i<addressBookArray.count;i++)
-            {
-                addressBookModel=[addressBookArray objectAtIndex:i];
-                [namesArray addObject:addressBookModel.name];
+            NSMutableArray *addressBookArrayTmp=[[NSMutableArray alloc] init];
+            addressBookArrayTmp = (NSMutableArray *)backToControllerData;//将数据传给临时数组，对临时数组进行排序
+            //*************增加排序和索引**************8*
+            addressBookArray=[NSMutableArray arrayWithCapacity:1];
+            UILocalizedIndexedCollation *indexedCollation=[UILocalizedIndexedCollation currentCollation];
+            for (ISSTUserModel *theAdressBookModel in addressBookArrayTmp) {
+                NSInteger section=[indexedCollation sectionForObject:theAdressBookModel collationStringSelector:@selector(name)];
+                theAdressBookModel.section=section;
             }
+            NSInteger sectionCount=[[indexedCollation sectionTitles] count];
+            NSMutableArray *sectionsArray=[NSMutableArray arrayWithCapacity:sectionCount];
+            for (int i=0; i<=sectionCount; ++i) {
+                NSMutableArray *singleSectionArray=[NSMutableArray arrayWithCapacity:1];
+                [sectionsArray addObject:singleSectionArray];
+            }
+            for(ISSTUserModel *theAdressBookModel in addressBookArrayTmp){
+                [(NSMutableArray *) [sectionsArray objectAtIndex:theAdressBookModel.section] addObject:theAdressBookModel];
+            }
+            
+            for (NSMutableArray *singleSectionArray in sectionsArray){
+                NSArray *sortedSection=[indexedCollation sortedArrayFromArray:singleSectionArray collationStringSelector:@selector(name)];
+                [addressBookArray addObject:sortedSection];
+            }
+            
+            //*********增加排序和索引**********
+            
+            //            for(int i=0;i<addressBookArray.count;i++)
+            //            {
+            //                addressBookModel=[addressBookArrayTmp objectAtIndex:i];
+            //                [namesArray addObject:addressBookModel.name];
+            //            }
+        }
             break;
         case CONTACTDETAIL:
             if(addressBookDetailView.userDetailInfo!= nil)
@@ -227,7 +305,7 @@ sameCitySwitch = false;
             break;
     }
     
-     [addressBookTableView reloadData];
+    [addressBookTableView reloadData];
 }
 
 - (void)requestDataOnFail:(NSString *)error
@@ -257,7 +335,7 @@ sameCitySwitch = false;
     [self requestForData];
     [self labelShow];
     [addressBookTableView reloadData];
-
+    
 }
 
 -(void)clickSelect

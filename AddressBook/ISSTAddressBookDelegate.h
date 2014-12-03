@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @protocol ISSTAddressBookDelegate <NSObject>
+
 -(void)selectedReloadData;
 @end

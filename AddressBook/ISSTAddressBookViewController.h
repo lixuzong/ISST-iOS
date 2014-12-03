@@ -17,4 +17,6 @@
 @property(strong,nonatomic)ISSTUserModel *userInfo;
 @property(strong,nonatomic)ISSTContactsApi *addressBookApi;
 @property(assign,nonatomic)BOOL sameCitySwitch;
+
+@property(retain, nonatomic) UISearchBar *searchBar;
 @end
