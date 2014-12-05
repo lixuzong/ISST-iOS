@@ -8,8 +8,10 @@
 
 #import "ISSTWebApiDelegate.h"
 #import "passValue.h"
+#import "RESideMenu.h"
+#import "AppDelegate.h"
 
-@interface ISSTLoginViewController : UIViewController<ISSTWebApiDelegate,UITextFieldDelegate>
+@interface ISSTLoginViewController : UIViewController<ISSTWebApiDelegate,UITextFieldDelegate,RESideMenuDelegate>
 
 @property (strong, nonatomic) IBOutlet UITextField *nameField;
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;

@@ -17,6 +17,7 @@
 #import "ISSTUserModel.h"
 #import "passValue.h"
 #import "ISSTFeedbackViewController.h"
+#import "RESideMenu.h"
 
 @interface ISSTUserCenterViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *userCenterCatalogueTableView;
@@ -64,6 +65,9 @@ NSArray *imageForRowArray= nil;
 
 - (void)viewDidLoad
 {
+    self.title = @"个人中心";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
+    
     //userCenterCatalogueTableView.scrollEnabled = YES;
     self.contactsApi = [[ISSTContactsApi alloc]init];;
     self.contactsApi.webApiDelegate = self;

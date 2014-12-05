@@ -88,6 +88,9 @@
 		6F064E6F1A2B7D7900C58A35 /* ISSTFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F064E6D1A2B7D7900C58A35 /* ISSTFeedbackViewController.m */; };
 		6F064E701A2B7D7900C58A35 /* ISSTFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F064E6E1A2B7D7900C58A35 /* ISSTFeedbackViewController.xib */; };
 		6F51A73719E6804800C0D5CA /* passValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F51A73619E6804800C0D5CA /* passValue.m */; };
+		6F5B05DE1A319D7F0052CE63 /* 1225.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B05DD1A319D7F0052CE63 /* 1225.png */; };
+		6F5B05E21A3209710052CE63 /* ISSTSameCityFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5B05E01A3209710052CE63 /* ISSTSameCityFriendViewController.m */; };
+		6F5B05E31A3209710052CE63 /* ISSTSameCityFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B05E11A3209710052CE63 /* ISSTSameCityFriendViewController.xib */; };
 		6F6FEB341A29BFBC00005162 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FEB331A29BFBC00005162 /* MBProgressHUD.m */; };
 		6F7522F619D2C5A10079A8D6 /* 个人中心icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7522E719D2C5A10079A8D6 /* 个人中心icon.png */; };
 		6F7522F719D2C5A10079A8D6 /* 便捷服务icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7522E819D2C5A10079A8D6 /* 便捷服务icon.png */; };
@@ -138,6 +141,12 @@
 		6F925CFC1A16293100C68CB3 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F925CF21A16293100C68CB3 /* UIScrollView+MJExtension.m */; };
 		6F925CFD1A16293100C68CB3 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F925CF41A16293100C68CB3 /* UIScrollView+MJRefresh.m */; };
 		6F925CFE1A16293100C68CB3 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F925CF61A16293100C68CB3 /* UIView+MJExtension.m */; };
+		6F9DDD8B1A2F22B400F63F26 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DDD861A2F22B400F63F26 /* RECommonFunctions.m */; };
+		6F9DDD8C1A2F22B400F63F26 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DDD881A2F22B400F63F26 /* RESideMenu.m */; };
+		6F9DDD8D1A2F22B400F63F26 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DDD8A1A2F22B400F63F26 /* UIViewController+RESideMenu.m */; };
+		6F9DDD911A2F28FD00F63F26 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DDD901A2F28FD00F63F26 /* LeftMenuViewController.m */; };
+		6F9DDD931A2F786F00F63F26 /* 124.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F9DDD921A2F786F00F63F26 /* 124.png */; };
+		6F9DDD951A2F78EB00F63F26 /* 1242.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F9DDD941A2F78EB00F63F26 /* 1242.jpg */; };
 		6FA231BB1A28D9420028226B /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA2319B1A28D9420028226B /* MKAnnotationView+WebCache.m */; };
 		6FA231BC1A28D9420028226B /* NSData+ImageContentType.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA2319D1A28D9420028226B /* NSData+ImageContentType.m */; };
 		6FA231BD1A28D9420028226B /* SDImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA2319F1A28D9420028226B /* SDImageCache.m */; };
@@ -410,6 +419,10 @@
 		6F064E6E1A2B7D7900C58A35 /* ISSTFeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTFeedbackViewController.xib; sourceTree = SOURCE_ROOT; };
 		6F51A73519E6804800C0D5CA /* passValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = passValue.h; sourceTree = SOURCE_ROOT; };
 		6F51A73619E6804800C0D5CA /* passValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = passValue.m; sourceTree = SOURCE_ROOT; };
+		6F5B05DD1A319D7F0052CE63 /* 1225.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1225.png; sourceTree = "<group>"; };
+		6F5B05DF1A3209710052CE63 /* ISSTSameCityFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSameCityFriendViewController.h; sourceTree = "<group>"; };
+		6F5B05E01A3209710052CE63 /* ISSTSameCityFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSameCityFriendViewController.m; sourceTree = "<group>"; };
+		6F5B05E11A3209710052CE63 /* ISSTSameCityFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTSameCityFriendViewController.xib; sourceTree = "<group>"; };
 		6F6FEB321A29BFBC00005162 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		6F6FEB331A29BFBC00005162 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		6F7522E719D2C5A10079A8D6 /* 个人中心icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "个人中心icon.png"; sourceTree = "<group>"; };
@@ -479,6 +492,16 @@
 		6F925CF41A16293100C68CB3 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		6F925CF51A16293100C68CB3 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		6F925CF61A16293100C68CB3 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		6F9DDD851A2F22B400F63F26 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
+		6F9DDD861A2F22B400F63F26 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
+		6F9DDD871A2F22B400F63F26 /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
+		6F9DDD881A2F22B400F63F26 /* RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RESideMenu.m; sourceTree = "<group>"; };
+		6F9DDD891A2F22B400F63F26 /* UIViewController+RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RESideMenu.h"; sourceTree = "<group>"; };
+		6F9DDD8A1A2F22B400F63F26 /* UIViewController+RESideMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RESideMenu.m"; sourceTree = "<group>"; };
+		6F9DDD8F1A2F28FD00F63F26 /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
+		6F9DDD901A2F28FD00F63F26 /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
+		6F9DDD921A2F786F00F63F26 /* 124.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 124.png; path = ../124.png; sourceTree = "<group>"; };
+		6F9DDD941A2F78EB00F63F26 /* 1242.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1242.jpg; path = ../1242.jpg; sourceTree = "<group>"; };
 		6FA2319A1A28D9420028226B /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
 		6FA2319B1A28D9420028226B /* MKAnnotationView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKAnnotationView+WebCache.m"; sourceTree = "<group>"; };
 		6FA2319C1A28D9420028226B /* NSData+ImageContentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ImageContentType.h"; sourceTree = "<group>"; };
@@ -807,6 +830,7 @@
 		334D69CD194BF18B0018C521 /* ThirdPartyLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				6F9DDD841A2F22B400F63F26 /* RESideMenu */,
 				6F85C3C11A2C4C380017EB0C /* AFNetworking */,
 				6F6FEB311A29BF6200005162 /* MBProgressHUD */,
 				6F925CE61A16293100C68CB3 /* MJRefresh */,
@@ -929,6 +953,8 @@
 		6F7522E619D2C5A10079A8D6 /* 30*30内部图标 */ = {
 			isa = PBXGroup;
 			children = (
+				6F9DDD941A2F78EB00F63F26 /* 1242.jpg */,
+				6F9DDD921A2F786F00F63F26 /* 124.png */,
 				6F8900C21A24B25600EBE758 /* 1125.png */,
 				6F8900C41A24B4AC00EBE758 /* 11252.jpg */,
 				6F7522E719D2C5A10079A8D6 /* 个人中心icon.png */,
@@ -1019,6 +1045,28 @@
 			);
 			name = MJRefresh;
 			path = ../MJRefresh;
+			sourceTree = "<group>";
+		};
+		6F9DDD841A2F22B400F63F26 /* RESideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				6F9DDD851A2F22B400F63F26 /* RECommonFunctions.h */,
+				6F9DDD861A2F22B400F63F26 /* RECommonFunctions.m */,
+				6F9DDD871A2F22B400F63F26 /* RESideMenu.h */,
+				6F9DDD881A2F22B400F63F26 /* RESideMenu.m */,
+				6F9DDD891A2F22B400F63F26 /* UIViewController+RESideMenu.h */,
+				6F9DDD8A1A2F22B400F63F26 /* UIViewController+RESideMenu.m */,
+			);
+			path = RESideMenu;
+			sourceTree = "<group>";
+		};
+		6F9DDD8E1A2F28D900F63F26 /* menu */ = {
+			isa = PBXGroup;
+			children = (
+				6F9DDD8F1A2F28FD00F63F26 /* LeftMenuViewController.h */,
+				6F9DDD901A2F28FD00F63F26 /* LeftMenuViewController.m */,
+			);
+			name = menu;
 			sourceTree = "<group>";
 		};
 		6FA231991A28D9420028226B /* SDWebImage */ = {
@@ -1298,6 +1346,7 @@
 				6F8900C61A24E67C00EBE758 /* ICON切图 */,
 				6F7522E619D2C5A10079A8D6 /* 30*30内部图标 */,
 				6FD18F5F19CC3D7F0099F08D /* Default-568h@2x.png */,
+				6F5B05DD1A319D7F0052CE63 /* 1225.png */,
 				1824E51719CAC82D00BDC38C /* 活动.png */,
 				1824E51819CAC82D00BDC38C /* 就业.png */,
 				1824E51919CAC82D00BDC38C /* 就业1.png */,
@@ -1350,6 +1399,7 @@
 		AEE284A218DB2A5300BEF1A9 /* main */ = {
 			isa = PBXGroup;
 			children = (
+				6F9DDD8E1A2F28D900F63F26 /* menu */,
 				AEE284AE18DB2F2B00BEF1A9 /* Base */,
 				AEE284A418DB2C6000BEF1A9 /* AddressBook */,
 				AEE284A518DB2C6000BEF1A9 /* Job */,
@@ -1504,6 +1554,9 @@
 				18B8046E19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.h */,
 				18B8046F19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m */,
 				18B8047019567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib */,
+				6F5B05DF1A3209710052CE63 /* ISSTSameCityFriendViewController.h */,
+				6F5B05E01A3209710052CE63 /* ISSTSameCityFriendViewController.m */,
+				6F5B05E11A3209710052CE63 /* ISSTSameCityFriendViewController.xib */,
 			);
 			path = SameCity;
 			sourceTree = "<group>";
@@ -1627,6 +1680,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F5B05DE1A319D7F0052CE63 /* 1225.png in Resources */,
 				252D344819639B4300B5EE5D /* fs_main_login_selected@2x.png in Resources */,
 				AEE2845A18DADAA000BEF1A9 /* Images.xcassets in Resources */,
 				AE0B8C8218F2CDDF00844F55 /* ISSTExperienceViewController.xib in Resources */,
@@ -1684,12 +1738,14 @@
 				AE9052B918EEEE890088742D /* ISSTWikisDetailViewController.xib in Resources */,
 				AE85F9BF1901635100FCD67D /* ISSTInternshipViewController.xib in Resources */,
 				6F8900DB1A24E67C00EBE758 /* ruanyuanbaike.png in Resources */,
+				6F5B05E31A3209710052CE63 /* ISSTSameCityFriendViewController.xib in Resources */,
 				6F8900D51A24E67C00EBE758 /* bianjiefuwu.png in Resources */,
 				AE85F9E119028C3400FCD67D /* ISSTPostCommentsViewController.xib in Resources */,
 				AE9052B718EEEE890088742D /* ISSTWikisCollectionViewCell.xib in Resources */,
 				6F7522FE19D2C5A10079A8D6 /* 学习园地icon.png in Resources */,
 				58653D1C18FB86DF005C6F74 /* ISSTAddressBookDetailViewController.xib in Resources */,
 				AE0B8C3618F2C8B300844F55 /* ISSTActivitiesViewController.xib in Resources */,
+				6F9DDD931A2F786F00F63F26 /* 124.png in Resources */,
 				18B619811955B24A00F4ACC7 /* ISSTActivityCell.xib in Resources */,
 				6F75230319D2C5A10079A8D6 /* 软院百科icon.png in Resources */,
 				6F8900DE1A24E67C00EBE758 /* tongchenghuodong.png in Resources */,
@@ -1710,6 +1766,7 @@
 				1824E51D19CAC82D00BDC38C /* 就业.png in Resources */,
 				6F7522FC19D2C5A10079A8D6 /* 在校活动icon.png in Resources */,
 				58653D1E18FB86DF005C6F74 /* ISSTAddressBookViewController.xib in Resources */,
+				6F9DDD951A2F78EB00F63F26 /* 1242.jpg in Resources */,
 				33B9F115194D4FF4004F6546 /* ISSTUserCenterViewController.xib in Resources */,
 				1824E51C19CAC82D00BDC38C /* 活动.png in Resources */,
 				6F75230019D2C5A10079A8D6 /* 就业icon.png in Resources */,
@@ -1754,6 +1811,7 @@
 				182B520919445AFD006F213C /* ISSTAddressBookViewController.m in Sources */,
 				252D348919656C3200B5EE5D /* ISSTRecommendModel.m in Sources */,
 				182B520719445AAE006F213C /* ISSTRestaurantDetailViewController.m in Sources */,
+				6F9DDD8B1A2F22B400F63F26 /* RECommonFunctions.m in Sources */,
 				6F85C3DD1A2C4C380017EB0C /* AFURLSessionManager.m in Sources */,
 				5805041818FD5A8C00F881D9 /* ISSTActivityDetailViewController.m in Sources */,
 				6FA231C81A28D9420028226B /* UIImageView+HighlightedWebCache.m in Sources */,
@@ -1817,8 +1875,10 @@
 				1824E51619CAC79D00BDC38C /* NSTimer+Addition.m in Sources */,
 				6FA231C21A28D9420028226B /* SDWebImageManager.m in Sources */,
 				AE014AD218EFAA1D0009E008 /* ISSTRestaurantsParse.m in Sources */,
+				6F9DDD8D1A2F22B400F63F26 /* UIViewController+RESideMenu.m in Sources */,
 				AE85F9E019028C3400FCD67D /* ISSTPostCommentsViewController.m in Sources */,
 				AEFDC75F18DED14F00D7FDAA /* ISSTLoginApi.m in Sources */,
+				6F5B05E21A3209710052CE63 /* ISSTSameCityFriendViewController.m in Sources */,
 				AE9E018918F3F0CB008EAFA1 /* ISSTRestaurantsViewController.m in Sources */,
 				6F6FEB341A29BFBC00005162 /* MBProgressHUD.m in Sources */,
 				AE9ECADB18E90BD800FEAEF4 /* ISSTCampusNewsParse.m in Sources */,
@@ -1867,6 +1927,7 @@
 				AE85F9CB1902605600FCD67D /* ISSTCLTableViewCell.m in Sources */,
 				5805042318FD5D8E00F881D9 /* ISSTRecommendViewController.m in Sources */,
 				AEFDC76D18E0245D00D7FDAA /* ISSTRootViewController.m in Sources */,
+				6F9DDD911A2F28FD00F63F26 /* LeftMenuViewController.m in Sources */,
 				AE0B8C3018F2C36000844F55 /* ISSTActivityApi.m in Sources */,
 				33B9F116194D4FF4004F6546 /* ISSTUserInfoViewController.m in Sources */,
 				AE014AD518EFAA570009E008 /* ISSTRestaurantsModel.m in Sources */,
@@ -1887,6 +1948,7 @@
 				AEA238CD18F530960030F196 /* ISSTClassModel.m in Sources */,
 				AE9052B618EEEE890088742D /* ISSTWikisCollectionViewCell.m in Sources */,
 				AEFDC77018E1625900D7FDAA /* ISSTUserModel.m in Sources */,
+				6F9DDD8C1A2F22B400F63F26 /* RESideMenu.m in Sources */,
 				AE0B8C8118F2CDDF00844F55 /* ISSTExperienceViewController.m in Sources */,
 				AEE2844E18DADAA000BEF1A9 /* main.m in Sources */,
 				AE9B147418EBA1F300034F65 /* ISSTNewsDetailsModel.m in Sources */,

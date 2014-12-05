@@ -1,5 +1,5 @@
 //
-//  GogoViewController.m
+//  ISSTEmploymentDetailViewController.m
 //  ISST
 //
 //  Created by XSZHAO on 14-3-20.

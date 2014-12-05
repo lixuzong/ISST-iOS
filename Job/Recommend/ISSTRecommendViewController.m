@@ -1,8 +1,8 @@
 //
-//  ISSTEmploymentViewController.m
+//  ISSTRecommendViewController.m
 //  ISST
 //
-//  Created by liuyang on 14-4-15.
+//  Created by rth on 14-12-4.
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
@@ -12,7 +12,9 @@
 #import "ISSTJobsApi.h"
 #import "ISSTJobsModel.h"
 #import "ISSTRecommendDetailViewController.h"
+#import "RESideMenu.h"
 #import "MJRefresh.h"
+
 @interface ISSTRecommendViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *recommendTableView;
 @property (nonatomic,strong)ISSTJobsApi  *recommendApi;
@@ -43,6 +45,9 @@ static int  loadPage = 1;
 
 - (void)viewDidLoad
 {
+    self.title = @"内推";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
+    
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 	self.view.backgroundColor = [UIColor lightGrayColor];
     
@@ -53,113 +58,69 @@ static int  loadPage = 1;
     self.recommendApi = [[ISSTJobsApi alloc]init];
     
     self.recommendApi.webApiDelegate=self;
-    // self.newsArray =[[NSMutableArray alloc]init];
-    UITableView *tableView=(id)[self.view viewWithTag:97];
+    
+    //UITableView *tableView=(id)[self.view viewWithTag:97];
     recommendTableView.rowHeight=90;
     UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [recommendTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
+    [self setupRefresh];
     
-	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    //[self.recommendApi requestRecommendLists:1 andPageSize:20 andKeywords:@"string"];
     
-    if (_refreshHeaderView == nil ) {
-        Class refreshHeaderViewClazz = NSClassFromString(@"EGORefreshTableHeaderView");
-        _refreshHeaderView = [[refreshHeaderViewClazz alloc]initWithFrame:CGRectMake(0, -tableView.bounds.size.height, tableView.frame.size.width, tableView.bounds.size.height)];
-        
-    }
-    _refreshHeaderView.delegate= self;
-    [tableView addSubview:_refreshHeaderView];
     
-    self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    
-    [self    triggerRefresh];
-   
 }
 
--(BOOL)isList
+- (void)setupRefresh
 {
-    return YES;
+    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+    // dateKey用于存储刷新时间，可以保证不同界面拥有不同的刷新时间
+    [self.recommendTableView addHeaderWithTarget:self action:@selector(headerRereshing)];
+    
+    [self.recommendTableView headerBeginRefreshing];
+    
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [self.recommendTableView addFooterWithTarget:self action:@selector(footerRereshing)];
+    
 }
 
--(void)triggerRefresh
+#pragma mark 开始进入刷新状态
+- (void)headerRereshing
 {
-    if (_refreshLoading) {
-        return;
-    }
+    // 1.添加数据
+    [self.recommendApi requestRecommendLists:loadPage andPageSize:20 andKeywords:@"string"];
     
-    CGPoint contentOffset = CGPointMake(0, -55-10-_refreshHeaderView.scrollViewInset.top);
-    recommendTableView.contentOffset = contentOffset;
-    NSLog(@"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&=%f",recommendTableView.contentOffset.y);
-    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:recommendTableView];
-    //[self requestRefresh];
+    // 刷新表格
+    [self.recommendTableView reloadData];
     
-    //设置分割线
-    recommendTableView.separatorColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1];
-    if([recommendTableView respondsToSelector:@selector(separatorInset)])
-    {
-        recommendTableView.separatorInset = UIEdgeInsetsZero;
-    }
-    recommendTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+    // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    [self.recommendTableView headerEndRefreshing];
 }
 
 
--(void)requestRefresh
+- (void)footerRereshing
 {
-    if (NO)  //self.newsApi.isLoadingData;
-    {
-        
-    }
-    else
-    {
-        _refreshLoading = YES;
-        loadPage =1;
-        [self.recommendApi requestRecommendLists:loadPage andPageSize:20 andKeywords:@"string"];
-    }
+    loadPage++;
+    // 1.添加数据
+    [self.recommendApi requestRecommendLists:loadPage andPageSize:20 andKeywords:@"string"];
     
-    
+    // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    [self.recommendTableView footerEndRefreshing];
 }
 
--(void)requestGetMore
-{
-    if (NO)
-    {
-        
-    }
-    else  if (!_refreshLoading)
-    {
-        ++loadPage;
-        _refreshLoading = YES;
-        NSLog(@"requestGetMore ===================================loadPage=%d  " ,loadPage);
-        [self.recommendApi requestRecommendLists:loadPage andPageSize:20 andKeywords:@"string"];
-        [_getMoreCell setInfoText:@"正在加载更多..." forState:MoreCellState_Loading];
-    }
-}
-
--(BOOL)canGetMoreData
-{
-    return YES;
-}
 
 -(void)dealloc
 {
     recommendTableView.dataSource = nil;
     recommendTableView.delegate = nil;
     recommendTableView = nil;
+    loadPage = 1;
 }
-
-
-
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
-
 
 #pragma mark
 #pragma mark Table View Data Source Methods
@@ -172,43 +133,11 @@ static int  loadPage = 1;
 {
     NSArray *listData = recommendArray;
     int count = [listData count];
-    if (count == 0)
-    {
-        if (_refreshLoading)
-        {
-            
-        }
-        else if (!_refreshLoading)
-        {
-            count ++;
-        }
-    }
-    else if([self canGetMoreData])
-    {
-        count ++;
-    }
-    NSLog(@"===========================================%d",count);
     return count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int count = [recommendArray count];
-    NSLog(@"================%d",indexPath.row);
-    if (count ==0)
-    {
-        if (!_refreshLoading)
-        {
-            _emptyCell.state = EmptyCellState_Tips;
-            
-        }
-        return _emptyCell;
-    }
-    else if ([self canGetMoreData]&&indexPath.row == [recommendArray count])
-    {
-        [_getMoreCell setInfoText:@"查看更多" forState:MoreCellState_Information];
-        return _getMoreCell;
-    }
     
     recommendModel =[[ISSTJobsModel alloc]init];
     recommendModel = [recommendArray objectAtIndex:indexPath.row];
@@ -226,16 +155,7 @@ static int  loadPage = 1;
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (cell ==_getMoreCell) {
-        [self requestGetMore];
-        return;
-    }
-    else if  (cell == _emptyCell)
-    {
-        [self triggerRefresh];
-        return;
-    }
+    
     self.detailView=[[ISSTRecommendDetailViewController alloc]initWithNibName:@"ISSTRecommendDetailViewController" bundle:nil];
     self.detailView.navigationItem.title =@"详细信息";
    
@@ -246,47 +166,18 @@ static int  loadPage = 1;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSArray *listDatas = recommendArray;
-    int count = [listDatas count];
-    
-    if (count==0)
-    {
-        if (_refreshLoading)
-        {
-        }
-        else if (!_refreshLoading)
-        {
-            int height = tableView.bounds.size.height;
-            height -= tableView.tableHeaderView.bounds.size.height;
-            height -= [self.topLayoutGuide length];
-            return height;
-        }
-    }
-    if ([self canGetMoreData]&&indexPath.row ==[recommendArray count]) {
-        return 45;
-    }
-    return 100;
-    
-}
 
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
-    _refreshHeaderView.lastRefreshDate = [NSDate date];
     
     if (loadPage == 1) {
         recommendArray = [[NSMutableArray alloc]initWithArray:backToControllerData];
-        _refreshLoading = NO;
-        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:recommendTableView];
     }
     else
     {
-        _refreshLoading = NO;
         [recommendArray addObjectsFromArray:backToControllerData];
-        [_getMoreCell setInfoText:@"查看更多" forState:MoreCellState_Information];
     }
     
     [recommendTableView reloadData];

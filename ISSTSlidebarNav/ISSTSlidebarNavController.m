@@ -102,35 +102,35 @@
     ISSTAddressBookViewController *sameCityAddressBook = [[ISSTAddressBookViewController alloc] initWithTitle:@"同城校友" withRevealBlock:revealBlock];
     sameCityAddressBook.sameCitySwitch =true;
 
-    NSArray *controllers = @[
-                             @[
-                                 
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTNewsViewController alloc] initWithTitle:@"软院快讯" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTWikisViewController alloc] initWithTitle:@"软院百科" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTActivitiesViewController alloc] initWithTitle:@"在校活动" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTServiceViewController alloc] initWithTitle:@"便捷服务" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTStudyViewController alloc] initWithTitle:@"学习园地" withRevealBlock:revealBlock]]
-                                 ],
-                             @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTInternshipViewController alloc] initWithTitle:@"实习" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTEmploymentViewController alloc] initWithTitle:@"就业" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTRecommendViewController alloc] initWithTitle:@"内推" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTExperienceViewController alloc] initWithTitle:@"经验交流" withRevealBlock:revealBlock]]
-                                 ],
-                             @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTAddressBookViewController alloc] initWithTitle:@"通讯录" withRevealBlock:revealBlock]]
-                                 ],
-                             @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[CityManagersViewController alloc] initWithTitle:@"城主" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTSameCityAcitvitiesViewController alloc] initWithTitle:@"同城活动" withRevealBlock:revealBlock]],
-                                 [[UINavigationController alloc] initWithRootViewController:sameCityAddressBook]
-                                 ],
-                             @[
-                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTUserCenterViewController alloc] initWithTitle:@"个人中心" withRevealBlock:revealBlock]]
-                                 ]
-                             
-                             ];
-    
+//    NSArray *controllers = @[
+//                             @[
+//                                 
+////                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTNewsViewController alloc] initWithTitle:@"软院快讯" withRevealBlock:revealBlock]],
+////                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTWikisViewController alloc] initWithTitle:@"软院百科" withRevealBlock:revealBlock]],
+////                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTActivitiesViewController alloc] initWithTitle:@"在校活动" withRevealBlock:revealBlock]],
+////                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTServiceViewController alloc] initWithTitle:@"便捷服务" withRevealBlock:revealBlock]],
+////                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTStudyViewController alloc] initWithTitle:@"学习园地" withRevealBlock:revealBlock]]
+////                                 ],
+////                             @[
+////                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTInternshipViewController alloc] initWithTitle:@"实习" withRevealBlock:revealBlock]],
+////                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTEmploymentViewController alloc] initWithTitle:@"就业" withRevealBlock:revealBlock]],
+////                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTRecommendViewController alloc] initWithTitle:@"内推" withRevealBlock:revealBlock]],
+////                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTExperienceViewController alloc] initWithTitle:@"经验交流" withRevealBlock:revealBlock]]
+////                                 ],
+//                             @[
+//                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTAddressBookViewController alloc] initWithTitle:@"通讯录" withRevealBlock:revealBlock]]
+//                                 ],
+//                             @[
+//                                 [[UINavigationController alloc] initWithRootViewController:[[CityManagersViewController alloc] initWithTitle:@"城主" withRevealBlock:revealBlock]],
+//                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTSameCityAcitvitiesViewController alloc] initWithTitle:@"同城活动" withRevealBlock:revealBlock]],
+//                                 [[UINavigationController alloc] initWithRootViewController:sameCityAddressBook]
+//                                 ],
+//                             @[
+//                                 [[UINavigationController alloc] initWithRootViewController:[[ISSTUserCenterViewController alloc] initWithTitle:@"个人中心" withRevealBlock:revealBlock]]
+//                                 ]
+//                             
+//                             ];
+    NSArray *controllers= @[];
     NSArray *cellInfos = @[
                            @[
                                @{kSidebarCellImageKey: [UIImage imageNamed:@"ruanyuankuaixun.png"], kSidebarCellTextKey: NSLocalizedString(@"软院快讯", @"")},

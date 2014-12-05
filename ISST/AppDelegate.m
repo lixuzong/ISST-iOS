@@ -7,9 +7,6 @@
 //
 
 #import "AppDelegate.h"
-
-
-
 #import "ISSTLoginViewController.h"
 @implementation AppDelegate
 @synthesize window = _window;
@@ -31,13 +28,8 @@
      ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
     loginViewController.title = @"ISST";
     _navigationController = [[[UINavigationController alloc] initWithRootViewController:loginViewController] autorelease];
-
     
-    //_window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-  
-//      self.window.rootViewController = self.revealController;
     _window.rootViewController = _navigationController ;
-    
     [_window makeKeyAndVisible];
     
     

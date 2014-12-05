@@ -13,6 +13,8 @@
 #import "ISSTCampusNewsModel.h"
 #import "ISSTStudyDetailViewController.h"
 #import "ISSTStudyTableViewCell.h"
+#import "RESideMenu.h"
+#import "MJRefresh.h"
 
 @interface ISSTStudyViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *studyArrayTableView;
@@ -49,6 +51,9 @@ static int  loadPage = 1;
 
 - (void)viewDidLoad
 {
+    self.title = @"学习园地";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
+    
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 	//self.view.backgroundColor = [UIColor lightGrayColor];
     
@@ -59,30 +64,14 @@ static int  loadPage = 1;
     self.studyApi = [[ISSTLifeApi alloc]init];
     
     self.studyApi.webApiDelegate = self;
-    // self.newsArray =[[NSMutableArray alloc]init];
     UITableView *tableView=(id)[self.view viewWithTag:3];
     tableView.rowHeight=90;
     UINib *nib=[UINib nibWithNibName:@"ISSTStudyTableViewCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
-    
-	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    
-    if (_refreshHeaderView == nil ) {
-        Class refreshHeaderViewClazz = NSClassFromString(@"EGORefreshTableHeaderView");
-        _refreshHeaderView = [[refreshHeaderViewClazz alloc]initWithFrame:CGRectMake(0, -tableView.bounds.size.height, tableView.frame.size.width, tableView.bounds.size.height)];
-        
-    }
-    _refreshHeaderView.delegate= self;
-    [tableView addSubview:_refreshHeaderView];
-    
-	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    
-    [self    triggerRefresh];
-
+    [self setupRefresh];
     
     
- //   [self.studyApi requestStudyingLists:1 andPageSize:20 andKeywords:@"string"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -91,76 +80,50 @@ static int  loadPage = 1;
     // Dispose of any resources that can be recreated.
 }
 
--(BOOL)isList
+- (void)setupRefresh
 {
-    return YES;
-}
-
--(void)triggerRefresh
-{
-    if (_refreshLoading) {
-        return;
-    }
+    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+    // dateKey用于存储刷新时间，可以保证不同界面拥有不同的刷新时间
+    [self.studyArrayTableView addHeaderWithTarget:self action:@selector(headerRereshing)];
     
-    CGPoint contentOffset = CGPointMake(0, -55-10-_refreshHeaderView.scrollViewInset.top);
-    studyArrayTableView.contentOffset = contentOffset;
-    NSLog(@"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&=%f",studyArrayTableView.contentOffset.y);
-    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:studyArrayTableView];
-    //[self requestRefresh];
+    [self.studyArrayTableView headerBeginRefreshing];
     
-    //设置分割线
-    studyArrayTableView.separatorColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1];
-    if([studyArrayTableView respondsToSelector:@selector(separatorInset)])
-    {
-        studyArrayTableView.separatorInset = UIEdgeInsetsZero;
-    }
-    studyArrayTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [self.studyArrayTableView addFooterWithTarget:self action:@selector(footerRereshing)];
     
 }
 
-
--(void)requestRefresh
+#pragma mark 开始进入刷新状态
+- (void)headerRereshing
 {
-    if (NO)  //self.newsApi.isLoadingData;
-    {
-        
-    }
-    else
-    {
-        _refreshLoading = YES;
-        loadPage =1;
-  [self.studyApi requestStudyingLists:loadPage andPageSize:20 andKeywords:@"string"];
-    }
+    // 1.添加数据
+    [self.studyApi requestStudyingLists:loadPage andPageSize:20 andKeywords:@"string"];
     
+    // 刷新表格
+    [self.studyArrayTableView reloadData];
     
+    // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    [self.studyArrayTableView headerEndRefreshing];
 }
 
--(void)requestGetMore
+
+- (void)footerRereshing
 {
-    if (NO)
-    {
-        
-    }
-    else  if (!_refreshLoading)
-    {
-        ++loadPage;
-        _refreshLoading = YES;
-        NSLog(@"requestGetMore ===================================loadPage=%d  " ,loadPage);
-        [self.studyApi requestStudyingLists:loadPage andPageSize:20 andKeywords:@"string"];
-        [_getMoreCell setInfoText:@"正在加载更多..." forState:MoreCellState_Loading];
-    }
+    loadPage++;
+    // 1.添加数据
+    [self.studyApi requestStudyingLists:loadPage andPageSize:20 andKeywords:@"string"];
+    
+    // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    [self.studyArrayTableView footerEndRefreshing];
 }
 
--(BOOL)canGetMoreData
-{
-    return YES;
-}
 
 -(void)dealloc
 {
     studyArrayTableView.dataSource = nil;
     studyArrayTableView.delegate = nil;
     studyArrayTableView = nil;
+    loadPage = 1;
 }
 
 
@@ -175,51 +138,18 @@ static int  loadPage = 1;
 {
     NSArray *listData = studyArray;
     int count = [listData count];
-    if (count == 0)
-    {
-        if (_refreshLoading)
-        {
-            
-        }
-        else if (!_refreshLoading)
-        {
-            count ++;
-        }
-    }
-    else if([self canGetMoreData])
-    {
-        count ++;
-    }
-    NSLog(@"===========================================%d",count);
     return count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int count = [studyArray count];
-    NSLog(@"================%d",indexPath.row);
-    if (count ==0)
-    {
-        if (!_refreshLoading)
-        {
-            _emptyCell.state = EmptyCellState_Tips;
-            
-        }
-        return _emptyCell;
-    }
-    else if ([self canGetMoreData]&&indexPath.row == [studyArray count])
-    {
-        [_getMoreCell setInfoText:@"查看更多" forState:MoreCellState_Information];
-        return _getMoreCell;
-    }
     
-
     studyModel =[[ISSTCampusNewsModel alloc]init];
     studyModel = [studyArray objectAtIndex:indexPath.row];
     
     ISSTStudyTableViewCell *cell=(ISSTStudyTableViewCell *)[tableView  dequeueReusableCellWithIdentifier:CellTableIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
+        cell = [[ISSTStudyTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
     
     cell.title.text=[NSString stringWithFormat:@"%@",studyModel.title];
@@ -227,20 +157,12 @@ static int  loadPage = 1;
     cell.content.text= [NSString stringWithFormat:@"%@",studyModel.description];
     return cell;
 }
+
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (cell ==_getMoreCell) {
-        [self requestGetMore];
-        return;
-    }
-    else if  (cell == _emptyCell)
-    {
-        [self triggerRefresh];
-        return;
-    }
-    
+    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+
     self.studyDetailView=[[ISSTStudyDetailViewController alloc]initWithNibName:@"ISSTNewsDetailViewController" bundle:nil];
     self.studyDetailView.navigationItem.title=@"详细信息";
    // ISSTCampusNewsModel *tempstudyModel=[[ISSTCampusNewsModel alloc]init];
@@ -251,80 +173,28 @@ static int  loadPage = 1;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSArray *listDatas = studyArray;
-    int count = [listDatas count];
-    
-    if (count==0)
-    {
-        if (_refreshLoading)
-        {
-        }
-        else if (!_refreshLoading)
-        {
-            int height = tableView.bounds.size.height;
-            height -= tableView.tableHeaderView.bounds.size.height;
-            height -= [self.topLayoutGuide length];
-            return height;
-        }
-    }
-    if ([self canGetMoreData]&&indexPath.row ==[studyArray count]) {
-        return 45;
-    }
-    return 100;
-    
-}
-
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
     
-    _refreshHeaderView.lastRefreshDate = [NSDate date];
-    
     if (loadPage == 1) {
         studyArray = [[NSMutableArray alloc]initWithArray:backToControllerData];
-        _refreshLoading = NO;
-        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:studyArrayTableView];
     }
     else
     {
-        _refreshLoading = NO;
         [studyArray addObjectsFromArray:backToControllerData];
-        [_getMoreCell setInfoText:@"查看更多" forState:MoreCellState_Information];
     }
     
     [studyArrayTableView reloadData];
 
-    
-//    if ([studyArray count]) {
-//        studyArray = [[NSMutableArray alloc]init];
-//    }
-//    studyArray = (NSMutableArray *)backToControllerData;
-//    NSLog(@"count =%d ,studyArray = %@",[studyArray count],studyArray);
-//    [studyArrayTableView reloadData];
 }
 
 - (void)requestDataOnFail:(NSString *)error
 {
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//    [alert show];
-//    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
 
-    _refreshHeaderView.lastRefreshDate = [NSDate date];
-    
-    if (loadPage == 1) {
-        _refreshLoading = NO;
-        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:studyArrayTableView];
-    }
-    else
-    {
-        [_getMoreCell setInfoText:@"加载更多失败，点击查看更多" forState:MoreCellState_Information];
-    }
-    
-    UIAlertView  *alertView = [[UIAlertView alloc]initWithTitle:@"错误" message:@"查看网络连接" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
-    [alertView show];
     
 }
 

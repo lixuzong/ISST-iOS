@@ -7,7 +7,7 @@
 //
 
 #import "ISSTLoginViewController.h"
-#import "ISSTSlidebarNavController.h"
+//#import "ISSTSlidebarNavController.h"
 #import "ISSTLoginApi.h"
 #import "AppCache.h"
 #import "ISSTUserModel.h"
@@ -15,6 +15,8 @@
 #import "ISSTUserCenterViewController.h"
 #import "passValue.h"
 #import "MBProgressHUD.h"
+#import "ISSTNewsViewController.h"
+#import "LeftMenuViewController.h"
 
 const    static  int   REQUESTLOGIN         = 1;
 const static int        CLASSESLISTS        = 3;
@@ -77,7 +79,7 @@ int method;
    
     self.title=@"ISST";
     [self.navigationItem setHidesBackButton:YES];
-   [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController setNavigationBarHidden:NO];
     nameField.delegate=self;
     passwordField.delegate=self;
     //添加巨型button透明
@@ -115,7 +117,7 @@ int method;
     //self.navigationController.navigationBar.barTintColor  [[UIColor blueColor];
    // self.navigationController.navigationBar.barTintColor = [UIColor blueColor]; //设置导航栏颜色
     //self.navigationController.navigationBarHidden = YES;     隐藏导航栏
-        
+    //UINavigationController *navigationcontroller =[[ISSTNewsViewController alloc]init];
     
   
 }
@@ -126,8 +128,8 @@ int method;
    //[self passValue:flag];
     NSLog(@"%@",flag);
     
-//    nameField.text=@"21351007";
-//    passwordField.text=@"111111";
+    nameField.text=@"21351007";
+    passwordField.text=@"111111";
     
     //检查缓存中是否有用户数据，若果是的话，直接登入进去。
 //      if (defaultLoginSwitch.on) {
@@ -219,7 +221,9 @@ int method;
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(id)backToControllerData;
-{   ISSTSlidebarNavController *slider ;
+{
+    //ISSTSlidebarNavController *slider ;
+
 
     switch (method) {
         case REQUESTLOGIN:
@@ -238,15 +242,15 @@ int method;
             
             break;
         case MAJORSLISTS:
-         //   method = REQUESTLOGIN;
-            slider =[[ISSTSlidebarNavController alloc] init];
-
+            //slider =[[ISSTSlidebarNavController alloc]init];
             [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
-            [self.navigationController pushViewController:slider animated: NO];
-        
+            //[self.navigationController pushViewController:slider animated: NO];
+           
+            [self showMenu];
             break;
             
          default:
+            
             break;
     }
     
@@ -254,6 +258,30 @@ int method;
 
   
     
+}
+
+
+-(void) showMenu{
+    UINavigationController *navigationController1 = [[UINavigationController alloc] initWithRootViewController:[[ISSTNewsViewController alloc] init]];
+    LeftMenuViewController *leftMenuViewController = [[LeftMenuViewController alloc
+                                                       ] init];
+    RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navigationController1
+                                                                    leftMenuViewController:leftMenuViewController
+                                                                   rightMenuViewController:nil];  //可以自行设置右边菜单
+    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"124.png"];
+    sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
+    sideMenuViewController.delegate = self;
+    sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
+    sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
+    sideMenuViewController.contentViewShadowOpacity = 0.6;
+    sideMenuViewController.contentViewShadowRadius = 12;
+    sideMenuViewController.contentViewShadowEnabled = YES;
+    
+    UIApplication *app =[UIApplication sharedApplication];//重新设置navigationcontroller
+    AppDelegate *app2 =app.delegate;
+    app2.window.rootViewController = sideMenuViewController;
+    [app2.window makeKeyAndVisible];
+
 }
 
 - (void)requestDataOnFail:(NSString *)error

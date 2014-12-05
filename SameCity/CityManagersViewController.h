@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
-#import "ISSTRootViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface CityManagersViewController : ISSTRootViewController<UITableViewDataSource,UITableViewDelegate>
+@interface CityManagersViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
 @end
