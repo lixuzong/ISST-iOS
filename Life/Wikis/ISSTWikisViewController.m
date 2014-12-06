@@ -11,6 +11,8 @@
 #import "ISSTLifeApi.h"
 #import "ISSTCampusNewsModel.h"
 #import "ISSTWikisDetailViewController.h"
+#import "RESideMenu.h"
+
 @interface ISSTWikisViewController ()
 @property (nonatomic,strong)ISSTLifeApi  *newsApi;
 @property (nonatomic,strong) ISSTCampusNewsModel  *WikisModel;
@@ -21,7 +23,7 @@
 @implementation ISSTWikisViewController
 {
 @private
-    RevealBlock _revealBlock;
+    //RevealBlock _revealBlock;
 }
 @synthesize newsApi;
 @synthesize WikisModel;
@@ -41,6 +43,12 @@
 
 - (void)viewDidLoad
 {
+    self.title = @"软院百科";
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
+    
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 	//self.view.backgroundColor = [UIColor lightGrayColor];
     
@@ -107,7 +115,7 @@
         newsArray = [[NSMutableArray alloc]init];
     }
     newsArray = (NSMutableArray *)backToControllerData;
-    NSLog(@"count =%d ,newsArray = %@",[newsArray count],[newsArray objectAtIndex:0]);
+    //NSLog(@"count =%d ,newsArray = %@",[newsArray count],[newsArray objectAtIndex:0]);
     [CollectionView reloadData];
 }
 

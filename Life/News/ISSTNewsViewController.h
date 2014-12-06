@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ISSTRootViewController.h"
 #import "ISSTWebApiDelegate.h"
 
-@interface ISSTNewsViewController : ISSTRootViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
+@interface ISSTNewsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 
 @end
 

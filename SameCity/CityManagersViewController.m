@@ -12,6 +12,8 @@
 #import "AppCache.h"
 #import "ISSTSameCitiesModel.h"
 #import "ISSTAddressBookDetailTableViewCell.h"
+#import "RESideMenu.h"
+
 @interface CityManagersViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *cityNameLabel;
 @property (weak, nonatomic) IBOutlet UITableView *cityManagerTableView;
@@ -43,6 +45,9 @@
 
 - (void)viewDidLoad
 {
+    self.title = @"城主";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
+    
     [super viewDidLoad];
     sameCityApi = [[ISSTSameCitiesApi alloc] init];
     sameCityApi.webApiDelegate = self;
@@ -50,6 +55,8 @@
     userInfo = [[ISSTUserModel alloc] init];
     userInfo = [AppCache getCache];
     cityNameLabel.text = userInfo.cityName;
+    NSLog(@"7758258");
+    NSLog(@"%@",userInfo.cityName);
     
     cityListsArray = [[NSMutableArray alloc] init];
     cityManagerModel = [[ISSTSameCitiesModel alloc] init];
@@ -85,13 +92,13 @@
     cityManagerModelArray = backToControllerData;
     for(ISSTSameCitiesModel *tempModel in cityManagerModelArray)
         [cityListsArray addObject:tempModel.cityName];
-    cityListsTableView = [[UITableView alloc] initWithFrame:CGRectMake(240 , 0, 80, 20*cityListsArray.count)];
+    cityListsTableView = [[UITableView alloc] initWithFrame:CGRectMake(240 , 80, 80, 20*cityListsArray.count)];
     cityListsTableView.dataSource = self;
     cityListsTableView.delegate = self;
     
     [self reloadData];
 }
-    
+
 - (void)requestDataOnFail:(NSString *)error
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
@@ -138,6 +145,7 @@
 {
     return 1;
 }
+
 //定义分组行数
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -148,6 +156,7 @@
         returnRow = cityListsArray.count;
     return returnRow;
 }
+
 //设置分组行头
 -(NSString *) tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
@@ -160,6 +169,7 @@
     else
         return nil;
 }
+
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;

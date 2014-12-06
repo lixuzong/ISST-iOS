@@ -1,5 +1,5 @@
 //
-//  ISSTNewsViewController.h
+//  ISSTSameCityAcitvitiesViewController.h
 //  ISST
 //
 //  Created by XSZHAO on 14-3-31.
@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ISSTRootViewController.h"
 #import "ISSTWebApiDelegate.h"
 
-@interface ISSTSameCityAcitvitiesViewController : ISSTRootViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
+@interface ISSTSameCityAcitvitiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 
 @end
 

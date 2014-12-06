@@ -1,5 +1,5 @@
 //
-//  GoViewController.m
+//  ISSTSameCityAcitvitiesViewController.m
 //  ISST
 //
 //  Created by XSZHAO on 14-3-20.
@@ -13,6 +13,9 @@
 #import "AppCache.h"
 #import "ISSTUserModel.h"
 #import "ISSTSameCityActivityDetailViewController.h"
+#import "RESideMenu.h"
+#import "MJRefresh.h"
+
 @interface ISSTSameCityAcitvitiesViewController ()
 @property (copy, nonatomic) UITableView *activitiesArrayTableView;
 @property (nonatomic,strong)ISSTSameCitiesApi  *activityApi;
@@ -50,14 +53,11 @@ static int  loadPage = 1;
     return self;
 }
 
--(BOOL)isList
-{
-    return YES;
-}
-
-
 - (void)viewDidLoad
 {
+    self.title = @"同城活动";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
+    
     [super viewDidLoad];
     userInfo = [AppCache getCache];
     activitiesArrayTableView = (UITableView *)([self.view viewWithTag:50]);
@@ -66,7 +66,7 @@ static int  loadPage = 1;
     
     self.activityApi = [[ISSTSameCitiesApi alloc]init];
     self.activityApi.webApiDelegate = self;
-     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 	self.view.backgroundColor = [UIColor lightGrayColor];
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
@@ -80,82 +80,44 @@ static int  loadPage = 1;
     UINib *nib=[UINib nibWithNibName:@"ISSTActivityCell" bundle:nil];
     [activitiesArrayTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
-    
-    
-    if (_refreshHeaderView == nil ) {
-        Class refreshHeaderViewClazz = NSClassFromString(@"EGORefreshTableHeaderView");
-        _refreshHeaderView = [[refreshHeaderViewClazz alloc]initWithFrame:CGRectMake(0, -activitiesArrayTableView.bounds.size.height, activitiesArrayTableView.frame.size.width, activitiesArrayTableView.bounds.size.height)];
-        
-    }
-    _refreshHeaderView.delegate= self;
-    [activitiesArrayTableView addSubview:_refreshHeaderView];
-    
-	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-  
-//   [self.activityApi requestSameCityActivitiesLists:2 andpage:loadPage andPageSize:20 andKeywords:@"string"];
-    [self    triggerRefresh];
+    [self setupRefresh];
 }
 
--(void)triggerRefresh
+- (void)setupRefresh
 {
-    if (_refreshLoading) {
-        return;
-    }
+    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+    // dateKey用于存储刷新时间，可以保证不同界面拥有不同的刷新时间
+    [self.activitiesArrayTableView addHeaderWithTarget:self action:@selector(headerRereshing)];
     
-    CGPoint contentOffset = CGPointMake(0, -55-10-_refreshHeaderView.scrollViewInset.top);
-    activitiesArrayTableView.contentOffset = contentOffset;
-    NSLog(@"&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&=%f",activitiesArrayTableView.contentOffset.y);
-    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:activitiesArrayTableView];
-    //[self requestRefresh];
+    [self.activitiesArrayTableView headerBeginRefreshing];
     
-    //设置分割线
-    activitiesArrayTableView.separatorColor = [UIColor colorWithRed:230/255.0 green:230/255.0 blue:230/255.0 alpha:1];
-    if([activitiesArrayTableView respondsToSelector:@selector(separatorInset)])
-    {
-        activitiesArrayTableView.separatorInset = UIEdgeInsetsZero;
-    }
-    activitiesArrayTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [self.activitiesArrayTableView addFooterWithTarget:self action:@selector(footerRereshing)];
+    
+}
 
+#pragma mark 开始进入刷新状态
+- (void)headerRereshing
+{
+    // 1.添加数据
+    [self.activityApi requestSameCityActivitiesLists:userInfo.cityId andpage:loadPage andPageSize:20 andKeywords:@"string"];
+    
+    // 刷新表格
+    [self.activitiesArrayTableView reloadData];
+    
+    // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    [self.activitiesArrayTableView headerEndRefreshing];
 }
 
 
--(void)requestRefresh
+- (void)footerRereshing
 {
-    if (NO)  //self.newsApi.isLoadingData;
-    {
-        
-    }
-    else
-    {
-//        NSLog(@"111111111111111111111111111111111111111111111111111111111");
-        _refreshLoading = YES;
-        loadPage = 1;
-        [self.activityApi requestSameCityActivitiesLists:userInfo.cityId andpage:loadPage andPageSize:20 andKeywords:@"string"];
-    }
+    loadPage++;
+    // 1.添加数据
+    [self.activityApi requestSameCityActivitiesLists:userInfo.cityId andpage:loadPage andPageSize:20 andKeywords:@"string"];
     
-  
-}
-
--(void)requestGetMore
-{
-    if (NO)
-    {
-        
-    }
-    else  if (!_refreshLoading)
-    {
-        ++loadPage;
-        _refreshLoading = YES;
-        NSLog(@"requestGetMore ===================================loadPage=%d  " ,loadPage);
-        [self.activityApi requestSameCityActivitiesLists:userInfo.cityId andpage:loadPage andPageSize:20 andKeywords:@"string"];
-
-        [_getMoreCell setInfoText:@"正在加载更多..." forState:MoreCellState_Loading];
-    }
-}
-
--(BOOL)canGetMoreData
-{
-    return YES;
+    // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    [self.activitiesArrayTableView footerEndRefreshing];
 }
 
 
@@ -169,6 +131,7 @@ static int  loadPage = 1;
     activitiesArrayTableView.dataSource = nil;
     activitiesArrayTableView.delegate = nil;
     activitiesArrayTableView = nil;
+    loadPage = 1;
 }
 
 
@@ -185,44 +148,12 @@ static int  loadPage = 1;
     
     NSArray *listData = activitiesArray;
     int count = [listData count];
-    if (count == 0)
-    {
-        if (_refreshLoading)
-        {
-            
-        }
-        else if (!_refreshLoading)
-        {
-            count ++;
-        }
-    }
-    else if([self canGetMoreData])
-    {
-        count ++;
-    }
-    NSLog(@"===========================================%d",count);
     return count;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    int count = [activitiesArray count];
-    NSLog(@"================%d",indexPath.row);
-    if (count ==0)
-    {
-        if (!_refreshLoading)
-        {
-            _emptyCell.state = EmptyCellState_Tips;
-            
-        }
-        return _emptyCell;
-    }
-    else if ([self canGetMoreData]&&indexPath.row == [activitiesArray count])
-    {
-        [_getMoreCell setInfoText:@"查看更多" forState:MoreCellState_Information];
-        return _getMoreCell;
-    }
-    
+    //int count = [activitiesArray count];
     
     if(activityModel == nil)
     {
@@ -247,17 +178,6 @@ static int  loadPage = 1;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if (cell ==_getMoreCell) {
-        [self requestGetMore];
-        return;
-    }
-    else if  (cell == _emptyCell)
-    {
-        [self triggerRefresh];
-        return;
-    }
-
     ISSTSameCityActivityDetailViewController *activityDitailView = [[ISSTSameCityActivityDetailViewController alloc]initWithNibName:@"ISSTSameCityActivityDetailViewController" bundle:nil];
     activityDitailView.navigationItem.title =@"活动详情";
     if(activityModel == nil)
@@ -272,78 +192,27 @@ static int  loadPage = 1;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSArray *listDatas = activitiesArray;
-    int count = [listDatas count];
-    
-    if (count==0)
-    {
-        if (_refreshLoading)
-        {
-        }
-        else if (!_refreshLoading)
-        {
-            int height = tableView.bounds.size.height;
-            height -= tableView.tableHeaderView.bounds.size.height;
-            height -= [self.topLayoutGuide length];
-            return height;
-        }
-    }
-    if ([self canGetMoreData]&&indexPath.row ==[activitiesArray count]) {
-        return 45;
-    }
-    return 128;
-    
-}
-
 
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
-    _refreshHeaderView.lastRefreshDate = [NSDate date];
     
     if (loadPage == 1) {
         activitiesArray = [[NSMutableArray alloc]initWithArray:backToControllerData];
-        _refreshLoading = NO;
-        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:activitiesArrayTableView];
     }
     else
     {
-        _refreshLoading = NO;
         [activitiesArray addObjectsFromArray:backToControllerData];
-        [_getMoreCell setInfoText:@"查看更多" forState:MoreCellState_Information];
     }
     
     [activitiesArrayTableView reloadData];
     
-    
-    
-//    if ([newsArray count]) {
-//        newsArray = [[NSMutableArray alloc]init];
-//    }
-//    newsArray = (NSMutableArray *)backToControllerData;
-//    NSLog(@"count =%d ,newsArray = %@",[newsArray count],newsArray);
-//     [newsArrayTableView reloadData];
+
 }
 
 - (void)requestDataOnFail:(NSString *)error
 {
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//    [alert show];
-    
-    
-//    _refreshHeaderView.lastRefreshDate = [NSDate date];
-//    
-//    if (loadPage == 1) {
-//        _refreshLoading = NO;
-//        [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:activitiesArrayTableView];
-//    }
-//    else
-//    {
-//        [_getMoreCell setInfoText:@"加载更多失败，点击查看更多" forState:MoreCellState_Information];
-//    }
     
     UIAlertView  *alertView = [[UIAlertView alloc]initWithTitle:@"错误" message:@"网络错误" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
     [alertView show];

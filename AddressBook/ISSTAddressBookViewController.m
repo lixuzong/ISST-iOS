@@ -10,6 +10,7 @@
 #import "ISSTSelectFactorsViewController.h"
 #import "ISSTAddressBookDetailViewController.h"
 #import "AppCache.h"
+#import "RESideMenu.h"
 @interface ISSTAddressBookViewController ()
 
 @property(strong,nonatomic)NSMutableArray *namesArray;
@@ -73,6 +74,10 @@ sameCitySwitch = false;
 
 - (void)viewDidLoad
 {
+    
+    self.title = @"通讯录";
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
+
     [super viewDidLoad];
     
     

@@ -42,7 +42,7 @@
     CGRect webframe =webView.frame;
     webframe.size.height=700;
     webView.frame=webframe;
-  webView.scalesPageToFit = YES;
+    webView.scalesPageToFit = YES;
     webView.delegate = self;
     
 
@@ -104,7 +104,7 @@
     float imgwidth=320;
     //webView.scrollView.contentSize=CGSizeMake(320, 2000);
     NSString *htmlText=detailModel.content;
-    
+
     
     NSString *jsString = [NSString stringWithFormat:@"<html> \n"
                           "<head> \n"

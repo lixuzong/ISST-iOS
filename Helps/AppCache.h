@@ -10,7 +10,7 @@
 
 @interface AppCache : NSObject
 + (BOOL)saveCache:(id)model;
-+ ( id)getCache;
++ (id)getCache;
 
 +(BOOL)saveClassListsCache:(NSArray *)array;
 +(id)getClassListsCache;

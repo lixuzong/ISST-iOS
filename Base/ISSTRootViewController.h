@@ -4,7 +4,7 @@
 //
 //  Created by XSZHAO on 14-3-20.
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
-//
+//  目前不使用
 
 #import <UIKit/UIKit.h>
 

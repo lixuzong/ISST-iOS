@@ -6,9 +6,7 @@
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //  就业板块
 
-#import "ISSTRootViewController.h"
-#import "ISSTRootViewController.h"
 #import "ISSTWebApiDelegate.h"
-@interface ISSTEmploymentViewController : ISSTRootViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
+@interface ISSTEmploymentViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 
 @end

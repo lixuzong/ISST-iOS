@@ -1,8 +1,8 @@
 //
-//  GogoViewController.m
+//  ISSTInternshipDetailViewController.m
 //  ISST
 //
-//  Created by XSZHAO on 14-3-20.
+//  Created by rth on 14-12-4.
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
@@ -37,6 +37,7 @@
 }
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
     self.internshipApi = [[ISSTJobsApi alloc]init];
     self.internshipApi.webApiDelegate =self;

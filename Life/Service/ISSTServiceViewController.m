@@ -8,6 +8,8 @@
 
 #import "ISSTServiceViewController.h"
 #import "ISSTRestaurantsViewController.h"
+#import "RESideMenu.h"
+
 @interface ISSTServiceViewController ()
 @property IBOutlet UITableView *serviceTableView;
 @property ISSTRestaurantsViewController *restaurantsView;
@@ -16,23 +18,32 @@
 @implementation ISSTServiceViewController
 @synthesize serviceTableView;
 @synthesize restaurantsView;
-static NSString *CellIdentifier=@"Cell";
+static NSString *CellWithIdentifier=@"Cell";
 NSArray *serviceArray;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"user.png"];
-    }
-    return self;
-}
+
+//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+//{
+//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+//    if (self) {
+//        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"user.png"];
+//    }
+//    return self;
+//}
 
 - (void)viewDidLoad
 {
+    self.title = @"便捷服务";
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
+    
+    
     [super viewDidLoad];
+    
     serviceArray=@[@"美食外卖"];
     // Do any additional setup after loading the view from its nib.
     //UITableView *tableView=(id)[self.view viewWithTag:4];
+//    UINib *nib=[UINib nibWithNibName:@"Cell" bundle:nil];
+//    [serviceTableView registerNib:nib forCellReuseIdentifier:CellWithIdentifier];
 }
 
 #pragma mark
@@ -42,22 +53,27 @@ NSArray *serviceArray;
     // Return the number of sections.
     return 1;
 }
+
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [serviceArray count];
  //   return studyArray.count;
 }
 
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell=(UITableViewCell *)[tableView  dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellWithIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellWithIdentifier];
     }
+
     cell.textLabel.text=[serviceArray objectAtIndex:indexPath.section+indexPath.row];
     cell.accessoryType=UITableViewCellAccessoryDetailDisclosureButton;
     return cell;
 }
+
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {

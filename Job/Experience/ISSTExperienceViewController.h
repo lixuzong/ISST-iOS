@@ -7,8 +7,7 @@
 //  经验交流板块
 
 #import <UIKit/UIKit.h>
-#import "ISSTRootViewController.h"
 #import "ISSTWebApiDelegate.h"
-@interface ISSTExperienceViewController : ISSTRootViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
+@interface ISSTExperienceViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 
 @end
