@@ -184,7 +184,7 @@ sameCitySwitch = false;
             [flattenedArray addObject:[theArray objectAtIndex:i]];
         }
     }
-        NSPredicate *predicate=[NSPredicate predicateWithFormat:@"name beginswith[c] %@",searchBar.text];
+        NSPredicate *predicate=[NSPredicate predicateWithFormat:@"name beginswith[c] %@",searchBar.text];//构造谓词语句进行筛选
         filteredArray=[flattenedArray filteredArrayUsingPredicate:predicate];
         return filteredArray.count;
     }
