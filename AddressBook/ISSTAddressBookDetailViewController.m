@@ -29,8 +29,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -105,11 +103,11 @@
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *detailInfoTableIdentifier=@"ISSTAddressBookDetailTableViewCell";
-  //  ISSTAddressBookDetailTableViewCell *cell  = (ISSTAddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:detailInfoTableIdentifier];
-   
+    //  ISSTAddressBookDetailTableViewCell *cell  = (ISSTAddressBookDetailTableViewCell *)[tableView dequeueReusableCellWithIdentifier:detailInfoTableIdentifier];
+    
     NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"ISSTAddressBookDetailTableViewCell" owner:self options:nil];
     ISSTAddressBookDetailTableViewCell *cell  = [nib objectAtIndex:0];
-    
+    cell.selectionStyle=UITableViewCellSelectionStyleNone;
     switch (indexPath.section) {
         case 0:
         {
@@ -153,7 +151,10 @@
                 case 0:
                 {
                     cell.contentLabel.text=userDetailInfo.phone;
+                    cell.contentLabel.textColor=[UIColor blueColor];
                     cell.titleLabel.text=@"手机";
+                    cell.msgButton.hidden=NO;
+                    [cell.msgButton addTarget:self action:@selector(clickMsgButton) forControlEvents:UIControlEventTouchUpInside];
                     break;
                 }
                 case 1:
@@ -165,13 +166,14 @@
                 case 2:
                 {
                     cell.contentLabel.text=userDetailInfo.email;
+                    cell.contentLabel.textColor=[UIColor blueColor];
                     cell.titleLabel.text=@"E-mail";
                     break;
                 }
                 default:
                     break;
             }
-
+            
         }
             
             break;
@@ -200,7 +202,7 @@
                 default:
                     break;
             }
-
+            
             
         }
             break;
@@ -209,7 +211,38 @@
             break;
     }
     return cell;
+    
+}
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section==1) {
+        switch (indexPath.row) {
+            case 0:
+            {
+                //                UIWebView*callWebview =[[UIWebView alloc] init];
+                //
+                //                [callWebview loadRequest:[NSURLRequest requestWithURL:telURL]];
+                NSString *telNumber=[NSString stringWithFormat:@"tel://%@",userDetailInfo.phone];
+                NSLog(@"+++++++++++++%@",telNumber);
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telNumber]];
+            }
+                break;
+            case 2:
+            {
+                NSString *emailString=[NSString stringWithFormat:@"mailto://%@",userDetailInfo.email];
+                NSLog(@"++++++++++++++%@",emailString);
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:emailString]];
+            }
+            default:
+                break;
+        }
+    }
+}
+-(void) clickMsgButton{
+    NSString *msgString=[NSString stringWithFormat:@"sms://%@",userDetailInfo.phone];
+    NSLog(@"+++++++++++++%@",msgString);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:msgString]];
+    
 }
 
 @end

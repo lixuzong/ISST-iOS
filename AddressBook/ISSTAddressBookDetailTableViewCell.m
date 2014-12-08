@@ -13,6 +13,7 @@
 @synthesize contentLabel;
 - (void)awakeFromNib
 {
+    _msgButton.hidden=YES;
     // Initialization code
 }
 
