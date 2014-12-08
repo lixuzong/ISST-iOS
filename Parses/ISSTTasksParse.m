@@ -2,7 +2,7 @@
 //  ISSTTasksParse.m
 //  ISST
 //
-//  Created by xszhao on 14-7-2.
+//  Created by rth on 14-12-6.
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
@@ -81,9 +81,26 @@
         model.finishId = [[[_tasksArray objectAtIndex:idx ] objectForKey:@"finishId"]  intValue];
         model.name = [[_tasksArray objectAtIndex:idx ] objectForKey:@"name"]  ;
         model.description = [[_tasksArray objectAtIndex:idx ] objectForKey:@"description"] ;
-        model.updatedAt = [[[_tasksArray objectAtIndex:idx] objectForKey:@"updatedAt"]longLongValue]/1000;
-        model.startTime =[[[_tasksArray objectAtIndex:idx] objectForKey:@"startTime"]  longLongValue]/1000;
-        model.expireTime =[[[_tasksArray objectAtIndex:idx] objectForKey:@"expireTime"]  longLongValue]/1000;
+       
+        long long updatedAt = [[[_tasksArray objectAtIndex:idx] objectForKey:@"updatedAt"]longLongValue]/1000;
+        NSDate  *datePT1 = [NSDate dateWithTimeIntervalSince1970:updatedAt];
+        NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+        [dateFormatter1 setDateFormat:@"yyyy-MM-dd"];
+        model.updatedAt  = [dateFormatter1 stringFromDate:datePT1];
+        
+        
+        long long startTime =[[[_tasksArray objectAtIndex:idx] objectForKey:@"startTime"]longLongValue]/1000;
+        NSDate  *datePT2 = [NSDate dateWithTimeIntervalSince1970:startTime];
+        NSDateFormatter *dateFormatter2 = [[NSDateFormatter alloc] init];
+        [dateFormatter2 setDateFormat:@"yyyy-MM-dd"];
+        model.startTime  = [dateFormatter1 stringFromDate:datePT2];
+        
+        long long expireTime =[[[_tasksArray objectAtIndex:idx] objectForKey:@"expireTime"]  longLongValue]/1000;
+        NSDate  *datePT3 = [NSDate dateWithTimeIntervalSince1970:expireTime];
+        NSDateFormatter *dateFormatter3 = [[NSDateFormatter alloc] init];
+        [dateFormatter3 setDateFormat:@"yyyy-MM-dd"];
+        model.expireTime  = [dateFormatter1 stringFromDate:datePT3];
+        
         [array addObject:model];
     }];
     return array;

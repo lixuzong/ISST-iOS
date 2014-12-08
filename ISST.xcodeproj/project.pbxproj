@@ -107,6 +107,13 @@
 		6F75230219D2C5A10079A8D6 /* 软院快讯icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7522F319D2C5A10079A8D6 /* 软院快讯icon.png */; };
 		6F75230319D2C5A10079A8D6 /* 软院百科icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7522F419D2C5A10079A8D6 /* 软院百科icon.png */; };
 		6F75230419D2C5A10079A8D6 /* 通讯录icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7522F519D2C5A10079A8D6 /* 通讯录icon.png */; };
+		6F7EAF901A358C030017C5CE /* 5login_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F7EAF8F1A358C030017C5CE /* 5login_bg.jpg */; };
+		6F7EAF981A3591840017C5CE /* 5login_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F7EAF921A3591840017C5CE /* 5login_bg.jpg */; };
+		6F7EAF991A3591840017C5CE /* denglu_denglubutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7EAF931A3591840017C5CE /* denglu_denglubutton.png */; };
+		6F7EAF9A1A3591840017C5CE /* denglu_kuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7EAF941A3591840017C5CE /* denglu_kuang.png */; };
+		6F7EAF9B1A3591840017C5CE /* denglu_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7EAF951A3591840017C5CE /* denglu_logo.png */; };
+		6F7EAF9C1A3591840017C5CE /* denglu_shangbankuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7EAF961A3591840017C5CE /* denglu_shangbankuang.png */; };
+		6F7EAF9D1A3591840017C5CE /* denglu_xiabankuang.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7EAF971A3591840017C5CE /* denglu_xiabankuang.png */; };
 		6F85C3D51A2C4C380017EB0C /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F85C3C31A2C4C380017EB0C /* AFHTTPRequestOperation.m */; };
 		6F85C3D61A2C4C380017EB0C /* AFHTTPRequestOperationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F85C3C51A2C4C380017EB0C /* AFHTTPRequestOperationManager.m */; };
 		6F85C3D71A2C4C380017EB0C /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F85C3C71A2C4C380017EB0C /* AFHTTPSessionManager.m */; };
@@ -141,6 +148,8 @@
 		6F925CFC1A16293100C68CB3 /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F925CF21A16293100C68CB3 /* UIScrollView+MJExtension.m */; };
 		6F925CFD1A16293100C68CB3 /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F925CF41A16293100C68CB3 /* UIScrollView+MJRefresh.m */; };
 		6F925CFE1A16293100C68CB3 /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F925CF61A16293100C68CB3 /* UIView+MJExtension.m */; };
+		6F9759851A34C2F400FB3EE3 /* ISSTTaskRegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9759831A34C2F400FB3EE3 /* ISSTTaskRegViewController.m */; };
+		6F9759861A34C2F400FB3EE3 /* ISSTTaskRegViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F9759841A34C2F400FB3EE3 /* ISSTTaskRegViewController.xib */; };
 		6F9DDD8B1A2F22B400F63F26 /* RECommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DDD861A2F22B400F63F26 /* RECommonFunctions.m */; };
 		6F9DDD8C1A2F22B400F63F26 /* RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DDD881A2F22B400F63F26 /* RESideMenu.m */; };
 		6F9DDD8D1A2F22B400F63F26 /* UIViewController+RESideMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F9DDD8A1A2F22B400F63F26 /* UIViewController+RESideMenu.m */; };
@@ -175,6 +184,15 @@
 		6FA9BFC91A0A5EFF0074B02B /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FA9BFBE1A0A5EFF0074B02B /* whiteArrow@2x.png */; };
 		6FA9BFCA1A0A5EFF0074B02B /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FA9BFC11A0A5EFF0074B02B /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		6FA9BFCB1A0A5F590074B02B /* EGORefreshTableHeaderView.h in Sources */ = {isa = PBXBuildFile; fileRef = 6FA9BFC01A0A5EFF0074B02B /* EGORefreshTableHeaderView.h */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		6FB882131A331AAC00668AD6 /* ISSTTaskCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB882111A331AAC00668AD6 /* ISSTTaskCell.m */; };
+		6FB882141A331AAC00668AD6 /* ISSTTaskCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB882121A331AAC00668AD6 /* ISSTTaskCell.xib */; };
+		6FB882181A33247900668AD6 /* ISSTTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB882161A33247900668AD6 /* ISSTTaskViewController.m */; };
+		6FB882191A33247900668AD6 /* ISSTTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB882171A33247900668AD6 /* ISSTTaskViewController.xib */; };
+		6FB8821B1A3337C500668AD6 /* menu_backgroud.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FB8821A1A3337C500668AD6 /* menu_backgroud.jpg */; };
+		6FB8821D1A333FC400668AD6 /* login_head.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FB8821C1A333FC400668AD6 /* login_head.png */; };
+		6FB8821F1A33509F00668AD6 /* 1262256.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FB8821E1A33509F00668AD6 /* 1262256.jpg */; };
+		6FB882281A336B9D00668AD6 /* ISSTTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB882261A336B9D00668AD6 /* ISSTTaskDetailViewController.m */; };
+		6FB882291A336B9D00668AD6 /* ISSTTaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB882271A336B9D00668AD6 /* ISSTTaskDetailViewController.xib */; };
 		6FD18F6019CC3D7F0099F08D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FD18F5F19CC3D7F0099F08D /* Default-568h@2x.png */; };
 		6FF29B561A08C67E0024F69E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF29B551A08C67E0024F69E /* CFNetwork.framework */; };
 		6FF29B581A08C6920024F69E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF29B571A08C6920024F69E /* CoreFoundation.framework */; };
@@ -440,6 +458,13 @@
 		6F7522F319D2C5A10079A8D6 /* 软院快讯icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "软院快讯icon.png"; sourceTree = "<group>"; };
 		6F7522F419D2C5A10079A8D6 /* 软院百科icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "软院百科icon.png"; sourceTree = "<group>"; };
 		6F7522F519D2C5A10079A8D6 /* 通讯录icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "通讯录icon.png"; sourceTree = "<group>"; };
+		6F7EAF8F1A358C030017C5CE /* 5login_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 5login_bg.jpg; path = ../5login_bg.jpg; sourceTree = "<group>"; };
+		6F7EAF921A3591840017C5CE /* 5login_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 5login_bg.jpg; sourceTree = "<group>"; };
+		6F7EAF931A3591840017C5CE /* denglu_denglubutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = denglu_denglubutton.png; sourceTree = "<group>"; };
+		6F7EAF941A3591840017C5CE /* denglu_kuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = denglu_kuang.png; sourceTree = "<group>"; };
+		6F7EAF951A3591840017C5CE /* denglu_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = denglu_logo.png; sourceTree = "<group>"; };
+		6F7EAF961A3591840017C5CE /* denglu_shangbankuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = denglu_shangbankuang.png; sourceTree = "<group>"; };
+		6F7EAF971A3591840017C5CE /* denglu_xiabankuang.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = denglu_xiabankuang.png; sourceTree = "<group>"; };
 		6F85C3C21A2C4C380017EB0C /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperation.h; sourceTree = "<group>"; };
 		6F85C3C31A2C4C380017EB0C /* AFHTTPRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFHTTPRequestOperation.m; sourceTree = "<group>"; };
 		6F85C3C41A2C4C380017EB0C /* AFHTTPRequestOperationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPRequestOperationManager.h; sourceTree = "<group>"; };
@@ -492,6 +517,9 @@
 		6F925CF41A16293100C68CB3 /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
 		6F925CF51A16293100C68CB3 /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
 		6F925CF61A16293100C68CB3 /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		6F9759821A34C2F400FB3EE3 /* ISSTTaskRegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTTaskRegViewController.h; sourceTree = SOURCE_ROOT; };
+		6F9759831A34C2F400FB3EE3 /* ISSTTaskRegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTTaskRegViewController.m; sourceTree = SOURCE_ROOT; };
+		6F9759841A34C2F400FB3EE3 /* ISSTTaskRegViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTTaskRegViewController.xib; sourceTree = SOURCE_ROOT; };
 		6F9DDD851A2F22B400F63F26 /* RECommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RECommonFunctions.h; sourceTree = "<group>"; };
 		6F9DDD861A2F22B400F63F26 /* RECommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RECommonFunctions.m; sourceTree = "<group>"; };
 		6F9DDD871A2F22B400F63F26 /* RESideMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RESideMenu.h; sourceTree = "<group>"; };
@@ -547,6 +575,18 @@
 		6FA9BFBE1A0A5EFF0074B02B /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
 		6FA9BFC01A0A5EFF0074B02B /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		6FA9BFC11A0A5EFF0074B02B /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		6FB882101A331AAC00668AD6 /* ISSTTaskCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTTaskCell.h; sourceTree = "<group>"; };
+		6FB882111A331AAC00668AD6 /* ISSTTaskCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTTaskCell.m; sourceTree = "<group>"; };
+		6FB882121A331AAC00668AD6 /* ISSTTaskCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTTaskCell.xib; sourceTree = "<group>"; };
+		6FB882151A33247900668AD6 /* ISSTTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTTaskViewController.h; sourceTree = SOURCE_ROOT; };
+		6FB882161A33247900668AD6 /* ISSTTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTTaskViewController.m; sourceTree = SOURCE_ROOT; };
+		6FB882171A33247900668AD6 /* ISSTTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTTaskViewController.xib; sourceTree = SOURCE_ROOT; };
+		6FB8821A1A3337C500668AD6 /* menu_backgroud.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = menu_backgroud.jpg; path = ../menu_backgroud.jpg; sourceTree = "<group>"; };
+		6FB8821C1A333FC400668AD6 /* login_head.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = login_head.png; path = ../login_head.png; sourceTree = "<group>"; };
+		6FB8821E1A33509F00668AD6 /* 1262256.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = 1262256.jpg; path = ../1262256.jpg; sourceTree = "<group>"; };
+		6FB882251A336B9D00668AD6 /* ISSTTaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTTaskDetailViewController.h; sourceTree = SOURCE_ROOT; };
+		6FB882261A336B9D00668AD6 /* ISSTTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTTaskDetailViewController.m; sourceTree = SOURCE_ROOT; };
+		6FB882271A336B9D00668AD6 /* ISSTTaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTTaskDetailViewController.xib; sourceTree = SOURCE_ROOT; };
 		6FD18F5F19CC3D7F0099F08D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		6FF29B551A08C67E0024F69E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6FF29B571A08C6920024F69E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
@@ -823,6 +863,9 @@
 				334D69EC194BF76E0018C521 /* RefreshTableEmptyCell.m */,
 				334D69EE194BF9EB0018C521 /* ISSTActivityIndicatorView.h */,
 				334D69EF194BF9EB0018C521 /* ISSTActivityIndicatorView.m */,
+				6FB882101A331AAC00668AD6 /* ISSTTaskCell.h */,
+				6FB882111A331AAC00668AD6 /* ISSTTaskCell.m */,
+				6FB882121A331AAC00668AD6 /* ISSTTaskCell.xib */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -953,6 +996,10 @@
 		6F7522E619D2C5A10079A8D6 /* 30*30内部图标 */ = {
 			isa = PBXGroup;
 			children = (
+				6F7EAF8F1A358C030017C5CE /* 5login_bg.jpg */,
+				6FB8821E1A33509F00668AD6 /* 1262256.jpg */,
+				6FB8821C1A333FC400668AD6 /* login_head.png */,
+				6FB8821A1A3337C500668AD6 /* menu_backgroud.jpg */,
 				6F9DDD941A2F78EB00F63F26 /* 1242.jpg */,
 				6F9DDD921A2F786F00F63F26 /* 124.png */,
 				6F8900C21A24B25600EBE758 /* 1125.png */,
@@ -974,6 +1021,19 @@
 				6F7522F519D2C5A10079A8D6 /* 通讯录icon.png */,
 			);
 			path = "30*30内部图标";
+			sourceTree = "<group>";
+		};
+		6F7EAF911A3591840017C5CE /* 登录切图 */ = {
+			isa = PBXGroup;
+			children = (
+				6F7EAF921A3591840017C5CE /* 5login_bg.jpg */,
+				6F7EAF931A3591840017C5CE /* denglu_denglubutton.png */,
+				6F7EAF941A3591840017C5CE /* denglu_kuang.png */,
+				6F7EAF951A3591840017C5CE /* denglu_logo.png */,
+				6F7EAF961A3591840017C5CE /* denglu_shangbankuang.png */,
+				6F7EAF971A3591840017C5CE /* denglu_xiabankuang.png */,
+			);
+			path = "登录切图";
 			sourceTree = "<group>";
 		};
 		6F85C3C11A2C4C380017EB0C /* AFNetworking */ = {
@@ -1343,6 +1403,7 @@
 		AEE2849618DB263100BEF1A9 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6F7EAF911A3591840017C5CE /* 登录切图 */,
 				6F8900C61A24E67C00EBE758 /* ICON切图 */,
 				6F7522E619D2C5A10079A8D6 /* 30*30内部图标 */,
 				6FD18F5F19CC3D7F0099F08D /* Default-568h@2x.png */,
@@ -1536,6 +1597,15 @@
 				6F064E6C1A2B7D7900C58A35 /* ISSTFeedbackViewController.h */,
 				6F064E6D1A2B7D7900C58A35 /* ISSTFeedbackViewController.m */,
 				6F064E6E1A2B7D7900C58A35 /* ISSTFeedbackViewController.xib */,
+				6FB882151A33247900668AD6 /* ISSTTaskViewController.h */,
+				6FB882161A33247900668AD6 /* ISSTTaskViewController.m */,
+				6FB882171A33247900668AD6 /* ISSTTaskViewController.xib */,
+				6FB882251A336B9D00668AD6 /* ISSTTaskDetailViewController.h */,
+				6FB882261A336B9D00668AD6 /* ISSTTaskDetailViewController.m */,
+				6FB882271A336B9D00668AD6 /* ISSTTaskDetailViewController.xib */,
+				6F9759821A34C2F400FB3EE3 /* ISSTTaskRegViewController.h */,
+				6F9759831A34C2F400FB3EE3 /* ISSTTaskRegViewController.m */,
+				6F9759841A34C2F400FB3EE3 /* ISSTTaskRegViewController.xib */,
 			);
 			name = UserCenter;
 			path = Person;
@@ -1682,9 +1752,12 @@
 			files = (
 				6F5B05DE1A319D7F0052CE63 /* 1225.png in Resources */,
 				252D344819639B4300B5EE5D /* fs_main_login_selected@2x.png in Resources */,
+				6FB882191A33247900668AD6 /* ISSTTaskViewController.xib in Resources */,
 				AEE2845A18DADAA000BEF1A9 /* Images.xcassets in Resources */,
 				AE0B8C8218F2CDDF00844F55 /* ISSTExperienceViewController.xib in Resources */,
 				AE9052AB18EEEE6D0088742D /* ISSTNewsViewController.xib in Resources */,
+				6FB882141A331AAC00668AD6 /* ISSTTaskCell.xib in Resources */,
+				6F7EAF991A3591840017C5CE /* denglu_denglubutton.png in Resources */,
 				5805042918FD749300F881D9 /* ISSTEmploymentDetailViewController.xib in Resources */,
 				6FA9BFC81A0A5EFF0074B02B /* whiteArrow.png in Resources */,
 				6F8900DF1A24E67C00EBE758 /* tongchengxiaoyou.png in Resources */,
@@ -1699,7 +1772,9 @@
 				6F7522FD19D2C5A10079A8D6 /* 城主icon.png in Resources */,
 				1824E52019CAC82D00BDC38C /* 就业4.png in Resources */,
 				5805042418FD5D8E00F881D9 /* ISSTRecommendViewController.xib in Resources */,
+				6F7EAF981A3591840017C5CE /* 5login_bg.jpg in Resources */,
 				6F8900D61A24E67C00EBE758 /* chengzhu.png in Resources */,
+				6F9759861A34C2F400FB3EE3 /* ISSTTaskRegViewController.xib in Resources */,
 				6F7522F719D2C5A10079A8D6 /* 便捷服务icon.png in Resources */,
 				18B6198C1955B8DC00F4ACC7 /* CityManagersViewController.xib in Resources */,
 				6F75230419D2C5A10079A8D6 /* 通讯录icon.png in Resources */,
@@ -1714,12 +1789,16 @@
 				AE9E018A18F3F0CB008EAFA1 /* ISSTRestaurantsViewController.xib in Resources */,
 				AEE2849C18DB263100BEF1A9 /* searchBarBG.png in Resources */,
 				6F8900D81A24E67C00EBE758 /* jingyanjiaoliu.png in Resources */,
+				6FB882291A336B9D00668AD6 /* ISSTTaskDetailViewController.xib in Resources */,
+				6FB8821B1A3337C500668AD6 /* menu_backgroud.jpg in Resources */,
 				AE9052A718EEEE6D0088742D /* ISSTNewsDetailViewController.xib in Resources */,
 				AE04DD2F18F8255F002A2A64 /* combo_bg.png in Resources */,
 				581C8D6518F03B050006740B /* ISSTStudyDetailViewController.xib in Resources */,
 				6F7522FF19D2C5A10079A8D6 /* 实习icon.png in Resources */,
+				6F7EAF9A1A3591840017C5CE /* denglu_kuang.png in Resources */,
 				AEE2849E18DB263100BEF1A9 /* searchBarIcon@2x.png in Resources */,
 				AE0B8C8718F2D1F100844F55 /* ISSTActivityTableViewCell.xib in Resources */,
+				6FB8821D1A333FC400668AD6 /* login_head.png in Resources */,
 				6F8900DD1A24E67C00EBE758 /* shixi.png in Resources */,
 				6F7522FA19D2C5A10079A8D6 /* 同城活动icon.png in Resources */,
 				6FA9BFC71A0A5EFF0074B02B /* grayArrow@2x.png in Resources */,
@@ -1736,10 +1815,12 @@
 				6FA9BFC31A0A5EFF0074B02B /* blackArrow@2x.png in Resources */,
 				581C8D6918F03B050006740B /* ISSTStudyViewController.xib in Resources */,
 				AE9052B918EEEE890088742D /* ISSTWikisDetailViewController.xib in Resources */,
+				6F7EAF9B1A3591840017C5CE /* denglu_logo.png in Resources */,
 				AE85F9BF1901635100FCD67D /* ISSTInternshipViewController.xib in Resources */,
 				6F8900DB1A24E67C00EBE758 /* ruanyuanbaike.png in Resources */,
 				6F5B05E31A3209710052CE63 /* ISSTSameCityFriendViewController.xib in Resources */,
 				6F8900D51A24E67C00EBE758 /* bianjiefuwu.png in Resources */,
+				6F7EAF901A358C030017C5CE /* 5login_bg.jpg in Resources */,
 				AE85F9E119028C3400FCD67D /* ISSTPostCommentsViewController.xib in Resources */,
 				AE9052B718EEEE890088742D /* ISSTWikisCollectionViewCell.xib in Resources */,
 				6F7522FE19D2C5A10079A8D6 /* 学习园地icon.png in Resources */,
@@ -1761,6 +1842,7 @@
 				AE9E018F18F3F0D4008EAFA1 /* ISSTServiceViewController.xib in Resources */,
 				AE9052BB18EEEE890088742D /* ISSTWikisViewController.xib in Resources */,
 				AE0B8C9118F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.xib in Resources */,
+				6FB8821F1A33509F00668AD6 /* 1262256.jpg in Resources */,
 				6F925CF71A16293100C68CB3 /* MJRefresh.bundle in Resources */,
 				6FA9BFC21A0A5EFF0074B02B /* blackArrow.png in Resources */,
 				1824E51D19CAC82D00BDC38C /* 就业.png in Resources */,
@@ -1772,11 +1854,13 @@
 				6F75230019D2C5A10079A8D6 /* 就业icon.png in Resources */,
 				334D69F4194BFFE90018C521 /* icon_profile@2x.png in Resources */,
 				1824E51F19CAC82D00BDC38C /* 就业3.png in Resources */,
+				6F7EAF9C1A3591840017C5CE /* denglu_shangbankuang.png in Resources */,
 				334D69F5194BFFE90018C521 /* none_list@2x.png in Resources */,
 				AEE284A018DB263100BEF1A9 /* user.png in Resources */,
 				6FA9BFC91A0A5EFF0074B02B /* whiteArrow@2x.png in Resources */,
 				581C8D6718F03B050006740B /* ISSTStudyTableViewCell.xib in Resources */,
 				18B8047219567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib in Resources */,
+				6F7EAF9D1A3591840017C5CE /* denglu_xiabankuang.png in Resources */,
 				6F7522FB19D2C5A10079A8D6 /* 图标icon.psd in Resources */,
 				AE85F9CC1902605600FCD67D /* ISSTCLTableViewCell.xib in Resources */,
 				6F7522F819D2C5A10079A8D6 /* 内推icon.png in Resources */,
@@ -1821,6 +1905,7 @@
 				6FA231BE1A28D9420028226B /* SDWebImageCompat.m in Sources */,
 				5805041118FD5A1000F881D9 /* ISSTCampusNewsModel.m in Sources */,
 				6FA231BC1A28D9420028226B /* NSData+ImageContentType.m in Sources */,
+				6FB882281A336B9D00668AD6 /* ISSTTaskDetailViewController.m in Sources */,
 				6F925CF81A16293100C68CB3 /* MJRefreshBaseView.m in Sources */,
 				6F85C3D61A2C4C380017EB0C /* AFHTTPRequestOperationManager.m in Sources */,
 				6F925CFB1A16293100C68CB3 /* MJRefreshHeaderView.m in Sources */,
@@ -1830,6 +1915,7 @@
 				18B6198D1955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.m in Sources */,
 				252D347D1963D9E900B5EE5D /* ISSTTasksParse.m in Sources */,
 				6F925CFE1A16293100C68CB3 /* UIView+MJExtension.m in Sources */,
+				6FB882181A33247900668AD6 /* ISSTTaskViewController.m in Sources */,
 				338BB59C1959C4CE00449855 /* ISSTUserCenterApi.m in Sources */,
 				6FA231C11A28D9420028226B /* SDWebImageDownloaderOperation.m in Sources */,
 				AE85F9C3190243D700FCD67D /* ISSTRecommendDetailViewController.m in Sources */,
@@ -1884,6 +1970,7 @@
 				AE9ECADB18E90BD800FEAEF4 /* ISSTCampusNewsParse.m in Sources */,
 				6FA231C91A28D9420028226B /* UIImageView+WebCache.m in Sources */,
 				AE9B148318EBB04400034F65 /* Reachability.m in Sources */,
+				6FB882131A331AAC00668AD6 /* ISSTTaskCell.m in Sources */,
 				AE9E018718F3F0CB008EAFA1 /* ISSTRestaurantsTableViewCell.m in Sources */,
 				6FA231BD1A28D9420028226B /* SDImageCache.m in Sources */,
 				338BB5991959C45800449855 /* ISSTUserCenterParse.m in Sources */,
@@ -1918,6 +2005,7 @@
 				18B619911955B90600F4ACC7 /* ISSTSameCitiesApi.m in Sources */,
 				AEE2845218DADAA000BEF1A9 /* AppDelegate.m in Sources */,
 				6F925CFD1A16293100C68CB3 /* UIScrollView+MJRefresh.m in Sources */,
+				6F9759851A34C2F400FB3EE3 /* ISSTTaskRegViewController.m in Sources */,
 				AE9ECAF518E978EE00FEAEF4 /* BaseParse.m in Sources */,
 				18B619821955B24A00F4ACC7 /* ISSTActivityCell.m in Sources */,
 				AE9E018E18F3F0D4008EAFA1 /* ISSTServiceViewController.m in Sources */,

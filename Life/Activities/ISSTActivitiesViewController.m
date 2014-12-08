@@ -52,7 +52,7 @@ static int  loadPage = 1;
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
     
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(21.0/255.0) green:(153.0 / 255.0) blue:(224.0 / 255.0) alpha:1];
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -66,11 +66,16 @@ static int  loadPage = 1;
     UINib *nib=[UINib nibWithNibName:CellTableIdentifier bundle:nil];
     [activitiesTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
+    self.activitiesTableView.tableFooterView =[[UIView alloc]initWithFrame:CGRectZero]; //UITableView去除多余的横线
+    
     [self setupRefresh];
     
     //scrollview需要的代码
     NSMutableArray *viewsArray = [@[] mutableCopy];
     //NSArray *sourceArray = [[NSArray alloc]initWithObjects:@"活动.png",@"就业.png",@"就业1.png", @"就业2.png",@"就业3.png",@"就业4.png",nil];
+    
+    //self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    //self.activitiesTableView.tableFooterView =[[UIView alloc]initWithFrame:CGRectZero];
     
     for (int i = 0; i < 5; ++i) {
         UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 214)];

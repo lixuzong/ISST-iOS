@@ -43,9 +43,13 @@
     activityApi.webApiDelegate = self;
     [activityApi requestActivityDetailWithId:activityId];
     
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     webView.scalesPageToFit =YES;
     webView.delegate=self;
-   
+    NSLog(@"666666");
+    NSLog(@"%d",activityId);
 }
 
 - (void)didReceiveMemoryWarning

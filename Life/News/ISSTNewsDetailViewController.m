@@ -44,7 +44,6 @@
     webView.frame=webframe;
     webView.scalesPageToFit = YES;
     webView.delegate = self;
-    
 
 }
 
@@ -118,9 +117,9 @@
                           "</html>", fontSize,htmlText];
     
     [webView loadHTMLString:jsString baseURL:nil];//加载html源代码
-    NSLog(@"self=%@ \n htmls=%@",self,backToControllerData);
-    NSLog(@"self=%@\n content=%@\n title=%@ \ndescription=%@",self,detailModel.content,detailModel.title,detailModel.description);
-    NSLog(@"%f",webView.frame.size.height);
+    //NSLog(@"self=%@ \n htmls=%@",self,backToControllerData);
+    //NSLog(@"self=%@\n content=%@\n title=%@ \ndescription=%@",self,detailModel.content,detailModel.title,detailModel.description);
+    //NSLog(@"%f",webView.frame.size.height);
 }
 
 - (void)requestDataOnFail:(NSString *)error

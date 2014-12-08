@@ -2,7 +2,7 @@
 //  ISSTTasksModel.h
 //  ISST
 //
-//  Created by xszhao on 14-7-2.
+//  Created by rth on 14-12-6.
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
@@ -14,7 +14,7 @@
 @property (nonatomic,assign)int finishId;
 @property (nonatomic,copy) NSString * name;
 @property (nonatomic,copy)NSString *description;
-@property (nonatomic,assign)long long  updatedAt;
-@property (nonatomic,assign)long long startTime;
-@property (nonatomic,assign)long long expireTime;
+@property(nonatomic,copy)NSString *updatedAt;
+@property (nonatomic,copy)NSString *startTime;
+@property (nonatomic,copy)NSString *expireTime;
 @end

@@ -23,6 +23,7 @@
 #import "ISSTEmploymentViewController.h"
 #import "AppCache.h"
 #import "ISSTUserModel.h"
+#import "ISSTSameCityFriendViewController.h"
 
 @interface LeftMenuViewController (){
     ISSTUserModel *userModel;
@@ -40,13 +41,13 @@
     [self initialUserModel]; //打开userModel缓存
 
     UIImageView *imageview =[[UIImageView alloc]initWithFrame:CGRectMake(10,(self.view.frame.size.height - 54 * 8) / 2.0f,80,80)];
-    imageview.image =[UIImage imageNamed:@"1225.png" ];
-    UILabel *label1 = [[UILabel alloc]initWithFrame:CGRectMake(110,(self.view.frame.size.height - 54 * 8) / 2.0f,80,80)];
-    label1.text=userModel.name;
-    label1.textColor =[UIColor whiteColor];
+    imageview.image =[UIImage imageNamed:@"login_head.png" ];
+    UILabel *namelabel = [[UILabel alloc]initWithFrame:CGRectMake(110,(self.view.frame.size.height - 54 * 8) / 2.0f,80,80)];
+    namelabel.text=userModel.name;
+    namelabel.textColor =[UIColor whiteColor];
     
     self.tableView = ({
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 5) / 2.0f, self.view.frame.size.width, 54 * 5) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 5) / 2.0f, self.view.frame.size.width, 54 * 6) style:UITableViewStylePlain];
         tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
         tableView.delegate = self;
         tableView.dataSource = self;
@@ -59,7 +60,7 @@
     });
     [self.view addSubview:self.tableView];
     [self.view addSubview:imageview];
-    [self.view addSubview:label1];
+    [self.view addSubview:namelabel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -158,10 +159,9 @@
                 [self.sideMenuViewController hideMenuViewController];
                 break;
             case 2: //同城校友
-                [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[[ISSTAddressBookViewController alloc] init]]
+                [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[[ISSTSameCityFriendViewController alloc] init]]
                                                              animated:YES];
                 [self.sideMenuViewController hideMenuViewController];
-                [self sameCityIs];
                 break;
             default:
                 break;
@@ -181,10 +181,7 @@
 
 }
 
--(void)sameCityIs{
-    ISSTAddressBookViewController *sameCityAddressBook = [[ISSTAddressBookViewController alloc]init];
-    sameCityAddressBook.sameCitySwitch =true;
-}
+
 
 #pragma mark -
 #pragma mark UITableView Datasource

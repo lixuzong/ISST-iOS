@@ -68,10 +68,12 @@ static int  loadPage = 1;
     self.newsApi = [[ISSTLifeApi alloc]init];
     self.newsApi.webApiDelegate = self;
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    self.view.backgroundColor = [UIColor redColor];
+    //self.view.backgroundColor = [UIColor redColor];
     
     [self.navigationController setNavigationBarHidden:NO];
     self.title = @"软院快讯";
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(21.0/255.0) green:(153.0 / 255.0) blue:(224.0 / 255.0) alpha:1];
+
 
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
     
@@ -177,6 +179,12 @@ static int  loadPage = 1;
     cell.title.text     =   newsModel.title;
     cell.time.text      =   newsModel.updatedAt;
     cell.content.text   =   newsModel.description;
+    
+    //隐藏tableview中没有数据的cell的分隔线
+    UIView *view = [UIView new];
+    view.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:view];
+    
     return cell;
 }
 #pragma mark - Table view delegate

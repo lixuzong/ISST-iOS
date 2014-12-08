@@ -2,14 +2,17 @@
 //  ISSTTasksViewController.m
 //  ISST
 //
-//  Created by zhangran on 14-7-2.
+//  Created by rth on 14-12-6.
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
-//
+//  该页面暂时不用
+//  该页面暂时不用
 
 #import "ISSTTasksViewController.h"
 #import "ISSTTasksModel.h"
 #import "ISSTUserCenterApi.h"
 #import "ISSTTasksSurveyViewController.h"
+#import "ISSTTaskCell.h"
+
 @interface ISSTTasksViewController ()<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 {
     NSMutableArray *_listData;
@@ -21,6 +24,7 @@
 @end
 
 @implementation ISSTTasksViewController
+static NSString *CellTableIdentifier=@"ISSTTaskCell";
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -46,15 +50,16 @@
     tableView.delegate = self;
     
     [self.view addSubview:tableView];
-    _tableView = tableView;
+    //_tableView = tableView;
+    [_userCenterApi requestTasksLists:0 pageSize:20 keywords:@"string"];
     
     // Do any additional setup after loading the view.
 }
--(void)viewWillAppear:(BOOL)animated
-{
-    [_userCenterApi requestTasksLists:0 pageSize:20 keywords:@""];
-    
-}
+
+//-(void)viewWillAppear:(BOOL)animated
+//{
+//    
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -70,15 +75,25 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellTableIdentifier=@"ISSTTasksCell";
+    //static NSString *CellTableIdentifier=@"ISSTTaskCell";
+     //newsModel = [newsArray objectAtIndex:indexPath.row];
    // UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier forIndexPath:indexPath];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    UINib *nib=[UINib nibWithNibName:@"ISSTTaskCell" bundle:nil];
+    [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
+    ISSTTaskCell *cell = [tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     
     if (cell ==nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:CellTableIdentifier];
+        cell = [[ISSTTaskCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
     }
-    ISSTTasksModel *model = _listData[indexPath.row];
-    cell.textLabel.text = model.name;
+    ISSTTasksModel *model = [_listData objectAtIndex:indexPath.row];
+    //model = [_listData objectAtIndex:indexPath.row];
+    //cell.textLabel.text = model.name;
+    cell.TaskType.text = @"woca";
+    cell.TaskActivity.text = model.name;
+    NSLog(@"666666");
+    NSLog(@"%@",model.name);
+    NSLog(@"%@",cell.TaskActivity.text);
     
     return cell;
 }
@@ -98,6 +113,7 @@
 
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
+    NSLog(@"7758258");
     _listData = backToControllerData;
     [_tableView reloadData];
 }

@@ -11,7 +11,7 @@
 #import "ISSTUserInfoViewController.h"
 #import "ISSTUserCenterUserInfoTableViewCell.h"
 #import "ISSTContactsAPi.h"
-#import "ISSTTasksViewController.h"
+#import "ISSTTaskViewController.h"
 #import "ISSTMyExperienceViewController.h"
 #import "AppCache.h"
 #import "ISSTUserModel.h"
@@ -68,7 +68,8 @@ NSArray *imageForRowArray= nil;
     self.title = @"个人中心";
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
     
-    //userCenterCatalogueTableView.scrollEnabled = YES;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(21.0/255.0) green:(153.0 / 255.0) blue:(224.0 / 255.0) alpha:1];
+    
     self.contactsApi = [[ISSTContactsApi alloc]init];;
     self.contactsApi.webApiDelegate = self;
     titleForRowArray =[NSArray  arrayWithObjects:
@@ -185,7 +186,7 @@ NSArray *imageForRowArray= nil;
        [self signOut];
     }
    else if (indexPath.row == 0 &&indexPath.section == 2) {
-        ISSTTasksViewController *controller = [[ISSTTasksViewController alloc] init];
+        ISSTTaskViewController *controller = [[ISSTTaskViewController alloc] init];
         [self.navigationController pushViewController:controller  animated:YES];
     }
    else if (indexPath.row == 2 &&indexPath.section == 2) {
