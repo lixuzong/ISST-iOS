@@ -99,8 +99,8 @@
                        @"同城",
                        @"个人中心"
                        ];
-    ISSTAddressBookViewController *sameCityAddressBook = [[ISSTAddressBookViewController alloc] initWithTitle:@"同城校友" withRevealBlock:revealBlock];
-    sameCityAddressBook.sameCitySwitch =true;
+//    ISSTAddressBookViewController *sameCityAddressBook = [[ISSTAddressBookViewController alloc] initWithTitle:@"同城校友" withRevealBlock:revealBlock];
+//    sameCityAddressBook.sameCitySwitch =true;
 
 //    NSArray *controllers = @[
 //                             @[
