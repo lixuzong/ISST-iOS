@@ -6,8 +6,13 @@
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "ISSTAddressBookViewController.h"
 
-@interface ISSTSameCityFriendViewController : UIViewController
+@interface ISSTSameCityFriendViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,ISSTWebApiDelegate,ISSTAddressBookDelegate,UISearchBarDelegate,UISearchDisplayDelegate>
+@property (weak, nonatomic) IBOutlet UILabel *conditionLabel;
+@property (weak, nonatomic) IBOutlet UIButton *clearAllButton;
+@property (strong, nonatomic)  UISearchBar *friendSearchBar;
+@property (strong,nonatomic) UITableView *friendTableView;
 
 @end
+

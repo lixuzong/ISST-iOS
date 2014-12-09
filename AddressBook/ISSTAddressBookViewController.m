@@ -6,30 +6,16 @@
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
+
 #import "ISSTAddressBookViewController.h"
-#import "ISSTSelectFactorsViewController.h"
-#import "ISSTAddressBookDetailViewController.h"
-#import "AppCache.h"
-#import "RESideMenu.h"
+
 @interface ISSTAddressBookViewController ()
 
-@property(strong,nonatomic)NSMutableArray *namesArray;
-@property(strong,nonatomic)NSMutableArray *searchArray;
-@property(strong,nonatomic)NSMutableArray *addressBookArray;
 @property(strong,nonatomic)NSDictionary *sortedNamesDictionary;
 
-@property (copy, nonatomic) UITableView *addressBookTableView;
-@property (weak, nonatomic) IBOutlet UILabel *selectedFactorsLabel;
-@property (weak, nonatomic) IBOutlet UILabel *factorTitleLabel;
-@property (weak, nonatomic) IBOutlet UIButton *clearButton;
-
-@property(strong,nonatomic)ISSTSelectFactorsViewController *selectFactorsViewController;
 
 @property(strong,nonatomic) UISearchDisplayController *searchController;
-@property(strong,nonatomic)ISSTAddressBookDetailViewController* addressBookDetailView;
 
-@property (strong,nonatomic) NSArray *filteredArray;
-- (IBAction)clearSelectedFactors:(id)sender;
 -(void)clickSelect;
 
 @end
@@ -71,6 +57,9 @@ sameCitySwitch = false;
     return self;
 }
 
+-(void) viewWillAppear:(BOOL)animated{
+    
+}
 
 - (void)viewDidLoad
 {
@@ -105,9 +94,7 @@ sameCitySwitch = false;
         addressBookModel.cityName = userInfo.cityName;
     }
     [self requestForData];
-    if (!sameCitySwitch) {
-        [self labelShow];
-    }
+    [self labelShow];
     
     searchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0.0f,0.0f, 320.0f, 44.0f)];
     addressBookTableView.tableHeaderView=searchBar;
@@ -162,6 +149,7 @@ sameCitySwitch = false;
 -(void)requestForData
 {
     [self.addressBookApi requestContactsLists:0 name:addressBookModel.name gender:addressBookModel.gender grade:0 classId:addressBookModel.classId className:addressBookModel.className majorId:addressBookModel.majorId majorName:addressBookModel.majorName cityId:0 cityName:addressBookModel.cityName company:nil];
+    NSLog(@"mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm");
 }
 
 
@@ -350,10 +338,10 @@ sameCitySwitch = false;
     self.selectFactorsViewController.selectedDelegate=self;
     [self.navigationController pushViewController:self.selectFactorsViewController animated:NO];
 }
+#pragma mark sectedDelegate
 -(void)selectedReloadData
 {
-    if (sameCitySwitch)
-        addressBookModel.cityId = userInfo.cityId;
+    addressBookModel.cityId = userInfo.cityId;
     addressBookModel.name=selectFactorsViewController.name.text;
     addressBookModel.gender=selectFactorsViewController.GENDERID;
     addressBookModel.className=selectFactorsViewController.className;
