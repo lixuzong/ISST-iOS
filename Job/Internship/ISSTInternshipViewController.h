@@ -6,12 +6,10 @@
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //  实习板块
 
-//#import "ISSTRootViewController.h"
-//#import "ISSTRootViewController.h"
 #import "ISSTWebApiDelegate.h"
+#import "ISSTBaseViewController.h"
 
-@interface ISSTInternshipViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
-{
-}
+@interface ISSTInternshipViewController : ISSTBaseViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
+
 
 @end

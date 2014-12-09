@@ -54,9 +54,6 @@ static int  loadPage = 1;
 - (void)viewDidLoad
 {
     self.title = @"经验交流";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
-    
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(21.0/255.0) green:(153.0 / 255.0) blue:(224.0 / 255.0) alpha:1];
     
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     
@@ -69,7 +66,7 @@ static int  loadPage = 1;
     self.experienceApi.webApiDelegate=self;
     
     UITableView *tableView=(id)[self.view viewWithTag:2];
-    tableView.rowHeight=90;
+    tableView.rowHeight=126;
     UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
@@ -159,6 +156,7 @@ static int  loadPage = 1;
         cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
     
+    cell.imageView.image =[UIImage imageNamed:@"12092.jpg"];
     cell.title.text=experenceModel.title;
     cell.time.text=experenceModel.updatedAt;
     cell.content.text= experenceModel.description;

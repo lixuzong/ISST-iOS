@@ -18,35 +18,49 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="11252.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7qB-s3-ihM">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="12095.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7qB-s3-ihM">
+                    <rect key="frame" x="0.0" y="64" width="320" height="150"/>
                     <color key="backgroundColor" red="0.74901962280273438" green="0.74901962280273438" blue="0.74901962280273438" alpha="1" colorSpace="deviceRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="piA-j8-LuU"/>
+                    </constraints>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6d-Nz-SI3">
-                    <rect key="frame" x="0.0" y="158" width="320" height="28"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zUO-zn-Hma">
-                    <rect key="frame" x="0.0" y="213" width="320" height="291"/>
+                <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zUO-zn-Hma">
+                    <rect key="frame" x="0.0" y="268" width="320" height="300"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="0Zc-ZM-0Hn"/>
                     </connections>
                 </webView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ykg-mQ-E6T">
-                    <rect key="frame" x="0.0" y="185" width="320" height="28"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ykg-mQ-E6T">
+                    <rect key="frame" x="0.0" y="242" width="320" height="26"/>
                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6d-Nz-SI3">
+                    <rect key="frame" x="0.0" y="214" width="320" height="28"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="W6d-Nz-SI3" firstAttribute="top" secondItem="7qB-s3-ihM" secondAttribute="bottom" id="IpP-w8-NXx"/>
+                <constraint firstAttribute="bottom" secondItem="zUO-zn-Hma" secondAttribute="bottom" id="LoC-L5-QIY"/>
+                <constraint firstItem="W6d-Nz-SI3" firstAttribute="top" secondItem="7qB-s3-ihM" secondAttribute="bottom" id="PkN-K5-XHK"/>
+                <constraint firstItem="Ykg-mQ-E6T" firstAttribute="top" secondItem="W6d-Nz-SI3" secondAttribute="bottom" id="QhW-2i-snv"/>
+                <constraint firstItem="7qB-s3-ihM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gqk-mB-Qvv"/>
+                <constraint firstItem="zUO-zn-Hma" firstAttribute="top" secondItem="Ykg-mQ-E6T" secondAttribute="bottom" id="hde-tr-ApD"/>
+                <constraint firstItem="zUO-zn-Hma" firstAttribute="top" secondItem="Ykg-mQ-E6T" secondAttribute="bottom" id="mqx-Kq-dB9"/>
+                <constraint firstAttribute="trailing" secondItem="7qB-s3-ihM" secondAttribute="trailing" id="nxg-Pi-vBN"/>
+                <constraint firstItem="Ykg-mQ-E6T" firstAttribute="top" secondItem="W6d-Nz-SI3" secondAttribute="bottom" id="s4h-VG-I6g"/>
+            </constraints>
         </view>
     </objects>
     <resources>
-        <image name="11252.jpg" width="650" height="363"/>
+        <image name="12095.jpg" width="960" height="668"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

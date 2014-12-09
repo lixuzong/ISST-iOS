@@ -52,10 +52,8 @@ static int  loadPage = 1;
 - (void)viewDidLoad
 {
     self.title = @"学习园地";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
     
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(21.0/255.0) green:(153.0 / 255.0) blue:(224.0 / 255.0) alpha:1];
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -65,7 +63,7 @@ static int  loadPage = 1;
     
     self.studyApi.webApiDelegate = self;
     UITableView *tableView=(id)[self.view viewWithTag:3];
-    tableView.rowHeight=90;
+    tableView.rowHeight=126;
     UINib *nib=[UINib nibWithNibName:@"ISSTStudyTableViewCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     

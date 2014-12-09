@@ -60,6 +60,9 @@ int method;
     webView.scalesPageToFit =YES;
     webView.delegate=self;
     
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     // Do any additional setup after loading the view from its nib.
 }
 

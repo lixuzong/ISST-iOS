@@ -128,8 +128,8 @@ int method;
    //[self passValue:flag];
     NSLog(@"%@",flag);
     
-    //nameField.text=@"21351007";
-    //passwordField.text=@"111111";
+//    nameField.text=@"21351007";
+//    passwordField.text=@"111111";
     
     //检查缓存中是否有用户数据，若果是的话，直接登入进去。
 //      if (defaultLoginSwitch.on) {

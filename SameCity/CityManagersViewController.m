@@ -46,9 +46,6 @@
 - (void)viewDidLoad
 {
     self.title = @"城主";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
-    
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(21.0/255.0) green:(153.0 / 255.0) blue:(224.0 / 255.0) alpha:1];
     
     [super viewDidLoad];
     sameCityApi = [[ISSTSameCitiesApi alloc] init];
@@ -57,8 +54,6 @@
     userInfo = [[ISSTUserModel alloc] init];
     userInfo = [AppCache getCache];
     cityNameLabel.text = userInfo.cityName;
-    NSLog(@"7758258");
-    NSLog(@"%@",userInfo.cityName);
     
     cityListsArray = [[NSMutableArray alloc] init];
     cityManagerModel = [[ISSTSameCitiesModel alloc] init];

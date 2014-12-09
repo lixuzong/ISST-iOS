@@ -7,6 +7,7 @@
 //
 
 #import "ISSTWebApiDelegate.h"
-@interface ISSTRecommendViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
+#import "ISSTBaseViewController.h"
+@interface ISSTRecommendViewController : ISSTBaseViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 
 @end

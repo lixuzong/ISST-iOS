@@ -89,15 +89,16 @@
      detailModel = (ISSTNewsDetailsModel*)backToControllerData;
     }
     self.title.text=detailModel.title;
-//    self.title.lineBreakMode = UILineBreakModeCharacterWrap;
-//    self.title.numberOfLines= 0;
+    self.title.textAlignment =NSTextAlignmentCenter;
+    self.title.lineBreakMode = NSLineBreakByCharWrapping;
+    self.title.numberOfLines= 0;
     self.time.text=[NSString stringWithFormat:@"发布时间：%@",detailModel.updatedAt];
     int userId=[[detailModel.userModel objectForKey:@"id"]intValue];
     if(userId!=0)
     {
         NSString *userName=[detailModel.userModel objectForKey:@"name"];
         self.userInfo.text=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
-    }
+    }	
     else self.userInfo.text=@"发布者：管理员";
     float fontSize=42;
     float imgwidth=320;

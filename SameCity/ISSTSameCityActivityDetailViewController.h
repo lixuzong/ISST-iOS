@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ISSTSameCitiesApi.h"
+
 @interface ISSTSameCityActivityDetailViewController : UIViewController<ISSTWebApiDelegate,UIWebViewDelegate>
 @property (assign,nonatomic) int   cityId;
 @property (assign,nonatomic) int   activityId;

@@ -27,14 +27,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-	/*UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
+     self.automaticallyAdjustsScrollViewInsets = NO;   //用导航栏跳转过来会有64像素的下移（textveiw会显示出问题），为了防止产生这个效果，加上这个代码
+	
+    
+    /*UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
      view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
      view.backgroundColor = [UIColor redColor];
      [self.view addSubview:view];*/
-    NSLog(@"11111");
-    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
-        self.edgesForExtendedLayout = UIRectEdgeNone;
-    }
+//    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+//        self.edgesForExtendedLayout = UIRectEdgeNone;
+//    }
 }
 
 

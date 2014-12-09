@@ -47,7 +47,7 @@ int method;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"同城校友";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
+
     addressBookModel=[[ISSTUserModel alloc]init];
     userInfo=[[ISSTUserModel alloc]init];
     

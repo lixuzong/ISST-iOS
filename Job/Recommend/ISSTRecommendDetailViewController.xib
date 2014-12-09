@@ -20,42 +20,48 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIW-cQ-eq1">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="35"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qIW-cQ-eq1">
+                    <rect key="frame" x="0.0" y="64" width="320" height="60"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1p-6i-jXA">
-                    <rect key="frame" x="0.0" y="27" width="320" height="18"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0m5-vz-CsC">
-                    <rect key="frame" x="0.0" y="45" width="320" height="25"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RQC-AI-F3p">
-                    <rect key="frame" x="0.0" y="68" width="320" height="294"/>
+                    <rect key="frame" x="0.0" y="166" width="320" height="228"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </webView>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3g9-t8-DYg">
-                    <rect key="frame" x="0.0" y="362" width="320" height="206"/>
+                    <rect key="frame" x="0.0" y="394" width="320" height="174"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Tz0-nb-CQk"/>
                         <outlet property="delegate" destination="-1" id="Wgx-n5-1n1"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0m5-vz-CsC">
+                    <rect key="frame" x="0.0" y="142" width="320" height="24"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V1p-6i-jXA">
+                    <rect key="frame" x="0.0" y="124" width="320" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="3g9-t8-DYg" secondAttribute="bottom" id="Wi9-js-dCl"/>
-                <constraint firstItem="3g9-t8-DYg" firstAttribute="top" secondItem="RQC-AI-F3p" secondAttribute="bottom" id="qOd-9l-2sx"/>
+                <constraint firstAttribute="bottom" secondItem="3g9-t8-DYg" secondAttribute="bottom" id="GSU-Ct-CRZ"/>
+                <constraint firstItem="0m5-vz-CsC" firstAttribute="top" secondItem="V1p-6i-jXA" secondAttribute="bottom" id="Rn6-eo-Jvl"/>
+                <constraint firstItem="3g9-t8-DYg" firstAttribute="top" secondItem="RQC-AI-F3p" secondAttribute="bottom" id="kR3-iZ-a5f"/>
+                <constraint firstItem="V1p-6i-jXA" firstAttribute="top" secondItem="qIW-cQ-eq1" secondAttribute="bottom" id="lUa-fY-ZST"/>
+                <constraint firstItem="0m5-vz-CsC" firstAttribute="top" secondItem="V1p-6i-jXA" secondAttribute="bottom" id="o6Z-dg-TF2"/>
+                <constraint firstItem="RQC-AI-F3p" firstAttribute="top" secondItem="0m5-vz-CsC" secondAttribute="bottom" id="orx-nE-tDa"/>
+                <constraint firstItem="V1p-6i-jXA" firstAttribute="top" secondItem="qIW-cQ-eq1" secondAttribute="bottom" id="tUK-Fh-Bj9"/>
+                <constraint firstItem="3g9-t8-DYg" firstAttribute="top" secondItem="RQC-AI-F3p" secondAttribute="bottom" id="tfs-bV-5A6"/>
             </constraints>
         </view>
     </objects>

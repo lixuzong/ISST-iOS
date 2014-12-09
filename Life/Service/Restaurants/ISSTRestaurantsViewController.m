@@ -11,6 +11,8 @@
 #import "ISSTRestaurantsModel.h"
 #import "ISSTRestaurantsTableViewCell.h"
 #import "ISSTRestaurantDetailViewController.h"
+#import "UIImageView+WebCache.h"
+
 @interface ISSTRestaurantsViewController ()
 
 @property (weak, nonatomic) IBOutlet UITableView *restaurantsTableView;
@@ -18,8 +20,6 @@
 @property (nonatomic,strong)ISSTRestaurantsApi  *restaurantsApi;
 
 @property (nonatomic,strong) ISSTRestaurantsModel  *restaurantsModel;
-
-//@property(nonatomic,strong)ISSTNewsDetailViewController *newsDetailView;
 
 @property (strong, nonatomic) NSMutableArray *restaurantsArray;
 
@@ -95,12 +95,16 @@ static NSString *CellTableIdentifier=@"ISSTRestaurantTableViewCell";
     if (cell == nil) {
         cell = (ISSTRestaurantsTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
-    //    UIImage *restaurantsPicture;
-    //    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:restaurantsModel.picture]];
-    //    restaurantsPicture=[UIImage imageWithData:data];
     cell.restaurantName.text=restaurantsModel.name;
     cell.restaurantTel.text=restaurantsModel.hotline;
-    // cell.picture.image=restaurantsPicture;
+    
+    if([restaurantsModel.picture isEqual:@"<null>"]){//如果图片为空
+         cell.picture.image =[UIImage imageNamed:@"tongyongmeishi.jpg"];
+    }
+    else{
+        NSURL *url3=[NSURL URLWithString:restaurantsModel.picture];
+        [cell.picture sd_setImageWithURL:url3];
+    }
     return cell;
 }
 

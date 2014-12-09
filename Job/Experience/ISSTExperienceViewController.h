@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ISSTWebApiDelegate.h"
-@interface ISSTExperienceViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
+#import "ISSTBaseViewController.h"
+@interface ISSTExperienceViewController : ISSTBaseViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 
 @end

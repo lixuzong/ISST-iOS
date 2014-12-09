@@ -49,13 +49,12 @@ static int  loadPage = 1;
 - (void)viewDidLoad
 {
     self.title = @"在校活动";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
     
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(21.0/255.0) green:(153.0 / 255.0) blue:(224.0 / 255.0) alpha:1];
     
-    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
-        self.edgesForExtendedLayout = UIRectEdgeNone;
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+            self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     
     [super viewDidLoad];
     
@@ -72,18 +71,9 @@ static int  loadPage = 1;
     
     //scrollview需要的代码
     NSMutableArray *viewsArray = [@[] mutableCopy];
-    //NSArray *sourceArray = [[NSArray alloc]initWithObjects:@"活动.png",@"就业.png",@"就业1.png", @"就业2.png",@"就业3.png",@"就业4.png",nil];
-    
-    //self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-    //self.activitiesTableView.tableFooterView =[[UIView alloc]initWithFrame:CGRectZero];
     
     for (int i = 0; i < 5; ++i) {
         UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 214)];
-        //tempLabel.backgroundColor= [(UIColor *)[colorArray objectAtIndex:i] colorWithAlphaComponent:0.5];
-        // tempLabel.backgroundColor= [(UIColor *)[sourceArray objectAtIndex:i] colorWithAlphaComponent:0.5];
-        //tempLabel.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageWithData:sourceArray]];
-        // tempLabel.backgroundColor=[(UIColor *)[sourceArray objectAtIndex:i ]];
-        //tempLabel.backgroundColor = [UIColor colorWithPatternImage:[sourceArray objectAtIndex:i]];
         if(i==0){
             tempLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"活动.png"]];}
         if(i==1){

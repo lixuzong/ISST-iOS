@@ -189,6 +189,8 @@ const static int  COMMENTS = 2;
     if (method == DETAILS) {
         detailModel = (ISSTJobsDetailModel*)backToControllerData;
         
+        self.titleLabel.lineBreakMode = UILineBreakModeCharacterWrap;
+        self.titleLabel.numberOfLines= 0;
         self.titleLabel.text=detailModel.title;
         self.timeLabel.text=detailModel.updatedAt;
         

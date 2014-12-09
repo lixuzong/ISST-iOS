@@ -10,9 +10,10 @@
 #import "ISSTRestaurantsApi.h"
 #import "ISSTRestaurantsModel.h"
 #import "ISSTRestaurantsMenusModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface ISSTRestaurantDetailViewController ()
-@property (weak, nonatomic) IBOutlet UIImageView *picture;
+@property (strong, nonatomic) IBOutlet UIImageView *picture;
 @property (weak, nonatomic) IBOutlet UILabel *name;
 @property (weak, nonatomic) IBOutlet UILabel *address;
 @property (weak, nonatomic) IBOutlet UILabel *businessHours;
@@ -44,7 +45,7 @@
 @synthesize restaurantsMenusModel;
 @synthesize restaurantsId;
 static NSString *CellIdentifier=@"menusCell";
-const static int RESTAURANTS =1;
+//const static int RESTAURANTS =1;
 const    static  int   DETAILS   = 2;
 const    static  int   MENUS   = 3;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -105,11 +106,15 @@ const    static  int   MENUS   = 3;
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    UIImage *menusPicture;
-    NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:restaurantsMenusModel.picture]];
-    menusPicture=[UIImage imageWithData:data];
+
     NSString *price=[NSString stringWithFormat:@"%f",restaurantsMenusModel.price];
-    cell.imageView.image=menusPicture;
+    
+    if([restaurantsMenusModel.picture isEqual:@"<null>" ]){//如果图片为空
+        cell.imageView.image =[UIImage imageNamed:@"meishi2.jpg"];
+    }else{
+        NSURL *url2=[NSURL URLWithString:restaurantsMenusModel.picture];
+        [cell.imageView sd_setImageWithURL:url2];
+    }
     cell.textLabel.text=restaurantsMenusModel.name;
     cell.detailTextLabel.text=price;
     return cell;
@@ -126,11 +131,14 @@ const    static  int   MENUS   = 3;
                 restaurantsModel=[[ISSTRestaurantsModel alloc]init];
             }
            restaurantsModel= (ISSTRestaurantsModel *)backToControllerData;
-            NSLog(@"restaurantsModel =%@",restaurantsModel);
-            UIImage *restaurantsPicture;
-            NSData * data = [NSData dataWithContentsOfURL:[NSURL URLWithString:restaurantsModel.picture]];
-            restaurantsPicture=[UIImage imageWithData:data];
-            picture.image=restaurantsPicture;
+            
+            if([restaurantsModel.picture isEqual:@"<null>"]){//如果图片为空
+                picture.image =[UIImage imageNamed:@"tongyongmeishi.jpg"];
+            }
+            else{
+                NSURL *url=[NSURL URLWithString:restaurantsModel.picture];
+                [picture sd_setImageWithURL:url];
+            }
             name.text=restaurantsModel.name;
             hotline.text=restaurantsModel.hotline;
             address.text=restaurantsModel.address;
@@ -146,7 +154,7 @@ const    static  int   MENUS   = 3;
                 restaurantsMenusArray= [[NSMutableArray alloc]init];
             }
             restaurantsMenusArray = (NSMutableArray *)backToControllerData;
-            NSLog(@"[restaurantsMenusArray count]=%d",[restaurantsMenusArray count]);
+            //NSLog(@"[restaurantsMenusArray count]=%d",[restaurantsMenusArray count]);
             [menusTableView reloadData];
         }
             

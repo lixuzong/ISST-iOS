@@ -48,10 +48,10 @@ static int  loadPage = 1;
 - (void)viewDidLoad
 {
     self.title = @"实习";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(21.0/255.0) green:(153.0 / 255.0) blue:(224.0 / 255.0) alpha:1];
     
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+    
+    self.internshipTableView.tableFooterView =[[UIView alloc]initWithFrame:CGRectZero]; //UITableView去除多余的横线
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -62,9 +62,7 @@ static int  loadPage = 1;
     self.internshipApi.webApiDelegate=self;
     //UITableView *tableView=(id)[self.view viewWithTag:98];
     
-    
-    //internshipTableView.rowHeight=90;   //原始版本
-    internshipTableView.rowHeight=80;    //2014.11.15 rth 修改
+    internshipTableView.rowHeight=126;
     UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [internshipTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
@@ -160,6 +158,7 @@ static int  loadPage = 1;
     cell.title.text=internshipModel.title;
     cell.time.text=internshipModel.updatedAt;
     cell.content.text=internshipModel.description;
+    cell.imageView.image =[UIImage imageNamed:@"book1208.jpg"];
     return cell;
 }
 #pragma mark - Table view delegate

@@ -7,8 +7,9 @@
 //
 
 #import "ISSTAddressBookViewController.h"
+#import "ISSTBaseViewController.h"
 
-@interface ISSTSameCityFriendViewController : UIViewController<UITableViewDelegate,UITableViewDataSource,ISSTWebApiDelegate,ISSTAddressBookDelegate,UISearchBarDelegate,UISearchDisplayDelegate>
+@interface ISSTSameCityFriendViewController : ISSTBaseViewController<UITableViewDelegate,UITableViewDataSource,ISSTWebApiDelegate,ISSTAddressBookDelegate,UISearchBarDelegate,UISearchDisplayDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *conditionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *clearAllButton;
 @property (strong, nonatomic)  UISearchBar *friendSearchBar;

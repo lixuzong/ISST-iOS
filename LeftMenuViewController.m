@@ -242,29 +242,29 @@
     
     if(indexPath.section == 0){
         NSArray *titles = @[@"软院快讯", @"软院百科", @"在校活动", @"便捷服务", @"学习园地"];
-        NSArray *images = @[@"IconHome", @"IconCalendar", @"IconProfile", @"IconSettings", @"IconSettings"];
+        NSArray *images = @[@"ruanyuankuaixun.png", @"ruanyuanbaike.png", @"zaixiaohuodong.png", @"bianjiefuwu.png", @"xuexiyuandi.png"];
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     }
     else if(indexPath.section ==1){
         NSArray *titles = @[@"实习", @"就业", @"内推", @"经验交流",];
-        NSArray *images = @[@"IconHome", @"IconCalendar", @"IconProfile", @"IconSettings"];
+        NSArray *images = @[@"shixi.png", @"jiuye.png", @"neitui.png", @"jingyanjiaoliu.png"];
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     }
     else if(indexPath.section ==2){
         NSArray *titles = @[@"通讯录"];
-        NSArray *images = @[@"IconHome"];
+        NSArray *images = @[@"tongxunlu.png"];
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     }else if (indexPath.section ==3){
         NSArray *titles = @[@"城主",@"同城活动",@"同城校友"];
-        NSArray *images = @[@"IconHome",@"IconHome",@"IconHome"];
+        NSArray *images = @[@"chengzhu.png",@"tongchenghuodong.png",@"tongchengxiaoyou.png"];
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     }else if (indexPath.section ==4){
         NSArray *titles = @[@"个人中心"];
-        NSArray *images = @[@"IconHome"];
+        NSArray *images = @[@"gerenzhongxin.png"];
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     }

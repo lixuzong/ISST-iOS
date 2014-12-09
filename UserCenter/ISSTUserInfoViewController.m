@@ -38,6 +38,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+        if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+            self.edgesForExtendedLayout = UIRectEdgeNone;
+        }
    
     addressBookDetailTableView.frame = CGRectMake(0, 0, 320, self.view.bounds.size.height-40) ;
     _changeBtn.center = CGPointMake(160, addressBookDetailTableView.bounds.size.height+20);

@@ -16,8 +16,9 @@
 #import "ISSTAddressBookDetailViewController.h"
 #import "AppCache.h"
 #import "RESideMenu.h"
+#import "ISSTBaseViewController.h"
 
-@interface ISSTAddressBookViewController : ISSTRootViewController<UITableViewDelegate,UITableViewDataSource,ISSTWebApiDelegate,ISSTAddressBookDelegate,UISearchBarDelegate,UISearchDisplayDelegate>
+@interface ISSTAddressBookViewController : ISSTBaseViewController<UITableViewDelegate,UITableViewDataSource,ISSTWebApiDelegate,ISSTAddressBookDelegate,UISearchBarDelegate,UISearchDisplayDelegate>
 
 @property(strong,nonatomic)ISSTUserModel *addressBookModel;
 @property(strong,nonatomic)ISSTUserModel *userInfo;

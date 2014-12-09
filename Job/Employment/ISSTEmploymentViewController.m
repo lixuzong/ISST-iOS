@@ -46,8 +46,6 @@ static int  loadPage = 1;
 - (void)viewDidLoad
 {
     self.title = @"就业";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:(21.0/255.0) green:(153.0 / 255.0) blue:(224.0 / 255.0) alpha:1];
     
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     
@@ -59,7 +57,7 @@ static int  loadPage = 1;
     
     self.employmentApi.webApiDelegate=self;
     //UITableView *tableView=(id)[self.view viewWithTag:99];
-    employTableView.rowHeight=90;
+    employTableView.rowHeight=126;
     UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [employTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
@@ -153,6 +151,7 @@ static int  loadPage = 1;
         cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
     
+    cell.imageView.image=[UIImage imageNamed:@"12093.jpg"];
     cell.title.text=employmentModel.title;
     cell.time.text=employmentModel.updatedAt;
     cell.content.text=employmentModel.description;

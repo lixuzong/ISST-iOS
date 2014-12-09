@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ISSTWebApiDelegate.h"
+#import "ISSTBaseViewController.h"
 
-@interface ISSTSameCityAcitvitiesViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
+@interface ISSTSameCityAcitvitiesViewController : ISSTBaseViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 
 @end
 
