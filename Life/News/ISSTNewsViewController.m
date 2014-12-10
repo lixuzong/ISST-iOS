@@ -68,12 +68,9 @@ static int  loadPage = 1;
     self.newsApi = [[ISSTLifeApi alloc]init];
     self.newsApi.webApiDelegate = self;
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    self.view.backgroundColor = [UIColor redColor];
+    //self.view.backgroundColor = [UIColor redColor];
     
-    [self.navigationController setNavigationBarHidden:NO];
     self.title = @"软院快讯";
-
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -81,7 +78,7 @@ static int  loadPage = 1;
     [super viewDidLoad];
     
     UITableView *tableView=(id)[self.view viewWithTag:1];
-    tableView.rowHeight=80;
+    tableView.rowHeight=126;
     UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
@@ -173,10 +170,17 @@ static int  loadPage = 1;
     
     //[cell.image sd_setImageWithURL:[listdata objectAtIndex:row]];
     //cell.imageView
-    [cell.imageView sd_setImageWithURL:@"http://www.fzlol.com/upimg/allimg/120819/2021144O91.jpg"];
+    //[cell.imageView sd_setImageWithURL:@"http://www.fzlol.com/upimg/allimg/120819/2021144O91.jpg"];
+    cell.imageView.image =[UIImage imageNamed:@"12091.jpg"];
     cell.title.text     =   newsModel.title;
     cell.time.text      =   newsModel.updatedAt;
     cell.content.text   =   newsModel.description;
+    
+    //隐藏tableview中没有数据的cell的分隔线
+    UIView *view = [UIView new];
+    view.backgroundColor = [UIColor clearColor];
+    [tableView setTableFooterView:view];
+    
     return cell;
 }
 #pragma mark - Table view delegate

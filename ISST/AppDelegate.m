@@ -68,7 +68,6 @@
      ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
     loginViewController.title = @"ISST";
     _navigationController = [[[UINavigationController alloc] initWithRootViewController:loginViewController] autorelease];
-    
     _window.rootViewController = _navigationController ;
 
     [_window makeKeyAndVisible];

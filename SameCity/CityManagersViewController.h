@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ISSTBaseViewController.h"
 
-@interface CityManagersViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface CityManagersViewController : ISSTBaseViewController<UITableViewDataSource,UITableViewDelegate>
 
 @end

@@ -46,10 +46,8 @@ static int  loadPage = 1;
 - (void)viewDidLoad
 {
     self.title = @"内推";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
     
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-	self.view.backgroundColor = [UIColor lightGrayColor];
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -60,7 +58,8 @@ static int  loadPage = 1;
     self.recommendApi.webApiDelegate=self;
     
     //UITableView *tableView=(id)[self.view viewWithTag:97];
-    recommendTableView.rowHeight=90;
+    recommendTableView.rowHeight=126;
+    
     UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [recommendTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
@@ -150,6 +149,7 @@ static int  loadPage = 1;
     cell.title.text=recommendModel.title;
     cell.time.text=recommendModel.updatedAt;
     cell.content.text=recommendModel.description;
+    cell.imageView.image =[UIImage imageNamed:@"12094.jpg"];
     return cell;
 }
 #pragma mark - Table view delegate

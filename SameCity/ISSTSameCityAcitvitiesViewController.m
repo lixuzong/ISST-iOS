@@ -56,7 +56,6 @@ static int  loadPage = 1;
 - (void)viewDidLoad
 {
     self.title = @"同城活动";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
     
     [super viewDidLoad];
     userInfo = [AppCache getCache];
@@ -71,10 +70,6 @@ static int  loadPage = 1;
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
-    
-    //[super viewDidLoad];
-    
-   
     
     activitiesArrayTableView.rowHeight=128;
     UINib *nib=[UINib nibWithNibName:@"ISSTActivityCell" bundle:nil];

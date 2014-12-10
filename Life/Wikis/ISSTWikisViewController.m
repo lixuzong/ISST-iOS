@@ -45,15 +45,9 @@
 {
     self.title = @"软院百科";
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
-    
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-	//self.view.backgroundColor = [UIColor lightGrayColor];
-    
-    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
-        self.edgesForExtendedLayout = UIRectEdgeNone;
     
     [super viewDidLoad];
     self.newsApi = [[ISSTLifeApi alloc]init];
@@ -65,9 +59,9 @@
     self.newsArray =[[NSMutableArray alloc]init];
    [self.CollectionView registerClass:[ISSTWikisCollectionViewCell class] forCellWithReuseIdentifier:@"ISSTWikisCollectionCell"];
     
-	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
    [self.newsApi requestWikisLists:1 andPageSize:20 andKeywords:@"string"];
 }
+
 #pragma mark
 #pragma ColectionView DataSource
 //显示多少行

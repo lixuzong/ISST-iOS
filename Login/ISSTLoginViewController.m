@@ -69,26 +69,26 @@ int method;
     [super viewDidLoad];
     response=NO;
  
-     if ([[[UIDevice currentDevice]systemVersion] doubleValue] >= 7.0) {
-         self.edgesForExtendedLayout =UIRectEdgeNone;
+//     if ([[[UIDevice currentDevice]systemVersion] doubleValue] >= 7.0) {
+//         self.edgesForExtendedLayout =UIRectEdgeNone;
 
-         NSLog(@"aaa");
-         NSLog(@"%f",self.view.frame.size.height);
-    }
+//         NSLog(@"aaa");
+//         NSLog(@"%f",self.view.frame.size.height);
+//    }
 
    
-    self.title=@"ISST";
+    //self.title=@"ISST";
     [self.navigationItem setHidesBackButton:YES];
-    [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController setNavigationBarHidden:YES];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"5login_bg.jpg"]];
     nameField.delegate=self;
     passwordField.delegate=self;
     //添加巨型button透明
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.frame = frame;
-    UIImageView *img=[[UIImageView alloc]initWithImage:[UIImage imageNamed:@"ISSTlogin2.png"]];
-    [self.view addSubview:img];
-    [self.view sendSubviewToBack:img];
+    //[self.view addSubview:img];
+   // [self.view sendSubviewToBack:img];
     button.backgroundColor = [UIColor clearColor];
    
     [button addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside];
@@ -104,7 +104,7 @@ int method;
         
         NSLog(@"3.5");
         }
-     self.navigationController.navigationItem.leftBarButtonItem.title = @"登录";
+     //self.navigationController.navigationItem.leftBarButtonItem.title = @"登录";
     [self.passwordField setSecureTextEntry:YES];//set password ......
     
    
@@ -128,8 +128,8 @@ int method;
    //[self passValue:flag];
     NSLog(@"%@",flag);
     
-    nameField.text=@"21351007";
-    passwordField.text=@"111111";
+//    nameField.text=@"21351007";
+//    passwordField.text=@"111111";
     
     //检查缓存中是否有用户数据，若果是的话，直接登入进去。
 //      if (defaultLoginSwitch.on) {
@@ -210,7 +210,7 @@ int method;
     NSLog(@"button click");
     if([[[UIDevice currentDevice]systemVersion] doubleValue] >= 7.0)
     {
-    self.view.frame =CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height);
+    self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     }
     else{
         self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
@@ -268,20 +268,32 @@ int method;
     RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navigationController1
                                                                     leftMenuViewController:leftMenuViewController
                                                                    rightMenuViewController:nil];  //可以自行设置右边菜单
+<<<<<<< HEAD
 //    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"124.png"];
+=======
+    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"menu_backgroud.jpg"];
+>>>>>>> 17436050c4bff9ab43e4469eca10c9c906fa77f4
     sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
     sideMenuViewController.delegate = self;
-    sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
+    //sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
     sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
-    sideMenuViewController.contentViewShadowOpacity = 0.6;
-    sideMenuViewController.contentViewShadowRadius = 12;
+    //sideMenuViewController.contentViewShadowOpacity = 0.6;
+    //sideMenuViewController.contentViewShadowRadius = 12;
     sideMenuViewController.contentViewShadowEnabled = YES;
+<<<<<<< HEAD
 //    
+=======
+    
+>>>>>>> 17436050c4bff9ab43e4469eca10c9c906fa77f4
 //    UIApplication *app =[UIApplication sharedApplication];//重新设置navigationcontroller
 //    AppDelegate *app2 =app.delegate;
 //    app2.window.rootViewController = sideMenuViewController;
 //    [app2.window makeKeyAndVisible];
+<<<<<<< HEAD
       [self.navigationController pushViewController:sideMenuViewController animated: NO];
+=======
+    [self.navigationController pushViewController:sideMenuViewController animated: NO];
+>>>>>>> 17436050c4bff9ab43e4469eca10c9c906fa77f4
 }
 
 - (void)requestDataOnFail:(NSString *)error

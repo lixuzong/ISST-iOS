@@ -34,9 +34,6 @@ NSArray *serviceArray;
 {
     self.title = @"便捷服务";
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
-    
-    
     [super viewDidLoad];
     
     serviceArray=@[@"美食外卖"];

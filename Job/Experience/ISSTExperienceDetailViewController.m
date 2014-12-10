@@ -88,7 +88,10 @@
         detailModel=[[ISSTNewsDetailsModel alloc]init];
         detailModel = (ISSTNewsDetailsModel*)backToControllerData;
     }
+    
     self.title.text=detailModel.title;
+    self.title.lineBreakMode = UILineBreakModeCharacterWrap;
+    self.title.numberOfLines= 0;
     self.time.text=[NSString stringWithFormat:@"发布时间：%@",detailModel.updatedAt];
     int userId=[[detailModel.userModel objectForKey:@"id"]intValue];
     if(userId!=0)

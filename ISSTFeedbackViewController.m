@@ -85,7 +85,7 @@
     [listdata setValue:textView.text forKey:@"content"];
     
     //传送数据到后台
-    NSString *url=@"http://10.82.60.32:3000/app_feedbacks.json";
+    NSString *url=@"http://10.82.60.35/feedback/app_feedbacks.json";
     AFHTTPRequestOperationManager *httpRequestOperationManager=[AFHTTPRequestOperationManager manager]; // 创建
     httpRequestOperationManager.requestSerializer = [AFJSONRequestSerializer serializer]; // 声明请求的数据是JSON类型
     httpRequestOperationManager.responseSerializer = [AFJSONResponseSerializer serializer]; //声明返回的数据是JSON类型

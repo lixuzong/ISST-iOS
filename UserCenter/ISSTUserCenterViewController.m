@@ -11,7 +11,7 @@
 #import "ISSTUserInfoViewController.h"
 #import "ISSTUserCenterUserInfoTableViewCell.h"
 #import "ISSTContactsAPi.h"
-#import "ISSTTasksViewController.h"
+#import "ISSTTaskViewController.h"
 #import "ISSTMyExperienceViewController.h"
 #import "AppCache.h"
 #import "ISSTUserModel.h"
@@ -66,9 +66,7 @@ NSArray *imageForRowArray= nil;
 - (void)viewDidLoad
 {
     self.title = @"个人中心";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
     
-    //userCenterCatalogueTableView.scrollEnabled = YES;
     self.contactsApi = [[ISSTContactsApi alloc]init];;
     self.contactsApi.webApiDelegate = self;
     titleForRowArray =[NSArray  arrayWithObjects:
@@ -185,8 +183,11 @@ NSArray *imageForRowArray= nil;
        [self signOut];
     }
    else if (indexPath.row == 0 &&indexPath.section == 2) {
-        ISSTTasksViewController *controller = [[ISSTTasksViewController alloc] init];
-        [self.navigationController pushViewController:controller  animated:YES];
+//        ISSTTaskViewController *controller = [[ISSTTaskViewController alloc] init];
+//        [self.navigationController pushViewController:controller  animated:YES];
+       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
+       alert.delegate = self;
+       [alert show];
     }
    else if (indexPath.row == 2 &&indexPath.section == 2) {
        ISSTMyExperienceViewController *controller = [[ISSTMyExperienceViewController alloc] init];
@@ -253,12 +254,13 @@ NSArray *imageForRowArray= nil;
     if (indexPath.row||indexPath.section) {
         cell=[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
         if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
         }
         //cell.imageView.image =[UIImage imageNamed:@"user.png"];
-        cell.imageView.image =[UIImage imageNamed:imageForRowArray[indexPath.section][indexPath.row]];// 个人中心icon的获取
+        //cell.imageView.image =[UIImage imageNamed:imageForRowArray[indexPath.section][indexPath.row]];// 个人中心icon的获取
         //NSLog(@“%d”，titleForRowArray[indexPath.section][indexPath.row]);
         cell.textLabel.text    =  titleForRowArray[indexPath.section][indexPath.row];
+        cell.textLabel.textAlignment =NSTextAlignmentCenter;
     }
     else
     {

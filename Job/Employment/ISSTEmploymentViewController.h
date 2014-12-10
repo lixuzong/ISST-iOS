@@ -7,6 +7,7 @@
 //  就业板块
 
 #import "ISSTWebApiDelegate.h"
-@interface ISSTEmploymentViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
+#import "ISSTBaseViewController.h"
+@interface ISSTEmploymentViewController : ISSTBaseViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 
 @end

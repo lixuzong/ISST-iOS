@@ -88,6 +88,8 @@
      detailModel = (ISSTJobsDetailModel*)backToControllerData;
     }
     self.title.text=detailModel.title;
+    self.title.lineBreakMode = UILineBreakModeCharacterWrap;
+    self.title.numberOfLines= 0;
     self.time.text=detailModel.updatedAt;
     int userId=detailModel.userModel.userId;
     if(userId!=0)

@@ -7,7 +7,8 @@
 //
 
 #import "ISSTWebApiDelegate.h"
-@interface ISSTWikisViewController : UIViewController<UICollectionViewDataSource,UICollectionViewDelegate,ISSTWebApiDelegate>
+#import "ISSTBaseViewController.h"
+@interface ISSTWikisViewController : ISSTBaseViewController<UICollectionViewDataSource,UICollectionViewDelegate,ISSTWebApiDelegate>
 
 
 @property (weak, nonatomic) IBOutlet UICollectionView *CollectionView;

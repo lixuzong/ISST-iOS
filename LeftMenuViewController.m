@@ -23,6 +23,7 @@
 #import "ISSTEmploymentViewController.h"
 #import "AppCache.h"
 #import "ISSTUserModel.h"
+#import "ISSTSameCityFriendViewController.h"
 
 @interface LeftMenuViewController (){
     ISSTUserModel *userModel;
@@ -40,13 +41,13 @@
     [self initialUserModel]; //打开userModel缓存
 
     UIImageView *imageview =[[UIImageView alloc]initWithFrame:CGRectMake(10,(self.view.frame.size.height - 54 * 8) / 2.0f,80,80)];
-    imageview.image =[UIImage imageNamed:@"1225.png" ];
-    UILabel *label1 = [[UILabel alloc]initWithFrame:CGRectMake(110,(self.view.frame.size.height - 54 * 8) / 2.0f,80,80)];
-    label1.text=userModel.name;
-    label1.textColor =[UIColor whiteColor];
+    imageview.image =[UIImage imageNamed:@"login_head.png" ];
+    UILabel *namelabel = [[UILabel alloc]initWithFrame:CGRectMake(110,(self.view.frame.size.height - 54 * 8) / 2.0f,80,80)];
+    namelabel.text=userModel.name;
+    namelabel.textColor =[UIColor whiteColor];
     
     self.tableView = ({
-        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 5) / 2.0f, self.view.frame.size.width, 54 * 5) style:UITableViewStylePlain];
+        UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 5) / 2.0f, self.view.frame.size.width, 54 * 6) style:UITableViewStylePlain];
         tableView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleWidth;
         tableView.delegate = self;
         tableView.dataSource = self;
@@ -59,7 +60,7 @@
     });
     [self.view addSubview:self.tableView];
     [self.view addSubview:imageview];
-    [self.view addSubview:label1];
+    [self.view addSubview:namelabel];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -158,10 +159,9 @@
                 [self.sideMenuViewController hideMenuViewController];
                 break;
             case 2: //同城校友
-                [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[[ISSTAddressBookViewController alloc] init]]
+                [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[[ISSTSameCityFriendViewController alloc] init]]
                                                              animated:YES];
                 [self.sideMenuViewController hideMenuViewController];
-                [self sameCityIs];
                 break;
             default:
                 break;
@@ -181,10 +181,7 @@
 
 }
 
--(void)sameCityIs{
-    ISSTAddressBookViewController *sameCityAddressBook = [[ISSTAddressBookViewController alloc]init];
-    sameCityAddressBook.sameCitySwitch =true;
-}
+
 
 #pragma mark -
 #pragma mark UITableView Datasource
@@ -245,29 +242,29 @@
     
     if(indexPath.section == 0){
         NSArray *titles = @[@"软院快讯", @"软院百科", @"在校活动", @"便捷服务", @"学习园地"];
-        NSArray *images = @[@"IconHome", @"IconCalendar", @"IconProfile", @"IconSettings", @"IconSettings"];
+        NSArray *images = @[@"ruanyuankuaixun.png", @"ruanyuanbaike.png", @"zaixiaohuodong.png", @"bianjiefuwu.png", @"xuexiyuandi.png"];
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     }
     else if(indexPath.section ==1){
         NSArray *titles = @[@"实习", @"就业", @"内推", @"经验交流",];
-        NSArray *images = @[@"IconHome", @"IconCalendar", @"IconProfile", @"IconSettings"];
+        NSArray *images = @[@"shixi.png", @"jiuye.png", @"neitui.png", @"jingyanjiaoliu.png"];
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     }
     else if(indexPath.section ==2){
         NSArray *titles = @[@"通讯录"];
-        NSArray *images = @[@"IconHome"];
+        NSArray *images = @[@"tongxunlu.png"];
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     }else if (indexPath.section ==3){
         NSArray *titles = @[@"城主",@"同城活动",@"同城校友"];
-        NSArray *images = @[@"IconHome",@"IconHome",@"IconHome"];
+        NSArray *images = @[@"chengzhu.png",@"tongchenghuodong.png",@"tongchengxiaoyou.png"];
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     }else if (indexPath.section ==4){
         NSArray *titles = @[@"个人中心"];
-        NSArray *images = @[@"IconHome"];
+        NSArray *images = @[@"gerenzhongxin.png"];
         cell.textLabel.text = titles[indexPath.row];
         cell.imageView.image = [UIImage imageNamed:images[indexPath.row]];
     }

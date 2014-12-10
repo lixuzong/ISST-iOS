@@ -43,9 +43,13 @@
     activityApi.webApiDelegate = self;
     [activityApi requestActivityDetailWithId:activityId];
     
+//    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     webView.scalesPageToFit =YES;
     webView.delegate=self;
-   
+    NSLog(@"666666");
+    NSLog(@"%d",activityId);
 }
 
 - (void)didReceiveMemoryWarning
@@ -87,15 +91,13 @@
         detailModel = (ISSTActivityModel*)backToControllerData;
     }
     self.titleLabel.text=detailModel.title;
-    self.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
+    //self.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
     self.titleLabel.numberOfLines = 0;
     int userId=[[detailModel.userModel objectForKey:@"id"]intValue];
     if(userId!=0)
     {
         NSString *userName=[detailModel.userModel objectForKey:@"name"];
         self.userinfo.text=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
-        NSLog(@"haaaaaaaaaaaaaaaa");
-        NSLog(@"%@",userName);
     }
     else
         self.userinfo.text=@"发布者：管理员";

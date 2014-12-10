@@ -6,7 +6,8 @@
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 #import <UIKit/UIKit.h>
+#import "ISSTBaseViewController.h"
 
-@interface ISSTServiceViewController : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface ISSTServiceViewController : ISSTBaseViewController<UITableViewDelegate,UITableViewDataSource>
 
 @end

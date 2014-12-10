@@ -2,7 +2,7 @@
 //  ISSTTasksParse.h
 //  ISST
 //
-//  Created by xszhao on 14-7-2.
+//  Created by rth on 14-12-6.
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
@@ -10,8 +10,8 @@
 
 @interface ISSTTasksParse : BaseParse
 /*****
- 2014.07.02
- 创建： zhao
+ 2014.12.06
+ 创建： rth
  解析任务列表
  *****/
 -(id)taskListsParse;

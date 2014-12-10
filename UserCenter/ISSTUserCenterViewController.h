@@ -6,8 +6,9 @@
 //  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
 //
 
-//#import "ISSTRootViewController.h"
 #import "ISSTWebApiDelegate.h"
-@interface ISSTUserCenterViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
+#import "ISSTBaseViewController.h"
+
+@interface ISSTUserCenterViewController : ISSTBaseViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 
 @end

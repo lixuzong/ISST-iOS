@@ -49,13 +49,12 @@ static int  loadPage = 1;
 - (void)viewDidLoad
 {
     self.title = @"在校活动";
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"user.png"] style:UIBarButtonItemStylePlain target:self action:@selector(presentLeftMenuViewController:)];
     
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    self.view.backgroundColor = [UIColor lightGrayColor];
     
-    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
-        self.edgesForExtendedLayout = UIRectEdgeNone;
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+            self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     
     [super viewDidLoad];
     
@@ -66,19 +65,15 @@ static int  loadPage = 1;
     UINib *nib=[UINib nibWithNibName:CellTableIdentifier bundle:nil];
     [activitiesTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
+    self.activitiesTableView.tableFooterView =[[UIView alloc]initWithFrame:CGRectZero]; //UITableView去除多余的横线
+    
     [self setupRefresh];
     
     //scrollview需要的代码
     NSMutableArray *viewsArray = [@[] mutableCopy];
-    //NSArray *sourceArray = [[NSArray alloc]initWithObjects:@"活动.png",@"就业.png",@"就业1.png", @"就业2.png",@"就业3.png",@"就业4.png",nil];
     
     for (int i = 0; i < 5; ++i) {
         UILabel *tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 214)];
-        //tempLabel.backgroundColor= [(UIColor *)[colorArray objectAtIndex:i] colorWithAlphaComponent:0.5];
-        // tempLabel.backgroundColor= [(UIColor *)[sourceArray objectAtIndex:i] colorWithAlphaComponent:0.5];
-        //tempLabel.backgroundColor=[UIColor colorWithPatternImage:[UIImage imageWithData:sourceArray]];
-        // tempLabel.backgroundColor=[(UIColor *)[sourceArray objectAtIndex:i ]];
-        //tempLabel.backgroundColor = [UIColor colorWithPatternImage:[sourceArray objectAtIndex:i]];
         if(i==0){
             tempLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"活动.png"]];}
         if(i==1){

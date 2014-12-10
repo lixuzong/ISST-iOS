@@ -96,6 +96,8 @@
     }
     else self.userInfo.text=@"发布者：管理员";
     [webView loadHTMLString:detailModel.content baseURL:nil];//加载html源代码
+    NSLog(@"6666666666666666");
+    NSLog(@"%@",detailModel.content);
     NSLog(@"self=%@ \n htmls=%@",self,backToControllerData);
     NSLog(@"self=%@\n content=%@\n title=%@ \ndescription=%@",self,detailModel.content,detailModel.title,detailModel.description);
 }
