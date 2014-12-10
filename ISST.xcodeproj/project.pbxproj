@@ -30,6 +30,14 @@
 		18B6199A1955B94500F4ACC7 /* ISSTSameCitiesParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B619991955B94500F4ACC7 /* ISSTSameCitiesParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18B8047119567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8046F19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m */; };
 		18B8047219567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B8047019567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib */; };
+		18D6A3261A360A4600ABAE2A /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18D6A3251A360A4600ABAE2A /* libBPush.a */; };
+		18D6A32A1A360B0200ABAE2A /* BPushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18D6A3291A360B0200ABAE2A /* BPushConfig.plist */; };
+		18D6A33C1A36130500ABAE2A /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6A3301A36130500ABAE2A /* Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18D6A33D1A36130500ABAE2A /* BPushClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6A3331A36130500ABAE2A /* BPushClass.m */; };
+		18D6A33E1A36130500ABAE2A /* GzipCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6A3351A36130500ABAE2A /* GzipCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18D6A33F1A36130500ABAE2A /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6A3371A36130500ABAE2A /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18D6A3401A36130500ABAE2A /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D6A3391A36130500ABAE2A /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18D6A3421A36134F00ABAE2A /* OpenUDID.h in Sources */ = {isa = PBXBuildFile; fileRef = 18D6A3381A36130500ABAE2A /* OpenUDID.h */; };
 		252ACB711967B00600D2E5A1 /* ISSTTasksSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 252ACB701967B00600D2E5A1 /* ISSTTasksSurveyViewController.m */; };
 		252ACB741967B44C00D2E5A1 /* ISSTSurveyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 252ACB731967B44C00D2E5A1 /* ISSTSurveyModel.m */; };
 		252D344819639B4300B5EE5D /* fs_main_login_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 252D344719639B4300B5EE5D /* fs_main_login_selected@2x.png */; };
@@ -326,6 +334,20 @@
 		18B8046E19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSameCityActivityDetailViewController.h; sourceTree = "<group>"; };
 		18B8046F19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSameCityActivityDetailViewController.m; sourceTree = "<group>"; };
 		18B8047019567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTSameCityActivityDetailViewController.xib; sourceTree = "<group>"; };
+		18D6A3241A360A4600ABAE2A /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
+		18D6A3251A360A4600ABAE2A /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
+		18D6A3291A360B0200ABAE2A /* BPushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BPushConfig.plist; sourceTree = "<group>"; };
+		18D6A32F1A36130500ABAE2A /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		18D6A3301A36130500ABAE2A /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		18D6A3311A36130500ABAE2A /* Base64Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Defines.h; sourceTree = "<group>"; };
+		18D6A3321A36130500ABAE2A /* BPushClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPushClass.h; sourceTree = "<group>"; };
+		18D6A3331A36130500ABAE2A /* BPushClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPushClass.m; sourceTree = "<group>"; };
+		18D6A3341A36130500ABAE2A /* GzipCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GzipCompressor.h; sourceTree = "<group>"; };
+		18D6A3351A36130500ABAE2A /* GzipCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GzipCompressor.m; sourceTree = "<group>"; };
+		18D6A3361A36130500ABAE2A /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		18D6A3371A36130500ABAE2A /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		18D6A3381A36130500ABAE2A /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		18D6A3391A36130500ABAE2A /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
 		252ACB6F1967B00600D2E5A1 /* ISSTTasksSurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTTasksSurveyViewController.h; path = UserCenter/ISSTTasksSurveyViewController.h; sourceTree = SOURCE_ROOT; };
 		252ACB701967B00600D2E5A1 /* ISSTTasksSurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTTasksSurveyViewController.m; path = UserCenter/ISSTTasksSurveyViewController.m; sourceTree = SOURCE_ROOT; };
 		252ACB721967B44C00D2E5A1 /* ISSTSurveyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTSurveyModel.h; path = Models/ISSTSurveyModel.h; sourceTree = "<group>"; };
@@ -746,6 +768,7 @@
 				6FF29B581A08C6920024F69E /* CoreFoundation.framework in Frameworks */,
 				6FF29B561A08C67E0024F69E /* CFNetwork.framework in Frameworks */,
 				AEE2848418DB04CC00BEF1A9 /* QuartzCore.framework in Frameworks */,
+				18D6A3261A360A4600ABAE2A /* libBPush.a in Frameworks */,
 				AEE2844418DADAA000BEF1A9 /* CoreGraphics.framework in Frameworks */,
 				AEE2844618DADAA000BEF1A9 /* UIKit.framework in Frameworks */,
 				AEE2844218DADAA000BEF1A9 /* Foundation.framework in Frameworks */,
@@ -825,6 +848,24 @@
 				334D69EF194BF9EB0018C521 /* ISSTActivityIndicatorView.m */,
 			);
 			name = TableViewCell;
+			sourceTree = "<group>";
+		};
+		18D6A32E1A36130500ABAE2A /* opensource */ = {
+			isa = PBXGroup;
+			children = (
+				18D6A32F1A36130500ABAE2A /* Base64.h */,
+				18D6A3301A36130500ABAE2A /* Base64.m */,
+				18D6A3311A36130500ABAE2A /* Base64Defines.h */,
+				18D6A3321A36130500ABAE2A /* BPushClass.h */,
+				18D6A3331A36130500ABAE2A /* BPushClass.m */,
+				18D6A3341A36130500ABAE2A /* GzipCompressor.h */,
+				18D6A3351A36130500ABAE2A /* GzipCompressor.m */,
+				18D6A3361A36130500ABAE2A /* JSONKit.h */,
+				18D6A3371A36130500ABAE2A /* JSONKit.m */,
+				18D6A3381A36130500ABAE2A /* OpenUDID.h */,
+				18D6A3391A36130500ABAE2A /* OpenUDID.m */,
+			);
+			path = opensource;
 			sourceTree = "<group>";
 		};
 		334D69CD194BF18B0018C521 /* ThirdPartyLibrary */ = {
@@ -1233,6 +1274,10 @@
 		AEE2843518DADAA000BEF1A9 = {
 			isa = PBXGroup;
 			children = (
+				18D6A3291A360B0200ABAE2A /* BPushConfig.plist */,
+				18D6A3241A360A4600ABAE2A /* BPush.h */,
+				18D6A32E1A36130500ABAE2A /* opensource */,
+				18D6A3251A360A4600ABAE2A /* libBPush.a */,
 				1824E51019CAC79D00BDC38C /* scrollView */,
 				334D69CD194BF18B0018C521 /* ThirdPartyLibrary */,
 				182B520519441E28006F213C /* CommonView */,
@@ -1742,6 +1787,7 @@
 				6F8900D51A24E67C00EBE758 /* bianjiefuwu.png in Resources */,
 				AE85F9E119028C3400FCD67D /* ISSTPostCommentsViewController.xib in Resources */,
 				AE9052B718EEEE890088742D /* ISSTWikisCollectionViewCell.xib in Resources */,
+				18D6A32A1A360B0200ABAE2A /* BPushConfig.plist in Resources */,
 				6F7522FE19D2C5A10079A8D6 /* 学习园地icon.png in Resources */,
 				58653D1C18FB86DF005C6F74 /* ISSTAddressBookDetailViewController.xib in Resources */,
 				AE0B8C3618F2C8B300844F55 /* ISSTActivitiesViewController.xib in Resources */,
@@ -1806,10 +1852,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D6A3421A36134F00ABAE2A /* OpenUDID.h in Sources */,
 				6FA9BFCB1A0A5F590074B02B /* EGORefreshTableHeaderView.h in Sources */,
 				252ACB741967B44C00D2E5A1 /* ISSTSurveyModel.m in Sources */,
 				182B520919445AFD006F213C /* ISSTAddressBookViewController.m in Sources */,
 				252D348919656C3200B5EE5D /* ISSTRecommendModel.m in Sources */,
+				18D6A33F1A36130500ABAE2A /* JSONKit.m in Sources */,
 				182B520719445AAE006F213C /* ISSTRestaurantDetailViewController.m in Sources */,
 				6F9DDD8B1A2F22B400F63F26 /* RECommonFunctions.m in Sources */,
 				6F85C3DD1A2C4C380017EB0C /* AFURLSessionManager.m in Sources */,
@@ -1850,6 +1898,7 @@
 				AE85F9C7190251E200FCD67D /* ISSTCommentsModel.m in Sources */,
 				338BB5A21959C54000449855 /* ISSTChangeUserInfoViewController.m in Sources */,
 				AEA238C718F527D00030F196 /* ISSTContactsParse.m in Sources */,
+				18D6A3401A36130500ABAE2A /* OpenUDID.m in Sources */,
 				18B6199A1955B94500F4ACC7 /* ISSTSameCitiesParse.m in Sources */,
 				6FA231CA1A28D9420028226B /* UIView+WebCacheOperation.m in Sources */,
 				33B9F112194D4FF4004F6546 /* ChangeUserInfoVC.m in Sources */,
@@ -1891,6 +1940,7 @@
 				581C8D6418F03B050006740B /* ISSTStudyDetailViewController.m in Sources */,
 				252D347A1963D8CF00B5EE5D /* ISSTTasksModel.m in Sources */,
 				AE0B8C7D18F2CDDF00844F55 /* ISSTExperienceDetailViewController.m in Sources */,
+				18D6A33D1A36130500ABAE2A /* BPushClass.m in Sources */,
 				AE9E017618F3BC1F008EAFA1 /* ISSTContactsApi.m in Sources */,
 				AE85F9BA1901635100FCD67D /* ISSTInternshipDetailViewController.m in Sources */,
 				252D34801963E11400B5EE5D /* ISSTTasksViewController.m in Sources */,
@@ -1910,6 +1960,7 @@
 				6FA231BF1A28D9420028226B /* SDWebImageDecoder.m in Sources */,
 				AE85F9BC1901635100FCD67D /* ISSTICommonCell.m in Sources */,
 				580503FA18FD53EC00F881D9 /* ISSTEmploymentViewController.m in Sources */,
+				18D6A33C1A36130500ABAE2A /* Base64.m in Sources */,
 				AEFDC75418DDC5E100D7FDAA /* ISSTSlidebarNavController.m in Sources */,
 				AEFDC75818DDC90800D7FDAA /* ISSTLoginViewController.m in Sources */,
 				18B8047119567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m in Sources */,
@@ -1955,6 +2006,7 @@
 				AEFDC75C18DECEDD00D7FDAA /* NSString+URLEncoding.m in Sources */,
 				6FA231BB1A28D9420028226B /* MKAnnotationView+WebCache.m in Sources */,
 				338BB5921959C3BD00449855 /* CheckBox.m in Sources */,
+				18D6A33E1A36130500ABAE2A /* GzipCompressor.m in Sources */,
 				AE9052AA18EEEE6D0088742D /* ISSTNewsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2088,7 +2140,10 @@
 				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = "ISST/ISST-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2108,7 +2163,10 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "ISST/ISST-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

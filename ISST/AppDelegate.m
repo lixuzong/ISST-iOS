@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 #import "ISSTLoginViewController.h"
+#import "BPush.h"
+#import "JSONKit.h"
+#import "ISSTUserCenterViewController.h"
+
 @implementation AppDelegate
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
@@ -25,11 +29,48 @@
    // self.navigationController = [[[UINavigationController alloc] initWithRootViewController:homeViewController] autorelease];
 
     
+    
+    
+    [BPush setupChannel:launchOptions];
+    [BPush setDelegate:self];
+    
+
+    //注册消息
+    if
+        ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+            
+        NSLog(@"ios8");
+        UIUserNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+        UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:myTypes categories:nil];
+        [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    }
+    else
+
+        
+    {
+        NSLog(@"<=ios7");
+        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
+    }
+    
+    // 处理badge
+    if([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey])
+    {
+    int badge = [UIApplication sharedApplication].applicationIconBadgeNumber;
+        NSLog(@"badge=%d",badge);
+    if(badge > 0)
+    {
+        badge--;
+        [UIApplication sharedApplication].applicationIconBadgeNumber = badge;
+    }
+    }
+    
      ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
     loginViewController.title = @"ISST";
     _navigationController = [[[UINavigationController alloc] initWithRootViewController:loginViewController] autorelease];
     
     _window.rootViewController = _navigationController ;
+
     [_window makeKeyAndVisible];
     
     
@@ -39,6 +80,52 @@
     
 }
 
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSLog(@"devicetoken");
+    NSLog(@"devicetoken=%@",deviceToken);
+    [BPush registerDeviceToken:deviceToken]; // 必须 [BPush bindChannel]
+    [BPush bindChannel];
+    
+}
+
+- (void) onMethod:(NSString*)method response:(NSDictionary*)data
+{
+    if
+    ([BPushRequestMethod_Bind isEqualToString:method])
+    {
+        NSDictionary* res = [[NSDictionary alloc] initWithDictionary:data];
+        NSString *appid = [res valueForKey:BPushRequestAppIdKey];
+        NSString *userid = [res valueForKey:BPushRequestUserIdKey];
+        NSString *channelid = [res valueForKey:BPushRequestChannelIdKey];
+        int returnCode = [[res valueForKey:BPushRequestErrorCodeKey] intValue];
+        NSString *requestid = [res valueForKey:BPushRequestRequestIdKey];
+    }
+}
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    int badge = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    NSLog(@"badge=%d",badge);
+    if(badge > 0)
+    {
+        badge--;
+        [UIApplication sharedApplication].applicationIconBadgeNumber = badge;
+    }
+
+//    NSLog(@"%@",userInfo);
+    [BPush handleNotification:userInfo];
+    [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:NO];
+}
+
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    
+    NSLog(@"failed to register");
+}
+//-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+//{
+//    [BPush handleNotification:userInfo];
+//}
 
 - (void)dealloc
 {

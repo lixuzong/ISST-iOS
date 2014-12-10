@@ -268,7 +268,7 @@ int method;
     RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navigationController1
                                                                     leftMenuViewController:leftMenuViewController
                                                                    rightMenuViewController:nil];  //可以自行设置右边菜单
-    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"124.png"];
+//    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"124.png"];
     sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
     sideMenuViewController.delegate = self;
     sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
@@ -276,12 +276,12 @@ int method;
     sideMenuViewController.contentViewShadowOpacity = 0.6;
     sideMenuViewController.contentViewShadowRadius = 12;
     sideMenuViewController.contentViewShadowEnabled = YES;
-    
-    UIApplication *app =[UIApplication sharedApplication];//重新设置navigationcontroller
-    AppDelegate *app2 =app.delegate;
-    app2.window.rootViewController = sideMenuViewController;
-    [app2.window makeKeyAndVisible];
-
+//    
+//    UIApplication *app =[UIApplication sharedApplication];//重新设置navigationcontroller
+//    AppDelegate *app2 =app.delegate;
+//    app2.window.rootViewController = sideMenuViewController;
+//    [app2.window makeKeyAndVisible];
+      [self.navigationController pushViewController:sideMenuViewController animated: NO];
 }
 
 - (void)requestDataOnFail:(NSString *)error
