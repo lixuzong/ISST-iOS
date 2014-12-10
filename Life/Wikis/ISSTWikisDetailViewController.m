@@ -36,6 +36,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.Title.text= @"";
+    self.time.text=@"";
+    self.userInfo.text=@"";
+    
     self.newsApi = [[ISSTLifeApi alloc]init];
     self.newsApi.webApiDelegate =self;
     [newsApi requestDetailInfoWithId:WikisId];

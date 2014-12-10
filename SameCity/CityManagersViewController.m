@@ -48,6 +48,8 @@
     self.title = @"城主";
     
     [super viewDidLoad];
+    self.cityNameLabel.text=@"";
+    
     sameCityApi = [[ISSTSameCitiesApi alloc] init];
     sameCityApi.webApiDelegate = self;
     

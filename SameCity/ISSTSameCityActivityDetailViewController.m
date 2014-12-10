@@ -48,6 +48,14 @@ int method;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title.text=@"";
+    self.releaseUserLabel.text=@"";
+    self.startTime.text=@"";
+    self.endTime.text=@"";
+    self.location.text=@"";
+    self.content.text=@"";
+    
     userModel = [[ISSTUserModel alloc] init];
     userModel = [AppCache getCache];
     

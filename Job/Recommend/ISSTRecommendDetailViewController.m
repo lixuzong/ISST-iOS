@@ -64,6 +64,11 @@ const static int  COMMENTS = 2;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.titleLabel.text=@"";
+    self.timeLabel.text=@"";
+    self.userNameLabel.text=@"";
+    
     recommendApi = [[ISSTJobsApi alloc]init];
     recommendApi.webApiDelegate = self;
     

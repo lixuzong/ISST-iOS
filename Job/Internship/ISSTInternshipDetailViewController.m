@@ -39,6 +39,10 @@
 {
     
     [super viewDidLoad];
+    self.title.text=@"";
+    self.userInfo.text=@"";
+    self.time.text=@"";
+    
     self.internshipApi = [[ISSTJobsApi alloc]init];
     self.internshipApi.webApiDelegate =self;
     [internshipApi requestDetailInfoWithId:internshipId];

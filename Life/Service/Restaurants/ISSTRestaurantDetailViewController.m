@@ -66,6 +66,11 @@ const    static  int   MENUS   = 3;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.name.text=@"";
+    self.address.text=@"";
+    self.businessHours.text=@"";
+    self.hotline.text=@"";
+    
     // Do any additional setup after loading the view from its nib.
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
 	self.view.backgroundColor = [UIColor lightGrayColor];

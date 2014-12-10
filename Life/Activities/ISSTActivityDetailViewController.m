@@ -39,6 +39,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.titleLabel.text=@"";
+    self.userinfo.text=@"";
+    self.contentLabel.text=@"";
+    
     activityApi = [[ISSTActivityApi alloc]init];
     activityApi.webApiDelegate = self;
     [activityApi requestActivityDetailWithId:activityId];
