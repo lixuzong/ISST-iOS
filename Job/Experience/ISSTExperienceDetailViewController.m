@@ -38,6 +38,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title.text=@"";
+    self.time.text=@"";
+    self.userInfo.text=@"";
+    
     self.experienceApi = [[ISSTLifeApi alloc]init];
     self.experienceApi.webApiDelegate =self;
     [experienceApi requestDetailInfoWithId:experienceId];
