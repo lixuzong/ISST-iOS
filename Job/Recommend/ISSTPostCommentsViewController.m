@@ -8,7 +8,13 @@
 
 #import "ISSTPostCommentsViewController.h"
 #import "ISSTJobsApi.h"
-@interface ISSTPostCommentsViewController ()
+#import "MBProgressHUD.h"
+
+@interface ISSTPostCommentsViewController ()<MBProgressHUDDelegate>
+{
+     MBProgressHUD *HUD;
+}
+
 @property (weak, nonatomic) IBOutlet UITextField *commentsTextField;
 @property (nonatomic,strong) ISSTJobsApi *jobApi;
 
@@ -54,6 +60,13 @@
 #pragma mark - Private Method
 - (void)postComments
 {
+    //MBprogress
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:HUD];
+    HUD.delegate = self;
+    HUD.labelText = @"发送中...";
+    [HUD show:YES];
+    [HUD showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
     [self.jobApi requestPostComments:self.jobId content:self.commentsTextField.text];
 }
 
@@ -65,9 +78,13 @@
     NSLog(@"%@",backToControllerData);
     NSString *message;
     if (backToControllerData) {
+         [HUD hide:YES];
         message =@"评论成功";
     }
-    else message =@"评论出问题";
+    else{
+         [HUD hide:YES];
+        message =@"评论出问题";
+    }
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
 
@@ -76,9 +93,25 @@
 
 - (void)requestDataOnFail:(NSString *)error
 {
+    [HUD hide:YES];
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
 }
+
+#pragma mark - Execution code（MBProgressHUD）
+- (void)myTask {
+    // Do something usefull in here instead of sleeping ...可以增加一些逻辑代码
+    sleep(3);
+}
+
+
+#pragma mark - MBProgressHUDDelegate
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    // Remove HUD from screen when the HUD was hidded
+    [HUD removeFromSuperview];
+    HUD = nil;
+}
+
 
 
 @end

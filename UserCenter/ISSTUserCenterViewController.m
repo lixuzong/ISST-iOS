@@ -18,6 +18,7 @@
 #import "passValue.h"
 #import "ISSTFeedbackViewController.h"
 #import "RESideMenu.h"
+#import "ISSTAboutViewController.h"
 
 @interface ISSTUserCenterViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *userCenterCatalogueTableView;
@@ -29,6 +30,7 @@
 @property (nonatomic,strong)NSMutableArray *classArray;
 @property (nonatomic,strong)NSMutableArray *majorArray;
 @property (nonatomic,strong)ISSTFeedbackViewController  *feedbackViewController;
+@property (nonatomic,strong)ISSTAboutViewController     *aboutViewController;
 
 - (void)signOut;
 - (void)go2UserInfoViewController:(NSIndexPath *)indexPath tableView:(UITableView *)tableView;
@@ -45,6 +47,7 @@
 @synthesize classArray;
 @synthesize majorArray;
 @synthesize feedbackViewController;
+@synthesize aboutViewController;
 
 
 int method;
@@ -74,6 +77,7 @@ NSArray *imageForRowArray= nil;
                        [NSArray  arrayWithObjects:@"任务中心",nil],
                        [NSArray arrayWithObjects:@"我的内推",@"我的经验",@"重要信息",@"意见反馈",nil],
                        [NSArray  arrayWithObjects:@"活动管理",@"附近的人",nil],
+                       [NSArray  arrayWithObjects:@"关于",nil],
                        [NSArray  arrayWithObjects:@"注销",nil],
                        nil];
 
@@ -216,6 +220,10 @@ NSArray *imageForRowArray= nil;
        alert.delegate = self;
        [alert show];
    }
+   else if (indexPath.row == 0 && indexPath.section==4){ //关于
+       aboutViewController = [[ISSTAboutViewController alloc] init];
+       [self.navigationController pushViewController:aboutViewController  animated:YES];
+   }
 
     
     
@@ -244,7 +252,7 @@ NSArray *imageForRowArray= nil;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell;
-    NSLog(@"section=%d row= %ld",indexPath.section,(long)indexPath.row);
+    
     if (indexPath.row||indexPath.section) {
         cell=[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
         if (cell == nil) {
@@ -277,7 +285,7 @@ NSArray *imageForRowArray= nil;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return  5;
+    return  6;
 }
 
 //- (void)requestDataOnSuccess:(id)backToControllerData

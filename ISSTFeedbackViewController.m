@@ -39,6 +39,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;   //用导航栏跳转过来会有64像素的下移（textveiw会显示出问题），为了防止产生这个效果，加上这个代码
     self.textView.layer.borderWidth = 1;   //设置边框
     self.textView.layer.cornerRadius = 6;
+    self.textView.layer.borderColor =[UIColor grayColor].CGColor;
     textView.delegate = self;
 
 }

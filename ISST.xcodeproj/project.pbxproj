@@ -99,6 +99,11 @@
 		6F5B05DE1A319D7F0052CE63 /* 1225.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B05DD1A319D7F0052CE63 /* 1225.png */; };
 		6F5B05E21A3209710052CE63 /* ISSTSameCityFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5B05E01A3209710052CE63 /* ISSTSameCityFriendViewController.m */; };
 		6F5B05E31A3209710052CE63 /* ISSTSameCityFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B05E11A3209710052CE63 /* ISSTSameCityFriendViewController.xib */; };
+		6F6E614C1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6E614A1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.m */; };
+		6F6E614D1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F6E614B1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.xib */; };
+		6F6E61561A470CA5009F6D62 /* ISSTAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6E61541A470CA5009F6D62 /* ISSTAboutViewController.m */; };
+		6F6E61571A470CA5009F6D62 /* ISSTAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F6E61551A470CA5009F6D62 /* ISSTAboutViewController.xib */; };
+		6F6E61591A470DDD009F6D62 /* About.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F6E61581A470DDD009F6D62 /* About.jpg */; };
 		6F6FEB341A29BFBC00005162 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6FEB331A29BFBC00005162 /* MBProgressHUD.m */; };
 		6F7522F619D2C5A10079A8D6 /* 个人中心icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7522E719D2C5A10079A8D6 /* 个人中心icon.png */; };
 		6F7522F719D2C5A10079A8D6 /* 便捷服务icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F7522E819D2C5A10079A8D6 /* 便捷服务icon.png */; };
@@ -461,6 +466,13 @@
 		6F5B05DF1A3209710052CE63 /* ISSTSameCityFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSameCityFriendViewController.h; sourceTree = "<group>"; };
 		6F5B05E01A3209710052CE63 /* ISSTSameCityFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSameCityFriendViewController.m; sourceTree = "<group>"; };
 		6F5B05E11A3209710052CE63 /* ISSTSameCityFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTSameCityFriendViewController.xib; sourceTree = "<group>"; };
+		6F6E61491A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTMyExperienceDetailsViewController.h; sourceTree = SOURCE_ROOT; };
+		6F6E614A1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTMyExperienceDetailsViewController.m; sourceTree = SOURCE_ROOT; };
+		6F6E614B1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTMyExperienceDetailsViewController.xib; sourceTree = SOURCE_ROOT; };
+		6F6E61531A470CA5009F6D62 /* ISSTAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTAboutViewController.h; sourceTree = SOURCE_ROOT; };
+		6F6E61541A470CA5009F6D62 /* ISSTAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTAboutViewController.m; sourceTree = SOURCE_ROOT; };
+		6F6E61551A470CA5009F6D62 /* ISSTAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTAboutViewController.xib; sourceTree = SOURCE_ROOT; };
+		6F6E61581A470DDD009F6D62 /* About.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = About.jpg; path = ../About.jpg; sourceTree = "<group>"; };
 		6F6FEB321A29BFBC00005162 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		6F6FEB331A29BFBC00005162 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		6F7522E719D2C5A10079A8D6 /* 个人中心icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "个人中心icon.png"; sourceTree = "<group>"; };
@@ -1025,6 +1037,7 @@
 		6F7522E619D2C5A10079A8D6 /* 30*30内部图标 */ = {
 			isa = PBXGroup;
 			children = (
+				6F6E61581A470DDD009F6D62 /* About.jpg */,
 				6F7EAF8F1A358C030017C5CE /* 5login_bg.jpg */,
 				6F1D8AAF1A360AD9002451C3 /* 12094.jpg */,
 				6FD8E4471A36F383000C8CD3 /* leftbarbutton.jpg */,
@@ -1628,6 +1641,9 @@
 				252ACB701967B00600D2E5A1 /* ISSTTasksSurveyViewController.m */,
 				252D348D1965726A00B5EE5D /* ISSTMyExperienceViewController.h */,
 				252D348E1965726A00B5EE5D /* ISSTMyExperienceViewController.m */,
+				6F6E61491A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.h */,
+				6F6E614A1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.m */,
+				6F6E614B1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.xib */,
 				25A699331970C18B00AE1FD8 /* ISSTPostExperienceViewController.h */,
 				25A699341970C18B00AE1FD8 /* ISSTPostExperienceViewController.m */,
 				6F51A73519E6804800C0D5CA /* passValue.h */,
@@ -1644,6 +1660,9 @@
 				6F9759821A34C2F400FB3EE3 /* ISSTTaskRegViewController.h */,
 				6F9759831A34C2F400FB3EE3 /* ISSTTaskRegViewController.m */,
 				6F9759841A34C2F400FB3EE3 /* ISSTTaskRegViewController.xib */,
+				6F6E61531A470CA5009F6D62 /* ISSTAboutViewController.h */,
+				6F6E61541A470CA5009F6D62 /* ISSTAboutViewController.m */,
+				6F6E61551A470CA5009F6D62 /* ISSTAboutViewController.xib */,
 			);
 			name = UserCenter;
 			path = Person;
@@ -1843,6 +1862,7 @@
 				6FB8821D1A333FC400668AD6 /* login_head.png in Resources */,
 				6F8900DD1A24E67C00EBE758 /* shixi.png in Resources */,
 				6F7522FA19D2C5A10079A8D6 /* 同城活动icon.png in Resources */,
+				6F6E614D1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.xib in Resources */,
 				6FA9BFC71A0A5EFF0074B02B /* grayArrow@2x.png in Resources */,
 				6FCFD6EE1A45D1850004EF56 /* ISSTExperienceCell.xib in Resources */,
 				6F8900E11A24E67C00EBE758 /* xuexiyuandi.png in Resources */,
@@ -1862,6 +1882,7 @@
 				6F7EAF9B1A3591840017C5CE /* denglu_logo.png in Resources */,
 				AE85F9BF1901635100FCD67D /* ISSTInternshipViewController.xib in Resources */,
 				6F8900DB1A24E67C00EBE758 /* ruanyuanbaike.png in Resources */,
+				6F6E61571A470CA5009F6D62 /* ISSTAboutViewController.xib in Resources */,
 				6F5B05E31A3209710052CE63 /* ISSTSameCityFriendViewController.xib in Resources */,
 				6FD8E4481A36F383000C8CD3 /* leftbarbutton.jpg in Resources */,
 				6F8900D51A24E67C00EBE758 /* bianjiefuwu.png in Resources */,
@@ -1905,6 +1926,7 @@
 				AEE284A018DB263100BEF1A9 /* user.png in Resources */,
 				6F1D8AB21A360DB0002451C3 /* 12095.jpg in Resources */,
 				6FA9BFC91A0A5EFF0074B02B /* whiteArrow@2x.png in Resources */,
+				6F6E61591A470DDD009F6D62 /* About.jpg in Resources */,
 				581C8D6718F03B050006740B /* ISSTStudyTableViewCell.xib in Resources */,
 				18B8047219567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib in Resources */,
 				6F7EAF9D1A3591840017C5CE /* denglu_xiabankuang.png in Resources */,
@@ -1987,6 +2009,7 @@
 				AE85F9C7190251E200FCD67D /* ISSTCommentsModel.m in Sources */,
 				338BB5A21959C54000449855 /* ISSTChangeUserInfoViewController.m in Sources */,
 				AEA238C718F527D00030F196 /* ISSTContactsParse.m in Sources */,
+				6F6E61561A470CA5009F6D62 /* ISSTAboutViewController.m in Sources */,
 				18B6199A1955B94500F4ACC7 /* ISSTSameCitiesParse.m in Sources */,
 				6FA231CA1A28D9420028226B /* UIView+WebCacheOperation.m in Sources */,
 				33B9F112194D4FF4004F6546 /* ChangeUserInfoVC.m in Sources */,
@@ -2063,6 +2086,7 @@
 				AE9052BA18EEEE890088742D /* ISSTWikisViewController.m in Sources */,
 				581C8D6618F03B050006740B /* ISSTStudyTableViewCell.m in Sources */,
 				6FCFD6ED1A45D1850004EF56 /* ISSTExperienceCell.m in Sources */,
+				6F6E614C1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.m in Sources */,
 				6FA231C41A28D9420028226B /* UIButton+WebCache.m in Sources */,
 				AE85F9CB1902605600FCD67D /* ISSTCLTableViewCell.m in Sources */,
 				5805042318FD5D8E00F881D9 /* ISSTRecommendViewController.m in Sources */,
