@@ -70,10 +70,9 @@ NSArray *imageForRowArray= nil;
     self.contactsApi = [[ISSTContactsApi alloc]init];;
     self.contactsApi.webApiDelegate = self;
     titleForRowArray =[NSArray  arrayWithObjects:
-                        [NSArray  arrayWithObjects:@"用户数据",nil],
-                       [NSArray  arrayWithObjects:@"学生事务",nil],
-                       [NSArray arrayWithObjects:@"任务中心",@"我的内推",@"我的经验",@"重要信息",@"意见反馈",nil],
-                       //[NSArray arrayWithObjects:@"任务中心",@"我的内推",@"我的经验",nil],
+                       [NSArray  arrayWithObjects:@"用户数据",nil],
+                       [NSArray  arrayWithObjects:@"任务中心",nil],
+                       [NSArray arrayWithObjects:@"我的内推",@"我的经验",@"重要信息",@"意见反馈",nil],
                        [NSArray  arrayWithObjects:@"活动管理",@"附近的人",nil],
                        [NSArray  arrayWithObjects:@"注销",nil],
                        nil];
@@ -182,33 +181,28 @@ NSArray *imageForRowArray= nil;
     {
        [self signOut];
     }
-   else if (indexPath.row == 0 &&indexPath.section == 2) {
+   else if (indexPath.row == 0 &&indexPath.section == 1) { //任务中心
 //        ISSTTaskViewController *controller = [[ISSTTaskViewController alloc] init];
 //        [self.navigationController pushViewController:controller  animated:YES];
        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
        alert.delegate = self;
        [alert show];
     }
-   else if (indexPath.row == 2 &&indexPath.section == 2) {
+   else if (indexPath.row == 1 &&indexPath.section == 2) { //我的经验
        ISSTMyExperienceViewController *controller = [[ISSTMyExperienceViewController alloc] init];
        [self.navigationController pushViewController:controller  animated:YES];
    }
-   else if (indexPath.row == 0 &&indexPath.section ==1){ //学生事务板块,还没做 0.0
+   else if (indexPath.row ==0 && indexPath.section == 2 ){ //我的内推板块，还没做 0.0
        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
        alert.delegate = self;
        [alert show];
    }
-   else if (indexPath.row ==1 && indexPath.section ==2){ //我的内推板块，还没做 0.0
+   else if (indexPath.row ==2 && indexPath.section == 2){ //重要信息板块，还没做 0.0
        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
        alert.delegate = self;
        [alert show];
    }
-   else if (indexPath.row ==3 && indexPath.section ==2){ //重要信息板块，还没做 0.0
-       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
-       alert.delegate = self;
-       [alert show];
-   }
-   else if (indexPath.row ==4 && indexPath.section ==2){ //意见反馈板块
+   else if (indexPath.row ==3 && indexPath.section ==2){ //意见反馈板块
        feedbackViewController = [[ISSTFeedbackViewController alloc]init];
        [self.navigationController pushViewController:feedbackViewController animated:YES];
    }

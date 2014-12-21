@@ -59,7 +59,7 @@
         
         //NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                               cachePolicy:NSURLRequestReloadIgnoringLocalCacheData //不考虑缓存，直接下载
+                                                            cachePolicy:NSURLRequestReloadIgnoringLocalCacheData //不考虑缓存，直接下载
                                                            timeoutInterval:20];
         if (cookie!=nil) {
             NSLog(@"***********cookie****************");

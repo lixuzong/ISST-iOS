@@ -9,5 +9,6 @@
 #import "ISSTExperienceModel.h"
 
 @implementation ISSTExperienceModel
+@synthesize eId,title,status;
 
 @end

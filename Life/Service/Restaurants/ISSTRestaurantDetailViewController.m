@@ -112,9 +112,9 @@ const    static  int   MENUS   = 3;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
 
-    NSString *price=[NSString stringWithFormat:@"%f",restaurantsMenusModel.price];
+    NSString *price=[NSString stringWithFormat:@"%.1f",restaurantsMenusModel.price]; //保留1位小数
     
-    if([restaurantsMenusModel.picture isEqual:@"<null>" ]){//如果图片为空
+    if([restaurantsMenusModel.picture isEqual:[NSNull null] ]){//如果图片为空
         cell.imageView.image =[UIImage imageNamed:@"meishi2.jpg"];
     }else{
         NSURL *url2=[NSURL URLWithString:restaurantsMenusModel.picture];
@@ -137,7 +137,7 @@ const    static  int   MENUS   = 3;
             }
            restaurantsModel= (ISSTRestaurantsModel *)backToControllerData;
             
-            if([restaurantsModel.picture isEqual:@"<null>"]){//如果图片为空
+            if([restaurantsModel.picture isEqual:[NSNull null]]){//如果图片为空
                 picture.image =[UIImage imageNamed:@"tongyongmeishi.jpg"];
             }
             else{
@@ -159,7 +159,6 @@ const    static  int   MENUS   = 3;
                 restaurantsMenusArray= [[NSMutableArray alloc]init];
             }
             restaurantsMenusArray = (NSMutableArray *)backToControllerData;
-            //NSLog(@"[restaurantsMenusArray count]=%d",[restaurantsMenusArray count]);
             [menusTableView reloadData];
         }
             

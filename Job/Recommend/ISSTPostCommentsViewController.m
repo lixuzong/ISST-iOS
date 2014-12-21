@@ -34,6 +34,9 @@
     [super viewDidLoad];
     self.jobApi = [[ISSTJobsApi alloc]init ];
     self.jobApi.webApiDelegate = self;
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     self.navigationItem.rightBarButtonItem=
     [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                   target:self

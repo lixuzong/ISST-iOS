@@ -8,7 +8,7 @@
 
 #import "ISSTPostExperienceViewController.h"
 #import "ISSTUserCenterApi.h"
-@interface ISSTPostExperienceViewController ()
+@interface ISSTPostExperienceViewController ()<ISSTWebApiDelegate>
 {
     ISSTUserCenterApi *_userCenterApi;
     UITextField   *_titleTextField;
@@ -23,8 +23,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-     _userCenterApi = [[ISSTUserCenterApi alloc] init];
-        _userCenterApi.webApiDelegate= self;
+    _userCenterApi = [[ISSTUserCenterApi alloc] init];
+    _userCenterApi.webApiDelegate= self;
     }
     return self;
 }
@@ -32,6 +32,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
+            self.edgesForExtendedLayout = UIRectEdgeNone;
+    }
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"发布经验";
      self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStyleBordered target:self action:@selector(sendExperience)];
@@ -54,8 +57,10 @@
         [alert show];
     }
 }
+
 -(void)initialize
-{//标题
+{
+    //标题
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 40)];
     titleLabel.text =@"标题:";
     [titleLabel setTextAlignment:NSTextAlignmentCenter];
@@ -65,6 +70,7 @@
     _titleTextField.frame = CGRectMake(55, 2, 260, 35);
     [_titleTextField setBorderStyle:UITextBorderStyleRoundedRect];
     [self.view addSubview:_titleTextField];
+    
     //内容
     UILabel *contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,titleLabel.bounds.origin.y +5+titleLabel.bounds.size.height+5, 50, 25)];
     contentLabel.text =@"内容:";
@@ -73,6 +79,9 @@
     
     _contentTextView = [[UITextView alloc] init ];
     _contentTextView.frame = CGRectMake(55, 45, 260, 200);
+    _contentTextView.layer.borderWidth = 1;
+    _contentTextView.layer.cornerRadius = 5;
+    _contentTextView.layer.borderColor=[UIColor grayColor].CGColor;
   
     [self.view addSubview:_contentTextView];
     
@@ -87,12 +96,24 @@
 
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:backToControllerData delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:backToControllerData delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
+//    [alert show];
+    NSLog(@"11111");
+    NSLog(@"%@",backToControllerData);
+    NSString *message;
+    if (backToControllerData) {
+        message =@"发布成功!";
+    }
+    else message =@"发布失败!";
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
+
 }
 
 - (void)requestDataOnFail:(NSString *)error
 {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"异常" message:error delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
+    [alert show];
 
 }
 

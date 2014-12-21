@@ -45,6 +45,7 @@
         model.eId =[[[_tasksArray objectAtIndex:idx ] objectForKey:@"id"]  intValue];
         model.title = [[_tasksArray objectAtIndex:idx ] objectForKey:@"title"]  ;
         model.content = [[_tasksArray objectAtIndex:idx ] objectForKey:@"content"] ;
+        model.status = [[[_tasksArray objectAtIndex:idx ] objectForKey:@"status"]  intValue];
        [array addObject:model];
     }];
     return array;

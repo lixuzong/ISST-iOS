@@ -98,7 +98,7 @@ static NSString *CellTableIdentifier=@"ISSTRestaurantTableViewCell";
     cell.restaurantName.text=restaurantsModel.name;
     cell.restaurantTel.text=restaurantsModel.hotline;
     
-    if([restaurantsModel.picture isEqual:@"<null>"]){//如果图片为空
+    if([restaurantsModel.picture isEqual:[NSNull null]]){//如果图片为空
          cell.picture.image =[UIImage imageNamed:@"tongyongmeishi.jpg"];
     }
     else{

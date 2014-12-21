@@ -201,6 +201,8 @@
 		6FB8821F1A33509F00668AD6 /* 1262256.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FB8821E1A33509F00668AD6 /* 1262256.jpg */; };
 		6FB882281A336B9D00668AD6 /* ISSTTaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FB882261A336B9D00668AD6 /* ISSTTaskDetailViewController.m */; };
 		6FB882291A336B9D00668AD6 /* ISSTTaskDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FB882271A336B9D00668AD6 /* ISSTTaskDetailViewController.xib */; };
+		6FCFD6ED1A45D1850004EF56 /* ISSTExperienceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFD6EB1A45D1850004EF56 /* ISSTExperienceCell.m */; };
+		6FCFD6EE1A45D1850004EF56 /* ISSTExperienceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FCFD6EC1A45D1850004EF56 /* ISSTExperienceCell.xib */; };
 		6FD18F6019CC3D7F0099F08D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FD18F5F19CC3D7F0099F08D /* Default-568h@2x.png */; };
 		6FD8E4481A36F383000C8CD3 /* leftbarbutton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD8E4471A36F383000C8CD3 /* leftbarbutton.jpg */; };
 		6FD8E44B1A36F914000C8CD3 /* ISSTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD8E44A1A36F914000C8CD3 /* ISSTBaseViewController.m */; };
@@ -605,6 +607,9 @@
 		6FB882251A336B9D00668AD6 /* ISSTTaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTTaskDetailViewController.h; sourceTree = SOURCE_ROOT; };
 		6FB882261A336B9D00668AD6 /* ISSTTaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTTaskDetailViewController.m; sourceTree = SOURCE_ROOT; };
 		6FB882271A336B9D00668AD6 /* ISSTTaskDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTTaskDetailViewController.xib; sourceTree = SOURCE_ROOT; };
+		6FCFD6EA1A45D1850004EF56 /* ISSTExperienceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTExperienceCell.h; sourceTree = "<group>"; };
+		6FCFD6EB1A45D1850004EF56 /* ISSTExperienceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTExperienceCell.m; sourceTree = "<group>"; };
+		6FCFD6EC1A45D1850004EF56 /* ISSTExperienceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTExperienceCell.xib; sourceTree = "<group>"; };
 		6FD18F5F19CC3D7F0099F08D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		6FD8E4471A36F383000C8CD3 /* leftbarbutton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leftbarbutton.jpg; sourceTree = "<group>"; };
 		6FD8E4491A36F914000C8CD3 /* ISSTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTBaseViewController.h; sourceTree = "<group>"; };
@@ -887,6 +892,9 @@
 				6FB882101A331AAC00668AD6 /* ISSTTaskCell.h */,
 				6FB882111A331AAC00668AD6 /* ISSTTaskCell.m */,
 				6FB882121A331AAC00668AD6 /* ISSTTaskCell.xib */,
+				6FCFD6EA1A45D1850004EF56 /* ISSTExperienceCell.h */,
+				6FCFD6EB1A45D1850004EF56 /* ISSTExperienceCell.m */,
+				6FCFD6EC1A45D1850004EF56 /* ISSTExperienceCell.xib */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -1836,6 +1844,7 @@
 				6F8900DD1A24E67C00EBE758 /* shixi.png in Resources */,
 				6F7522FA19D2C5A10079A8D6 /* 同城活动icon.png in Resources */,
 				6FA9BFC71A0A5EFF0074B02B /* grayArrow@2x.png in Resources */,
+				6FCFD6EE1A45D1850004EF56 /* ISSTExperienceCell.xib in Resources */,
 				6F8900E11A24E67C00EBE758 /* xuexiyuandi.png in Resources */,
 				6F1D8AA51A35D139002451C3 /* meishi2.jpg in Resources */,
 				AE85F9C4190243D700FCD67D /* ISSTRecommendDetailViewController.xib in Resources */,
@@ -2053,6 +2062,7 @@
 				AE9E018E18F3F0D4008EAFA1 /* ISSTServiceViewController.m in Sources */,
 				AE9052BA18EEEE890088742D /* ISSTWikisViewController.m in Sources */,
 				581C8D6618F03B050006740B /* ISSTStudyTableViewCell.m in Sources */,
+				6FCFD6ED1A45D1850004EF56 /* ISSTExperienceCell.m in Sources */,
 				6FA231C41A28D9420028226B /* UIButton+WebCache.m in Sources */,
 				AE85F9CB1902605600FCD67D /* ISSTCLTableViewCell.m in Sources */,
 				5805042318FD5D8E00F881D9 /* ISSTRecommendViewController.m in Sources */,

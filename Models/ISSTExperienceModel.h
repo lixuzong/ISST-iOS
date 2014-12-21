@@ -12,4 +12,5 @@
 @property (nonatomic,assign) int eId;
 @property (nonatomic,copy) NSString *title;
 @property (nonatomic,copy) NSString *content;
+@property (nonatomic,assign)int status;
 @end
