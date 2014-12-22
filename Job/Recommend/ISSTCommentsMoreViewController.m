@@ -12,13 +12,13 @@
 #import "ISSTCommentsModel.h"
 #import "ISSTJobsApi.h"
 #import "ISSTPostCommentsViewController.h"
+#import "MJRefresh.h"
+
 @interface ISSTCommentsMoreViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *commentsMoreTableView;
 @property (nonatomic,strong)NSMutableArray *commentsArray;
 @property (nonatomic,strong)ISSTJobsApi  *recommendApi;
 @property (nonatomic,strong)ISSTCommentsModel *commentsModel;
-
-- (void) postComments;
 
 @end
 
@@ -54,9 +54,55 @@ static int  loadPage = 1;
     UINib *nib=[UINib nibWithNibName:CellTableIdentifier bundle:nil];
     [commentsMoreTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
-    [recommendApi requestRCLists:1 andPageSize:20 andJobId:self.jobId];
+    commentsMoreTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero]; //去除多余横线
+    [self setupRefresh];
+    
     
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self setupRefresh];
+}
+
+- (void)setupRefresh
+{
+    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+    // dateKey用于存储刷新时间，可以保证不同界面拥有不同的刷新时间
+    [commentsMoreTableView addHeaderWithTarget:self action:@selector(headerRereshing)];
+    
+    [commentsMoreTableView headerBeginRefreshing];
+    
+    //2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [commentsMoreTableView addFooterWithTarget:self action:@selector(footerRereshing)];
+    
+}
+
+#pragma mark 开始进入刷新状态
+- (void)headerRereshing
+{
+    // 1.添加数据
+    [recommendApi requestRCLists:loadPage andPageSize:20 andJobId:self.jobId];
+    
+    // 刷新表格
+    [commentsMoreTableView reloadData];
+    
+    // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    [commentsMoreTableView headerEndRefreshing];
+}
+
+
+- (void)footerRereshing
+{
+    loadPage++;
+    // 1.添加数据
+    [recommendApi requestRCLists:loadPage andPageSize:20 andJobId:self.jobId];
+    
+    // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    [commentsMoreTableView footerEndRefreshing];
+}
+
+
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -80,10 +126,6 @@ static int  loadPage = 1;
     return [commentsArray count];
 }
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//    return  1;
-//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -112,9 +154,16 @@ static int  loadPage = 1;
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
-    commentsArray = (NSMutableArray*)backToControllerData;
-    NSLog(@"%@",backToControllerData);
-    [commentsMoreTableView  reloadData];
+
+    if (loadPage == 1) {
+        commentsArray = [[NSMutableArray alloc]initWithArray:backToControllerData];
+    }
+    else
+    {
+        [commentsArray addObjectsFromArray:backToControllerData];
+    }
+    
+    [commentsMoreTableView reloadData];
     
 }
 
@@ -123,4 +172,9 @@ static int  loadPage = 1;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
 }
+
+-(void)dealloc{
+    loadPage =1;
+}
+
 @end

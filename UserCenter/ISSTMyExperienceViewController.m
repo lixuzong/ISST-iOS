@@ -12,6 +12,7 @@
 #import "ISSTExperienceCell.h"
 #import "ISSTPostExperienceViewController.h"
 #import "MJRefresh.h"
+#import "ISSTMyExperienceDetailsViewController.h"
 
 @interface ISSTMyExperienceViewController ()<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 {
@@ -20,6 +21,7 @@
     UITableView *_tableView;
     
 }
+@property(nonatomic,strong)ISSTMyExperienceDetailsViewController *myExperienceDetailsViewController;
 @end
 
 @implementation ISSTMyExperienceViewController
@@ -61,8 +63,12 @@ static NSString *CellTableIdentifier=@"ISSTExperienceCell";
     
     _tableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero]; //去除多余横线
     
-    [self setupRefresh];
     
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    
+    [self setupRefresh];
 }
 
 - (void)setupRefresh
@@ -119,8 +125,6 @@ static NSString *CellTableIdentifier=@"ISSTExperienceCell";
 #pragma mark -UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"*******************");
-    NSLog(@"%lu",(unsigned long)[_listData count]);
     return [_listData count];
 }
 
@@ -133,15 +137,18 @@ static NSString *CellTableIdentifier=@"ISSTExperienceCell";
     if (cell == nil) {
         cell = (ISSTExperienceCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellTableIdentifier];
     }
-    
     ISSTExperienceModel *model = [_listData objectAtIndex:indexPath.row];
-
+    
     cell.title.text = model.title;
     
     if (model.status == 0){
         cell.status.text= @"未审核";
+//        cell.status.textColor = [UIColor whiteColor];
+//        cell.status.layer.backgroundColor =[UIColor redColor].CGColor;
     }else{
         cell.status.text =@"已审核";
+        cell.status.textColor =[UIColor whiteColor];
+        cell.status.layer.backgroundColor =[UIColor greenColor].CGColor;
     }
     
     return cell;
@@ -150,25 +157,23 @@ static NSString *CellTableIdentifier=@"ISSTExperienceCell";
 #pragma mark -UITableViewDelegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"123");
-       
+    
+    ISSTExperienceModel *tempExperienceModel = [_listData objectAtIndex:indexPath.row];
+    self.myExperienceDetailsViewController = [[ISSTMyExperienceDetailsViewController alloc]initWithNibName:@"ISSTMyExperienceDetailsViewController" bundle:nil];
+    
+    self.myExperienceDetailsViewController.eId =tempExperienceModel.eId;
+    self.myExperienceDetailsViewController.titlename =tempExperienceModel.title;
+    self.myExperienceDetailsViewController.contentDetail =tempExperienceModel.description;
+    self.myExperienceDetailsViewController.time = tempExperienceModel.updatedAt;
+
+    [self.navigationController pushViewController:self.myExperienceDetailsViewController animated:NO];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 #pragma mark - ISSTWebApiDelegate
 
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
-//    _listData = backToControllerData;
-//    if ([_listData count]>0) {
-//             [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
-//          [_tableView reloadData];
-//    }
-//    else
-//    {
-//        [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-//        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:@"您未发送过经验" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
-//        [alert show];
-//    }
     if (loadPage == 1) {
         _listData = [[NSMutableArray alloc]initWithArray:backToControllerData];
         if([_listData count]==0){

@@ -46,6 +46,13 @@
         model.title = [[_tasksArray objectAtIndex:idx ] objectForKey:@"title"]  ;
         model.content = [[_tasksArray objectAtIndex:idx ] objectForKey:@"content"] ;
         model.status = [[[_tasksArray objectAtIndex:idx ] objectForKey:@"status"]  intValue];
+        model.description =[[_tasksArray objectAtIndex:idx ] objectForKey:@"description"] ;;
+        
+        long long updatedAt = [[[_tasksArray objectAtIndex:idx] objectForKey:@"updatedAt"]longLongValue]/1000;
+        NSDate  *datePT1 = [NSDate dateWithTimeIntervalSince1970:updatedAt];
+        NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+        [dateFormatter1 setDateFormat:@"yyyy-MM-dd"];
+        model.updatedAt  = [dateFormatter1 stringFromDate:datePT1];
        [array addObject:model];
     }];
     return array;

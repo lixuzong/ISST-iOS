@@ -80,6 +80,8 @@ const static int  COMMENTS = 2;
     UINib *nib=[UINib nibWithNibName:CellTableIdentifier bundle:nil];
     [commentsTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
+    commentsTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero]; //去除多余横线
+    
 }
 
 - (void)didReceiveMemoryWarning

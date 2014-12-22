@@ -8,11 +8,14 @@
 
 #import "ISSTPostExperienceViewController.h"
 #import "ISSTUserCenterApi.h"
-@interface ISSTPostExperienceViewController ()<ISSTWebApiDelegate>
+#import "MBProgressHUD.h"
+
+@interface ISSTPostExperienceViewController ()<ISSTWebApiDelegate,MBProgressHUDDelegate>
 {
     ISSTUserCenterApi *_userCenterApi;
     UITextField   *_titleTextField;
     UITextView  *_contentTextView;
+    MBProgressHUD *HUD;
 }
 @end
 
@@ -37,13 +40,21 @@
     }
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"发布经验";
-     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStyleBordered target:self action:@selector(sendExperience)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonItemStyleBordered target:self action:@selector(sendExperience)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"返回" style:UIBarButtonItemStyleBordered target:self action:@selector(backToDetail)];
     [self initialize];
 }
 
 -(void)sendExperience
 {
     if ([_titleTextField.text length]>0&&[_contentTextView.text length]>0) {
+        //MBprogress
+        HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+        [self.navigationController.view addSubview:HUD];
+        HUD.delegate = self;
+        HUD.labelText = @"发送中...";
+        [HUD show:YES];
+        [HUD showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
         [_userCenterApi requestPostExperience:1 title:_titleTextField.text content:_contentTextView.text];
     }
     else if([_titleTextField.text length] == 0)
@@ -96,15 +107,18 @@
 
 - (void)requestDataOnSuccess:(id)backToControllerData
 {
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提醒" message:backToControllerData delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
-//    [alert show];
-    NSLog(@"11111");
-    NSLog(@"%@",backToControllerData);
     NSString *message;
     if (backToControllerData) {
+        
+        [HUD hide:YES];
         message =@"发布成功!";
     }
-    else message =@"发布失败!";
+    else
+    {
+        [HUD hide:YES];
+        message =@"发布失败!";
+    }
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:message delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
 
@@ -112,9 +126,29 @@
 
 - (void)requestDataOnFail:(NSString *)error
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"异常" message:error delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
+    [HUD hide:YES];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"异常" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
     [alert show];
 
+}
+
+- (void)backToDetail{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+#pragma mark - Execution code（MBProgressHUD）
+- (void)myTask {
+    // Do something usefull in here instead of sleeping ...可以增加一些逻辑代码
+    sleep(3);
+}
+
+
+#pragma mark - MBProgressHUDDelegate
+- (void)hudWasHidden:(MBProgressHUD *)hud {
+    // Remove HUD from screen when the HUD was hidded
+    [HUD removeFromSuperview];
+    HUD = nil;
 }
 
 @end

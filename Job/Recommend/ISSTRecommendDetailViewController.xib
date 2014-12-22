@@ -54,7 +54,13 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="qIW-cQ-eq1" secondAttribute="trailing" id="7vc-HT-zEq"/>
+                <constraint firstItem="0m5-vz-CsC" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Atl-NR-Oiw"/>
+                <constraint firstItem="qIW-cQ-eq1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="DDB-in-l8y"/>
                 <constraint firstAttribute="bottom" secondItem="3g9-t8-DYg" secondAttribute="bottom" id="GSU-Ct-CRZ"/>
+                <constraint firstAttribute="trailing" secondItem="V1p-6i-jXA" secondAttribute="trailing" id="O6I-C7-0YL"/>
+                <constraint firstAttribute="trailing" secondItem="0m5-vz-CsC" secondAttribute="trailing" id="Qge-BF-SgB"/>
+                <constraint firstItem="V1p-6i-jXA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Qyy-Rx-OhA"/>
                 <constraint firstItem="0m5-vz-CsC" firstAttribute="top" secondItem="V1p-6i-jXA" secondAttribute="bottom" id="Rn6-eo-Jvl"/>
                 <constraint firstItem="3g9-t8-DYg" firstAttribute="top" secondItem="RQC-AI-F3p" secondAttribute="bottom" id="kR3-iZ-a5f"/>
                 <constraint firstItem="V1p-6i-jXA" firstAttribute="top" secondItem="qIW-cQ-eq1" secondAttribute="bottom" id="lUa-fY-ZST"/>
