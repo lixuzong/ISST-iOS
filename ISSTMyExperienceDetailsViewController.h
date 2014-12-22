@@ -14,6 +14,7 @@
 @property (nonatomic,assign) NSString *titlename;
 @property (nonatomic,assign) NSString *contentDetail;
 @property (nonatomic,assign) NSString *time;
+@property (nonatomic,assign) NSString *author;
 
 
 @end

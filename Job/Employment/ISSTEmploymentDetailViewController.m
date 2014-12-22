@@ -43,6 +43,10 @@
     
     webView.scalesPageToFit = YES;
     webView.delegate = self;
+    
+    self.title.textAlignment =NSTextAlignmentCenter;
+    self.title.lineBreakMode = NSLineBreakByCharWrapping;
+    self.title.numberOfLines= 0;
 
 }
 
@@ -88,8 +92,6 @@
      detailModel = (ISSTJobsDetailModel*)backToControllerData;
     }
     self.title.text=detailModel.title;
-    self.title.lineBreakMode = UILineBreakModeCharacterWrap;
-    self.title.numberOfLines= 0;
     self.time.text=detailModel.updatedAt;
     int userId=detailModel.userModel.userId;
     if(userId!=0)

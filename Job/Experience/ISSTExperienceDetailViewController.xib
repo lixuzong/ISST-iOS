@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZd-jb-1fi">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZd-jb-1fi">
                     <rect key="frame" x="0.0" y="64" width="320" height="47"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -46,11 +46,14 @@
             <constraints>
                 <constraint firstItem="A7E-dD-o9M" firstAttribute="top" secondItem="jJz-By-Pbz" secondAttribute="bottom" id="1nC-Nf-D7U"/>
                 <constraint firstItem="jJz-By-Pbz" firstAttribute="top" secondItem="YZd-jb-1fi" secondAttribute="bottom" id="49b-u8-pqa"/>
+                <constraint firstItem="YZd-jb-1fi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="Atn-EM-Xfs"/>
                 <constraint firstItem="A7E-dD-o9M" firstAttribute="top" secondItem="jJz-By-Pbz" secondAttribute="bottom" id="OFl-za-Lud"/>
+                <constraint firstItem="YZd-jb-1fi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="ZBy-aa-3Ya"/>
                 <constraint firstItem="3W0-0u-y43" firstAttribute="top" secondItem="A7E-dD-o9M" secondAttribute="bottom" id="dsq-g4-gPq"/>
                 <constraint firstItem="jJz-By-Pbz" firstAttribute="top" secondItem="YZd-jb-1fi" secondAttribute="bottom" id="jcL-LR-AYH"/>
                 <constraint firstAttribute="bottom" secondItem="3W0-0u-y43" secondAttribute="bottom" id="l6O-I3-CsH"/>
                 <constraint firstItem="3W0-0u-y43" firstAttribute="top" secondItem="A7E-dD-o9M" secondAttribute="bottom" id="pkz-re-WkS"/>
+                <constraint firstAttribute="trailing" secondItem="YZd-jb-1fi" secondAttribute="trailing" id="zzN-fJ-7sS"/>
             </constraints>
         </view>
     </objects>

@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ISSTLoginViewController">
             <connections>
+                <outlet property="defaultLoginSwitch" destination="yoa-J6-Xd2" id="Nen-oP-55Q"/>
                 <outlet property="nameField" destination="NUD-5s-kVh" id="JEx-BD-8rr"/>
                 <outlet property="passwordField" destination="hQC-IV-7bE" id="wiT-lW-dNy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -30,18 +31,8 @@
                     <rect key="frame" x="41" y="277" width="238" height="40"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="denglu_denglubutton.png" translatesAutoresizingMaskIntoConstraints="NO" id="SIP-a7-75s">
-                    <rect key="frame" x="41" y="328" width="238" height="40"/>
+                    <rect key="frame" x="41" y="375" width="238" height="40"/>
                 </imageView>
-                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wm-nC-15l">
-                    <rect key="frame" x="41" y="328" width="238" height="40"/>
-                    <state key="normal">
-                        <color key="titleColor" patternImage="4063665D-5D5D-4BA8-9242-D6764388FB5D" colorSpace="pattern"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="login:" destination="-1" eventType="touchUpInside" id="3Ab-m4-8tg"/>
-                    </connections>
-                </button>
                 <textField opaque="NO" clipsSubviews="YES" alpha="0.20000000000000001" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="用户名" borderStyle="bezel" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NUD-5s-kVh">
                     <rect key="frame" x="41" y="236" width="238" height="40"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -52,12 +43,35 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yoa-J6-Xd2">
+                    <rect key="frame" x="171" y="325" width="51" height="31"/>
+                    <connections>
+                        <action selector="switchChanged:" destination="-1" eventType="valueChanged" id="Msw-BK-qjZ"/>
+                    </connections>
+                </switch>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="自动登录" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fn1-l0-lt4">
+                    <rect key="frame" x="66" y="325" width="78" height="31"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wm-nC-15l">
+                    <rect key="frame" x="41" y="375" width="238" height="40"/>
+                    <state key="normal">
+                        <color key="titleColor" patternImage="D1209A92-8DF5-4841-A4BB-A1E6BC302947" colorSpace="pattern"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="login:" destination="-1" eventType="touchUpInside" id="3Ab-m4-8tg"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
         </view>
     </objects>
     <resources>
-        <image name="4063665D-5D5D-4BA8-9242-D6764388FB5D" width="512" height="512">
+        <image name="5login_bg.jpg" width="640" height="1136"/>
+        <image name="D1209A92-8DF5-4841-A4BB-A1E6BC302947" width="512" height="512">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGTk9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEQcI
 ExQZHh8nKzIzNDw/QkhLVSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NW
@@ -17611,7 +17625,6 @@ D1UAEA9aABAPYgAQD2UAEA9qABAPeQAQD30AEA+EABAPjAAQD5kAEA+eABAPoAAQD6IAEA+nABAPrwAQ
 D7IAEA+3ABAPvwAQD8IAEA/UABAP1wAQD9wAAAAAAAAEAQAAAAAAAABSAAAAAAAAAAAAAAAAABAP3g
 </mutableData>
         </image>
-        <image name="5login_bg.jpg" width="640" height="1136"/>
         <image name="denglu_denglubutton.png" width="663" height="109"/>
         <image name="denglu_logo.png" width="204" height="197"/>
         <image name="denglu_shangbankuang.png" width="677" height="109"/>

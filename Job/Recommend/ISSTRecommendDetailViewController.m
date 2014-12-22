@@ -82,6 +82,10 @@ const static int  COMMENTS = 2;
     
     commentsTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero]; //去除多余横线
     
+    self.titleLabel.textAlignment =NSTextAlignmentCenter;
+    self.titleLabel.lineBreakMode = NSLineBreakByCharWrapping;
+    self.titleLabel.numberOfLines= 0;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -196,8 +200,6 @@ const static int  COMMENTS = 2;
     if (method == DETAILS) {
         detailModel = (ISSTJobsDetailModel*)backToControllerData;
         
-        self.titleLabel.lineBreakMode = UILineBreakModeCharacterWrap;
-        self.titleLabel.numberOfLines= 0;
         self.titleLabel.text=detailModel.title;
         self.timeLabel.text=detailModel.updatedAt;
         

@@ -74,7 +74,6 @@ static int  loadPage = 1;
     self.newsApi = [[ISSTLifeApi alloc]init];
     self.newsApi.webApiDelegate = self;
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
-    //self.view.backgroundColor = [UIColor redColor];
     
     self.title = @"软院快讯";
     

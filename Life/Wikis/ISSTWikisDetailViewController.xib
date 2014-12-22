@@ -26,29 +26,37 @@
                         <outlet property="delegate" destination="-1" id="z66-lG-Tc1"/>
                     </connections>
                 </webView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Xe-DT-Lcr">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Xe-DT-Lcr">
                     <rect key="frame" x="0.0" y="133" width="320" height="28"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" red="0.9873046875" green="0.9873046875" blue="0.9873046875" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUK-Gr-sKF">
-                    <rect key="frame" x="-1" y="114" width="321" height="18"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9E-Af-LQv">
-                    <rect key="frame" x="0.0" y="92" width="320" height="22"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9E-Af-LQv">
+                    <rect key="frame" x="0.0" y="64" width="320" height="52"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUK-Gr-sKF">
+                    <rect key="frame" x="0.0" y="116" width="320" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="sh6-om-NK7" firstAttribute="top" secondItem="sqs-Aq-b14" secondAttribute="top" constant="161" id="aXb-b4-a1x"/>
-                <constraint firstAttribute="bottom" secondItem="sh6-om-NK7" secondAttribute="bottom" id="upj-8D-e7l"/>
+                <constraint firstAttribute="bottom" secondItem="sh6-om-NK7" secondAttribute="bottom" id="1BN-OQ-B8H"/>
+                <constraint firstItem="8Xe-DT-Lcr" firstAttribute="top" secondItem="rUK-Gr-sKF" secondAttribute="bottom" id="312-3g-Vem"/>
+                <constraint firstAttribute="trailing" secondItem="a9E-Af-LQv" secondAttribute="trailing" id="Sjn-mx-XdM"/>
+                <constraint firstItem="rUK-Gr-sKF" firstAttribute="top" secondItem="a9E-Af-LQv" secondAttribute="bottom" id="TpQ-Hk-Brp"/>
+                <constraint firstItem="sh6-om-NK7" firstAttribute="top" secondItem="8Xe-DT-Lcr" secondAttribute="bottom" id="ZeO-Qq-V5K"/>
+                <constraint firstItem="a9E-Af-LQv" firstAttribute="leading" secondItem="sqs-Aq-b14" secondAttribute="leading" id="cOu-Sr-6V3"/>
+                <constraint firstItem="sh6-om-NK7" firstAttribute="top" secondItem="8Xe-DT-Lcr" secondAttribute="bottom" id="eDd-I1-Jim"/>
+                <constraint firstItem="rUK-Gr-sKF" firstAttribute="top" secondItem="a9E-Af-LQv" secondAttribute="bottom" id="omi-uF-bbm"/>
+                <constraint firstItem="8Xe-DT-Lcr" firstAttribute="top" secondItem="rUK-Gr-sKF" secondAttribute="bottom" id="rGL-9a-v46"/>
+                <constraint firstItem="a9E-Af-LQv" firstAttribute="top" secondItem="sqs-Aq-b14" secondAttribute="top" constant="64" id="xUS-g9-P5R"/>
             </constraints>
         </view>
     </objects>

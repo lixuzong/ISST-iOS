@@ -49,6 +49,10 @@
     
     webView.scalesPageToFit = YES;
     webView.delegate = self;
+    
+    self.title.textAlignment =NSTextAlignmentCenter;
+    self.title.lineBreakMode = NSLineBreakByCharWrapping;
+    self.title.numberOfLines= 0;
 
 }
 

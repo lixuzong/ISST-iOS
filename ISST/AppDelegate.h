@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ISSTWebApiDelegate.h"
+#import "ISSTUserModel.h"
+#import "RESideMenu.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,ISSTWebApiDelegate,RESideMenuDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navigationController;
+@property (nonatomic,strong)ISSTUserModel  *userModel;
 @end

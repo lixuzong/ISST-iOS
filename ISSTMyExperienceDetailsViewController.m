@@ -10,14 +10,15 @@
 
 @interface ISSTMyExperienceDetailsViewController ()
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
 @property (strong, nonatomic) IBOutlet UITextView *detailTextView;
+@property (strong, nonatomic) IBOutlet UILabel *timelLabel;
+@property (strong, nonatomic) IBOutlet UILabel *authorLabel;
 
 @end
 
 @implementation ISSTMyExperienceDetailsViewController
 @synthesize eId,titlename,contentDetail,time;
-@synthesize titleLabel,timeLabel,detailTextView;
+@synthesize titleLabel,detailTextView,timelLabel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -26,7 +27,8 @@
     self.title =@"详情";
     
     titleLabel.text =titlename;
-    timeLabel.text =time;
+    NSString *timeText=[NSString stringWithFormat:@"发布时间:%@",time];
+    timelLabel.text = timeText;
     NSString *contentDetailText =[NSString stringWithFormat:@"  %@",contentDetail];
     detailTextView.text =contentDetailText;
 }

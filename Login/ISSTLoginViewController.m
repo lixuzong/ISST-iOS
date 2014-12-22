@@ -37,7 +37,6 @@ int method;
 }
 @property (nonatomic,strong)ISSTUserModel  *userModel;
 @property (nonatomic,strong)ISSTLoginApi  *userApi;
-@property (weak, nonatomic) IBOutlet UIButton *btnlogin;
 @property (weak, nonatomic) IBOutlet UISwitch *defaultLoginSwitch;
 @end
 
@@ -48,10 +47,6 @@ int method;
 @synthesize userApi;
 @synthesize userModel;
 @synthesize defaultLoginSwitch;
-@synthesize btnlogin;
-
-
-
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -68,16 +63,7 @@ int method;
 {
     [super viewDidLoad];
     response=NO;
- 
-//     if ([[[UIDevice currentDevice]systemVersion] doubleValue] >= 7.0) {
-//         self.edgesForExtendedLayout =UIRectEdgeNone;
-
-//         NSLog(@"aaa");
-//         NSLog(@"%f",self.view.frame.size.height);
-//    }
-
    
-    //self.title=@"ISST";
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController setNavigationBarHidden:YES];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"5login_bg.jpg"]];
@@ -87,8 +73,7 @@ int method;
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     button.frame = frame;
-    //[self.view addSubview:img];
-   // [self.view sendSubviewToBack:img];
+
     button.backgroundColor = [UIColor clearColor];
    
     [button addTarget:self action:@selector(buttonClicked) forControlEvents:UIControlEventTouchUpInside];
@@ -114,65 +99,56 @@ int method;
     _contactsApi = [[ISSTContactsApi alloc] init];
     _contactsApi.webApiDelegate  = self;
     
-    //self.navigationController.navigationBar.barTintColor  [[UIColor blueColor];
-   // self.navigationController.navigationBar.barTintColor = [UIColor blueColor]; //设置导航栏颜色
-    //self.navigationController.navigationBarHidden = YES;     隐藏导航栏
-    //UINavigationController *navigationcontroller =[[ISSTNewsViewController alloc]init];
-    
   
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     flag=self.passvalue.signOutFlag;
-   //[self passValue:flag];
-    NSLog(@"%@",flag);
     
-    nameField.text=@"21351007";
-    passwordField.text=@"111111";
+    [self.defaultLoginSwitch addTarget:self action:@selector(switchIsChanged:) forControlEvents:UIControlEventValueChanged];
+    
+    BOOL switchValue =[[[NSUserDefaults standardUserDefaults] objectForKey:@"switchValue"]boolValue];
+    defaultLoginSwitch.on =switchValue;
     
     //检查缓存中是否有用户数据，若果是的话，直接登入进去。
-//      if (defaultLoginSwitch.on) {
-//          self.userModel = [AppCache getCache];
-//          if (userModel) {
-//              NSLog(@"检测是否有用户名！");
-//              NSLog(@"%@",userModel.userName);
-//              NSLog(@"%@",userModel.password);
-//              NSLog(@"%@",userModel.phone);
-//              nameField.text = userModel.userName;
-              //passwordField.text = userModel.password;
-              //passwordField.text =userModel.
-              //passwordField.text=@"111111";
+      if (defaultLoginSwitch.on) {
+          self.userModel = [AppCache getCache];
+          if (userModel) {
               
-//              if(![flag isEqual:@"1"]){method  =   REQUESTLOGIN;
-//                  [self.userApi requestLoginName:self.nameField.text andPassword:self.passwordField.text];}
-//              
-//
-//              
-//          }
-//     
-//    }
-//    else
-//    {
-//        nameField.text = nil;
-//        passwordField.text=nil;
-//    }
+              nameField.text = userModel.userName;
+              NSString *password1=[[NSUserDefaults standardUserDefaults] objectForKey:@"passwordText"];
+              passwordField.text =password1;
+              
+              if(![flag isEqual:@"1"]){method  =   REQUESTLOGIN;
+                  [self.userApi requestLoginName:self.nameField.text andPassword:self.passwordField.text];}
+              
+          }
+     
+    }
     
+}
+
+- (IBAction)switchChanged:(id)sender { //用NSUserDefaults存储switch开关的值（NSUserDefaults适合存储小规模数据）
     
-    //有缓存数据的话
-    //判断数据是否过时
-    //过时，从服务器获取数据  更新UI,
-    //未过时，更新UI,
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setBool:defaultLoginSwitch.on forKey:@"switchValue"];
+}
+
+- (void)switchIsChanged:(UISwitch *)paramSender
+{
+    if ([self.defaultLoginSwitch isOn]) {
+            NSLog(@"Switch is on");
+        }
+        else{
+            NSLog(@"Switch is off");
+        }
 }
 
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    //NSString *password =nameField.text;
-    //NSLog(@"%@" ,[userModel description]);
-    //缓存数据模型
-   // NSLog(@"%@",password);
-    
+  
     [AppCache saveCache:self.userModel];
     [super viewWillDisappear:animated];
 }
@@ -194,6 +170,10 @@ int method;
     HUD.labelText = @"请稍后...";
     [HUD show:YES];
     [HUD showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+    
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
+    [userDefaults setObject:passwordField.text forKey:@"passwordText"];
+    
 
    [self.userApi requestLoginName:self.nameField.text andPassword:self.passwordField.text];
     
@@ -222,8 +202,6 @@ int method;
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(id)backToControllerData;
 {
-    //ISSTSlidebarNavController *slider ;
-
 
     switch (method) {
         case REQUESTLOGIN:
@@ -242,9 +220,7 @@ int method;
             
             break;
         case MAJORSLISTS:
-            //slider =[[ISSTSlidebarNavController alloc]init];
             [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
-            //[self.navigationController pushViewController:slider animated: NO];
            
             [self showMenu];
             break;

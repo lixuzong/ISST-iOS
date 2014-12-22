@@ -46,8 +46,7 @@
     
     webView.scalesPageToFit =YES;
     webView.delegate=self;
-    // [self loadWebPageWithString:detailModel.content];
-    // Do any additional setup after loading the view from its nib.
+  
 }
 
 
@@ -91,6 +90,10 @@
         detailModel = (ISSTNewsDetailsModel*)backToControllerData;
     }
     self.title.text=detailModel.title;
+    self.title.textAlignment =NSTextAlignmentCenter;
+    self.title.lineBreakMode = NSLineBreakByCharWrapping;
+    self.title.numberOfLines= 0;
+    
     self.time.text=[NSString stringWithFormat:@"发布时间：%@",detailModel.updatedAt];
     int userId=[[detailModel.userModel objectForKey:@"id"]intValue];
     if(userId!=0)

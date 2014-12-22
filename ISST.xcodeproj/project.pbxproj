@@ -209,6 +209,7 @@
 		6FCFD6ED1A45D1850004EF56 /* ISSTExperienceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FCFD6EB1A45D1850004EF56 /* ISSTExperienceCell.m */; };
 		6FCFD6EE1A45D1850004EF56 /* ISSTExperienceCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6FCFD6EC1A45D1850004EF56 /* ISSTExperienceCell.xib */; };
 		6FD18F6019CC3D7F0099F08D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FD18F5F19CC3D7F0099F08D /* Default-568h@2x.png */; };
+		6FD54C9A1A484519000CFFA7 /* comments.png in Resources */ = {isa = PBXBuildFile; fileRef = 6FD54C991A484519000CFFA7 /* comments.png */; };
 		6FD8E4481A36F383000C8CD3 /* leftbarbutton.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6FD8E4471A36F383000C8CD3 /* leftbarbutton.jpg */; };
 		6FD8E44B1A36F914000C8CD3 /* ISSTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FD8E44A1A36F914000C8CD3 /* ISSTBaseViewController.m */; };
 		6FF29B561A08C67E0024F69E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FF29B551A08C67E0024F69E /* CFNetwork.framework */; };
@@ -623,6 +624,7 @@
 		6FCFD6EB1A45D1850004EF56 /* ISSTExperienceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTExperienceCell.m; sourceTree = "<group>"; };
 		6FCFD6EC1A45D1850004EF56 /* ISSTExperienceCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTExperienceCell.xib; sourceTree = "<group>"; };
 		6FD18F5F19CC3D7F0099F08D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
+		6FD54C991A484519000CFFA7 /* comments.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = comments.png; sourceTree = "<group>"; };
 		6FD8E4471A36F383000C8CD3 /* leftbarbutton.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = leftbarbutton.jpg; sourceTree = "<group>"; };
 		6FD8E4491A36F914000C8CD3 /* ISSTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTBaseViewController.h; sourceTree = "<group>"; };
 		6FD8E44A1A36F914000C8CD3 /* ISSTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTBaseViewController.m; sourceTree = "<group>"; };
@@ -1457,6 +1459,7 @@
 				6F7522E619D2C5A10079A8D6 /* 30*30内部图标 */,
 				6FD18F5F19CC3D7F0099F08D /* Default-568h@2x.png */,
 				6F1D8AA41A35D139002451C3 /* tongyongmeishi.jpg */,
+				6FD54C991A484519000CFFA7 /* comments.png */,
 				6F1D8AA31A35D139002451C3 /* meishi2.jpg */,
 				6F5B05DD1A319D7F0052CE63 /* 1225.png */,
 				1824E51719CAC82D00BDC38C /* 活动.png */,
@@ -1878,6 +1881,7 @@
 				AE85F9DB19026C9200FCD67D /* ISSTCommentsMoreViewController.xib in Resources */,
 				6FA9BFC31A0A5EFF0074B02B /* blackArrow@2x.png in Resources */,
 				581C8D6918F03B050006740B /* ISSTStudyViewController.xib in Resources */,
+				6FD54C9A1A484519000CFFA7 /* comments.png in Resources */,
 				AE9052B918EEEE890088742D /* ISSTWikisDetailViewController.xib in Resources */,
 				6F7EAF9B1A3591840017C5CE /* denglu_logo.png in Resources */,
 				AE85F9BF1901635100FCD67D /* ISSTInternshipViewController.xib in Resources */,

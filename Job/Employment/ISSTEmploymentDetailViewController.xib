@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHv-E7-g3W">
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHv-E7-g3W">
                     <rect key="frame" x="0.0" y="64" width="320" height="47"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -50,9 +50,12 @@
                 <constraint firstItem="Thm-y8-c3j" firstAttribute="top" secondItem="ZpF-xU-OVi" secondAttribute="bottom" id="AXG-TE-oNu"/>
                 <constraint firstAttribute="bottom" secondItem="c2v-jb-yhS" secondAttribute="bottom" id="GGJ-vW-FYU"/>
                 <constraint firstItem="Thm-y8-c3j" firstAttribute="top" secondItem="ZpF-xU-OVi" secondAttribute="bottom" id="KrK-C8-cfC"/>
+                <constraint firstItem="OHv-E7-g3W" firstAttribute="leading" secondItem="ZVo-RG-X61" secondAttribute="leading" id="NLS-2q-gI7"/>
                 <constraint firstItem="c2v-jb-yhS" firstAttribute="top" secondItem="Thm-y8-c3j" secondAttribute="bottom" id="PhP-KC-HW9"/>
                 <constraint firstItem="ZpF-xU-OVi" firstAttribute="top" secondItem="OHv-E7-g3W" secondAttribute="bottom" id="T8U-zX-nP4"/>
                 <constraint firstItem="c2v-jb-yhS" firstAttribute="top" secondItem="Thm-y8-c3j" secondAttribute="bottom" id="WDR-e3-qwr"/>
+                <constraint firstItem="OHv-E7-g3W" firstAttribute="top" secondItem="ZVo-RG-X61" secondAttribute="top" constant="64" id="Yhh-Ct-fLK"/>
+                <constraint firstAttribute="trailing" secondItem="OHv-E7-g3W" secondAttribute="trailing" id="fke-TW-Pcb"/>
                 <constraint firstItem="ZpF-xU-OVi" firstAttribute="top" secondItem="OHv-E7-g3W" secondAttribute="bottom" id="wKN-SK-Tle"/>
             </constraints>
         </view>
