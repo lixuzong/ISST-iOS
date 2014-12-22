@@ -112,20 +112,20 @@ int method;
     defaultLoginSwitch.on =switchValue;
     
     //检查缓存中是否有用户数据，若果是的话，直接登入进去。
-      if (defaultLoginSwitch.on) {
-          self.userModel = [AppCache getCache];
-          if (userModel) {
-              
-              nameField.text = userModel.userName;
-              NSString *password1=[[NSUserDefaults standardUserDefaults] objectForKey:@"passwordText"];
-              passwordField.text =password1;
-              
-              if(![flag isEqual:@"1"]){method  =   REQUESTLOGIN;
-                  [self.userApi requestLoginName:self.nameField.text andPassword:self.passwordField.text];}
-              
-          }
-     
-    }
+//      if (defaultLoginSwitch.on) {
+//          self.userModel = [AppCache getCache];
+//          if (userModel) {
+//              
+//              nameField.text = userModel.userName;
+//              NSString *password1=[[NSUserDefaults standardUserDefaults] objectForKey:@"passwordText"];
+//              passwordField.text =password1;
+//              
+//              if(![flag isEqual:@"1"]){method  =   REQUESTLOGIN;
+//                  [self.userApi requestLoginName:self.nameField.text andPassword:self.passwordField.text];}
+//              
+//          }
+//     
+//    }
     
 }
 

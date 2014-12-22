@@ -38,13 +38,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self initialUserModel]; //打开userModel缓存
+   // [self initialUserModel]; //打开userModel缓存
 
     UIImageView *imageview =[[UIImageView alloc]initWithFrame:CGRectMake(10,(self.view.frame.size.height - 54 * 8) / 2.0f,80,80)];
     imageview.image =[UIImage imageNamed:@"login_head.png" ];
-    UILabel *namelabel = [[UILabel alloc]initWithFrame:CGRectMake(110,(self.view.frame.size.height - 54 * 8) / 2.0f,80,80)];
-    namelabel.text=userModel.name;
-    namelabel.textColor =[UIColor whiteColor];
+//    UILabel *namelabel = [[UILabel alloc]initWithFrame:CGRectMake(110,(self.view.frame.size.height - 54 * 8) / 2.0f,80,80)];
+//    namelabel.text=userModel.name;
+//    namelabel.textColor =[UIColor whiteColor];
     
     self.tableView = ({
         UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, (self.view.frame.size.height - 54 * 5) / 2.0f, self.view.frame.size.width, 54 * 6) style:UITableViewStylePlain];
@@ -60,6 +60,19 @@
     });
     [self.view addSubview:self.tableView];
     [self.view addSubview:imageview];
+    //[self.view addSubview:namelabel];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    //检查缓存中是否有用户数据
+    [self initialUserModel]; //打开userModel缓存
+    if (userModel) {
+        NSLog(@"%@" ,[userModel description]);
+    }
+    UILabel *namelabel = [[UILabel alloc]initWithFrame:CGRectMake(110,(self.view.frame.size.height - 54 * 8) / 2.0f,80,80)];
+    namelabel.text=userModel.name;
+    namelabel.textColor =[UIColor whiteColor];
     [self.view addSubview:namelabel];
 }
 
@@ -71,6 +84,9 @@
 -(void)initialUserModel{
     
     userModel = [AppCache getCache];
+    NSLog(@"*********leftMenu******");
+    NSLog(@"%@",userModel.name);
+    NSLog(@"%@",[userModel description]);
     
 }
 

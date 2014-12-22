@@ -37,7 +37,7 @@
     
     if(switchValue){//如果用户选择了自动登入则直接登入到软院快讯界面
         ISSTLoginApi *userApi =[[ISSTLoginApi alloc]init];
-        //ISSTUserModel *useModel =[[ISSTUserModel alloc]init];
+        
         userModel =[AppCache getCache];
         
         userApi.webApiDelegate = self;
@@ -88,11 +88,20 @@
 - (void)requestDataOnSuccess:(id)backToControllerData;
 {
     userModel = backToControllerData;
-    ISSTContactsApi *contactsApi =[[ISSTContactsApi alloc]init];
-    [contactsApi requestClassesLists];
-    [contactsApi requestMajorsLists];
-    
+//    ISSTContactsApi *contactsApi =[[ISSTContactsApi alloc]init];
+//    [contactsApi requestClassesLists];
+//    [contactsApi requestMajorsLists];
+//    
 }
+
+//- (void)requestDataOnFail:(NSString *)error
+//{
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//    [alert show];
+//    
+//    
+//}
 
 
 - (void)dealloc
