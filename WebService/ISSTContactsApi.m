@@ -203,9 +203,9 @@ const static int        MAJORSLISTS         = 4;
                 }
                 else if(1 == [contactsParse getStatus])
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin )])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                 }
             }
@@ -227,9 +227,9 @@ const static int        MAJORSLISTS         = 4;
                 }
                 else if(1 == [contactsParse getStatus])
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                 }
             }
@@ -252,9 +252,9 @@ const static int        MAJORSLISTS         = 4;
                 }
                 else if(1 == [contactsParse getStatus])
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                 }
             }
@@ -277,9 +277,9 @@ const static int        MAJORSLISTS         = 4;
                 }
                 else if(1 == [contactsParse getStatus])
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                 }
             }

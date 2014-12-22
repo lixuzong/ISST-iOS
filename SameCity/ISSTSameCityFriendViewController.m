@@ -7,8 +7,12 @@
 //
 
 #import "ISSTSameCityFriendViewController.h"
+#import "ISSTLoginApi.h"
 
 @interface ISSTSameCityFriendViewController ()
+@property (strong,nonatomic) ISSTUserModel *userModel;
+@property (strong,nonatomic) ISSTLoginApi *userApi;
+
 @property(strong,nonatomic)ISSTUserModel *addressBookModel;
 @property(strong,nonatomic)ISSTUserModel *userInfo;
 @property(strong,nonatomic)ISSTContactsApi *addressBookApi;
@@ -78,7 +82,6 @@ int method;
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
     userInfo=[AppCache getCache];
-    
     [self.view addSubview:_friendTableView];
     [self friendRequestForData];
     addressBookModel.cityId = userInfo.cityId;
@@ -278,6 +281,18 @@ int method;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
     
+}
+
+-(void) updateUserLogin{
+    self.userApi=[[ISSTLoginApi alloc] init];
+    _userModel=[[ISSTUserModel alloc] init ];
+    _userModel=[AppCache getCache];
+    if (_userModel) {
+        [self.userApi updateLoginUserId:[NSString stringWithFormat:@"%d",_userModel.userId] andPassword:_userModel.password];
+        [self viewDidLoad];
+        
+        
+    }
 }
 
 

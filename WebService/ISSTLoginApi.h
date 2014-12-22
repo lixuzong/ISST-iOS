@@ -38,7 +38,7 @@
  方法名，用户登录
  参数，无
  *****/
-- (void)updateLogin;
+- (void)updateLoginUserId:(NSString*)userId andPassword:(NSString*) password;
 
 
 

@@ -14,8 +14,14 @@
 #import "ISSTExperienceDetailViewController.h"
 #import "RESideMenu.h"
 #import "MJRefresh.h"
+#import "ISSTLoginApi.h"
+#import "ISSTUserModel.h"
+#import "AppCache.h"
 
 @interface ISSTExperienceViewController ()
+@property (strong,nonatomic) ISSTUserModel *userModel;
+@property (strong,nonatomic) ISSTLoginApi *userApi;
+
 @property (weak, nonatomic) IBOutlet UITableView *experienceArrayTableView;
 @property (nonatomic,strong)ISSTLifeApi  *experienceApi;
 @property (nonatomic,strong)ISSTCampusNewsModel  *experenceModel;
@@ -200,6 +206,23 @@ static int  loadPage = 1;
     [alert show];
     
    }
+
+-(void) updateUserLogin{
+    self.userApi=[[ISSTLoginApi alloc] init];
+    _userModel=[[ISSTUserModel alloc] init ];
+    _userModel=[AppCache getCache];
+    if (_userModel) {
+        [self.userApi updateLoginUserId:[NSString stringWithFormat:@"%d",_userModel.userId] andPassword:_userModel.password];
+        [experenceArray removeAllObjects];
+        loadPage=1;
+        // 1.添加数据
+        [self.experienceApi requestExperienceLists:loadPage andPageSize:20 andKeywords:@"string"];
+        
+        // 刷新表格
+        [self.experienceArrayTableView reloadData];
+
+    }
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

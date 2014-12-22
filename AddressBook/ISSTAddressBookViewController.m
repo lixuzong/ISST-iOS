@@ -8,8 +8,11 @@
 
 
 #import "ISSTAddressBookViewController.h"
+#import "ISSTLoginApi.h"
 
 @interface ISSTAddressBookViewController ()
+@property (strong,nonatomic) ISSTUserModel *userModel;
+@property (strong,nonatomic) ISSTLoginApi *userApi;
 
 @property(strong,nonatomic)NSDictionary *sortedNamesDictionary;
 
@@ -305,6 +308,18 @@ sameCitySwitch = false;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
     
+}
+
+-(void) updateUserLogin{
+    self.userApi=[[ISSTLoginApi alloc] init];
+    _userModel=[[ISSTUserModel alloc] init ];
+    _userModel=[AppCache getCache];
+    if (_userModel) {
+        [self.userApi updateLoginUserId:[NSString stringWithFormat:@"%d",_userModel.userId] andPassword:_userModel.password];
+        [self viewDidLoad];
+        
+        
+    }
 }
 
 

@@ -14,4 +14,5 @@
 - (void)requestDataOnSuccess:(id)backToControllerData;
 
 - (void)requestDataOnFail:(NSString *)error;
+-(void) updateUserLogin;
 @end

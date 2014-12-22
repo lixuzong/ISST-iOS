@@ -13,8 +13,12 @@
 #import "ISSTSameCitiesModel.h"
 #import "ISSTAddressBookDetailTableViewCell.h"
 #import "RESideMenu.h"
+#import "ISSTLoginApi.h"
 
 @interface CityManagersViewController ()
+@property (strong,nonatomic) ISSTUserModel *userModel;
+@property (strong,nonatomic) ISSTLoginApi *userApi;
+
 @property (weak, nonatomic) IBOutlet UILabel *cityNameLabel;
 @property (weak, nonatomic) IBOutlet UITableView *cityManagerTableView;
 @property (copy,nonatomic) ISSTUserModel *userInfo;
@@ -104,6 +108,16 @@
         [alert show];
     }
 
+-(void) updateUserLogin{
+    self.userApi=[[ISSTLoginApi alloc] init];
+    _userModel=[[ISSTUserModel alloc] init ];
+    _userModel=[AppCache getCache];
+    if (_userModel) {
+        [self.userApi updateLoginUserId:[NSString stringWithFormat:@"%d",_userModel.userId] andPassword:_userModel.password];
+        [self viewDidLoad];
+        
+    }
+}
 
 #pragma mark -
 #pragma mark Table View  Delegate Methods

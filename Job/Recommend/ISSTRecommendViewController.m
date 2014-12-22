@@ -14,8 +14,14 @@
 #import "ISSTRecommendDetailViewController.h"
 #import "RESideMenu.h"
 #import "MJRefresh.h"
+#import "ISSTLoginApi.h"
+#import "ISSTUserModel.h"
+#import "AppCache.h"
 
 @interface ISSTRecommendViewController ()
+@property (strong,nonatomic) ISSTUserModel *userModel;
+@property (strong,nonatomic) ISSTLoginApi *userApi;
+
 @property (weak, nonatomic) IBOutlet UITableView *recommendTableView;
 @property (nonatomic,strong)ISSTJobsApi  *recommendApi;
 @property (nonatomic,strong)ISSTJobsModel  *recommendModel;
@@ -188,6 +194,23 @@ static int  loadPage = 1;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
     
+}
+
+-(void) updateUserLogin{
+    self.userApi=[[ISSTLoginApi alloc] init];
+    _userModel=[[ISSTUserModel alloc] init ];
+    _userModel=[AppCache getCache];
+    if (_userModel) {
+        [self.userApi updateLoginUserId:[NSString stringWithFormat:@"%d",_userModel.userId] andPassword:_userModel.password];
+        
+        [recommendArray removeAllObjects];
+        loadPage=1;
+        // 1.添加数据
+        [self.recommendApi requestRecommendLists:loadPage andPageSize:20 andKeywords:@"string"];
+        
+        // 刷新表格
+        [self.recommendTableView reloadData];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

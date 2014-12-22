@@ -293,9 +293,9 @@
                 }
                 else if(1 == status)
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                 }
                 else

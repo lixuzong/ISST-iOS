@@ -170,9 +170,9 @@ const static int SANECITIES_ACTIVITY_CANCEL_REGISTRATION = 5;
                 
                 else if(1 == [citiesParse getStatus])
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                     
                 }
@@ -196,9 +196,9 @@ const static int SANECITIES_ACTIVITY_CANCEL_REGISTRATION = 5;
                 
                 else if(1 == [citiesParse getStatus])
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                     
                 }
@@ -224,9 +224,9 @@ const static int SANECITIES_ACTIVITY_CANCEL_REGISTRATION = 5;
                 
                 else if(1 == [citiesParse getStatus])
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                     
                 }
@@ -253,9 +253,9 @@ const static int SANECITIES_ACTIVITY_CANCEL_REGISTRATION = 5;
                 
                 else if(1 == [citiesParse getStatus])
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                     
                 }
@@ -282,9 +282,9 @@ const static int SANECITIES_ACTIVITY_CANCEL_REGISTRATION = 5;
                 
                 else if(1 == [citiesParse getStatus])
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                     
                 }

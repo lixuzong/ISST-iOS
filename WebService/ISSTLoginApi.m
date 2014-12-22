@@ -79,19 +79,19 @@ const    static  int   REQUESTUSERINFO= 3;
 
 }
 
-- (void)updateLogin
+- (void)updateLoginUserId:(NSString*)userId andPassword:(NSString*) password;
 {
     if (NetworkReachability.isConnectionAvailable)
     {
         methodId = UPDATELOGIN;
         datas = [[NSMutableData alloc]init];
         //MD5 secret
-        NSDictionary *md5Dic =  @{@"userId": @"714",@"password":@"111111"};
+        NSDictionary *md5Dic =  @{@"userId": userId,@"password":password};
         long long timestamp = [ISSTMD5 getTimestamp];
         NSString *token= [ISSTMD5 tokenWithDic:md5Dic andTimestamp:timestamp];
         
         
-        NSString *info = [NSString stringWithFormat:@"userId=%@&token=%@&timestamp=%llu&longitude=121.00&latitude=30.01",@"21351110",token,timestamp];
+        NSString *info = [NSString stringWithFormat:@"userId=%@&token=%@&timestamp=%llu&longitude=121.00&latitude=30.01",userId,token,timestamp];
         NSString *subUrlString = [NSString stringWithFormat:@"api/login/update"];
         [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:info MD5Dictionary:nil];
     }//network connect

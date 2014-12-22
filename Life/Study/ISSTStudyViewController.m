@@ -15,8 +15,14 @@
 #import "ISSTStudyTableViewCell.h"
 #import "RESideMenu.h"
 #import "MJRefresh.h"
+#import "ISSTLoginApi.h"
+#import "ISSTUserModel.h"
+#import "AppCache.h"
 
 @interface ISSTStudyViewController ()
+@property (strong,nonatomic) ISSTUserModel *userModel;
+@property (strong,nonatomic) ISSTLoginApi *userApi;
+
 @property (weak, nonatomic) IBOutlet UITableView *studyArrayTableView;
 @property (nonatomic,strong)ISSTLifeApi  *studyApi;
 
@@ -196,6 +202,23 @@ static int  loadPage = 1;
     
 }
 
+-(void) updateUserLogin{
+    self.userApi=[[ISSTLoginApi alloc] init];
+    _userModel=[[ISSTUserModel alloc] init ];
+    _userModel=[AppCache getCache];
+    if (_userModel) {
+        [self.userApi updateLoginUserId:[NSString stringWithFormat:@"%d",_userModel.userId] andPassword:_userModel.password];
+        
+        [studyArray removeAllObjects];
+        loadPage=1;
+        // 1.添加数据
+        [self.studyApi requestStudyingLists:loadPage andPageSize:20 andKeywords:@"string"];
+        
+        // 刷新表格
+        [self.studyArrayTableView reloadData];
+
+    }
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

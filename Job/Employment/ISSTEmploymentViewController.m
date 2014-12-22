@@ -14,8 +14,14 @@
 #import "ISSTJobsModel.h"
 #import "RESideMenu.h"
 #import "MJRefresh.h"
+#import "ISSTLoginApi.h"
+#import "ISSTUserModel.h"
+#import "AppCache.h"
 
 @interface ISSTEmploymentViewController ()
+@property (strong,nonatomic) ISSTUserModel *userModel;
+@property (strong,nonatomic) ISSTLoginApi *userApi;
+
 @property (weak, nonatomic) IBOutlet UITableView *employTableView;
 @property (nonatomic,strong)ISSTJobsApi  *employmentApi;
 @property (nonatomic,strong)ISSTJobsModel  *employmentModel;
@@ -194,6 +200,23 @@ static int  loadPage = 1;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
     [alert show];
     
+}
+
+-(void) updateUserLogin{
+    self.userApi=[[ISSTLoginApi alloc] init];
+    _userModel=[[ISSTUserModel alloc] init ];
+    _userModel=[AppCache getCache];
+    if (_userModel) {
+        [self.userApi updateLoginUserId:[NSString stringWithFormat:@"%d",_userModel.userId] andPassword:_userModel.password];
+        
+        [employmentArray removeAllObjects];
+        loadPage=1;
+        [self.employmentApi requestEmploymentLists:loadPage andPageSize:20 andKeywords:@"string"];
+        
+        // 刷新表格
+        [self.employTableView reloadData];
+
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

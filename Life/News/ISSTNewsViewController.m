@@ -13,8 +13,14 @@
 #import "RESideMenu.h"
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
+#import "ISSTLoginApi.h"
+#import "ISSTUserModel.h"
+#import "AppCache.h"
 
 @interface ISSTNewsViewController ()
+
+@property (strong,nonatomic) ISSTUserModel *userModel;
+@property (strong,nonatomic) ISSTLoginApi *userApi;
 
 @property (weak, nonatomic) IBOutlet UITableView *newsArrayTableView;
 @property (nonatomic,strong)ISSTLifeApi  *newsApi;
@@ -254,6 +260,18 @@ static int  loadPage = 1;
     
 }
 
+-(void) updateUserLogin{
+    self.userApi=[[ISSTLoginApi alloc] init];
+    _userModel=[[ISSTUserModel alloc] init ];
+    _userModel=[AppCache getCache];
+    if (_userModel) {
+        [self.userApi updateLoginUserId:[NSString stringWithFormat:@"%d",_userModel.userId] andPassword:_userModel.password];
+        [newsArray removeAllObjects];
+        loadPage=1;
+        [self.newsApi requestCampusNewsLists:loadPage andPageSize:20 andKeywords:@"string"];
+        [newsArrayTableView reloadData];
+    }
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

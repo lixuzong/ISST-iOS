@@ -147,9 +147,9 @@ const    static  int   MENUS   = 3;
                 
                 else if(1 == [restaurantsParse getStatus])
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                     
                 }
@@ -176,9 +176,9 @@ const    static  int   MENUS   = 3;
                 
                 else if(1 == [restaurantsParse getStatus])
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                     
                 }
@@ -204,9 +204,9 @@ const    static  int   MENUS   = 3;
                 
                 else if(1 == [restaurantsMenusParse getStatus])
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                     
                 }

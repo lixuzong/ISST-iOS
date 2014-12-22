@@ -12,8 +12,13 @@
 #import "ISSTCampusNewsModel.h"
 #import "ISSTWikisDetailViewController.h"
 #import "RESideMenu.h"
+#import "ISSTLoginApi.h"
+#import "ISSTUserModel.h"
+#import "AppCache.h"
 
 @interface ISSTWikisViewController ()
+@property (strong,nonatomic) ISSTUserModel *userModel;
+@property (strong,nonatomic) ISSTLoginApi *userApi;
 @property (nonatomic,strong)ISSTLifeApi  *newsApi;
 @property (nonatomic,strong) ISSTCampusNewsModel  *WikisModel;
 @property(nonatomic,strong)ISSTWikisDetailViewController *WikisDetailView;
@@ -119,6 +124,16 @@
     [alert show];
 }
 
+-(void) updateUserLogin{
+    self.userApi=[[ISSTLoginApi alloc] init];
+    _userModel=[[ISSTUserModel alloc] init ];
+    _userModel=[AppCache getCache];
+    if (_userModel) {
+        [self.userApi updateLoginUserId:[NSString stringWithFormat:@"%d",_userModel.userId] andPassword:_userModel.password];
+        
+        [self viewDidLoad];
+    }
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

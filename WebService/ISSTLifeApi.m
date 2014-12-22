@@ -183,9 +183,9 @@ const    static  int   EXPERIENCE  =5;
                 
                 else if(1 == [news getStatus])
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                     
                 }
@@ -214,9 +214,9 @@ const    static  int   EXPERIENCE  =5;
                 
                 else if(1 == [news getStatus])
                 {
-                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
-                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                        [self.webApiDelegate updateUserLogin];
                     }
                     
                 }

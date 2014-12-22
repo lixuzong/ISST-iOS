@@ -14,8 +14,13 @@
 #import "CycleScrollView.h"
 #import "RESideMenu.h"
 #import "MJRefresh.h"
+#import "ISSTLoginApi.h"
+#import "ISSTUserModel.h"
+#import "AppCache.h"
 
 @interface ISSTActivitiesViewController ()
+@property (strong,nonatomic) ISSTUserModel *userModel;
+@property (strong,nonatomic) ISSTLoginApi *userApi;
 
 @property (weak, nonatomic) IBOutlet UITableView    *activitiesTableView;
 @property (nonatomic,strong)ISSTActivityApi         *activitiesApi;
@@ -236,6 +241,23 @@ static int  loadPage = 1;
     
     
 }
+-(void) updateUserLogin{
+    self.userApi=[[ISSTLoginApi alloc] init];
+    _userModel=[[ISSTUserModel alloc] init ];
+    _userModel=[AppCache getCache];
+    if (_userModel) {
+        [self.userApi updateLoginUserId:[NSString stringWithFormat:@"%d",_userModel.userId] andPassword:_userModel.password];
+        
+        [activitiesArray removeAllObjects];
+        loadPage=1;
+         // 1.添加数据
+         [self.activitiesApi requestActivitiesLists:loadPage andPageSize:20 andKeywords:@"string"];
+         
+         // 刷新表格
+         [self.activitiesTableView reloadData];
+    }
+}
+
 
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
