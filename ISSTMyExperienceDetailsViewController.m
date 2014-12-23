@@ -28,6 +28,7 @@
     
     titleLabel.text =titlename;
     NSString *timeText=[NSString stringWithFormat:@"发布时间:%@",time];
+    NSLog(@"%@",timeText);
     timelLabel.text = timeText;
     NSString *contentDetailText =[NSString stringWithFormat:@"  %@",contentDetail];
     detailTextView.text =contentDetailText;
