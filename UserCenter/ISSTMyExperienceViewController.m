@@ -147,8 +147,8 @@ static NSString *CellTableIdentifier=@"ISSTExperienceCell";
 //        cell.status.layer.backgroundColor =[UIColor redColor].CGColor;
     }else{
         cell.status.text =@"已审核";
-        cell.status.textColor =[UIColor whiteColor];
-        cell.status.layer.backgroundColor =[UIColor greenColor].CGColor;
+//        cell.status.textColor =[UIColor whiteColor];
+//        cell.status.layer.backgroundColor =[UIColor greenColor].CGColor;
     }
     
     return cell;

@@ -109,7 +109,7 @@
         datas = [[NSMutableData alloc]init];
         NSString *subUrlString = [NSString stringWithFormat:@"api/users/archives/experience"];
         NSMutableString *info = [[NSMutableString alloc]initWithString:[NSString stringWithFormat:@"page＝%d&pageSize=%d",page,pageSize]];
-        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:info MD5Dictionary:nil];
+        [super requestWithSuburl:subUrlString Method:@"GET2" Delegate:self Info:info MD5Dictionary:nil];
         
     }
     else
