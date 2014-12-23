@@ -18,9 +18,11 @@
 #import "ISSTAddressBookDetailViewController.h"
 @interface ISSTRecommendDetailViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+{
+    NSString *title;
+    NSString *time;
+    NSString *publisher;
+}
 @property (weak, nonatomic) IBOutlet UIWebView *detailWebView;
 @property (weak, nonatomic) IBOutlet UITableView *commentsTableView;
 - (IBAction)userInfoButton:(id)sender;
@@ -43,7 +45,7 @@ const static int  COMMENTS = 2;
 
 @synthesize jobId;
 
-@synthesize timeLabel,titleLabel,userNameLabel,detailWebView;
+@synthesize detailWebView;
 @synthesize recommendApi,detailModel;
 
 @synthesize method;
@@ -65,9 +67,7 @@ const static int  COMMENTS = 2;
 {
     [super viewDidLoad];
     
-    self.titleLabel.text=@"";
-    self.timeLabel.text=@"";
-    self.userNameLabel.text=@"";
+    
     
     recommendApi = [[ISSTJobsApi alloc]init];
     recommendApi.webApiDelegate = self;
@@ -82,9 +82,6 @@ const static int  COMMENTS = 2;
     
     commentsTableView.tableFooterView = [[UIView alloc]initWithFrame:CGRectZero]; //去除多余横线
     
-    self.titleLabel.textAlignment =NSTextAlignmentCenter;
-    self.titleLabel.lineBreakMode = NSLineBreakByCharWrapping;
-    self.titleLabel.numberOfLines= 0;
     
 }
 
@@ -200,19 +197,35 @@ const static int  COMMENTS = 2;
     if (method == DETAILS) {
         detailModel = (ISSTJobsDetailModel*)backToControllerData;
         
-        self.titleLabel.text=detailModel.title;
-        self.timeLabel.text=detailModel.updatedAt;
+       title=detailModel.title;
+        time=detailModel.updatedAt;
         
         int userId=detailModel.userModel.userId;
         if(userId!=0)
         {
             NSString *userName=detailModel.userModel.userName;
-            self.userNameLabel.text=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
+            publisher=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
         }
         else
-            self.userNameLabel.text=@"发布者：管理员";
+            publisher=@"发布者：管理员";
         
-        [detailWebView loadHTMLString:detailModel.content baseURL:nil];//加载html源代码
+        float fontSize=50;
+        NSString *jsString = [NSString stringWithFormat:@"<html> \n"
+                              "<head> \n"
+                              "<style type=\"text/css\"> \n"
+                              "body {font-size: %f}"
+                              // "img {width:960;}"
+                              
+                              "</style> \n"
+                              "</head> \n"
+                              "<body>\n"
+                              "<h3 align='center'>%@</h3>"
+                              "<h5 align='center'>%@&nbsp&nbsp&nbsp&nbsp&nbsp%@</h5>"
+                              "%@</body> \n"
+                              "</html>", fontSize,title,time,publisher,detailModel.content];
+        
+        
+        [detailWebView loadHTMLString:jsString baseURL:nil];//加载html源代码
         method = COMMENTS;
          [recommendApi requestRCLists:1 andPageSize:3 andJobId:self.jobId];
     }

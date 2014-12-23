@@ -10,9 +10,12 @@
 #import "ISSTLifeApi.h"
 #import "ISSTNewsDetailsModel.h"
 @interface ISSTStudyDetailViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *time;
-@property (weak, nonatomic) IBOutlet UILabel *userInfo;
+{
+    NSString *title;
+    NSString *time;
+    NSString *publisher;
+}
+
 @property (nonatomic,strong)ISSTLifeApi  *studyApi;
 @property(nonatomic,strong)ISSTNewsDetailsModel *detailModel;
 @end
@@ -36,9 +39,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title.text=@"";
-    self.time.text=@"";
-    self.userInfo.text=@"";
+   
     
     self.studyApi = [[ISSTLifeApi alloc]init];
     self.studyApi.webApiDelegate =self;
@@ -89,20 +90,35 @@
         detailModel=[[ISSTNewsDetailsModel alloc]init];
         detailModel = (ISSTNewsDetailsModel*)backToControllerData;
     }
-    self.title.text=detailModel.title;
-    self.title.textAlignment =NSTextAlignmentCenter;
-    self.title.lineBreakMode = NSLineBreakByCharWrapping;
-    self.title.numberOfLines= 0;
+    title=detailModel.title;
     
-    self.time.text=[NSString stringWithFormat:@"发布时间：%@",detailModel.updatedAt];
+    
+    time=[NSString stringWithFormat:@"发布时间：%@",detailModel.updatedAt];
     int userId=[[detailModel.userModel objectForKey:@"id"]intValue];
     if(userId!=0)
     {
         NSString *userName=[detailModel.userModel objectForKey:@"name"];
-        self.userInfo.text=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
+        publisher=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
     }
-    else self.userInfo.text=@"发布者：管理员";
-    [webView loadHTMLString:detailModel.content baseURL:nil];//加载html源代码
+    else publisher=@"发布者：管理员";
+    //添加html代码
+    float fontSize=50;
+    NSString *jsString = [NSString stringWithFormat:@"<html> \n"
+                          "<head> \n"
+                          "<style type=\"text/css\"> \n"
+                          "body {font-size: %f}"
+                          // "img {width:960;}"
+                          
+                          "</style> \n"
+                          "</head> \n"
+                          "<body>\n"
+                          "<h3 align='center'>%@</h3>"
+                          "<h5 align='center'>%@&nbsp&nbsp&nbsp&nbsp&nbsp%@</h5>"
+                          "%@</body> \n"
+                          "</html>", fontSize,title,time,publisher,detailModel.content];
+    
+    
+    [webView loadHTMLString:jsString baseURL:nil];//加载html源代码
     NSLog(@"6666666666666666");
     NSLog(@"%@",detailModel.content);
     NSLog(@"self=%@ \n htmls=%@",self,backToControllerData);

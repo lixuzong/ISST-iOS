@@ -11,9 +11,11 @@
 #import "ISSTActivityModel.h"
 @interface ISSTActivityDetailViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-@property (weak, nonatomic) IBOutlet UILabel *userinfo;
+{
+    NSString *title;
+    NSString *time;
+    NSString *publisher;
+}
 @property (nonatomic,strong)ISSTActivityApi  *activityApi;
 @property(nonatomic,strong)ISSTActivityModel *detailModel;
 @end
@@ -21,8 +23,7 @@
 @implementation ISSTActivityDetailViewController
 
 @synthesize activityId;
-@synthesize titleLabel;
-@synthesize contentLabel;
+
 @synthesize activityApi;
 @synthesize detailModel;
 @synthesize webView;
@@ -39,9 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.titleLabel.text=@"";
-    self.userinfo.text=@"";
-    self.contentLabel.text=@"";
+   
     
     activityApi = [[ISSTActivityApi alloc]init];
     activityApi.webApiDelegate = self;
@@ -94,19 +93,36 @@
         detailModel=[[ISSTActivityModel alloc]init];
         detailModel = (ISSTActivityModel*)backToControllerData;
     }
-    self.titleLabel.text=detailModel.title;
+    title=detailModel.title;
     //self.titleLabel.lineBreakMode = UILineBreakModeWordWrap;
-    self.titleLabel.numberOfLines = 0;
+    
     int userId=[[detailModel.userModel objectForKey:@"id"]intValue];
     if(userId!=0)
     {
         NSString *userName=[detailModel.userModel objectForKey:@"name"];
-        self.userinfo.text=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
+        publisher=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
     }
     else
-        self.userinfo.text=@"发布者：管理员";
+      publisher=@"发布者：管理员";
     
-    [webView loadHTMLString:detailModel.content baseURL:nil];//加载html源代码
+    float fontSize=50;
+    NSString *jsString = [NSString stringWithFormat:@"<html> \n"
+                          "<head> \n"
+                          "<style type=\"text/css\"> \n"
+                          "body {font-size: %f}"
+                          // "img {width:960;}"
+                          
+                          "</style> \n"
+                          "</head> \n"
+                          "<body>\n"
+                          "<h3 align='center'>%@</h3>"
+                          "<h5 align='center'>%@</h5>"
+                          "%@</body> \n"
+                          "</html>", fontSize,title,publisher,detailModel.content];
+    
+    
+    [webView loadHTMLString:jsString baseURL:nil];//加载html源代码
+
     NSLog(@"self=%@ \n htmls=%@",self,backToControllerData);
     NSLog(@"self=%@\n content=%@\n title=%@ \ndescription=%@",self,detailModel.content,detailModel.title,detailModel.description);
 }

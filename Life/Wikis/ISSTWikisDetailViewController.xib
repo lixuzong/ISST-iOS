@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ISSTWikisDetailViewController">
             <connections>
-                <outlet property="Title" destination="a9E-Af-LQv" id="ctD-c0-oF0"/>
-                <outlet property="time" destination="rUK-Gr-sKF" id="dDJ-o2-gPj"/>
-                <outlet property="userInfo" destination="8Xe-DT-Lcr" id="CDK-yw-9QD"/>
                 <outlet property="view" destination="sqs-Aq-b14" id="8lQ-ZN-48w"/>
                 <outlet property="webView" destination="sh6-om-NK7" id="e3I-2n-Qye"/>
             </connections>
@@ -19,44 +16,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sh6-om-NK7">
-                    <rect key="frame" x="0.0" y="161" width="320" height="407"/>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sh6-om-NK7">
+                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="z66-lG-Tc1"/>
                     </connections>
                 </webView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Xe-DT-Lcr">
-                    <rect key="frame" x="0.0" y="133" width="320" height="28"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="0.9873046875" green="0.9873046875" blue="0.9873046875" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a9E-Af-LQv">
-                    <rect key="frame" x="0.0" y="64" width="320" height="52"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rUK-Gr-sKF">
-                    <rect key="frame" x="0.0" y="116" width="320" height="17"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="sh6-om-NK7" secondAttribute="bottom" id="1BN-OQ-B8H"/>
-                <constraint firstItem="8Xe-DT-Lcr" firstAttribute="top" secondItem="rUK-Gr-sKF" secondAttribute="bottom" id="312-3g-Vem"/>
-                <constraint firstAttribute="trailing" secondItem="a9E-Af-LQv" secondAttribute="trailing" id="Sjn-mx-XdM"/>
-                <constraint firstItem="rUK-Gr-sKF" firstAttribute="top" secondItem="a9E-Af-LQv" secondAttribute="bottom" id="TpQ-Hk-Brp"/>
-                <constraint firstItem="sh6-om-NK7" firstAttribute="top" secondItem="8Xe-DT-Lcr" secondAttribute="bottom" id="ZeO-Qq-V5K"/>
-                <constraint firstItem="a9E-Af-LQv" firstAttribute="leading" secondItem="sqs-Aq-b14" secondAttribute="leading" id="cOu-Sr-6V3"/>
-                <constraint firstItem="sh6-om-NK7" firstAttribute="top" secondItem="8Xe-DT-Lcr" secondAttribute="bottom" id="eDd-I1-Jim"/>
-                <constraint firstItem="rUK-Gr-sKF" firstAttribute="top" secondItem="a9E-Af-LQv" secondAttribute="bottom" id="omi-uF-bbm"/>
-                <constraint firstItem="8Xe-DT-Lcr" firstAttribute="top" secondItem="rUK-Gr-sKF" secondAttribute="bottom" id="rGL-9a-v46"/>
-                <constraint firstItem="a9E-Af-LQv" firstAttribute="top" secondItem="sqs-Aq-b14" secondAttribute="top" constant="64" id="xUS-g9-P5R"/>
+                <constraint firstItem="sh6-om-NK7" firstAttribute="top" secondItem="sqs-Aq-b14" secondAttribute="top" constant="64" id="G1a-xu-WG9"/>
+                <constraint firstAttribute="trailing" secondItem="sh6-om-NK7" secondAttribute="trailing" id="gX7-eV-Boh"/>
+                <constraint firstItem="sh6-om-NK7" firstAttribute="leading" secondItem="sqs-Aq-b14" secondAttribute="leading" id="wGl-zj-gtm"/>
             </constraints>
         </view>
     </objects>

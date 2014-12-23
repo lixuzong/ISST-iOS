@@ -14,21 +14,23 @@
 #import "AppCache.h"
 
 @interface ISSTNewsDetailViewController ()
+{
+    NSString *title;
+    NSString *time;
+    NSString *publisher;
+}
 @property (strong,nonatomic) ISSTUserModel *userModel;
 @property (strong,nonatomic) ISSTLoginApi *userApi;
-
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *time;
-@property (weak, nonatomic) IBOutlet UILabel *userInfo;
 @property (nonatomic,strong)ISSTLifeApi  *newsApi;
 @property(nonatomic,strong)ISSTNewsDetailsModel *detailModel;
+
 @end
 
 @implementation ISSTNewsDetailViewController
 @synthesize newsApi;
 @synthesize detailModel;
 @synthesize newsId;
-@synthesize title;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,9 +45,7 @@
 {
     [super viewDidLoad];
     
-    self.title.text =@"";
-    self.time.text =@"";
-    self.userInfo.text =@"";
+  
     
     self.newsApi = [[ISSTLifeApi alloc]init];
     self.newsApi.webApiDelegate =self;
@@ -99,18 +99,15 @@
      detailModel=[[ISSTNewsDetailsModel alloc]init];
      detailModel = (ISSTNewsDetailsModel*)backToControllerData;
     }
-    self.title.text=detailModel.title;
-    self.title.textAlignment =NSTextAlignmentCenter;
-    self.title.lineBreakMode = NSLineBreakByCharWrapping;
-    self.title.numberOfLines= 0;
-    self.time.text=[NSString stringWithFormat:@"发布时间：%@",detailModel.updatedAt];
+   
+    time=[NSString stringWithFormat:@"发布时间：%@",detailModel.updatedAt];
     int userId=[[detailModel.userModel objectForKey:@"id"]intValue];
     if(userId!=0)
     {
         NSString *userName=[detailModel.userModel objectForKey:@"name"];
-        self.userInfo.text=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
+        publisher=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
     }	
-    else self.userInfo.text=@"发布者：管理员";
+    else publisher=@"发布者：管理员";
     float fontSize=42;
     float imgwidth=320;
     //webView.scrollView.contentSize=CGSizeMake(320, 2000);
@@ -125,8 +122,11 @@
                          
                           "</style> \n"
                           "</head> \n"
-                          "<body>%@</body> \n"
-                          "</html>", fontSize,htmlText];
+                          "<body>\n"
+                          "<h3 align='center'>%@</h3>"
+                          "<h5 align='center'>%@&nbsp&nbsp&nbsp&nbsp&nbsp%@</h5>"
+                          "%@</body> \n"
+                          "</html>", fontSize,detailModel.title,time,publisher,htmlText];
     
     [webView loadHTMLString:jsString baseURL:nil];//加载html源代码
     //NSLog(@"self=%@ \n htmls=%@",self,backToControllerData);

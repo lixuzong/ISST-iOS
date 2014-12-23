@@ -12,9 +12,11 @@
 #import "ISSTUserModel.h"
 
 @interface ISSTEmploymentDetailViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *time;
-@property (weak, nonatomic) IBOutlet UILabel *userInfo;
+{
+    NSString *title;
+    NSString *time;
+    NSString *publisher;
+}
 @property (nonatomic,strong)ISSTJobsApi  *employmentApi;
 @property(nonatomic,strong)ISSTJobsDetailModel *detailModel;
 @end
@@ -44,10 +46,7 @@
     webView.scalesPageToFit = YES;
     webView.delegate = self;
     
-    self.title.textAlignment =NSTextAlignmentCenter;
-    self.title.lineBreakMode = NSLineBreakByCharWrapping;
-    self.title.numberOfLines= 0;
-
+    
 }
 
 - (void)loadWebPageWithString:(NSString*)urlString
@@ -91,17 +90,34 @@
      detailModel=[[ISSTJobsDetailModel alloc]init];
      detailModel = (ISSTJobsDetailModel*)backToControllerData;
     }
-    self.title.text=detailModel.title;
-    self.time.text=detailModel.updatedAt;
+    title=detailModel.title;
+    time=detailModel.updatedAt;
     int userId=detailModel.userModel.userId;
     if(userId!=0)
     {
         NSString *userName=detailModel.userModel.userName;
-        self.userInfo.text=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
+        publisher=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
     }
-    else self.userInfo.text=@"发布者：管理员";
+    else publisher=@"发布者：管理员";
 
-    [webView loadHTMLString:detailModel.content baseURL:nil];//加载html源代码
+    //添加html代码
+     float fontSize=50;
+     NSString *jsString = [NSString stringWithFormat:@"<html> \n"
+                           "<head> \n"
+                           "<style type=\"text/css\"> \n"
+                           "body {font-size: %f}"
+                           // "img {width:960;}"
+                           
+                           "</style> \n"
+                           "</head> \n"
+                           "<body>\n"
+                           "<h3 align='center'>%@</h3>"
+                           "<h5 align='center'>%@&nbsp&nbsp&nbsp&nbsp&nbsp%@</h5>"
+                           "%@</body> \n"
+                           "</html>", fontSize,title,time,publisher,detailModel.content];
+     
+     
+     [webView loadHTMLString:jsString baseURL:nil];//加载html源代码
     NSLog(@"self=%@\n content=%@\n messageName=%@ \ndescription=%@",self,detailModel.content,detailModel.title,detailModel.description);
 }
 

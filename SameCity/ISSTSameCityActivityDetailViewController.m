@@ -13,13 +13,21 @@
 #import "AppCache.h"
 
 @interface ISSTSameCityActivityDetailViewController ()
+{
+    NSString *title;
+    NSString *starttime;
+    NSString *endtime;
+    NSString *publisher;
+    NSString *content;
+    NSString *location;
+}
 @property (weak, nonatomic) IBOutlet UIImageView *pictureView;
-@property (weak, nonatomic) IBOutlet UILabel *title;
-@property (weak, nonatomic) IBOutlet UILabel *releaseUserLabel;
-@property (weak, nonatomic) IBOutlet UILabel *startTime;
-@property (weak, nonatomic) IBOutlet UILabel *endTime;
-@property (weak, nonatomic) IBOutlet UILabel *location;
-@property (weak, nonatomic) IBOutlet UILabel *content;
+//@property (weak, nonatomic) IBOutlet UILabel *title;
+//@property (weak, nonatomic) IBOutlet UILabel *releaseUserLabel;
+//@property (weak, nonatomic) IBOutlet UILabel *startTime;
+//@property (weak, nonatomic) IBOutlet UILabel *endTime;
+//@property (weak, nonatomic) IBOutlet UILabel *location;
+//@property (weak, nonatomic) IBOutlet UILabel *content;
 @property (weak, nonatomic) IBOutlet UIButton *participatedButton;
 @property (copy, nonatomic) ISSTUserModel    *userModel;
 @property (copy, nonatomic) ISSTSameCitiesApi *requestApi;
@@ -29,7 +37,7 @@
 @end
 
 @implementation ISSTSameCityActivityDetailViewController
-@synthesize cityId,activityId,pictureView,title,releaseUserLabel,startTime,endTime,location,content,participatedButton,userModel,requestApi,activityModel,activityStatus;
+@synthesize cityId,activityId,pictureView,participatedButton,userModel,requestApi,activityModel,activityStatus;
 @synthesize webView;
 const static int SAMECITY_ACTIVITY_DETAIL   = 1;
 const static int SAMECITY_PATICIPATE        = 2;
@@ -49,12 +57,7 @@ int method;
 {
     [super viewDidLoad];
     
-    self.title.text=@"";
-    self.releaseUserLabel.text=@"";
-    self.startTime.text=@"";
-    self.endTime.text=@"";
-    self.location.text=@"";
-    self.content.text=@"";
+    
     
     userModel = [[ISSTUserModel alloc] init];
     userModel = [AppCache getCache];
@@ -156,15 +159,33 @@ int method;
 //    pictureView.image = [UIImage imageWithData:data];
 //    }
     
-    title.text = activityModel.title;
-    title.numberOfLines =0;
-    content.text = activityModel.content;
+    title= activityModel.title;
+    
+    content = activityModel.content;
     //releaseUserLabel.text = [NSString stringWithFormat:@"发布者：%@",activityModel.releaseUserModel.userName];
-    releaseUserLabel.text = [NSString stringWithFormat:@"发布者：管理员"]; //测试阶段先写死
-    startTime.text = activityModel.startTime;
-    [webView loadHTMLString:activityModel.content baseURL:nil];//加载html源代码
-    endTime.text = activityModel.expireTime;
-    location.text = activityModel.location;
+    publisher = [NSString stringWithFormat:@"发布者：管理员"]; //测试阶段先写死
+    starttime= activityModel.startTime;
+    
+   endtime = activityModel.expireTime;
+    location = activityModel.location;
+    float fontSize=50;
+    NSString *jsString = [NSString stringWithFormat:@"<html> \n"
+                          "<head> \n"
+                          "<style type=\"text/css\"> \n"
+                          "body {font-size: %f}"
+                          // "img {width:960;}"
+                          
+                          "</style> \n"
+                          "</head> \n"
+                          "<body>\n"
+                          "<h3 align='center'>%@</h3>"
+                          "<h6 align='center'>时间：%@&nbsp-&nbsp%@&nbsp&nbsp&nbsp地点：%@&nbsp&nbsp</h6>"
+                          "%@</body> \n"
+                          "</html>", fontSize,title,starttime,endtime,location,content];
+    
+    
+    [webView loadHTMLString:jsString baseURL:nil];//加载html源代码
+    
     [self firstLoadParticipatedButton];
     
     

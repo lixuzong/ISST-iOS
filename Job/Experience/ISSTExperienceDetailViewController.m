@@ -10,10 +10,14 @@
 #import "ISSTLifeApi.h"
 #import "ISSTNewsDetailsModel.h"
 @interface ISSTExperienceDetailViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *title;
+{
+    
+    NSString *title;
+    NSString *time;
+    NSString *publisher;
+}
 @property (nonatomic,strong)ISSTLifeApi  *experienceApi;
-@property (weak, nonatomic) IBOutlet UILabel *time;
-@property (weak, nonatomic) IBOutlet UILabel *userInfo;
+
 @property(nonatomic,strong)ISSTNewsDetailsModel *detailModel;
 @end
 
@@ -21,9 +25,7 @@
 @synthesize experienceApi;
 @synthesize detailModel;
 @synthesize experienceId;
-@synthesize title;
-@synthesize time;
-@synthesize userInfo;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -39,20 +41,14 @@
 {
     [super viewDidLoad];
     
-    self.title.text=@"";
-    self.time.text=@"";
-    self.userInfo.text=@"";
-    
-    self.experienceApi = [[ISSTLifeApi alloc]init];
+       self.experienceApi = [[ISSTLifeApi alloc]init];
     self.experienceApi.webApiDelegate =self;
     [experienceApi requestDetailInfoWithId:experienceId];
     
     webView.scalesPageToFit = YES;
     webView.delegate = self;
     
-    self.title.textAlignment =NSTextAlignmentCenter;
-    self.title.lineBreakMode = NSLineBreakByCharWrapping;
-    self.title.numberOfLines= 0;
+    
 }
 
 
@@ -98,19 +94,35 @@
         detailModel = (ISSTNewsDetailsModel*)backToControllerData;
     }
     
-    self.title.text=detailModel.title;
-    self.title.lineBreakMode = UILineBreakModeCharacterWrap;
-    self.title.numberOfLines= 0;
-    self.time.text=[NSString stringWithFormat:@"发布时间：%@",detailModel.updatedAt];
+    title=detailModel.title;
+    
+    time=[NSString stringWithFormat:@"发布时间：%@",detailModel.updatedAt];
     int userId=[[detailModel.userModel objectForKey:@"id"]intValue];
     if(userId!=0)
     {
         NSString *userName=[detailModel.userModel objectForKey:@"name"];
         //self.userInfo.text=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
-        userInfo.text =[NSString stringWithFormat:@"发布者:%@",userName];
+        publisher =[NSString stringWithFormat:@"发布者:%@",userName];
     }
-    else self.userInfo.text=@"发布者：管理员";
-    [webView loadHTMLString:detailModel.content baseURL:nil];//加载html源代码
+    else publisher=@"发布者：管理员";
+    
+    float fontSize=50;
+    NSString *jsString = [NSString stringWithFormat:@"<html> \n"
+                          "<head> \n"
+                          "<style type=\"text/css\"> \n"
+                          "body {font-size: %f}"
+                          // "img {width:960;}"
+                          
+                          "</style> \n"
+                          "</head> \n"
+                          "<body>\n"
+                          "<h3 align='center'>%@</h3>"
+                          "<h5 align='center'>%@&nbsp&nbsp&nbsp&nbsp&nbsp%@</h5>"
+                          "%@</body> \n"
+                          "</html>", fontSize,title,time,publisher,detailModel.content];
+    
+    
+    [webView loadHTMLString:jsString baseURL:nil];//加载html源代码
   //  NSLog(@"self=%@ \n htmls=%@",self,backToControllerData);
   //  NSLog(@"self=%@\n content=%@\n title=%@ \ndescription=%@",self,detailModel.content,detailModel.title,detailModel.description);
 }

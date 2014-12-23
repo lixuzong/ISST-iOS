@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ISSTActivityDetailViewController">
             <connections>
-                <outlet property="titleLabel" destination="W6d-Nz-SI3" id="yRY-FI-EUW"/>
-                <outlet property="userinfo" destination="Ykg-mQ-E6T" id="UjJ-ui-i55"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="webView" destination="zUO-zn-Hma" id="zbH-o4-nPH"/>
             </connections>
@@ -18,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="12095.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7qB-s3-ihM">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="12095.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7qB-s3-ihM">
                     <rect key="frame" x="0.0" y="64" width="320" height="150"/>
                     <color key="backgroundColor" red="0.74901962280273438" green="0.74901962280273438" blue="0.74901962280273438" alpha="1" colorSpace="deviceRGB"/>
                     <constraints>
@@ -32,30 +30,14 @@
                         <outlet property="delegate" destination="-1" id="0Zc-ZM-0Hn"/>
                     </connections>
                 </webView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ykg-mQ-E6T">
-                    <rect key="frame" x="0.0" y="242" width="320" height="26"/>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W6d-Nz-SI3">
-                    <rect key="frame" x="0.0" y="214" width="320" height="28"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="W6d-Nz-SI3" firstAttribute="top" secondItem="7qB-s3-ihM" secondAttribute="bottom" id="IpP-w8-NXx"/>
+                <constraint firstItem="zUO-zn-Hma" firstAttribute="top" secondItem="7qB-s3-ihM" secondAttribute="bottom" id="Gyd-Ey-3J1"/>
                 <constraint firstAttribute="bottom" secondItem="zUO-zn-Hma" secondAttribute="bottom" id="LoC-L5-QIY"/>
-                <constraint firstItem="W6d-Nz-SI3" firstAttribute="top" secondItem="7qB-s3-ihM" secondAttribute="bottom" id="PkN-K5-XHK"/>
-                <constraint firstItem="Ykg-mQ-E6T" firstAttribute="top" secondItem="W6d-Nz-SI3" secondAttribute="bottom" id="QhW-2i-snv"/>
+                <constraint firstItem="7qB-s3-ihM" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="RXV-Qo-1qi"/>
                 <constraint firstItem="7qB-s3-ihM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="gqk-mB-Qvv"/>
-                <constraint firstItem="zUO-zn-Hma" firstAttribute="top" secondItem="Ykg-mQ-E6T" secondAttribute="bottom" id="hde-tr-ApD"/>
-                <constraint firstItem="zUO-zn-Hma" firstAttribute="top" secondItem="Ykg-mQ-E6T" secondAttribute="bottom" id="mqx-Kq-dB9"/>
                 <constraint firstAttribute="trailing" secondItem="7qB-s3-ihM" secondAttribute="trailing" id="nxg-Pi-vBN"/>
-                <constraint firstItem="Ykg-mQ-E6T" firstAttribute="top" secondItem="W6d-Nz-SI3" secondAttribute="bottom" id="s4h-VG-I6g"/>
             </constraints>
         </view>
     </objects>
