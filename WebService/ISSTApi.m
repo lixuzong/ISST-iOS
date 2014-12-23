@@ -98,6 +98,9 @@
     } else if([method isEqualToString:@"GET2"]) {   //需要参数的函数就使用“GET2”（参数在info中）  (其实也可以在之前的api中将info和subUrl拼接在一起然后传过来)
         strUrl= [NSString stringWithFormat:@"%@%@?%@",mainUrl,subUrl,info];
         
+        NSLog(@"ISSTApi*********");
+        NSLog(@"%@",strUrl);
+        
         NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                                cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
