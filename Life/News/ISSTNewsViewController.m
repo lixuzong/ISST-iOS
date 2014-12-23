@@ -13,6 +13,8 @@
 #import "RESideMenu.h"
 #import "UIImageView+WebCache.h"
 #import "MJRefresh.h"
+#import "ISSTUserCenterViewController.h"
+
 
 @interface ISSTNewsViewController ()
 
@@ -38,6 +40,7 @@
 @synthesize newsArray;
 @synthesize newsArrayTableView;
 @synthesize newsDetailView;
+//@synthesize pushtag;
 static NSString *CellTableIdentifier=@"ISSTCommonCell";
 
 //页面标记
@@ -65,6 +68,8 @@ static int  loadPage = 1;
 
 - (void)viewDidLoad
 {
+    
+    login=1;
     self.newsApi = [[ISSTLifeApi alloc]init];
     self.newsApi.webApiDelegate = self;
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -80,9 +85,18 @@ static int  loadPage = 1;
     UITableView *tableView=(id)[self.view viewWithTag:1];
     tableView.rowHeight=126;
     UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
+    
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
     [self setupRefresh];
+    
+//判断是否有推送
+    if(pushtag)
+    {
+        NSLog(@"push tag=%d",pushtag);
+
+        [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:YES];
+    }
     
 }
 
@@ -248,7 +262,8 @@ static int  loadPage = 1;
 
 - (void)requestDataOnFail:(NSString *)error
 {
-    UIAlertView  *alertView = [[UIAlertView alloc]initWithTitle:@"错误" message:@"查看网络连接" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
+    UIAlertView  *alertView = [[UIAlertView alloc]initWithTitle:@"错误" message:error
+                                                       delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
     [alertView show];
     
     

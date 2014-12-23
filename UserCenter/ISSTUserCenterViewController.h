@@ -8,6 +8,7 @@
 
 #import "ISSTWebApiDelegate.h"
 #import "ISSTBaseViewController.h"
+#import "AppDelegate.h"
 
 @interface ISSTUserCenterViewController : ISSTBaseViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 

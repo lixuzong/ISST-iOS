@@ -17,5 +17,6 @@
 @property (strong, nonatomic) IBOutlet UITextField *passwordField;
 @property (retain,nonatomic) passValue *passvalue;
 - (IBAction)login:(id)sender;
+-(void) showMenu;
 
 @end

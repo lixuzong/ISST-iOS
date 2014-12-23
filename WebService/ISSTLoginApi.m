@@ -11,6 +11,8 @@
 #import "ISSTLoginApi.h"
 #import "UserLoginParse.h"
 #import "LoginErrors.h"
+#import "AppCache.h"
+
 @class ISSTUserModel;
 
 @interface  ISSTLoginApi()
@@ -42,9 +44,12 @@ const    static  int   REQUESTUSERINFO= 3;
         NSDictionary *md5Dic =  @{@"username": name,@"password":password};
         long long timestamp = [ISSTMD5 getTimestamp];
         NSString *token= [ISSTMD5 tokenWithDic:md5Dic andTimestamp:timestamp];
+        NSLog(@"token=%@",token);
+//        NSString *temp=@"111111";
         
-        
+//        NSString *info = [NSString stringWithFormat:@"username=%@&password=%@&token=%@&timestamp=%llu&longitude=121.00&latitude=30.01",name,temp,token,timestamp];
         NSString *info = [NSString stringWithFormat:@"username=%@&password=%@&token=%@&timestamp=%llu&longitude=121.00&latitude=30.01",name,password,token,timestamp];
+        
         NSString *subUrlString = [NSString stringWithFormat:@"api/login"];
         NSLog(@"%@",subUrlString);
         [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:info MD5Dictionary:nil];
@@ -79,19 +84,20 @@ const    static  int   REQUESTUSERINFO= 3;
 
 }
 
-- (void)updateLogin
+- (void)updateLogin:(NSString*)userid andpwd:(NSString*)password
 {
+    
     if (NetworkReachability.isConnectionAvailable)
     {
         methodId = UPDATELOGIN;
         datas = [[NSMutableData alloc]init];
         //MD5 secret
-        NSDictionary *md5Dic =  @{@"userId": @"714",@"password":@"111111"};
+        NSDictionary *md5Dic =  @{@"userId": userid,@"password":password};
         long long timestamp = [ISSTMD5 getTimestamp];
         NSString *token= [ISSTMD5 tokenWithDic:md5Dic andTimestamp:timestamp];
         
         
-        NSString *info = [NSString stringWithFormat:@"userId=%@&token=%@&timestamp=%llu&longitude=121.00&latitude=30.01",@"21351110",token,timestamp];
+        NSString *info = [NSString stringWithFormat:@"userId=%@&token=%@&timestamp=%llu&longitude=121.00&latitude=30.01",userid,token,timestamp];
         NSString *subUrlString = [NSString stringWithFormat:@"api/login/update"];
         [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:info MD5Dictionary:nil];
     }//network connect

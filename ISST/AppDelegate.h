@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+int pushtag;
+int login;
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
+@property(nonatomic,assign)int foreground;
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navigationController;
+-(void)showmenu;
 @end

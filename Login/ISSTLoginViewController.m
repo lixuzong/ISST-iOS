@@ -17,8 +17,10 @@
 #import "MBProgressHUD.h"
 #import "ISSTNewsViewController.h"
 #import "LeftMenuViewController.h"
+#import "ISSTUpdateLogin.h"
 
 const    static  int   REQUESTLOGIN         = 1;
+const    static  int   UPDATELOGIN          = 2;
 const static int        CLASSESLISTS        = 3;
 const static int        MAJORSLISTS         = 4;
 int method;
@@ -66,7 +68,9 @@ int method;
 - (void)viewDidLoad
 
 {
+    
     [super viewDidLoad];
+    
     response=NO;
  
 //     if ([[[UIDevice currentDevice]systemVersion] doubleValue] >= 7.0) {
@@ -78,8 +82,10 @@ int method;
 
    
     //self.title=@"ISST";
+    
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController setNavigationBarHidden:YES];
+    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"5login_bg.jpg"]];
     nameField.delegate=self;
     passwordField.delegate=self;
@@ -123,6 +129,8 @@ int method;
 }
 
 - (void)viewWillAppear:(BOOL)animated
+
+
 {
     flag=self.passvalue.signOutFlag;
    //[self passValue:flag];
@@ -133,25 +141,41 @@ int method;
     
     //检查缓存中是否有用户数据，若果是的话，直接登入进去。
 //      if (defaultLoginSwitch.on) {
-//          self.userModel = [AppCache getCache];
-//          if (userModel) {
-//              NSLog(@"检测是否有用户名！");
-//              NSLog(@"%@",userModel.userName);
-//              NSLog(@"%@",userModel.password);
-//              NSLog(@"%@",userModel.phone);
-//              nameField.text = userModel.userName;
-              //passwordField.text = userModel.password;
-              //passwordField.text =userModel.
-              //passwordField.text=@"111111";
+    self.userModel = [AppCache getCache];
+    NSLog(@"是否有缓存");
+//    ISSTUpdateLogin *up=[[ISSTUpdateLogin alloc]init];
+//    [up update];
+          if (userModel&&!flag) { //flag＝0 表示没有注销
+              
+              NSLog(@"检测是否有用户名！");
+              NSLog(@"%@",self.userModel.userName);
+              NSLog(@"%@",self.userModel.password);
+              NSLog(@"%@",self.userModel.phone);
+              nameField.text = userModel.userName;
+              passwordField.text = userModel.password;
+//              passwordField.text =userModel.
+//              passwordField.text=@"111111";
               
 //              if(![flag isEqual:@"1"]){method  =   REQUESTLOGIN;
 //                  [self.userApi requestLoginName:self.nameField.text andPassword:self.passwordField.text];}
-//              
-//
-//              
-//          }
-//     
-//    }
+              
+
+              
+          
+    NSLog(@"userid=%d",userModel.userId);
+              
+              // 正在登录提示框
+              HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+              [self.navigationController.view addSubview:HUD];
+              HUD.delegate = self;
+              HUD.labelText = @"正在登录，请稍后...";
+              [HUD show:YES];
+              [HUD showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+              
+            // 正在登录方法
+    [self.userApi updateLogin:[NSString stringWithFormat:@"%d",userModel.userId]andpwd:userModel.password];
+    method=UPDATELOGIN;
+    }
 //    else
 //    {
 //        nameField.text = nil;
@@ -188,12 +212,12 @@ int method;
      method  =   REQUESTLOGIN;
     
     //MBprogress
-    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+     HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
     [self.navigationController.view addSubview:HUD];
-    HUD.delegate = self;
-    HUD.labelText = @"请稍后...";
-    [HUD show:YES];
-    [HUD showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+     HUD.delegate = self;
+     HUD.labelText = @"请稍后...";
+     [HUD show:YES];
+     [HUD showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
 
    [self.userApi requestLoginName:self.nameField.text andPassword:self.passwordField.text];
     
@@ -227,6 +251,7 @@ int method;
 
     switch (method) {
         case REQUESTLOGIN:
+        
             userModel = backToControllerData;
              method = CLASSESLISTS;
             [_contactsApi requestClassesLists];
@@ -242,6 +267,8 @@ int method;
             
             break;
         case MAJORSLISTS:
+        case UPDATELOGIN:
+            [HUD hide:YES];
             //slider =[[ISSTSlidebarNavController alloc]init];
             [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
             //[self.navigationController pushViewController:slider animated: NO];

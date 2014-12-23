@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ISSTLoginViewController">
             <connections>
+                <outlet property="defaultLoginSwitch" destination="c2O-3t-82B" id="vdo-fR-V46"/>
                 <outlet property="nameField" destination="NUD-5s-kVh" id="JEx-BD-8rr"/>
                 <outlet property="passwordField" destination="hQC-IV-7bE" id="wiT-lW-dNy"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -35,7 +35,7 @@
                 <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wm-nC-15l">
                     <rect key="frame" x="41" y="328" width="238" height="40"/>
                     <state key="normal">
-                        <color key="titleColor" patternImage="4063665D-5D5D-4BA8-9242-D6764388FB5D" colorSpace="pattern"/>
+                        <color key="titleColor" patternImage="D3848AAA-E897-4CF4-95BD-57A8F23ED1A3" colorSpace="pattern"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -52,12 +52,16 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c2O-3t-82B">
+                    <rect key="frame" x="202" y="384" width="51" height="31"/>
+                </switch>
             </subviews>
             <color key="backgroundColor" name="alternateSelectedControlTextColor" catalog="System" colorSpace="catalog"/>
         </view>
     </objects>
     <resources>
-        <image name="4063665D-5D5D-4BA8-9242-D6764388FB5D" width="512" height="512">
+        <image name="5login_bg.jpg" width="640" height="1136"/>
+        <image name="D3848AAA-E897-4CF4-95BD-57A8F23ED1A3" width="512" height="512">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGTk9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEQcI
 ExQZHh8nKzIzNDw/QkhLVSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NW
@@ -17598,20 +17602,20 @@ tc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp22vvbgNwF3Ird
 EN2W3hzeot8p36/gNuC94UThzOJT4tvjY+Pr5HPk/OWE5g3mlucf56noMui86Ubp0Opb6uXrcOv77Ibt
 Ee2c7ijutO9A78zwWPDl8XLx//KM8xnzp/Q09ML1UPXe9m32+/eK+Bn4qPk4+cf6V/rn+3f8B/yY/Sn9
 uv5L/tz/bf//gAjSLC0uL1okY2xhc3NuYW1lWCRjbGFzc2VzXU5TTXV0YWJsZURhdGGjLjAxVk5TRGF0
-YVhOU09iamVjdF8QFnt7MCwgMH0sIHsxMDI0LCAxMDI0fX1fEBZ7ezAsIDB9LCB7MTAyNCwgMTAyNH19
-0ywtNTY3OlskY2xhc3NoaW50c18QFE5TQ0dJbWFnZVNuYXBzaG90UmVwozg5MV8QFE5TQ0dJbWFnZVNu
-YXBzaG90UmVwWk5TSW1hZ2VSZXChO18QEE5TQ2FjaGVkSW1hZ2VSZXDSLC09PldOU0FycmF5oj0x0iwt
-QEFeTlNNdXRhYmxlQXJyYXmjQD0x00NECkVGR1dOU1doaXRlXE5TQ29sb3JTcGFjZUQwIDAAEAOAD9Is
-LUlKV05TQ29sb3KiSTHSLC1MTVdOU0ltYWdlokwxXxAPTlNLZXllZEFyY2hpdmVy0VBRVHJvb3SAAQAA
-AAgAAAARAAAAGgAAACMAAAAtAAAAMgAAADcAAABLAAAAUQAAAFwAAABjAAAAagAAAHcAAAB+AAAAhgAA
-AIgAAACKAAAAjwAAAJEAAACTAAAAngAAAKMAAACuAAAAsAAAALIAAAC0AAAAuQAAALwAAAC+AAAAwAAA
-AMIAAADEAAAAzQAAAOcAAAD+AAABGAAAARoAAAEcAAABHgAAASAAAAElAAABLQAQDoEAEA6DABAOiAAQ
-DpMAEA6cABAOqgAQDq4AEA61ABAOvgAQDtcAEA7wABAO9wAQDwMAEA8aABAPHgAQDzUAEA9AABAPQgAQ
-D1UAEA9aABAPYgAQD2UAEA9qABAPeQAQD30AEA+EABAPjAAQD5kAEA+eABAPoAAQD6IAEA+nABAPrwAQ
-D7IAEA+3ABAPvwAQD8IAEA/UABAP1wAQD9wAAAAAAAAEAQAAAAAAAABSAAAAAAAAAAAAAAAAABAP3g
+YVhOU09iamVjdF8QGHt7MCwgMH0sIHsxNjM4NCwgMTYzODR9fV8QGHt7MCwgMH0sIHsxNjM4NCwgMTYz
+ODR9fdMsLTU2NzpbJGNsYXNzaGludHNfEBROU0NHSW1hZ2VTbmFwc2hvdFJlcKM4OTFfEBROU0NHSW1h
+Z2VTbmFwc2hvdFJlcFpOU0ltYWdlUmVwoTtfEBBOU0NhY2hlZEltYWdlUmVw0iwtPT5XTlNBcnJheaI9
+MdIsLUBBXk5TTXV0YWJsZUFycmF5o0A9MdNDRApFRkdXTlNXaGl0ZVxOU0NvbG9yU3BhY2VEMCAwABAD
+gA/SLC1JSldOU0NvbG9yokkx0iwtTE1XTlNJbWFnZaJMMV8QD05TS2V5ZWRBcmNoaXZlctFQUVRyb290
+gAEAAAAIAAAAEQAAABoAAAAjAAAALQAAADIAAAA3AAAASwAAAFEAAABcAAAAYwAAAGoAAAB3AAAAfgAA
+AIYAAACIAAAAigAAAI8AAACRAAAAkwAAAJ4AAACjAAAArgAAALAAAACyAAAAtAAAALkAAAC8AAAAvgAA
+AMAAAADCAAAAxAAAAM0AAADnAAAA/gAAARgAAAEaAAABHAAAAR4AAAEgAAABJQAAAS0AEA6BABAOgwAQ
+DogAEA6TABAOnAAQDqoAEA6uABAOtQAQDr4AEA7ZABAO9AAQDvsAEA8HABAPHgAQDyIAEA85ABAPRAAQ
+D0YAEA9ZABAPXgAQD2YAEA9pABAPbgAQD30AEA+BABAPiAAQD5AAEA+dABAPogAQD6QAEA+mABAPqwAQ
+D7MAEA+2ABAPuwAQD8MAEA/GABAP2AAQD9sAEA/gAAAAAAAABAEAAAAAAAAAUgAAAAAAAAAAAAAAAAAQ
+D+I
 </mutableData>
         </image>
-        <image name="5login_bg.jpg" width="640" height="1136"/>
         <image name="denglu_denglubutton.png" width="663" height="109"/>
         <image name="denglu_logo.png" width="204" height="197"/>
         <image name="denglu_shangbankuang.png" width="677" height="109"/>

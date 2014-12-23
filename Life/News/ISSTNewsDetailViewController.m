@@ -105,7 +105,7 @@
         self.userInfo.text=[NSString stringWithFormat:@"发布者：%d %@",userId,userName];
     }	
     else self.userInfo.text=@"发布者：管理员";
-    float fontSize=42;
+    float fontSize=50;
     float imgwidth=320;
     //webView.scrollView.contentSize=CGSizeMake(320, 2000);
     NSString *htmlText=detailModel.content;
@@ -119,10 +119,15 @@
                          
                           "</style> \n"
                           "</head> \n"
-                          "<body>%@</body> \n"
-                          "</html>", fontSize,htmlText];
+                          ""
+                          "<body>\n"
+                          "<h3 align='center'>%@</h3>"
+                          "<h5 align='center'>%@&nbsp&nbsp&nbsp&nbsp&nbsp%@</h5>"
+                          "%@</body> \n"
+                          "</html>", fontSize,detailModel.title,self.time.text,self.userInfo.text,htmlText];
     
     [webView loadHTMLString:jsString baseURL:nil];//加载html源代码
+    NSLog(@"html==========%@",htmlText);
     //NSLog(@"self=%@ \n htmls=%@",self,backToControllerData);
     //NSLog(@"self=%@\n content=%@\n title=%@ \ndescription=%@",self,detailModel.content,detailModel.title,detailModel.description);
     //NSLog(@"%f",webView.frame.size.height);

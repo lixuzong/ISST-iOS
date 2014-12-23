@@ -11,8 +11,12 @@
 #import "BPush.h"
 #import "JSONKit.h"
 #import "ISSTUserCenterViewController.h"
+#import "ISSTNewsViewController.h"
+#import "LeftMenuViewController.h"
+
 
 @implementation AppDelegate
+
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
 
@@ -29,7 +33,9 @@
    // self.navigationController = [[[UINavigationController alloc] initWithRootViewController:homeViewController] autorelease];
 
     
-    
+    pushtag=0;
+    _foreground=0;
+    login=0;
     
     [BPush setupChannel:launchOptions];
     [BPush setDelegate:self];
@@ -56,6 +62,7 @@
     // 处理badge
     if([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey])
     {
+        pushtag=1;
     int badge = [UIApplication sharedApplication].applicationIconBadgeNumber;
         NSLog(@"badge=%d",badge);
     if(badge > 0)
@@ -64,6 +71,7 @@
         [UIApplication sharedApplication].applicationIconBadgeNumber = badge;
     }
     }
+    
     
      ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
     loginViewController.title = @"ISST";
@@ -101,6 +109,7 @@
         NSString *requestid = [res valueForKey:BPushRequestRequestIdKey];
     }
 }
+
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     int badge = [UIApplication sharedApplication].applicationIconBadgeNumber;
@@ -110,10 +119,17 @@
         badge--;
         [UIApplication sharedApplication].applicationIconBadgeNumber = badge;
     }
+    pushtag=1;
 
-//    NSLog(@"%@",userInfo);
     [BPush handleNotification:userInfo];
-    [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:NO];
+    
+    
+    //推送从后台启动
+    if (_foreground&&login) {
+        _foreground=0;
+        NSLog(@"push to menu");
+                [self showmenu];
+           }
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
@@ -125,6 +141,28 @@
 //{
 //    [BPush handleNotification:userInfo];
 //}
+
+
+-(void)showmenu
+{
+    ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
+    UINavigationController *navigationController1 = [[UINavigationController alloc] initWithRootViewController:[[ISSTNewsViewController alloc] init]];
+    LeftMenuViewController *leftMenuViewController = [[LeftMenuViewController alloc
+                                                       ] init];
+    RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navigationController1
+                                                                    leftMenuViewController:leftMenuViewController
+                                                                   rightMenuViewController:nil];  //可以自行设置右边菜单
+    
+    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"menu_backgroud.jpg"];
+    
+    sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
+    sideMenuViewController.delegate = loginViewController;
+   
+    sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
+    
+    sideMenuViewController.contentViewShadowEnabled = YES;
+    [self.navigationController pushViewController:sideMenuViewController animated: NO];
+}
 
 - (void)dealloc
 {
@@ -147,7 +185,10 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    
+    _foreground=1;
+    NSLog(@"foreground---------");
+    
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

@@ -17,6 +17,9 @@
 		1824E52219CADA5100BDC38C /* ISSTlogin2.png in Resources */ = {isa = PBXBuildFile; fileRef = 1824E52119CADA5100BDC38C /* ISSTlogin2.png */; };
 		182B520719445AAE006F213C /* ISSTRestaurantDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE9E017D18F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.m */; };
 		182B520919445AFD006F213C /* ISSTAddressBookViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58653D1418FB86DF005C6F74 /* ISSTAddressBookViewController.m */; };
+		185561141A38BF3000D8DFD6 /* ISSTPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 185561121A38BF3000D8DFD6 /* ISSTPushViewController.m */; };
+		185561151A38BF3000D8DFD6 /* ISSTPushViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 185561131A38BF3000D8DFD6 /* ISSTPushViewController.xib */; };
+		185561191A39B69F00D8DFD6 /* ISSTUpdateLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 185561181A39B69F00D8DFD6 /* ISSTUpdateLogin.m */; };
 		18B619811955B24A00F4ACC7 /* ISSTActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B6197F1955B24A00F4ACC7 /* ISSTActivityCell.xib */; };
 		18B619821955B24A00F4ACC7 /* ISSTActivityCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B619801955B24A00F4ACC7 /* ISSTActivityCell.m */; };
 		18B6198A1955B8DC00F4ACC7 /* Cities.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B619831955B8DC00F4ACC7 /* Cities.xib */; };
@@ -342,6 +345,11 @@
 		1824E51A19CAC82D00BDC38C /* 就业3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "就业3.png"; sourceTree = "<group>"; };
 		1824E51B19CAC82D00BDC38C /* 就业4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "就业4.png"; sourceTree = "<group>"; };
 		1824E52119CADA5100BDC38C /* ISSTlogin2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ISSTlogin2.png; sourceTree = "<group>"; };
+		185561111A38BF3000D8DFD6 /* ISSTPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTPushViewController.h; sourceTree = SOURCE_ROOT; };
+		185561121A38BF3000D8DFD6 /* ISSTPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTPushViewController.m; sourceTree = SOURCE_ROOT; };
+		185561131A38BF3000D8DFD6 /* ISSTPushViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTPushViewController.xib; sourceTree = SOURCE_ROOT; };
+		185561171A39B69F00D8DFD6 /* ISSTUpdateLogin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTUpdateLogin.h; sourceTree = "<group>"; };
+		185561181A39B69F00D8DFD6 /* ISSTUpdateLogin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTUpdateLogin.m; sourceTree = "<group>"; };
 		18B6197E1955B24A00F4ACC7 /* ISSTActivityCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTActivityCell.h; path = Job/Internship/ISSTActivityCell.h; sourceTree = "<group>"; };
 		18B6197F1955B24A00F4ACC7 /* ISSTActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTActivityCell.xib; path = Job/Internship/ISSTActivityCell.xib; sourceTree = "<group>"; };
 		18B619801955B24A00F4ACC7 /* ISSTActivityCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTActivityCell.m; path = Job/Internship/ISSTActivityCell.m; sourceTree = "<group>"; };
@@ -1528,6 +1536,8 @@
 				AE0B8C2F18F2C36000844F55 /* ISSTActivityApi.m */,
 				AE9E017418F3BC1F008EAFA1 /* ISSTContactsApi.h */,
 				AE9E017518F3BC1F008EAFA1 /* ISSTContactsApi.m */,
+				185561171A39B69F00D8DFD6 /* ISSTUpdateLogin.h */,
+				185561181A39B69F00D8DFD6 /* ISSTUpdateLogin.m */,
 			);
 			name = WebService;
 			sourceTree = "<group>";
@@ -1681,6 +1691,9 @@
 				6F9759821A34C2F400FB3EE3 /* ISSTTaskRegViewController.h */,
 				6F9759831A34C2F400FB3EE3 /* ISSTTaskRegViewController.m */,
 				6F9759841A34C2F400FB3EE3 /* ISSTTaskRegViewController.xib */,
+				185561111A38BF3000D8DFD6 /* ISSTPushViewController.h */,
+				185561121A38BF3000D8DFD6 /* ISSTPushViewController.m */,
+				185561131A38BF3000D8DFD6 /* ISSTPushViewController.xib */,
 			);
 			name = UserCenter;
 			path = Person;
@@ -1902,6 +1915,7 @@
 				6FD8E4481A36F383000C8CD3 /* leftbarbutton.jpg in Resources */,
 				6F8900D51A24E67C00EBE758 /* bianjiefuwu.png in Resources */,
 				6F7EAF901A358C030017C5CE /* 5login_bg.jpg in Resources */,
+				185561151A38BF3000D8DFD6 /* ISSTPushViewController.xib in Resources */,
 				AE85F9E119028C3400FCD67D /* ISSTPostCommentsViewController.xib in Resources */,
 				6F1D8AA61A35D139002451C3 /* tongyongmeishi.jpg in Resources */,
 				AE9052B718EEEE890088742D /* ISSTWikisCollectionViewCell.xib in Resources */,
@@ -2019,6 +2033,7 @@
 				AE04DD4318F82689002A2A64 /* ISSTMajorModel.m in Sources */,
 				AE85F9DA19026C9200FCD67D /* ISSTCommentsMoreViewController.m in Sources */,
 				6F925CFC1A16293100C68CB3 /* UIScrollView+MJExtension.m in Sources */,
+				185561191A39B69F00D8DFD6 /* ISSTUpdateLogin.m in Sources */,
 				58653D1B18FB86DF005C6F74 /* ISSTAddressBookDetailViewController.m in Sources */,
 				6F925CF91A16293100C68CB3 /* MJRefreshConst.m in Sources */,
 				5805043518FD7B6400F881D9 /* ISSTJobsApi.m in Sources */,
@@ -2030,6 +2045,7 @@
 				18B6199A1955B94500F4ACC7 /* ISSTSameCitiesParse.m in Sources */,
 				6FA231CA1A28D9420028226B /* UIView+WebCacheOperation.m in Sources */,
 				33B9F112194D4FF4004F6546 /* ChangeUserInfoVC.m in Sources */,
+				185561141A38BF3000D8DFD6 /* ISSTPushViewController.m in Sources */,
 				334D69ED194BF76E0018C521 /* RefreshTableEmptyCell.m in Sources */,
 				6F85C3DC1A2C4C380017EB0C /* AFURLResponseSerialization.m in Sources */,
 				AEFDC77918E1B76400D7FDAA /* ISSTLifeApi.m in Sources */,
