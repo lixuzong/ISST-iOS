@@ -21,6 +21,6 @@
 -(id)surveyListParse;
 -(NSString*)tasksMessageParse;
 
-
+-(id)myRecommendListParse;
 
 @end

@@ -17,7 +17,9 @@ typedef NS_ENUM(NSInteger, MethodType)
     Experience= 4,
     SurveyResult= 5,
     PostedSurvey= 6,
-    PostExperience= 7
+    PostExperience= 7,
+    PostRecommend=8,
+    RecommendList=9
 };
 @interface ISSTUserCenterApi : ISSTApi <
 ISSTWebApiDelegate,NSURLConnectionDataDelegate>
@@ -53,4 +55,19 @@ ISSTWebApiDelegate,NSURLConnectionDataDelegate>
 
 
 -(void) requestPostExperience:(int)typeId title:(NSString*)title content:(NSString*)content;
+
+/****
+ 2014.12.22
+ 创建：li
+ 发布内推信息
+ 参数：
+ ****/
+-(void) requestPostRecommendWithType:(int)TypeId titile:(NSString*)title content:(NSString *) content company:(NSString*)company position:(NSString *) position cityId:(int) cityId;
+/****
+ 2014.12.22
+ 创建：li
+ 获取内推列表
+ 参数：
+ ****/
+-(void) requestRecommendListWithPage:(int)page pageSize:(int)pageSize;
 @end

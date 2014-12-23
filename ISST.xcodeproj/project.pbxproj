@@ -85,6 +85,12 @@
 		58653D1E18FB86DF005C6F74 /* ISSTAddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58653D1518FB86DF005C6F74 /* ISSTAddressBookViewController.xib */; };
 		58653D1F18FB86DF005C6F74 /* ISSTSelectFactorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58653D1718FB86DF005C6F74 /* ISSTSelectFactorsViewController.m */; };
 		58653D2018FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58653D1818FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib */; };
+		5CA855951A492CC000EFB8BA /* ISSTMyRecListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA855931A492CC000EFB8BA /* ISSTMyRecListViewController.m */; };
+		5CA855961A492CC000EFB8BA /* ISSTMyRecListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA855941A492CC000EFB8BA /* ISSTMyRecListViewController.xib */; };
+		5CA8559A1A492CE500EFB8BA /* ISSTMyRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA855981A492CE500EFB8BA /* ISSTMyRecommendViewController.m */; };
+		5CA8559B1A492CE500EFB8BA /* ISSTMyRecommendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA855991A492CE500EFB8BA /* ISSTMyRecommendViewController.xib */; };
+		5CA8559F1A492DB200EFB8BA /* ISSTMyRecommendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA8559D1A492DB200EFB8BA /* ISSTMyRecommendCell.m */; };
+		5CA855A01A492DB200EFB8BA /* ISSTMyRecommendCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA8559E1A492DB200EFB8BA /* ISSTMyRecommendCell.xib */; };
 		6F064E6F1A2B7D7900C58A35 /* ISSTFeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F064E6D1A2B7D7900C58A35 /* ISSTFeedbackViewController.m */; };
 		6F064E701A2B7D7900C58A35 /* ISSTFeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F064E6E1A2B7D7900C58A35 /* ISSTFeedbackViewController.xib */; };
 		6F1D8AA51A35D139002451C3 /* meishi2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6F1D8AA31A35D139002451C3 /* meishi2.jpg */; };
@@ -450,6 +456,15 @@
 		58653D1618FB86DF005C6F74 /* ISSTSelectFactorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTSelectFactorsViewController.h; path = AddressBook/ISSTSelectFactorsViewController.h; sourceTree = SOURCE_ROOT; };
 		58653D1718FB86DF005C6F74 /* ISSTSelectFactorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTSelectFactorsViewController.m; path = AddressBook/ISSTSelectFactorsViewController.m; sourceTree = SOURCE_ROOT; };
 		58653D1818FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTSelectFactorsViewController.xib; path = AddressBook/ISSTSelectFactorsViewController.xib; sourceTree = SOURCE_ROOT; };
+		5CA855921A492CC000EFB8BA /* ISSTMyRecListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTMyRecListViewController.h; sourceTree = SOURCE_ROOT; };
+		5CA855931A492CC000EFB8BA /* ISSTMyRecListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTMyRecListViewController.m; sourceTree = SOURCE_ROOT; };
+		5CA855941A492CC000EFB8BA /* ISSTMyRecListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTMyRecListViewController.xib; sourceTree = SOURCE_ROOT; };
+		5CA855971A492CE500EFB8BA /* ISSTMyRecommendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTMyRecommendViewController.h; sourceTree = SOURCE_ROOT; };
+		5CA855981A492CE500EFB8BA /* ISSTMyRecommendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTMyRecommendViewController.m; sourceTree = SOURCE_ROOT; };
+		5CA855991A492CE500EFB8BA /* ISSTMyRecommendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTMyRecommendViewController.xib; sourceTree = SOURCE_ROOT; };
+		5CA8559C1A492DB200EFB8BA /* ISSTMyRecommendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTMyRecommendCell.h; sourceTree = "<group>"; };
+		5CA8559D1A492DB200EFB8BA /* ISSTMyRecommendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTMyRecommendCell.m; sourceTree = "<group>"; };
+		5CA8559E1A492DB200EFB8BA /* ISSTMyRecommendCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTMyRecommendCell.xib; sourceTree = "<group>"; };
 		6F064E6C1A2B7D7900C58A35 /* ISSTFeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTFeedbackViewController.h; sourceTree = SOURCE_ROOT; };
 		6F064E6D1A2B7D7900C58A35 /* ISSTFeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTFeedbackViewController.m; sourceTree = SOURCE_ROOT; };
 		6F064E6E1A2B7D7900C58A35 /* ISSTFeedbackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTFeedbackViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -909,6 +924,9 @@
 				6FCFD6EA1A45D1850004EF56 /* ISSTExperienceCell.h */,
 				6FCFD6EB1A45D1850004EF56 /* ISSTExperienceCell.m */,
 				6FCFD6EC1A45D1850004EF56 /* ISSTExperienceCell.xib */,
+				5CA8559C1A492DB200EFB8BA /* ISSTMyRecommendCell.h */,
+				5CA8559D1A492DB200EFB8BA /* ISSTMyRecommendCell.m */,
+				5CA8559E1A492DB200EFB8BA /* ISSTMyRecommendCell.xib */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -1025,6 +1043,19 @@
 			);
 			name = AjComboBox;
 			path = ../Status;
+			sourceTree = "<group>";
+		};
+		5CA855911A492C7500EFB8BA /* myRecommend */ = {
+			isa = PBXGroup;
+			children = (
+				5CA855921A492CC000EFB8BA /* ISSTMyRecListViewController.h */,
+				5CA855931A492CC000EFB8BA /* ISSTMyRecListViewController.m */,
+				5CA855941A492CC000EFB8BA /* ISSTMyRecListViewController.xib */,
+				5CA855971A492CE500EFB8BA /* ISSTMyRecommendViewController.h */,
+				5CA855981A492CE500EFB8BA /* ISSTMyRecommendViewController.m */,
+				5CA855991A492CE500EFB8BA /* ISSTMyRecommendViewController.xib */,
+			);
+			name = myRecommend;
 			sourceTree = "<group>";
 		};
 		6F6FEB311A29BF6200005162 /* MBProgressHUD */ = {
@@ -1666,6 +1697,7 @@
 				6F6E61531A470CA5009F6D62 /* ISSTAboutViewController.h */,
 				6F6E61541A470CA5009F6D62 /* ISSTAboutViewController.m */,
 				6F6E61551A470CA5009F6D62 /* ISSTAboutViewController.xib */,
+				5CA855911A492C7500EFB8BA /* myRecommend */,
 			);
 			name = UserCenter;
 			path = Person;
@@ -1837,11 +1869,13 @@
 				5805042418FD5D8E00F881D9 /* ISSTRecommendViewController.xib in Resources */,
 				6F7EAF981A3591840017C5CE /* 5login_bg.jpg in Resources */,
 				6F8900D61A24E67C00EBE758 /* chengzhu.png in Resources */,
+				5CA855961A492CC000EFB8BA /* ISSTMyRecListViewController.xib in Resources */,
 				6F9759861A34C2F400FB3EE3 /* ISSTTaskRegViewController.xib in Resources */,
 				6F7522F719D2C5A10079A8D6 /* 便捷服务icon.png in Resources */,
 				18B6198C1955B8DC00F4ACC7 /* CityManagersViewController.xib in Resources */,
 				6F75230419D2C5A10079A8D6 /* 通讯录icon.png in Resources */,
 				6F8900DA1A24E67C00EBE758 /* neitui.png in Resources */,
+				5CA855A01A492DB200EFB8BA /* ISSTMyRecommendCell.xib in Resources */,
 				6F8900E21A24E67C00EBE758 /* zaixiaohuodong.png in Resources */,
 				58653D2018FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib in Resources */,
 				58653D1A18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.xib in Resources */,
@@ -1857,6 +1891,7 @@
 				AE9052A718EEEE6D0088742D /* ISSTNewsDetailViewController.xib in Resources */,
 				AE04DD2F18F8255F002A2A64 /* combo_bg.png in Resources */,
 				581C8D6518F03B050006740B /* ISSTStudyDetailViewController.xib in Resources */,
+				5CA8559B1A492CE500EFB8BA /* ISSTMyRecommendViewController.xib in Resources */,
 				6F7522FF19D2C5A10079A8D6 /* 实习icon.png in Resources */,
 				6F7EAF9A1A3591840017C5CE /* denglu_kuang.png in Resources */,
 				AEE2849E18DB263100BEF1A9 /* searchBarIcon@2x.png in Resources */,
@@ -2026,6 +2061,7 @@
 				AE014ADE18EFD6680009E008 /* ISSTRestaurantsMenusParse.m in Sources */,
 				6F925CFA1A16293100C68CB3 /* MJRefreshFooterView.m in Sources */,
 				6FA231C71A28D9420028226B /* UIImage+WebP.m in Sources */,
+				5CA8559F1A492DB200EFB8BA /* ISSTMyRecommendCell.m in Sources */,
 				AE0B8C2D18F2BF0A00844F55 /* ISSTActivityParse.m in Sources */,
 				AEE284AC18DB2D1900BEF1A9 /* ISSTApi.m in Sources */,
 				AEE2847C18DAE55500BEF1A9 /* ISSTMenuViewController.m in Sources */,
@@ -2090,6 +2126,7 @@
 				AE9052BA18EEEE890088742D /* ISSTWikisViewController.m in Sources */,
 				581C8D6618F03B050006740B /* ISSTStudyTableViewCell.m in Sources */,
 				6FCFD6ED1A45D1850004EF56 /* ISSTExperienceCell.m in Sources */,
+				5CA8559A1A492CE500EFB8BA /* ISSTMyRecommendViewController.m in Sources */,
 				6F6E614C1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.m in Sources */,
 				6FA231C41A28D9420028226B /* UIButton+WebCache.m in Sources */,
 				AE85F9CB1902605600FCD67D /* ISSTCLTableViewCell.m in Sources */,
@@ -2116,6 +2153,7 @@
 				AEA238CD18F530960030F196 /* ISSTClassModel.m in Sources */,
 				AE9052B618EEEE890088742D /* ISSTWikisCollectionViewCell.m in Sources */,
 				AEFDC77018E1625900D7FDAA /* ISSTUserModel.m in Sources */,
+				5CA855951A492CC000EFB8BA /* ISSTMyRecListViewController.m in Sources */,
 				6F9DDD8C1A2F22B400F63F26 /* RESideMenu.m in Sources */,
 				AE0B8C8118F2CDDF00844F55 /* ISSTExperienceViewController.m in Sources */,
 				AEE2844E18DADAA000BEF1A9 /* main.m in Sources */,

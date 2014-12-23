@@ -15,4 +15,5 @@
 @property (nonatomic,copy) NSString *position;
 @property (nonatomic,assign)long long   updatedAt;
 @property (nonatomic,assign)int cityId;
+@property (nonatomic,copy) NSString *content;
 @end

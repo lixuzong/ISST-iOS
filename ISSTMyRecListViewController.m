@@ -1,0 +1,165 @@
+//
+//  ISSTMyRecListViewController.m
+//  ISST
+//
+//  Created by lixu on 14/12/23.
+//  Copyright (c) 2014年 MSE.ZJU. All rights reserved.
+//
+
+#import "ISSTMyRecListViewController.h"
+#import "ISSTUserCenterApi.h"
+#import "ISSTUserModel.h"
+#import "ISSTLoginApi.h"
+#import "ISSTWebApiDelegate.h"
+#import "AppCache.h"
+#import "MJRefresh.h"
+#import "ISSTMyRecommendCell.h"
+#import "ISSTMyRecommendViewController.h"
+#import "ISSTRecommendModel.h"
+
+@interface ISSTMyRecListViewController ()<ISSTWebApiDelegate,UITableViewDataSource,UITableViewDelegate>
+@property(strong,nonatomic) ISSTUserModel *userModel;
+@property(strong,nonatomic) ISSTUserCenterApi *centerApi;
+@property (strong,nonatomic) ISSTLoginApi *userApi;
+@property (strong,nonatomic) ISSTMyRecommendViewController *postRecommendViewController;
+
+@property (strong,nonatomic) NSMutableArray *recArray;
+
+@end
+
+@implementation ISSTMyRecListViewController
+@synthesize recArray;
+static int  loadPage = 1;
+static NSString* CellIdentifier=@"myRecommendCell";
+
+- (void)viewDidLoad {
+    
+    self.centerApi=[[ISSTUserCenterApi alloc ]init];
+    self.centerApi.webApiDelegate=self;
+    self.recommendTable.delegate=self;
+    self.recommendTable.dataSource=self;
+    
+    [super viewDidLoad];
+    self.title=@"我的内推";
+    self.recommendTable.rowHeight=85;
+    self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(clickPost)];
+    UINib *nib=[UINib nibWithNibName:@"ISSTMyRecommendCell" bundle:nil];
+    [self.recommendTable registerNib:nib forCellReuseIdentifier:CellIdentifier];
+    [self setupRefresh];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+-(void) clickPost{
+    self.postRecommendViewController=[ISSTMyRecommendViewController new];
+    self.postRecommendViewController.navigationItem.title=@"新内推";
+    [self.navigationController pushViewController:self.postRecommendViewController animated:YES];
+}
+
+- (void)setupRefresh
+{
+    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+    // dateKey用于存储刷新时间，可以保证不同界面拥有不同的刷新时间
+    [self.recommendTable addHeaderWithTarget:self action:@selector(headerRereshing) ];
+    
+    [self.recommendTable headerBeginRefreshing];
+    
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [self.recommendTable addFooterWithTarget:self action:@selector(footerRereshing)];
+    
+}
+
+#pragma mark 开始进入刷新状态
+- (void)headerRereshing
+{
+    // 1.添加数据
+    [self.centerApi requestRecommendListWithPage:loadPage pageSize:20];
+    NSLog(@"#################################headerR####################################%@",recArray);
+    // 刷新表格
+    [self.recommendTable reloadData];
+    
+    // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    [self.recommendTable headerEndRefreshing];
+}
+
+
+- (void)footerRereshing
+{
+    loadPage++;
+    // 1.添加数据
+    [self.centerApi requestRecommendListWithPage:loadPage pageSize:20];
+    
+    // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    [self.recommendTable footerEndRefreshing];
+}
+
+#pragma mark -- UITableViewDataSource
+-(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    NSArray *list=recArray;
+    return [list count];
+}
+
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    ISSTMyRecommendCell  *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell=[[ISSTMyRecommendCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    ISSTRecommendModel *model=[recArray objectAtIndex:indexPath.row];
+    cell.company.text=model.company;
+    cell.name.text=model.name;
+    cell.position.text=model.position;
+    cell.time.text=[NSString  stringWithFormat:@"%lli" ,model.updatedAt];
+    return cell;
+}
+
+
+#pragma mark-- ISSTWebDelegateApi
+- (void)requestDataOnSuccess:(id)backToControllerData{
+    if (loadPage==1) {
+        recArray=[[NSMutableArray alloc] initWithArray:backToControllerData];
+    }else{
+        [recArray addObjectsFromArray:backToControllerData];
+    }
+    [self.recommendTable reloadData];
+    NSLog(@"####################recArray#######################%@",recArray);
+    
+}
+
+- (void)requestDataOnFail:(NSString *)error
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+    
+}
+-(void) updateUserLogin{
+    _userModel=[[ISSTUserModel alloc] init ];
+    _userModel=[AppCache getCache];
+    if (_userModel) {
+        [self.userApi updateLoginUserId:[NSString stringWithFormat:@"%d",_userModel.userId] andPassword:_userModel.password];
+        
+        // 1.添加数据
+        [self.centerApi requestRecommendListWithPage:loadPage pageSize:20];
+        
+        // 刷新表格
+        [self.recommendTable reloadData];
+        
+    }
+    
+}
+/*
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
+
+@end

@@ -238,6 +238,33 @@
     }
 }
 
+-(void) requestPostRecommendWithType:(int)TypeId titile:(NSString *)title content:(NSString *)content company:(NSString *)company position:(NSString *)position cityId:(int)cityId{
+    if (NetworkReachability.isConnectionAvailable) {
+        methodId=PostRecommend;
+        datas=[[NSMutableData alloc] init];
+        NSString *subUrlString=@"/api/users/jobs/recommend";
+        NSString* info=[NSString stringWithFormat:@"id=%i&title=%@&content=%@&company=%@&position=%@&cityId=%i",TypeId,title,content,company,position,cityId];
+        [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:info MD5Dictionary:nil];
+    }else
+    {
+        [self handleConnectionUnAvailable];
+    }
+}
+
+-(void) requestRecommendListWithPage:(int)page pageSize:(int)pageSize{
+    methodId=RecommendList;
+    datas=[[NSMutableData alloc] init];
+    if (NetworkReachability.isConnectionAvailable) {
+        NSLog(@"############################request################################");
+        NSString *subUrl=[NSString stringWithFormat:@"/api/users/jobs/recommend?page=%i&pageSize=%i",page,pageSize];
+        [super requestWithSuburl:subUrl Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
+    }else
+    {
+        NSLog(@"############################requestError################################");
+        [self handleConnectionUnAvailable];
+    }
+}
+
 
 #pragma mark -
 #pragma mark NSURLConnectionDelegate  methods
@@ -282,22 +309,22 @@
             if (dics&&[dics count]>0)
             {
                 int status =[userCenterParse getStatus];
-                if (0 == status)//登录成功
+                if (0 == status ||1==status)//登录成功
                 {
                     message = [userCenterParse messageInfoParse];
-                   
+                    
                     if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
                     {
                         [self.webApiDelegate requestDataOnSuccess:message];
                     }
                 }
-                else if(1 == status)
-                {
-                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
-                    {
-                        [self.webApiDelegate updateUserLogin];
-                    }
-                }
+                //                else if(1 == status)
+                //                {
+                //                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+                //                    {
+                //                        [self.webApiDelegate requestDataOnFail:[LoginErrors getUnLoginMessage]];
+                //                    }
+                //                }
                 else
                 {
                     message = [userCenterParse messageInfoParse];
@@ -306,7 +333,7 @@
                     {
                         [self.webApiDelegate requestDataOnSuccess:message];
                     }
-
+                    
                 }
             }
             else//可能服务器宕掉
@@ -316,42 +343,42 @@
             break;
         case TasksList:
             dics = [tasksParse infoSerialization:datas];
-         
+            
             if (dics&&[dics count]>0) {
-                int status = [tasksParse getStatus];
-                if (0 == status) {
-                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
-                        [self.webApiDelegate requestDataOnSuccess:[tasksParse taskListsParse]];
-                    }
+                //                int status = [tasksParse getStatus];
+                //                if (0 == status) {
+                if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
+                    [self.webApiDelegate requestDataOnSuccess:[tasksParse taskListsParse]];
                 }
-                else
-                {
-                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
-                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
-                    }
-                }
+                //                }
+                //                else
+                //                {
+                //                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
+                //                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
+                //                    }
+                //                }
             }
             else//可能服务器宕掉
             {
                 [self handleConnectionUnAvailable];
             }
             break;
-            case Experience://由于格式一样，直接解析放到task里了，
+        case Experience://由于格式一样，直接解析放到task里了，
             dics = [tasksParse infoSerialization:datas];
             NSLog(@"%@",dics);
             if (dics&&[dics count]>0) {
-                int status = [tasksParse getStatus];
-                if (0 == status) {
-                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
-                        [self.webApiDelegate requestDataOnSuccess:[tasksParse experienceListsParse]];
-                    }
+                //                int status = [tasksParse getStatus];
+                //                if (0 == status) {
+                if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
+                    [self.webApiDelegate requestDataOnSuccess:[tasksParse experienceListsParse]];
                 }
-                else
-                {
-                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
-                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
-                    }
-                }
+                //                }
+                //                else
+                //                {
+                //                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
+                //                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
+                //                    }
+                //                }
             }
             else//可能服务器宕掉
             {
@@ -360,20 +387,20 @@
             break;
         case Survey:
             dics = [tasksParse infoSerialization:datas];
-        
+            
             if (dics&&[dics count]>0) {
-                int status = [tasksParse getStatus];
-                if (0 == status) {
-                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
-                        [self.webApiDelegate requestDataOnSuccess:[tasksParse surveyListParse]];
-                    }
+                //                int status = [tasksParse getStatus];
+                //                if (0 == status) {
+                if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
+                    [self.webApiDelegate requestDataOnSuccess:[tasksParse surveyListParse]];
                 }
-                else
-                {
-                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
-                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
-                    }
-                }
+                //                }
+                //                else
+                //                {
+                //                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
+                //                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
+                //                    }
+                //                }
             }
             else//可能服务器宕掉
             {
@@ -405,27 +432,27 @@
         case PostedSurvey:
             dics = [tasksParse infoSerialization:datas];
             
-//            if (dics&&[dics count]>0) {
-//                int status = [tasksParse getStatus];
-//                if (0 == status) {
-//                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
-//                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
-//                    }
-//                }
-//                else
-//                {
-//                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
-//                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
-//                    }
-//                }
-//            }
-//            else//可能服务器宕掉
-//            {
-//                [self handleConnectionUnAvailable];
-//            }
+            //            if (dics&&[dics count]>0) {
+            //                int status = [tasksParse getStatus];
+            //                if (0 == status) {
+            //                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
+            //                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
+            //                    }
+            //                }
+            //                else
+            //                {
+            //                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
+            //                        [self.webApiDelegate requestDataOnSuccess:[tasksParse tasksMessageParse]];
+            //                    }
+            //                }
+            //            }
+            //            else//可能服务器宕掉
+            //            {
+            //                [self handleConnectionUnAvailable];
+            //            }
             break;
         case PostExperience:
-             dics = [tasksParse infoSerialization:datas];
+            dics = [tasksParse infoSerialization:datas];
             if (dics&&[dics count]>0) {
                 int status = [tasksParse getStatus];
                 if (0 == status) {
@@ -445,10 +472,57 @@
                 [self handleConnectionUnAvailable];
             }
             break;
-
             
-        
-    
+        case PostRecommend:
+        {
+            dics=[tasksParse infoSerialization:datas];
+            NSString *message=[tasksParse tasksMessageParse];
+            if (dics&&[dics count]) {
+                int status = [tasksParse getStatus];
+                if (1==status) {
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)]) {
+                        [self.webApiDelegate updateUserLogin];
+                        
+                    }
+                }
+                else
+                {
+                    if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
+                        [self.webApiDelegate requestDataOnFail:message];
+                    }
+                }
+            }
+            else{
+                [self handleConnectionUnAvailable];
+            }
+        }
+            
+            break;
+        case RecommendList:
+        {
+            dics=[tasksParse infoSerialization:datas];
+            if (dics&&[dics count]) {
+                int status=[tasksParse getStatus];
+                if (0==status) {
+                    NSArray *recArray=[tasksParse myRecommendListParse];
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
+                        [self.webApiDelegate requestDataOnSuccess:recArray];
+                        
+                    }
+                }else if(1==status)
+                {
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)]) {
+                        [self.webApiDelegate updateUserLogin];
+                    }
+                }
+            }else{
+                [self handleConnectionUnAvailable];
+            }
+            
+        }
+            break;
+            
+            
     }
 }
 

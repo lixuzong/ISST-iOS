@@ -19,6 +19,7 @@
 #import "ISSTFeedbackViewController.h"
 #import "RESideMenu.h"
 #import "ISSTAboutViewController.h"
+#import "ISSTMyRecListViewController.h"
 
 @interface ISSTUserCenterViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *userCenterCatalogueTableView;
@@ -196,10 +197,9 @@ NSArray *imageForRowArray= nil;
        ISSTMyExperienceViewController *controller = [[ISSTMyExperienceViewController alloc] init];
        [self.navigationController pushViewController:controller  animated:YES];
    }
-   else if (indexPath.row ==0 && indexPath.section == 2 ){ //我的内推板块，还没做 0.0
-       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
-       alert.delegate = self;
-       [alert show];
+   else if (indexPath.row ==0 && indexPath.section == 2 ){ //我的内推板块
+       ISSTMyRecListViewController *controller=[[ISSTMyRecListViewController alloc] init];
+       [self.navigationController pushViewController:controller animated:YES];
    }
    else if (indexPath.row ==2 && indexPath.section == 2){ //重要信息板块，还没做 0.0
        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];

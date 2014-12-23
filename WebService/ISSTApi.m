@@ -48,7 +48,9 @@
    */
     
     //http://yplan.cloudapp.net:8080/isst//users/validation?name=21351110&password=111111    name=%@&password=%@
-    NSString *mainUrl = @"http://www.cst.zju.edu.cn/isst/";
+//    NSString *mainUrl = @"http://www.cst.zju.edu.cn/isst/";
+//    NSString *mainUrl = @"http://10.82.60.35:8080/isst/";
+    NSString *mainUrl=@"http://10.82.197.205:8080/isst/";
     NSString *strUrl= [NSString stringWithFormat:@"%@%@",mainUrl,subUrl];
     
     //NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
