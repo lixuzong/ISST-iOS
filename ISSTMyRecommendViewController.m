@@ -12,31 +12,41 @@
 #import "ISSTUserModel.h"
 #import "ISSTLoginApi.h"
 #import "AppCache.h"
+#import "ISSTRecommendModel.h"
 
-#define POST 0
-#define UPDATE 1
+
 @interface ISSTMyRecommendViewController ()<ISSTWebApiDelegate>
 @property(strong,nonatomic) ISSTUserModel *userModel;
 @property(strong,nonatomic) ISSTUserCenterApi *centerApi;
 @property (strong,nonatomic) ISSTLoginApi *userApi;
 
 -(void) clickPostRecommend;
-
+@property (strong,nonatomic) ISSTRecommendModel *model;
 @end
 
 @implementation ISSTMyRecommendViewController
-@synthesize titleField,comanyField,positionField,contentTextView;
+@synthesize titleField,comanyField,positionField,contentTextView,model,typeId;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.titleField.text=_titleString;
+    self.contentTextView.text=_contentString;
+    self.comanyField.text=_companyString ;
+    self.positionField.text=_positionString;
+    
+    NSLog(@"+++++++++++++++++++typeId%li+++++++++++++++++",(long)typeId);
     self.centerApi=[[ISSTUserCenterApi alloc] init];
     self.centerApi.webApiDelegate=self;
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithTitle:@"发布" style:UIBarButtonSystemItemEdit target:self action:@selector(clickPostRecommend)];
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void) backToList{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 -(void) clickPostRecommend{
-    [self.centerApi requestPostRecommendWithType:POST titile:titleField.text content:contentTextView.text company:comanyField.text position:positionField.text cityId:0];
+    [self.centerApi requestPostRecommendWithType:typeId titile:titleField.text content:contentTextView.text company:comanyField.text position:positionField.text cityId:0];
 }
 
 - (void)didReceiveMemoryWarning {

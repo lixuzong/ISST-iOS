@@ -11,7 +11,8 @@
 @interface ISSTMyRecommendCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *company;
 @property (weak, nonatomic) IBOutlet UILabel *position;
-@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel *title;
 @property (weak, nonatomic) IBOutlet UILabel *city;
 @property (weak, nonatomic) IBOutlet UILabel *time;
+@property (weak, nonatomic) IBOutlet UILabel *Cdescription;
 @end

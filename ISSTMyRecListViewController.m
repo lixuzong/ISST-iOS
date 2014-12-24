@@ -31,17 +31,20 @@
 @synthesize recArray;
 static int  loadPage = 1;
 static NSString* CellIdentifier=@"myRecommendCell";
+-(void) viewWillAppear:(BOOL)animated{
+    [self.recommendTable reloadData];
+}
 
 - (void)viewDidLoad {
-    
+    self.recommendTable=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
+    [super viewDidLoad];
     self.centerApi=[[ISSTUserCenterApi alloc ]init];
     self.centerApi.webApiDelegate=self;
     self.recommendTable.delegate=self;
     self.recommendTable.dataSource=self;
-    
-    [super viewDidLoad];
+    [self.view addSubview:_recommendTable];
     self.title=@"我的内推";
-    self.recommendTable.rowHeight=85;
+    self.recommendTable.rowHeight=80;
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(clickPost)];
     UINib *nib=[UINib nibWithNibName:@"ISSTMyRecommendCell" bundle:nil];
     [self.recommendTable registerNib:nib forCellReuseIdentifier:CellIdentifier];
@@ -112,12 +115,28 @@ static NSString* CellIdentifier=@"myRecommendCell";
     }
     ISSTRecommendModel *model=[recArray objectAtIndex:indexPath.row];
     cell.company.text=model.company;
-    cell.name.text=model.name;
+    cell.title.text=model.title;
+    cell.Cdescription.text=model.rDescription;
     cell.position.text=model.position;
     cell.time.text=[NSString  stringWithFormat:@"%lli" ,model.updatedAt];
     return cell;
 }
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.postRecommendViewController=[[ISSTMyRecommendViewController alloc]init];
+    self.postRecommendViewController.typeId=1;
+    ISSTRecommendModel *model=[ISSTRecommendModel new];
+    model=[recArray objectAtIndex:indexPath.row];
+    self.postRecommendViewController.positionString=model.position;
+    self.postRecommendViewController.titleString=model.title;
+    self.postRecommendViewController.companyString=model.company;
+    self.postRecommendViewController.contentString=model.rDescription;
+    
+    self.postRecommendViewController.navigationItem.title=@"更新内推";
+    [self.navigationController pushViewController:self.postRecommendViewController animated:YES];
+    NSLog(@"++++++++++%@++++!!!!+++++++++++",model.rDescription);
+//    [self presentViewController:self.postRecommendViewController animated:YES completion:nil];
+}
 
 #pragma mark-- ISSTWebDelegateApi
 - (void)requestDataOnSuccess:(id)backToControllerData{

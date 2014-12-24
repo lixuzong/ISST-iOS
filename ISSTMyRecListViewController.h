@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface ISSTMyRecListViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITableView *recommendTable;
+@property (strong, nonatomic)  UITableView *recommendTable;
 
 @end

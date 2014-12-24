@@ -67,12 +67,13 @@
     [_tasksArray enumerateObjectsUsingBlock:^(id obj,NSUInteger idx,BOOL *stop){
         ISSTRecommendModel *model=[[ISSTRecommendModel alloc] init];
         model.rId=[[[_tasksArray objectAtIndex:idx] objectForKey:@"id"] floatValue];
-        model.name=[[_tasksArray objectAtIndex:idx] objectForKey:@"name"];
+        model.title=[[_tasksArray objectAtIndex:idx] objectForKey:@"title"];
         model.company=[[_tasksArray objectAtIndex:idx] objectForKey:@"company"];
         model.position=[[_tasksArray objectAtIndex:idx] objectForKey:@"position"];
         model.updatedAt=[[[_tasksArray objectAtIndex:idx] objectForKey:@"updateAt"] floatValue];
         model.cityId=[[[_tasksArray objectAtIndex:idx] objectForKey:@"cityId"] floatValue];
         model.content=[[_tasksArray objectAtIndex:idx] objectForKey:@"content"];
+        model.rDescription=[[_tasksArray objectAtIndex:idx] objectForKey:@"description"];
         [array addObject:model];
     }];
     return array;

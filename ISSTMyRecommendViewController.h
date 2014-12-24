@@ -13,4 +13,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *comanyField;
 @property (weak, nonatomic) IBOutlet UITextField *positionField;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+@property  int typeId;
+@property (strong,nonatomic) NSString *titleString;
+@property (strong,nonatomic) NSString *companyString;
+@property (strong,nonatomic) NSString *positionString;
+@property (strong,nonatomic) NSString *contentString;
+
 @end

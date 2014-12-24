@@ -18,6 +18,8 @@
 
 - (id)infoSerialization:(NSData*)datas
 {
+    NSLog(@"*****************************datas***************************");
+    NSLog(@"%@",datas);
     dict = [NSJSONSerialization JSONObjectWithData:datas options:NSJSONReadingAllowFragments error:nil];
     //jason 转化为 foundation
     NSLog(@"************BaseParse.h***********");

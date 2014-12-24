@@ -475,6 +475,7 @@
             
         case PostRecommend:
         {
+            NSLog(@"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^%@^^^^^^^^^^^^^^^^^^^^^^^^^^^^^",datas);
             dics=[tasksParse infoSerialization:datas];
             NSString *message=[tasksParse tasksMessageParse];
             if (dics&&[dics count]) {
