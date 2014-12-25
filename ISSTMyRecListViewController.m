@@ -32,8 +32,10 @@
 static int  loadPage = 1;
 static NSString* CellIdentifier=@"myRecommendCell";
 -(void) viewWillAppear:(BOOL)animated{
-    [self.recommendTable reloadData];
+    [super viewWillAppear:animated];
+    [self setupRefresh];
 }
+
 
 - (void)viewDidLoad {
     self.recommendTable=[[UITableView alloc] initWithFrame:CGRectMake(0, 0, 320, 568)];
@@ -48,7 +50,7 @@ static NSString* CellIdentifier=@"myRecommendCell";
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(clickPost)];
     UINib *nib=[UINib nibWithNibName:@"ISSTMyRecommendCell" bundle:nil];
     [self.recommendTable registerNib:nib forCellReuseIdentifier:CellIdentifier];
-    [self setupRefresh];
+//    [self setupRefresh];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -99,6 +101,37 @@ static NSString* CellIdentifier=@"myRecommendCell";
     [self.recommendTable footerEndRefreshing];
 }
 
+-(NSString *) cityId2cityString:(int) cityId{
+    NSString *cityString=[[NSString alloc] init];
+    switch (cityId) {
+        case 1:
+            cityString=@"宁波";
+            break;
+        case 2:
+            cityString=@"杭州";
+            break;
+        case 3:
+            cityString=@"上海";
+            break;
+        case 4:
+            cityString=@"北京";
+            break;
+            
+        case 5:
+            cityString=@"成都";
+            break;
+        case 6:
+            cityString=@"广州";
+            break;
+        case 7:
+            cityString=@"深圳";
+            break;
+        default:
+            break;
+    }
+    return cityString;
+}
+
 #pragma mark -- UITableViewDataSource
 -(NSInteger) numberOfSectionsInTableView:(UITableView *)tableView{
     return 1;
@@ -118,19 +151,20 @@ static NSString* CellIdentifier=@"myRecommendCell";
     cell.title.text=model.title;
     cell.Cdescription.text=model.rDescription;
     cell.position.text=model.position;
+    cell.city.text=[self cityId2cityString:model.cityId];
     cell.time.text=[NSString  stringWithFormat:@"%lli" ,model.updatedAt];
     return cell;
 }
 
 -(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.postRecommendViewController=[[ISSTMyRecommendViewController alloc]init];
-    self.postRecommendViewController.typeId=1;
     ISSTRecommendModel *model=[ISSTRecommendModel new];
     model=[recArray objectAtIndex:indexPath.row];
     self.postRecommendViewController.positionString=model.position;
     self.postRecommendViewController.titleString=model.title;
     self.postRecommendViewController.companyString=model.company;
     self.postRecommendViewController.contentString=model.rDescription;
+    self.postRecommendViewController.typeId=model.rId;
     
     self.postRecommendViewController.navigationItem.title=@"更新内推";
     [self.navigationController pushViewController:self.postRecommendViewController animated:YES];

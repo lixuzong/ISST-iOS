@@ -488,6 +488,7 @@
                 }
                 else
                 {
+                    NSLog(@"#################status###############");
                     if (self.webApiDelegate &&[self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)]) {
                         [self.webApiDelegate requestDataOnFail:message];
                     }

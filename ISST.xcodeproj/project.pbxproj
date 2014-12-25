@@ -85,6 +85,7 @@
 		58653D1E18FB86DF005C6F74 /* ISSTAddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58653D1518FB86DF005C6F74 /* ISSTAddressBookViewController.xib */; };
 		58653D1F18FB86DF005C6F74 /* ISSTSelectFactorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58653D1718FB86DF005C6F74 /* ISSTSelectFactorsViewController.m */; };
 		58653D2018FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58653D1818FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib */; };
+		5C7DD2CB1A4AF10400B5EB04 /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7DD2CA1A4AF10400B5EB04 /* ZHPickView.m */; };
 		5CA855951A492CC000EFB8BA /* ISSTMyRecListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA855931A492CC000EFB8BA /* ISSTMyRecListViewController.m */; };
 		5CA855961A492CC000EFB8BA /* ISSTMyRecListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA855941A492CC000EFB8BA /* ISSTMyRecListViewController.xib */; };
 		5CA8559A1A492CE500EFB8BA /* ISSTMyRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA855981A492CE500EFB8BA /* ISSTMyRecommendViewController.m */; };
@@ -456,6 +457,8 @@
 		58653D1618FB86DF005C6F74 /* ISSTSelectFactorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTSelectFactorsViewController.h; path = AddressBook/ISSTSelectFactorsViewController.h; sourceTree = SOURCE_ROOT; };
 		58653D1718FB86DF005C6F74 /* ISSTSelectFactorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTSelectFactorsViewController.m; path = AddressBook/ISSTSelectFactorsViewController.m; sourceTree = SOURCE_ROOT; };
 		58653D1818FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTSelectFactorsViewController.xib; path = AddressBook/ISSTSelectFactorsViewController.xib; sourceTree = SOURCE_ROOT; };
+		5C7DD2C91A4AF10400B5EB04 /* ZHPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
+		5C7DD2CA1A4AF10400B5EB04 /* ZHPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPickView.m; sourceTree = "<group>"; };
 		5CA855921A492CC000EFB8BA /* ISSTMyRecListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTMyRecListViewController.h; sourceTree = SOURCE_ROOT; };
 		5CA855931A492CC000EFB8BA /* ISSTMyRecListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTMyRecListViewController.m; sourceTree = SOURCE_ROOT; };
 		5CA855941A492CC000EFB8BA /* ISSTMyRecListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTMyRecListViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -934,6 +937,7 @@
 		334D69CD194BF18B0018C521 /* ThirdPartyLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				5C7DD2C81A4AF10400B5EB04 /* ZHpickView */,
 				6F9DDD841A2F22B400F63F26 /* RESideMenu */,
 				6F85C3C11A2C4C380017EB0C /* AFNetworking */,
 				6F6FEB311A29BF6200005162 /* MBProgressHUD */,
@@ -1043,6 +1047,15 @@
 			);
 			name = AjComboBox;
 			path = ../Status;
+			sourceTree = "<group>";
+		};
+		5C7DD2C81A4AF10400B5EB04 /* ZHpickView */ = {
+			isa = PBXGroup;
+			children = (
+				5C7DD2C91A4AF10400B5EB04 /* ZHPickView.h */,
+				5C7DD2CA1A4AF10400B5EB04 /* ZHPickView.m */,
+			);
+			path = ZHpickView;
 			sourceTree = "<group>";
 		};
 		5CA855911A492C7500EFB8BA /* myRecommend */ = {
@@ -2162,6 +2175,7 @@
 				6FA231BB1A28D9420028226B /* MKAnnotationView+WebCache.m in Sources */,
 				338BB5921959C3BD00449855 /* CheckBox.m in Sources */,
 				AE9052AA18EEEE6D0088742D /* ISSTNewsViewController.m in Sources */,
+				5C7DD2CB1A4AF10400B5EB04 /* ZHPickView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
