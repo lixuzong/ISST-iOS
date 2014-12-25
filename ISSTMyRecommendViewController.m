@@ -18,7 +18,7 @@
 #import "ISSTMyRecListViewController.h"
 
 
-@interface ISSTMyRecommendViewController ()<ISSTWebApiDelegate,ZHPickViewDelegate,UIAlertViewDelegate>
+@interface ISSTMyRecommendViewController ()<ISSTWebApiDelegate,ZHPickViewDelegate,UIAlertViewDelegate,UITextViewDelegate>
 @property(strong,nonatomic) ISSTUserModel *userModel;
 @property(strong,nonatomic) ISSTUserCenterApi *centerApi;
 @property (strong,nonatomic) ISSTLoginApi *userApi;
@@ -35,7 +35,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     cityId=1;
-    
+    self.contentTextView.delegate=self;
     cityArray=[[NSArray alloc] initWithObjects:@"宁波",@"杭州",@"上海",@"北京",@"成都",@"广州",@"深圳", nil];
     //设置边框
     self.contentTextView.layer.borderColor=[UIColor grayColor].CGColor;
@@ -127,10 +127,43 @@
     
 }
 
+#pragma mark - UIAlertViewDelegate
 -(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     [self.navigationController popViewControllerAnimated:YES];
 //    ISSTMyRecListViewController *listViewController=[[ISSTMyRecListViewController alloc] init];
     
+}
+
+#pragma mark - UITextViewDelegate
+-(void) textViewDidBeginEditing:(UITextView *)textView{
+    NSLog(@"sdsd");
+    NSTimeInterval animationDuration=0.30f;
+    [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
+    [UIView setAnimationDuration:animationDuration];
+    float width = self.view.frame.size.width;
+    float height = self.view.frame.size.height;
+    //上移30个单位，按实际情况设置
+    
+    CGRect rect=CGRectMake(0.0f,-160,width,height);
+    
+    // CGRect text=btnlogin.frame;
+    self.view.frame=rect;
+    //text=CGRectMake(30, 350, 238, 30);
+    // btnlogin.frame=text;
+    [UIView commitAnimations];
+
+}
+
+-(void) textViewDidEndEditing:(UITextView *)textView{
+    [UIView beginAnimations:@"View Flip" context:nil];
+    //动画持续时间
+    [UIView setAnimationDuration:0.3f];
+    
+    self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    // [UIView setAnimationDuration:2];
+    //动画会造成登录后动画错乱－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+    [UIView commitAnimations];
+
 }
 
 /*
@@ -147,6 +180,19 @@
     self.cityPickerView=[[ZHPickView alloc] initPickviewWithArray:cityArray isHaveNavControler:NO];
     self.cityPickerView.delegate=self;
     [self.cityPickerView show];
+    
+    //键盘消失
+    [self.titleField resignFirstResponder];
+    [self.positionField resignFirstResponder];
+    [self.comanyField resignFirstResponder];
+    [self.contentTextView resignFirstResponder];
+    
+}
+- (IBAction)backgroundTap:(id)sender {
+    [self.titleField resignFirstResponder];
+    [self.positionField resignFirstResponder];
+    [self.comanyField resignFirstResponder];
+    [self.contentTextView resignFirstResponder];
     
 }
 @end

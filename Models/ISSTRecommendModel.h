@@ -13,7 +13,7 @@
 @property (nonatomic,copy)NSString *title;
 @property (nonatomic,copy) NSString *company;
 @property (nonatomic,copy) NSString *position;
-@property (nonatomic,assign)long long   updatedAt;
+@property (nonatomic,copy)NSString* updatedAt;
 @property (nonatomic,assign)int cityId;
 @property (nonatomic,copy) NSString *content;
 @property (nonatomic,copy) NSString *rDescription;

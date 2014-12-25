@@ -21,5 +21,6 @@
 @property (strong,nonatomic) NSString *companyString;
 @property (strong,nonatomic) NSString *positionString;
 @property (strong,nonatomic) NSString *contentString;
+- (IBAction)backgroundTap:(id)sender;
 
 @end

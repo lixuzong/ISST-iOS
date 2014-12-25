@@ -33,7 +33,7 @@ static int  loadPage = 1;
 static NSString* CellIdentifier=@"myRecommendCell";
 -(void) viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self setupRefresh];
+    [self.centerApi requestRecommendListWithPage:loadPage pageSize:20];
 }
 
 
@@ -50,7 +50,7 @@ static NSString* CellIdentifier=@"myRecommendCell";
     self.navigationItem.rightBarButtonItem=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(clickPost)];
     UINib *nib=[UINib nibWithNibName:@"ISSTMyRecommendCell" bundle:nil];
     [self.recommendTable registerNib:nib forCellReuseIdentifier:CellIdentifier];
-//    [self setupRefresh];
+    [self setupRefresh];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -152,7 +152,7 @@ static NSString* CellIdentifier=@"myRecommendCell";
     cell.Cdescription.text=model.rDescription;
     cell.position.text=model.position;
     cell.city.text=[self cityId2cityString:model.cityId];
-    cell.time.text=[NSString  stringWithFormat:@"%lli" ,model.updatedAt];
+    cell.time.text=model.updatedAt;
     return cell;
 }
 
