@@ -11,6 +11,6 @@
 @interface ISSTWikisViewController : ISSTBaseViewController<UICollectionViewDataSource,UICollectionViewDelegate,ISSTWebApiDelegate>
 
 
-@property (weak, nonatomic) IBOutlet UICollectionView *CollectionView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

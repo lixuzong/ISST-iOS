@@ -7,7 +7,7 @@
 //
 
 #import "ISSTWikisViewController.h"
-#import "ISSTWikisCollectionViewCell.h"
+#import "ISSTCommonCell.h"
 #import "ISSTLifeApi.h"
 #import "ISSTCampusNewsModel.h"
 #import "ISSTWikisDetailViewController.h"
@@ -15,8 +15,10 @@
 #import "ISSTLoginApi.h"
 #import "ISSTUserModel.h"
 #import "AppCache.h"
+#import "MJRefresh.h"
 
-@interface ISSTWikisViewController ()
+
+@interface ISSTWikisViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong,nonatomic) ISSTUserModel *userModel;
 @property (strong,nonatomic) ISSTLoginApi *userApi;
 @property (nonatomic,strong)ISSTLifeApi  *newsApi;
@@ -33,7 +35,8 @@
 @synthesize newsApi;
 @synthesize WikisModel;
 @synthesize newsArray;
-@synthesize CollectionView;
+static NSString *CellIdentifier=@"ISSTCommonCell";
+static int  loadPage = 1;
 
 
 
@@ -59,51 +62,79 @@
     
     
     self.view.backgroundColor = [UIColor clearColor];
-
+    self.tableView.dataSource=self;
+    self.tableView.delegate=self;
+    self.tableView.rowHeight=126;
     self.newsApi.webApiDelegate = self;
     self.newsArray =[[NSMutableArray alloc]init];
-   [self.CollectionView registerClass:[ISSTWikisCollectionViewCell class] forCellWithReuseIdentifier:@"ISSTWikisCollectionCell"];
-    
-   [self.newsApi requestWikisLists:1 andPageSize:20 andKeywords:@"string"];
-}
+    UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
 
-#pragma mark
-#pragma ColectionView DataSource
-//显示多少行
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
-    return [newsArray count]/2;
+    [self setupRefresh];
 }
-//显示多少列
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 2;
-}
-
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+- (void)setupRefresh
 {
-    static NSString *CollectionCellIdentifier=@"ISSTWikisCollectionCell";
-    ISSTWikisCollectionViewCell *cell = (ISSTWikisCollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:CollectionCellIdentifier forIndexPath:indexPath];
-    if (cell == nil) {
-        cell = [[ISSTWikisCollectionViewCell alloc]init];
+    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+    // dateKey用于存储刷新时间，可以保证不同界面拥有不同的刷新时间
+    [self.self.tableView addHeaderWithTarget:self action:@selector(headerRereshing) ];
+    
+    [self.self.tableView headerBeginRefreshing];
+    
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [self.self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
+    
+}
+
+#pragma mark 开始进入刷新状态
+- (void)headerRereshing
+{
+    // 1.添加数据
+    [self.newsApi requestWikisLists:loadPage andPageSize:20 andKeywords:@"string"];
+    
+    // 刷新表格
+    [self.self.tableView reloadData];
+    
+    // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    [self.self.tableView headerEndRefreshing];
+}
+
+
+- (void)footerRereshing
+{
+    loadPage++;
+    // 1.添加数据
+    [self.newsApi requestWikisLists:loadPage andPageSize:20 andKeywords:@"string"];
+    
+    // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
+    [self.self.tableView footerEndRefreshing];
+}
+
+#pragma mark tableViewDataSouceDelegate
+
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return [newsArray count];
+}
+
+-(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    ISSTCommonCell* cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (!cell) {
+        cell=[[ISSTCommonCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    long int position=indexPath.section*2+indexPath.row;
-    WikisModel=[newsArray objectAtIndex:position];
-    NSLog(@"%ld",position);
-    cell.Title.text=WikisModel.title;
-    cell.Content.text=WikisModel.description;
-    NSLog(@"%@",WikisModel);
+    WikisModel=[newsArray objectAtIndex:indexPath.row];
+    cell.imageView.image =[UIImage imageNamed:@"12091.jpg"];
+    cell.title.text=WikisModel.title;
+    cell.content.text=WikisModel.description;
+    cell.time.text=WikisModel.updatedAt;
     return cell;
 }
-//选择单元格触发事件
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    self.WikisDetailView=[[ISSTWikisDetailViewController alloc]initWithNibName:@"ISSTWikisDetailViewController" bundle:nil];
-     self.WikisDetailView.navigationItem.title =@"详细信息";
-  //  ISSTCampusNewsModel *tempWikisModel=[[ISSTCampusNewsModel alloc]init];
-   ISSTCampusNewsModel *   tempWikisModel=[newsArray objectAtIndex:(indexPath.section*2+indexPath.row)];//2为每行的个数
 
+-(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.WikisDetailView=[[ISSTWikisDetailViewController alloc]initWithNibName:@"ISSTWikisDetailViewController" bundle:nil];
+    self.WikisDetailView.navigationItem.title =@"详细信息";
+    ISSTCampusNewsModel *   tempWikisModel=[newsArray objectAtIndex:indexPath.row];
     self.WikisDetailView.WikisId=tempWikisModel.newsId;
-    // [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
     [self.navigationController pushViewController:self.WikisDetailView animated: YES];
+    
 }
 
 #pragma mark -
@@ -115,7 +146,7 @@
     }
     newsArray = (NSMutableArray *)backToControllerData;
     //NSLog(@"count =%d ,newsArray = %@",[newsArray count],[newsArray objectAtIndex:0]);
-    [CollectionView reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)requestDataOnFail:(NSString *)error
@@ -140,20 +171,6 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-
-
-
-//#pragma mark Private Methods
-//- (void)pushViewController {
-//    NSString *vcTitle = [self.title stringByAppendingString:@" - Pushed"];
-//    UIViewController *vc = [[ISSTPushedViewController alloc] initWithTitle:vcTitle];
-//    
-//    [self.navigationController pushViewController:vc animated:YES];
-//}
-
-//- (void)revealSidebar {
-//    _revealBlock();
-//}
 
 
 - (void)didReceiveMemoryWarning

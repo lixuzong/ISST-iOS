@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ISSTWikisViewController">
             <connections>
-                <outlet property="CollectionView" destination="VCL-J8-1ss" id="HeN-SP-roM"/>
+                <outlet property="tableView" destination="GZs-f8-Mho" id="xqW-sT-QaK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="qiU-fr-OYQ"/>
             </connections>
         </placeholder>
@@ -16,27 +16,12 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="VCL-J8-1ss">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="525"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="GZs-f8-Mho">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="rjf-I6-o1e">
-                        <size key="itemSize" width="155" height="100"/>
-                        <size key="headerReferenceSize" width="5" height="5"/>
-                        <size key="footerReferenceSize" width="5" height="5"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                    <cells/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="QI7-t5-nPq"/>
-                        <outlet property="delegate" destination="-1" id="pCq-mA-dwW"/>
-                    </connections>
-                </collectionView>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="VCL-J8-1ss" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8mK-Wd-due"/>
-                <constraint firstAttribute="bottom" secondItem="VCL-J8-1ss" secondAttribute="bottom" id="JpL-uR-uNp"/>
-            </constraints>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

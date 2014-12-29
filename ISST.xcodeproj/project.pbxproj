@@ -86,6 +86,8 @@
 		58653D1F18FB86DF005C6F74 /* ISSTSelectFactorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58653D1718FB86DF005C6F74 /* ISSTSelectFactorsViewController.m */; };
 		58653D2018FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58653D1818FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib */; };
 		5C7DD2CB1A4AF10400B5EB04 /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7DD2CA1A4AF10400B5EB04 /* ZHPickView.m */; };
+		5CA6D4771A503CB500C50C95 /* ISSTWikisCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6D4751A503CB500C50C95 /* ISSTWikisCell.m */; };
+		5CA6D4781A503CB500C50C95 /* ISSTWikisCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA6D4761A503CB500C50C95 /* ISSTWikisCell.xib */; };
 		5CA855951A492CC000EFB8BA /* ISSTMyRecListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA855931A492CC000EFB8BA /* ISSTMyRecListViewController.m */; };
 		5CA855961A492CC000EFB8BA /* ISSTMyRecListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA855941A492CC000EFB8BA /* ISSTMyRecListViewController.xib */; };
 		5CA8559A1A492CE500EFB8BA /* ISSTMyRecommendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA855981A492CE500EFB8BA /* ISSTMyRecommendViewController.m */; };
@@ -459,6 +461,9 @@
 		58653D1818FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ISSTSelectFactorsViewController.xib; path = AddressBook/ISSTSelectFactorsViewController.xib; sourceTree = SOURCE_ROOT; };
 		5C7DD2C91A4AF10400B5EB04 /* ZHPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
 		5C7DD2CA1A4AF10400B5EB04 /* ZHPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPickView.m; sourceTree = "<group>"; };
+		5CA6D4741A503CB500C50C95 /* ISSTWikisCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTWikisCell.h; sourceTree = "<group>"; };
+		5CA6D4751A503CB500C50C95 /* ISSTWikisCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTWikisCell.m; sourceTree = "<group>"; };
+		5CA6D4761A503CB500C50C95 /* ISSTWikisCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTWikisCell.xib; sourceTree = "<group>"; };
 		5CA855921A492CC000EFB8BA /* ISSTMyRecListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTMyRecListViewController.h; sourceTree = SOURCE_ROOT; };
 		5CA855931A492CC000EFB8BA /* ISSTMyRecListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTMyRecListViewController.m; sourceTree = SOURCE_ROOT; };
 		5CA855941A492CC000EFB8BA /* ISSTMyRecListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTMyRecListViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -912,6 +917,9 @@
 				AE9052AD18EEEE890088742D /* ISSTWikisCollectionViewCell.h */,
 				AE9052AE18EEEE890088742D /* ISSTWikisCollectionViewCell.m */,
 				AE9052AF18EEEE890088742D /* ISSTWikisCollectionViewCell.xib */,
+				5CA6D4741A503CB500C50C95 /* ISSTWikisCell.h */,
+				5CA6D4751A503CB500C50C95 /* ISSTWikisCell.m */,
+				5CA6D4761A503CB500C50C95 /* ISSTWikisCell.xib */,
 				AE0B8C8D18F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.h */,
 				AE0B8C8E18F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.m */,
 				AE0B8C8F18F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.xib */,
@@ -1981,6 +1989,7 @@
 				6F6E61591A470DDD009F6D62 /* About.jpg in Resources */,
 				581C8D6718F03B050006740B /* ISSTStudyTableViewCell.xib in Resources */,
 				18B8047219567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib in Resources */,
+				5CA6D4781A503CB500C50C95 /* ISSTWikisCell.xib in Resources */,
 				6F7EAF9D1A3591840017C5CE /* denglu_xiabankuang.png in Resources */,
 				6F7522FB19D2C5A10079A8D6 /* 图标icon.psd in Resources */,
 				AE85F9CC1902605600FCD67D /* ISSTCLTableViewCell.xib in Resources */,
@@ -2106,6 +2115,7 @@
 				252D347A1963D8CF00B5EE5D /* ISSTTasksModel.m in Sources */,
 				AE0B8C7D18F2CDDF00844F55 /* ISSTExperienceDetailViewController.m in Sources */,
 				AE9E017618F3BC1F008EAFA1 /* ISSTContactsApi.m in Sources */,
+				5CA6D4771A503CB500C50C95 /* ISSTWikisCell.m in Sources */,
 				AE85F9BA1901635100FCD67D /* ISSTInternshipDetailViewController.m in Sources */,
 				252D34801963E11400B5EE5D /* ISSTTasksViewController.m in Sources */,
 				334D69F0194BF9EB0018C521 /* ISSTActivityIndicatorView.m in Sources */,
