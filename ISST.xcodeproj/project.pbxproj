@@ -108,6 +108,8 @@
 		6F5B05DE1A319D7F0052CE63 /* 1225.png in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B05DD1A319D7F0052CE63 /* 1225.png */; };
 		6F5B05E21A3209710052CE63 /* ISSTSameCityFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F5B05E01A3209710052CE63 /* ISSTSameCityFriendViewController.m */; };
 		6F5B05E31A3209710052CE63 /* ISSTSameCityFriendViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F5B05E11A3209710052CE63 /* ISSTSameCityFriendViewController.xib */; };
+		6F68F5651A57A7550020365D /* ISSTWikisCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F68F5631A57A7550020365D /* ISSTWikisCollectionViewController.m */; };
+		6F68F5661A57A7550020365D /* ISSTWikisCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F68F5641A57A7550020365D /* ISSTWikisCollectionViewController.xib */; };
 		6F6E614C1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6E614A1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.m */; };
 		6F6E614D1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F6E614B1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.xib */; };
 		6F6E61561A470CA5009F6D62 /* ISSTAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6F6E61541A470CA5009F6D62 /* ISSTAboutViewController.m */; };
@@ -490,6 +492,9 @@
 		6F5B05DF1A3209710052CE63 /* ISSTSameCityFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSameCityFriendViewController.h; sourceTree = "<group>"; };
 		6F5B05E01A3209710052CE63 /* ISSTSameCityFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSameCityFriendViewController.m; sourceTree = "<group>"; };
 		6F5B05E11A3209710052CE63 /* ISSTSameCityFriendViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTSameCityFriendViewController.xib; sourceTree = "<group>"; };
+		6F68F5621A57A7550020365D /* ISSTWikisCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTWikisCollectionViewController.h; sourceTree = "<group>"; };
+		6F68F5631A57A7550020365D /* ISSTWikisCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTWikisCollectionViewController.m; sourceTree = "<group>"; };
+		6F68F5641A57A7550020365D /* ISSTWikisCollectionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTWikisCollectionViewController.xib; sourceTree = "<group>"; };
 		6F6E61491A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTMyExperienceDetailsViewController.h; sourceTree = SOURCE_ROOT; };
 		6F6E614A1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTMyExperienceDetailsViewController.m; sourceTree = SOURCE_ROOT; };
 		6F6E614B1A46E93E009F6D62 /* ISSTMyExperienceDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTMyExperienceDetailsViewController.xib; sourceTree = SOURCE_ROOT; };
@@ -1366,6 +1371,9 @@
 				AE9052B318EEEE890088742D /* ISSTWikisViewController.h */,
 				AE9052B418EEEE890088742D /* ISSTWikisViewController.m */,
 				AE9052B518EEEE890088742D /* ISSTWikisViewController.xib */,
+				6F68F5621A57A7550020365D /* ISSTWikisCollectionViewController.h */,
+				6F68F5631A57A7550020365D /* ISSTWikisCollectionViewController.m */,
+				6F68F5641A57A7550020365D /* ISSTWikisCollectionViewController.xib */,
 			);
 			name = Wikis;
 			sourceTree = "<group>";
@@ -1988,6 +1996,7 @@
 				6FA9BFC91A0A5EFF0074B02B /* whiteArrow@2x.png in Resources */,
 				6F6E61591A470DDD009F6D62 /* About.jpg in Resources */,
 				581C8D6718F03B050006740B /* ISSTStudyTableViewCell.xib in Resources */,
+				6F68F5661A57A7550020365D /* ISSTWikisCollectionViewController.xib in Resources */,
 				18B8047219567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib in Resources */,
 				5CA6D4781A503CB500C50C95 /* ISSTWikisCell.xib in Resources */,
 				6F7EAF9D1A3591840017C5CE /* denglu_xiabankuang.png in Resources */,
@@ -2074,6 +2083,7 @@
 				18B6199A1955B94500F4ACC7 /* ISSTSameCitiesParse.m in Sources */,
 				6FA231CA1A28D9420028226B /* UIView+WebCacheOperation.m in Sources */,
 				33B9F112194D4FF4004F6546 /* ChangeUserInfoVC.m in Sources */,
+				6F68F5651A57A7550020365D /* ISSTWikisCollectionViewController.m in Sources */,
 				334D69ED194BF76E0018C521 /* RefreshTableEmptyCell.m in Sources */,
 				6F85C3DC1A2C4C380017EB0C /* AFURLResponseSerialization.m in Sources */,
 				AEFDC77918E1B76400D7FDAA /* ISSTLifeApi.m in Sources */,

@@ -24,6 +24,7 @@
 #import "AppCache.h"
 #import "ISSTUserModel.h"
 #import "ISSTSameCityFriendViewController.h"
+#import "ISSTWikisCollectionViewController.h"
 
 @interface LeftMenuViewController (){
     ISSTUserModel *userModel;
@@ -105,7 +106,7 @@
             [self.sideMenuViewController hideMenuViewController];
             break;
         case 1: // 软院百科
-            [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[[ISSTWikisViewController alloc] init]]
+            [self.sideMenuViewController setContentViewController:[[UINavigationController alloc] initWithRootViewController:[[ISSTWikisCollectionViewController alloc] init]]
                                                          animated:YES];
             [self.sideMenuViewController hideMenuViewController];
             break;
