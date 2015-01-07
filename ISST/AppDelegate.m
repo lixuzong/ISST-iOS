@@ -50,6 +50,7 @@
         UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:myTypes categories:nil];
         [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
     }
+    
     else
 
         
@@ -96,6 +97,14 @@
     
 }
 
+
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    [application registerForRemoteNotifications];
+}
+
+
 - (void) onMethod:(NSString*)method response:(NSDictionary*)data
 {
     if
@@ -107,9 +116,12 @@
         NSString *channelid = [res valueForKey:BPushRequestChannelIdKey];
         int returnCode = [[res valueForKey:BPushRequestErrorCodeKey] intValue];
         NSString *requestid = [res valueForKey:BPushRequestRequestIdKey];
+        NSLog(@"userid=%@",userid);
+        NSLog(@"channelid=%@",channelid);
     }
 }
 
+// receive the notification
 -(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
 {
     int badge = [UIApplication sharedApplication].applicationIconBadgeNumber;
@@ -130,11 +142,32 @@
         NSLog(@"push to menu");
                 [self showmenu];
            }
+    else if(login)
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"推送通知" message:@"前往看看" delegate:self cancelButtonTitle:@"下次再说" otherButtonTitles:@"好前往查看", nil];
+        [alert show];
+    }
+}
+
+// alertview event
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"clickButtonAtIndex:%d",buttonIndex);
+    if(buttonIndex==1)//yes
+    {
+        NSLog(@"push to push");
+       [self showmenu];
+    }
+    else //no
+    {
+        pushtag=0;
+    }
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
     
+    NSLog(@"push fail11111111111111111111111111111111111111");
     NSLog(@"failed to register");
 }
 //-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler

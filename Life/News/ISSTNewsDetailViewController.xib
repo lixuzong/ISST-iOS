@@ -6,9 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ISSTNewsDetailViewController">
             <connections>
-                <outlet property="time" destination="t0P-6C-TJl" id="O1a-6j-z3g"/>
-                <outlet property="title" destination="6y2-dL-PaE" id="a44-gp-Oyr"/>
-                <outlet property="userInfo" destination="9gc-kb-TVD" id="TT9-kW-y2R"/>
                 <outlet property="view" destination="poR-PO-eey" id="HIT-CN-0rH"/>
                 <outlet property="webView" destination="aoB-ID-Mvy" id="noi-fr-8hh"/>
             </connections>
@@ -18,40 +15,20 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <webView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aoB-ID-Mvy">
-                    <rect key="frame" x="0.0" y="163" width="320" height="405"/>
+                <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoB-ID-Mvy">
+                    <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="G5d-6w-yzX"/>
                     </connections>
                 </webView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6y2-dL-PaE">
-                    <rect key="frame" x="0.0" y="64" width="320" height="52"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gc-kb-TVD">
-                    <rect key="frame" x="0.0" y="135" width="320" height="28"/>
-                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <color key="textColor" red="0.9873046875" green="0.9873046875" blue="0.9873046875" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0P-6C-TJl">
-                    <rect key="frame" x="0.0" y="116" width="318" height="18"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="9gc-kb-TVD" firstAttribute="top" secondItem="t0P-6C-TJl" secondAttribute="bottom" constant="1" id="4tc-K3-k9W"/>
                 <constraint firstAttribute="bottom" secondItem="aoB-ID-Mvy" secondAttribute="bottom" id="Bzb-fa-MLc"/>
-                <constraint firstItem="aoB-ID-Mvy" firstAttribute="top" secondItem="9gc-kb-TVD" secondAttribute="bottom" id="N9s-Ci-eik"/>
-                <constraint firstItem="t0P-6C-TJl" firstAttribute="top" secondItem="6y2-dL-PaE" secondAttribute="bottom" id="NT3-Ec-vYZ"/>
-                <constraint firstItem="9gc-kb-TVD" firstAttribute="top" secondItem="t0P-6C-TJl" secondAttribute="bottom" constant="1" id="hHm-AS-vP7"/>
-                <constraint firstItem="aoB-ID-Mvy" firstAttribute="top" secondItem="9gc-kb-TVD" secondAttribute="bottom" id="yLc-Eb-ko9"/>
+                <constraint firstItem="aoB-ID-Mvy" firstAttribute="top" secondItem="poR-PO-eey" secondAttribute="top" constant="64" id="Sa5-0d-ZeK"/>
+                <constraint firstAttribute="trailing" secondItem="aoB-ID-Mvy" secondAttribute="trailing" id="ap0-Kj-7md"/>
+                <constraint firstItem="aoB-ID-Mvy" firstAttribute="leading" secondItem="poR-PO-eey" secondAttribute="leading" id="k4x-j9-w5l"/>
             </constraints>
         </view>
     </objects>

@@ -87,8 +87,11 @@ NSArray *imageForRowArray= nil;
                        [NSArray  arrayWithObjects:@"便捷服务icon.png",nil],
                        nil];
     [super viewDidLoad];
+    
+//判断是否有推送
     if(pushtag)
     {
+        
         pushtag=0;
 //        [UIView beginAnimations:@"push" context:nil];
 //        [UIView setAnimationDuration:0.5];

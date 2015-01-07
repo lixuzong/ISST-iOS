@@ -91,11 +91,18 @@ static int  loadPage = 1;
     [self setupRefresh];
     
 //判断是否有推送
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
+    {
     if(pushtag)
     {
+        NSLog(@"push to newscontroller now");
+        
         NSLog(@"push tag=%d",pushtag);
 
         [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:YES];
+        NSLog(@"push to center");
+    }
     }
     
 }
@@ -130,6 +137,20 @@ static int  loadPage = 1;
     
     // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
     [self.newsArrayTableView headerEndRefreshing];
+    
+   if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+   {
+    if(pushtag)
+    {
+        NSLog(@"push to newscontroller now");
+        
+        NSLog(@"push tag=%d",pushtag);
+        
+        [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:YES];
+        NSLog(@"push to center");
+    }
+   }
+
 }
 
 
