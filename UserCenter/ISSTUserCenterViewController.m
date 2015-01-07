@@ -20,6 +20,7 @@
 #import "RESideMenu.h"
 #import "ISSTAboutViewController.h"
 #import "ISSTMyRecListViewController.h"
+#import "ISSTPushViewController.h"
 
 @interface ISSTUserCenterViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *userCenterCatalogueTableView;
@@ -90,6 +91,18 @@ NSArray *imageForRowArray= nil;
                        [NSArray  arrayWithObjects:@"便捷服务icon.png",nil],
                        nil];
     [super viewDidLoad];
+    
+    //判断是否有推送
+    if(pushtag)
+    {
+        
+        pushtag=0;
+        //        [UIView beginAnimations:@"push" context:nil];
+        //        [UIView setAnimationDuration:0.5];
+        [self.navigationController pushViewController:[[ISSTPushViewController alloc]init] animated:YES];
+        //        [UIView commitAnimations];
+    }
+
     //self.view.scrollEnabled =YES;
     
 }
@@ -202,9 +215,8 @@ NSArray *imageForRowArray= nil;
        [self.navigationController pushViewController:controller animated:YES];
    }
    else if (indexPath.row ==2 && indexPath.section == 2){ //重要信息板块，还没做 0.0
-       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
-       alert.delegate = self;
-       [alert show];
+       ISSTPushViewController *push=[[ISSTPushViewController alloc]init];
+       [self.navigationController pushViewController:push animated:YES];
    }
    else if (indexPath.row ==3 && indexPath.section ==2){ //意见反馈板块
        feedbackViewController = [[ISSTFeedbackViewController alloc]init];

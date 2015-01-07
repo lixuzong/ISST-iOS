@@ -11,8 +11,10 @@
 #import "ISSTUserModel.h"
 #import "RESideMenu.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate,ISSTWebApiDelegate,RESideMenuDelegate>
-
+int pushtag;
+int login;
+@interface AppDelegate : UIResponder <UIApplicationDelegate,ISSTWebApiDelegate,RESideMenuDelegate,UIAlertViewDelegate>
+@property(nonatomic,assign)int foreground;
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (nonatomic,strong)ISSTUserModel  *userModel;

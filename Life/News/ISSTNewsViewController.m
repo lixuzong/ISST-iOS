@@ -15,6 +15,8 @@
 #import "MJRefresh.h"
 #import "ISSTLoginApi.h"
 #import "ISSTUserModel.h"
+#import "ISSTUserCenterViewController.h"
+#import "AppDelegate.h"
 #import "AppCache.h"
 
 @interface ISSTNewsViewController ()
@@ -71,6 +73,7 @@ static int  loadPage = 1;
 
 - (void)viewDidLoad
 {
+    login=1;
     self.newsApi = [[ISSTLifeApi alloc]init];
     self.newsApi.webApiDelegate = self;
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -88,6 +91,21 @@ static int  loadPage = 1;
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
     [self setupRefresh];
+    
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
+    {
+        if(pushtag)
+        {
+            NSLog(@"push to newscontroller now");
+            
+            NSLog(@"push tag=%d",pushtag);
+            
+            [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:YES];
+            NSLog(@"push to center");
+        }
+    }
+
     
 }
 
@@ -121,6 +139,20 @@ static int  loadPage = 1;
     
     // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
     [self.newsArrayTableView headerEndRefreshing];
+    
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+    {
+        if(pushtag)
+        {
+            NSLog(@"push to newscontroller now");
+            
+            NSLog(@"push tag=%d",pushtag);
+            
+            [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:YES];
+            NSLog(@"push to center");
+        }
+    }
+
 }
 
 

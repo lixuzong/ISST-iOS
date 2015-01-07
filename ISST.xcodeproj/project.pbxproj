@@ -30,6 +30,15 @@
 		18B6199A1955B94500F4ACC7 /* ISSTSameCitiesParse.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B619991955B94500F4ACC7 /* ISSTSameCitiesParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18B8047119567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18B8046F19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m */; };
 		18B8047219567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18B8047019567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib */; };
+		18C31D111A5D5689006DE02F /* BPushConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 18C31D101A5D5689006DE02F /* BPushConfig.plist */; };
+		18C31D131A5D569C006DE02F /* libBPush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18C31D121A5D569C006DE02F /* libBPush.a */; };
+		18C31D221A5D56AB006DE02F /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C31D161A5D56AB006DE02F /* Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18C31D231A5D56AB006DE02F /* BPushClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C31D191A5D56AB006DE02F /* BPushClass.m */; };
+		18C31D241A5D56AB006DE02F /* GzipCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C31D1B1A5D56AB006DE02F /* GzipCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18C31D251A5D56AB006DE02F /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C31D1D1A5D56AB006DE02F /* JSONKit.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18C31D261A5D56AB006DE02F /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C31D1F1A5D56AB006DE02F /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		18C31D301A5D5BC0006DE02F /* ISSTPushViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C31D2D1A5D5BC0006DE02F /* ISSTPushViewController.xib */; };
+		18C31D311A5D5BC0006DE02F /* ISSTPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C31D2E1A5D5BC0006DE02F /* ISSTPushViewController.m */; };
 		252ACB711967B00600D2E5A1 /* ISSTTasksSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 252ACB701967B00600D2E5A1 /* ISSTTasksSurveyViewController.m */; };
 		252ACB741967B44C00D2E5A1 /* ISSTSurveyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 252ACB731967B44C00D2E5A1 /* ISSTSurveyModel.m */; };
 		252D344819639B4300B5EE5D /* fs_main_login_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 252D344719639B4300B5EE5D /* fs_main_login_selected@2x.png */; };
@@ -373,6 +382,23 @@
 		18B8046E19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTSameCityActivityDetailViewController.h; sourceTree = "<group>"; };
 		18B8046F19567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTSameCityActivityDetailViewController.m; sourceTree = "<group>"; };
 		18B8047019567EEE005BBF4A /* ISSTSameCityActivityDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTSameCityActivityDetailViewController.xib; sourceTree = "<group>"; };
+		18C31D0F1A5D5689006DE02F /* BPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPush.h; sourceTree = "<group>"; };
+		18C31D101A5D5689006DE02F /* BPushConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = BPushConfig.plist; sourceTree = "<group>"; };
+		18C31D121A5D569C006DE02F /* libBPush.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libBPush.a; sourceTree = "<group>"; };
+		18C31D151A5D56AB006DE02F /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		18C31D161A5D56AB006DE02F /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		18C31D171A5D56AB006DE02F /* Base64Defines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Defines.h; sourceTree = "<group>"; };
+		18C31D181A5D56AB006DE02F /* BPushClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BPushClass.h; sourceTree = "<group>"; };
+		18C31D191A5D56AB006DE02F /* BPushClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BPushClass.m; sourceTree = "<group>"; };
+		18C31D1A1A5D56AB006DE02F /* GzipCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GzipCompressor.h; sourceTree = "<group>"; };
+		18C31D1B1A5D56AB006DE02F /* GzipCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GzipCompressor.m; sourceTree = "<group>"; };
+		18C31D1C1A5D56AB006DE02F /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		18C31D1D1A5D56AB006DE02F /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		18C31D1E1A5D56AB006DE02F /* OpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenUDID.h; sourceTree = "<group>"; };
+		18C31D1F1A5D56AB006DE02F /* OpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenUDID.m; sourceTree = "<group>"; };
+		18C31D2D1A5D5BC0006DE02F /* ISSTPushViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTPushViewController.xib; sourceTree = SOURCE_ROOT; };
+		18C31D2E1A5D5BC0006DE02F /* ISSTPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTPushViewController.m; sourceTree = SOURCE_ROOT; };
+		18C31D2F1A5D5BC0006DE02F /* ISSTPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTPushViewController.h; sourceTree = SOURCE_ROOT; };
 		252ACB6F1967B00600D2E5A1 /* ISSTTasksSurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTTasksSurveyViewController.h; path = UserCenter/ISSTTasksSurveyViewController.h; sourceTree = SOURCE_ROOT; };
 		252ACB701967B00600D2E5A1 /* ISSTTasksSurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTTasksSurveyViewController.m; path = UserCenter/ISSTTasksSurveyViewController.m; sourceTree = SOURCE_ROOT; };
 		252ACB721967B44C00D2E5A1 /* ISSTSurveyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTSurveyModel.h; path = Models/ISSTSurveyModel.h; sourceTree = "<group>"; };
@@ -854,6 +880,7 @@
 				6FF29B581A08C6920024F69E /* CoreFoundation.framework in Frameworks */,
 				6FF29B561A08C67E0024F69E /* CFNetwork.framework in Frameworks */,
 				AEE2848418DB04CC00BEF1A9 /* QuartzCore.framework in Frameworks */,
+				18C31D131A5D569C006DE02F /* libBPush.a in Frameworks */,
 				AEE2844418DADAA000BEF1A9 /* CoreGraphics.framework in Frameworks */,
 				AEE2844618DADAA000BEF1A9 /* UIKit.framework in Frameworks */,
 				AEE2844218DADAA000BEF1A9 /* Foundation.framework in Frameworks */,
@@ -945,6 +972,24 @@
 				5CA8559E1A492DB200EFB8BA /* ISSTMyRecommendCell.xib */,
 			);
 			name = TableViewCell;
+			sourceTree = "<group>";
+		};
+		18C31D141A5D56AB006DE02F /* opensource */ = {
+			isa = PBXGroup;
+			children = (
+				18C31D151A5D56AB006DE02F /* Base64.h */,
+				18C31D161A5D56AB006DE02F /* Base64.m */,
+				18C31D171A5D56AB006DE02F /* Base64Defines.h */,
+				18C31D181A5D56AB006DE02F /* BPushClass.h */,
+				18C31D191A5D56AB006DE02F /* BPushClass.m */,
+				18C31D1A1A5D56AB006DE02F /* GzipCompressor.h */,
+				18C31D1B1A5D56AB006DE02F /* GzipCompressor.m */,
+				18C31D1C1A5D56AB006DE02F /* JSONKit.h */,
+				18C31D1D1A5D56AB006DE02F /* JSONKit.m */,
+				18C31D1E1A5D56AB006DE02F /* OpenUDID.h */,
+				18C31D1F1A5D56AB006DE02F /* OpenUDID.m */,
+			);
+			path = opensource;
 			sourceTree = "<group>";
 		};
 		334D69CD194BF18B0018C521 /* ThirdPartyLibrary */ = {
@@ -1404,6 +1449,10 @@
 		AEE2843518DADAA000BEF1A9 = {
 			isa = PBXGroup;
 			children = (
+				18C31D121A5D569C006DE02F /* libBPush.a */,
+				18C31D0F1A5D5689006DE02F /* BPush.h */,
+				18C31D101A5D5689006DE02F /* BPushConfig.plist */,
+				18C31D141A5D56AB006DE02F /* opensource */,
 				1824E51019CAC79D00BDC38C /* scrollView */,
 				334D69CD194BF18B0018C521 /* ThirdPartyLibrary */,
 				182B520519441E28006F213C /* CommonView */,
@@ -1694,6 +1743,9 @@
 				33B9F10B194D4FF4004F6546 /* ChangeUserInfoVC.xib */,
 				33B9F10C194D4FF4004F6546 /* ISSTUserCenterViewController.h */,
 				33B9F10D194D4FF4004F6546 /* ISSTUserCenterViewController.m */,
+				18C31D2D1A5D5BC0006DE02F /* ISSTPushViewController.xib */,
+				18C31D2E1A5D5BC0006DE02F /* ISSTPushViewController.m */,
+				18C31D2F1A5D5BC0006DE02F /* ISSTPushViewController.h */,
 				33B9F10E194D4FF4004F6546 /* ISSTUserCenterViewController.xib */,
 				33B9F10F194D4FF4004F6546 /* ISSTUserInfoViewController.h */,
 				33B9F110194D4FF4004F6546 /* ISSTUserInfoViewController.m */,
@@ -1906,6 +1958,7 @@
 				6F8900DA1A24E67C00EBE758 /* neitui.png in Resources */,
 				5CA855A01A492DB200EFB8BA /* ISSTMyRecommendCell.xib in Resources */,
 				6F8900E21A24E67C00EBE758 /* zaixiaohuodong.png in Resources */,
+				18C31D111A5D5689006DE02F /* BPushConfig.plist in Resources */,
 				58653D2018FB86DF005C6F74 /* ISSTSelectFactorsViewController.xib in Resources */,
 				58653D1A18FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.xib in Resources */,
 				AEE2844C18DADAA000BEF1A9 /* InfoPlist.strings in Resources */,
@@ -1918,6 +1971,7 @@
 				6FB882291A336B9D00668AD6 /* ISSTTaskDetailViewController.xib in Resources */,
 				6FB8821B1A3337C500668AD6 /* menu_backgroud.jpg in Resources */,
 				AE9052A718EEEE6D0088742D /* ISSTNewsDetailViewController.xib in Resources */,
+				18C31D301A5D5BC0006DE02F /* ISSTPushViewController.xib in Resources */,
 				AE04DD2F18F8255F002A2A64 /* combo_bg.png in Resources */,
 				581C8D6518F03B050006740B /* ISSTStudyDetailViewController.xib in Resources */,
 				5CA8559B1A492CE500EFB8BA /* ISSTMyRecommendViewController.xib in Resources */,
@@ -2103,11 +2157,14 @@
 				6FA231C51A28D9420028226B /* UIImage+GIF.m in Sources */,
 				6F85C3DA1A2C4C380017EB0C /* AFURLConnectionOperation.m in Sources */,
 				58653D1F18FB86DF005C6F74 /* ISSTSelectFactorsViewController.m in Sources */,
+				18C31D261A5D56AB006DE02F /* OpenUDID.m in Sources */,
+				18C31D231A5D56AB006DE02F /* BPushClass.m in Sources */,
 				AE85F9BE1901635100FCD67D /* ISSTInternshipViewController.m in Sources */,
 				1824E51619CAC79D00BDC38C /* NSTimer+Addition.m in Sources */,
 				6FA231C21A28D9420028226B /* SDWebImageManager.m in Sources */,
 				AE014AD218EFAA1D0009E008 /* ISSTRestaurantsParse.m in Sources */,
 				6F9DDD8D1A2F22B400F63F26 /* UIViewController+RESideMenu.m in Sources */,
+				18C31D221A5D56AB006DE02F /* Base64.m in Sources */,
 				AE85F9E019028C3400FCD67D /* ISSTPostCommentsViewController.m in Sources */,
 				AEFDC75F18DED14F00D7FDAA /* ISSTLoginApi.m in Sources */,
 				6F5B05E21A3209710052CE63 /* ISSTSameCityFriendViewController.m in Sources */,
@@ -2140,6 +2197,8 @@
 				AEA238CA18F52B280030F196 /* ISSTContactModel.m in Sources */,
 				AE04DD4618F82A2C002A2A64 /* AppCache.m in Sources */,
 				6F51A73719E6804800C0D5CA /* passValue.m in Sources */,
+				18C31D251A5D56AB006DE02F /* JSONKit.m in Sources */,
+				18C31D241A5D56AB006DE02F /* GzipCompressor.m in Sources */,
 				334D69EA194BF3B40018C521 /* MoreTableViewCell.m in Sources */,
 				6FA231BF1A28D9420028226B /* SDWebImageDecoder.m in Sources */,
 				AE85F9BC1901635100FCD67D /* ISSTICommonCell.m in Sources */,
@@ -2176,6 +2235,7 @@
 				6F85C3D91A2C4C380017EB0C /* AFSecurityPolicy.m in Sources */,
 				6F85C3D51A2C4C380017EB0C /* AFHTTPRequestOperation.m in Sources */,
 				6F85C3D81A2C4C380017EB0C /* AFNetworkReachabilityManager.m in Sources */,
+				18C31D311A5D5BC0006DE02F /* ISSTPushViewController.m in Sources */,
 				58653D1918FB86DF005C6F74 /* ISSTAddressBookDetailTableViewCell.m in Sources */,
 				252D348619656B8B00B5EE5D /* ISSTExperienceModel.m in Sources */,
 				AEE2847918DAE24A00BEF1A9 /* ISSTRevealViewController.m in Sources */,
@@ -2328,7 +2388,10 @@
 				"HEADER_SEARCH_PATHS[arch=*]" = "";
 				INFOPLIST_FILE = "ISST/ISST-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -2348,7 +2411,10 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "ISST/ISST-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = "$(inherited)";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

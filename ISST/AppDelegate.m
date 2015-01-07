@@ -10,6 +10,8 @@
 #import "ISSTLoginViewController.h"
 #import "ISSTLoginApi.h"
 #import "AppCache.h"
+#import "BPush.h"
+#import "JSONKit.h"
 #import "ISSTUserModel.h"
 #import "AppDelegate.h"
 #import "ISSTContactsApi.h"
@@ -34,6 +36,50 @@
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
     
     BOOL switchValue =[[[NSUserDefaults standardUserDefaults] objectForKey:@"switchValue"]boolValue];
+    
+    
+    
+    
+    pushtag=0;
+    _foreground=0;
+    login=0;
+    
+    [BPush setupChannel:launchOptions];
+    [BPush setDelegate:self];
+    
+    
+    //注册消息
+    if
+        ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
+            
+            NSLog(@"ios8");
+            UIUserNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+            UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:myTypes categories:nil];
+            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        }
+    
+    else
+        
+        
+    {
+        NSLog(@"<=ios7");
+        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
+    }
+    
+    // 处理badge
+    if([launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey])
+    {
+        pushtag=1;
+        int badge = [UIApplication sharedApplication].applicationIconBadgeNumber;
+        NSLog(@"badge=%d",badge);
+        if(badge > 0)
+        {
+            badge--;
+            [UIApplication sharedApplication].applicationIconBadgeNumber = badge;
+        }
+    }
+
     
     if(switchValue){//如果用户选择了自动登入则直接登入到软院快讯界面
         ISSTLoginApi *userApi =[[ISSTLoginApi alloc]init];
@@ -85,6 +131,116 @@
     
 }
 
+-(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+    NSLog(@"devicetoken");
+    NSLog(@"devicetoken=%@",deviceToken);
+    [BPush registerDeviceToken:deviceToken]; // 必须 [BPush bindChannel]
+    [BPush bindChannel];
+    
+}
+
+
+
+- (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
+{
+    [application registerForRemoteNotifications];
+}
+
+
+- (void) onMethod:(NSString*)method response:(NSDictionary*)data
+{
+    if
+        ([BPushRequestMethod_Bind isEqualToString:method])
+    {
+        NSDictionary* res = [[NSDictionary alloc] initWithDictionary:data];
+        NSString *appid = [res valueForKey:BPushRequestAppIdKey];
+        NSString *userid = [res valueForKey:BPushRequestUserIdKey];
+        NSString *channelid = [res valueForKey:BPushRequestChannelIdKey];
+        int returnCode = [[res valueForKey:BPushRequestErrorCodeKey] intValue];
+        NSString *requestid = [res valueForKey:BPushRequestRequestIdKey];
+        NSLog(@"userid=%@",userid);
+        NSLog(@"channelid=%@",channelid);
+    }
+}
+
+// receive the notification
+-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
+{
+    int badge = [UIApplication sharedApplication].applicationIconBadgeNumber;
+    NSLog(@"badge=%d",badge);
+    if(badge > 0)
+    {
+        badge--;
+        [UIApplication sharedApplication].applicationIconBadgeNumber = badge;
+    }
+    pushtag=1;
+    
+    [BPush handleNotification:userInfo];
+    
+    
+    //推送从后台启动
+    if (_foreground&&login) {
+        _foreground=0;
+        NSLog(@"push to menu");
+        [self showmenu];
+    }
+    else if(login)
+    {
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"推送通知" message:@"前往看看" delegate:self cancelButtonTitle:@"下次再说" otherButtonTitles:@"好前往查看", nil];
+        [alert show];
+    }
+}
+
+// alertview event
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"clickButtonAtIndex:%d",buttonIndex);
+    if(buttonIndex==1)//yes
+    {
+        NSLog(@"push to push");
+        [self showmenu];
+    }
+    else //no
+    {
+        pushtag=0;
+    }
+}
+
+-(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
+{
+    
+    NSLog(@"push fail11111111111111111111111111111111111111");
+    NSLog(@"failed to register");
+}
+//-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+//{
+//    [BPush handleNotification:userInfo];
+//}
+
+
+-(void)showmenu
+{
+    ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
+    UINavigationController *navigationController1 = [[UINavigationController alloc] initWithRootViewController:[[ISSTNewsViewController alloc] init]];
+    LeftMenuViewController *leftMenuViewController = [[LeftMenuViewController alloc
+                                                       ] init];
+    RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navigationController1
+                                                                    leftMenuViewController:leftMenuViewController
+                                                                   rightMenuViewController:nil];  //可以自行设置右边菜单
+    
+    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"menu_backgroud.jpg"];
+    
+    sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
+    sideMenuViewController.delegate = loginViewController;
+    
+    sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
+    
+    sideMenuViewController.contentViewShadowEnabled = YES;
+    [self.navigationController pushViewController:sideMenuViewController animated: NO];
+}
+
+
 - (void)requestDataOnSuccess:(id)backToControllerData;
 {
     userModel = backToControllerData;
@@ -125,7 +281,9 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    _foreground=1;
+    NSLog(@"foreground---------");
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
