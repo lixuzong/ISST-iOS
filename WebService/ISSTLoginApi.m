@@ -38,7 +38,7 @@ const    static  int   REQUESTUSERINFO= 3;
         methodId = REQUESTLOGIN;
         datas = [[NSMutableData alloc]init];
         //MD5 secret
-        NSLog(@"%@",password);
+
         NSDictionary *md5Dic =  @{@"username": name,@"password":password};
         long long timestamp = [ISSTMD5 getTimestamp];
         NSString *token= [ISSTMD5 tokenWithDic:md5Dic andTimestamp:timestamp];
@@ -123,6 +123,7 @@ const    static  int   REQUESTUSERINFO= 3;
 {
     NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
     NSDictionary *fields = [HTTPResponse allHeaderFields];
+    NSLog(@"获取返回（状态，包头）信息");
     NSLog(@"self=%@ fields=%@",self,[fields description]);
     if ([[fields allKeys] containsObject:@"Set-Cookie"])
     {
@@ -137,6 +138,7 @@ const    static  int   REQUESTUSERINFO= 3;
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
+    NSLog(@"接收从服务器返回的数据");
     [datas appendData:data];//add data from server
 }
 //请求完成
@@ -147,7 +149,8 @@ const    static  int   REQUESTUSERINFO= 3;
         userLoginParse =[[UserLoginParse alloc]init];
     }
       NSDictionary *dics = [userLoginParse infoSerialization:datas];
-    NSLog(@"self=%@\ndics=%@",self,dics);
+      
+    NSLog(@"self=%@,解析数据为dictionary成功",self);
     switch (methodId) {
         case REQUESTLOGIN:
         case REQUESTUSERINFO:

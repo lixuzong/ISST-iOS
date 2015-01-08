@@ -36,6 +36,7 @@
 {
      ISSTUserModel *user = [[[ISSTUserModel alloc]init] autorelease];
   
+    NSLog(@"把dictionary里面的内容转化为usermodel类型");
      userInfo = [super.dict objectForKey:@"body"];//get the user info content
     user.userId     = [[userInfo objectForKey:@"id"] intValue];
     user.userName   = [userInfo objectForKey:@"username"];

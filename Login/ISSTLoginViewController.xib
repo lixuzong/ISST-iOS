@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -58,7 +58,7 @@
                 <button opaque="NO" alpha="0.5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7wm-nC-15l">
                     <rect key="frame" x="41" y="375" width="238" height="40"/>
                     <state key="normal">
-                        <color key="titleColor" patternImage="D1209A92-8DF5-4841-A4BB-A1E6BC302947" colorSpace="pattern"/>
+                        <color key="titleColor" patternImage="ADC5656A-2C8F-4934-964A-D5D88D138B29" colorSpace="pattern"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -71,7 +71,7 @@
     </objects>
     <resources>
         <image name="5login_bg.jpg" width="640" height="1136"/>
-        <image name="D1209A92-8DF5-4841-A4BB-A1E6BC302947" width="512" height="512">
+        <image name="ADC5656A-2C8F-4934-964A-D5D88D138B29" width="512" height="512">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGTk9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEQcI
 ExQZHh8nKzIzNDw/QkhLVSRudWxs1QkKCwwNDg8QERJWTlNTaXplViRjbGFzc1xOU0ltYWdlRmxhZ3NW
@@ -17612,7 +17612,7 @@ tc42zrbPN8+40DnQutE80b7SP9LB00TTxtRJ1MvVTtXR1lXW2Ndc1+DYZNjo2WzZ8dp22vvbgNwF3Ird
 EN2W3hzeot8p36/gNuC94UThzOJT4tvjY+Pr5HPk/OWE5g3mlucf56noMui86Ubp0Opb6uXrcOv77Ibt
 Ee2c7ijutO9A78zwWPDl8XLx//KM8xnzp/Q09ML1UPXe9m32+/eK+Bn4qPk4+cf6V/rn+3f8B/yY/Sn9
 uv5L/tz/bf//gAjSLC0uL1okY2xhc3NuYW1lWCRjbGFzc2VzXU5TTXV0YWJsZURhdGGjLjAxVk5TRGF0
-YVhOU09iamVjdF8QFnt7MCwgMH0sIHsxMDI0LCAxMDI0fX1fEBZ7ezAsIDB9LCB7MTAyNCwgMTAyNH19
+YVhOU09iamVjdF8QFnt7MCwgMH0sIHsyMDQ4LCAyMDQ4fX1fEBZ7ezAsIDB9LCB7MjA0OCwgMjA0OH19
 0ywtNTY3OlskY2xhc3NoaW50c18QFE5TQ0dJbWFnZVNuYXBzaG90UmVwozg5MV8QFE5TQ0dJbWFnZVNu
 YXBzaG90UmVwWk5TSW1hZ2VSZXChO18QEE5TQ2FjaGVkSW1hZ2VSZXDSLC09PldOU0FycmF5oj0x0iwt
 QEFeTlNNdXRhYmxlQXJyYXmjQD0x00NECkVGR1dOU1doaXRlXE5TQ29sb3JTcGFjZUQwIDAAEAOAD9Is

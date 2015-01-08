@@ -196,9 +196,9 @@ static int  loadPage = 1;
 {
     newsModel =[[ISSTCampusNewsModel alloc]init];
     newsModel = [newsArray objectAtIndex:indexPath.row];
-    NSLog(@"666666");
-    NSLog(@"%@",newsModel);
-    NSLog(@"%lu",(unsigned long)newsArray.count);
+    
+//    NSLog(@"%@",newsModel);
+    NSLog(@"num of news=%lu",(unsigned long)newsArray.count);
     
     ISSTCommonCell *cell=(ISSTCommonCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     if (cell == nil) {

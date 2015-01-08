@@ -56,7 +56,7 @@
                        
                        unarchiveObjectWithFile:archivePath];
     
-    NSLog(@"%@",cachedItems);
+    NSLog(@"cache:%@",cachedItems);
     //    //=================NSKeyedArchiver========================
     //    NSString *saveStr1 = @"我是";
     //    NSString *saveStr2 = @"数据";

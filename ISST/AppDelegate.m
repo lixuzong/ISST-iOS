@@ -35,19 +35,14 @@
     
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
     
-//    _navigationController = [[UINavigationController alloc]initWithRootViewController:[[ISSTLoginViewController alloc]init]];
-//    ISSTLoginViewController *loginViewController = [[ISSTLoginViewController alloc] init];
-//    
-//    _navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
-//
     BOOL switchValue =[[[NSUserDefaults standardUserDefaults] objectForKey:@"switchValue"]boolValue];
     
-    
-    
-    
+    //初始化（推送，后台，登陆）标识。
     pushtag=0;
     _foreground=0;
     login=0;
+    
+    
     
     [BPush setupChannel:launchOptions];
     [BPush setDelegate:self];
@@ -57,7 +52,7 @@
     if
         ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0) {
             
-            NSLog(@"ios8");
+            NSLog(@"系统版本>=ios8");
             UIUserNotificationType myTypes = UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
             UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:myTypes categories:nil];
             [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
@@ -67,7 +62,7 @@
         
         
     {
-        NSLog(@"<=ios7");
+        NSLog(@"系统版本<=ios7");
         UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
     }
@@ -94,8 +89,8 @@
         userApi.webApiDelegate = self;
         
         NSString *password1=[[NSUserDefaults standardUserDefaults] objectForKey:@"passwordText"];
-
-        NSLog(@"%@",userModel.name);
+ 
+        NSLog(@"name:%@",userModel.name);
         [userApi requestLoginName:userModel.name andPassword:password1];
         
         UINavigationController *navigationController1 = [[UINavigationController alloc] initWithRootViewController:[[ISSTNewsViewController alloc] init]];
@@ -138,7 +133,7 @@
 
 -(void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
-    NSLog(@"devicetoken");
+    NSLog(@"get the devicetoken");
     NSLog(@"devicetoken=%@",deviceToken);
     [BPush registerDeviceToken:deviceToken]; // 必须 [BPush bindChannel]
     [BPush bindChannel];
@@ -184,15 +179,18 @@
     [BPush handleNotification:userInfo];
     
     
-    //推送从后台启动
+    //push start from background
     if (_foreground&&login) {
         _foreground=0;
-        NSLog(@"push to menu");
+        NSLog(@"从后台启动推送");
         [self showmenu];
     }
+    
+    //push start from foreground
     else if(login)
     {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"推送通知" message:@"前往看看" delegate:self cancelButtonTitle:@"下次再说" otherButtonTitles:@"好前往查看", nil];
+        
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"推送通知" message:@"content of push" delegate:self cancelButtonTitle:@"下次再说" otherButtonTitles:@"好前往查看", nil];
         [alert show];
     }
 }
@@ -200,33 +198,31 @@
 // alertview event
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    NSLog(@"clickButtonAtIndex:%d",buttonIndex);
-    if(buttonIndex==1)//yes
+    NSLog(@"clickButtonAtIndex:%ld",(long)buttonIndex);
+    if(buttonIndex==1)//click ok
     {
-        NSLog(@"push to push");
+        NSLog(@"推送从前台启动");
         [self showmenu];
     }
-    else //no
+    else //click cancel
     {
-        pushtag=0;
+        pushtag=0; //把推送标识设为0；
     }
 }
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
-    
-    NSLog(@"push fail11111111111111111111111111111111111111");
-    NSLog(@"failed to register");
+        NSLog(@"failed to register push service");
 }
+
 //-(void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 //{
 //    [BPush handleNotification:userInfo];
 //}
 
-
+// show the homepage skipping the login page
 -(void)showmenu
 {
-//    ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
     UINavigationController *navigationController1 = [[UINavigationController alloc] initWithRootViewController:[[ISSTNewsViewController alloc] init]];
     LeftMenuViewController *leftMenuViewController = [[LeftMenuViewController alloc
                                                        ] init];
@@ -242,9 +238,9 @@
     sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
     
     sideMenuViewController.contentViewShadowEnabled = YES;
-    NSLog(@"show menu appdelegate");
+   
 //   [_navigationController pushViewController:sideMenuViewController animated: NO];//竟然没效果
-    NSLog(@"%@",self.navigationController);
+    NSLog(@"self.navigationController%@",self.navigationController);
     _window.rootViewController = sideMenuViewController ;
       [_window makeKeyAndVisible];
     
@@ -292,7 +288,7 @@
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     _foreground=1;
-    NSLog(@"foreground---------");
+    NSLog(@"enter foreground---------");
 
 }
 

@@ -45,7 +45,7 @@
    // NSLog(@"%@",dict);
     campusNewsArray = [super.dict objectForKey:@"body"] ;
     int  count = [campusNewsArray count];
-    NSLog(@"count=%d",count);
+    NSLog(@"返回的新闻列表行数count=%d",count);
     for (int i=0; i<count; i++)
     {
         
@@ -65,7 +65,7 @@
         
         campusNews.userId     = [[[campusNewsArray objectAtIndex:i ] objectForKey:@"userId"]intValue];
         campusNews.categoryId     = [[[campusNewsArray objectAtIndex:i ] objectForKey:@"categoryId"]intValue];
-        NSLog(@"%@",userInfo);
+//        NSLog(@"%@",userInfo);
         if(campusNews.userId>0)
         {
         campusNews.userModel=(NSDictionary *)[[campusNewsArray objectAtIndex:i]objectForKey:@"user"];

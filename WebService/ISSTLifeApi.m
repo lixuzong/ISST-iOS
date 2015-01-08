@@ -163,7 +163,7 @@ const    static  int   EXPERIENCE  =5;
     NSDictionary *dics =[news infoSerialization:datas];
     NSArray *array ;
     id backData;
-    
+    NSLog(@"self=%@,解析life数据为dictionary成功",self);
     switch (methodId) {
         case CAMPUSNEWS:
         case WIKIS:
