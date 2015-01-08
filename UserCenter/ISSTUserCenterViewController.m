@@ -99,7 +99,7 @@ NSArray *imageForRowArray= nil;
         pushtag=0;
         //        [UIView beginAnimations:@"push" context:nil];
         //        [UIView setAnimationDuration:0.5];
-        [self.navigationController pushViewController:[[ISSTPushViewController alloc]init] animated:YES];
+        [self.navigationController pushViewController:[[ISSTPushViewController alloc]init] animated:NO];
         //        [UIView commitAnimations];
     }
 

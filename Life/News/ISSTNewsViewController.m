@@ -101,7 +101,7 @@ static int  loadPage = 1;
             
             NSLog(@"push tag=%d",pushtag);
             
-            [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:YES];
+            [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:NO];
             NSLog(@"push to center");
         }
     }
@@ -148,7 +148,7 @@ static int  loadPage = 1;
             
             NSLog(@"push tag=%d",pushtag);
             
-            [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:YES];
+            [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:NO];
             NSLog(@"push to center");
         }
     }

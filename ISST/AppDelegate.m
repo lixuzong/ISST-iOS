@@ -35,6 +35,11 @@
     
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
     
+//    _navigationController = [[UINavigationController alloc]initWithRootViewController:[[ISSTLoginViewController alloc]init]];
+//    ISSTLoginViewController *loginViewController = [[ISSTLoginViewController alloc] init];
+//    
+//    _navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController];
+//
     BOOL switchValue =[[[NSUserDefaults standardUserDefaults] objectForKey:@"switchValue"]boolValue];
     
     
@@ -221,7 +226,7 @@
 
 -(void)showmenu
 {
-    ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
+//    ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
     UINavigationController *navigationController1 = [[UINavigationController alloc] initWithRootViewController:[[ISSTNewsViewController alloc] init]];
     LeftMenuViewController *leftMenuViewController = [[LeftMenuViewController alloc
                                                        ] init];
@@ -232,12 +237,17 @@
     sideMenuViewController.backgroundImage = [UIImage imageNamed:@"menu_backgroud.jpg"];
     
     sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
-    sideMenuViewController.delegate = loginViewController;
+    sideMenuViewController.delegate = self;
     
     sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
     
     sideMenuViewController.contentViewShadowEnabled = YES;
-    [self.navigationController pushViewController:sideMenuViewController animated: NO];
+    NSLog(@"show menu appdelegate");
+//   [_navigationController pushViewController:sideMenuViewController animated: NO];//竟然没效果
+    NSLog(@"%@",self.navigationController);
+    _window.rootViewController = sideMenuViewController ;
+      [_window makeKeyAndVisible];
+    
 }
 
 
