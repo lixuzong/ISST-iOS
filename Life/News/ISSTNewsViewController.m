@@ -93,18 +93,18 @@ static int  loadPage = 1;
     [self setupRefresh];
     
     
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
-    {
-        if(pushtag)
-        {
-            NSLog(@"push to newscontroller now");
-            
-            NSLog(@"push tag=%d",pushtag);
-            
-            [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:NO];
-            NSLog(@"push to center");
-        }
-    }
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
+//    {
+//        if(pushtag)
+//        {
+//            NSLog(@"push to newscontroller now");
+//            
+//            NSLog(@"push tag=%d",pushtag);
+//            
+//            [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:NO];
+//            NSLog(@"push to center");
+//        }
+//    }
 
     
 }
@@ -139,19 +139,27 @@ static int  loadPage = 1;
     
     // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
     [self.newsArrayTableView headerEndRefreshing];
-    
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+    if(pushtag)
     {
-        if(pushtag)
-        {
-            NSLog(@"push to newscontroller now");
-            
-            NSLog(@"push tag=%d",pushtag);
-            
-            [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:NO];
-            NSLog(@"push to center");
-        }
+        NSLog(@"push to newscontroller now");
+        
+        NSLog(@"push tag=%d",pushtag);
+        
+        [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:NO];
+        NSLog(@"push to center");
     }
+//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+//    {
+//        if(pushtag)
+//        {
+//            NSLog(@"push to newscontroller now");
+//            
+//            NSLog(@"push tag=%d",pushtag);
+//            
+//            [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:NO];
+//            NSLog(@"push to center");
+//        }
+//    }
 
 }
 
@@ -218,7 +226,9 @@ static int  loadPage = 1;
     view.backgroundColor = [UIColor clearColor];
     [tableView setTableFooterView:view];
     
+
     return cell;
+    
 }
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

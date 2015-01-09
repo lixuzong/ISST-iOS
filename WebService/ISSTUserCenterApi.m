@@ -265,6 +265,24 @@
     }
 }
 
+-(void)requestPushListWithPage:(int)page pagSize:(int)pageSize
+{
+    methodId  =PushList;
+    datas=[[NSMutableData alloc] init];
+    if (NetworkReachability.isConnectionAvailable)
+    {
+        NSLog(@"############################requestPushList################################");
+        NSString *subUrl=[NSString stringWithFormat:@"/api/messages?page=%i&pageSize=%i",page,pageSize];
+        [super requestWithSuburl:subUrl Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
+    }
+    else
+    {
+        NSLog(@"############################requestError################################");
+        [self handleConnectionUnAvailable];
+    }
+}
+
+
 
 #pragma mark -
 #pragma mark NSURLConnectionDelegate  methods
@@ -524,7 +542,36 @@
         }
             break;
             
+            case PushList:
+        {
+            dics = [tasksParse infoSerialization:datas];
+            NSLog(@"pushlist=%@",dics);
+            if (dics&&[dics count]) {
+                int status=[tasksParse getStatus];
+                if (0==status) {
+                    NSLog(@"status=0");
+                    NSArray *pushArray=[tasksParse pushListParse];
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)]) {
+                        [self.webApiDelegate requestDataOnSuccess:pushArray];
+                        
+                    }
+                }else if(1==status)
+                {
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)]) {
+                        [self.webApiDelegate updateUserLogin];
+                    }
+                }
+            }
+            else
+            {
+                [self handleConnectionUnAvailable];
+            }
             
+        }
+            
+            break;
+
+    
     }
 }
 

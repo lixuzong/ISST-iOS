@@ -11,6 +11,7 @@
 #import "ISSTExperienceModel.h"
 #import "ISSTSurveyModel.h"
 #import "ISSTRecommendModel.h"
+#import "ISSTPushModel.h"
 @interface ISSTTasksParse()
 {
     NSMutableArray      *_tasksArray;
@@ -82,6 +83,26 @@
         model.updatedAt  = [dateFormatter1 stringFromDate:datePT1];
         [array addObject:model];
     }];
+    return array;
+}
+-(id)pushListParse{
+    _tasksArray=[super.dict objectForKey:@"body"];
+    NSLog(@"#####################taskarryofPush##########################%@",_tasksArray);
+     NSMutableArray *array=[NSMutableArray new];
+    [_tasksArray enumerateObjectsUsingBlock:^(id obj,NSUInteger idx,BOOL *stop){
+        ISSTPushModel *model=[[ISSTPushModel alloc]init];
+        model.Id=[[[_tasksArray objectAtIndex:idx] objectForKey:@"id"] floatValue];
+        model.title=[[_tasksArray objectAtIndex:idx] objectForKey:@"title"];
+        model.content=[[_tasksArray objectAtIndex:idx] objectForKey:@"content"];
+        
+        long long updatedAt = [[[_tasksArray objectAtIndex:idx] objectForKey:@"updatedAt"]longLongValue]/1000;
+        NSDate  *datePT1 = [NSDate dateWithTimeIntervalSince1970:updatedAt];
+        NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
+        [dateFormatter1 setDateFormat:@"yyyy-MM-dd"];
+        model.updatedAt  = [dateFormatter1 stringFromDate:datePT1];
+        [array addObject:model];
+    }];
+    NSLog(@"%@",array);
     return array;
 }
 

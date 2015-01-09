@@ -39,6 +39,7 @@
 		18C31D261A5D56AB006DE02F /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C31D1F1A5D56AB006DE02F /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18C31D301A5D5BC0006DE02F /* ISSTPushViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C31D2D1A5D5BC0006DE02F /* ISSTPushViewController.xib */; };
 		18C31D311A5D5BC0006DE02F /* ISSTPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C31D2E1A5D5BC0006DE02F /* ISSTPushViewController.m */; };
+		18DD00941A5FB16100699426 /* ISSTPushModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DD00931A5FB16100699426 /* ISSTPushModel.m */; };
 		252ACB711967B00600D2E5A1 /* ISSTTasksSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 252ACB701967B00600D2E5A1 /* ISSTTasksSurveyViewController.m */; };
 		252ACB741967B44C00D2E5A1 /* ISSTSurveyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 252ACB731967B44C00D2E5A1 /* ISSTSurveyModel.m */; };
 		252D344819639B4300B5EE5D /* fs_main_login_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 252D344719639B4300B5EE5D /* fs_main_login_selected@2x.png */; };
@@ -399,6 +400,8 @@
 		18C31D2D1A5D5BC0006DE02F /* ISSTPushViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTPushViewController.xib; sourceTree = SOURCE_ROOT; };
 		18C31D2E1A5D5BC0006DE02F /* ISSTPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTPushViewController.m; sourceTree = SOURCE_ROOT; };
 		18C31D2F1A5D5BC0006DE02F /* ISSTPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTPushViewController.h; sourceTree = SOURCE_ROOT; };
+		18DD00921A5FB16100699426 /* ISSTPushModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTPushModel.h; sourceTree = "<group>"; };
+		18DD00931A5FB16100699426 /* ISSTPushModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTPushModel.m; sourceTree = "<group>"; };
 		252ACB6F1967B00600D2E5A1 /* ISSTTasksSurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTTasksSurveyViewController.h; path = UserCenter/ISSTTasksSurveyViewController.h; sourceTree = SOURCE_ROOT; };
 		252ACB701967B00600D2E5A1 /* ISSTTasksSurveyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISSTTasksSurveyViewController.m; path = UserCenter/ISSTTasksSurveyViewController.m; sourceTree = SOURCE_ROOT; };
 		252ACB721967B44C00D2E5A1 /* ISSTSurveyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTSurveyModel.h; path = Models/ISSTSurveyModel.h; sourceTree = "<group>"; };
@@ -1676,6 +1679,8 @@
 				252D348519656B8B00B5EE5D /* ISSTExperienceModel.m */,
 				252D348719656C3200B5EE5D /* ISSTRecommendModel.h */,
 				252D348819656C3200B5EE5D /* ISSTRecommendModel.m */,
+				18DD00921A5FB16100699426 /* ISSTPushModel.h */,
+				18DD00931A5FB16100699426 /* ISSTPushModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -2089,6 +2094,7 @@
 				6FA9BFCB1A0A5F590074B02B /* EGORefreshTableHeaderView.h in Sources */,
 				252ACB741967B44C00D2E5A1 /* ISSTSurveyModel.m in Sources */,
 				182B520919445AFD006F213C /* ISSTAddressBookViewController.m in Sources */,
+				18DD00941A5FB16100699426 /* ISSTPushModel.m in Sources */,
 				252D348919656C3200B5EE5D /* ISSTRecommendModel.m in Sources */,
 				182B520719445AAE006F213C /* ISSTRestaurantDetailViewController.m in Sources */,
 				6F9DDD8B1A2F22B400F63F26 /* RECommonFunctions.m in Sources */,

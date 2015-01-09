@@ -22,5 +22,6 @@
 -(NSString*)tasksMessageParse;
 
 -(id)myRecommendListParse;
+-(id)pushListParse;
 
 @end

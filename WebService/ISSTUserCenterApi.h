@@ -19,7 +19,8 @@ typedef NS_ENUM(NSInteger, MethodType)
     PostedSurvey= 6,
     PostExperience= 7,
     PostRecommend=8,
-    RecommendList=9
+    RecommendList=9,
+    PushList=10
 };
 @interface ISSTUserCenterApi : ISSTApi <
 ISSTWebApiDelegate,NSURLConnectionDataDelegate>
@@ -70,4 +71,11 @@ ISSTWebApiDelegate,NSURLConnectionDataDelegate>
  参数：
  ****/
 -(void) requestRecommendListWithPage:(int)page pageSize:(int)pageSize;
+/****
+ 2014.1.9
+ 创建：yu
+ 获取推送消息列表
+ 参数：page ：pageSize
+ ****/
+-(void) requestPushListWithPage:(int)page pagSize:(int)pageSize;
 @end

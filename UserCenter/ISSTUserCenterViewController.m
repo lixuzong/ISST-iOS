@@ -100,6 +100,7 @@ NSArray *imageForRowArray= nil;
         //        [UIView beginAnimations:@"push" context:nil];
         //        [UIView setAnimationDuration:0.5];
         [self.navigationController pushViewController:[[ISSTPushViewController alloc]init] animated:NO];
+//        [self.navigationController pushViewController:[[ISSTMyExperienceViewController alloc]init] animated:NO];
         //        [UIView commitAnimations];
     }
 
