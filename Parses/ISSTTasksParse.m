@@ -63,7 +63,6 @@
 
 -(id)myRecommendListParse{
     _tasksArray=[super.dict objectForKey:@"body"];
-    NSLog(@"#####################taskarry##########################%@",_tasksArray);
     NSMutableArray *array=[NSMutableArray new];
     [_tasksArray enumerateObjectsUsingBlock:^(id obj,NSUInteger idx,BOOL *stop){
         ISSTRecommendModel *model=[[ISSTRecommendModel alloc] init];
@@ -77,6 +76,7 @@
                             objectForKey:@"description"];
         
         long long updatedAt = [[[_tasksArray objectAtIndex:idx] objectForKey:@"updatedAt"]longLongValue]/1000;
+        NSLog(@"++++++++++++++%lld++++++++++++",updatedAt);
         NSDate  *datePT1 = [NSDate dateWithTimeIntervalSince1970:updatedAt];
         NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
         [dateFormatter1 setDateFormat:@"yyyy-MM-dd"];
@@ -87,7 +87,6 @@
 }
 -(id)pushListParse{
     _tasksArray=[super.dict objectForKey:@"body"];
-    NSLog(@"#####################taskarryofPush##########################%@",_tasksArray);
      NSMutableArray *array=[NSMutableArray new];
     [_tasksArray enumerateObjectsUsingBlock:^(id obj,NSUInteger idx,BOOL *stop){
         ISSTPushModel *model=[[ISSTPushModel alloc]init];
@@ -95,7 +94,7 @@
         model.title=[[_tasksArray objectAtIndex:idx] objectForKey:@"title"];
         model.content=[[_tasksArray objectAtIndex:idx] objectForKey:@"content"];
         
-        long long updatedAt = [[[_tasksArray objectAtIndex:idx] objectForKey:@"updatedAt"]longLongValue]/1000;
+        long long updatedAt = [[[_tasksArray objectAtIndex:idx] objectForKey:@"createdAt"]longLongValue]/1000;
         NSDate  *datePT1 = [NSDate dateWithTimeIntervalSince1970:updatedAt];
         NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
         [dateFormatter1 setDateFormat:@"yyyy-MM-dd"];

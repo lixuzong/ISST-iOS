@@ -255,12 +255,10 @@
     methodId=RecommendList;
     datas=[[NSMutableData alloc] init];
     if (NetworkReachability.isConnectionAvailable) {
-        NSLog(@"############################request################################");
         NSString *subUrl=[NSString stringWithFormat:@"/api/users/jobs/recommend?page=%i&pageSize=%i",page,pageSize];
         [super requestWithSuburl:subUrl Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
     }else
     {
-        NSLog(@"############################requestError################################");
         [self handleConnectionUnAvailable];
     }
 }
@@ -271,13 +269,11 @@
     datas=[[NSMutableData alloc] init];
     if (NetworkReachability.isConnectionAvailable)
     {
-        NSLog(@"############################requestPushList################################");
         NSString *subUrl=[NSString stringWithFormat:@"/api/messages?page=%i&pageSize=%i",page,pageSize];
         [super requestWithSuburl:subUrl Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
     }
     else
     {
-        NSLog(@"############################requestError################################");
         [self handleConnectionUnAvailable];
     }
 }
