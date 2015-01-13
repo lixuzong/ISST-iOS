@@ -8,7 +8,7 @@
 
 #import "ISSTPushViewController.h"
 #import "ISSTUserCenterApi.h"
-#import "ISSTCommonCell.h"
+#import "ISSTPushCell.h"
 #import "MJRefresh.h"
 #import "ISSTUserModel.h"
 #import "ISSTPushModel.h"
@@ -34,7 +34,7 @@
 @synthesize userApi;
 @synthesize pushModel;
 @synthesize pushTableview;
-static NSString *CellTableIdentifier=@"ISSTCommonCell";
+static NSString *CellTableIdentifier=@"ISSTPushCell";
 //static int  loadPage = 1;
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -52,10 +52,10 @@ static NSString *CellTableIdentifier=@"ISSTCommonCell";
     self.title=@"重要信息";
     
     //定义table行高
-    pushTableview.rowHeight=120;
+    pushTableview.rowHeight=60;
     
     //注册tableviewcell
-    UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
+    UINib *nib=[UINib nibWithNibName:CellTableIdentifier bundle:nil];
     [pushTableview registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
     //请求数据
@@ -128,21 +128,21 @@ static NSString *CellTableIdentifier=@"ISSTCommonCell";
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    ISSTCommonCell *cell=(ISSTCommonCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
+    ISSTPushCell  *cell=(ISSTPushCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     if (cell == nil) {
-        cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
+        cell = [[ISSTPushCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
 
     if ([pushArray count]==0) {
-        cell.title.text=@"";
-        cell.content.text=@"目前暂无消息";
-        cell.time.hidden=YES;
+        cell.titleLabel.text=@"";
+        cell.contentLabel.text=@"目前暂无消息";
+        cell.timeLabel.hidden=YES;
     }
     else {
     pushModel=[pushArray objectAtIndex:indexPath.row];
-        cell.title.text=pushModel.title;
-    cell.content.text=pushModel.content;
-    cell.time.text=pushModel.updatedAt;
+        cell.titleLabel.text=pushModel.title;
+    cell.contentLabel.text=pushModel.content;
+    cell.timeLabel.text=pushModel.updatedAt;
     }
     return cell;
 }

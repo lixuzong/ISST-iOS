@@ -17,7 +17,7 @@
 #import "ISSTMyRecommendViewController.h"
 #import "ISSTRecommendModel.h"
 
-@interface ISSTMyRecListViewController ()<ISSTWebApiDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface ISSTMyRecListViewController ()<ISSTWebApiDelegate,UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 @property(strong,nonatomic) ISSTUserModel *userModel;
 @property(strong,nonatomic) ISSTUserCenterApi *centerApi;
 @property (strong,nonatomic) ISSTLoginApi *userApi;
@@ -28,6 +28,7 @@
 @end
 
 @implementation ISSTMyRecListViewController
+static int count=1;
 @synthesize recArray;
 static int  loadPage = 1;
 static NSString* CellIdentifier=@"myRecommendCell";
@@ -85,7 +86,6 @@ static NSString* CellIdentifier=@"myRecommendCell";
     NSLog(@"#################################headerR####################################%@",recArray);
     // 刷新表格
     [self.recommendTable reloadData];
-    
     // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
     [self.recommendTable headerEndRefreshing];
 }
@@ -141,6 +141,12 @@ static NSString* CellIdentifier=@"myRecommendCell";
     return [list count];
 }
 
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex==1) {
+        [self clickPost];
+    }
+}
+
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     ISSTMyRecommendCell  *cell=[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (!cell) {
@@ -180,7 +186,13 @@ static NSString* CellIdentifier=@"myRecommendCell";
         [recArray addObjectsFromArray:backToControllerData];
     }
     [self.recommendTable reloadData];
-    NSLog(@"####################recArray#######################%@",recArray);
+    NSLog(@"###########recArray%@#######################",recArray);
+    if ([recArray count]==0 && count==1) {
+        UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"提示" message:@"您还没有发布过内推消息" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:@"我要发布", nil];
+        [alert show];
+        count++;
+    }
+    
     
 }
 
