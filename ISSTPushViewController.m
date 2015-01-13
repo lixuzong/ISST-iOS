@@ -139,7 +139,9 @@ static NSString *CellTableIdentifier=@"ISSTPushCell";
         cell.timeLabel.hidden=YES;
     }
     else {
+        
     pushModel=[pushArray objectAtIndex:indexPath.row];
+        cell.timeLabel.hidden=NO;
         cell.titleLabel.text=pushModel.title;
     cell.contentLabel.text=pushModel.content;
     cell.timeLabel.text=pushModel.updatedAt;
