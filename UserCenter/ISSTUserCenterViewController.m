@@ -21,6 +21,7 @@
 #import "ISSTAboutViewController.h"
 #import "ISSTMyRecListViewController.h"
 #import "ISSTPushViewController.h"
+#import "ZBarViewController.h"
 
 @interface ISSTUserCenterViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *userCenterCatalogueTableView;
@@ -78,7 +79,7 @@ NSArray *imageForRowArray= nil;
                        [NSArray  arrayWithObjects:@"用户数据",nil],
                        [NSArray  arrayWithObjects:@"任务中心",nil],
                        [NSArray arrayWithObjects:@"我的内推",@"我的经验",@"重要信息",@"意见反馈",nil],
-                       [NSArray  arrayWithObjects:@"活动管理",@"附近的人",nil],
+                       [NSArray  arrayWithObjects:@"活动管理",@"附近的人",@"扫码签到",nil],
                        [NSArray  arrayWithObjects:@"关于",nil],
                        [NSArray  arrayWithObjects:@"注销",nil],
                        nil];
@@ -232,6 +233,12 @@ NSArray *imageForRowArray= nil;
        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
        alert.delegate = self;
        [alert show];
+   }
+   else if (indexPath.row == 2 && indexPath.section==3){
+       ZBarViewController *saoma=[[ZBarViewController alloc] init];
+       saoma.title=@"扫码签到";
+       [self.navigationController pushViewController:saoma animated:YES];
+
    }
    else if (indexPath.row == 0 && indexPath.section==4){ //关于
        aboutViewController = [[ISSTAboutViewController alloc] init];
