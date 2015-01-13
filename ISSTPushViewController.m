@@ -117,30 +117,43 @@ static NSString *CellTableIdentifier=@"ISSTCommonCell";
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     
+    if ([pushArray count]==0) {
+        return 1;
+    }
+    else
     return [pushArray count];
     
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    pushModel=[pushArray objectAtIndex:indexPath.row];
+    
     ISSTCommonCell *cell=(ISSTCommonCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     if (cell == nil) {
         cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
-    cell.title.text=pushModel.title;
+
+    if ([pushArray count]==0) {
+        cell.title.text=@"";
+        cell.content.text=@"目前暂无消息";
+        cell.time.hidden=YES;
+    }
+    else {
+    pushModel=[pushArray objectAtIndex:indexPath.row];
+        cell.title.text=pushModel.title;
     cell.content.text=pushModel.content;
     cell.time.text=pushModel.updatedAt;
+    }
     return cell;
 }
 
 #pragma mark - Table view delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    NSLog(@"select the row");
-    
-}
+//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    NSLog(@"select the row");
+//    
+//}
 
 #pragma mark - webapidelegate
 - (void)requestDataOnSuccess:(id)backToControllerData{
@@ -153,7 +166,7 @@ static NSString *CellTableIdentifier=@"ISSTCommonCell";
     [self.pushTableview reloadData];
     
     NSLog(@"####################pushArray#######################%@",pushArray);
-    pushModel=[pushArray objectAtIndex:0];
+//    pushModel=[pushArray objectAtIndex:0];
     NSLog(@"title=%@",pushModel.title);
 //    NSLog(@"列表行数＝%d",[pushArray count]);
     
