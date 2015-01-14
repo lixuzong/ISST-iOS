@@ -22,7 +22,7 @@
     //jason 转化为 foundation
     NSLog(@"************BaseParse.h***********");
     NSLog(@"解析从服务器返回的数据,jason to foundation");
-   NSLog(@"%@",dict);
+//   NSLog(@"%@",dict);
     return dict;
 }
 

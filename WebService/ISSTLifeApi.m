@@ -135,7 +135,10 @@ const    static  int   EXPERIENCE  =5;
 {
     NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
     NSDictionary *fields = [HTTPResponse allHeaderFields];
+    NSLog(@"获取返回（状态，包头）信息");
     NSLog(@"self=%@ fields=%@",self,[fields description]);
+//    NSLog(@"11111111111111-----------------");
+//    NSLog(@"self=%@ fields=%@",self,fields);
     if ([[fields allKeys] containsObject:@"Set-Cookie"])
     {
         //  cookie =[[NSString alloc] initWithString: [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0]];
@@ -149,6 +152,7 @@ const    static  int   EXPERIENCE  =5;
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
+    NSLog(@"获取数据");
     [datas appendData:data];
 }
 

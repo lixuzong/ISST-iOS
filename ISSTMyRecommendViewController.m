@@ -137,7 +137,7 @@
 #pragma mark - UITextViewDelegate
 -(void) textViewDidBeginEditing:(UITextView *)textView{
     NSLog(@"sdsd");
-    NSTimeInterval animationDuration=0.30f;
+    NSTimeInterval animationDuration=0.25f;
     [UIView beginAnimations:@"ResizeForKeyboard" context:nil];
     [UIView setAnimationDuration:animationDuration];
     float width = self.view.frame.size.width;
@@ -157,7 +157,7 @@
 -(void) textViewDidEndEditing:(UITextView *)textView{
     [UIView beginAnimations:@"View Flip" context:nil];
     //动画持续时间
-    [UIView setAnimationDuration:0.3f];
+    [UIView setAnimationDuration:0.25f];
     
     self.view.frame =CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     // [UIView setAnimationDuration:2];

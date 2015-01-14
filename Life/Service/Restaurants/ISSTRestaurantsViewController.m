@@ -95,9 +95,6 @@ static NSString *CellTableIdentifier=@"ISSTRestaurantTableViewCell";
     if (cell == nil) {
         cell = (ISSTRestaurantsTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
-    cell.restaurantName.text=restaurantsModel.name;
-    cell.restaurantTel.text=restaurantsModel.hotline;
-    
     if([restaurantsModel.picture isEqual:[NSNull null]]){//如果图片为空
          cell.picture.image =[UIImage imageNamed:@"tongyongmeishi.jpg"];
     }
@@ -105,7 +102,11 @@ static NSString *CellTableIdentifier=@"ISSTRestaurantTableViewCell";
         NSURL *url3=[NSURL URLWithString:restaurantsModel.picture];
         [cell.picture sd_setImageWithURL:url3];
     }
-    return cell;
+
+    cell.restaurantName.text=restaurantsModel.name;
+    cell.restaurantTel.text=restaurantsModel.hotline;
+    
+       return cell;
 }
 
 #pragma mark - Table view delegate

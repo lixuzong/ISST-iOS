@@ -48,8 +48,8 @@
    */
     
     //http://yplan.cloudapp.net:8080/isst//users/validation?name=21351110&password=111111    name=%@&password=%@
-//    NSString *mainUrl = @"http://www.cst.zju.edu.cn/isst/";
-    NSString *mainUrl = @"http://10.82.60.35:8080/isst/";
+    NSString *mainUrl = @"http://www.cst.zju.edu.cn/isst/";
+//    NSString *mainUrl = @"http://10.82.60.35:8080/isst/";
 //    NSString *mainUrl=@"http://10.82.197.249:8080/isst/";
     NSString *strUrl= [NSString stringWithFormat:@"%@%@",mainUrl,subUrl];
     
@@ -161,7 +161,8 @@
         
 //            NSString *strRet = [[NSString alloc] initWithData:myReturn encoding:NSASCIIStringEncoding];
 //            NSLog(@"strRet%@",strRet);
-        } else {
+        }
+        else {
             NSLog(@"connect error");
         }
     } else if([method isEqualToString:@"DELETE"]) {
