@@ -92,7 +92,7 @@
         
         userModel =[AppCache getCache];
         
-        
+        userApi.webApiDelegate=self;
         NSString *password1=[[NSUserDefaults standardUserDefaults] objectForKey:@"passwordText"];
  
         NSLog(@"name:%@",userModel.name);
