@@ -8,6 +8,7 @@
 
 #import "ISSTApi.h"
 #import "ISSTWebApiDelegate.h"
+#import "JSONKit.h"
 @class ISSTApi;
 
 
@@ -39,7 +40,7 @@
  参数，无
  *****/
 - (void)updateLoginUserId:(NSString*)userId andPassword:(NSString*) password;
-
+- (void)postPushWithStudentid:(NSString*)stuid andUserid:(NSString*) userid andChannelid:(NSString*)channelid;
 
 
 @end

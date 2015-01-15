@@ -11,6 +11,7 @@
 #import "ISSTLoginApi.h"
 #import "UserLoginParse.h"
 #import "LoginErrors.h"
+
 @class ISSTUserModel;
 
 @interface  ISSTLoginApi()
@@ -26,6 +27,7 @@
 const    static  int   REQUESTLOGIN = 1;
 const    static  int   UPDATELOGIN   = 2;
 const    static  int   REQUESTUSERINFO= 3;
+const    static  int   postpushid= 4;
 
 @synthesize webApiDelegate;
 @synthesize datas;
@@ -105,7 +107,51 @@ const    static  int   REQUESTUSERINFO= 3;
     }
 
 }
+-(void)postPushWithStudentid:(NSString *)stuid andUserid:(NSString *)userid andChannelid:(NSString *)channelid
+{
+    if (NetworkReachability.isConnectionAvailable)
+    {
+        methodId=postpushid;
+        datas = [[NSMutableData alloc]init];
+        //MD5 secret
+       
+        
+          NSLog(@"ready for post");
+        NSString *subUrlString = [NSString stringWithFormat:@"api/messages/binds"];
+        
+        
+        
+        
+        NSMutableDictionary *inf = [NSMutableDictionary dictionary];
+        [inf setObject:stuid forKey:@"studentId"];
 
+        [inf setObject:channelid forKey:@"channelId" ];
+ 
+                [inf setObject:userid forKey:@"userId"];
+        NSString *in = [inf JSONString];
+        
+        NSError *error;
+        
+        NSData* jsonData =[NSJSONSerialization dataWithJSONObject:inf
+                                                          options:NSJSONWritingPrettyPrinted error:&error];
+        NSString * json=[[NSString alloc]initWithData:jsonData encoding:NSUTF8StringEncoding];
+        NSLog(@"dic=%@",inf);
+        NSLog(@"json1=%@",in);
+        NSLog(@"json2=%@",json);
+        
+        [super requestWithSuburl:subUrlString Method:@"POST2" Delegate:self Info:in MD5Dictionary:nil];
+
+    }//network connect
+//    else
+//    {
+//        //数据库解析，
+//        if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
+//        {
+//            [self.webApiDelegate requestDataOnFail: [LoginErrors getNetworkProblem]];
+//        }
+//    }
+
+}
 
 
 
@@ -181,6 +227,12 @@ const    static  int   REQUESTUSERINFO= 3;
                 }
             }
             break;
+       
+            
+//            case postpushid:
+//        {
+//            NSLog(@"post successfully");
+//        }
         default:
             break;
     }

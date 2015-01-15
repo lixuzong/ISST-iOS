@@ -10,12 +10,16 @@
 #import "ISSTWebApiDelegate.h"
 #import "ISSTUserModel.h"
 #import "RESideMenu.h"
+#import "ISSTLoginApi.h"
 
 int pushtag;
 int login;
+NSString *bpuserid;
+NSString *bpchannelid;
 @interface AppDelegate : UIResponder <UIApplicationDelegate,ISSTWebApiDelegate,RESideMenuDelegate,UIAlertViewDelegate>
 @property(nonatomic,assign)int foreground;
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) UINavigationController *navigationController;
 @property (nonatomic,strong)ISSTUserModel  *userModel;
+@property(nonatomic,strong)ISSTLoginApi *userApi;
 @end

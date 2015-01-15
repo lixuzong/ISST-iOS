@@ -48,8 +48,8 @@
    */
     
     //http://yplan.cloudapp.net:8080/isst//users/validation?name=21351110&password=111111    name=%@&password=%@
-    NSString *mainUrl = @"http://www.cst.zju.edu.cn/isst/";
-//    NSString *mainUrl = @"http://10.82.60.35:8080/isst/";
+//    NSString *mainUrl = @"http://www.cst.zju.edu.cn/isst/";
+    NSString *mainUrl = @"http://10.82.60.35:8080/isst/";
 //    NSString *mainUrl=@"http://10.82.197.249:8080/isst/";
     NSString *strUrl= [NSString stringWithFormat:@"%@%@",mainUrl,subUrl];
     
@@ -117,12 +117,17 @@
         
     }  else if([method isEqualToString:@"POST"]) {
         NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
+        
         NSData *data = [info dataUsingEncoding:NSUTF8StringEncoding];
+//        NSString *testdata=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+//        NSLog(@"postdata %@",testdata);
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                                cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
                                                         timeoutInterval:6];
        // NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         //关于iOS上的http请求还在不断学习，从早先的时候发现原来iOS的http请求可以自动保存cookie到后来的，发现ASIHttpRequest会有User-Agent，到现在发现竟然NSURLRequest默认不带USer-Agent的。添加方法：
+        
+        
         [request setHTTPMethod:@"POST"];
         [request setHTTPBody:data];
         if (cookie!=nil) {
@@ -162,10 +167,48 @@
 //            NSString *strRet = [[NSString alloc] initWithData:myReturn encoding:NSASCIIStringEncoding];
 //            NSLog(@"strRet%@",strRet);
         }
+        
         else {
             NSLog(@"connect error");
         }
-    } else if([method isEqualToString:@"DELETE"]) {
+        
+        
+        
+    }
+    else if([method isEqualToString:@"POST2"])
+    {
+        NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
+        
+        NSData *data = [info dataUsingEncoding:NSUTF8StringEncoding];
+        NSString *testdata=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"postpushiddata %@",testdata);
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                               cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
+                                                           timeoutInterval:6];
+        // NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+        //关于iOS上的http请求还在不断学习，从早先的时候发现原来iOS的http请求可以自动保存cookie到后来的，发现ASIHttpRequest会有User-Agent，到现在发现竟然NSURLRequest默认不带USer-Agent的。添加方法：
+        
+        [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];//传送json要设置请求头不要忘了
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPBody:data];
+        if (cookie!=nil) {
+            NSLog(@"1234");
+            [request setValue:USERAGENT forHTTPHeaderField:@"User-Agent"];
+            [request setValue:(NSString*)cookie   forHTTPHeaderField:@"Set-Cookie"];
+            // [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
+        }
+        
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate];
+        if (connection) {
+            NSLog(@"连接成功");
+        }
+        else {
+            NSLog(@"connect error");
+        }
+
+    }
+    
+    else if([method isEqualToString:@"DELETE"]) {
         
     }
 }

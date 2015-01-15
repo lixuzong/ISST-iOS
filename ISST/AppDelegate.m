@@ -19,10 +19,12 @@
 #import "ISSTNewsViewController.h"
 #import "LeftMenuViewController.h"
 
+
 @implementation AppDelegate
 @synthesize window = _window;
 @synthesize navigationController = _navigationController;
 @synthesize userModel;
+@synthesize userApi;
 
 - (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
 {
@@ -32,7 +34,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    userApi =[[ISSTLoginApi alloc]init];
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
     
     BOOL switchValue =[[[NSUserDefaults standardUserDefaults] objectForKey:@"switchValue"]boolValue];
@@ -46,6 +48,7 @@
     
     [BPush setupChannel:launchOptions];
     [BPush setDelegate:self];
+    
     
     
     //注册消息
@@ -81,12 +84,14 @@
     }
 
     
-    if(switchValue){//如果用户选择了自动登入则直接登入到软院快讯界面
-        ISSTLoginApi *userApi =[[ISSTLoginApi alloc]init];
+    if(switchValue){
+        
+        //如果用户选择了自动登入则直接登入到软院快讯界面
+        
+        //要判断是否能上网的情况
         
         userModel =[AppCache getCache];
         
-        userApi.webApiDelegate = self;
         
         NSString *password1=[[NSUserDefaults standardUserDefaults] objectForKey:@"passwordText"];
  
@@ -160,7 +165,20 @@
         int returnCode = [[res valueForKey:BPushRequestErrorCodeKey] intValue];
         NSString *requestid = [res valueForKey:BPushRequestRequestIdKey];
         NSLog(@"userid=%@",userid);
-        NSLog(@"channelid=%@",channelid);
+         NSLog(@"channelid=%@",channelid);
+        bpuserid=userid;
+        bpchannelid=channelid;
+        
+        
+        userModel =[AppCache getCache];
+          userApi.webApiDelegate=self;
+       
+        if(userModel.userName)
+        {
+            NSLog(@"post push id by startappview");
+         [self.userApi postPushWithStudentid: userModel.userName andUserid:bpuserid andChannelid:bpchannelid];
+        }
+       
     }
 }
 
@@ -190,7 +208,7 @@
     else if(login)
     {
         
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"推送通知" message:@"content of push" delegate:self cancelButtonTitle:@"下次再说" otherButtonTitles:@"好前往查看", nil];
+        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"推送通知" message:@"您收到了通知" delegate:self cancelButtonTitle:@"下次再说" otherButtonTitles:@"好前往查看", nil];
         [alert show];
     }
 }
@@ -259,8 +277,8 @@
 //- (void)requestDataOnFail:(NSString *)error
 //{
 //    
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//    [alert show];
+////    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+////    [alert show];
 //    
 //    
 //}

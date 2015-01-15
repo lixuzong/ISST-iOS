@@ -76,6 +76,8 @@ static int  loadPage = 1;
     login=1;
     self.newsApi = [[ISSTLifeApi alloc]init];
     self.newsApi.webApiDelegate = self;
+    self.userApi=[[ISSTLoginApi alloc] init];
+    self.userApi.webApiDelegate=self;
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     
     self.title = @"软院快讯";
@@ -89,6 +91,19 @@ static int  loadPage = 1;
     tableView.rowHeight=126;
     UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
+    
+    _userModel=[[ISSTUserModel alloc] init ];
+    _userModel=[AppCache getCache];
+    
+    NSLog(@"1111111111");
+    NSLog(@"student=%@", _userModel.userName);
+    NSLog(@"bpushidandchannelid=%@%@",bpuserid,bpchannelid);
+    
+    if (bpuserid) {
+        NSLog(@"post push id by newsview");
+        [self.userApi postPushWithStudentid: _userModel.userName andUserid:bpuserid andChannelid:bpchannelid];
+    }
+    
     
     [self setupRefresh];
     
