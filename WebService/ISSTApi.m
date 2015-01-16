@@ -26,28 +26,8 @@
 
 - (void)requestWithSuburl:(NSString *)subUrl Method:(NSString *)method Delegate:(id<NSURLConnectionDataDelegate>)delegate Info:(NSString*)info  MD5Dictionary:(NSDictionary *)dict
 {
-  /*  NSTimeInterval time = [[NSDate date] timeIntervalSince1970];
-    long long dTime = [[NSNumber numberWithDouble:time] longLongValue];
     
-    NSString *token = [self token:dict andTime:dTime];
-    //    NSString *mainUrl = @"http://www.zjucst.com/isst/api";
-    NSString *mainUrl = @"http://yplan.cloudapp.net:8080/party/api";
-    NSString *strUrl = [NSString stringWithFormat:@"%@%@",mainUrl,subUrl];
-    
-    NSRange foundObj = [strUrl rangeOfString:@"?"];
-    if (foundObj.length>0)
-    {
-        strUrl = [NSString stringWithFormat:@"%@&token=%@&expire=%llu",strUrl,token,dTime];
-    }
-    else
-    {
-        strUrl= [NSString stringWithFormat:@"%@?token=%@&expire=%llu",strUrl,token,dTime];
-    }
-    
-    NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
-   */
-    
-    //http://yplan.cloudapp.net:8080/isst//users/validation?name=21351110&password=111111    name=%@&password=%@
+
     NSString *mainUrl = @"http://www.cst.zju.edu.cn/isst/";
 //    NSString *mainUrl = @"http://10.82.60.35:8080/isst/";
 //    NSString *mainUrl=@"http://10.82.197.249:8080/isst/";
@@ -76,23 +56,6 @@
         if (connection) {
             NSLog(@"连接成功");
             
-//            NSURLResponse *response;
-//            
-//            NSData *myReturn =[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-//            NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
-//            NSDictionary *fields = [HTTPResponse allHeaderFields];
-//         //   NSLog(@"%@",[fields description]);
-//            if ([[fields allKeys] containsObject:@"Set-Cookie"])
-//            {
-//                //  cookie =[[NSString alloc] initWithString: [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0]];
-//                cookie = [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0];
-//            }
-//            NSLog(@"cookie = %@",cookie);
-//                 [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:self.cookie];
-//            
-//            NSString *strRet = [[NSString alloc] initWithData:myReturn encoding:NSASCIIStringEncoding];
-//            NSLog(@"strRet%@",strRet);
-
             
         }
         
@@ -119,8 +82,7 @@
         NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
         
         NSData *data = [info dataUsingEncoding:NSUTF8StringEncoding];
-//        NSString *testdata=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-//        NSLog(@"postdata %@",testdata);
+
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                                cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
                                                         timeoutInterval:6];
@@ -140,32 +102,7 @@
         NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate];
         if (connection) {
             NSLog(@"连接成功");
-//          //  NSMutableURLRequest *getRequest = [NSMutableURLRequest requestWithURL:url];
-//              NSURLResponse *response;
-//            
-//            NSData *myReturn =[NSURLConnection sendSynchronousRequest:request returningResponse:&response error:nil];
-//            NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
-//            NSDictionary *fields = [HTTPResponse allHeaderFields];
-//            NSLog(@"%@",[fields description]);
-//            
-//            if ([[fields allKeys] containsObject:@"Set-Cookie"])
-//            {
-//               //  cookie =[[NSString alloc] initWithString: [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0]];
-//                  cookie = [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0];
-//            }
-//            
-//            if (cookie == nil) {
-//                cookie = [[NSString alloc] initWithString: [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0]];
-//            }
-//            else{
-//                cookie = [[[fields valueForKey:@"Set-Cookie"] componentsSeparatedByString:@";"] objectAtIndex:0];
-//            }
-            
-          //  NSLog(@"cookie = %@",cookie);
-           //     [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:self.cookie];
-        
-//            NSString *strRet = [[NSString alloc] initWithData:myReturn encoding:NSASCIIStringEncoding];
-//            NSLog(@"strRet%@",strRet);
+
         }
         
         else {

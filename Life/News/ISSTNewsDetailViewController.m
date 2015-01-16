@@ -116,17 +116,25 @@
     
     NSString *jsString = [NSString stringWithFormat:@"<html> \n"
                           "<head> \n"
+                          "<meta id='viewport' name='viewport' content='width=320; initial-scale=1.0;maximum-scale=1.0; user-scalable=no;'/>\n"
                           "<style type=\"text/css\"> \n"
-                          "body {font-size: %f}"
-                        // "img {width:960;}"
+//                          "body {font-size: %f}"
+                          "img {width:auto; height:auto;}"
+
+                          "<style> \n"
+                         
+                         
                          
                           "</style> \n"
                           "</head> \n"
                           "<body>\n"
                           "<h3 align='center'>%@</h3>"
-                          "<h5 align='center'>%@&nbsp&nbsp&nbsp&nbsp&nbsp%@</h5>"
+                          "<h5 align='center'>"
+                          "<font color='#9C9C9C'>%@&nbsp&nbsp&nbsp&nbsp&nbsp%@</font>"
+                          "</h5>"
+                          "<hr align='center'></hr>"
                           "%@</body> \n"
-                          "</html>", fontSize,detailModel.title,time,publisher,htmlText];
+                          "</html>",detailModel.title,time,publisher,htmlText];
     
     [webView loadHTMLString:jsString baseURL:nil];//加载html源代码
     //NSLog(@"self=%@ \n htmls=%@",self,backToControllerData);
