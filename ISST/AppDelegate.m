@@ -91,13 +91,14 @@
         //要判断是否能上网的情况
         
         userModel =[AppCache getCache];
-        
-        userApi.webApiDelegate=self;
+        if (userModel) {
+            NSLog(@"11111111");
+             userApi.webApiDelegate=self;
         NSString *password1=[[NSUserDefaults standardUserDefaults] objectForKey:@"passwordText"];
- 
+  NSLog(@"11111");
         NSLog(@"name:%@",userModel.name);
         [userApi requestLoginName:userModel.name andPassword:password1];
-        
+        NSLog(@"11111");
         UINavigationController *navigationController1 = [[UINavigationController alloc] initWithRootViewController:[[ISSTNewsViewController alloc] init]];
         LeftMenuViewController *leftMenuViewController = [[LeftMenuViewController alloc
                                                            ] init];
@@ -119,8 +120,18 @@
         [_window makeKeyAndVisible];
         
         
-    }
-    else
+            }
+        else
+            {
+            ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
+            loginViewController.title = @"ISST";
+            _navigationController = [[[UINavigationController alloc] initWithRootViewController:loginViewController] autorelease];
+            _window.rootViewController = _navigationController ;
+            [_window makeKeyAndVisible];
+            }
+        }
+    
+           else
         {
         ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
         loginViewController.title = @"ISST";
@@ -172,7 +183,7 @@
         
         userModel =[AppCache getCache];
           userApi.webApiDelegate=self;
-       
+        NSLog(@"bind");
         if(userModel.userName)
         {
             NSLog(@"post push id by startappview");

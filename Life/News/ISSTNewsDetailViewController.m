@@ -116,10 +116,10 @@
     
     NSString *jsString = [NSString stringWithFormat:@"<html> \n"
                           "<head> \n"
-                          "<meta id='viewport' name='viewport' content='width=320; initial-scale=1.0;maximum-scale=1.0; user-scalable=no;'/>\n"
+                          "<meta id='viewport' name='viewport' content='width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;'/>\n"
                           "<style type=\"text/css\"> \n"
 //                          "body {font-size: %f}"
-                          "img {width:auto; height:auto;}"
+                          "img {width:200; height:200;}"
 
                           "<style> \n"
                          
