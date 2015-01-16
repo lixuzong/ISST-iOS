@@ -107,20 +107,7 @@ static int  loadPage = 1;
     
     [self setupRefresh];
     
-    
-//    if ([[[UIDevice currentDevice] systemVersion] floatValue] < 8.0)
-//    {
-//        if(pushtag)
-//        {
-//            NSLog(@"push to newscontroller now");
-//            
-//            NSLog(@"push tag=%d",pushtag);
-//            
-//            [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:NO];
-//            NSLog(@"push to center");
-//        }
-//    }
-
+  
     
 }
 
@@ -163,18 +150,6 @@ static int  loadPage = 1;
         [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:NO];
         NSLog(@"push to center");
     }
-//    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
-//    {
-//        if(pushtag)
-//        {
-//            NSLog(@"push to newscontroller now");
-//            
-//            NSLog(@"push tag=%d",pushtag);
-//            
-//            [self.navigationController pushViewController:[[ISSTUserCenterViewController alloc]init] animated:NO];
-//            NSLog(@"push to center");
-//        }
-//    }
 
 }
 
