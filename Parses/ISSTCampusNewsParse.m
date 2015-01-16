@@ -68,7 +68,9 @@
 //        NSLog(@"%@",userInfo);
         if(campusNews.userId>0)
         {
-        campusNews.userModel=(NSDictionary *)[[campusNewsArray objectAtIndex:i]objectForKey:@"user"];
+        campusNews.userName=[[[campusNewsArray objectAtIndex:i]objectForKey:@"user"]objectForKey:@"name"];
+        }else{
+            campusNews.userName=@"管理员";
         }
         [newsArray addObject:campusNews];
     }

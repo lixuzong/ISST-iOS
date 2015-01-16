@@ -210,6 +210,7 @@ static int  loadPage = 1;
     cell.title.text     =   newsModel.title;
     cell.time.text      =   newsModel.updatedAt;
     cell.content.text   =   newsModel.description;
+    cell.authorLabel.text=newsModel.userName;
     
     //隐藏tableview中没有数据的cell的分隔线
     UIView *view = [UIView new];
