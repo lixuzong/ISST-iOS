@@ -108,6 +108,9 @@
 		5C13BFC31A63FBF7009F815A /* zbar-samples.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C13BFBE1A63FBF7009F815A /* zbar-samples.png */; };
 		5C3865BF1A65461100A94158 /* ISSTPushCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C3865BD1A65461100A94158 /* ISSTPushCell.m */; };
 		5C3865C01A65461100A94158 /* ISSTPushCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C3865BE1A65461100A94158 /* ISSTPushCell.xib */; };
+		5C7CF91F1A68DDFE0080DD48 /* ISSTFoodCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7CF91D1A68DDFE0080DD48 /* ISSTFoodCell.m */; };
+		5C7CF9201A68DDFE0080DD48 /* ISSTFoodCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C7CF91E1A68DDFE0080DD48 /* ISSTFoodCell.xib */; };
+		5C7CF9221A68E6D10080DD48 /* moren240.png in Resources */ = {isa = PBXBuildFile; fileRef = 5C7CF9211A68E6D10080DD48 /* moren240.png */; };
 		5C7DD2CB1A4AF10400B5EB04 /* ZHPickView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C7DD2CA1A4AF10400B5EB04 /* ZHPickView.m */; };
 		5CA6D4771A503CB500C50C95 /* ISSTWikisCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CA6D4751A503CB500C50C95 /* ISSTWikisCell.m */; };
 		5CA6D4781A503CB500C50C95 /* ISSTWikisCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5CA6D4761A503CB500C50C95 /* ISSTWikisCell.xib */; };
@@ -538,6 +541,10 @@
 		5C3865BC1A65461100A94158 /* ISSTPushCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTPushCell.h; sourceTree = "<group>"; };
 		5C3865BD1A65461100A94158 /* ISSTPushCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTPushCell.m; sourceTree = "<group>"; };
 		5C3865BE1A65461100A94158 /* ISSTPushCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTPushCell.xib; sourceTree = "<group>"; };
+		5C7CF91C1A68DDFE0080DD48 /* ISSTFoodCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTFoodCell.h; sourceTree = "<group>"; };
+		5C7CF91D1A68DDFE0080DD48 /* ISSTFoodCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTFoodCell.m; sourceTree = "<group>"; };
+		5C7CF91E1A68DDFE0080DD48 /* ISSTFoodCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTFoodCell.xib; sourceTree = "<group>"; };
+		5C7CF9211A68E6D10080DD48 /* moren240.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = moren240.png; sourceTree = "<group>"; };
 		5C7DD2C91A4AF10400B5EB04 /* ZHPickView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZHPickView.h; sourceTree = "<group>"; };
 		5C7DD2CA1A4AF10400B5EB04 /* ZHPickView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZHPickView.m; sourceTree = "<group>"; };
 		5CA6D4741A503CB500C50C95 /* ISSTWikisCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTWikisCell.h; sourceTree = "<group>"; };
@@ -1029,6 +1036,9 @@
 				5C3865BC1A65461100A94158 /* ISSTPushCell.h */,
 				5C3865BD1A65461100A94158 /* ISSTPushCell.m */,
 				5C3865BE1A65461100A94158 /* ISSTPushCell.xib */,
+				5C7CF91C1A68DDFE0080DD48 /* ISSTFoodCell.h */,
+				5C7CF91D1A68DDFE0080DD48 /* ISSTFoodCell.m */,
+				5C7CF91E1A68DDFE0080DD48 /* ISSTFoodCell.xib */,
 			);
 			name = TableViewCell;
 			sourceTree = "<group>";
@@ -1699,6 +1709,7 @@
 				6FD54C991A484519000CFFA7 /* comments.png */,
 				6F1D8AA31A35D139002451C3 /* meishi2.jpg */,
 				6F5B05DD1A319D7F0052CE63 /* 1225.png */,
+				5C7CF9211A68E6D10080DD48 /* moren240.png */,
 				1824E51719CAC82D00BDC38C /* 活动.png */,
 				1824E51819CAC82D00BDC38C /* 就业.png */,
 				1824E51919CAC82D00BDC38C /* 就业1.png */,
@@ -2136,6 +2147,7 @@
 				AE85F9DB19026C9200FCD67D /* ISSTCommentsMoreViewController.xib in Resources */,
 				6FA9BFC31A0A5EFF0074B02B /* blackArrow@2x.png in Resources */,
 				581C8D6918F03B050006740B /* ISSTStudyViewController.xib in Resources */,
+				5C7CF9221A68E6D10080DD48 /* moren240.png in Resources */,
 				6FD54C9A1A484519000CFFA7 /* comments.png in Resources */,
 				AE9052B918EEEE890088742D /* ISSTWikisDetailViewController.xib in Resources */,
 				6F7EAF9B1A3591840017C5CE /* denglu_logo.png in Resources */,
@@ -2166,6 +2178,7 @@
 				AE9E018618F3F0CB008EAFA1 /* ISSTRestaurantDetailViewController.xib in Resources */,
 				6F8900D71A24E67C00EBE758 /* gerenzhongxin.png in Resources */,
 				6F8900E01A24E67C00EBE758 /* tongxunlu.png in Resources */,
+				5C7CF9201A68DDFE0080DD48 /* ISSTFoodCell.xib in Resources */,
 				AE9E018F18F3F0D4008EAFA1 /* ISSTServiceViewController.xib in Resources */,
 				AE9052BB18EEEE890088742D /* ISSTWikisViewController.xib in Resources */,
 				AE0B8C9118F2E40F00844F55 /* ISSTUserCenterUserInfoTableViewCell.xib in Resources */,
@@ -2249,6 +2262,7 @@
 				25A699351970C18B00AE1FD8 /* ISSTPostExperienceViewController.m in Sources */,
 				5805043218FD7B4C00F881D9 /* ISSTJobsModel.m in Sources */,
 				AE0B8C3518F2C8B300844F55 /* ISSTActivitiesViewController.m in Sources */,
+				5C7CF91F1A68DDFE0080DD48 /* ISSTFoodCell.m in Sources */,
 				18B6198D1955B8DC00F4ACC7 /* ISSTSameCityAcitvitiesViewController.m in Sources */,
 				252D347D1963D9E900B5EE5D /* ISSTTasksParse.m in Sources */,
 				6F925CFE1A16293100C68CB3 /* UIView+MJExtension.m in Sources */,

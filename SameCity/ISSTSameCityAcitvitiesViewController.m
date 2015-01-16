@@ -75,7 +75,7 @@ static int  loadPage = 1;
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    activitiesArrayTableView.rowHeight=128;
+    activitiesArrayTableView.rowHeight=98;
     UINib *nib=[UINib nibWithNibName:@"ISSTActivityCell" bundle:nil];
     [activitiesArrayTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     

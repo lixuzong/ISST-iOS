@@ -11,6 +11,7 @@
 #import "ISSTRestaurantsModel.h"
 #import "ISSTRestaurantsMenusModel.h"
 #import "UIImageView+WebCache.h"
+#import "ISSTFoodCell.h"
 
 @interface ISSTRestaurantDetailViewController ()
 @property (strong, nonatomic) IBOutlet UIImageView *picture;
@@ -44,7 +45,7 @@
 @synthesize restaurantsMenusArray;
 @synthesize restaurantsMenusModel;
 @synthesize restaurantsId;
-static NSString *CellIdentifier=@"menusCell";
+static NSString *CellIdentifier=@"ISSTFoodCell";
 //const static int RESTAURANTS =1;
 const    static  int   DETAILS   = 2;
 const    static  int   MENUS   = 3;
@@ -80,10 +81,9 @@ const    static  int   MENUS   = 3;
     
 
     
-//    UITableView *tableView=(id)[self.view viewWithTag:7];
-//    tableView.rowHeight=120;
-//    UINib *nib=[UINib nibWithNibName:@"ISSTRestaurantsTableViewCell" bundle:nil];
-//    [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
+    UITableView *tableView=(id)[self.view viewWithTag:7];
+    UINib *nib=[UINib nibWithNibName:CellIdentifier bundle:nil];
+    [tableView registerNib:nib forCellReuseIdentifier:CellIdentifier];
     
     
 	self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
@@ -107,21 +107,21 @@ const    static  int   MENUS   = 3;
     
     restaurantsMenusModel =[[ISSTRestaurantsMenusModel alloc]init];
     restaurantsMenusModel = [restaurantsMenusArray objectAtIndex:indexPath.row];
-    UITableViewCell *cell=(UITableViewCell *)[tableView  dequeueReusableCellWithIdentifier:CellIdentifier];
+     ISSTFoodCell *cell=[tableView  dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[ISSTFoodCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
 
     NSString *price=[NSString stringWithFormat:@"%.1f",restaurantsMenusModel.price]; //保留1位小数
     
     if([restaurantsMenusModel.picture isEqual:[NSNull null] ]){//如果图片为空
-        cell.imageView.image =[UIImage imageNamed:@"meishi2.jpg"];
+        cell.image.image =[UIImage imageNamed:@"meishi2.jpg"];
     }else{
         NSURL *url2=[NSURL URLWithString:restaurantsMenusModel.picture];
-        [cell.imageView sd_setImageWithURL:url2];
+        [cell.image sd_setImageWithURL:url2];
     }
-    cell.textLabel.text=restaurantsMenusModel.name;
-    cell.detailTextLabel.text=price;
+    cell.nameLabel.text=restaurantsMenusModel.name;
+    cell.priceLabel.text=price;
     return cell;
 }
 

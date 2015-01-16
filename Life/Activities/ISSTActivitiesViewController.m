@@ -66,7 +66,7 @@ static int  loadPage = 1;
     self.activitiesApi = [[ISSTActivityApi alloc]init];
     self.activitiesApi.webApiDelegate = self;
     
-    activitiesTableView.rowHeight=75;
+    activitiesTableView.rowHeight=70;
     UINib *nib=[UINib nibWithNibName:CellTableIdentifier bundle:nil];
     [activitiesTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
