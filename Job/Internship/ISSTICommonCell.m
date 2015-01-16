@@ -13,6 +13,7 @@
 - (void)awakeFromNib
 {
     self.imageView.image=[UIImage imageNamed:@"moren240.png"];
+    self.time.textColor=[UIColor grayColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
