@@ -69,7 +69,7 @@ static int  loadPage = 1;
     
     self.studyApi.webApiDelegate = self;
     UITableView *tableView=(id)[self.view viewWithTag:3];
-    tableView.rowHeight=126;
+    tableView.rowHeight=90;
     UINib *nib=[UINib nibWithNibName:@"ISSTStudyTableViewCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     

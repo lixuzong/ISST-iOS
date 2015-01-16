@@ -67,7 +67,7 @@ static int  loadPage = 1;
     self.internshipApi.webApiDelegate=self;
     //UITableView *tableView=(id)[self.view viewWithTag:98];
     
-    internshipTableView.rowHeight=126;
+    internshipTableView.rowHeight=75;
     UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [internshipTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
@@ -163,7 +163,7 @@ static int  loadPage = 1;
     cell.title.text=internshipModel.title;
     cell.time.text=internshipModel.updatedAt;
     cell.content.text=internshipModel.description;
-    cell.imageView.image =[UIImage imageNamed:@"book1208.jpg"];
+//    cell.imageView.image =[UIImage imageNamed:@"book1208.jpg"];
     return cell;
 }
 #pragma mark - Table view delegate

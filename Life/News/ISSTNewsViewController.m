@@ -88,7 +88,7 @@ static int  loadPage = 1;
     [super viewDidLoad];
     
     UITableView *tableView=(id)[self.view viewWithTag:1];
-    tableView.rowHeight=126;
+    tableView.rowHeight=75;
     UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [tableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
@@ -206,7 +206,7 @@ static int  loadPage = 1;
     //[cell.image sd_setImageWithURL:[listdata objectAtIndex:row]];
     //cell.imageView
     //[cell.imageView sd_setImageWithURL:@"http://www.fzlol.com/upimg/allimg/120819/2021144O91.jpg"];
-    cell.imageView.image =[UIImage imageNamed:@"12091.jpg"];
+   // cell.imageView.image =[UIImage imageNamed:@"12091.jpg"];
     cell.title.text     =   newsModel.title;
     cell.time.text      =   newsModel.updatedAt;
     cell.content.text   =   newsModel.description;

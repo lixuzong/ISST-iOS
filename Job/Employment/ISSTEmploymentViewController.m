@@ -63,7 +63,7 @@ static int  loadPage = 1;
     
     self.employmentApi.webApiDelegate=self;
     //UITableView *tableView=(id)[self.view viewWithTag:99];
-    employTableView.rowHeight=126;
+    employTableView.rowHeight=75;
     UINib *nib=[UINib nibWithNibName:@"ISSTCommonCell" bundle:nil];
     [employTableView registerNib:nib forCellReuseIdentifier:CellTableIdentifier];
     
@@ -157,7 +157,7 @@ static int  loadPage = 1;
         cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
     }
     
-    cell.imageView.image=[UIImage imageNamed:@"12093.jpg"];
+//    cell.imageView.image=[UIImage imageNamed:@"12093.jpg"];
     cell.title.text=employmentModel.title;
     cell.time.text=employmentModel.updatedAt;
     cell.content.text=employmentModel.description;

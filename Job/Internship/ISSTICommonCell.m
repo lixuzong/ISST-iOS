@@ -12,7 +12,7 @@
 @synthesize time,title,content,imageView;
 - (void)awakeFromNib
 {
-    // Initialization code
+    self.imageView.image=[UIImage imageNamed:@"moren240.png"];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
