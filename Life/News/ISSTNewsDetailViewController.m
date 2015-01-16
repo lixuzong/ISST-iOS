@@ -117,23 +117,26 @@
     NSString *jsString = [NSString stringWithFormat:@"<html> \n"
                           "<head> \n"
                           "<meta id='viewport' name='viewport' content='width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;'/>\n"
+//                          "<style type=\"text/css\"> \n"
+                          
                           "<style type=\"text/css\"> \n"
-//                          "body {font-size: %f}"
-                          "img {width:200; height:200;}"
-
-                          "<style> \n"
-                         
-                         
-                         
+                          "img{max-width:100%%;} "
+//                          "body {color:#9C9C9C}"
+                          
                           "</style> \n"
+                          
                           "</head> \n"
-                          "<body>\n"
-                          "<h3 align='center'>%@</h3>"
+                          "<body  >\n"
+                          "<h3 align='center'style='color:#262626'>%@</h3>"
                           "<h5 align='center'>"
-                          "<font color='#9C9C9C'>%@&nbsp&nbsp&nbsp&nbsp&nbsp%@</font>"
+                          "<font color='#9C9C9C'; size='1';>%@&nbsp&nbsp&nbsp&nbsp&nbsp%@</font>"
                           "</h5>"
-                          "<hr align='center'></hr>"
-                          "%@</body> \n"
+                          "<hr align='center'; style=' height:1px;border:none;border-top:1px  solid #EBEBEB ;' />"
+                           "</hr>"
+                         
+                           "%@</body> \n"
+                       
+                          
                           "</html>",detailModel.title,time,publisher,htmlText];
     
     [webView loadHTMLString:jsString baseURL:nil];//加载html源代码
