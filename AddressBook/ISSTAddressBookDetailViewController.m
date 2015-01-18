@@ -9,7 +9,7 @@
 #import "ISSTAddressBookDetailViewController.h"
 #import "ISSTContactsApi.h"
 
-@interface ISSTAddressBookDetailViewController ()
+@interface ISSTAddressBookDetailViewController ()<UIActionSheetDelegate >
 @property (weak, nonatomic) IBOutlet UITableView *addressBookDetailTableView;
 @property(strong,nonatomic)ISSTContactsApi *detailApi;
 
@@ -18,6 +18,9 @@
 @implementation ISSTAddressBookDetailViewController
 @synthesize addressBookDetailTableView;
 @synthesize userDetailInfo;
+const static int  PHONE = 1;
+const static int  EMAIL=2;
+int methodId=PHONE;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -161,8 +164,7 @@
                     cell.contentLabel.text=userDetailInfo.phone;
                     cell.contentLabel.textColor=[UIColor blueColor];
                     cell.titleLabel.text=@"手机";
-                    cell.msgButton.hidden=NO;
-                    [cell.msgButton addTarget:self action:@selector(clickMsgButton) forControlEvents:UIControlEventTouchUpInside];
+                    NSLog(@"******phone*****\n%@",cell.contentLabel.text);
                     break;
                 }
                 case 1:
@@ -176,6 +178,7 @@
                     cell.contentLabel.text=userDetailInfo.email;
                     cell.contentLabel.textColor=[UIColor blueColor];
                     cell.titleLabel.text=@"E-mail";
+                    NSLog(@"********email******\n%@",userDetailInfo.email);
                     break;
                 }
                 default:
@@ -227,19 +230,21 @@
         switch (indexPath.row) {
             case 0:
             {
-                //                UIWebView*callWebview =[[UIWebView alloc] init];
-                //
-                //                [callWebview loadRequest:[NSURLRequest requestWithURL:telURL]];
-                NSString *telNumber=[NSString stringWithFormat:@"tel://%@",userDetailInfo.phone];
-                NSLog(@"+++++++++++++%@",telNumber);
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telNumber]];
+                methodId=PHONE;
+                if (![userDetailInfo.phone isKindOfClass:[NSNull class]]) {
+                UIActionSheet *sheet=[[UIActionSheet alloc] initWithTitle:@"提示" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拨打电话" otherButtonTitles:@"发送短信", nil];
+                [sheet showInView:self.view];
+                }
             }
                 break;
             case 2:
             {
-                NSString *emailString=[NSString stringWithFormat:@"mailto://%@",userDetailInfo.email];
-                NSLog(@"++++++++++++++%@",emailString);
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:emailString]];
+                methodId=EMAIL;
+                if (![userDetailInfo.email isKindOfClass:[NSNull class]]) {
+                UIActionSheet *sheet=[[UIActionSheet alloc] initWithTitle:@"提示" delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"发送邮件" otherButtonTitles:nil];
+                [sheet showInView:self.view];
+                }
+                break;
             }
             default:
                 break;
@@ -253,15 +258,32 @@
     
 }
 
-//- (void)requestDataOnSuccess:(id)backToControllerData{
-//    userDetailInfo=backToControllerData;
-//}
-
-- (void)requestDataOnFail:(NSString *)error
-{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-    [alert show];
+-(void) clickPhoneButton{
+    NSString *telNumber=[NSString stringWithFormat:@"tel://%@",userDetailInfo.phone];
+    NSLog(@"+++++++++++++%@",telNumber);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:telNumber]];
+}
+-(void) clickEmailButton{
+    NSString *emailString=[NSString stringWithFormat:@"mailto://%@",userDetailInfo.email];
+    NSLog(@"++++++++++++++%@",emailString);
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:emailString]];
     
+}
+
+# pragma -mark UIActionSheetDelegate
+-(void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (methodId==PHONE) {
+        if (buttonIndex==[actionSheet destructiveButtonIndex]) {
+            [self clickPhoneButton];
+        }else if (buttonIndex==1){
+            [self clickMsgButton];
+        }
+    }
+    if (methodId==EMAIL) {
+        if (buttonIndex==[actionSheet destructiveButtonIndex]) {
+            [self clickEmailButton];
+        }
+    }
 }
 
 
