@@ -48,7 +48,7 @@ const    static  int   postpushid= 4;
         
         NSString *info = [NSString stringWithFormat:@"username=%@&password=%@&token=%@&timestamp=%llu&longitude=121.00&latitude=30.01",name,password,token,timestamp];
         NSString *subUrlString = [NSString stringWithFormat:@"api/login"];
-        NSLog(@"%@",subUrlString);
+        NSLog(@"subUrlString=%@",subUrlString);
         [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:info MD5Dictionary:nil];
     }//network connect
     else
@@ -68,6 +68,7 @@ const    static  int   postpushid= 4;
         methodId = REQUESTUSERINFO;
         datas = [[NSMutableData alloc]init];
         NSString *subUrlString = [NSString stringWithFormat:@"api/user"];
+        NSLog(@"subUrlString=%@",subUrlString);
         [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
     }//network connect
     else
@@ -95,6 +96,7 @@ const    static  int   postpushid= 4;
         
         NSString *info = [NSString stringWithFormat:@"userId=%@&token=%@&timestamp=%llu&longitude=121.00&latitude=30.01",userId,token,timestamp];
         NSString *subUrlString = [NSString stringWithFormat:@"api/login/update"];
+        NSLog(@"subUrlString=%@",subUrlString);
         [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:info MD5Dictionary:nil];
     }//network connect
     else
@@ -138,7 +140,7 @@ const    static  int   postpushid= 4;
         NSLog(@"dic=%@",inf);
         NSLog(@"json1=%@",in);
         NSLog(@"json2=%@",json);
-        
+        NSLog(@"subUrlString=%@",subUrlString);
         [super requestWithSuburl:subUrlString Method:@"POST2" Delegate:self Info:in MD5Dictionary:nil];
 
     }//network connect
@@ -160,9 +162,9 @@ const    static  int   postpushid= 4;
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
-    NSLog(@"%@",[error localizedDescription]);
+    NSLog(@"%@ didfailwitherror",[error localizedDescription]);
    
-    [self.webApiDelegate requestDataOnFail:@"请求超时"];
+//    [self.webApiDelegate requestDataOnFail:@"请求超时"];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response

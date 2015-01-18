@@ -50,6 +50,7 @@ static NSString *CellTableIdentifier=@"ISSTCommonCell";
 
 //页面标记
 static int  loadPage = 1;
+static int  numofclick = 0;
 //int  loadPage = 1;
 
 //- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -74,6 +75,8 @@ static int  loadPage = 1;
 - (void)viewDidLoad
 {
     login=1;
+    numofclick++;
+  
     self.newsApi = [[ISSTLifeApi alloc]init];
     self.newsApi.webApiDelegate = self;
     self.userApi=[[ISSTLoginApi alloc] init];
@@ -96,10 +99,12 @@ static int  loadPage = 1;
     _userModel=[AppCache getCache];
     
     NSLog(@"1111111111");
+    NSLog(@"numofclick=%d",numofclick);
     NSLog(@"student=%@", _userModel.userName);
     NSLog(@"bpushidandchannelid=%@%@",bpuserid,bpchannelid);
     
-    if (bpuserid) {
+    if (bpuserid&&(numofclick<=1)) {
+        NSLog(@"numofclick=%d",numofclick);
         NSLog(@"post push id by newsview");
         [self.userApi postPushWithStudentid: _userModel.userName andUserid:bpuserid andChannelid:bpchannelid];
     }
@@ -216,7 +221,7 @@ static int  loadPage = 1;
     UIView *view = [UIView new];
     view.backgroundColor = [UIColor clearColor];
     [tableView setTableFooterView:view];
-    
+    NSLog(@"reurn cell");
 
     return cell;
     
