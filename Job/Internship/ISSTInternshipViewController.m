@@ -163,6 +163,7 @@ static int  loadPage = 1;
     cell.title.text=internshipModel.title;
     cell.time.text=internshipModel.updatedAt;
     cell.content.text=internshipModel.description;
+    cell.authorLabel.text=internshipModel.author;
 //    cell.imageView.image =[UIImage imageNamed:@"book1208.jpg"];
     return cell;
 }

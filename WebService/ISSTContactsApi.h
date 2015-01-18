@@ -61,7 +61,10 @@ ISSTWebApiDelegate,NSURLConnectionDataDelegate>
  获取通讯录列表
  *****/
 
-- (void)requestContactsLists:(int)contactId name:(NSString*)name gender:(int)gender grade:(int)gradeId  classId:(int)classId className:(NSString*)className  majorId:(int)majorId majorName:(NSString *)majorName cityId:(int)cityId cityName:(NSString*)cityName company:(NSString *) company ;
+- (void)requestContactsLists:(int)contactId name:(NSString*)name gender:(int)gender grade:(int)gradeId  classId:(int)classId className:(NSString*)className  majorId:(int)majorId majorName:(NSString *)majorName cityId:(int)cityId cityName:(NSString*)cityName company:(NSString *) company;
+
+- (void)requestSameCityContactsLists:(int)contactId name:(NSString*)name gender:(int)gender grade:(int)gradeId  classId:(int)classId className:(NSString*)className  majorId:(int)majorId majorName:(NSString *)majorName cityId:(int)cityId cityName:(NSString*)cityName company:(NSString *) company;
+
 /*****
  2014.04.08
  创建： zhao

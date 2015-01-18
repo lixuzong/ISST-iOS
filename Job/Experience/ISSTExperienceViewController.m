@@ -166,6 +166,7 @@ static int  loadPage = 1;
     cell.title.text=experenceModel.title;
     cell.time.text=experenceModel.updatedAt;
     cell.content.text= experenceModel.description;
+    cell.authorLabel.text=experenceModel.userName;
     return cell;
 }
 #pragma mark - Table view delegate

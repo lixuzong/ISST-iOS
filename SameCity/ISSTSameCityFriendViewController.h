@@ -13,7 +13,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *conditionLabel;
 @property (weak, nonatomic) IBOutlet UIButton *clearAllButton;
 @property (strong, nonatomic)  UISearchBar *friendSearchBar;
-@property (strong,nonatomic) UITableView *friendTableView;
+//@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *myActivityIndicator;
+@property (strong,nonatomic) IBOutlet UIActivityIndicatorView *myActivityIndicator;
+@property (weak, nonatomic) IBOutlet UITableView *friendTableView;
 
 @end
 

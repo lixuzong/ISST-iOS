@@ -62,7 +62,7 @@
       
         NSDictionary *tmpDic = [[jobsArray objectAtIndex:i] objectForKey:@"user"];
         NSLog(@"%@",[tmpDic description]);
-        if (![[tmpDic description]isEqualToString:@"<null>"]) {
+        if (jobsModel.userId>0) {
             ISSTUserModel *userModel = [[ISSTUserModel alloc]init];
             userModel.userId = [[tmpDic objectForKey:@"id"]intValue];
             userModel.name   = [tmpDic objectForKey:@"name"];
@@ -70,9 +70,13 @@
             userModel.qq     = [tmpDic objectForKey:@"qq"];
             userModel.email  = [tmpDic objectForKey:@"email"];
             jobsModel.userModel = userModel;
+            jobsModel.author=userModel.name;
             [userModel release];
              tmpDic = nil ;
+        }else{
+            jobsModel.author=@"管理员";
         }
+        
         [tempJobsArray addObject:jobsModel];
     }
     return tempJobsArray;

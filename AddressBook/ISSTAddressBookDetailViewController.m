@@ -7,9 +7,11 @@
 //
 
 #import "ISSTAddressBookDetailViewController.h"
+#import "ISSTContactsApi.h"
 
 @interface ISSTAddressBookDetailViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *addressBookDetailTableView;
+@property(strong,nonatomic)ISSTContactsApi *detailApi;
 
 @end
 
@@ -32,6 +34,9 @@
         if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)]) {
             self.edgesForExtendedLayout = UIRectEdgeNone;
         }
+    NSString *name=userDetailInfo.name;
+    NSString *cityname=userDetailInfo.cityName;
+    NSLog(@"%@\n%@",name,cityname);
 }
 
 - (void)didReceiveMemoryWarning
@@ -247,5 +252,18 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:msgString]];
     
 }
+
+//- (void)requestDataOnSuccess:(id)backToControllerData{
+//    userDetailInfo=backToControllerData;
+//}
+
+- (void)requestDataOnFail:(NSString *)error
+{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+    [alert show];
+    
+}
+
+
 
 @end

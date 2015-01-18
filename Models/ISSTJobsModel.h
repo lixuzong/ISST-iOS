@@ -22,4 +22,5 @@
 @property (nonatomic,copy)NSString *expireTime;
 @property (nonatomic,assign) int            cityId;
 @property (nonatomic,assign)BOOL participated;
+@property (nonatomic,assign) NSString *author;
 @end

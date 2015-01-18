@@ -9,6 +9,8 @@
             <connections>
                 <outlet property="clearAllButton" destination="Ewx-UJ-YEj" id="lgj-26-wTx"/>
                 <outlet property="conditionLabel" destination="mYZ-Bv-WWK" id="DVJ-gY-Rmo"/>
+                <outlet property="friendTableView" destination="Sw0-nA-z7k" id="CdV-2u-V1Y"/>
+                <outlet property="myActivityIndicator" destination="8mn-Je-qSi" id="uL4-D6-NEb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -17,6 +19,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Sw0-nA-z7k">
+                    <rect key="frame" x="0.0" y="42" width="320" height="526"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="筛选条件" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VJ-iW-sH7">
                     <rect key="frame" x="13" y="14" width="53" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -39,6 +45,9 @@
                         <action selector="clearSelectedFactors:" destination="-1" eventType="touchUpInside" id="6jH-cs-ti9"/>
                     </connections>
                 </button>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="8mn-Je-qSi">
+                    <rect key="frame" x="150" y="295" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <point key="canvasLocation" x="565" y="345"/>

@@ -39,10 +39,32 @@
     if ([method isEqualToString:@"GET"]) {    //不带参数
         NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
         
+        NSURLCache *urlCache=[NSURLCache sharedURLCache];
+        //设置1M的缓存
+        [urlCache setMemoryCapacity:5*1024*1024];
+        
+        
+        
         //NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                            cachePolicy:NSURLRequestReloadIgnoringLocalCacheData //不考虑缓存，直接下载
+                                                            cachePolicy:NSURLRequestReturnCacheDataElseLoad //使用protocal协议定义
                                                            timeoutInterval:20];
+        //判断是否有缓存
+        NSCachedURLResponse *response =[urlCache cachedResponseForRequest:request];
+        NSLog(@"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        if (response!=nil) {
+            NSLog(@"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+            [request setCachePolicy:NSURLRequestReturnCacheDataDontLoad];
+        }
+        
+        /* 创建NSURLConnection*/
+        
+        NSURLConnection *connection =
+        
+        [[NSURLConnection alloc] initWithRequest:request
+         
+                                        delegate:delegate];
+
         if (cookie!=nil) {
             NSLog(@"***********cookie****************");
             NSLog(@"1234");
@@ -52,7 +74,7 @@
             // [[NSHTTPCookieStorage sharedHTTPCookieStorage] setCookie:cookie];
         }
        
-        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate];
+//        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate];
         if (connection) {
             NSLog(@"连接成功");
             
@@ -68,9 +90,18 @@
         
         NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                               cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
-                                                           timeoutInterval:6];
-        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate];
+                                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                           timeoutInterval:20];
+        NSURLCache *urlCache=[NSURLCache sharedURLCache];
+        [urlCache setMemoryCapacity:1*1024*1024];
+        NSCachedURLResponse *response=[urlCache cachedResponseForRequest:request];
+        if (response!=nil) {
+            NSLog(@"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+            [request setCachePolicy:NSURLRequestReloadRevalidatingCacheData];
+        }
+
+        NSURLConnection *connection=[[NSURLConnection alloc] initWithRequest:request delegate:delegate startImmediately:YES];
+//        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate];
         if(connection){
             NSLog(@"连接成功");
 

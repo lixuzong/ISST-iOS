@@ -8,6 +8,7 @@
 
 #import "ISSTSameCityFriendViewController.h"
 #import "ISSTLoginApi.h"
+#import "ISSTContactsParse.h"
 
 @interface ISSTSameCityFriendViewController ()
 @property (strong,nonatomic) ISSTUserModel *userModel;
@@ -16,7 +17,6 @@
 @property(strong,nonatomic)ISSTUserModel *addressBookModel;
 @property(strong,nonatomic)ISSTUserModel *userInfo;
 @property(strong,nonatomic)ISSTContactsApi *addressBookApi;
-@property(assign,nonatomic)BOOL sameCitySwitch;
 @property (copy, nonatomic) UITableView *addressBookTableView;
 @property(strong,nonatomic)NSMutableArray *addressBookArray;
 @property (strong,nonatomic) NSArray *filteredArray;
@@ -42,8 +42,6 @@
 static NSString *CellIdentifier=@"ContactCell";
 const static int        CONTACTSLISTS       = 1;
 const static  int       CONTACTDETAIL       = 2;
-const static int        CLASSESLISTS        = 3;
-const static int        MAJORSLISTS         = 4;
 int method;
 
 
@@ -51,27 +49,10 @@ int method;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title=@"同城校友";
-
-    addressBookModel=[[ISSTUserModel alloc]init];
-    userInfo=[[ISSTUserModel alloc]init];
-    
-    userInfo=[AppCache getCache];
-    
     method=CONTACTSLISTS;
-    
-    
+
     self.addressBookApi = [[ISSTContactsApi alloc]init];
     self.addressBookApi.webApiDelegate =self;
-    
-    _friendTableView=[[UITableView alloc] initWithFrame:CGRectMake(0, 40, 320, 464)];
-    _friendTableView.delegate=self;
-    _friendTableView.dataSource=self;
-    _friendSearchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0.0f,0.0f, 320.0f, 44.0f)];
-    _friendTableView.tableHeaderView=_friendSearchBar;
-    searchController=[[UISearchDisplayController alloc]initWithSearchBar:_friendSearchBar contentsController:self];
-    //    searchController.delegate=self;
-    searchController.searchResultsDelegate=self;
-    searchController.searchResultsDataSource=self;
     
     self.navigationItem.rightBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@"条件筛选" style:UIBarButtonSystemItemEdit target:self action:@selector(clickSelect)];
@@ -81,20 +62,30 @@ int method;
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
+    addressBookModel=[[ISSTUserModel alloc]init];
+    userInfo=[[ISSTUserModel alloc]init];
     userInfo=[AppCache getCache];
-    [self.view addSubview:_friendTableView];
-    [self friendRequestForData];
     addressBookModel.cityId = userInfo.cityId;
     addressBookModel.cityName = userInfo.cityName;
     addressBookModel.className=@"";
-//    [self friendLabelShow];
-    // Do any additional setup after loading the view from its nib.
+     [self.view addSubview:self.myActivityIndicator];
+    
+    [self.myActivityIndicator startAnimating];
+    [self friendRequestForData];
+    //_friendTableView.bounces=CGRectMake(0, 40, 320, 464);
+    _friendTableView.delegate=self;
+    _friendTableView.dataSource=self;
+//    [self.myActivityIndicator stopAnimating];
+    _friendSearchBar=[[UISearchBar alloc]initWithFrame:CGRectMake(0.0f,0.0f, 320.0f, 44.0f)];
+    _friendTableView.tableHeaderView=_friendSearchBar;
+    searchController=[[UISearchDisplayController alloc]initWithSearchBar:_friendSearchBar contentsController:self];
+    searchController.searchResultsDelegate=self;
+    searchController.searchResultsDataSource=self;
 }
 
 
 -(void)friendLabelShow
 {
-    NSLog(@"+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     NSMutableString *tempString=[[NSMutableString alloc]init];
     if(selectFactorsViewController.name.text.length!= 0)
         [tempString appendString:[NSString stringWithFormat:@"姓名：%@",addressBookModel.name]];
@@ -117,14 +108,62 @@ int method;
         [tempString appendString:[NSString stringWithFormat:@" 年级：%@",addressBookModel.className]];
     if(addressBookModel.majorName)
         [tempString appendString:[NSString stringWithFormat:@" 专业：%@",addressBookModel.majorName]];
-    NSLog(@"++++++++++++++++++++++++++%@+++++++++++++++++++++++++++++++++++",tempString);
     _conditionLabel.text=tempString;
     
 }
 -(void)friendRequestForData
 {
-    [self.addressBookApi requestContactsLists:0 name:addressBookModel.name gender:addressBookModel.gender grade:0 classId:addressBookModel.classId className:addressBookModel.className majorId:addressBookModel.majorId majorName:addressBookModel.majorName cityId:0 cityName:addressBookModel.cityName company:nil];
-    NSLog(@"-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+    [self.myActivityIndicator startAnimating];
+    NSFileManager *fileManager=[NSFileManager defaultManager];
+    //第一：读取documents路径的方法：
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) ; //得到documents的路径，为当前应用程序独享
+    NSString *documentD = [paths objectAtIndex:0];
+    NSString *configFile = [documentD stringByAppendingPathComponent:@"contacts.plist"]; //得到documents目录下dujw.plist配置文件的路径
+    if (![fileManager fileExistsAtPath:configFile]) {
+        NSLog(@"***************请求数据*******************");
+         [self.addressBookApi requestSameCityContactsLists:0 name:addressBookModel.name gender:addressBookModel.gender grade:0 classId:addressBookModel.classId className:addressBookModel.className majorId:addressBookModel.majorId majorName:addressBookModel.majorName cityId:0 cityName:addressBookModel.cityName company:nil];
+    }else{
+        NSLog(@"###################文件读取########################");
+        NSData *datas=[NSData dataWithContentsOfFile:configFile];
+        NSLog(@"*********************done****************************");
+        ISSTContactsParse *contactsParse=[[ISSTContactsParse alloc]init];
+        NSDictionary *dics   = [contactsParse infoSerialization:datas];
+        if (dics&&[dics count]) {
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            namesArray=[[NSMutableArray alloc] init];
+            NSMutableArray *addressBookArrayTmp=[[NSMutableArray alloc] init];
+            addressBookArrayTmp = (NSMutableArray *)[contactsParse contactsInfoParse];//将数据传给临时数组，对临时数组进行排序
+            //*************增加排序和索引**************8*
+            addressBookArray=[NSMutableArray arrayWithCapacity:1];
+            UILocalizedIndexedCollation *indexedCollation=[UILocalizedIndexedCollation currentCollation];
+            for (ISSTUserModel *theAdressBookModel in addressBookArrayTmp) {
+                NSInteger section=[indexedCollation sectionForObject:theAdressBookModel collationStringSelector:@selector(name)];
+                theAdressBookModel.section=section;
+            }
+            NSInteger sectionCount=[[indexedCollation sectionTitles] count];
+            NSMutableArray *sectionsArray=[NSMutableArray arrayWithCapacity:sectionCount];
+            for (int i=0; i<=sectionCount; ++i) {
+                NSMutableArray *singleSectionArray=[NSMutableArray arrayWithCapacity:1];
+                [sectionsArray addObject:singleSectionArray];
+            }
+            for(ISSTUserModel *theAdressBookModel in addressBookArrayTmp){
+                [(NSMutableArray *) [sectionsArray objectAtIndex:theAdressBookModel.section] addObject:theAdressBookModel];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+            for (NSMutableArray *singleSectionArray in sectionsArray){
+                NSArray *sortedSection=[indexedCollation sortedArrayFromArray:singleSectionArray collationStringSelector:@selector(name)];
+//                dispatch_async(dispatch_get_main_queue(), ^{
+                [addressBookArray addObject:sortedSection];
+            
+            }
+                [_friendTableView reloadData];
+                });
+                        
+            });
+                
+        }
+    }
+     [self.myActivityIndicator stopAnimating];
 }
 
 
@@ -214,6 +253,7 @@ int method;
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+
 #pragma mark -
 #pragma mark  ISSTWebApiDelegate Methods
 - (void)requestDataOnSuccess:(id)backToControllerData
@@ -267,7 +307,7 @@ int method;
             }
             addressBookDetailView.userDetailInfo=(ISSTUserModel *)backToControllerData;
             method=CONTACTSLISTS;
-            [self.navigationController pushViewController:self.addressBookDetailView animated: NO];
+            [self.navigationController pushViewController:self.addressBookDetailView animated: YES];
             break;
         default:
             break;

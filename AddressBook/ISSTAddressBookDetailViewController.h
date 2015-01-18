@@ -11,6 +11,7 @@
 #import "ISSTClassModel.h"
 #import "ISSTMajorModel.h"
 #import "ISSTAddressBookDetailTableViewCell.h"
-@interface ISSTAddressBookDetailViewController : ISSTPushedViewController<UITableViewDataSource,UITableViewDelegate>
+#import "ISSTWebApiDelegate.h"
+@interface ISSTAddressBookDetailViewController : ISSTPushedViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 @property(nonatomic,strong)ISSTUserModel *userDetailInfo;
 @end

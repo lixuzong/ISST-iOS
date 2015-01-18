@@ -155,6 +155,7 @@ static int  loadPage = 1;
     cell.title.text=recommendModel.title;
     cell.time.text=recommendModel.updatedAt;
     cell.content.text=recommendModel.description;
+    cell.authorLabel.text=recommendModel.author;
 //    cell.imageView.image =[UIImage imageNamed:@"12094.jpg"];
     return cell;
 }

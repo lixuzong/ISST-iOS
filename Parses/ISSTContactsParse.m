@@ -39,11 +39,11 @@
     contactsArray = [super.dict objectForKey:@"body"];
     int  count = [contactsArray count];
     NSLog(@"count=%d",count);
-    for (int i=0; i<count; i++)
+    for (NSDictionary *dic in contactsArray)
     {
         ISSTUserModel *contactsModel = [[[ISSTUserModel alloc]init]autorelease];
-        contactsModel.userId     = [[[contactsArray objectAtIndex:i ] objectForKey:@"id"] intValue];
-        contactsModel.name              = [[contactsArray objectAtIndex:i] objectForKey:@"name"];
+        contactsModel.userId     = [[dic objectForKey:@"id"] intValue];
+        contactsModel.name              = [dic objectForKey:@"name"];
         [tmpArray addObject:contactsModel];
     }
     return tmpArray ;

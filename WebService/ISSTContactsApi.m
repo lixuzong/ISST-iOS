@@ -24,6 +24,7 @@ const static int        CONTACTSLISTS       = 1;
 const static  int       CONTACTDETAIL       = 2;
 const static int        CLASSESLISTS        = 3;
 const static int        MAJORSLISTS         = 4;
+const static int  SAMECITYCONTACTLISTS=5;
 - (void)requestCityLists:(int)page andPageSize:(int)pageSize
 {
 
@@ -89,6 +90,44 @@ const static int        MAJORSLISTS         = 4;
         [self handleConnectionUnAvailable];
     }
 
+}
+
+- (void)requestSameCityContactsLists:(int)contactId name:(NSString*)name gender:(int)gender grade:(int)gradeId  classId:(int)classId className:(NSString*)className  majorId:(int)majorId majorName:(NSString *)majorName cityId:(int)cityId cityName:(NSString*)cityName company:(NSString *) company
+{
+    if (NetworkReachability.isConnectionAvailable)
+    {
+        methodId  = SAMECITYCONTACTLISTS;
+        datas = [[NSMutableData alloc]init];
+        NSMutableString *info = [[NSMutableString alloc]initWithString:[NSString stringWithFormat:@"id=%d&gender=%d&grade=%d&classId=%d&majorId=%d&cityId=%d",contactId,gender,gradeId,classId,majorId,cityId]];
+        //        if (contactId>=0) {
+        //            [info appendFormat:@"%@",[NSString stringWithFormat:@"id=%d",contactId]];
+        //        }
+        if (name) {
+            //            NSString * encodingNameString = [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&name=%@",name]];
+        }
+        if (className) {
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&className=%@",className]];
+        }
+        if (majorName) {
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&major=%@",majorName]];
+        }
+        //        if (cityName) {
+        //            [info appendFormat:@"%@",[NSString stringWithFormat:@"&cityName=%@",cityName]];
+        //        }
+        if ( company) {
+            [info appendFormat:@"%@",[NSString stringWithFormat:@"&company=%@",company]];
+        }
+        NSString *subUrlString = [NSString stringWithFormat:@"api/alumni?%@",info];
+        NSLog(@"subUrlString=%@",subUrlString);
+        [super requestWithSuburl:subUrlString Method:@"GET" Delegate:self Info:nil MD5Dictionary:nil];
+    }
+    else
+    {
+        [self handleConnectionUnAvailable];
+    }
+
+    
 }
 
 - (void)requestContactDetail:(int)contactId
@@ -194,6 +233,40 @@ const static int        MAJORSLISTS         = 4;
             {
                 if (0 == [contactsParse getStatus])//登录成功
                 {
+                    array = [contactsParse contactsInfoParse];
+                    NSLog(@"%d",[array count]);
+                    if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
+                    {
+                        [self.webApiDelegate requestDataOnSuccess:array];
+                    }
+                }
+                else if(1 == [contactsParse getStatus])
+                {
+                    if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin )])
+                    {
+                        [self.webApiDelegate updateUserLogin];
+                    }
+                }
+            }
+            else//可能服务器宕掉
+            {
+                [self handleConnectionUnAvailable];
+            }
+            break;
+
+        case SAMECITYCONTACTLISTS:
+            if (dics&&[dics count]>0)
+            {
+                if (0 == [contactsParse getStatus])//登录成功
+                {
+                    NSFileManager *fileManager=[NSFileManager defaultManager];
+                    //第一：读取documents路径的方法：
+                    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,NSUserDomainMask, YES) ; //得到documents的路径，为当前应用程序独享
+                    NSString *documentD = [paths objectAtIndex:0];
+                    NSString *configFile = [documentD stringByAppendingPathComponent:@"contacts.plist"]; //得到documents目录下dujw.plist配置文件的路径
+                    if (![fileManager fileExistsAtPath:configFile]) {
+                        [fileManager createFileAtPath:configFile contents:datas attributes:nil];
+                    }
                     array = [contactsParse contactsInfoParse];
                     NSLog(@"%d",[array count]);
                     if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnSuccess:)])
