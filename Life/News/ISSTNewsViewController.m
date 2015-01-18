@@ -134,7 +134,7 @@ static int  loadPage = 1;
 - (void)headerRereshing
 {
     // 1.添加数据
-   [self.newsApi requestCampusNewsLists:loadPage andPageSize:20 andKeywords:@"string"];
+   [self.newsApi requestCampusNewsLists:loadPage andPageSize:10 andKeywords:@"string"];
     
     // 刷新表格
     [self.newsArrayTableView reloadData];
@@ -158,7 +158,7 @@ static int  loadPage = 1;
 {
     loadPage++;
     // 1.添加数据
-   [self.newsApi requestCampusNewsLists:loadPage andPageSize:20 andKeywords:@"string"];
+   [self.newsApi requestCampusNewsLists:loadPage andPageSize:10 andKeywords:@"string"];
     
     // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
     [self.newsArrayTableView footerEndRefreshing];
@@ -196,7 +196,7 @@ static int  loadPage = 1;
     newsModel = [newsArray objectAtIndex:indexPath.row];
     
 //    NSLog(@"%@",newsModel);
-    NSLog(@"num of news=%lu",(unsigned long)newsArray.count);
+    NSLog(@"cellForRowAtIndexPath: num of news=%lu",(unsigned long)newsArray.count);
     
     ISSTCommonCell *cell=(ISSTCommonCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     if (cell == nil) {
@@ -300,7 +300,7 @@ static int  loadPage = 1;
         [self.userApi updateLoginUserId:[NSString stringWithFormat:@"%d",_userModel.userId] andPassword:_userModel.password];
         [newsArray removeAllObjects];
         loadPage=1;
-        [self.newsApi requestCampusNewsLists:loadPage andPageSize:20 andKeywords:@"string"];
+        [self.newsApi requestCampusNewsLists:loadPage andPageSize:10 andKeywords:@"string"];
         [newsArrayTableView reloadData];
     }
 }
