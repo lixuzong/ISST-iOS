@@ -68,9 +68,9 @@ int method;
     addressBookModel.cityId = userInfo.cityId;
     addressBookModel.cityName = userInfo.cityName;
     addressBookModel.className=@"";
-     [self.view addSubview:self.myActivityIndicator];
     
     [self.myActivityIndicator startAnimating];
+    [self.view bringSubviewToFront:self.myActivityIndicator];
     [self friendRequestForData];
     //_friendTableView.bounces=CGRectMake(0, 40, 320, 464);
     _friendTableView.delegate=self;
@@ -120,12 +120,9 @@ int method;
     NSString *documentD = [paths objectAtIndex:0];
     NSString *configFile = [documentD stringByAppendingPathComponent:@"contacts.plist"]; //得到documents目录下dujw.plist配置文件的路径
     if (![fileManager fileExistsAtPath:configFile]) {
-        NSLog(@"***************请求数据*******************");
          [self.addressBookApi requestSameCityContactsLists:0 name:addressBookModel.name gender:addressBookModel.gender grade:0 classId:addressBookModel.classId className:addressBookModel.className majorId:addressBookModel.majorId majorName:addressBookModel.majorName cityId:0 cityName:addressBookModel.cityName company:nil];
     }else{
-        NSLog(@"###################文件读取########################");
         NSData *datas=[NSData dataWithContentsOfFile:configFile];
-        NSLog(@"*********************done****************************");
         ISSTContactsParse *contactsParse=[[ISSTContactsParse alloc]init];
         NSDictionary *dics   = [contactsParse infoSerialization:datas];
         if (dics&&[dics count]) {

@@ -47,14 +47,14 @@
         
         //NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                            cachePolicy:NSURLRequestReturnCacheDataElseLoad //使用protocal协议定义
+                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy //使用protocal协议定义
                                                            timeoutInterval:20];
         //判断是否有缓存
         NSCachedURLResponse *response =[urlCache cachedResponseForRequest:request];
         NSLog(@"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         if (response!=nil) {
             NSLog(@"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-            [request setCachePolicy:NSURLRequestReturnCacheDataDontLoad];
+            [request setCachePolicy:NSURLRequestReloadRevalidatingCacheData];
         }
         
         /* 创建NSURLConnection*/
