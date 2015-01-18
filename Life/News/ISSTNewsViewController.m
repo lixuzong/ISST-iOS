@@ -221,7 +221,7 @@ static int  numofclick = 0;
     UIView *view = [UIView new];
     view.backgroundColor = [UIColor clearColor];
     [tableView setTableFooterView:view];
-    NSLog(@"reurn cell");
+    
 
     return cell;
     

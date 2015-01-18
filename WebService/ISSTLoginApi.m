@@ -164,7 +164,7 @@ const    static  int   postpushid= 4;
 {
     NSLog(@"%@ didfailwitherror",[error localizedDescription]);
    
-//    [self.webApiDelegate requestDataOnFail:@"请求超时"];
+    [self.webApiDelegate requestDataOnFail:@"请求超时"];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
