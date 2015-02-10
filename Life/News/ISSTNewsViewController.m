@@ -83,7 +83,7 @@ static int  numofclick = 0;
     self.userApi.webApiDelegate=self;
     self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     
-    self.title = @"软院快讯";
+    self.title = @"正在加载...";
     
     if ([self respondsToSelector:@selector(setEdgesForExtendedLayout:)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
@@ -197,6 +197,7 @@ static int  numofclick = 0;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    self.title=@"软院快讯";
     newsModel =[[ISSTCampusNewsModel alloc]init];
     newsModel = [newsArray objectAtIndex:indexPath.row];
     
@@ -291,7 +292,7 @@ static int  numofclick = 0;
 
 - (void)requestDataOnFail:(NSString *)error
 {
-    UIAlertView  *alertView = [[UIAlertView alloc]initWithTitle:@"错误" message:@"查看网络连接" delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
+    UIAlertView  *alertView = [[UIAlertView alloc]initWithTitle:@"错误" message:error delegate:nil cancelButtonTitle:@"取消" otherButtonTitles: nil];
     [alertView show];
     
     

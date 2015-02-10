@@ -269,7 +269,7 @@ typedef NS_ENUM(NSInteger, RequestType)
     _phoneTextField.delegate = self;
     [_scrollView addSubview:_phoneTextField];
     _privatePhoneBox  = [[CheckBox alloc]initWithFrame:CGRectMake(260, height+10, 20, 18)];
-    _privatePhoneBox.isHook = NO;
+//    _privatePhoneBox.isHook = NO;
     [_scrollView addSubview:_privatePhoneBox];
     UILabel   *rightLabel = [[UILabel alloc] initWithFrame:CGRectMake(280, height+8, 35, 20)];
     rightLabel.text = @"公开";

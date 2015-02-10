@@ -197,12 +197,14 @@
                         {
                             [info appendString:[NSString stringWithFormat:@"privateCompany=%d&",[obj boolValue]?1:0]];
                         }
-                        else if ([key isEqualToString:@"privatePhone"] && userModel.privateCompany !=[obj boolValue]  )
+                        else if ([key isEqualToString:@"privatePhone"] && userModel.privatePhone !=[obj boolValue]  )
                         {
+                            NSLog(@"privatePhone=%d",[obj boolValue]);
                             [info appendString:[NSString stringWithFormat:@"privatePhone=%d&",[obj boolValue]?1:0]];
                         }
                         else if ([key isEqualToString:@"privatePosition"] && userModel.privateCompany !=[obj boolValue]  )
                         {
+                            NSLog(@"privatePosition=%d",[obj boolValue]);
                             [info appendString:[NSString stringWithFormat:@"privatePosition=%d&",[obj boolValue]?1:0]];
                         }
                         else if ([key isEqualToString:@"cityId"]&&  userModel.cityId != [obj intValue]  )
