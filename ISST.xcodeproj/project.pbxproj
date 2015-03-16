@@ -335,7 +335,7 @@
 		AEE2844618DADAA000BEF1A9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2844518DADAA000BEF1A9 /* UIKit.framework */; };
 		AEE2844C18DADAA000BEF1A9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = AEE2844A18DADAA000BEF1A9 /* InfoPlist.strings */; };
 		AEE2844E18DADAA000BEF1A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2844D18DADAA000BEF1A9 /* main.m */; };
-		AEE2845218DADAA000BEF1A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2845118DADAA000BEF1A9 /* AppDelegate.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AEE2845218DADAA000BEF1A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AEE2845118DADAA000BEF1A9 /* AppDelegate.m */; };
 		AEE2845518DADAA000BEF1A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEE2845318DADAA000BEF1A9 /* Main.storyboard */; };
 		AEE2845A18DADAA000BEF1A9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEE2845918DADAA000BEF1A9 /* Images.xcassets */; };
 		AEE2846118DADAA000BEF1A9 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEE2846018DADAA000BEF1A9 /* XCTest.framework */; };
@@ -358,7 +358,7 @@
 		AEFDC75C18DECEDD00D7FDAA /* NSString+URLEncoding.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75B18DECEDD00D7FDAA /* NSString+URLEncoding.m */; };
 		AEFDC75F18DED14F00D7FDAA /* ISSTLoginApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC75E18DED14F00D7FDAA /* ISSTLoginApi.m */; };
 		AEFDC76D18E0245D00D7FDAA /* ISSTRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC76C18E0245D00D7FDAA /* ISSTRootViewController.m */; };
-		AEFDC77018E1625900D7FDAA /* ISSTUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC76F18E1625900D7FDAA /* ISSTUserModel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		AEFDC77018E1625900D7FDAA /* ISSTUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC76F18E1625900D7FDAA /* ISSTUserModel.m */; };
 		AEFDC77318E16A5C00D7FDAA /* ISSTPushedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC77218E16A5C00D7FDAA /* ISSTPushedViewController.m */; };
 		AEFDC77618E16D5C00D7FDAA /* UserLoginParse.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC77518E16D5C00D7FDAA /* UserLoginParse.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		AEFDC77918E1B76400D7FDAA /* ISSTLifeApi.m in Sources */ = {isa = PBXBuildFile; fileRef = AEFDC77818E1B76400D7FDAA /* ISSTLifeApi.m */; };
@@ -2501,6 +2501,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -2519,6 +2520,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2550,6 +2552,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2560,8 +2563,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ISST/ISST-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
@@ -2574,10 +2577,10 @@
 					"$(PROJECT_DIR)/ThirdPartyLibrary/ZBarSDK",
 					"$(PROJECT_DIR)/ThirdPartyLibrary/libzbar",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cbd65cec-dd1d-4102-bf69-2af1fb83ff3f";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2587,8 +2590,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ISST/ISST-Prefix.pch";
 				HEADER_SEARCH_PATHS = "";
@@ -2600,10 +2603,10 @@
 					"$(PROJECT_DIR)/ThirdPartyLibrary/ZBarSDK",
 					"$(PROJECT_DIR)/ThirdPartyLibrary/libzbar",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "cbd65cec-dd1d-4102-bf69-2af1fb83ff3f";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

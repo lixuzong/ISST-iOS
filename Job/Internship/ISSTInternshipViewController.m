@@ -129,7 +129,8 @@ static int  loadPage = 1;
     internshipTableView.dataSource = nil;
     internshipTableView.delegate = nil;
     internshipTableView = nil;
-    loadPage = 1;
+    self.internshipApi.webApiDelegate=nil;
+//    loadPage = 1;
 }
 
 

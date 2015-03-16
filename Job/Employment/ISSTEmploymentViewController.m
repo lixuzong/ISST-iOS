@@ -123,6 +123,7 @@ static int  loadPage = 1;
     employTableView.dataSource = nil;
     employTableView.delegate = nil;
     employTableView = nil;
+    self.employmentApi.webApiDelegate=nil;
     loadPage = 1;
 }
 

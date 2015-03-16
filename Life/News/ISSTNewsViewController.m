@@ -98,9 +98,9 @@ static int  numofclick = 0;
     _userModel=[[ISSTUserModel alloc] init ];
     _userModel=[AppCache getCache];
     
-    NSLog(@"1111111111");
-    NSLog(@"numofclick=%d",numofclick);
-    NSLog(@"student=%@", _userModel.userName);
+    
+    NSLog(@"numofloadpage=%d",numofclick);
+//    NSLog(@"student=%@", _userModel.userName);
     NSLog(@"bpushidandchannelid=%@%@",bpuserid,bpchannelid);
     
     if (bpuserid&&(numofclick<=1)) {
@@ -109,8 +109,10 @@ static int  numofclick = 0;
         [self.userApi postPushWithStudentid: _userModel.userName andUserid:bpuserid andChannelid:bpchannelid];
     }
     
+    if (!netok) {
+        [self setupRefresh];
+    }
     
-    [self setupRefresh];
     
   
     
@@ -175,6 +177,10 @@ static int  numofclick = 0;
     newsArrayTableView.dataSource = nil;
     newsArrayTableView.delegate = nil;
     newsArrayTableView = nil;
+    self.newsApi.webApiDelegate=nil;
+    self.userApi.webApiDelegate=nil;
+    
+    
     loadPage = 1;
 }
 

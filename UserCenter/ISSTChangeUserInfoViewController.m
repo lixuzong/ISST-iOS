@@ -123,9 +123,9 @@ typedef NS_ENUM(NSInteger, RequestType)
 
 -(void)viewWillAppear:(BOOL)animated
 {
- [self initialUIData];
-    
-    
+ 
+    [super viewWillAppear:YES];
+    [self initialUIData];
 }
 
 -(void)requestCityList

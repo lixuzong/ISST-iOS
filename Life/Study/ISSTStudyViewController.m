@@ -127,6 +127,8 @@ static int  loadPage = 1;
     studyArrayTableView.dataSource = nil;
     studyArrayTableView.delegate = nil;
     studyArrayTableView = nil;
+    self.studyApi.webApiDelegate = nil;
+    NSLog(@"dealloc in study");
     loadPage = 1;
 }
 

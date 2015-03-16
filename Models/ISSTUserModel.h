@@ -16,8 +16,8 @@ typedef   enum Gender
 @interface ISSTUserModel : NSObject<NSCoding>
 
 @property (nonatomic,assign) int         userId;
-@property (nonatomic,copy) NSString      *userName;
-@property (nonatomic,copy) NSString      *name;
+@property (nonatomic,strong) NSString      *userName;
+@property (nonatomic,strong) NSString      *name;
 @property (nonatomic,assign) Gender      gender;
 @property (nonatomic,assign) int         grade;
 @property (nonatomic,assign) int         classId;
@@ -37,11 +37,11 @@ typedef   enum Gender
 @property (nonatomic,assign) BOOL        privatePosition;
 
 // add by zhaoxs 20140614
-@property (nonatomic,copy)  NSString    *cityName;
-@property (nonatomic,copy)  NSString    *className;
-@property (nonatomic,copy)  NSString    *majorName;
+@property (nonatomic,strong)  NSString    *cityName;
+@property (nonatomic,strong)  NSString    *className;
+@property (nonatomic,strong)  NSString    *majorName;
 
-@property (nonatomic,copy)NSString      *password;
+@property (nonatomic,strong)NSString      *password;
 
 @property NSInteger section;
 

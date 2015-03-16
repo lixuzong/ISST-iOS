@@ -58,13 +58,13 @@
 
 }
 
-- (void)loadWebPageWithString:(NSString*)urlString
-{
-    NSURL *url =[NSURL URLWithString:urlString];
-   // NSLog(urlString);
-    NSURLRequest *request =[NSURLRequest requestWithURL:url];
-    [webView loadRequest:request];
-}
+//- (void)loadWebPageWithString:(NSString*)urlString
+//{
+//    NSURL *url =[NSURL URLWithString:urlString];
+//   // NSLog(urlString);
+//    NSURLRequest *request =[NSURLRequest requestWithURL:url];
+//    [webView loadRequest:request];
+//}
 
 - (void)didReceiveMemoryWarning
 {

@@ -166,6 +166,7 @@ static int  loadPage = 1;
     activitiesTableView.dataSource = nil;
     activitiesTableView.delegate = nil;
     activitiesTableView = nil;
+    self.activitiesApi.webApiDelegate = nil;
     loadPage = 1;
 }
 

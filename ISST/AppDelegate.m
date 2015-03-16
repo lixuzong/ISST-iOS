@@ -19,6 +19,12 @@
 #import "ISSTNewsViewController.h"
 #import "LeftMenuViewController.h"
 
+@interface AppDelegate ()
+{
+    UINavigationController *nav;
+}
+
+@end
 
 @implementation AppDelegate
 @synthesize window = _window;
@@ -46,9 +52,9 @@
     
     
     
+    
     [BPush setupChannel:launchOptions];
     [BPush setDelegate:self];
-    
     
     
     //注册消息
@@ -62,7 +68,7 @@
         }
     
     else
-        
+      
         
     {
         NSLog(@"系统版本<=ios7");
@@ -84,6 +90,7 @@
     }
 
     
+    
     if(switchValue){
         
         //如果用户选择了自动登入则直接登入到软院快讯界面
@@ -92,17 +99,25 @@
         
         userModel =[AppCache getCache];
         if (userModel) {
-            NSLog(@"11111111");
+            NSLog(@"net=%d",netok);
+            netok=1;
+            NSLog(@"选择了自动登录 ");
              userApi.webApiDelegate=self;
         NSString *password1=[[NSUserDefaults standardUserDefaults] objectForKey:@"passwordText"];
-  NSLog(@"11111");
-        NSLog(@"name:%@",userModel.name);
-        [userApi requestLoginName:userModel.name andPassword:password1];
+        
+        NSLog(@"name:%@,pwd=%@",userModel.userName,password1);
+        [userApi requestLoginName:userModel.userName andPassword:password1];
         NSLog(@"11111");
-        UINavigationController *navigationController1 = [[UINavigationController alloc] initWithRootViewController:[[ISSTNewsViewController alloc] init]];
+//          
+            ISSTNewsViewController *newsController=[[ISSTNewsViewController alloc]init];
+      //            NSLog(@"%@",newsController);
+       nav = [[UINavigationController alloc]initWithRootViewController:newsController];
+//        _window.rootViewController = nav ;
+
+//        
         LeftMenuViewController *leftMenuViewController = [[LeftMenuViewController alloc
                                                            ] init];
-        RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navigationController1
+        RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:nav
                                                                         leftMenuViewController:leftMenuViewController
                                                                        rightMenuViewController:nil];  //可以自行设置右边菜单
         sideMenuViewController.backgroundImage = [UIImage imageNamed:@"menu_backgroud.jpg"];
@@ -117,29 +132,29 @@
         //[self.navigationController pushViewController:sideMenuViewController animated: NO];
         
         _window.rootViewController = sideMenuViewController ;
-        [_window makeKeyAndVisible];
+        
         
         
             }
         else
             {
-            ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
+            ISSTLoginViewController *loginViewController = [[ISSTLoginViewController alloc] init];
             loginViewController.title = @"ISST";
-            _navigationController = [[[UINavigationController alloc] initWithRootViewController:loginViewController] autorelease];
+            _navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController] ;
             _window.rootViewController = _navigationController ;
-            [_window makeKeyAndVisible];
+            
             }
         }
     
            else
         {
-        ISSTLoginViewController *loginViewController = [[[ISSTLoginViewController alloc] init]autorelease];
+        ISSTLoginViewController *loginViewController = [[ISSTLoginViewController alloc] init];
         loginViewController.title = @"ISST";
-        _navigationController = [[[UINavigationController alloc] initWithRootViewController:loginViewController] autorelease];
+        _navigationController = [[UINavigationController alloc] initWithRootViewController:loginViewController] ;
         _window.rootViewController = _navigationController ;
-        [_window makeKeyAndVisible];
+        
         }
-    
+    [_window makeKeyAndVisible];
     
     
     return YES;
@@ -160,6 +175,7 @@
 
 - (void)application:(UIApplication *)application didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
 {
+    NSLog(@"ios8 reg extra");
     [application registerForRemoteNotifications];
 }
 
@@ -186,8 +202,9 @@
         NSLog(@"bind");
         if(userModel.userName)
         {
+            ISSTLoginApi *bindApi=[[ISSTLoginApi alloc]init];
             NSLog(@"post push id by startappview");
-         [self.userApi postPushWithStudentid: userModel.userName andUserid:bpuserid andChannelid:bpchannelid];
+         [bindApi postPushWithStudentid: userModel.userName andUserid:bpuserid andChannelid:bpchannelid];
         }
        
     }
@@ -241,6 +258,8 @@
 
 -(void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error
 {
+    NSString *error_str = [NSString stringWithFormat: @"%@", error];
+    NSLog(@"Failed to get token, error:%@", error_str);
         NSLog(@"failed to register push service");
 }
 
@@ -252,7 +271,8 @@
 // show the homepage skipping the login page
 -(void)showmenu
 {
-    UINavigationController *navigationController1 = [[UINavigationController alloc] initWithRootViewController:[[ISSTNewsViewController alloc] init]];
+    ISSTNewsViewController *newsController=[[ISSTNewsViewController alloc]init];
+    UINavigationController *navigationController1 = [[UINavigationController alloc] initWithRootViewController:newsController];
     LeftMenuViewController *leftMenuViewController = [[LeftMenuViewController alloc
                                                        ] init];
     RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navigationController1
@@ -278,6 +298,34 @@
 
 - (void)requestDataOnSuccess:(id)backToControllerData;
 {
+    NSLog(@"request login success on appdelegate page");
+    netok=0;
+    
+    ISSTNewsViewController *newsController=[[ISSTNewsViewController alloc]init];
+    
+    NSLog(@"%@",newsController);
+    nav = [[UINavigationController alloc]initWithRootViewController:newsController];
+    
+    
+    LeftMenuViewController *leftMenuViewController = [[LeftMenuViewController alloc
+                                                       ] init];
+    RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:nav
+                                                                    leftMenuViewController:leftMenuViewController
+                                                                   rightMenuViewController:nil];  //可以自行设置右边菜单
+    sideMenuViewController.backgroundImage = [UIImage imageNamed:@"menu_backgroud.jpg"];
+    sideMenuViewController.menuPreferredStatusBarStyle = 1; // UIStatusBarStyleLightContent
+    sideMenuViewController.delegate = self;
+    //sideMenuViewController.contentViewShadowColor = [UIColor blackColor];
+    sideMenuViewController.contentViewShadowOffset = CGSizeMake(0, 0);
+    //sideMenuViewController.contentViewShadowOpacity = 0.6;
+    //sideMenuViewController.contentViewShadowRadius = 12;
+    sideMenuViewController.contentViewShadowEnabled = YES;
+    
+    //[self.navigationController pushViewController:sideMenuViewController animated: NO];
+    
+    _window.rootViewController = sideMenuViewController ;
+
+    [_window makeKeyAndVisible];
     userModel = backToControllerData;
 //    ISSTContactsApi *contactsApi =[[ISSTContactsApi alloc]init];
 //    [contactsApi requestClassesLists];
@@ -285,21 +333,23 @@
 //    
 }
 
-//- (void)requestDataOnFail:(NSString *)error
-//{
+- (void)requestDataOnFail:(NSString *)error
+{
+    
 //    
-////    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
-////    [alert show];
-//    
-//    
-//}
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"您好:" message:error delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil];
+//    [alert show];
+    NSLog(@"requestloginfail");
+    
+    
+}
 
 
 - (void)dealloc
 {
-    _window = nil;
-    _navigationController = nil;
-    [super dealloc];
+//    _window = nil;
+//    _navigationController = nil;
+//
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

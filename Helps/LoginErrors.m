@@ -51,7 +51,7 @@
 
 + (NSString *)checkNetworkConnection
 {
-    return @"查看网络连接";
+    return @"查看网络连接，请求超时";
 }
 + (NSString *)getUnLoginMessage
 {

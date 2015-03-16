@@ -118,6 +118,7 @@ int method;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:YES];
     flag=self.passvalue.signOutFlag;
 //    NSDictionary* defaults = [[NSUserDefaults standardUserDefaults] dictionaryRepresentation];
 //     
@@ -185,8 +186,8 @@ int method;
     HUD.delegate = self;
     HUD.labelText = @"请稍后...";
     [HUD show:YES];
-    [HUD showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
-    
+//    [HUD showWhileExecuting:@selector(myTask) onTarget:self withObject:nil animated:YES];
+//    sleep(5);
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:passwordField.text forKey:@"passwordText"];
     

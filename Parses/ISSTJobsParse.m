@@ -39,7 +39,7 @@
     jobsArray = [super.dict objectForKey:@"body"] ;
     int  count = [jobsArray count];
     NSLog(@"hahahahahhahahahahahahahaha");
-    NSLog(@"count=%d,content=%@",count,jobsArray);
+//    NSLog(@"count=%d,content=%@",count,jobsArray);
 
     for (int i=0; i<count; i++)
     {

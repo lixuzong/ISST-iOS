@@ -131,6 +131,13 @@ const    static  int   EXPERIENCE  =5;
     [self.webApiDelegate requestDataOnFail:[LoginErrors checkNetworkConnection]];
 }
 
+- (NSURLRequest *)connection:(NSURLConnection *)connection
+             willSendRequest:(NSURLRequest *)request
+            redirectResponse:(NSURLResponse *)redirectResponse{
+    NSLog(@"即将发送请求");
+    return(request);
+}
+
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     NSHTTPURLResponse *HTTPResponse = (NSHTTPURLResponse *)response;
@@ -153,10 +160,15 @@ const    static  int   EXPERIENCE  =5;
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
     NSLog(@"获取数据");
+    NSLog(@"数据长度为 = %lu", (unsigned long)[data length]);
     [datas appendData:data];
 }
 
-
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection
+                  willCacheResponse:(NSCachedURLResponse *)cachedResponse{
+    NSLog(@"将缓存输出");
+    return(cachedResponse);
+}
 
 
 //请求完成
@@ -167,13 +179,15 @@ const    static  int   EXPERIENCE  =5;
     NSDictionary *dics =[news infoSerialization:datas];
     NSArray *array ;
     id backData;
-    NSLog(@"self=%@,解析life数据为dictionary成功",self);
+    NSLog(@"self=%@,解析life数据为dictionary",self);
+     NSLog(@"dictionary =%lu",(unsigned long)[dics count]);
     switch (methodId) {
         case CAMPUSNEWS:
         case WIKIS:
         case STUDYING:
         case EXPERIENCE:
             // dics=  [news campusNewsSerialization:datas];
+//            NSLog(@"dictionary =%lu,dics=%@",(unsigned long)[dics count],dics);
             if (dics&&[dics count]>0)
             {
                 if (0 == [news getStatus])//登录成功
@@ -187,6 +201,7 @@ const    static  int   EXPERIENCE  =5;
                 
                 else if(1 == [news getStatus])
                 {
+                    NSLog(@" login failed");
                     if ([self.webApiDelegate respondsToSelector:@selector(updateUserLogin)])
                     {
                         [self.webApiDelegate updateUserLogin];

@@ -14,6 +14,7 @@
 
 int pushtag;
 int login;
+int netok;
 NSString *bpuserid;
 NSString *bpchannelid;
 @interface AppDelegate : UIResponder <UIApplicationDelegate,ISSTWebApiDelegate,RESideMenuDelegate,UIAlertViewDelegate>

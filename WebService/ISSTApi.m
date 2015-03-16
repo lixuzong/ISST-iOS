@@ -53,8 +53,8 @@
         NSCachedURLResponse *response =[urlCache cachedResponseForRequest:request];
         NSLog(@"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         if (response!=nil) {
-            NSLog(@"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-            [request setCachePolicy:NSURLRequestReloadRevalidatingCacheData];
+            NSLog(@"get1=$$$$$$$$$$$$$$$$$$$$$$$$$$＝有缓存，与网上的进行比较再加载＝$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+            [request setCachePolicy:NSURLRequestReturnCacheDataDontLoad];
         }
         
         /* 创建NSURLConnection*/
@@ -77,29 +77,42 @@
 //        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate];
         if (connection) {
             NSLog(@"连接成功");
-            
-            
+        
         }
         
         
-    } else if([method isEqualToString:@"GET2"]) {   //需要参数的函数就使用“GET2”（参数在info中）  (其实也可以在之前的api中将info和subUrl拼接在一起然后传过来)
+    }
+    
+    
+    else if([method isEqualToString:@"GET2"]) {   //需要参数的函数就使用“GET2”（参数在info中）  (其实也可以在之前的api中将info和subUrl拼接在一起然后传过来)
         strUrl= [NSString stringWithFormat:@"%@%@?%@",mainUrl,subUrl,info];
         
-        NSLog(@"ISSTApi*********");
-        NSLog(@"%@",strUrl);
+//        NSLog(@"ISSTApi*********");
+        NSLog(@"request %@ by get 2",strUrl);
         
         NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                           timeoutInterval:20];
+                                                           timeoutInterval:6.0f];
+        
         NSURLCache *urlCache=[NSURLCache sharedURLCache];
+        
         [urlCache setMemoryCapacity:1*1024*1024];
+        
+        [urlCache removeCachedResponseForRequest:request];
+//        [urlCache removeAllCachedResponses];
+        
         NSCachedURLResponse *response=[urlCache cachedResponseForRequest:request];
+        
         if (response!=nil) {
-            NSLog(@"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-            [request setCachePolicy:NSURLRequestReloadRevalidatingCacheData];
+            NSLog(@"get2=$$$$$$$$$$$$$$$$$$$$$$$$$$$＝有缓存，从与网上的进行比较再加载＝$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+             [request setCachePolicy:NSURLRequestReloadRevalidatingCacheData];
         }
 
+        else
+        {
+            NSLog(@"无缓存");
+        }
         NSURLConnection *connection=[[NSURLConnection alloc] initWithRequest:request delegate:delegate startImmediately:YES];
 //        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate];
         if(connection){
@@ -107,9 +120,13 @@
 
         }
         
-    }else if([method isEqualToString:@"PUT"]) {
+    }
+    
+    else if([method isEqualToString:@"PUT"]) {
         
-    }  else if([method isEqualToString:@"POST"]) {
+    }
+    
+    else if([method isEqualToString:@"POST"]) {
         NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];
         
         NSData *data = [info dataUsingEncoding:NSUTF8StringEncoding];
@@ -143,6 +160,8 @@
         
         
     }
+    
+    
     else if([method isEqualToString:@"POST2"])
     {
         NSURL *url = [NSURL URLWithString:[strUrl URLEncodedString]];

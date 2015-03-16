@@ -18,8 +18,8 @@
 
 -(void)setQq:(NSString *)q
 {
-    [q retain];
-    [qq release];
+//    [q retain];
+//    [qq release];
     if (q && ![q isMemberOfClass:[NSNull class]])
     {
         qq = q;
@@ -32,8 +32,8 @@
 
 -(void)setCityName:(NSString *)c
 {
-    [c retain];
-    [cityName release];
+//    [c retain];
+//    [cityName release];
     if (c &&! [c isMemberOfClass:[NSNull class]] )
     {
         cityName = c;
@@ -44,11 +44,11 @@
     }
     
 }
-
+//
 -(void)setmajorName:(NSString *)m
 {
-    [m retain];
-    [majorName release];
+//    [m retain];
+//    [majorName release];
     if (m && ![m isMemberOfClass:[NSNull class]])
     {
         majorName = m;
@@ -58,11 +58,11 @@
         majorName = @"";
     }
 }
-
+//
 -(void)setClassName:(NSString *)c
 {
-    [c retain];
-    [className release];
+//    [c retain];
+//    [className release];
     if (c && ![c isMemberOfClass:[NSNull class]])
     {
         className = c;
@@ -72,11 +72,11 @@
         className = @"";
     }
 }
-
+//
 -(void)setSignature:(NSString *)s
 {
-    [s retain];
-    [signature release];
+//    [s retain];
+//    [signature release];
     if (s && ![s isMemberOfClass:[NSNull class]])
     {
         signature = s;
@@ -89,8 +89,8 @@
 
 -(void)setCompany:(NSString *)c
 {
-    [c retain];
-    [company release];
+//    [c retain];
+//    [company release];
     if (c && ![c isMemberOfClass:[NSNull class]])
     {
         company = c;
@@ -103,8 +103,8 @@
 
 -(void)setPosition:(NSString *)p
 {
-    [p retain];
-    [position release];
+//    [p retain];
+//    [position release];
     if (p && ![p isMemberOfClass:[NSNull class]])
     {
         position = p;
@@ -156,9 +156,12 @@
 - (id)initWithCoder:(NSCoder *)decoder {
     if (self = [super init]) {
         userId      = ((NSNumber*)[decoder decodeObjectForKey:@"userId"]).intValue  ;
-        name        = [[decoder decodeObjectForKey:@"name"] retain];
-        userName    = [[decoder decodeObjectForKey:@"userName"] retain];
-        password    = [[decoder decodeObjectForKey:@"password"] retain];
+//        name        = [[decoder decodeObjectForKey:@"name"] retain];
+//        userName    = [[decoder decodeObjectForKey:@"userName"] retain];
+//        password    = [[decoder decodeObjectForKey:@"password"] retain];
+        name        = [decoder decodeObjectForKey:@"name"];
+        userName    = [decoder decodeObjectForKey:@"userName"] ;
+        password    = [decoder decodeObjectForKey:@"password"] ;
         NSLog(@"%@",userName);
         NSLog(@"%@",password);
         gender      = ((NSNumber*)[decoder decodeObjectForKey:@"gender"]).intValue==1?MALE:FAMALE;
@@ -166,12 +169,20 @@
         classId     = ((NSNumber*)[decoder decodeObjectForKey:@"classId"]).intValue ;
         majorId    = ((NSNumber*)[decoder decodeObjectForKey:@"majorId"]).intValue ;
         cityId     = ((NSNumber*)[decoder decodeObjectForKey:@"cityId"]).intValue ;
-        phone      = [[decoder decodeObjectForKey:@"phone"] retain];
-        email       = [[decoder decodeObjectForKey:@"email"] retain];
-        qq          = [[decoder decodeObjectForKey:@"qq"] retain];
-        signature   = [[decoder decodeObjectForKey:@"signature"] retain];
-        position    = [[decoder decodeObjectForKey:@"position"] retain];
-        company     = [[decoder decodeObjectForKey:@"company"] retain];
+//        phone      = [[decoder decodeObjectForKey:@"phone"] retain];
+//        email       = [[decoder decodeObjectForKey:@"email"] retain];
+//        qq          = [[decoder decodeObjectForKey:@"qq"] retain];
+//        signature   = [[decoder decodeObjectForKey:@"signature"] retain];
+//        position    = [[decoder decodeObjectForKey:@"position"] retain];
+//        
+//        company     = [[decoder decodeObjectForKey:@"company"] retain];
+        phone      = [decoder decodeObjectForKey:@"phone"];
+        email       = [decoder decodeObjectForKey:@"email"];
+        qq          = [decoder decodeObjectForKey:@"qq"] ;
+        signature   = [decoder decodeObjectForKey:@"signature"];
+        position    = [decoder decodeObjectForKey:@"position"] ;
+        
+        company     = [decoder decodeObjectForKey:@"company"] ;
         cityPrincipal=((NSNumber*)[decoder decodeObjectForKey:@"cityPrincipal"]).boolValue;
         privateCompany=((NSNumber*)[decoder decodeObjectForKey:@"privateCompany"]).boolValue;
         privateEmail=((NSNumber*)[decoder decodeObjectForKey:@"privateEmail"]).boolValue;
@@ -179,9 +190,12 @@
         privatePosition=((NSNumber*)[decoder decodeObjectForKey:@"privatePosition"]).boolValue;
         privateQQ=((NSNumber*)[decoder decodeObjectForKey:@"privateQQ"]).boolValue;
         
-        className        = [[decoder decodeObjectForKey:@"className"] retain];
-        majorName    = [[decoder decodeObjectForKey:@"majorName"] retain];
-        cityName    = [[decoder decodeObjectForKey:@"cityName"] retain];
+//        className        = [[decoder decodeObjectForKey:@"className"] retain];
+//        majorName    = [[decoder decodeObjectForKey:@"majorName"] retain];
+//        cityName    = [[decoder decodeObjectForKey:@"cityName"] retain];
+        className        = [decoder decodeObjectForKey:@"className"];
+        majorName    = [decoder decodeObjectForKey:@"majorName"] ;
+        cityName    = [decoder decodeObjectForKey:@"cityName"] ;
         
     }
     return self;
@@ -222,36 +236,36 @@
 
 - (void)dealloc
 {
-    [userName release];
-    // userName = nil;
-    [name release];
-    name = nil;
-    [phone release];
-    phone = nil;
-    [email release];
-    email = nil;
-    [qq release];
-    qq = nil;
-    [signature release];
-    signature = nil;
-    [position release];
-    position = nil;
-    [company release];
-    company = nil;
-    
-    [className release];
-    className= nil;
-    
-    [cityName release];
-    cityName = nil;
-    
-    [majorName release];
-    majorName = nil;
-    
-    [password release]; //test
-    password = nil;
-    
-    [super dealloc];
+//    [userName release];
+//    // userName = nil;
+//    [name release];
+//    name = nil;
+//    [phone release];
+//    phone = nil;
+//    [email release];
+//    email = nil;
+//    [qq release];
+//    qq = nil;
+//    [signature release];
+//    signature = nil;
+//    [position release];
+//    position = nil;
+//    [company release];
+//    company = nil;
+//    
+//    [className release];
+//    className= nil;
+//    
+//    [cityName release];
+//    cityName = nil;
+//    
+//    [majorName release];
+//    majorName = nil;
+//    
+//    [password release]; //test
+//    password = nil;
+//    
+//    [super dealloc];
 }
 
 

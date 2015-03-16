@@ -48,7 +48,7 @@ const    static  int   postpushid= 4;
         
         NSString *info = [NSString stringWithFormat:@"username=%@&password=%@&token=%@&timestamp=%llu&longitude=121.00&latitude=30.01",name,password,token,timestamp];
         NSString *subUrlString = [NSString stringWithFormat:@"api/login"];
-        NSLog(@"subUrlString=%@",subUrlString);
+        NSLog(@"request subUrlString=%@",subUrlString);
         [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:info MD5Dictionary:nil];
     }//network connect
     else
@@ -96,7 +96,7 @@ const    static  int   postpushid= 4;
         
         NSString *info = [NSString stringWithFormat:@"userId=%@&token=%@&timestamp=%llu&longitude=121.00&latitude=30.01",userId,token,timestamp];
         NSString *subUrlString = [NSString stringWithFormat:@"api/login/update"];
-        NSLog(@"subUrlString=%@",subUrlString);
+        NSLog(@"request subUrlString=%@",subUrlString);
         [super requestWithSuburl:subUrlString Method:@"POST" Delegate:self Info:info MD5Dictionary:nil];
     }//network connect
     else
@@ -198,7 +198,7 @@ const    static  int   postpushid= 4;
     }
       NSDictionary *dics = [userLoginParse infoSerialization:datas];
       
-    NSLog(@"self=%@,解析数据为dictionary成功",self);
+    NSLog(@"self=%@,dic=%@  解析数据为dictionary成功",self,dics);
     switch (methodId) {
         case REQUESTLOGIN:
         case REQUESTUSERINFO:
@@ -217,6 +217,7 @@ const    static  int   postpushid= 4;
                 {
                     if ([self.webApiDelegate respondsToSelector:@selector(requestDataOnFail:)])
                     {
+                        
                         [self.webApiDelegate requestDataOnFail:[LoginErrors getStatusMessage:[userLoginParse getStatus]]];
                     }
                 }
