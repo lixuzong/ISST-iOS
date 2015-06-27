@@ -161,6 +161,7 @@ NSArray *imageForRowArray= nil;
     //passValue *passValue = [[passalloc] init];
     passValue *passvalue = [[passValue alloc] init];
     passvalue.signOutFlag = @"1";
+    pushbind=1;
     slider.passvalue=passvalue;
     [self.navigationController setNavigationBarHidden:YES];    //set system navigationbar hidden
     [self.navigationController pushViewController:slider animated: NO];
@@ -235,9 +236,12 @@ NSArray *imageForRowArray= nil;
        [alert show];
    }
    else if (indexPath.row == 2 && indexPath.section==3){
-       ZBarViewController *saoma=[[ZBarViewController alloc] init];
-       saoma.title=@"扫码签到";
-       [self.navigationController pushViewController:saoma animated:YES];
+//       ZBarViewController *saoma=[[ZBarViewController alloc] init];
+//       saoma.title=@"扫码签到";
+//       [self.navigationController pushViewController:saoma animated:YES];
+       UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"" message:@"亲，该功能尚未开通！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定",nil];
+       alert.delegate = self;
+       [alert show];
 
    }
    else if (indexPath.row == 0 && indexPath.section==4){ //关于

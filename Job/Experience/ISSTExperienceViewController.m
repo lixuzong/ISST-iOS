@@ -99,6 +99,7 @@ static int  loadPage = 1;
     
 }
 
+
 #pragma mark 开始进入刷新状态
 - (void)headerRereshing
 {
@@ -131,6 +132,7 @@ static int  loadPage = 1;
     experienceArrayTableView.delegate = nil;
     experienceArrayTableView = nil;
     loadPage = 1;
+    self.experienceApi.webApiDelegate=nil;
 }
 
 

@@ -43,6 +43,7 @@
     userApi =[[ISSTLoginApi alloc]init];
     _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] ;
     
+    
     BOOL switchValue =[[[NSUserDefaults standardUserDefaults] objectForKey:@"switchValue"]boolValue];
     
     //初始化（推送，后台，登陆）标识。
@@ -50,8 +51,7 @@
     _foreground=0;
     login=0;
     
-    
-    
+        
     
     [BPush setupChannel:launchOptions];
     [BPush setDelegate:self];

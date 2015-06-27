@@ -35,7 +35,45 @@
     return  self;
 }
 
+-(id)campusNewsInfoParseWith:(id)responseobject
+{
+    NSMutableArray *newsArray =[[[NSMutableArray alloc]init] autorelease];
+    
+    // NSLog(@"%@",dict);
+    campusNewsArray = [responseobject objectForKey:@"body"] ;
+    int  count = [campusNewsArray count];
+    NSLog(@"返回的新闻列表行数count=%d",count);
+    for (int i=0; i<count; i++)
+    {
+        
+        ISSTCampusNewsModel *campusNews = [[[ISSTCampusNewsModel alloc]init]autorelease];
+        campusNews.newsId     = [[[campusNewsArray objectAtIndex:i ] objectForKey:@"id"] intValue];
+        campusNews.title      = [[campusNewsArray objectAtIndex:i] objectForKey:@"title"];
+        campusNews.description= [[campusNewsArray objectAtIndex:i] objectForKey:@"description"];
+        
+        long long  updatedAt =  [[[campusNewsArray objectAtIndex:i] objectForKey:@"updatedAt"]longLongValue]/1000;
+        
+        NSDate  *datePT = [NSDate dateWithTimeIntervalSince1970:updatedAt];
+        
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        campusNews.updatedAt  = [dateFormatter stringFromDate:datePT];
+        [dateFormatter release];
+        
+        campusNews.userId     = [[[campusNewsArray objectAtIndex:i ] objectForKey:@"userId"]intValue];
+        campusNews.categoryId     = [[[campusNewsArray objectAtIndex:i ] objectForKey:@"categoryId"]intValue];
+        //        NSLog(@"%@",userInfo);
+        if(campusNews.userId>0)
+        {
+            campusNews.userName=[[[campusNewsArray objectAtIndex:i]objectForKey:@"user"]objectForKey:@"name"];
+        }else{
+            campusNews.userName=@"管理员";
+        }
+        [newsArray addObject:campusNews];
+    }
+    return newsArray;
 
+}
 
 
 - (id)campusNewsInfoParse

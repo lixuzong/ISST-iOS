@@ -49,12 +49,13 @@
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                             cachePolicy:NSURLRequestUseProtocolCachePolicy //使用protocal协议定义
                                                            timeoutInterval:20];
+        
         //判断是否有缓存
         NSCachedURLResponse *response =[urlCache cachedResponseForRequest:request];
         NSLog(@"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         if (response!=nil) {
             NSLog(@"get1=$$$$$$$$$$$$$$$$$$$$$$$$$$＝有缓存，与网上的进行比较再加载＝$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
-            [request setCachePolicy:NSURLRequestReturnCacheDataDontLoad];
+            [request setCachePolicy:NSURLRequestReloadRevalidatingCacheData];
         }
         
         /* 创建NSURLConnection*/
@@ -94,7 +95,7 @@
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                            timeoutInterval:6.0f];
-        
+      
         NSURLCache *urlCache=[NSURLCache sharedURLCache];
         
         [urlCache setMemoryCapacity:1*1024*1024];
@@ -113,6 +114,7 @@
         {
             NSLog(@"无缓存");
         }
+        
         NSURLConnection *connection=[[NSURLConnection alloc] initWithRequest:request delegate:delegate startImmediately:YES];
 //        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:delegate];
         if(connection){
@@ -168,7 +170,7 @@
         
         NSData *data = [info dataUsingEncoding:NSUTF8StringEncoding];
         NSString *testdata=[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
-        NSLog(@"postpushiddata %@",testdata);
+        NSLog(@"postpushiddata %@",testdata );
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                                cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData
                                                            timeoutInterval:6];

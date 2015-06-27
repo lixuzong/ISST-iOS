@@ -9,6 +9,7 @@
 #import "ISSTWebApiDelegate.h"
 #import "ISSTBaseViewController.h"
 
+int pushbind;
 @interface ISSTUserCenterViewController : ISSTBaseViewController<UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 
 @end

@@ -195,4 +195,8 @@
     [self.contentTextView resignFirstResponder];
     
 }
+-(void)dealloc
+{
+    self.centerApi.webApiDelegate=nil;
+}
 @end

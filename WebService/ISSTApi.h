@@ -12,7 +12,7 @@
 @interface ISSTApi : NSObject
 
 @property (strong, nonatomic)NSMutableData *datas;
-@property (nonatomic, assign)id<ISSTWebApiDelegate> webApiDelegate;
+@property (nonatomic, weak)id<ISSTWebApiDelegate> webApiDelegate;
 - (void)requestWithSuburl:(NSString *)subUrl Method:(NSString *)method Delegate:(id<NSURLConnectionDataDelegate>)delegate Info:(NSString*)info  MD5Dictionary:(NSDictionary *)dict;
 
 @end

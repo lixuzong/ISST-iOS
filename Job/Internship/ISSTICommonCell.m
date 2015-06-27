@@ -15,6 +15,8 @@
     self.imageView.image=[UIImage imageNamed:@"moren240.png"];
     self.time.textColor=[UIColor grayColor];
     self.authorLabel.textColor=[UIColor grayColor];
+    UIView *a=[[UIView alloc]init];
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated

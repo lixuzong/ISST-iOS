@@ -119,6 +119,7 @@ static int  loadPage = 1;
     recommendTableView.delegate = nil;
     recommendTableView = nil;
     loadPage = 1;
+    self.recommendApi.webApiDelegate=nil;
 }
 
 - (void)didReceiveMemoryWarning

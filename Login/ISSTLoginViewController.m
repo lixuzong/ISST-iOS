@@ -82,7 +82,7 @@ int method;
 {
     [super viewDidLoad];
     response=NO;
-   
+    
     [self.navigationItem setHidesBackButton:YES];
     [self.navigationController setNavigationBarHidden:YES];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"5login_bg.jpg"]];
@@ -255,7 +255,9 @@ int method;
 
 
 -(void) showMenu{
-    UINavigationController *navigationController1 = [[UINavigationController alloc] initWithRootViewController:[[ISSTNewsViewController alloc] init]];
+    ISSTNewsViewController *news=[[ISSTNewsViewController alloc] init];
+    
+    UINavigationController *navigationController1 = [[UINavigationController alloc] initWithRootViewController:news];
     LeftMenuViewController *leftMenuViewController = [[LeftMenuViewController alloc
                                                        ] init];
     RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navigationController1

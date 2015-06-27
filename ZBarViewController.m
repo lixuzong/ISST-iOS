@@ -34,6 +34,7 @@
 }
 -(void)viewDidAppear:(BOOL)animated{
     [readerView start];
+    readerView.torchMode=0;
 }
 
 - (void)didReceiveMemoryWarning

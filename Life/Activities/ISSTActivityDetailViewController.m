@@ -108,17 +108,26 @@
     float fontSize=50;
     NSString *jsString = [NSString stringWithFormat:@"<html> \n"
                           "<head> \n"
-                          "<style type=\"text/css\"> \n"
-                          "body {font-size: %f}"
-                          // "img {width:960;}"
+                          "<meta id='viewport' name='viewport' content='initial-scale=1.0; maximum-scale=1.0;'>\n"
+                          //                          "<style type=\"text/css\"> \n"
                           
+                          "<style type=\"text/css\"> \n"
+                          "img{max-width:100%%; width:auto; height:auto;} "
+                          //                          "body {color:#9C9C9C}"
+                          //                          "body {font-size:40;}"
                           "</style> \n"
+                          
                           "</head> \n"
-                          "<body>\n"
-                          "<h3 align='center'>%@</h3>"
-                          "<h5 align='center'>%@</h5>"
+                          "<body >\n"
+                          "<h3 align='center'style='color:#262626'>%@</h3>"
+                          "<h5 align='center'>"
+                          "<font color='#9C9C9C'; size='1';>&nbsp%@</font>"
+                          "</h5>"
+                          "<hr align='center'; style=' height:1px;border:none;border-top:1px  solid #EBEBEB ;' />"
+                          "</hr>"
+                          
                           "%@</body> \n"
-                          "</html>", fontSize,title,publisher,detailModel.content];
+                          "</html>", title,publisher,detailModel.content];
     
     
     [webView loadHTMLString:jsString baseURL:nil];//加载html源代码

@@ -53,6 +53,10 @@
     
 }
 
+-(void)dealloc
+{
+    self.internshipApi.webApiDelegate =nil;
+}
 - (void)loadWebPageWithString:(NSString*)urlString
 {
     NSURL *url =[NSURL URLWithString:urlString];

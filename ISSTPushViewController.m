@@ -19,12 +19,14 @@
 {
     NSMutableArray *pushArray;
     int  loadPage ;
+    
 }
 
 @property (nonatomic,strong)ISSTUserCenterApi *pushApi;
 @property(nonatomic,strong)ISSTLoginApi *userApi;
 @property(nonatomic,strong)ISSTUserModel *userModel;
 @property(nonatomic,strong)ISSTPushModel *pushModel;
+@property(nonatomic,strong)ISSTPushDetailViewController *pushDetailView;
 
 @end
 
@@ -34,6 +36,7 @@
 @synthesize userApi;
 @synthesize pushModel;
 @synthesize pushTableview;
+@synthesize pushDetailView;
 static NSString *CellTableIdentifier=@"ISSTPushCell";
 //static int  loadPage = 1;
 - (void)viewDidLoad {
@@ -149,13 +152,22 @@ static NSString *CellTableIdentifier=@"ISSTPushCell";
     return cell;
 }
 
+
 #pragma mark - Table view delegate
-//- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//    NSLog(@"select the row");
-//    
-//}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    NSLog(@"select");
+    pushDetailView=[[ISSTPushDetailViewController alloc]init];
+    pushDetailView.navigationItem.title=@"详细信息";
+    ISSTPushModel *pushModel=[pushArray objectAtIndex:indexPath.row];
+    pushDetailView.tit=pushModel.title;
+    pushDetailView.content=pushModel.content;
+    pushDetailView.updateAt=pushModel.updatedAt;
+    
+    [self.navigationController pushViewController:pushDetailView animated:YES];
+    
+}
 
 #pragma mark - webapidelegate
 - (void)requestDataOnSuccess:(id)backToControllerData{
@@ -201,6 +213,10 @@ static NSString *CellTableIdentifier=@"ISSTPushCell";
     
 }
 
+-(void)dealloc
+{
+    pushApi.webApiDelegate=nil;
+}
 /*
 #pragma mark - Navigation
 

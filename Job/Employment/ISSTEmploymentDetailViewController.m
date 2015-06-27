@@ -62,6 +62,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+-(void)dealloc
+{
+    self.employmentApi.webApiDelegate =nil;
+}
 
 #pragma mark -
 #pragma mark  WebViewDelegate Methods

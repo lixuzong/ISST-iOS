@@ -18,6 +18,9 @@
 #import "ISSTUserCenterViewController.h"
 #import "AppDelegate.h"
 #import "AppCache.h"
+#import "ISSTUserCenterViewController.h"
+#import "AFNetworking.h"
+#import "ISSTCampusNewsParse.h"
 
 @interface ISSTNewsViewController ()
 
@@ -53,27 +56,19 @@ static int  loadPage = 1;
 static int  numofclick = 0;
 //int  loadPage = 1;
 
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-//{
-//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    if (self) {
-//        self.newsArray = [[NSMutableArray alloc]init];
-//        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"user.png"];
-//
-//    }
-//    return self;
-//}
-//
-//-(id)init
-//{
-//    if (self = [super init]) {
-//        
-//    }
-//    return self;
-//}
+
+-(id)init
+{
+    NSLog(@"init news");
+    if (self = [super init]) {
+        self.navigationItem.rightBarButtonItem.image=[UIImage imageNamed:@"user.png"];
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
+    loadPage=1;
     login=1;
     numofclick++;
   
@@ -81,7 +76,7 @@ static int  numofclick = 0;
     self.newsApi.webApiDelegate = self;
     self.userApi=[[ISSTLoginApi alloc] init];
     self.userApi.webApiDelegate=self;
-    self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
+//    self.view.autoresizingMask = (UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight);
     
     self.title = @"正在加载...";
     
@@ -103,7 +98,9 @@ static int  numofclick = 0;
 //    NSLog(@"student=%@", _userModel.userName);
     NSLog(@"bpushidandchannelid=%@%@",bpuserid,bpchannelid);
     
-    if (bpuserid&&(numofclick<=1)) {
+    NSLog(@"pushbind=%d",pushbind);
+    if ((bpuserid&&(numofclick<=1))||pushbind==1) {
+        pushbind=0;
         NSLog(@"numofclick=%d",numofclick);
         NSLog(@"post push id by newsview");
         [self.userApi postPushWithStudentid: _userModel.userName andUserid:bpuserid andChannelid:bpchannelid];
@@ -111,10 +108,31 @@ static int  numofclick = 0;
     
     if (!netok) {
         [self setupRefresh];
+//        [self getCampusList];
     }
     
     
   
+    
+}
+
+-(void)getCampusList
+{
+    NSString *url=[NSString stringWithFormat:@"http://www.cst.zju.edu.cn/isst/api/archives/categories/campus?page=%d&pageSize=10",loadPage];
+    AFHTTPRequestOperationManager *httpRequestOperationManager=[AFHTTPRequestOperationManager manager];
+    httpRequestOperationManager.requestSerializer=[AFHTTPRequestSerializer serializer];
+    httpRequestOperationManager.responseSerializer = [AFJSONResponseSerializer serializer];
+    [httpRequestOperationManager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject)
+     {
+         ISSTCampusNewsParse *news  = [[ISSTCampusNewsParse alloc]init];
+         NSLog(@"yes success");
+         NSLog(@"response=%@",responseObject);
+         NSArray *array=[news campusNewsInfoParseWith:responseObject];
+         [self requestDataOnSuccess:array];
+     }failure:^(AFHTTPRequestOperation *operation, NSError *error)
+     {
+         NSLog(@"yes no");
+     }];
     
 }
 
@@ -141,8 +159,10 @@ static int  numofclick = 0;
 - (void)headerRereshing
 {
     // 1.添加数据
-   [self.newsApi requestCampusNewsLists:loadPage andPageSize:10 andKeywords:@"string"];
+    loadPage=1;
+//   [self.newsApi requestCampusNewsLists:loadPage andPageSize:10 andKeywords:@"string"];
     
+    [self getCampusList];
     // 刷新表格
     [self.newsArrayTableView reloadData];
     
@@ -167,6 +187,7 @@ static int  numofclick = 0;
     // 1.添加数据
    [self.newsApi requestCampusNewsLists:loadPage andPageSize:10 andKeywords:@"string"];
     
+//    [self getCampusList];
     // (最好在刷新表格后调用)调用endRefreshing可以结束刷新状态
     [self.newsArrayTableView footerEndRefreshing];
 }
@@ -212,8 +233,7 @@ static int  numofclick = 0;
     
     ISSTCommonCell *cell=(ISSTCommonCell *)[tableView dequeueReusableCellWithIdentifier:CellTableIdentifier];
     if (cell == nil) {
-        cell = (ISSTCommonCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellTableIdentifier];
-    }
+     }
     
     //[cell.image sd_setImageWithURL:[listdata objectAtIndex:row]];
     //cell.imageView
@@ -321,6 +341,10 @@ static int  numofclick = 0;
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
+
+
 
 
 

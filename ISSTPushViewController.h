@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ISSTWebApiDelegate.h"
 #import "ISSTBaseViewController.h"
+#import "ISSTPushDetailViewController.h"
 
 @interface ISSTPushViewController : UIViewController   <UITableViewDataSource,UITableViewDelegate,ISSTWebApiDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *pushTableview;

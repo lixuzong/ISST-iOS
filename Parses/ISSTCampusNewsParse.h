@@ -17,6 +17,8 @@
  *****/
 -(id)campusNewsInfoParse;
 
+-(id)campusNewsInfoParseWith:(id)responseobject;
+
 
 
 /*****

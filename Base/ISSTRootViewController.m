@@ -94,88 +94,88 @@
 }
 #pragma mark - UIScrollViewDelegate
 //当tableView滚动时就会调用这个函数
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
-{
-    [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
-}
-
-// called on start of dragging (may require some time and or distance to move)
-- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView;
-{
-    
-}
-
-
-
-//当tableView滚动结束时就会调用这个函数
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
-{
-    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
-}
-
-- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView   // called on finger up as we are moving
-{
-    
-}
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;      // called when scroll view grinds to a halt
-{
-    if ([self canGetMoreData])
-    {
-        CGRect rc = _getMoreCell.frame;
-        
-        NSLog(@"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    ====scrollView.contentOffset.y=%f \
-              \
-              scrollView.frame.size.height=%f   \
-              \
-              rc.origin.y=%f \
-              \
-              rc.size.height =%f\
-              \
-              contentSize.height=%f \
-              ",scrollView.contentOffset.y, scrollView.frame.size.height,rc.origin.y,rc.size.height,scrollView.contentSize.height);
-        //887   548    0  44
-        if ((scrollView.contentSize.height-scrollView.contentOffset.y)<=scrollView.frame.size.height)
-        {
-            if (rc.origin.y > 0&&!_refreshLoading) {
-                [self performSelector:@selector(requestGetMore) withObject:nil afterDelay:0.0f];
-            }
-        }
-    }
-}
-
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView;
-{
-    
-}
-
-#pragma mark - EGORefreshTableHeaderDelegate
-//当弹出下拉界面时调用此函数
-- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view;
-{
-    [self requestRefresh];
-}
-
-- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view;
-{
-    return _refreshLoading;
-    //return  true;
-}
-
-- (UIEdgeInsets)egoRefreshTableHeaderContentInset:(EGORefreshTableHeaderView *)view
-{
-    //刷新完成后，返回数据的inset
-    /**
-     *topLayoutGuide为IOS7新增属性，所以在iOS6上奔溃。此处解决此问题。
-     */
-    if ([UIDevice currentDevice].systemVersion.floatValue>=7.0) {
-        return UIEdgeInsetsMake(self.topLayoutGuide.length,
-                                0,
-                                self.bottomLayoutGuide.length,
-                                0);
-    }
-    return UIEdgeInsetsZero;
-}
-
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView;
+//{
+//    [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+//}
+//
+//// called on start of dragging (may require some time and or distance to move)
+//- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView;
+//{
+//    
+//}
+//
+//
+//
+////当tableView滚动结束时就会调用这个函数
+//- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate;
+//{
+//    [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+//}
+//
+//- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView   // called on finger up as we are moving
+//{
+//    
+//}
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView;      // called when scroll view grinds to a halt
+//{
+//    if ([self canGetMoreData])
+//    {
+//        CGRect rc = _getMoreCell.frame;
+//        
+//        NSLog(@"$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$    ====scrollView.contentOffset.y=%f \
+//              \
+//              scrollView.frame.size.height=%f   \
+//              \
+//              rc.origin.y=%f \
+//              \
+//              rc.size.height =%f\
+//              \
+//              contentSize.height=%f \
+//              ",scrollView.contentOffset.y, scrollView.frame.size.height,rc.origin.y,rc.size.height,scrollView.contentSize.height);
+//        //887   548    0  44
+//        if ((scrollView.contentSize.height-scrollView.contentOffset.y)<=scrollView.frame.size.height)
+//        {
+//            if (rc.origin.y > 0&&!_refreshLoading) {
+//                [self performSelector:@selector(requestGetMore) withObject:nil afterDelay:0.0f];
+//            }
+//        }
+//    }
+//}
+//
+//- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView;
+//{
+//    
+//}
+//
+//#pragma mark - EGORefreshTableHeaderDelegate
+////当弹出下拉界面时调用此函数
+//- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view;
+//{
+//    [self requestRefresh];
+//}
+//
+//- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view;
+//{
+//    return _refreshLoading;
+//    //return  true;
+//}
+//
+//- (UIEdgeInsets)egoRefreshTableHeaderContentInset:(EGORefreshTableHeaderView *)view
+//{
+//    //刷新完成后，返回数据的inset
+//    /**
+//     *topLayoutGuide为IOS7新增属性，所以在iOS6上奔溃。此处解决此问题。
+//     */
+//    if ([UIDevice currentDevice].systemVersion.floatValue>=7.0) {
+//        return UIEdgeInsetsMake(self.topLayoutGuide.length,
+//                                0,
+//                                self.bottomLayoutGuide.length,
+//                                0);
+//    }
+//    return UIEdgeInsetsZero;
+//}
+//
 
 
 

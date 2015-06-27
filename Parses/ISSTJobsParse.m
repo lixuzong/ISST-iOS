@@ -61,7 +61,7 @@
 
       
         NSDictionary *tmpDic = [[jobsArray objectAtIndex:i] objectForKey:@"user"];
-        NSLog(@"%@",[tmpDic description]);
+//        NSLog(@"%@",[tmpDic description]);
         if (jobsModel.userId>0) {
             ISSTUserModel *userModel = [[ISSTUserModel alloc]init];
             userModel.userId = [[tmpDic objectForKey:@"id"]intValue];

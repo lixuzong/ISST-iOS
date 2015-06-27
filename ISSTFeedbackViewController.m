@@ -92,6 +92,7 @@
     httpRequestOperationManager.requestSerializer = [AFJSONRequestSerializer serializer]; // 声明请求的数据是JSON类型
     httpRequestOperationManager.responseSerializer = [AFJSONResponseSerializer serializer]; //声明返回的数据是JSON类型
  
+    
     [httpRequestOperationManager POST:url parameters:listdata
      
                               success:^(AFHTTPRequestOperation *operation, id responseObject){

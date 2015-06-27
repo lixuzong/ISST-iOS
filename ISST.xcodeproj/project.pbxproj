@@ -40,6 +40,8 @@
 		18C31D261A5D56AB006DE02F /* OpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C31D1F1A5D56AB006DE02F /* OpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		18C31D301A5D5BC0006DE02F /* ISSTPushViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18C31D2D1A5D5BC0006DE02F /* ISSTPushViewController.xib */; };
 		18C31D311A5D5BC0006DE02F /* ISSTPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18C31D2E1A5D5BC0006DE02F /* ISSTPushViewController.m */; };
+		18D79B0B1AFC58E200188B54 /* ISSTPushDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18D79B091AFC58E200188B54 /* ISSTPushDetailViewController.m */; };
+		18D79B0C1AFC58E200188B54 /* ISSTPushDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18D79B0A1AFC58E200188B54 /* ISSTPushDetailViewController.xib */; };
 		18DD00941A5FB16100699426 /* ISSTPushModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 18DD00931A5FB16100699426 /* ISSTPushModel.m */; };
 		252ACB711967B00600D2E5A1 /* ISSTTasksSurveyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 252ACB701967B00600D2E5A1 /* ISSTTasksSurveyViewController.m */; };
 		252ACB741967B44C00D2E5A1 /* ISSTSurveyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 252ACB731967B44C00D2E5A1 /* ISSTSurveyModel.m */; };
@@ -423,6 +425,9 @@
 		18C31D2D1A5D5BC0006DE02F /* ISSTPushViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTPushViewController.xib; sourceTree = SOURCE_ROOT; };
 		18C31D2E1A5D5BC0006DE02F /* ISSTPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTPushViewController.m; sourceTree = SOURCE_ROOT; };
 		18C31D2F1A5D5BC0006DE02F /* ISSTPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTPushViewController.h; sourceTree = SOURCE_ROOT; };
+		18D79B081AFC58E200188B54 /* ISSTPushDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTPushDetailViewController.h; sourceTree = SOURCE_ROOT; };
+		18D79B091AFC58E200188B54 /* ISSTPushDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTPushDetailViewController.m; sourceTree = SOURCE_ROOT; };
+		18D79B0A1AFC58E200188B54 /* ISSTPushDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ISSTPushDetailViewController.xib; sourceTree = SOURCE_ROOT; };
 		18DD00921A5FB16100699426 /* ISSTPushModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSTPushModel.h; sourceTree = "<group>"; };
 		18DD00931A5FB16100699426 /* ISSTPushModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSTPushModel.m; sourceTree = "<group>"; };
 		252ACB6F1967B00600D2E5A1 /* ISSTTasksSurveyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISSTTasksSurveyViewController.h; path = UserCenter/ISSTTasksSurveyViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1352,6 +1357,8 @@
 				6F85C3C31A2C4C380017EB0C /* AFHTTPRequestOperation.m */,
 				6F85C3C41A2C4C380017EB0C /* AFHTTPRequestOperationManager.h */,
 				6F85C3C51A2C4C380017EB0C /* AFHTTPRequestOperationManager.m */,
+				6F85C3CD1A2C4C380017EB0C /* AFURLConnectionOperation.h */,
+				6F85C3CE1A2C4C380017EB0C /* AFURLConnectionOperation.m */,
 				6F85C3C61A2C4C380017EB0C /* AFHTTPSessionManager.h */,
 				6F85C3C71A2C4C380017EB0C /* AFHTTPSessionManager.m */,
 				6F85C3C81A2C4C380017EB0C /* AFNetworking.h */,
@@ -1359,8 +1366,6 @@
 				6F85C3CA1A2C4C380017EB0C /* AFNetworkReachabilityManager.m */,
 				6F85C3CB1A2C4C380017EB0C /* AFSecurityPolicy.h */,
 				6F85C3CC1A2C4C380017EB0C /* AFSecurityPolicy.m */,
-				6F85C3CD1A2C4C380017EB0C /* AFURLConnectionOperation.h */,
-				6F85C3CE1A2C4C380017EB0C /* AFURLConnectionOperation.m */,
 				6F85C3CF1A2C4C380017EB0C /* AFURLRequestSerialization.h */,
 				6F85C3D01A2C4C380017EB0C /* AFURLRequestSerialization.m */,
 				6F85C3D11A2C4C380017EB0C /* AFURLResponseSerialization.h */,
@@ -1910,6 +1915,9 @@
 				18C31D2D1A5D5BC0006DE02F /* ISSTPushViewController.xib */,
 				18C31D2E1A5D5BC0006DE02F /* ISSTPushViewController.m */,
 				18C31D2F1A5D5BC0006DE02F /* ISSTPushViewController.h */,
+				18D79B081AFC58E200188B54 /* ISSTPushDetailViewController.h */,
+				18D79B091AFC58E200188B54 /* ISSTPushDetailViewController.m */,
+				18D79B0A1AFC58E200188B54 /* ISSTPushDetailViewController.xib */,
 				33B9F10E194D4FF4004F6546 /* ISSTUserCenterViewController.xib */,
 				33B9F10F194D4FF4004F6546 /* ISSTUserInfoViewController.h */,
 				33B9F110194D4FF4004F6546 /* ISSTUserInfoViewController.m */,
@@ -2218,6 +2226,7 @@
 				6F75230019D2C5A10079A8D6 /* 就业icon.png in Resources */,
 				334D69F4194BFFE90018C521 /* icon_profile@2x.png in Resources */,
 				1824E51F19CAC82D00BDC38C /* 就业3.png in Resources */,
+				18D79B0C1AFC58E200188B54 /* ISSTPushDetailViewController.xib in Resources */,
 				6F7EAF9C1A3591840017C5CE /* denglu_shangbankuang.png in Resources */,
 				334D69F5194BFFE90018C521 /* none_list@2x.png in Resources */,
 				AEE284A018DB263100BEF1A9 /* user.png in Resources */,
@@ -2298,6 +2307,7 @@
 				1824E51519CAC79D00BDC38C /* CycleScrollView.m in Sources */,
 				252ACB711967B00600D2E5A1 /* ISSTTasksSurveyViewController.m in Sources */,
 				AE9052B818EEEE890088742D /* ISSTWikisDetailViewController.m in Sources */,
+				18D79B0B1AFC58E200188B54 /* ISSTPushDetailViewController.m in Sources */,
 				AE9B148218EBB04400034F65 /* NetworkReachability.m in Sources */,
 				18B6198B1955B8DC00F4ACC7 /* CityManagersViewController.m in Sources */,
 				AE014ADB18EFD4690009E008 /* ISSTRestaurantsMenusModel.m in Sources */,
@@ -2580,7 +2590,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cbd65cec-dd1d-4102-bf69-2af1fb83ff3f";
+				PROVISIONING_PROFILE = "98abd7e0-376f-44ca-8480-8696a2a5623a";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2606,7 +2616,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "cbd65cec-dd1d-4102-bf69-2af1fb83ff3f";
+				PROVISIONING_PROFILE = "98abd7e0-376f-44ca-8480-8696a2a5623a";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

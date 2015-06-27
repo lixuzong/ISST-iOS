@@ -198,6 +198,7 @@ static NSString *CellTableIdentifier=@"ISSTExperienceCell";
 
 -(void)dealloc{
     loadPage=1;
+    _userCenterApi.webApiDelegate = nil;
 }
 
 @end

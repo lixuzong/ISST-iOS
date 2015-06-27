@@ -90,7 +90,10 @@ const static int  COMMENTS = 2;
     [super didReceiveMemoryWarning];
 }
 
-
+-(void)dealloc
+{
+    recommendApi.webApiDelegate =nil;
+}
 
 #pragma mark -
 #pragma mark - ISSTMoreButtonDelegate Method;

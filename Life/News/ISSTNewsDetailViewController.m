@@ -72,6 +72,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc
+{
+    self.newsApi.webApiDelegate=nil;
+    
+    NSLog(@"news detail delloc");
+}
+
 #pragma mark -
 #pragma mark  WebViewDelegate Methods
 - (void)webViewDidStartLoad:(UIWebView *)webView
@@ -81,7 +88,10 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    NSString *currentURL = [webView stringByEvaluatingJavaScriptFromString:@"document.location.href"];
     //[activityIndicatorView stopAnimating];
+    NSString *title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+    NSLog(@"tit=%@",title);
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
